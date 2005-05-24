@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!-- don't edit start -->
+<head>
+<title>Seasar - DI Container with AOP - </title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+<style type="text/css">
+<!--
+.table{
+margin-left : 10px;
+}
+TH{
+font-size : 10pt;
+text-align : center;
+background-color : #d1f3f4;
+}
+TD{
+font-size : 10pt;
+}
+-->
+</style>
+</head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_ja.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_ja.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu03_b_ja.gif" height="30" width="110" border="0" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)"></a></td>
+<td><a href="resources.html"><img src="images/menu04_b_ja.gif" height="30" width="113" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><img src="images/menu05_b_ja.gif" height="30" width="109" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<ul>
+<li><a href="setup.html">S2主要プロダクト リリースタイミング一覧</a>
+</ul>
+<p>以下の表は，主要プロダクトであるS2，S2Dao，S2JSFがリリースされた順番を表現しています．上の段ほど新しいリリースになります．<br>
+同じ段に記述されているバージョンは，同じ日にリリースされたことを表しています．</p>
+<p>S2DaoまたはS2JSFと同じ日にS2がリリースされた場合 (太字のバージョン) は，S2に対してS2DaoまたはS2JSFが必要とする変更が行われた可能性があるため，バージョンの組み合わせに注意してください<br>
+※修正内容を確認したわけではないので，単に同じ日にリリースされただけのものも太字になっています．</p>
+<table border="1" class="table" width="400" cellspacing="0" cellpadding="0">
+<col span="3" width="100" valign="bottom" align="center">
+<tbody>
+<tr>
+<th>S2</th>
+<th>S2Dao</th>
+<th>S2JSF</th>
+</tr>
+<tr>
+<td>2.2.9</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>1.0.2</td>
+</tr>
+<tr>
+<td>2.2.8</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>1.0.1</td>
+</tr>
+<tr>
+<td>2.2.7</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>1.0.26</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.2.6</strong></td>
+<td><strong>1.0.25</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.2.5</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>1.0.24</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.2.4</strong></td>
+<td>&nbsp;</td>
+<td><strong>1.0.0</strong></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>RC6</td>
+</tr>
+<tr>
+<td><strong>2.2.3</strong></td>
+<td>&nbsp;</td>
+<td><strong>RC5</strong></td>
+</tr>
+<tr>
+<td>2.2.2</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>1.0.23</td>
+<td>RC4</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>1.0.22</td>
+<td>RC3</td>
+</tr>
+<tr>
+<td><strong>2.2.1</strong></td>
+<td>&nbsp;</td>
+<td><strong>RC2</strong></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>RC1</td>
+</tr>
+<tr>
+<td>2.2.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.1.14</strong></td>
+<td><strong>1.0.21</strong></td>
+<td><strong>EA7</strong></td>
+</tr>
+<tr>
+<td><strong>2.1.13</strong></td>
+<td><strong>1.0.20</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.1.12</strong></td>
+<td><strong>1.0.19</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>EA6</td>
+</tr>
+<tr>
+<td><strong>2.1.11</strong></td>
+<td>&nbsp;</td>
+<td><strong>EA5</strong></td>
+</tr>
+<tr>
+<td><strong>2.1.10</strong></td>
+<td><strong>1.0.18</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.1.9</strong></td>
+<td>&nbsp;</td>
+<td><strong>EA4</strong></td>
+</tr>
+<tr>
+<td><strong>2.1.8</strong></td>
+<td><strong>1.0.17</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>1.0.16</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.1.7</strong></td>
+<td><strong>1.0.15</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td><strong>1.0.14</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.1.6</strong></td>
+<td><strong>1.0.13</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.1.5</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.1.4</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.1.3</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.1.2</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.1.1</strong></td>
+<td>&nbsp;</td>
+<td><strong>EA2</strong></td>
+</tr>
+<tr>
+<td><strong>2.1.0</strong></td>
+<td>&nbsp;</td>
+<td><strong>EA1</strong></td>
+</tr>
+<tr>
+<td><strong>2.0.22</strong></td>
+<td><strong>1.0.12</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.21</strong></td>
+<td><strong>1.0.11</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.20</strong></td>
+<td><strong>1.0.10</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>1.0.9</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>1.0.8</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.19</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.18</strong></td>
+<td><strong>1.0.7</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>1.0.6</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.17</strong></td>
+<td><strong>1.0.5</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.16</strong></td>
+<td><strong>1.0.4</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.15</strong></td>
+<td><strong>1.0.3</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.14</strong></td>
+<td><strong>1.0.2</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.13</strong></td>
+<td><strong>1.0.1</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.12</strong></td>
+<td><strong>1.0.0</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.11</strong></td>
+<td><strong>EA2</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>2.0.10</strong></td>
+<td><strong>EA1</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.9</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.8</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.7</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.6</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.5</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.4</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.3</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.2</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.1</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>2.0.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright">&copy; Copyright The Seasar Project and the others 2004-2005, all rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>
