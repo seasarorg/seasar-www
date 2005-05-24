@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+
+   <description url="http://www.seasar.org/eclipse/updates/3.0/">
+      
+   </description>
+   <feature url="features/org.seasar.kijimuna_0.6.23.jar" id="org.seasar.kijimuna" version="0.6.23">
+      <category name="Kijimuna"/>
+   </feature>
+   <feature url="features/org.seasar.kijimuna_0.6.24.jar" id="org.seasar.kijimuna" version="0.6.24">
+      <category name="Kijimuna"/>
+   </feature>
+   <feature url="features/org.seasar.s2jsfplugin.feature_0.0.6.jar" id="org.seasar.s2jsfplugin.feature" version="0.0.6">
+      <category name="S2JSF Plugin"/>
+   </feature>
+   <feature url="features/org.seasar.s2jsfplugin.feature_0.0.7.jar" id="org.seasar.s2jsfplugin.feature" version="0.0.7">
+      <category name="S2JSF Plugin"/>
+   </feature>
+   <category-def name="Kijimuna" label="Kijimuna"/>
+   <category-def name="S2JSF Plugin" label="S2JSF Plugin"/>
+</site>
