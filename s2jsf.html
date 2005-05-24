@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head>
+<title>Seasar - DI Container with AOP - </title>
+<META http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<META name="GENERATOR" content="IBM WebSphere Studio Homepage Builder Version 8.0.0.0 Trial for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" height="100%"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td width="235"><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_ja.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_ja.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu03_b_ja.gif" height="30" width="110" border="0" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)"></a></td>
+<td><a href="resources.html"><img src="images/menu04_b_ja.gif" height="30" width="113" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><img src="images/menu05_b_ja.gif" height="30" width="109" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></td>
+<td width="34"><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" height="100%" class="white">
+<tr align="left" valign="top"><td width="18"><img height="14" width="18" src="images/spacer.gif" alt=""></td><td width="744" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<ul>
+<li><a href="#Preface">まえがき</a></li>
+<li><a href="#SetUp">セットアップ</a></li>
+<li><a href="#Sample">サンプル解説</a></li>
+<ul>
+<li><a href="#hello">hello.html</a></li>
+<li><a href="#add">add.html</a></li>
+<li><a href="#forEachList">forEachList.html</a></li>
+<li><a href="#forEachResult">forEachResult.html</a></li>
+<li><a href="#forEach2List">forEach2List.html</a></li>
+<li><a href="#converter">converter.html</a></li>
+<li><a href="#validator">validator.html</a></li>
+<li><a href="#checkbox">checkbox.html</a></li>
+<li><a href="#selectOneMenu">selectOneMenu.html</a></li>
+<li><a href="#selectManyCheckbox">selectManyCheckbox.html</a></li>
+<li><a href="#selectManyListbox">selectManyListbox.html</a></li>
+</ul>
+</ul>
+
+<h2><a name="Preface">まえがき</a></h2>
+<p>JSPを使っていて、ちょっとレイアウトを確認したいだけなのに、いちいちアプリケーションサーバを立ち上げて、デ
+
+プロイしないといけないことに、苛立ちを覚えたことはありませんか。デザイナとの連携に苦労したことはないでしょう
+
+か｡S2JSFを使うと、ViewのテンプレートをHTMLで記述できるようになります。もうJSPに悩まされる必要はなくなるのです
+
+｡</p>
+<h2><a name="SetUp">セットアップ</a></h2>
+<p>Seasar2と同様にJDK1.4以上が必要です。S2JSFVx.x.x.zipを解凍してできたs2jsfディレクトリをEclipseで、
+｢ファイル→インポート→既存のプロジェクトをワークスペースへ｣でインポートしてください。</p>
+<p>サンプルはS2JSFExamleVx.x.x.jarとして別途用意されているので、ダウンロードして解凍してください。先程と同様
+
+に、Eclipseで、｢ファイル→インポート→既存のプロジェクトをワークスペースへ｣でインポートします。サンプルは、<a
+
+href="http://jakarta.apache.org/tomcat/">Tomcat5</a>、<a
+
+href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>を使うことを前提にしています。もし、
+
+まだインストールしていない場合は、インストールしておいてください。</p>
+<p>Tomcatを起動し、ブラウザでhttp://localhost:8080/s2jsf-exampleにアクセスすると、S2JSFのサンプルを見ることが
+
+出来ます。</p>
+
+<h2><a name="Sample">サンプル解説</a></h2>
+<h3><a name="hello">hello.html</a></h3>
+<p>ブラウザで、http://localhost:8080/s2jsf-example/hello/hello.html?message=aaaにアクセスしてみましょう。
+
+Hello aaaと表示されるはずです｡このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>S2JSF用の名前空間の宣言。</li>
+<li>レイアウト機能。</li>
+<li>taglibの利用方法｡</li>
+<li>inject属性によるタグの指定。</li>
+<li>titleタグの使い方。</li>
+<li>リンクでページ遷移する方法｡</li>
+<li>ページ遷移のときにパラメータを渡す方法｡</li>
+<li>navigation-ruleの記述方法｡</li>
+<li>ValueBindingを使って文字列を出力する方法｡</li>
+</ul>
+<p>それでは、HTMLの中身を見てみましょう｡ </p>
+<pre>01:&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot; m:extends=&quot;/WEB-INF/layout/layout.html&quot;&gt;<br>02:&lt;head&gt;<br>03:&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=Windows-31j&quot; /&gt;<br>04:&lt;title&gt;Hello&lt;/title&gt;<br>05:&lt;/head&gt;<br>06:&lt;body&gt;<br>07:    &lt;span m:inject=&quot;f:param&quot; m:name=&quot;layoutTitle&quot; m:value=&quot;Hello&quot;/&gt;<br>08:    &lt;span m:inject=&quot;s:insert&quot; m:name=&quot;body&quot;&gt;<br>09:        Hello &lt;span m:value=&quot;#{message}&quot;&gt;hoge&lt;/span&gt;<br>10:    &lt;/span&gt;<br>11:&lt;/body&gt;<br>12:&lt;/html&gt;</pre>
+<p>1行目のxmlns:m=&quot;http://www.seasar.org/maya&quot;で名前空間を指定しています｡この
+
+URI(http://www.seasar.org/maya)は固定です｡プレフィックスのmは任意の値を指定することが出来ますが、慣例的にmを
+
+使うことになっています｡</p>
+<p>次のextends属性で、継承するレイアウトを指定しています｡一貫したLook &amp; Feelを提供するために、ページのレ
+
+イアウトが、ヘッダー、メニュー、ボディ、フッターで構成され、個別のページはボディ部分だけが異なるというのは、
+
+よく見かけるパターンではないでしょうか｡このようなニーズにこたえるために、S2JSFでは、ベースになるページでレイ
+
+アウトを定義し、個別のページでは、ベースとなるページを継承して特定の部分(例えばボディ)だけを上書きするという
+
+ことが可能になっています｡それでは、layout.htmlを見てみましょう｡</p>
+<pre>01:&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot;&gt;<br>02:&lt;head&gt;<br>03:&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=Windows-31j&quot; /&gt;<br>04:&lt;link m:inject=&quot;s:link&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/global.css&quot;/&gt;<br>05:&lt;title m:value=&quot;#{layoutTitle}&quot;/&gt;<br>06:&lt;/head&gt;<br>07:&lt;body&gt;<br>08:&lt;table border=&quot;0&quot; cellspacing=&quot;5&quot;&gt;<br>09:&lt;tr&gt;<br>10:  &lt;td colspan=&quot;2&quot;&gt;&lt;span m:inject=&quot;s:insert&quot; m:src=&quot;/WEB-INF/layout/header.html&quot;/&gt;&lt;/td&gt;<br>11:&lt;/tr&gt;<br>12:&lt;tr&gt;<br>13:  &lt;td width=&quot;140&quot; valign=&quot;top&quot;&gt;<br>14:    &lt;span m:inject=&quot;s:insert&quot; m:src=&quot;/WEB-INF/layout/menu.html&quot;/&gt;<br>15:  &lt;/td&gt;<br>16:  &lt;td valign=&quot;top&quot; align=&quot;left&quot;&gt;<br>17:    &lt;span m:inject=&quot;s:insert&quot; m:name=&quot;body&quot;/&gt;<br>18:  &lt;/td&gt;<br>19:&lt;/tr&gt;<br>20:&lt;tr&gt;<br>21:  &lt;td colspan=&quot;2&quot;&gt;<br>22:    &lt;hr/&gt;<br>23:  &lt;/td&gt;<br>24:&lt;/tr&gt;<br>25:&lt;tr&gt;<br>26: &lt;td colspan=&quot;2&quot;&gt;<br>27:    &lt;span m:inject=&quot;s:insert&quot; m:src=&quot;/WEB-INF/layout/footer.html&quot;/&gt;<br>28:  &lt;/td&gt;<br>29:&lt;/tr&gt;<br>30:&lt;/table&gt;<br>31:&lt;/body&gt;<br>32:&lt;/html&gt;
+</pre>
+<p>4行目のlinkタグを見てください｡inject属性でs:linkというタグ名を指定しています｡このタグ名の記述の仕方は、JSP
+
+の場合と一緒です｡sというプレフィックスは、WEB-INF/classes(WEB-INF/src)のjsf.diconに記述されています｡jsf.dicon
+
+の該当部分は次のようになります｡</p>
+<pre>&lt;component class=&quot;org.seasar.jsf.runtime.JsfConfigImpl&quot;&gt;
+    &lt;initMethod name=&quot;addTaglibUri&quot;&gt;
+        &lt;arg&gt;&quot;h&quot;&lt;/arg&gt;
+        &lt;arg&gt;&quot;http://java.sun.com/jsf/html&quot;&lt;/arg&gt;
+    &lt;initMethod&gt;
+    &lt;initMethod name=&quot;addTaglibUri&quot;&gt;
+        &lt;arg&gt;&quot;f&quot;&lt;/arg&gt;
+        &lt;arg&gt;&quot;http://java.sun.com/jsf/core&quot;&lt;/arg&gt;
+    &lt;initMethod&gt;<br>    &lt;initMethod name=&quot;addTaglibUri&quot;&gt;
+        &lt;arg&gt;&quot;s&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;http://www.seasar.org/jsf&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre>
+<p>inject属性を指定することで、任意のHTMLのタグを任意のJSF用のJSPのタグに変換できます｡既存のJSF用のtaglibがそ
+
+のまま再利用できるのです｡</p>
+<p>5行目でtitleを指定しています｡layoutTitleの実際の値は、このレイアウトを継承したページで指定します｡</p>
+<p>10行目のinsertタグのsrc属性でヘッダー用のページを挿入しています｡ヘッダー用のページは次のようになっています
+
+｡</p>
+<pre>&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot;&gt;<br>&lt;body&gt;<br>    &lt;span m:inject=&quot;s:insert&quot;&gt;<br>        &lt;img m:inject=&quot;h:graphicImage&quot; m:url=&quot;/images/seasar.gif&quot;/&gt;<br>    &lt;/span&gt;
+&lt;/body&gt;<br>&lt;/html&gt;
+</pre>
+<p>挿入されるページでは、name属性のないinsertタグの中に挿入したい内容を記述します｡insertタグの外側にプレビュ
+
+ー用にタグを書くことも出来ます｡その場合、実行時には、insertタグの外側は無視されます｡次は、menu.htmlを見てみましょう｡</p>
+<pre>&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot;&gt;<br>...<br>&lt;body&gt;<br>    &lt;span m:inject=&quot;s:insert&quot;&gt;<br>        &lt;form&gt;<br>            &lt;ul&gt;<br>                &lt;li&gt;<br>                    &lt;a m:action=&quot;hello&quot;&gt;Hello<br>                        &lt;span m:inject=&quot;f:param&quot; m:name=&quot;message&quot; m:value=&quot;World&quot;/&gt;<br>                    &lt;/a&gt;<br>                &lt;/li&gt;<br>                &lt;li&gt;<br>                    &lt;a m:action=&quot;add&quot;&gt;Add&lt;/a&gt;<br>                &lt;/li&gt;<br>                ...
+            &lt;/ul&gt;<br>        &lt;/form&gt;<br>    &lt;/span&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;
+</pre>
+<p>anchorタグのaction属性でリンクをクリックしたときに、遷移するページ名を指定します｡action属性は、${変数名.メソッド名}という形式で、JavaBeansのメソッドを呼び出すことも出来ますが、単に文字列を指定した場合は、指定したページに遷移するという意味になります｡このhelloというページ名はWEB-INF/faces-config.xmlで設定されています｡それでは、該当個所を見ていましょう｡</p>
+<pre>&lt;navigation-rule&gt;<br>    &lt;navigation-case&gt;<br>        &lt;from-outcome&gt;hello&lt;/from-outcome&gt;<br>        &lt;to-view-id&gt;/hello/hello.html&lt;/to-view-id&gt;<br>        &lt;redirect/&gt;<br>    &lt;/navigation-case&gt;<br>&lt;/navigation-rule&gt;
+</pre>
+<p>from-outcomeでページ名(遷移先名)を指定します｡to-view-idで指定するのが、実際のパスです｡redirectタグを書くとリダイレクト、書かないとフォワードされることになります｡menu.htmlの説明に戻ります｡</p>
+<p>anchorタグの子タグでf:paramタグを指定することにより、遷移先のページへパラメータを渡すことが出来ます｡layout.htmlの説明に戻ります｡</p>
+<p>17行目の&lt;span m:inject=&quot;s:insert&quot; m:name=&quot;body&quot;/&gt;でボディ部分を定義しています｡こ
+
+のようにname属性で名前を付けておくと、このレイアウトを継承したページで同じように&lt;span
+
+m:inject=&quot;s:insert&quot; m:name=&quot;body&quot;&gt;...,&lt;/span&gt;を定義することで、親のページの内容
+
+を上書きすることが出来ます｡それでは、hello.htmlの説明に戻ります｡</p>
+<p>7行目の&lt;span m:inject=&quot;f:param&quot; m:name=&quot;layoutTitle&quot; m:value=&quot;Hello&quot;/&gt;
+
+でlayout.htmlで定義したlayoutTitleの値を設定しています｡親のページにパラメータを渡すには、このようにbodyタグの
+
+子タグとしてf:paramタグを記述します｡</p>
+<p>8行目から10行目の&lt;span m:inject=&quot;s:insert&quot; m:name=&quot;body&quot;&gt;で、親ページで定義した
+
+内容を上書きします｡</p>
+<p>9行目の&lt;span m:value=&quot;#{message}&quot;&gt;hoge&lt;/span&gt;でHTMLに文字列を出力します｡#{...}の記述
+
+は、ValueBindingと呼ばれ、動的に値を変える場合に使います｡#{変数名}のように指定した場合は、リクエストの属性、
+
+パラメータ、セッションの属性、S2Containerの順番で検索し、最初に見つかった値を設定します｡#{変数名.プロパティ名
+
+}のように指定した場合は、先程と同様に変数名を解決し、その変数のプロパティの値を設定します｡この例では、リクエ
+
+ストのmessageパラメータの内容が出力されることになります｡ボディのhogeは実行時には無視されます｡ブラウザで直接プ
+
+レビューするときにレイアウトを確認しやすくするためのダミーデータになります｡HTMLに出力される文字列を動的に変え
+
+たい場合は、このようにspanタグのvalue属性で指定します｡</p>
+
+<h3><a name="add">add.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>入力値をJavaBeansのプロパティと連動させる方法。</li>
+<li>ボタンをクリックしたときにJavaBeansのメソッドを呼び出す方法。</li>
+<li>Actionにsetterメソッドを定義してリクエスト、セッション、S2Containerのオブジェクトをプロパティに自動設定する方法。</li>
+</ul>
+<p>それでは、HTMLの中身を見てみましょう｡ </p>
+<pre>01:&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot; m:extends=&quot;/WEB-INF/layout/layout.html&quot;&gt;<br>02:&lt;head&gt;<br>03:&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=Windows-31j&quot; /&gt;<br>04:&lt;title&gt;Add&lt;/title&gt;<br>05:&lt;/head&gt;<br>06:&lt;body&gt;<br>07:  &lt;span m:inject=&quot;f:param&quot; m:name=&quot;layoutTitle&quot; m:value=&quot;Add&quot;/&gt;<br>08:  &lt;span m:inject=&quot;s:insert&quot; m:name=&quot;body&quot;&gt;<br>09:    &lt;form&gt;<br>10:      &lt;span m:inject=&quot;h:messages&quot; m:globalOnly=&quot;false&quot; m:showDetail=&quot;true&quot;/&gt;<br>11:      &lt;input type=&quot;text&quot; m:value=&quot;#{addDto.arg1}&quot;/&gt; + <br>12:      &lt;input type=&quot;text&quot; m:value=&quot;#{addDto.arg2}&quot;/&gt; = <br>13:      &lt;span m:value=&quot;#{addDto.result}&quot;/&gt; <br>14:      &lt;input type=&quot;submit&quot; value=&quot;calculate&quot; m:action=&quot;#{addAction.calculate}&quot;/&gt;<br>15:    &lt;/form&gt;<br>16:  &lt;/span&gt;<br>17:&lt;/body&gt;<br>18:&lt;/html&gt;
+</pre>
+<p>headタグの部分は、実行時には無視されます｡ブラウザでのプレビュー用です｡</p>
+<p>10行目の&lt;span m:inject=&quot;h:messages&quot; m:globalOnly=&quot;false&quot; m:showDetail=&quot;true&quot;/&gt;で、エラーが起きたときのメッセージを出力する準備をしています｡globalOnly属性がtrueの場合、個別の入力項目には関係のない(globalな)エラーのメッセージだけが出力されます｡falseにするとglobalなメッセージも個別のメッセージも出力するようになります。</p>
+<p>11行目の&lt;input type=&quot;text&quot; m:value=&quot;#{addDto.arg1}&quot;/&gt;で、入出力用のタグとJavaBeansのプロパティを連動させています｡入力した値は、バリデーションがOKなら、JavaBeansのプロパティに格納され、NGの場合は、入力された値がそのままページに表示されることになります｡このように入出力値の管理をきちんと行ってくれるところが、JSFの偉いところです｡StrutsのようにActionFormでとりあえずStringで受け取るなんて事をする必要がないのです｡</p>
+<p>addDtoはどこで定義されているのでしょうか｡addDtoは、examples/jsf/dicon/add.diconの中で、次のように定義されています｡</p>
+<pre>&lt;component name=&quot;addDto&quot; class=&quot;examples.jsf.dto.AddDto&quot; instance=&quot;request&quot;/&gt;
+</pre>
+<p>instance属性がrequestになっているので、addDtoはrequestのスコープで管理されることになります｡また、add.diconは、ルートの定義であるapp.diconから次のようにincludeされています。</p>
+<pre>&lt;include path=&quot;examples/jsf/dicon/add.dicon&quot;/&gt;
+</pre>
+<p>14行目の&lt;input type=&quot;submit&quot; value=&quot;calculate&quot; m:action=&quot;#{addAction.calculate}&quot;/&gt;で、ボタンがクリックされたときにJavaBeansのメソッドを呼び出す設定をしています｡ボタンやリンクのaction属性で、#{変数名.メソッド名}のように記述することをMethodBindingと呼びます｡MethodBindingで呼び出されるメソッドは、引数がなく、戻り値がStringでなければいけません｡addActionはadd.diconで次のように定義されています｡</p>
+<pre>&lt;component name=&quot;addAction&quot; class=&quot;examples.jsf.action.impl.AddActionImpl&quot; instance=&quot;request&quot;/&gt;
+</pre>
+<p>Actionクラスは、入力された内容をプロパティ経由で受け取ることになるので、instance属性をrequestにします。それでは、AddActionインターフェース、AddActionImplクラスを見てみましょう｡インターフェースと実装を必ず分離しなければならないということはないのですが、このように分離したほうが、仕様が明確に伝わり易いと思います｡</p>
+<pre>
+package examples.jsf.action;
+
+public interface AddAction {
+
+    public String calculate();
+}
+</pre>
+<pre>
+package examples.jsf.action.impl;
+
+import examples.jsf.action.AddAction;
+import examples.jsf.dto.AddDto;
+import examples.jsf.logic.AddLogic;
+
+public class AddActionImpl implements AddAction {
+
+    private AddDto addDto;
+    private AddLogic addLogic;
+
+    public void setAddDto(AddDto addDto) {
+        this.addDto = addDto;
+    }
+
+    public void setAddLogic(AddLogic addLogic) {
+        this.addLogic = addLogic;
+    }
+
+    public String calculate() {
+        int result = addLogic.calculate(addDto);
+        addDto.setResult(result);
+        return null;
+    }
+}
+</pre>
+<p>入力された値を受け取るために、addDtoというプロパティのsetterメソッドを定義しています｡S2JSFは、MethodBindingで指定したメソッドを呼び出す直前にsetterメソッドの定義されているプロパティがないか調べ、もしある場合は、プロパティ名と同様の変数が、リクエストの属性、パラメータ、セッションの属性、S2Containerに存在するか調べ、もし存在する場合には、自動的にsetterメソッドを呼び出し、その変数を設定します｡</p>
+<p>addLogicという変数は、どこにも定義されていないのですが、プロパティの型がインターフェースの場合、S2Containerによって、そのインターフェースを実装したクラスが自動的に設定されます｡AddLogicを実装したクラスは、add.diconで次のように定義されています｡</p>
+<pre>&lt;component class=&quot;examples.jsf.logic.impl.AddLogicImpl&quot;/&gt;
+</pre>
+<p>MethodBindingで呼び出したメソッドの戻り値がnullの場合は、自分自身に遷移することになります｡</p>
+
+<h3><a name="forEachList">forEachList.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>forEachタグによる繰り返し。</li>
+<li>anchorタグでプレビュー時にページ遷移させる方法。</li>
+<li>buttonrタグでプレビュー時にページ遷移させる方法。</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>01:&lt;form&gt;
+02:    &lt;table border=&quot;1&quot;&gt;
+03:        &lt;tr bgcolor=&quot;#7777FF&quot;&gt;
+04:            &lt;th&gt;Key&lt;/th&gt;
+05:            &lt;th&gt;Name&lt;/th&gt;
+06:            &lt;th colspan=&quot;2&quot;&gt;to ResultPage&lt;/th&gt;
+07:        &lt;/tr&gt;
+08:        &lt;span m:inject=&quot;s:forEach&quot; m:items=&quot;#{forEachDtoList}&quot;
+09:            m:var=&quot;e&quot; m:varIndex=&quot;i&quot;&gt;
+10:        &lt;tr&gt;
+11:            &lt;td&gt;&lt;span m:value=&quot;#{e.key}&quot;&gt;111&lt;/span&gt;&lt;/td&gt;
+12:            &lt;td&gt;&lt;span m:value=&quot;#{e.name}&quot;&gt;aaa&lt;/span&gt;&lt;/td&gt;
+13:            &lt;td&gt;&lt;a href=&quot;forEachResult.html&quot; m:action=&quot;forEachResult&quot;&gt;to ResultPage
+14:                    &lt;span m:inject=&quot;f:param&quot; m:name=&quot;index&quot; m:value=&quot;#{i}&quot;/&gt;
+15:                &lt;/a&gt;
+16:            &lt;/td&gt;
+17:            &lt;td&gt;
+18:                &lt;input type=&quot;button&quot; m:action=&quot;forEachResult&quot; value=&quot;to ResultPage&quot;
+19:                    onclick=&quot;location.href='forEachResult.html'&quot;&gt;
+20:                    &lt;span m:inject=&quot;f:param&quot; m:name=&quot;index&quot; m:value=&quot;#{i}&quot;/&gt;
+21:                &lt;/input&gt;
+22:            &lt;/td&gt;
+23:        &lt;/tr&gt;
+24:        &lt;/span&gt;
+25:    &lt;/table&gt;
+26:&lt;/form&gt;
+</pre>
+<p>8行目のforEachタグで繰り返しを指定します｡items属性で繰り返す対象を、var属性で繰り返す際に個々の要素にアクセスするときの名前を、varIndex属性で繰り返す際にインデックスにアクセスするときの名前を指定します｡</p>
+<p>11行目のようにvar属性でつけた名前.プロパティという形でアクセスすることが出来ます｡</p>
+<p>13行目のanchorタグでhref属性とaction属性を両方指定しています｡このように両方指定した場合、hrefは実行時には無視されます｡ブラウザで直接プレビューしたときに、ページを遷移させるために記述しているのです｡子タグのparamタグでページ遷移のときのパラメータを指定することができます｡</p>
+<p>18行目のbuttonタグもaction属性とonclick属性を指定しています｡onclick属性のlocation.href='forEachResult.html'の部分は実行時には無視されます｡ブラウザで直接プレビューしたときに、ページを遷移させるために記述しているのです｡子タグのparamタグでページ遷移のときのパラメータを指定することができます｡</p>
+
+<h3><a name="forEachResult">forEachResult.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>ページの初期処理。</li>
+<li>Actionにgetterメソッドを定義してプロパティをリクエストやセッションに自動設定する方法。</li>
+</ul>
+<p>それでは、HTMLを見てみましょう｡ </p>
+<pre>01:&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot;<br>02:    m:action=&quot;#{forEachResultInitAction.initialize}&quot;<br>03:    m:extends=&quot;/WEB-INF/layout/layout.html&quot;&gt;<br>04:&lt;head&gt;<br>05:&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=Windows-31j&quot; /&gt;<br>06:&lt;title&gt;ForEach&lt;/title&gt;<br>07:&lt;/head&gt;<br>08:&lt;body&gt;<br>09:&lt;span m:inject=&quot;f:param&quot; m:name=&quot;layoutTitle&quot; m:value=&quot;ForEach&quot;/&gt;<br>10:&lt;span m:inject=&quot;s:insert&quot; m:name=&quot;body&quot;&gt;
+11:     Key:&lt;span m:value=&quot;#{forEachDto.key}&quot;&gt;111&lt;/span&gt;
+12:     Name:&lt;span m:value=&quot;#{forEachDto.name}&quot;&gt;aaa&lt;/span&gt;&lt;br /&gt;
+13:     &lt;a href=&quot;forEachList.html&quot;&gt;previous&lt;/a&gt;
+14:&lt;/span&gt;
+15:&lt;/body&gt;
+16:&lt;/html&gt;
+</pre>
+<p>2行目のhtmlタグのaction属性で、ページを初期化するメソッドを指定しています｡それでは、Actionクラスを見てみましょう｡</p>
+<pre>
+package examples.jsf.action.impl;
+
+import java.util.List;
+
+import examples.jsf.action.ForEachResultInitAction;
+import examples.jsf.dto.ForEachDto;
+
+public class ForEachResultInitActionImpl implements ForEachResultInitAction {
+
+    private int index;
+
+    private List forEachDtoList;
+
+    private ForEachDto forEachDto;
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public void setForEachDtoList(List forEachDtoList) {
+        this.forEachDtoList = forEachDtoList;
+    }
+
+    public ForEachDto getForEachDto() {
+        return forEachDto;
+    }
+
+    public String initialize() {
+        forEachDto = (ForEachDto) forEachDtoList.get(index);
+        return null;
+    }
+}
+</pre>
+<p>前のページで、anchorタグやbuttonタグのパラメータでindexを渡していたことを思い出してください｡setIndex()メソッドを定義しておけば、S2JSFが自動的にパラメータの値を設定してくれます｡また、setForEachDtoList()メソッドを定義しておくことで、examples/jsf/dicon/foreach.diconに定義されているforEachDtoListを参照できます｡initMethodタグを使えば、任意のメソッドを呼び出せるので、自由自在にオブジェクトを組み立てることが出来ます｡</p>
+<pre>&lt;component name=&quot;forEachDtoList&quot; class=&quot;java.util.ArrayList&quot; instance=&quot;session&quot;&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.dto.ForEachDto&quot; &gt;<br>                &lt;property name=&quot;key&quot;&gt;&quot;111&quot;&lt;/property&gt;<br>                &lt;property name=&quot;name&quot;&gt;&quot;aaa&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.dto.ForEachDto&quot; &gt;<br>                &lt;property name=&quot;key&quot;&gt;&quot;222&quot;&lt;/property&gt;<br>                &lt;property name=&quot;name&quot;&gt;&quot;bbb&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre>
+<p>initialize()メソッドで指定されたインデックスに基づくオブジェクトをforEachDtoプロパティに設定しています｡forEachDtoプロパティには、getterメソッドが定義されているので、initialize()メソッドが実行された後、S2JSFによって、forEachDtoプロパティの値が自動的にリクエストの属性(forEachDto)に設定されます｡public static final String プロパティ名_EXPORT = &quot;session&quot;;のように定数を宣言することで、リクエストではなくセッションの属性に設定することも出来ます｡ </p>
+
+<h3><a name="forEach2List">forEach2List.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>入力系のタグを含んだforEachタグによる繰り返し。</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>01:&lt;form&gt;<br>02:    &lt;table border=&quot;1&quot;&gt;<br>03:        &lt;tr bgcolor=&quot;#7777FF&quot;&gt;<br>04:            &lt;th&gt;delete&lt;/th&gt;<br>05:            &lt;th&gt;input&lt;/th&gt;<br>06:        &lt;/tr&gt;<br>07:        &lt;span m:inject=&quot;s:forEach&quot; m:items=&quot;#{forEach2DtoList}&quot; m:var=&quot;e&quot;&gt;<br>08:        &lt;tr&gt;<br>09:            &lt;td&gt;&lt;input type=&quot;checkbox&quot; m:value=&quot;#{e.delete}&quot;/&gt;&lt;/td&gt;<br>10:            &lt;td&gt;&lt;input type=&quot;text&quot; m:value=&quot;#{e.input}&quot;&lt;/td&gt;<br>11:        &lt;/tr&gt;<br>12:        &lt;/span&gt;<br>13:    &lt;/table&gt;<br>14:    &lt;input type=&quot;submit&quot; value=&quot;update&quot; m:action=&quot;#{forEach2ListAction.update}&quot;/&gt;<br>15:    &lt;input type=&quot;submit&quot; value=&quot;add row&quot; m:action=&quot;#{forEach2ListAction.addRow}&quot;/&gt;<br>16:&lt;/form&gt;
+</pre>
+<p>このページでは、add rowボタンをクリックすると新規の行が挿入され、deleteのチェックボックスをチェックしてupdateボタンをクリックすることで行を削除することができます｡また、入力値を書き換えてupdateボタンをクリックすることでinputの内容を更新することも出来ます｡</p>
+<p>入力系のタグを含んでいるといっても、forEachタグの使い方に特に違いはありません｡Actionクラスは次のようになります｡</p>
+<pre>
+package examples.jsf.action.impl;
+
+import java.util.Iterator;
+import java.util.List;
+
+import examples.jsf.action.ForEach2ListAction;
+import examples.jsf.dto.ForEach2Dto;
+
+public class ForEach2ListActionImpl implements ForEach2ListAction {
+
+    private List forEach2DtoList;
+
+    public void setForEach2DtoList(List forEach2DtoList) {
+        this.forEach2DtoList = forEach2DtoList;
+    }
+
+    public String update() {
+        for (Iterator i = forEach2DtoList.iterator(); i.hasNext(); ) {
+            ForEach2Dto dto = (ForEach2Dto) i.next();
+            if (dto.isDelete()) {
+                i.remove();
+            }
+        }
+        return null;
+    }
+
+    public String addRow() {
+        forEach2DtoList.add(new ForEach2Dto());
+        return null;
+    }
+}
+</pre>
+
+<h3><a name="converter">converter.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>converter属性の使い方。</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>&lt;form&gt;
+    &lt;span m:inject=&quot;h:messages&quot; m:globalOnly=&quot;false&quot; m:showDetail=&quot;true&quot;/&gt;<br>    &lt;input type=&quot;text&quot; m:value=&quot;#{converterDto.aaa}&quot;<br>        m:converter=&quot;#{inputDateTimeConverter}&quot;/&gt;&lt;br /&gt;<br>    &lt;span m:value=&quot;#{converterDto.aaa}&quot;<br>        m:converter=&quot;#{outputDateTimeConverter}&quot;/&gt;&lt;br /&gt;<br>    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;<br>&lt;/form&gt;
+</pre>
+<p>ほとんどの入出力用のタグは、converter属性を持っていて、Javaのオブジェクトの値を文字列に変換したり、入力された文字列を適切なオブジェクトの型に変換するためのコンバータを指定することができます｡この例におけるコンバータは、examples/jsf/dicon/allconverter.diconで次のように定義されています｡</p>
+<pre>&lt;component name=&quot;inputDateTimeConverter&quot; class=&quot;javax.faces.convert.DateTimeConverter&quot;&gt;<br>    &lt;property name=&quot;pattern&quot;&gt;&quot;yyyyMMdd&quot;&lt;/property&gt;<br>&lt;/component&gt;<br>&lt;component name=&quot;outputDateTimeConverter&quot; class=&quot;javax.faces.convert.DateTimeConverter&quot;&gt;<br>    &lt;property name=&quot;pattern&quot;&gt;&quot;yyyy/MM/dd&quot;&lt;/property&gt;<br>&lt;/component&gt;
+</pre>
+<p>このようにコンバータをHTMLで個別に定義するのではなく、diconファイルで一元管理することで、コンバータの定義が分散することを防ぐことが出来ます｡</p>
+
+<h3><a name="validator">validator.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>validatorタグの使い方。</li>
+<li>messageタグの使い方。</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>&lt;form&gt;<br>    &lt;span m:inject=&quot;h:messages&quot; m:globalOnly=&quot;true&quot;/&gt;<br>    UserName(2 letters or more):<br>    &lt;input id=&quot;userName&quot; type=&quot;text&quot;<br>        m:value=&quot;#{validatorDto.userName}&quot; m:required=&quot;true&quot;&gt;<br>        &lt;span m:inject=&quot;s:validator&quot; m:binding=&quot;#{userNameLengthValidator}&quot;/&gt;<br>    &lt;/input&gt;<br>    &lt;span m:inject=&quot;h:message&quot; m:for=&quot;userName&quot;/&gt;&lt;br /&gt;<br>    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;<br>&lt;/form&gt;
+</pre>
+<p>バリデーションをかけたい場合、バリデーションの対象となるタグ(id:userName)の子タグとしてvalidatorタグを記述します｡実際のバリデータは、validatorタグのbinding属性で指定します｡この例におけるバリデータは、examples/jsf/dicon/allvalidator.diconで次のように定義されています｡</p>
+<pre>&lt;component name=&quot;userNameLengthValidator&quot; class=&quot;javax.faces.validator.LengthValidator&quot;&gt;<br>    &lt;property name=&quot;minimum&quot;&gt;2&lt;/property&gt;<br>&lt;/component&gt;
+</pre>
+<p>このようにバリデータをHTMLで個別に定義するのではなく、diconファイルで一元管理することで、バリデータの定義が分散することを防ぐことが出来ます｡</p>
+<p>バリデーションエラーになったときに表示させるメッセージは、messageタグで組み込みます｡for属性で対象となるタグのidを指定します｡messagesタグでglobalOnly属性をfalseにすることで、messagesタグに表示させることも出来ますが、どのタグでバリデーションエラーがおきたのかをわかりやすくするために、個別のタグのバリデーションエラーは、messageタグを使って表示させたほうが良いと思います｡</p>
+
+<h3><a name="checkbox">checkbox.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>checkboxの使い方。</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>&lt;form&gt;<br>    &lt;input type=&quot;checkbox&quot; m:value=&quot;#{checkboxDto.aaa}&quot;/&gt;hoge&lt;br /&gt;<br>    &lt;span m:value=&quot;#{checkboxDto.aaa}&quot;/&gt;&lt;br /&gt;<br>    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;<br>&lt;/form&gt;
+</pre>
+<p>特に難しいところはありませんね｡うれしいのは、チェックボックスをオフにしたときも、それがサーバサイドにきちんと伝わることです｡</p>
+
+<h3><a name="selectOneMenu">selectOneMenu.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>selectタグで直接optionで要素を定義する方法。</li>
+<li>selectタグでSelectItemで要素を定義する方法｡</li>
+<li>selectタグでJavaBeansで要素を定義する方法｡</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>01:&lt;form&gt;<br>02:    &lt;select m:value=&quot;#{selectOneMenuDto.aaa}&quot;&gt;<br>03:        &lt;option value=&quot;1&quot;&gt;One&lt;/option&gt;<br>04:        &lt;option value=&quot;2&quot;&gt;Two&lt;/option&gt;<br>05:        &lt;option value=&quot;3&quot;&gt;Three&lt;/option&gt;<br>06:    &lt;/select&gt;&lt;br /&gt;<br>07:    &lt;span m:value=&quot;#{selectOneMenuDto.aaa}&quot;/&gt;&lt;br /&gt;
+08:
+09:    &lt;select m:value=&quot;#{selectOneMenuDto.bbb}&quot;
+10:        m:items=&quot;#{selectOneMenuBbbItems}&quot;&gt;
+11:        &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
+12:        &lt;option value=&quot;1&quot;&gt;One&lt;/option&gt;
+13:        &lt;option value=&quot;2&quot;&gt;Two&lt;/option&gt;
+14:    &lt;/select&gt;&lt;br /&gt;
+15:    &lt;span m:value=&quot;#{selectOneMenuDto.bbb}&quot;/&gt;&lt;br /&gt;
+16:
+17:    &lt;select m:value=&quot;#{selectOneMenuDto.ccc}&quot;
+18:        m:items=&quot;#{selectOneMenuCccItems}&quot;
+19:        m:itemValue=&quot;deptno&quot;
+20:        m:itemLabel=&quot;dname&quot;
+21:        m:nullLabel=&quot;Please select&quot;&gt;
+22:        &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
+23:        &lt;option value=&quot;10&quot;&gt;ACOUNTING&lt;/option&gt;
+24:    &lt;/select&gt;&lt;br /&gt;
+25:    &lt;span m:value=&quot;#{selectOneMenuDto.ccc}&quot;/&gt;&lt;br /&gt;
+26:
+27:    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;
+28:&lt;/form&gt;
+</pre>
+<p>2行目からはじまるselectタグは、子タグのoptionタグで直接要素を指定しています｡</p>
+<p>9行目からはじまるselectタグは、items属性で要素を指定しています｡items属性を指定した場合、子タグのoptionタグは実行時には無視されます｡あくまでもブラウザでのプレビュー用です｡selectOneMenuBbbItemsは、examples/jsf/dicon/selectonemenu.diconで次のように定義されています｡</p>
+<pre>&lt;component name=&quot;selectOneMenuBbbItems&quot; class=&quot;java.util.ArrayList&quot;&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Please select&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;1&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;One&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;2&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Two&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;3&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Three&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;4&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Four&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre>
+<p>この例では、SelectItemを使って要素を定義しています。</p>
+<p>17行目からはじまるselectタグは、items属性で要素を指定しています｡この例の場合、個々の要素はJavaBeansなので、さらにitemValue属性とitemLabel属性で、どのプロパティを値として使うのか、どのプロパティをラベルとして使うのかを指定します｡nullLabel属性を使いnullを設定する場合のラベルを指定することもできます｡selectOneMenuCccItemsは、examples/jsf/dicon/selectonemenu.diconで次のように定義されています｡</p>
+<pre>&lt;component name=&quot;selectOneMenuCccItems&quot; class=&quot;java.util.ArrayList&quot;&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;10&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;ACOUNTING&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;20&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;RESEARCH&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;30&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;SALES&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;40&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;OPERATIONS&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre>
+
+<h3><a name="selectManyCheckbox">selectManyCheckbox.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>selectManyCheckboxで直接checkboxで要素を定義する方法。</li>
+<li>selectManyCheckboxでSelectItemで要素を定義する方法｡</li>
+<li>selectManyCheckboxでJavaBeansで要素を定義する方法｡</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>01:&lt;form&gt;<br>02:    &lt;span m:inject=&quot;s:selectManyCheckbox&quot;<br>03:        m:value=&quot;#{selectManyCheckboxDto.aaa}&quot;&gt;<br>04:        &lt;input type=&quot;checkbox&quot; m:inject=&quot;s:selectItem&quot;<br>05:            m:itemLabel=&quot;One&quot; value=&quot;1&quot;/&gt;One<br>06:        &lt;input type=&quot;checkbox&quot; m:inject=&quot;s:selectItem&quot;<br>07:            m:itemLabel=&quot;Two&quot; value=&quot;2&quot; checked=&quot;checked&quot;/&gt;Two<br>08:        &lt;input type=&quot;checkbox&quot; m:inject=&quot;s:selectItem&quot;<br>09:            m:itemLabel=&quot;Three&quot; value=&quot;3&quot;/&gt;Three<br>10:    &lt;/span&gt;&lt;br /&gt;
+11:
+12:    &lt;span m:inject=&quot;s:selectManyCheckbox&quot;
+13:        m:value=&quot;#{selectManyCheckboxDto.bbb}&quot;
+14:        m:items=&quot;#{selectManyCheckboxBbbItems}&quot;&gt;
+15:        &lt;input type=&quot;checkbox&quot; value=&quot;1&quot;/&gt;One
+16:        &lt;input type=&quot;checkbox&quot; value=&quot;2&quot;/&gt;Two
+17:        &lt;input type=&quot;checkbox&quot; value=&quot;3&quot;/&gt;Three
+18:    &lt;/span&gt;&lt;br /&gt;
+19:
+20:    &lt;span m:inject=&quot;s:selectManyCheckbox&quot;
+21:        m:value=&quot;#{selectManyCheckboxDto.ccc}&quot;
+22:        m:items=&quot;#{selectManyCheckboxCccItems}&quot;
+23:        m:itemValue=&quot;deptno&quot;
+24:        m:itemLabel=&quot;dname&quot;&gt;
+25:        &lt;input type=&quot;checkbox&quot; value=&quot;10&quot;/&gt;ACCOUNTING
+26:    &lt;/span&gt;&lt;br /&gt;
+27:
+28:    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;
+29:&lt;/form&gt;
+</pre>
+<p>2行目からはじまるselectManyCheckboxタグは、子タグのcheckboxタグで直接要素を指定しています｡チェックされた値は、配列としてvalue属性で指定したプロパティに設定されます｡</p>
+<p>12行目からはじまるselectManyCheckboxタグは、items属性で要素を指定しています｡items属性を指定した場合、子タグのcheckboxタグは実行時には無視されます｡あくまでもブラウザでのプレビュー用です｡selectManyCheckboxBbbItemsは、examples/jsf/dicon/selectmanycheckbox.diconで次のように定義されています｡</p>
+<pre>&lt;component name=&quot;selectManyCheckboxBbbItems&quot; class=&quot;java.util.ArrayList&quot;&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;1&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;One&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;2&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Two&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;3&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Three&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;4&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Four&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre>
+<p>この例では、SelectItemを使って要素を定義しています。</p>
+<p>20行目からはじまるselectManyCheckboxタグは、items属性で要素を指定しています｡この例の場合、個々の要素はJavaBeansなので、さらにitemValue属性とitemLabel属性で、どのプロパティを値として使うのか、どのプロパティをラベルとして使うのかを指定します。selectManyCheckboxCccItemsは、examples/jsf/dicon/selectmanycheckbox.diconで次のように定義されています｡</p>
+<pre>&lt;component name=&quot;selectManyCheckboxCccItems&quot; class=&quot;java.util.ArrayList&quot;&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;10&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;ACOUNTING&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;20&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;RESEARCH&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;30&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;SALES&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;40&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;OPERATIONS&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre>
+
+<h3><a name="selectManyListbox">selectManyListbox.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>selectManyListboxで直接checkboxで要素を定義する方法。</li>
+<li>selectManyListboxでSelectItemで要素を定義する方法｡</li>
+<li>selectManyListboxでJavaBeansで要素を定義する方法｡</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>01:&lt;form&gt;<br>02:    &lt;select m:value=&quot;#{selectManyListboxDto.aaa}&quot; multiple=&quot;multiple&quot;&gt;<br>03:        &lt;option value=&quot;1&quot;&gt;One&lt;/option&gt;<br>04:        &lt;option value=&quot;2&quot;&gt;Two&lt;/option&gt;<br>05:        &lt;option value=&quot;3&quot;&gt;Three&lt;/option&gt;<br>06:    &lt;/select&gt;&lt;br /&gt;
+07:
+08:    &lt;select m:value=&quot;#{selectManyListboxDto.bbb}&quot;
+09:        m:items=&quot;#{selectManyListboxBbbItems}&quot;
+10:        multiple=&quot;multiple&quot;&gt;
+11:        &lt;option value=&quot;1&quot;&gt;One&lt;/option&gt;
+12:        &lt;option value=&quot;2&quot;&gt;Two&lt;/option&gt;
+13:    &lt;/select&gt;&lt;br /&gt;
+14:
+15:    &lt;select m:value=&quot;#{selectManyListboxDto.ccc}&quot;
+16:        m:items=&quot;#{selectManyListboxCccItems}&quot;
+17:        m:itemValue=&quot;deptno&quot;
+18:        m:itemLabel=&quot;dname&quot;
+19:        multiple=&quot;multiple&quot;&gt;
+20:        &lt;option value=&quot;10&quot;&gt;ACOUNTING&lt;/option&gt;
+21:    &lt;/select&gt;&lt;br /&gt;
+22:
+23:    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;
+24:&lt;/form&gt;
+</pre>
+<p>2行目からはじまるselectタグは、子タグのoptionタグで直接要素を指定しています｡選択された値は、配列としてvalue属性で指定したプロパティに設定されます｡</p>
+<p>8行目からはじまるselectタグは、items属性で要素を指定しています｡items属性を指定した場合、子タグのoptionタグは実行時には無視されます｡あくまでもブラウザでのプレビュー用です｡selectManyListboxBbbItemsは、examples/jsf/dicon/selectmanylistbox.diconで次のように定義されています｡</p>
+<pre>&lt;component name=&quot;selectManyListboxBbbItems&quot; class=&quot;java.util.ArrayList&quot;&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;1&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;One&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;2&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Two&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;3&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Three&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;javax.faces.model.SelectItem&quot;&gt;<br>                &lt;property name=&quot;value&quot;&gt;4&lt;/property&gt;<br>                &lt;property name=&quot;label&quot;&gt;&quot;Four&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre>
+<p>この例では、SelectItemを使って要素を定義しています。</p>
+<p>15行目からはじまるselectタグは、items属性で要素を指定しています｡この例の場合、個々の要素はJavaBeansなので、さらにitemValue属性とitemLabel属性で、どのプロパティを値として使うのか、どのプロパティをラベルとして使うのかを指定します。selectManyListboxCccItemsは、examples/jsf/dicon/selectmanylistbox.diconで次のように定義されています｡</p>
+<pre>&lt;component name=&quot;selectManyListboxCccItems&quot; class=&quot;java.util.ArrayList&quot;&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;10&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;ACOUNTING&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;20&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;RESEARCH&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;30&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;SALES&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;40&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;OPERATIONS&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre>
+
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright">&copy; Copyright The Seasar Project and the others 2004-2005, all rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>

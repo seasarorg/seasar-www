@@ -1,0 +1,398 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!-- don't edit start -->
+<head>
+<title>Seasar - DI Container with AOP - </title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+<style type="text/css">
+<!--
+.table{
+margin-left : 10px;
+}
+TH{
+font-size : 10pt;
+text-align : center;
+background-color : #d1f3f4;
+}
+TD{
+font-size : 10pt;
+}
+-->
+</style>
+</head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_ja.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_ja.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu03_b_ja.gif" height="30" width="110" border="0" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)"></a></td>
+<td><a href="resources.html"><img src="images/menu04_b_ja.gif" height="30" width="113" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><img src="images/menu05_b_ja.gif" height="30" width="109" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<ul>
+<li><a href="setup.html">S2コア</a>
+</ul>
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="2" width="110" valign="top" align="left">
+<col span="1" width="100" valign="top" align="left">
+<col span="1" width="280" valign="top" align="left">
+<col span="2" width="70" valign="top" align="center">
+<tbody>
+<tr>
+<th colspan="2" class="th">カテゴリ</th>
+<th>プロダクト</th>
+<th>説明</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<td colspan="2">コンテナ</td>
+<td>Seasar2</td>
+<td>DI (Dependency Injection) とAOP (Aspect Oriented Programming) をサポートしたコンテナ</td>
+<td><a href="s2.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14716#14716">download</a></td>
+</tr>
+</tbody>
+</table>
+<p><a href="versions.html">※ S2とS2DaoおよびS2JSFとのバージョンの関連について</a></p>
+<ul>
+<li>S2プロダクト
+</ul>
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="2" width="110" valign="top" align="left">
+<col span="1" width="100" valign="top" align="left">
+<col span="1" width="280" valign="top" align="left">
+<col span="2" width="70" valign="top" align="center">
+<tbody>
+<tr>
+<th colspan="2">カテゴリ</th>
+<th>プロダクト</th>
+<th>説明</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<td rowspan="6" class="td">プレゼンテーション</td>
+<td rowspan="4">シンクライアント<br>
+&nbsp;(HTML)</td>
+<td>S2JSF</td>
+<td>HTMLをベースとしたテンプレートエンジンを提供するJSFベースのフレームワーク</td>
+<td><a href="s2jsf.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14670#14670">download</a></td>
+</tr>
+<tr>
+<td>S2Struts</td>
+<td>StrutsからSeasar2のコンポーネントを呼び出すライブラリ</td>
+<td><a href="s2struts.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14076#14076">download</a></td>
+</tr>
+<tr>
+<td>S2StrutsUnit</td>
+<td>Strutsの単体テストを行うライブラリ</td>
+<td><a href="s2strutsunit.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=12257#12257">download</a></td>
+</tr>
+<tr>
+<td>S2Tapestry</td>
+<td>TapestryからSeasar2のコンポーネントを呼び出すライブラリ</td>
+<td><a href="s2tapestry.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14121#14121">download</a></td>
+</tr>
+<tr>
+<td rowspan="2">リッチクライアント<br>
+&nbsp;(Flash)</td>
+<td>S2Flex</td>
+<td>FlashプレーヤーからFlexを用いてSeasar2のコンポーネントを呼び出すライブラリ</td>
+<td><a href="s2flex.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=12489#12489">download</a></td>
+</tr>
+<tr>
+<td>S2OpenAMF</td>
+<td>FlashプレーヤーからFlash Remotingを用いてSeasar2のコンポーネントを呼び出すライブラリ</td>
+<td><a href="S2OpenAMF.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14580#14580">download</a></td>
+</tr>
+<tr>
+<td colspan="2" rowspan="2">永続化</td>
+<td>S2Dao</td>
+<td>XMLによるマッピング定義を必要としないO/Rマッピングのフレームワーク</td>
+<td><a href="s2dao.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14161#14161">download</a></td>
+</tr>
+<tr>
+<td>S2Hibernate</td>
+<td>HibernateをSeasar2のトランザクション制御と組み合わせて使うためのライブラリ</td>
+<td><a href="s2hibernate.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=13478#13478">download</a></td>
+</tr>
+<tr>
+<td colspan="2" rowspan="3">リモーティング</td>
+<td>S2Remoting</td>
+<td>Seasar2でリモート呼び出しを行うための共通基盤ライブラリ</td>
+<td><a href="s2-remoting.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=13730#13730">download</a></td>
+</tr>
+<tr>
+<td>S2Axis</td>
+<td>Axisを用いてSeasar2のコンポーネントをリモート呼び出しするためのライブラリ</td>
+<td><a href="s2-axis.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14822#14822">download</a></td>
+</tr>
+<tr>
+<td>S2RMI</td>
+<td>RMIを用いてSeasar2のコンポーネントをリモート呼び出しするためのライブラリ</td>
+<td><a href="s2-rmi.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14677#14677">download</a></td>
+</tr>
+<tr>
+<td rowspan="2">ツール</td>
+<td rowspan="2">Eclipse プラグイン<br>
+(<a href="updates.html">Updateサイト</a>)</td>
+<td>Kijimuna</td>
+<td>Seasar2のコンポーネント定義ファイル(diconファイル)を編集・検証するためのEclipseプラグイン</td>
+<td><a href="kijimuna.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14624#14624">download</a></td>
+</tr>
+<tr>
+<td>S2JSFプラグイン</td>
+<td>S2JSFのページテンプレート(HTML)を編集・検証するためのEclipseプラグイン</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">その他&nbsp;</td>
+<td>S2GroovyBuilder</td>
+<td>コンポーネント定義ファイルをGroovyで記述するためのライブラリ</td>
+<td>&nbsp;</td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=12171#12171">download</a></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Sandbox
+</ul>
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="2" width="110" valign="top" align="left">
+<col span="1" width="100" valign="top" align="left">
+<col span="1" width="280" valign="top" align="left">
+<col span="2" width="70" valign="top" align="center">
+<tbody>
+<tr>
+<th colspan="2">カテゴリ</th>
+<th>プロダクト</th>
+<th>説明</th>
+<th>&nbsp;</th>
+<th>&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<td rowspan="4">プレゼンテーション</td>
+<td rowspan="3">シンクライアント<br>
+(HTML)</td>
+<td>Maya</td>
+<td>HTMLをベースとしたテンプレートエンジン</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Maya">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=13831#13831">download</a></td>
+</tr>
+<tr>
+<td>S2Velocity</td>
+<td>Velocity ViewからSeasar2のコンポーネントを呼び出すライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Velocity">document</a></td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Velocity">download</a></td>
+</tr>
+<tr>
+<td>S2XWork</td>
+<td>WebWorkからSeasar2のコンポーネントを呼び出すライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2XWork">document</a></td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2XWork">download</a></td>
+</tr>
+<tr>
+<td>リッチクライアント<br>
+(Flash)</td>
+<td>S2Laszlo</td>
+<td>FlashプレーヤーからLaszloを用いてSeasar2のコンポーネントを呼び出すライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Laszlo">document</a></td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Laszlo">download</a></td>
+</tr>
+<tr>
+<td colspan="2">永続化</td>
+<td>S2Cayenne</td>
+<td>CayenneをSeasar2のトランザクション制御と組み合わせて使うためのライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Cayenne">document</a></td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Cayenne">download</a></td>
+</tr>
+<tr>
+<td colspan="2" rowspan="2">リモーティング</td>
+<td>S2Hessian</td>
+<td>Hessian/Burlapを用いてSeasar2のコンポーネントをリモート呼び出しするためのライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Hessian">document</a></td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Hessian">download</a></td>
+</tr>
+<tr>
+<td>S2XmlRpc</td>
+<td>XmlRpcを用いてSeasar2のコンポーネントをリモート呼び出しするためのライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2XmlRpc">document</a></td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2XmlRpc">download</a></td>
+</tr>
+<tr>
+<td colspan="2">J2EE</td>
+<td>S2JCA</td>
+<td>J2EE Connector Architecture 準拠のリソースアダプタを使用するためのライブラリ</td>
+<td><a href="http://s2jca.oscj.net">document</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">セキュリティ</td>
+<td>S2AnA</td>
+<td>J2EEコンテナによって提供されているAuthentication(認証)とAuthorization(承認)を宣言的に使用するためのライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2AnA">document</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">ジョブスケジューリング</td>
+<td>S2Quartz</td>
+<td>QuartzによりSeasar2のコンポーネントを定期的に実行するためのライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Quartz">document</a></td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2Quartz">download</a></td>
+</tr>
+<tr>
+<td colspan="2">ユーティリティ</td>
+<td>S2UtilConfiguration</td>
+<td>Seasar2の定義ファイル中で別の定義ファイル(プロパティファイルやXMLファイル)
+に記述された値を扱うためのライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?SeasarText">document</a></td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?SeasarText">download</a></td>
+</tr>
+<tr>
+<td colspan="2">サーバ</td>
+<td>S2HsqldbServer</td>
+<td>Seasar2の初期化時にHsqldbをサーバモードで立ち上げるためのライブラリ</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2HsqldbServer">document</a></td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2HsqldbServer">download</a></td>
+</tr>
+<tr>
+<td colspan="2" rowspan="3">アプリケーション</td>
+<td>S2BTS</td>
+<td>Seasar2をベースに構築されるBTS (Bug Tracking System) アプリケーション</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2BTS">document</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>S2CRM</td>
+<td>Seasar2をベースに構築されるCRM (Cutomer Relationship Management) アプリケーション</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2CRM">document</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>S2PMS</td>
+<td>Seasar2をベースに構築されるPMS (Project Management System) アプリケーション</td>
+<td><a href="http://seasar.satin.jp/wiki/index.php?Sandbox%2FS2PMS">document</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">.NET</td>
+<td>S2.NET</td>
+<td>DI (Dependency Injection) とAOP (Aspect Oriented Programming) をサポートした S2 の .NET 版コンテナ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2">PHP</td>
+<td>S2PHP5</td>
+<td>DI (Dependency Injection) とAOP (Aspect Oriented Programming) をサポートした S2 の PHP5 版コンテナ</td>
+<td><a href="http://s2php5.oscj.net/">document</a></td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>関連プロダクト
+</ul>
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="2" width="110" valign="top" align="left">
+<col span="1" width="100" valign="top" align="left">
+<col span="1" width="280" valign="top" align="left">
+<col span="2" width="70" valign="top" align="center">
+<tbody>
+<tr>
+<th colspan="2">カテゴリ</th>
+<th>プロダクト</th>
+<th>説明</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<td colspan="2">メール</td>
+<td>ozacc-mail library</td>
+<td>メールの送受信を行うライブラリ</td>
+<td><a href="http://spring-ext.sourceforge.jp/oml/">document</a></td>
+<td><a href="http://sourceforge.jp/projects/spring-ext/files/">download</a></td>
+</tr>
+<tr>
+<td rowspan="2">ツール</td>
+<td rowspan="2">S2Daoサポート<br>
+ツール</td>
+<td>S2DaoMaker</td>
+<td>ExcelやOpenOfficeCalcで定義したテーブルの情報を元にS2Daoで使用するBeanクラス・Daoクラス・Diconファイルとテーブル構築のためのSQL文を生成するツール</td>
+<td><a href="http://mof.ath.cx/hinjya/pukiwiki.php?S2DaoMaker">document</a></td>
+<td><a href="http://mof.ath.cx/hinjya/pukiwiki.php?S2DaoMaker">download</a></td>
+</tr>
+<tr>
+<td>S2DaoModelGen</td>
+<td>DBのテーブル定義からS2Daoで使用するBeanクラス・Daoクラス・Diconファイルを生成するツール</td>
+<td>&nbsp;</td>
+<td><a href="http://package.gluegent.com/~kato/S2DaoModelGen0.9.5.zip">download</a></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>旧プロダクト (新しいリリースの提供は終了しました)
+</ul>
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="2" width="110" valign="top" align="left">
+<col span="1" width="100" valign="top" align="left">
+<col span="1" width="280" valign="top" align="left">
+<col span="2" width="70" valign="top" align="center">
+<tbody>
+<tr>
+<th colspan="2">カテゴリ</th>
+<th>プロダクト</th>
+<th>説明</th>
+<th>&nbsp;</th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<td colspan="2">アプリケーションサーバ</td>
+<td>Seasar</td>
+<td>JMXベースのアプリケーションサーバ</td>
+<td>&nbsp;</td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=7945#7945">download</a></td>
+</tr>
+</tbody>
+</table>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright">&copy; Copyright The Seasar Project and the others 2004-2005, all rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>

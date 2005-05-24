@@ -1,0 +1,1068 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!-- don't edit start -->
+<head>
+<title>Seasar - DI Container with AOP - </title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+<style type="text/css">
+<!--
+.table{
+margin-left : 10px;
+}
+TH{
+font-size : 10pt;
+text-align : center;
+background-color : #d1f3f4;
+}
+TD{
+font-size : 10pt;
+}
+-->
+</style>
+</head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_ja.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_ja.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu03_b_ja.gif" height="30" width="110" border="0" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)"></a></td>
+<td><a href="resources.html"><img src="images/menu04_b_ja.gif" height="30" width="113" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><img src="images/menu05_b_ja.gif" height="30" width="109" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<p>本ドキュメントは<code>S2Axis-V1.0.0</code>について記述しています．旧バージョンについては該当バージョンの配布ファイルに含まれているドキュメントを参照してください．</p>
+<h1><a name="cot">目次</a></h1>
+<ul>
+<li><a href="#abstraction">概要</a>
+<li><a href="#setup">セットアップ</a>
+<ul>
+<li><a href="#requirement">前提条件</a>
+<li><a href="#downlod">ダウンロード</a>
+<li><a href="#install">インストール</a>
+<li><a href="#confirm">サンプルの確認</a>
+</ul>
+<li><a href="#guide">基本的な使い方</a>
+<ul>
+<li><a href="#webapp">Webアプリケーションの設定</a>
+<li><a href="#config-server">サーバ側の設定</a>
+<li><a href="#config-client">クライアント側の設定</a>
+<li><a href="#config-common">クライアント／サーバ共通の設定</a>
+</ul>
+<li><a href="#examples">サンプル</a>
+<ul>
+<li><a href="#ex01">ex01 コンポーネントをWebサービスとして公開する</a>
+<li><a href="#ex02">ex02 実装ではなくインタフェースを公開する</a>
+<li><a href="#ex03">ex03 自動タイプマッピングを使用する</a>
+<li><a href="#ex04">ex04 セッションスコープを使用する</a>
+<li><a href="#ex05">ex05 WSDLを使用する</a>
+<li><a href="#ex06">ex06 ハンドラのインスタンス管理をS2で行う</a>
+<li><a href="#ex07">ex07 WSDDをS2Axisでデプロイする</a>
+<li><a href="#ex08">ex08 クライアントでハンドラ・WSDDをデプロイする</a>
+</ul>
+<li><a href="#reference">クイックリファレンス</a>
+<ul>
+<li><a href="#ref-dicon">diconファイル</a>
+<li><a href="#ref-meta">&lt;meta&gt;要素</a>
+<li><a href="#ref-component">コンポーネント</a>
+<li><a href="#ref-other">その他</a>
+</ul>
+</ul>
+<h1><a name="abstraction">概要</a></h1>
+<p>S2Axisを使うと，diconに記述したコンポーネントを簡単にWebサービスとして公開したり，Webサービスをコンポーネントとして簡単に利用することが出来るようになります．</p>
+<p>Axisを単独で使う場合，Webサービスを実装したクラスのインスタンス管理は通常Axisが行います．ちょっとしたプロトタイプ程度ならそれでも十分ですが，ある程度大きな業務アプリケーションをWebサービスとして提供する場合には，S2が提供するDI
+(Dependency Injection) や宣言的トランザクションなどのAOP (Aspect Oriented
+Programming) 機能使えると便利です．</p>
+<p>S2Axisを使うことで，S2が提供するDIやAOPをフルに活用したコンポーネントをAxisにデプロイし，Webサービスとして公開することが可能になります．</p>
+<h1><a name="setup">セットアップ</a></h1>
+<h2><a name="requirement">前提条件</a></h2>
+<p>S2AxisはS2，S2Remoting，Axisに依存します．対応するバージョンは以下の通りです．</p>
+<table border="1">
+<col span="4" width="150">
+<thead>
+<tr>
+<th>S2Axis</th>
+<th>S2</th>
+<th>S2Remoting</th>
+<th>Axis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0.0</td>
+<td>2.1.3～</td>
+<td>0.0.7～</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>1.0.0-RC2</td>
+<td>2.1.3～</td>
+<td>0.0.7～</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>1.0.0-RC1</td>
+<td>2.1.3～</td>
+<td>0.0.7～</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>1.0.0-alpha5</td>
+<td>2.1.3～</td>
+<td>0.0.7～</td>
+<td>1.2RC3</td>
+</tr>
+<tr>
+<td>1.0.0-alpha4</td>
+<td>2.1.3～</td>
+<td>0.0.7～</td>
+<td>1.2RC2</td>
+</tr>
+</tbody>
+</table>
+<p>上記のバージョンの組み合わせを全て動作確認しているわけではありません．動作確認しているバージョンの組み合わせについては以下に記述してあります．</p>
+<h3>実行環境</h3>
+<p>S2Axisを実行するには，以下のものが必要です．</p>
+<ul>
+<li>JDK (J2SE SDK) 1.4以降が必要です．S2Axis-V1.0.0の開発とテストはJDK 1.4.2_08で行っています．ダウンロードは<a href="http://java.sun.com/j2se/1.4.2/ja/download.html">こちら</a>．
+<li>S2の2.1.3以降が必要です (J2SE5.0ではS2.2以降が必要です)．S2Axis-V1.0.0の開発とテストはS2.2.9で行っています．ダウンロードは<a href="http://www.seasar.org/products.html">こちら</a>．
+<li>S2Remotingの0.0.7以降が必要です．S2Axis-V1.0.0の開発とテストはS2Remoting-V1.0.0で行っています．ダウンロードは<a href="http://www.seasar.org/products.html">こちら</a>．
+<li>Axisの1.2以降が必要です．S2Axis-V1.0.0の開発とテストはAxis 1.2で行っています
+(S2Axisに同梱されています)．ダウンロードは<a href="http://ws.apache.org/axis/jp/releases.html">こちら</a>．
+<li>Servlet2.3以降をサポートしたWebコンテナが必要です．S2Axis-V1.0.0の開発とテストは，Tomcat
+5.0.30で行っています．ダウンロードは<a href="http://jakarta.apache.org/site/binindex.cgi">こちら</a>．
+</ul>
+<h3>開発環境</h3>
+<p>S2Axisのディストリビューションは，他のS2関連プロダクトの多くと同様，Eclipse
+Javaプロジェクトをアーカイブしたものとなっています．</p>
+<ul>
+<li>Eclipse3.0以降が必要です．S2Axis-V1.0.0の開発とテストは，Eclipse3.0.2で行っています．ダウンロードは<a href="http://www.eclipse.org/downloads/index.php">こちら</a>．
+<li>S2の2.1.3以降が必要です (J2SE5.0ではS2.2以降が必要です)．S2Axis-V1.0.0の開発とテストはS2.2.9で行っています．ダウンロードは<a href="http://www.seasar.org/products.html">こちら</a>．ダウンロード後，ワークスペースにインポートしてください．
+<li>S2Remotingの0.0.7以降が必要です．S2Axis-V1.0.0の開発とテストはS2Remoting
+1.0.0で行っています．ダウンロードは<a href="http://www.seasar.org/products.html">こちら</a>．ダウンロード後，ワークスペースにインポートしてください．
+</ul>
+<p>S2AxisExamplesのディストリビューションは，Sysdeo Tomcatプラグインを使用したEclipse
+Tomcatプロジェクトをアーカイブしたものとなっています．</p>
+<ul>
+<li>Sysdeo Tomcatプラグインが必要です．S2AxisExamples-V1.0.0の開発とテストは，Sysdeo
+TomcatプラグインV3で行っています．ダウンロードは<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">こちら</a>．
+</ul>
+<h2><a name="downlod">ダウンロード</a></h2>
+<p>S2AxisおよびS2AxisExamplesは<a href="http://www.seasar.org/products.html">こちら</a>からダウンロードすることが出来ます．</p>
+<h2><a name="install">インストール</a></h2>
+<h3>S2Axis</h3>
+<ul>
+<li>ダウンロードした<code>S2Axis-V1.0.0.zip</code>ファイルを適当なディレクトリに解凍してください．
+<li>Eclipseのワークスペースディレクトリ直下に解凍した場合は，作成された<code>s2-axis-1.0.0</code>ディレクトリを<code>s2-axis</code>にリネームしてください．
+<li>Eclipseを起動し，「ファイル」－「インポート」メニューを選択してください．
+<li>「インポート」ウィザードで「既存プロジェクトをワークスペースへ」を選択し，「次へ」をクリックしてください．
+<li>「参照」ボタンをクリックし，先に解凍したディレクトリに出来ている<code>s2-axis-1.0.0</code> (リネームした場合は<code>s2-axis</code>) ディレクトリを選択し，「OK」ボタンをクリックします．
+<li>「終了」ボタンをクリックします．
+</ul>
+<h3>S2AxisExamples</h3>
+<ul>
+<li>ダウンロードした<code>S2AxisExamples-V1.0.0.zip</code>ファイルを適当なディレクトリに解凍してください．
+<li>Eclipseのワークスペースディレクトリ直下に解凍した場合は，作成された<code>s2-axis-examples-1.0.0</code>ディレクトリを<code>s2-axis-examples</code>にリネームしてください．
+<li>Eclipseを起動し，「ファイル」－「インポート」メニューを選択してください．
+<li>「インポート」ウィザードで「既存プロジェクトをワークスペースへ」を選択し，「次へ」をクリックしてください．
+<li>「参照」ボタンをクリックし，先に解凍したディレクトリに出来ている<code>s2-axis-examples-1.0.0</code> (リネームした場合は<code>s2-axis-examples</code>) ディレクトリを選択し，「OK」ボタンをクリックします．
+<li>「終了」ボタンをクリックします．
+</ul>
+<h2><a name="confirm">サンプルの確認</a></h2>
+<p>インストールの確認のために，サンプルを実行してください．</p>
+<ul>
+<li>s2-axis-examplesプロジェクトを右クリックし，「Tomcatプロジェクト」－「Tomcatのコンテキストを更新する」を選択します．
+<li>「Tomcat」ダイアログに「操作が成功しました。」と表示されたことを確認して「OK」ボタンをクリックします．
+<li>ツールバーの「Tomcat起動」ボタンをクリックします．
+<li>「コンソール」ビューに「情報: Server startup in <var>99999</var> ms」と表示されることを確認します．
+<li>ブラウザで以下のアドレスにアクセスしします(ホスト名やポート番号はお使いの環境に合わせてください)．
+</ul>
+<blockquote><a href="http://localhost:8080/s2-axis-examples/services">http://localhost:8080/s2-axis-examples/services</a></blockquote>
+<ul>
+<li>次のように画面が表示されればセットアップは成功です．
+</ul>
+<p><img src="images/services.png" width="649" height="671" border="0"></p>
+<p>エラーが表示された場合には，Webコンテナの設定に問題があるかもしれません．エラーメッセージの内容を確認してください．</p>
+<h1><a name="guide">基本的な使い方</a></h1>
+<h2><a name="webapp">Webアプリケーションの設定</a></h2>
+<p>S2Axisを使用するには，AxisおよびS2を<code>web.xml</code>に設定する必要があります．AxisおよびS2の設定の詳細はそれぞれのドキュメントを参照してください．<br>
+S2AxisはS2コンテナの初期化時にコンポーネントをAxisに登録します．このため，S2よりも先にAxisが初期化されている必要があります．そのためには，Axisが提供するサーブレットの<code>load-on-startup</code>をS2よりも小さくします．</p>
+<p>以下はS2AxisExamplesに含まれている<code>web.xml</code>です．このサンプルでは，Axisの<code>load-on-startup</code>を10，S2の<code>load-on-startup</code>を20に設定しています．</p>
+<pre style="overflow:auto;height:400">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
+&lt;!DOCTYPE web-app
+  PUBLIC &quot;-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN&quot;
+  &quot;http://java.sun.com/dtd/web-app_2_3.dtd&quot;
+&gt;
+&lt;web-app&gt;
+  &lt;display-name&gt;S2AxisExamples&lt;/display-name&gt;
+
+  &lt;filter&gt;
+    &lt;filter-name&gt;s2filter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.seasar.framework.container.filter.S2ContainerFilter&lt;/filter-class&gt;
+  &lt;/filter&gt;
+
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;s2filter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;
+
+  &lt;listener&gt;
+    &lt;listener-class&gt;org.apache.axis.transport.http.AxisHTTPSessionListener&lt;/listener-class&gt;
+  &lt;/listener&gt;
+
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;AxisServlet&lt;/servlet-name&gt;
+    &lt;display-name&gt;Apache-Axis Servlet&lt;/display-name&gt;
+    &lt;servlet-class&gt;org.apache.axis.transport.http.AxisServlet&lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;<strong>10</strong>&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;AdminServlet&lt;/servlet-name&gt;
+    &lt;display-name&gt;Axis Admin Servlet&lt;/display-name&gt;
+    &lt;servlet-class&gt;
+        org.apache.axis.transport.http.AdminServlet
+    &lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;<strong>10</strong>&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;SOAPMonitorService&lt;/servlet-name&gt;
+    &lt;display-name&gt;SOAPMonitorService&lt;/display-name&gt;
+    &lt;servlet-class&gt;
+        org.apache.axis.monitor.SOAPMonitorService
+    &lt;/servlet-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;SOAPMonitorPort&lt;/param-name&gt;
+      &lt;param-value&gt;5001&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;<strong>10</strong>&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;s2servlet&lt;/servlet-name&gt;
+    &lt;display-name&gt;s2servlet&lt;/display-name&gt;
+    &lt;servlet-class&gt;org.seasar.framework.container.servlet.S2ContainerServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;configPath&lt;/param-name&gt;
+      &lt;param-value&gt;app.dicon&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;debug&lt;/param-name&gt;
+      &lt;param-value&gt;false&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;<strong>20</strong>&lt;/load-on-startup&gt;
+  &lt;/servlet&gt;
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;AxisServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/servlet/AxisServlet&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;AxisServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/services/*&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;SOAPMonitorService&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/SOAPMonitor&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+  &lt;!-- uncomment this if you want the admin servlet --&gt;
+  &lt;!--
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;AdminServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/servlet/AdminServlet&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  --&gt;
+
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;s2servlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/s2servlet&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+  &lt;session-config&gt;
+    &lt;!-- Default to 5 minute session timeouts --&gt;
+    &lt;session-timeout&gt;5&lt;/session-timeout&gt;
+  &lt;/session-config&gt;
+
+  &lt;!-- currently the W3C havent settled on a media type for WSDL;
+    http://www.w3.org/TR/2003/WD-wsdl12-20030303/#ietf-draft
+    for now we go with the basic 'it's XML' response --&gt;
+  &lt;mime-mapping&gt;
+    &lt;extension&gt;wsdl&lt;/extension&gt;
+    &lt;mime-type&gt;text/xml&lt;/mime-type&gt;
+  &lt;/mime-mapping&gt;
+
+  &lt;mime-mapping&gt;
+    &lt;extension&gt;xsd&lt;/extension&gt;
+    &lt;mime-type&gt;text/xml&lt;/mime-type&gt;
+  &lt;/mime-mapping&gt;
+
+  &lt;welcome-file-list id=&quot;WelcomeFileList&quot;&gt;
+    &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;
+  &lt;/welcome-file-list&gt;
+&lt;/web-app&gt;</pre>
+<h2><a name="config-server">サーバ側の設定</a></h2>
+<h3><code>s2-axis.dicon</code>ファイルのインクルード</h3>
+<p>S2Axisを使用するサーバ側では，<code>app.dicon</code>ファイルの中で<code>s2-axis.dicon</code>ファイルをインクルードします．</p>
+<pre>&lt;components&gt;
+    <strong>&lt;include path=&quot;s2-axis.dicon&quot;/&gt;</strong>
+    ・・・
+&lt;/components&gt;</pre>
+<p><code>s2-axis.dicon</code>は<code>s2-axis-1.0.0.jar</code>の中に含まれているため，ロケーションを気にする必要はありません．</p>
+<h3>サービスのデプロイ</h3>
+<p>コンポーネントをWebサービスとしてAxisにデプロイするには，そのコンポーネントの<code>&lt;component&gt;</code>要素の子として<code>&lt;meta&gt;</code>要素を指定します．</p>
+<pre>    &lt;component <strong>name=&quot;Echo&quot;</strong> class=&quot;org.seasar.remoting.axis.examples.ex01.EchoImpl&quot;&gt;
+        <strong>&lt;meta name=&quot;axis-service&quot;/&gt;</strong>
+    &lt;/component&gt;</pre>
+<p><code>&lt;meta&gt;</code>要素の内容にWSDDファイルを指定した場合 (後述) を除いて，<code>&lt;component&gt;</code>要素の<code>name</code>属性は必須です．公開されるサービスのURLは次のようになります．</p>
+<dl>
+<dt>diconファイルに名前空間が指定されていない場合
+<dd><code><var>context-path</var>/services/<var>name</var></code>
+<dt>diconファイルに名前空間が指定されている場合
+<dd><code><var>context-path</var>/services/<var>namespace</var>/<var>name</var></code>
+</dl>
+<h4>サービス定義</h4>
+<p><code>&lt;meta&gt;</code>要素の内容に<code>org.seasar.remoting.axis.server.ServiceDef</code>を設定することにより，いくつかの設定を行うことが出来ます．</p>
+<pre>    &lt;component name=&quot;Hello&quot; class=&quot;org.seasar.remoting.axis.examples.ex02.HelloImpl&quot;&gt;
+        &lt;meta name=&quot;axis-service&quot;&gt;
+            <strong>&lt;component class=&quot;org.seasar.remoting.axis.server.ServiceDef&quot;&gt;</strong>
+                <strong>&lt;property name=&quot;serviceType&quot;&gt;</strong>
+                    <strong>@org.seasar.remoting.axis.examples.ex02.Hello@class</strong>
+                <strong>&lt;/property&gt;</strong>
+            <strong>&lt;/component&gt;</strong>
+        &lt;/meta&gt;
+
+        &lt;property name=&quot;...&quot;&gt;・・・&lt;/property&gt;
+    &lt;/component&gt;</pre>
+<p><code>org.seasar.remoting.axis.server.ServiceDef</code>には次のプロパティがあります．</p>
+<table border="1" width="700">
+<col span="1" width="150">
+<tbody>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><code>serviceType</code></td>
+<td>公開するサービスの型を指定します．特定のインタフェース型を指定することで，不要なメソッドが公開されることを防ぐことが出来ます．</td>
+</tr>
+<tr>
+<td><code>allowMethods</code></td>
+<td>公開するメソッドの名前を指定します．複数のメソッドを指定する場合は空白で区切ります．</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td>サービスプロバイダの種類を指定します．現在サポートされているのは<code>RPC</code>と<code>Msg</code>だけです．省略すると<code>RPC</code>になります．</td>
+</tr>
+</tbody>
+</table>
+<p>
+詳細はクイックリファレンスの「<a href="#ref-compo-servicedef">org.seasar.remoting.axis.ServiceDef</a>」を参照してください．
+</p>
+<h4>タイプマッピング定義</h4>
+<p>Axisを使う場合，アプリケーション独自のJavaBeansなど，JAX-RPCで定められていない型をサービスの引数や戻り値として使う場合には<code>Serializer / Deserializer</code>を指定する必要があります．S2Axisでは，Axisが提供するタイプマッピングの自動登録を有効に設定するので，特別な<code>Serializer / Deserializer</code>が必要な場合を除いて明示的に登録する必要はありません．<br>
+特別な<code>Serializer / Deserializer</code>を使う場合や，Java型のパッケージとXML型の名前空間の対応を指定したい場合には，タイプマッピングを登録します．<br>
+<code>ServiceDef</code>にはタイプマッピングを複数登録することが出来ます．</p>
+<pre>    &lt;component name=&quot;Hello&quot; class=&quot;org.seasar.remoting.axis.examples.ex02.HelloImpl&quot;&gt;
+        &lt;meta name=&quot;axis-service&quot;&gt;
+            &lt;component class=&quot;org.seasar.remoting.axis.server.ServiceDef&quot;&gt;
+                <strong>&lt;initMethod name=&quot;addTypeMapping&quot;&gt;</strong>
+                    <strong>&lt;arg&gt;</strong>
+                        <strong>&lt;component type=&quot;org.seasar.remoting.axis.server.TypeMappingDef&quot;&gt;</strong>
+                            <strong>&lt;property name=&quot;...&quot;&gt;・・・&lt;/property&gt;</strong>
+                        <strong>&lt;/component&gt;</strong>
+                    <strong>&lt;/arg&gt;</strong>
+                <strong>&lt;/initMethod&gt;</strong>
+            &lt;/component&gt;
+        &lt;/meta&gt;
+
+        &lt;property name=&quot;...&quot;&gt;・・・&lt;/property&gt;
+    &lt;/component&gt;</pre>
+<p><code>org.seasar.remoting.axis.server.TypeMappingDef</code>には次のプロパティがあります．</p>
+<table border="1" width="640">
+<tbody>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Java型のクラスを指定します．このプロパティは必須です．</td>
+</tr>
+<tr>
+<td><code>namespaceURI</code></td>
+<td>XML型の名前空間URIを指定します．省略するとJava型の型のパッケージから導出されます．</td>
+</tr>
+<tr>
+<td><code>namespacePrefix</code></td>
+<td>XML型の名前空間接頭辞を指定します．省略するとデフォルト名前空間になります．</td>
+</tr>
+<tr>
+<td><code>localPart</code></td>
+<td>XML型のローカル名を指定します．省略するとJava型のクラス名が使われます．</td>
+</tr>
+<tr>
+<td><code>serializer</code></td>
+<td>シリアライザファクトリを指定します．省略するとAxisの<code>BeanSerialzierFactory</code>が使われます．</td>
+</tr>
+<tr>
+<td><code>deserializer</code></td>
+<td>デシリアライザファクトリを指定します．省略するとAxisの<code>BeanDeserialzierFactory</code>が使われます．</td>
+</tr>
+<tr>
+<td><code>encodingStyle</code></td>
+<td>エンコーディングスタイルを指定します．省略すると<code>encoded</code>が使われます．</td>
+</tr>
+</tbody>
+</table>
+<p>
+詳細はクイックリファレンスの「<a href="#ref-compo-typemappingdef">org.seasar.remoting.axis.TypeMappingDef</a>」を参照してください．
+</p>
+<h4>WSDDによるサービスのデプロイ</h4>
+<p>WebサービスのWSDLがあり，AxisのWSDL2Javaを使用してJavaの実装クラスを作成した場合には，WSDL2Javaが生成した<code>deploy.wsdd</code>を指定してサービスをデプロイすることが出来ます．</p>
+<pre>    &lt;component name=&quot;Magazine&quot; class=&quot;org.seasar.remoting.axis.examples.ex05.MagazineSoapBindingImpl&quot;&gt;
+        &lt;meta name=&quot;axis-service&quot;&gt;<strong>&quot;org/seasar/remoting/axis/examples/ex05/deploy.wsdd&quot;</strong>&lt;/meta&gt;
+
+        ・・・
+    &lt;/component&gt;</pre>
+<p>この場合，WSDL2Javaを実行する際に指定されたJava型とXML型とのタイプマッピングが<code>deploy.wsdd</code>に含まれているので，必要なタイプマッピングが全てデプロイされます．<br>
+WSDDはサービス定義 (&lt;service&gt;要素) を一つだけ含むことができます．複数のサービス定義を含んでいる場合はデプロイに失敗します．</p>
+<h2><a name="config-client">クライアント側の設定</a></h2>
+<p>S2Axisを使うことで，Webサービスをコンポーネントとして使用することが出来ます．</p>
+<h3>動的呼び出し</h3>
+<p>Javaインタフェースを使用してサービスを呼び出すには，diconファイルを次のように記述します．</p>
+<pre>    &lt;!-- Webサービスのプロキシ --&gt;
+    &lt;component name=&quot;Echo&quot; class=&quot;org.seasar.remoting.axis.examples.ex01.Echo&quot;&gt;
+        &lt;aspect&gt;remoting&lt;/aspect&gt;
+    &lt;/component&gt;
+
+    &lt;!-- リモート呼び出しのインターセプタ --&gt;
+    &lt;component name=&quot;remoting&quot; class=&quot;org.seasar.remoting.common.interceptor.RemotingInterceptor&quot;/&gt;
+
+    &lt;!-- Axisコネクタ --&gt;
+    &lt;component name=&quot;connector&quot; class=&quot;org.seasar.remoting.axis.connector.AxisConnector&quot;&gt;
+        &lt;property name=&quot;baseURL&quot;&gt;
+            &quot;http://localhost:8080/s2-axis-examples/services/&quot;
+        &lt;/property&gt;
+    &lt;/component&gt;
+
+    &lt;!-- Axisサービス --&gt;
+    &lt;component class=&quot;org.apache.axis.client.Service&quot; autoBinding=&quot;none&quot;/&gt;</pre>
+<p> 呼び出すWebサービスごとにプロキシが必要です．プロキシの<code>&lt;component&gt;</code>要素の<code>class</code>属性にはWebサービスのJavaインタフェースを指定します．このコンポーネントには<code>RemotingInterceptor</code>をアスペクトとして指定します．プロキシはWebサービスのインタフェースごとに一つの<code>&lt;component&gt;</code>定義が必要です．</p>
+<p><code>RemotingIntercepto</code>rはプロキシのメソッド呼び出しを横取りし，Axisコネクタを呼び出します．上の例では，S2の自動バインディングによりRemotingInterceptorのプロパティにAxisコネクタが設定されています．RemotingInterceptorは，Axisコネクタごとに一つの<code>&lt;component&gt;</code>定義が必要です．</p>
+<p>AxisコネクタはAxisサービスを通じてWebサービスを呼び出します．上の例では，S2の自動バインディングによりAxisコネクタのプロパティにAxisサービスが設定されています．baseURLプロパティには，WebサービスのエンドポイントのベースURLを指定します．このベースURLにプロキシの&lt;component&gt;要素のname属性で指定された名前を付加したURLが実際の通信で使用されます．AxisコネクタはWebサービスのエンドポイントごとに一つの<code>&lt;component&gt;</code>定義が必要です．</p>
+<p>AxisサービスはSOAP等のプロトコルを使用して実際にWebサービスと通信します．Axisサービスは少なくともS2コンテナごとに一つの&lt;component&gt;定義が必要です．</p>
+<h3>静的呼び出し</h3>
+<p>WSDLから生成されたスタブを使用してサービスを呼び出すには，diconファイルを次のように記述します．</p>
+<pre>    &lt;component class=&quot;org.seasar.axis.examples.ex05.Magazine&quot;&gt;
+        locator.getMagazine()
+    &lt;/component&gt;
+
+    &lt;component name=&quot;locator&quot; class=&quot;org.seasar.axis.examples.ex05.MagazineServiceLocator&quot;/&gt;</pre>
+<p>サービスロケータはWSDL2Javaにより生成されるクラスです．このクラスのメソッド<code>get<var>Xxx</var>()</code>によりサービスのJavaインタフェースを実装したスタブを取得することが出来ます．</p>
+<h2><a name="config-common">クライアント／サーバ共通の設定</a></h2>
+<h3><code>s2-axis.dicon</code>ファイルのインクルード</h3>
+<p>以下の機能を使用する場合は，サーバ側だけでなくクライアント側でも，<code>app.dicon</code>ファイルの中で<code>s2-axis.dicon</code>ファイルをインクルードします．</p>
+<pre>&lt;components&gt;
+    <strong>&lt;include path=&quot;s2-axis.dicon&quot;/&gt;</strong>
+    ・・・
+&lt;/components&gt;</pre>
+<p><code>s2-axis.dicon</code>は<code>s2-axis-1.0.0.jar</code>の中に含まれているため，ロケーションを気にする必要はありません．</p>
+<h3>ハンドラのデプロイ</h3>
+<p>サービスだけでなく，ハンドラもS2でインスタンス管理することが出来ます．</p>
+<pre>    &lt;component <strong>name=&quot;fooRequestHandler&quot;</strong> class=&quot;org.seasar.remoting.axis.examples.ex06.LoggingHandler&quot;&gt;
+        <strong>&lt;meta name=&quot;axis-handler&quot;/&gt;</strong>
+
+        ・・・
+    &lt;/component&gt;</pre>
+<p><code>&lt;component&gt;</code>要素の<code>name</code>属性は必須です．ハンドラチェーンの定義などでは，この名前を指定してハンドラを参照することが出来ます．</p>
+<h3>WSDDのデプロイ</h3>
+<p>任意のWSDDファイルをS2Axisでデプロイすることが出来ます．</p>
+<pre>&lt;components&gt;
+    <strong>&lt;meta name=&quot;axis-deploy&quot;&gt;&quot;org/seasar/remoting/axis/examples/ex07/deploy.wsdd&quot;&lt;/meta&gt;</strong>
+&lt;/components&gt;</pre>
+<p>これは，AxisのAdminClientによるデプロイと同等ですが，S2の初期化時に自動的にデプロイされます．</p>
+<h3>Axisエンジンの指定</h3>
+<p>サービスやハンドラ，WSDDファイルをデプロイする対象となるAxisエンジンをdiconファイルごとに指定することが出来ます．</p>
+<pre>&lt;components&gt;
+    <strong>&lt;meta name=&quot;axis-engine&quot;&gt;&quot;default-client&quot;&lt;/meta&gt;</strong>
+&lt;/components&gt;</pre>
+<p><code>&lt;meta&gt;</code>要素の内容に指定した文字列よりAxisエンジンが決定されます．<br>
+詳細はクイックリファレンスの「<a href="#ref-other-engine">service-engineに指定できる内容</a>」を参照してください．
+</p>
+<h1><a name="examples">サンプル</a></h1>
+<p>S2Axis-Examplesは，S2Axisの基本的な機能を一通り使用したサンプルです．ソースはサーバ側とクライアント側に分かれており，クライアント側はJUnit
+(S2Unit) のテストケースとして作成されています．それぞれ，以下のソースフォルダにあります．</p>
+<dl>
+<dt>サーバ側
+<dd><code>src/server</code>フォルダの<code>org.seasar.axis.examples.ex<var>nn</var></code>パッケージ
+<dt>クライアント側
+<dd><code>src/client</code>フォルダの<code>org.seasar.axis.examples.ex<var>nn</var></code>パッケージ
+</dl>
+<h2><a name="ex01">ex01 コンポーネントをWebサービスとして公開する</a></h2>
+<p>単純なクラスをWebサービスとして公開する例です．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+        &lt;component name=&quot;Echo&quot; class=&quot;org.seasar.remoting.axis.examples.ex01.EchoImpl&quot;&gt;
+                <strong>&lt;meta name=&quot;axis-service&quot;/&gt;</strong>
+        &lt;/component&gt;
+&lt;/components&gt;</pre>
+<p>クライアント側は動的呼び出しを使用しています．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+    &lt;component name=&quot;remoting&quot; class=&quot;org.seasar.remoting.common.interceptor.RemotingInterceptor&quot;/&gt;
+
+    &lt;component class=&quot;org.apache.axis.client.Service&quot;/&gt;
+
+    &lt;component name=&quot;connector&quot; class=&quot;org.seasar.remoting.axis.connector.AxisConnector&quot;&gt;
+        &lt;property name=&quot;baseURL&quot;&gt;
+            &quot;http://localhost:8080/s2-axis-examples/services/&quot;
+        &lt;/property&gt;
+    &lt;/component&gt;
+
+    &lt;component class=&quot;org.seasar.remoting.axis.examples.ex01.Echo&quot;&gt;
+        &lt;aspect&gt;remoting&lt;/aspect&gt;
+    &lt;/component&gt;
+&lt;/components&gt;</pre>
+<h2><a name="ex02">ex02 特定のインタフェースを公開する</a></h2>
+<p>実装クラスを公開すると，不要なメソッドまで公開されてる場合があります(インタフェースを実装していない場合や複数のインタフェースを実装している場合など)．ex02の実装クラス<code>HelloImpl</code>は二つのインタフェースを実装していますが，MessageSettableのメソッド<code>setMessage(String)</code>はWebサービスとして公開しないものとします．<br>
+このような場合には，公開するJavaインタフェースを指定します(実装したインタフェースが一つだけの場合や，実装した複数のインタフェースのメソッドを全て公開する場合には明示的に指定する必要はありません)．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+        &lt;component name=&quot;Hello&quot; class=&quot;org.seasar.remoting.axis.examples.ex02.HelloImpl&quot;&gt;
+                &lt;meta name=&quot;axis-service&quot;&gt;
+                        &lt;component class=&quot;org.seasar.remoting.axis.server.ServiceDef&quot;&gt;
+                                <strong>&lt;property name=&quot;serviceType&quot;&gt;</strong>
+                                    <strong>@org.seasar.remoting.axis.examples.ex02.Hello@class</strong>
+                                <strong>&lt;/property&gt;</strong>
+                        &lt;/component&gt;
+                &lt;/meta&gt;
+                &lt;property name=&quot;message&quot;&gt;&quot;Hello&quot;&lt;/property&gt;
+        &lt;/component&gt;
+&lt;/components&gt;</pre>
+<code>&lt;property&gt;</code>要素をコメントアウトしてWebコンテナを起動すると，<code>Hello</code>のWSDLに<code>setServiceType(String)</code>メソッドが含まれることを確認することが出来ます．
+<h2><a name="ex03">ex03 自動タイプマッピングを使用する</a></h2>
+<p>このサンプルでは，サービスは引数および戻り値の型としてJavaBeansを使用しています．しかし，クライアント・サーバ側とも自動的にタイプマッピングが登録されるため，特に何も指定しなくても動作します．</p>
+<h2><a name="ex04">ex04 セッションスコープを使用する</a></h2>
+<p>Axisは独自の拡張機能としてHTTPセッションを使用したセッションスコープのサービスをサポートします．S2Axisでセッションスコープのサービスを使う場合には，サービスのライフサイクル管理はS2で行います．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+        &lt;component name=&quot;Counter&quot; class=&quot;org.seasar.axis.examples.ex04.CounterImpl&quot;
+            <strong>instance=&quot;session&quot;</strong>
+        &gt;
+                &lt;meta name=&quot;axis-service&quot;/&gt;
+        &lt;/component&gt;
+&lt;/components&gt;</pre>
+<p><code>instance</code>属性の値を<code> singleton</code>や<code>prototype</code>に変更すると，このサンプルは正しく動作しなくなります (テストケースであるクライアントが失敗します)．</p>
+<p>セッションスコープを使う場合，クライアント側ではセッショントラッキングを有効にする必要があります．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+    &lt;component name=&quot;remoting&quot; class=&quot;org.seasar.remoting.common.interceptor.RemotingInterceptor&quot;/&gt;
+
+    &lt;component class=&quot;org.apache.axis.client.Service&quot;&gt;
+        <strong>&lt;property name=&quot;maintainSession&quot;&gt;true&lt;/property&gt;</strong>
+    &lt;/component&gt;
+
+    &lt;component name=&quot;connector&quot; class=&quot;org.seasar.remoting.axis.connector.AxisConnector&quot;&gt;
+        &lt;property name=&quot;baseURL&quot;&gt;
+            &quot;http://localhost:8080/s2-axis-examples/services/&quot;
+        &lt;/property&gt;
+    &lt;/component&gt;
+
+    &lt;component class=&quot;org.seasar.remoting.axis.examples.ex04.Counter&quot;&gt;
+        &lt;aspect&gt;remoting&lt;/aspect&gt;
+    &lt;/component&gt;
+&lt;/components&gt;</pre>
+<p><code>maintainSession</code>属性の値を <code>false</code>にすると，このサンプルは正しく動作しなくなります．</p>
+<h2><a name="ex05">ex05 WSDLを使用する</a></h2>
+<p>WSDL2Javaを使ってJavaのスタブおよびスケルトンを生成した場合のサンプルです．WSDL2Javaが生成したWSDDファイルを指定します．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+        &lt;component name=&quot;Magazine&quot;
+                    class=&quot;org.seasar.remoting.axis.examples.ex05.MagazineSoapBindingImpl&quot;&gt;
+                <strong>&lt;meta name=&quot;axis-service&quot;&gt;</strong>
+                        <strong>&quot;org/seasar/remoting/axis/examples/ex05/deploy.wsdd&quot;</strong>
+                <strong>&lt;/meta&gt;</strong>
+
+                &lt;property name=&quot;title&quot;&gt;&quot;CanCam&quot;&lt;/property&gt;
+                &lt;initMethod name=&quot;addModel&quot;&gt;
+                        &lt;arg&gt;
+                                &lt;component class=&quot;org.seasar.remoting.axis.examples.ex05.Model&quot;&gt;
+                                        &lt;property name=&quot;name&quot;&gt;&quot;Yuri Ebihara&quot;&lt;/property&gt;
+                                        &lt;property name=&quot;age&quot;&gt;25&lt;/property&gt;
+                                &lt;/component&gt;
+                        &lt;/arg&gt;
+                &lt;/initMethod&gt;
+                &lt;initMethod name=&quot;addModel&quot;&gt;
+                        &lt;arg&gt;
+                                &lt;component class=&quot;org.seasar.remoting.axis.examples.ex05.Model&quot;&gt;
+                                        &lt;property name=&quot;name&quot;&gt;&quot;Naoko Tokuzawa&quot;&lt;/property&gt;
+                                        &lt;property name=&quot;age&quot;&gt;20&lt;/property&gt;
+                                &lt;/component&gt;
+                        &lt;/arg&gt;
+                &lt;/initMethod&gt;
+                &lt;initMethod name=&quot;addModel&quot;&gt;
+                        &lt;arg&gt;
+                                &lt;component class=&quot;org.seasar.remoting.axis.examples.ex05.Model&quot;&gt;
+                                        &lt;property name=&quot;name&quot;&gt;&quot;Asami Usuda&quot;&lt;/property&gt;
+                                        &lt;property name=&quot;age&quot;&gt;20&lt;/property&gt;
+                                &lt;/component&gt;
+                        &lt;/arg&gt;
+                &lt;/initMethod&gt;
+        &lt;/component&gt;
+&lt;/components&gt;</pre>
+<p>クライアント側はWSDLから生成されたスタブを使用する静的呼び出しになっています．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+        <strong>&lt;component name=&quot;locator&quot; </strong>
+                <strong>class=&quot;org.seasar.remoting.axis.examples.ex05.MagazineServiceLocator&quot;</strong>
+        <strong>/&gt;</strong>
+
+        &lt;component class=&quot;org.seasar.remoting.axis.examples.ex05.Magazine&quot;&gt;
+                &lt;!-- locator.getMagazine() --&gt;
+                <strong>locator.getMagazine(</strong>
+                    <strong>new java.net.URL(locator.getMagazineAddress() + </strong>
+                        <strong>locator.getMagazineWSDDServiceName()))</strong>
+        &lt;/component&gt;
+&lt;/components&gt;</pre>
+<h2><a name="ex06">ex06 ハンドラのインスタンス管理をS2で行う</a></h2>
+<p>S2でインスタンス管理するハンドラをサービスのリクエストチェーンおよびレスポンスチェーンとして使用するサンプルです．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+        &lt;component name=&quot;Foo&quot;
+                    class=&quot;org.seasar.remoting.axis.examples.ex06.FooSoapBindingImpl&quot;&gt;
+                &lt;meta name=&quot;axis-service&quot;&gt;
+                    &quot;org/seasar/remoting/axis/examples/ex06/deploy.wsdd&quot;
+                &lt;/meta&gt;
+        &lt;/component&gt;
+
+        &lt;component name=&quot;fooRequestHandler&quot;
+                    class=&quot;org.seasar.remoting.axis.examples.ex06.LoggingHandler&quot;&gt;
+                <strong>&lt;meta name=&quot;axis-handler&quot;/&gt;</strong>
+
+                &lt;property name=&quot;message&quot;&gt;&quot;Enter Foo&quot;&lt;/property&gt;
+        &lt;/component&gt;
+
+        &lt;component name=&quot;fooResponseHandler&quot;
+                    class=&quot;org.seasar.remoting.axis.examples.ex06.LoggingHandler&quot;&gt;
+                <strong>&lt;meta name=&quot;axis-handler&quot;/&gt;</strong>
+
+                &lt;property name=&quot;message&quot;&gt;&quot;Exit Foo&quot;&lt;/property&gt;
+        &lt;/component&gt;
+&lt;/components&gt;</pre>
+<p>このハンドラを使用するため，WSDL2Javaが生成したWSDDにリクエストフローおよびレスポンスフローの記述を追加しています．</p>
+<pre>&lt;!-- Use this file to deploy some handlers/chains and services      --&gt;
+&lt;!-- Two ways to do this:                                           --&gt;
+&lt;!--   java org.apache.axis.client.AdminClient deploy.wsdd          --&gt;
+&lt;!--      after the axis server is running                          --&gt;
+&lt;!-- or                                                             --&gt;
+&lt;!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --&gt;
+&lt;!--      from the same directory that the Axis engine runs         --&gt;
+
+&lt;deployment
+    xmlns=&quot;http://xml.apache.org/axis/wsdd/&quot;
+    xmlns:java=&quot;http://xml.apache.org/axis/wsdd/providers/java&quot;&gt;
+
+  &lt;!-- Services from FooService WSDL service --&gt;
+
+  &lt;service name=&quot;Foo&quot; provider=&quot;java:RPC&quot; style=&quot;rpc&quot; use=&quot;encoded&quot;&gt;
+      &lt;parameter name=&quot;wsdlTargetNamespace&quot; value=&quot;http://ex06.examples.axis.remoting.seasar.org&quot;/&gt;
+      &lt;parameter name=&quot;wsdlServiceElement&quot; value=&quot;FooService&quot;/&gt;
+      &lt;parameter name=&quot;wsdlServicePort&quot; value=&quot;Foo&quot;/&gt;
+      &lt;parameter name=&quot;className&quot; value=&quot;org.seasar.remoting.axis.examples.ex06.FooSoapBindingImpl&quot;/&gt;
+      &lt;parameter name=&quot;wsdlPortType&quot; value=&quot;Foo&quot;/&gt;
+      &lt;operation name=&quot;ping&quot; qname=&quot;operNS:ping&quot;
+          xmlns:operNS=&quot;http://ex06.examples.axis.remoting.seasar.org&quot; soapAction=&quot;&quot;
+      &gt;
+      &lt;/operation&gt;
+      &lt;parameter name=&quot;allowedMethods&quot; value=&quot;ping&quot;/&gt;
+
+<strong>      &lt;requestFlow&gt;
+          &lt;handler type=&quot;fooRequestHandler&quot;/&gt;
+      &lt;/requestFlow&gt;
+      &lt;responseFlow&gt;
+          &lt;handler type=&quot;fooResponseHandler&quot;/&gt;
+      &lt;/responseFlow&gt;
+</strong>  &lt;/service&gt;
+&lt;/deployment&gt;</pre>
+<p>クライアントを実行するとサーバ側に次のようなメッセージが出力されます．</p>
+<pre>[DEBUG] http-8080-Processor24 org.seasar.remoting.axis.examples.ex06.LoggingHandler
+    Enter Foo
+[DEBUG] http-8080-Processor24 org.seasar.remoting.axis.examples.ex06.LoggingHandler
+    Exit Foo</pre>
+<h2><a name="ex07">ex07 WSDDをS2Axisでデプロイする</a></h2>
+<p>このサンプルでは，Axisが標準で提供する<code>EchoHandler</code>をプロバイダとするサービスをWSDDに記述し，デプロイします．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+        <strong>&lt;meta name=&quot;axis-deploy</strong>
+            &quot;&gt;&quot;org/seasar/remoting/axis/examples/ex07/deploy.wsdd&quot;
+        <strong>&lt;/meta&gt;</strong>
+&lt;/components&gt;</pre>
+<p>ex05との違いは，<code>&lt;component&gt;</code>要素ではなく，&lt;components&gt;要素の下に記述することです．<br>
+デプロイされるWSDDは次のようになっています．</p>
+<pre>&lt;deployment
+    xmlns=&quot;http://xml.apache.org/axis/wsdd/&quot;
+    xmlns:java=&quot;http://xml.apache.org/axis/wsdd/providers/java&quot;&gt;
+
+    &lt;service name=&quot;EchoHandler&quot; provider=&quot;Handler&quot; style=&quot;rpc&quot; use=&quot;encoded&quot;&gt;
+        &lt;parameter name=&quot;handlerClass&quot; value=&quot;org.apache.axis.handlers.EchoHandler&quot;/&gt;
+    &lt;/service&gt;
+&lt;/deployment&gt;</pre>
+<p>WSDDに記述されている<code>EchoHandler</code>のインスタンス管理にS2およびS2Axisは関与しません．単にデプロイするだけです．</p>
+<h2><a name="ex08">ex08 クライアントにハンドラとWSDDをデプロイする</a></h2>
+<p>このサンプルでは，diconファイルに記述したハンドラおよび，WSDDファイルをデプロイします．</p>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
+        &quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;components&gt;
+    <strong>&lt;include path=&quot;s2-axis.dicon&quot;/&gt;</strong>
+
+    &lt;component name=&quot;remoting&quot; class=&quot;org.seasar.remoting.common.interceptor.RemotingInterceptor&quot;/&gt;
+
+    &lt;component class=&quot;org.apache.axis.client.Service&quot;/&gt;
+
+    &lt;component name=&quot;connector&quot; class=&quot;org.seasar.remoting.axis.connector.AxisConnector&quot;&gt;
+        &lt;property name=&quot;baseURL&quot;&gt;
+            &quot;http://localhost:8080/s2-axis-examples/services/&quot;
+        &lt;/property&gt;
+    &lt;/component&gt;
+
+    &lt;component class=&quot;org.seasar.remoting.axis.examples.ex01.Echo&quot;&gt;
+        &lt;aspect&gt;remoting&lt;/aspect&gt;
+    &lt;/component&gt;
+
+    <strong>&lt;component name=&quot;countHandler&quot; </strong>
+            <strong>class=&quot;org.seasar.remoting.axis.examples.ex08.CountHandler&quot;&gt;</strong>
+        <strong>&lt;meta name=&quot;axis-handler&quot;/&gt;</strong>
+    <strong>&lt;/component&gt;</strong>
+
+    <strong>&lt;meta name=&quot;axis-deploy&quot;&gt;&quot;org/seasar/remoting/axis/examples/ex08/deploy.wsdd&quot;&lt;/meta&gt;</strong>
+&lt;/components&gt;</pre>
+<p>デプロイされるWSDDは次のようになっています．</p>
+<pre>&lt;deployment
+    xmlns=&quot;http://xml.apache.org/axis/wsdd/&quot;
+    xmlns:java=&quot;http://xml.apache.org/axis/wsdd/providers/java&quot;&gt;
+    &lt;globalConfiguration&gt;
+         &lt;requestFlow&gt;
+             &lt;handler type=&quot;countHandler&quot;/&gt;
+         &lt;/requestFlow&gt;
+         &lt;responseFlow&gt;
+             &lt;handler type=&quot;countHandler&quot;/&gt;
+         &lt;/responseFlow&gt;
+     &lt;/globalConfiguration&gt;
+&lt;/deployment&gt;
+</pre>
+<p>WSDDに記述されている<code>countHandler</code>のインスタンス管理はS2によって行われます．</p>
+<h1><a name="reference">クイックリファレンス</a></h1>
+<h2><a name="ref-dicon">diconファイル</a></h2>
+<h3>s2-axis.dicon</h3>
+<p>S2Axisが提供するdiconファイルです．s2-axis-1.0.0.jarファイルの中に含まれているので，ロケーションを気にすることなくincludeすることができます．<br>
+サーバが側では必須となります．<br>
+クライアント側では，ハンドラやWSDDのデプロイをする場合にのみ必要となります．</p>
+<h2><a name="ref-meta">&lt;meta&gt;要素</a></h2>
+<h3><a name="ref-meta-components">&lt;components&gt;要素の下</a></h3>
+<table border="1" width="700">
+<col span="1" width="100" valign="middle">
+<col span="2" width="20" valign="middle" align="center">
+<col span="1" width="200" valign="middle">
+<tbody>
+<tr>
+<th>名前</th>
+<th>C</th>
+<th>S</th>
+<th>内容</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><code>axis-deploy</code></td>
+<td>○</td>
+<td>○</td>
+<td>文字列</td>
+<td>内容で指定された文字列をパス名とするWSDDファイルをAxisにデプロイします．WSDDファイルのパス名はクラスパスからの相対パスで指定します．<br>
+WSDDファイルの中で指定されたサービスやハンドラのインスタンス管理はAxisによって行われます．S2およびS2Axisは関与しません．<br>
+WSDDファイルの中では，S2Axisによってデプロイされたサービスやハンドラを参照することができます．</td>
+</tr>
+<tr>
+<td><code>axis-engine</code></td>
+<td>○</td>
+<td>○</td>
+<td>文字列</td>
+<td>サービスやハンドラ，WSDDをデプロイする対象となるAxisエンジンの取得方法を指定しますします．<br>
+詳細は「Axisエンジンの取得方法」を参照してください．</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="ref-meta-component">&lt;component&gt;要素の下</a></h3>
+<table border="1" width="700">
+<col span="1" width="100" valign="middle">
+<col span="2" width="20" valign="middle" align="center">
+<col span="1" width="200" valign="middle">
+<tbody>
+<tr>
+<th>プロパティ</th>
+<th>C</th>
+<th>S</th>
+<th>内容</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><code>axis-handler</code></td>
+<td>○</td>
+<td>○</td>
+<td>空</td>
+<td>親要素で記述されたコンポーネントをハンドラとしてAxisにデプロイします．</td>
+</tr>
+<tr>
+<td rowspan="3"><code>axis-service</code></td>
+<td rowspan="3">×</td>
+<td rowspan="3">○</td>
+<td>空</td>
+<td>親要素で記述されたコンポーネントをサービスとしてAxisにデプロイします．<br>
+コンポーネントがメソッドの定義されたインタフェースを実装している場合は，そのメソッドが公開されます．インタフェースを実装していなければ，<code>java.lang.Object</code>型で定義されているものを除いた<code>public</code>メソッドが公開されます．</td>
+</tr>
+<tr>
+<td><code>ServiceDef</code>型のコンポーネント</td>
+<td>親要素で記述されたコンポーネントをサービスとしてAxisにデプロイします．<br>
+詳細は<code>ServiceDef</code>の説明を参照してください．</td>
+</tr>
+<tr>
+<td>文字列</td>
+<td>親要素で記述されたコンポーネントをサービスとしてAxisにデプロイします．<br>
+サービスの詳細は，内容で指定された文字列をパス名とするWSDDファイルに記述された<code>&lt;service&gt;</code>要素の指定に従います．WSDDファイルのパス名はクラスパスからの相対パスで指定します．</td>
+</tr>
+</tbody>
+</table>
+<h2><a name="ref-component">コンポーネント</a></h2>
+<h3><code><a name="ref-compo-servicedef">org.seasar.remoting.axis.ServiceDef</a></code></h3>
+<p>サーバ側で使用するコンポーネントで，<code>&lt;meta&gt;</code>要素の内容に設定されます．<br>
+サービスとして公開するコンポーネントの詳細を指定するために使われます．</p>
+<h4>プロパティ</h4>
+<table border="1" width="700">
+<col span="1" width="120">
+<col span="1" width="80">
+<tbody>
+<tr>
+<th>プロパティ</th>
+<th>型</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><code>serviceType</code></td>
+<td><code>String</code></td>
+<td>公開するサービスの型を指定します．特定のインタフェース型を指定することで，不要なメソッドが公開されることを防ぐことが出来ます．<br>
+省略するとコンポーネントの型になります．ただし，コンポーネントがメソッドの定義されたインタフェースを一つだけ実装している場合には，そのインタフェース型になります．</td>
+</tr>
+<tr>
+<td><code>allowMethods</code></td>
+<td><code>boolean</code></td>
+<td>公開するメソッドの名前を指定します．複数のメソッドを指定する場合は空白で区切ります．<br>
+省略すると次のようになります．
+<dl>
+<dt>1．<code>serviceType</code>が指定されている場合
+<dd>指定された型が持つ<code>public</code>なメソッドが全て公開されます (ただし，<code>java.lang.Object</code>で定義されているメソッドは公開されません)．</dd>
+</dl>
+<dl>
+<dt>2．サービスがメソッドの定義されたインタフェースを実装している場合
+<dd>インタフェースで定義されたメソッドが全て公開されます．</dd>
+</dl>
+<dl>
+<dt>3．サービスがインタフェースを実装していない場合
+<dd>サービスが持つ<code>public</code>なメソッドが全て公開されます．ただし，<code>java.lang.Object</code>で定義されているメソッドは公開されません．</dd>
+</dl>
+</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td><code>String</code></td>
+<td>サービスプロバイダの種類を指定します．<br>
+現在サポートされているのは<code>RPC</code>と<code>Msg</code>だけです．省略すると<code>RPC</code>になります．</td>
+</tr>
+</tbody>
+</table>
+<h4>メソッド</h4>
+<table border="1" width="700">
+<col span="1" width="200">
+<tbody>
+<tr>
+<th>メソッド</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><code>addTypeMapping(TypeMapping)</code></td>
+<td>タイプマッピングを登録します．TypeMappingついては次の項を参照してください．</td>
+</tr>
+</tbody>
+</table>
+<h3><code><a name="ref-compo-typemappingdef">org.seasar.remoting.axis.TypeMappingDef</a></code></h3>
+<p>サーバ側で使用するコンポーネントで，<code>ServiceDef</code>コンポーネントに設定されます．<br>
+サービスとして公開するコンポーネントで使用するタイプマッピングの詳細を指定するために使われます．</p>
+<table border="1" width="700">
+<col span="1" width="120">
+<col span="1" width="80">
+<tbody>
+<tr>
+<th>プロパティ</th>
+<th>型</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>Class</code></td>
+<td>Java型のクラスを指定します．このプロパティは必須です．</td>
+</tr>
+<tr>
+<td><code>namespaceURI</code></td>
+<td><code>String</code></td>
+<td>XML型の名前空間URIを指定します．省略するとJava型の型のパッケージから導出されます．</td>
+</tr>
+<tr>
+<td><code>namespacePrefix</code></td>
+<td><code>String</code></td>
+<td>XML型の名前空間接頭辞を指定します．省略するとデフォルト名前空間になります．</td>
+</tr>
+<tr>
+<td><code>localPart</code></td>
+<td><code>String</code></td>
+<td>XML型のローカル名を指定します．省略するとJava型のクラス名が使われます．</td>
+</tr>
+<tr>
+<td><code>serializer</code></td>
+<td>Class</td>
+<td>シリアライザファクトリを指定します．省略するとAxisの<code>BeanSerialzierFactory</code>が使われます．</td>
+</tr>
+<tr>
+<td><code>deserializer</code></td>
+<td><code>String</code></td>
+<td>デシリアライザファクトリを指定します．省略するとAxisの<code>BeanDeserialzierFactory</code>が使われます．</td>
+</tr>
+<tr>
+<td><code>encodingStyle</code></td>
+<td><code>String</code></td>
+<td>エンコーディングスタイルを指定します．省略すると<code>encoded</code>が使われます．</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="ref-compo-connector">org.seasar.remoting.axis.connector.AxisConnector</a></h3>
+<p>クライアント側で使用するコンポーネントで，Web サービスへの動的な接続に使用されます．</p>
+<h4>プロパティ</h4>
+<table border="1" width="700">
+<col span="1" width="120">
+<col span="1" width="80">
+<tbody>
+<tr>
+<th>プロパティ</th>
+<th>型</th>
+<th>説明</th>
+</tr>
+<tr>
+<td><code>baseURL</code></td>
+<td><code>String</code></td>
+<td>接続するサービスの基礎になるURLを指定します．<br>
+このURLと，S2RemotinのRemotingInterceptorをアスペクトとして設定されたプロキシコンポーネントの名前
+(&lt;component&gt;要素のname属性の値) を連結したURLが，接続するサービスのURLとなります．</td>
+</tr>
+</tbody>
+</table>
+<h3><a name="ref-compo-interceptor">org.seasar.remoting.common.interceptor.RemotingInterceptor</a></h3>
+<p>S2Remotingが提供するコンポーネントです．<br>
+クライアント側でWebサービスをコンポーネントとして使用する場合に，このコンポーネントをアスペクトとして使用します．</p>
+<h3><a name="ref-compo-service">org.apache.axis.client.Service</a></h3>
+<p>Axisが提供するコンポーネントです．<br>
+クライアント側で動的呼び出しをする場合に必要となります．</p>
+<h2><a name="ref-other">その他</a></h2>
+<h3>公開されるサービスの名前</h3>
+<dl>
+<dt>WSDDを指定された場合
+<dd>WSDDに記述された<code>&lt;service&gt;</code>要素の<code>name</code>属性の値が使われます<br>
+<code><var>context-path</var>/services/<var>name</var></code>
+<dt>diconファイルに名前空間が指定されていない場合
+<dd>diconファイルの<code>&lt;component&gt;</code>要素の<code>name</code>属性の値が使われます．<br>
+<code><var>context-path</var>/services/<var>name</var></code>
+<dt>diconファイルに名前空間が指定されている場合
+<dd>diconファイルの<code>&lt;components&gt;</code>要素の<code>namespace</code>属性の値と<code>&lt;component&gt;</code>要素の<code>name</code>属性の値が使われます．<br>
+<code><var>context-path</var>/services/<var>namespace</var>/<var>name</var></code>
+</dl>
+<h3><a name="ref-other-engine"><code>service-engine</code>に指定できる内容</a></h3>
+<table border="1" width="700">
+<col span="1" width="150">
+<tbody>
+<tr>
+<th>内容</th>
+<th>意味</th>
+</tr>
+<tr>
+<td>(指定なし)</td>
+<td><code>&quot;default&quot;</code>を指定した場合と同じです．</td>
+</tr>
+<tr>
+<td><code>&quot;default&quot;</code></td>
+<td>S2コンテナに<code>javax.servlet.ServletContext</code>が設定されていれば<code>&quot;default-server&quot;</code>，そうでなければ<code>&quot;default-client&quot;</code>を指定した場合と同じです．</td>
+</tr>
+<tr>
+<td><code>&quot;default-client&quot;</code></td>
+<td>S2コンテナから<code>javax.xml.rpc.Service</code>を実装したコンポーネント (サービスまたはサービスロケータ) を取得し，そのエンジンを使用します．</td>
+</tr>
+<tr>
+<td><code>&quot;default-server&quot;</code></td>
+<td>最初に<code>servlet:AxisServlet</code>でエンジンを検索し，見つからなければ<code>servlet:AxisEngine</code>でエンジンを検索します．</td>
+</tr>
+<tr>
+<td><code>&quot;s2:<var>name</var>&quot;</code></td>
+<td>S2コンテナから<code><var>name</var></code>で取得したコンポーネントをAxisエンジンとして使用します．</td>
+</tr>
+<tr>
+<td><code>&quot;servlet:<var>name</var>&quot;</code></td>
+<td><code>ServletContext</code>から<code><var>name</var></code>で取得した属性をAxisエンジンとして使用します．</td>
+</tr>
+<tr>
+<td>(その他)</td>
+<td>S2コンテナから指定された文字列で取得したコンポーネントをAxisエンジンとして使用します．</td>
+</tr>
+</tbody>
+</table>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright">&copy; Copyright The Seasar Project and the others 2004, all rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>
