@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<ul>
+<li><a href="#Preface">Preface</a></li>
+<li><a href="#SetUp">Setup</a></li>
+<li><a href="#Sample">Samples</a></li>
+<ul>
+<li><a href="#hello">hello.html</a></li>
+<li><a href="#add">add.html</a></li>
+<li><a href="#forEachList">forEachList.html</a></li>
+<li><a href="#forEachResult">forEachResult.html</a></li>
+</ul>
+</ul>
+
+<h2><a name="Preface">Preface</a></h2>
+<p>Using JSP, you just want to check layout of the page but you need to deploy
+and start the application server. Have you ever had such experiences?
+Or have you experienced to cooperate with a designer?
+
+With S2JSF, you don't need such troubles anymore.
+The template view of S2JSF is HTML, not JSP, and it makes you free to
+such irritated things.
+
+｡</p>
+<h2><a name="SetUp">Setup</a></h2>
+<p>Same as Seasar2 requirements, JDK1.4 or higher is required.
+All you need to do is just extract S2JSFVx.x.x.zip and import unzipped s2jsfdirectory 
+to Eclipse workspace(File -> import -> Existing Project into workspace)</p>
+<p>The samples of S2JSF is prepared separately, so download and extract it.
+Same as before, import unzipped file to Eclipse workspace.
+This sample makes the use of <a href="http://jakarta.apache.org/tomcat/">Tomcat5</a> and
+<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>.
+
+If you do not intall these, please install before trying these samples.</p>
+<p>Starting Tomcat, you can see S2JSF samples as accesing http://localhost:8080/s2jsf-example/ on your browser.</p>
+
+<h2><a name="Sample">Samples</a></h2>
+<h3><a name="hello">hello.html</a></h3>
+<p>Let's go to http://localhost:8080/s2jsf-example/hello/hello.html?message=aaa.<br>
+It must display "Hello aaa" as you see.From this sample, you can get things described below:</p>
+<ul>
+<li>define the namespace of S2JSF</li>
+<li>layout function</li>
+<li>how to use taglib</li>
+<li>pointing tags by inject attribute</li>
+<li>how to use title tag</li>
+<li>how to change page by page with link</li>
+<li>how to pass parameters when changing pages</li>
+<li>describe navigation-rule</li>
+<li>how to print out string using ValueBinding</li>
+</ul>
+<p>Let's take a look contents of HTML.</p>
+<pre><center><strong>fig1. hello.html</strong></center>01:&lt;html xmlns:m="http://www.seasar.org/maya" m:extends="/WEB-INF/layout/layout.html"&gt;<br>02:&lt;head&gt;<br>03:&lt;meta http-equiv="Content-Type" content="text/html; charset=Windows-31j" /&gt;<br>04:&lt;title&gt;Hello&lt;/title&gt;<br>05:&lt;/head&gt;<br>06:&lt;body&gt;<br>07:    &lt;span m:inject="f:param" m:name="layoutTitle" m:value="Hello"/&gt;<br>08:    &lt;span m:inject="s:insert" m:name="body"&gt;<br>09:        Hello &lt;span m:value="#{message}"&gt;hoge&lt;/span&gt;<br>10:    &lt;/span&gt;<br>11:&lt;/body&gt;<br>12:&lt;/html&gt;</pre>
+<p>The first line in the fig.1, xmlns:m="http://www.seasar.org/maya" specifies namespace.
+This URL(http://www.seasar.org/maya) must be fixed.The prefix, which is "m" in the sample, you can use anything you want to use, 
+"m" is used in the custom.</p>
+<p>The next attribute, m:extends, points out extending layout.
+To provide consistent look &amp; feel, the layout of pages are constructed by header, menu, body, and footer.
+This is very usual need.For corresponding such needs, S2JSF provides function that defining layout of the page in
+the based page, and in the each individual pages extends the base page and overwrites specific parts of its page.
+
+So, let's see layout.html.</p>
+<pre><center><strong>fig2. layout.html</strong></center>01:&lt;html xmlns:m="http://www.seasar.org/maya"&gt;<br>02:&lt;head&gt;<br>03:&lt;meta http-equiv="Content-Type" content="text/html; charset=Windows-31j" /&gt;<br>04:&lt;link m:inject="s:link" rel="stylesheet" type="text/css" href="/css/global.css"/&gt;<br>05:&lt;title m:value="#{layoutTitle}"/&gt;<br>06:&lt;/head&gt;<br>07:&lt;body&gt;<br>08:&lt;table border="0" cellspacing="5"&gt;<br>09:&lt;tr&gt;<br>10:  &lt;td colspan="2"&gt;&lt;span m:inject="s:insert" m:src="/WEB-INF/layout/header.html"/&gt;&lt;/td&gt;<br>11:&lt;/tr&gt;<br>12:&lt;tr&gt;<br>13:  &lt;td width="140" valign="top"&gt;<br>14:    &lt;span m:inject="s:insert" m:src="/WEB-INF/layout/menu.html"/&gt;<br>15:  &lt;/td&gt;<br>16:  &lt;td valign="top" align="left"&gt;<br>17:    &lt;span m:inject="s:insert" m:name="body"/&gt;<br>18:  &lt;/td&gt;<br>19:&lt;/tr&gt;<br>20:&lt;tr&gt;<br>21:  &lt;td colspan="2"&gt;<br>22:    &lt;hr/&gt;<br>23:  &lt;/td&gt;<br>24:&lt;/tr&gt;<br>25:&lt;tr&gt;<br>26: &lt;td colspan="2"&gt;<br>27:    &lt;span m:inject="s:insert" m:src="/WEB-INF/layout/footer.html"/&gt;<br>28:  &lt;/td&gt;<br>29:&lt;/tr&gt;<br>30:&lt;/table&gt;<br>31:&lt;/body&gt;<br>32:&lt;/html&gt;
+</pre>
+<p>See the link tag at line 4.By inject attribute, s:link is specifeid.
+How to specify this tag is same as the case of JSP.
+Prefix of this tas, "s", is described in WEB-INF/classes/jsf.dicon(or WEB-INF/src)
+
+In jsf.dicon, a relevant part is as follows.</p>
+<pre><center><strong>fig3. jsf.dicon(not all)</strong></center>&lt;component class="org.seasar.jsf.runtime.JsfConfigImpl"&gt;
+    &lt;initMethod name="addTaglibUri"&gt;
+        &lt;arg&gt;"h"&lt;/arg&gt;
+        &lt;arg&gt;"http://java.sun.com/jsf/html"&lt;/arg&gt;
+    &lt;initMethod&gt;
+    &lt;initMethod name="addTaglibUri"&gt;
+        &lt;arg&gt;"f"&lt;/arg&gt;
+        &lt;arg&gt;"http://java.sun.com/jsf/core"&lt;/arg&gt;
+    &lt;initMethod&gt;<br>    &lt;initMethod name="addTaglibUri"&gt;
+        &lt;arg&gt;"s"&lt;/arg&gt;<br>        &lt;arg&gt;"http://www.seasar.org/jsf"&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre><p>Specifing inject attribute, arbitrary HTML tags is converted to JSP tag, which is needed for JSF.
+Existing taglibs for JSF can be reused easily.</p>
+
+<p>In the line 5, title is specified.
+The actual value of layoutTitle should be described at extended page of this layout.</p>
+<p>In the line ten, src attribute of the insert tag inserts the page for header.
+The page for header is as follows.</p>
+<pre><center><strong>fig4. header.html</strong></center>&lt;html xmlns:m="http://www.seasar.org/maya"&gt;<br>&lt;body&gt;<br>    &lt;span m:inject="s:insert"&gt;<br>        &lt;img m:inject="h:graphicImage" m:url="/images/seasar.gif"/&gt;<br>    &lt;/span&gt;
+&lt;/body&gt;<br>&lt;/html&gt;
+</pre>
+<p>In the inserted page, the content that is to be inserted in the insert tag without 
+the name attribute is described. In other way, you can write a tag for preview outside of insert tag.
+In such situation, the outside of insert tag is ignored at the runtime.
+
+For next, let's see menu.html.</p>
+<pre><center><strong>fig5. menu.html</strong></center>&lt;html xmlns:m="http://www.seasar.org/maya"&gt;<br>...<br>&lt;body&gt;<br>    &lt;span m:inject="s:insert"&gt;<br>        &lt;form&gt;<br>            &lt;ul&gt;<br>                &lt;li&gt;<br>                    &lt;a m:action="hello"&gt;Hello<br>                        &lt;span m:inject="f:param" m:name="message" m:value="World"/&gt;<br>                    &lt;/a&gt;<br>                &lt;/li&gt;<br>                &lt;li&gt;<br>                    &lt;a m:action="add"&gt;Add&lt;/a&gt;<br>                &lt;/li&gt;<br>                ...
+            &lt;/ul&gt;<br>        &lt;/form&gt;<br>    &lt;/span&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;
+</pre>
+<p>Page changing name is specified when the link is clicked by the action attribute of the anchor tag.
+There are two ways to use action attribute.
+One is to type ${parameter_name.method.name} to call JavaBeans method.
+The other is simply to describe string.This way is for changing the specific page.
+
+This page that is named hello is configured at WEB-INF/faces-config.xml.
+We are goint to see as follwing part.</p>
+<pre><center><strong>fig6. faces-config.xml</strong></center>&lt;navigation-rule&gt;<br>    &lt;navigation-case&gt;<br>        &lt;from-outcome&gt;hello&lt;/from-outcome&gt;<br>        &lt;to-view-id&gt;/hello/hello.html&lt;/to-view-id&gt;<br>        &lt;redirect/&gt;<br>    &lt;/navigation-case&gt;<br>&lt;/navigation-rule&gt;
+</pre>
+<p>By using from-outcome tag, you can specify the page changing name.
+Actual path is spcified by to-view-id tag.
+
+If describing redirect tag, the page is redirected.If not, it is forwarded.
+
+Let's back to menu.html.</p>
+<p>
+The child tag of anchor should be specified f:param for giving parameter to changing page.
+
+Let's back to layout.html.</p>
+<p>At the line 17 of layout.html, &lt;span m:inject="s:insert" m:name="body"/&gt; defines the body part.
+Giving a name by name attribute like this, the page that extended this layout overwrite the contents 
+by defining &lt;span m:inject="s:insert" m:name="body"&gt;...,&lt;/span&gt; again.
+
+</p>
+<p>Take a look at the line 7 of hello.html.You see &lt;span m:inject="f:param" m:name="layoutTitle" m:value="Hello"/&gt;.
+It puts the value to layoutTitle, which is defined at layout.html.
+To give parameters to parent page, f:param tag is put as the child of body tag.
+</p>
+
+<p>Between the line 8 to 10 of hello.html, &lt;span m:inject="s:insert" m:name="body"&gt; overwrite the parent page's contents.
+</p>
+<p>To output string to HTML, &lt;span&gt;&lt;/span&gt; should be used.For example, it should be like 
+&lt;span m:value="#{message}"&gt;hoge&lt;/span&gt; at the line9 of hello.html.
+We call #{...} as <strong>ValueBinding</strong>, and we use it when value should be dynamically arranged.
+When defining like #{foo}, S2JSF retrieves by the order of request, parameter, session, S2Container and 
+the first found one is set as value.For example, output should be the content of message parameter 
+at the line 8 and 9 of figure.1, and "hoge" text of body tag, which is dummy for just checking layout, 
+is ignored at that time. 
+
+When coding like #{foo.property}, S2JSF retrieves #{foo} as we described before, 
+and then put property.
+
+When you need dynamically changed texts at HTML, value attribute of span tag is needed in this way.
+
+<h3><a name="add">add.html</a></h3>
+<p>This sample shows you these folows:</p>
+<ul>
+<li>how input value works with JavaBean property.</li>
+<li>how to call JavaBeans' method when button is clicked.</li>
+<li>how to auto-bind an object of request, session, S2Container in a way of coding setter method at Action</li>
+</ul>
+<br>
+<p>Let's see add.html.</p>
+<pre><strong><center>fig07.add.html</center></strong>01:&lt;html xmlns:m="http://www.seasar.org/maya" m:extends="/WEB-INF/layout/layout.html"&gt;<br>02:&lt;head&gt;<br>03:&lt;meta http-equiv="Content-Type" content="text/html; charset=Windows-31j" /&gt;<br>04:&lt;title&gt;Add&lt;/title&gt;<br>05:&lt;/head&gt;<br>06:&lt;body&gt;<br>07:  &lt;span m:inject="f:param" m:name="layoutTitle" m:value="Add"/&gt;<br>08:  &lt;span m:inject="s:insert" m:name="body"&gt;<br>09:    &lt;form&gt;<br>10:      &lt;span m:inject="h:messages" m:globalOnly="false" m:showDetail="true"/&gt;<br>11:      &lt;input type="text" m:value="#{addDto.arg1}"/&gt; + <br>12:      &lt;input type="text" m:value="#{addDto.arg2}"/&gt; = <br>13:      &lt;span m:value="#{addDto.result}"/&gt; <br>14:      &lt;input type="submit" value="calculate" m:action="#{addAction.calculate}"/&gt;<br>15:    &lt;/form&gt;<br>16:  &lt;/span&gt;<br>17:&lt;/body&gt;<br>18:&lt;/html&gt;
+</pre>
+<p>Head tag is ignored when runtime.It is only for preview on browser.</p>
+<p>&lt;span m:inject="h:messages" m:globalOnly="false" m:showDetail="true"/&gt; at the line.10, 
+it is a preparation for output messages when occuring errors.
+
+While globalOnly attribute is true, only global error message, which is not specific input related, 
+should be displayed.In other way, all error messages are out when globalOnly attribute is false.</p>
+
+<p>&lt;input type="text" m:value="#{addDto.arg1}"/&gt; at line 11 means that input/output tag 
+works with JavaBeans property. Input value is stored to JavaBeans property if validation is OK.
+If NG, input value remains the page.Such input/output well-management is the benefit of using JSF.
+With Struts, we need to use String type to store value tempolary at ActionForm.
+With JSF, we don't need to do this.</p>
+
+<p>Where do we describe addDto?addDto is described in examples/jsf/dicon/add.dicon as follows:</p>
+<pre><strong><center>fig08.add.dicon(partial)</center></strong>&lt;component name="addDto" class="examples.jsf.dto.AddDto" instance="request"/&gt;
+</pre>
+<p>addDto is managed in request scope if instance attribute of component tag is true as wee see in add.dicon.
+And add.dicon is included by app.dicon, which is the parent configuration file. </p>
+<pre><strong><center>fig09.app.dicon(partial)</center></strong>&lt;include path="examples/jsf/dicon/add.dicon"/&gt;
+</pre>
+<p>Back to fig07, add.html, &lt;input type="submit" value="calculate" m:action="#{addAction.calculate}"/&gt; at line14 
+works as calling JavaBeans method(addAction.calculate) when button is clicked.
+These features, such as describing as #{varname.methodname} at action attribute of button or link tag, are called MethodBinding.
+Methods called by MethodBinding should not have arguments and it's return value should be String.
+
+So, where addAction at line14 is defined?
+addAction defines at add.dicon as follows.</p>
+<pre><strong><center>fig10.add.dicon(partial)</center></strong>&lt;component name="addAction" class="examples.jsf.action.impl.AddActionImpl" instance="request"/&gt;
+</pre>
+<p>Actionクラスは、入力された内容をプロパティ経由で受け取ることになるので、instance属性をrequestにします。それでは、
+AddActionインターフェース、AddActionImplクラスを見てみましょう｡インターフェースと実装を必ず分離しなければならないというこ
+とはないのですが、このように分離したほうが、仕様が明確に伝わり易いと思います｡</p>
+<pre>package examples.jsf.action;
+
+public interface AddAction {
+
+    public String calculate();
+}
+</pre>
+<pre>package examples.jsf.action.impl;
+
+import examples.jsf.action.AddAction;
+import examples.jsf.dto.AddDto;
+import examples.jsf.logic.AddLogic;
+
+public class AddActionImpl implements AddAction {
+
+    private AddDto addDto;
+    private AddLogic addLogic;
+    
+    public void setAddDto(AddDto addDto) {
+        this.addDto = addDto;
+    }
+    
+    public void setAddLogic(AddLogic addLogic) {
+        this.addLogic = addLogic;
+    }
+
+    public String calculate() {
+        int result = addLogic.calculate(addDto);
+        addDto.setResult(result);
+        return null;
+    }
+}
+</pre>
+<p>入力された値を受け取るために、addDtoというプロパティのsetterメソッドを定義しています｡S2JSFは、MethodBinding
+で指定したメソッドを呼び出す直前にsetterメソッドの定義されているプロパティがないか調べ、もしある場合は、プロパティ名と同様の変数が、リクエ
+ストの属性、パラメータ、セッションの属性、S2Containerに存在するか調べ、もし存在する場合には、自動的にsetterメソッドを呼び出し、
+その変数を設定します｡</p>
+<p>addLogicという変数は、どこにも定義されていないのですが、プロパティの型がインターフェースの場合、S2Containerによって、そ
+のインターフェースを実装したクラスが自動的に設定されます｡AddLogicを実装したクラスは、add.diconで次のように定義されています｡</p>
+<pre>&lt;component class="examples.jsf.logic.impl.AddLogicImpl"/&gt;
+</pre>
+<p>MethodBindingで呼び出したメソッドの戻り値がnullの場合は、自分自身に遷移することになります｡</p>
+
+<h3><a name="forEachList">forEachList.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>forEachタグによる繰り返し。</li>
+<li>anchorタグでプレビュー時にページ遷移させる方法。</li>
+<li>buttonrタグでプレビュー時にページ遷移させる方法。</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>01:&lt;form&gt;
+02:    &lt;table border="1"&gt;
+03:        &lt;tr bgcolor="#7777FF"&gt;
+04:            &lt;th&gt;Key&lt;/th&gt;
+05:            &lt;th&gt;Name&lt;/th&gt;
+06:            &lt;th colspan="2"&gt;to ResultPage&lt;/th&gt;
+07:        &lt;/tr&gt;
+08:        &lt;span m:inject="s:forEach" m:items="#{forEachDtoList}"
+09:            m:var="e" m:varIndex="i"&gt;
+10:        &lt;tr&gt;
+11:            &lt;td&gt;&lt;span m:value="#{e.key}"&gt;111&lt;/span&gt;&lt;/td&gt;
+12:            &lt;td&gt;&lt;span m:value="#{e.name}"&gt;aaa&lt;/span&gt;&lt;/td&gt;
+13:            &lt;td&gt;&lt;a href="forEachResult.html" m:action="forEachResult"&gt;to ResultPage
+14:                    &lt;span m:inject="f:param" m:name="index" m:value="#{i}"/&gt;
+15:                &lt;/a&gt;
+16:            &lt;/td&gt;
+17:            &lt;td&gt;
+18:                &lt;input type="button" m:action="forEachResult" value="to ResultPage"
+19:                    onclick="location.href='forEachResult.html'"&gt;
+20:                    &lt;span m:inject="f:param" m:name="index" m:value="#{i}"/&gt;
+21:                &lt;/input&gt;
+22:            &lt;/td&gt;
+23:        &lt;/tr&gt;
+24:        &lt;/span&gt;
+25:    &lt;/table&gt;
+26:&lt;/form&gt;
+</pre>
+<p>8行目のforEachタグで繰り返しを指定します｡items属性で繰り返す対象を、var属性で繰り返す際に個々の要素にアクセスするときの名前を、varIndex属性で繰り返す際にインデックスにアクセスするときの名前を指定します｡</p>
+<p>11行目のようにvar属性でつけた名前.プロパティという形でアクセスすることが出来ます｡</p>
+<p>13行目のanchorタグでhref属性とaction属性を両方指定しています｡このように両方指定した場合、hrefは実行時には無視されま
+す｡ブラウザで直接プレビューしたときに、ページを遷移させるために記述しているのです｡子タグのparamタグでページ遷移のときのパラメータを指定す
+ることができます｡</p>
+<p>18行目のbuttonタグもaction属性とonclick属性を指定しています｡onclick属性のlocation.href=
+'forEachResult.html'の部分は実行時には無視されます｡ブラウザで直接プレビューしたときに、ページを遷移させるために記述している
+のです｡子タグのparamタグでページ遷移のときのパラメータを指定することができます｡</p>
+
+<h3><a name="forEachResult">forEachResult.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>ページの初期処理。</li>
+<li>Actionにgetterメソッドを定義してプロパティをリクエストやセッションに自動設定する方法。</li>
+</ul>
+<p>それでは、HTMLを見てみましょう｡ </p>
+<pre>01:&lt;html xmlns:m="http://www.seasar.org/maya"<br>02:    m:action="#{forEachResultInitAction.initialize}"<br>03:    m:extends="/WEB-INF/layout/layout.html"&gt;<br>04:&lt;head&gt;<br>05:&lt;meta http-equiv="Content-Type" content="text/html; charset=Windows-31j" /&gt;<br>06:&lt;title&gt;ForEach&lt;/title&gt;<br>07:&lt;/head&gt;<br>08:&lt;body&gt;<br>09:&lt;span m:inject="f:param" m:name="layoutTitle" m:value="ForEach"/&gt;<br>10:&lt;span m:inject="s:insert" m:name="body"&gt;
+11:     Key:&lt;span m:value="#{forEachDto.key}"&gt;111&lt;/span&gt;
+12:     Name:&lt;span m:value="#{forEachDto.name}"&gt;aaa&lt;/span&gt;&lt;br /&gt;
+13:     &lt;a href="forEachList.html"&gt;previous&lt;/a&gt;
+14:&lt;/span&gt;
+15:&lt;/body&gt;
+16:&lt;/html&gt;
+</pre>
+<p>2行目のhtmlタグのaction属性で、ページを初期化するメソッドを指定しています｡それでは、Actionクラスを見てみましょう｡</p>
+<pre>package examples.jsf.action.impl;
+
+import java.util.List;
+
+import examples.jsf.action.ForEachResultInitAction;
+import examples.jsf.dto.ForEachDto;
+
+public class ForEachResultInitActionImpl implements ForEachResultInitAction {
+
+    private int index;
+
+    private List forEachDtoList;
+    
+    private ForEachDto forEachDto;
+    
+    public void setIndex(int index) {
+        this.index = index;
+    }
+    
+    public void setForEachDtoList(List forEachDtoList) {
+        this.forEachDtoList = forEachDtoList;
+    }
+    
+    public ForEachDto getForEachDto() {
+        return forEachDto;
+    }
+
+    public String initialize() {
+        forEachDto = (ForEachDto) forEachDtoList.get(index);
+        return null;
+    }    
+}
+</pre>
+<p>前のページで、anchorタグやbuttonタグのパラメータでindexを渡していたことを思い出してください｡setIndex()メソッド
+を定義しておけば、S2JSFが自動的にパラメータの値を設定してくれます｡また、setForEachDtoList()メソッドを定義しておくこと
+で、examples/jsf/dicon/foreach.diconに定義されているforEachDtoListを参照できます｡
+initMethodタグを使えば、任意のメソッドを呼び出せるので、自由自在にオブジェクトを組み立てることが出来ます｡</p>
+<pre>&lt;component name="forEachDtoList" class="java.util.ArrayList" instance="session"&gt;<br>    &lt;initMethod name="add" &gt;<br>        &lt;arg&gt;<br>            &lt;component class="examples.jsf.dto.ForEachDto" &gt;<br>                &lt;property name="key"&gt;"111"&lt;/property&gt;<br>                &lt;property name="name"&gt;"aaa"&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name="add" &gt;<br>        &lt;arg&gt;<br>            &lt;component class="examples.jsf.dto.ForEachDto" &gt;<br>                &lt;property name="key"&gt;"222"&lt;/property&gt;<br>                &lt;property name="name"&gt;"bbb"&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
+</pre>
+<p>initialize()メソッドで指定されたインデックスに基づくオブジェクトをforEachDtoプロパティに設定しています｡
+forEachDtoプロパティには、getterメソッドが定義されているので、initialize()メソッドが実行された後、S2JSFによっ
+て、forEachDtoプロパティの値が自動的にリクエストの属性(forEachDto)に設定されます｡public static final
+String プロパティ名_EXPORT =
+"session";のように定数を宣言することで、リクエストではなくセッションの属性に設定することも出来ます｡ </p>
+<!-- document end --><!-- don't edit start --></td>
+<td width="18"><img src="images/spacer.gif" alt="" height="16" width="18"></td>
+</tr><tr>
+<td width="18"><img src="images/spacer.gif" alt="" height="30" width="18"></td>
+<td width="744"><img src="images/spacer.gif" alt="" height="30" width="744"></td>
+<td width="18"><img src="images/spacer.gif" alt="" height="16" width="18"></td></tr><tr>
+<td width="18"><img src="images/spacer.gif" alt="" height="14" width="18"></td>
+<td class="copyright" width="744">&#169; Copyright The Seasar Project and the others 2004, all rights reserved.</td>
+<td width="18"><img src="images/spacer.gif" alt="" height="16" width="18"></td>
+</tr></tbody></table>
+</td><td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left" height="14" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="14" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end -->
+</body></html>

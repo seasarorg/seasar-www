@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<h2><a name="DIContainer">DIContainer</a></h2>
+<p>DIContainer is a light weight container which does Dependency Injection, and it is occasionally said the IoC Container.
+Dependency Injection is plainly explained by <a href="http://www.martinfowler.com/articles/injection.html">“Inversion of Control Containers and the Dependency Injection pattern" of Martin Fowler</a>. </p>
+<p>Then, let's make the component on the S2Container. 
+The specification of the component is as follows.</p>
+<ul>
+<li>The function of an automatic numbering is offered.</li>
+<li>When the numbering key is received as an argument, the value by which the number of counter is increased is returned.</li>
+<li>When the numbering key which does not exist is specified, the exception is generated.</li>
+</ul>
+<pre>
+package examples.dicon.service;
+
+public interface AutoNumber {
+
+    public int next(int numberKey) throws NumberKeyNotFoundRuntimeException;
+}
+</pre>
+</p>
+<p>The component of DAO becomes the following specifications.</p>
+<ul>
+<li>The counter is updateed based on the numbering key.1 is returned when succeeding in the update, 0 is returned when a numbering key does not exist.(Statement.executeUpdate() of JDBC API is assumed.)</li>
+<li>The value of the latest counter is returned based on the numbering key.</li>
+</ul>
+<pre>
+package examples.dicon.dao;
+
+public interface AutoNumberDao {
+
+    public int inclement(int numberKey);
+
+    public int getCurrentNumber(int numberKey);
+}
+</pre>
+<p>The AutoNumber component needs the reference to the AutoNumberDao component.
+The constructor is handled this time though there is a method of using the constructor and property to acquire the reference.
+</p>
+<h4><a name="AutoNumberImpl">AutoNumberImpl</a></h4>
+<pre>
+package examples.dicon.service;
+
+import examples.dicon.dao.AutoNumberDao;
+
+public class AutoNumberImpl implements AutoNumber {
+
+    private AutoNumberDao autoNumberDao_;
+
+    public AutoNumberImpl(AutoNumberDao autoNumberDao) {
+        autoNumberDao_ = autoNumberDao;
+    }
+
+    public int next(int numberKey) throws NumberKeyNotFoundRuntimeException {
+        int updateCount = autoNumberDao_.inclement(numberKey);
+        if (updateCount == 1) {
+            return autoNumberDao_.getCurrentNumber(numberKey);
+        } else {
+            throw new NumberKeyNotFoundRuntimeException(numberKey);
+        }
+    }
+}
+</pre>
+<p>Who will set AutoNumberDao which is constructor's argument?
+When S2Container is used, S2Container is solved to such a dependency.</p>
+<p>Then, let's test AutoNumberImpl.
+The class which implements AutoNumberDao is necessary to test.
+Mock is made so that you may not actually connect with the database.
+S2ではモックを簡単に作成できるように<a href="aop.html#MockInterceptor">MockInterceptor</a>が用意されています。</p>
+<p>S2Container is made.</p>
+<pre>
+S2Container container = new S2ContainerImpl();
+</pre>
+<p>S2Container#register(Class componentClass) is used to register the component.</p>
+<pre>
+container.register(AutoNumberImpl.class);
+</pre>
+<p>AutoNumberDaoのモックを作成して、S2Containerに登録します。コンポーネントのクラスのかわりに直接オブジェクトを登録することもできます。</p>
+<pre>
+MockInterceptor mi = new MockInterceptor();
+mi.setReturnValue("increment", new Integer(1));
+mi.setReturnValue("getCurrentNumber", new Integer(1));
+AutoNumberDao dao = (AutoNumberDao) mi.createMock(AutoNumberDao.class);
+container.register(dao);
+</pre>
+<p>S2Container#getComponent(Class componentClass) is used to acquire the component.</p>
+<pre>
+AutoNumber autoNumber = (AutoNumber) container.getComponent(AutoNumber.class);
+</pre>
+<p>Being necessary to know with S2Container at least is only this.
+When the type is an interface, the dependency of the component is automatically solved by the type.
+Even when property is used, the dependence is automatically similarly solved by the type.</p>
+<p>The test case is as follows.</p>
+<pre>
+package test.examples.dicon.service;
+
+import org.seasar.framework.aop.interceptors.MockInterceptor;
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.impl.S2ContainerImpl;
+
+import examples.dicon.dao.AutoNumberDao;
+import examples.dicon.service.AutoNumber;
+import examples.dicon.service.AutoNumberImpl;
+import examples.dicon.service.NumberKeyNotFoundRuntimeException;
+import junit.framework.TestCase;
+
+public class AutoNumberImplTest extends TestCase {
+
+    public AutoNumberImplTest(String arg0) {
+        super(arg0);
+    }
+
+    public static void main(String[] args) {
+        junit.textui.TestRunner.run(AutoNumberImplTest.class);
+    }
+
+    public void testNext() {
+        S2Container container = new S2ContainerImpl();
+        container.register(AutoNumberImpl.class);
+        MockInterceptor mi = new MockInterceptor();
+        mi.setReturnValue("increment", new Integer(1));
+        mi.setReturnValue("getCurrentNumber", new Integer(1));
+        AutoNumberDao dao = (AutoNumberDao) mi.createMock(AutoNumberDao.class);
+        container.register(dao);
+        AutoNumber autoNumber = (AutoNumber) container.getComponent(AutoNumber.class);
+        assertEquals("1", 1, autoNumber.next(1));
+    }
+
+    public void testNextForNumberKeyNotFound() {
+        S2Container container = new S2ContainerImpl();
+        container.register(AutoNumberImpl.class);
+        MockInterceptor mi = new MockInterceptor();
+        mi.setReturnValue(new Integer(0));
+        AutoNumberDao dao = (AutoNumberDao) mi.createMock(AutoNumberDao.class);
+        container.register(dao);
+        AutoNumber autoNumber = (AutoNumber) container.getComponent(AutoNumber.class);
+        try {
+            autoNumber.next(-1);
+            fail("1");
+        } catch (NumberKeyNotFoundRuntimeException ex) {
+            assertEquals("2", -1, ex.getNumberKey());
+        }
+    }
+}
+</pre>
+<h2><a name="DIType">Type of Dependency Injection</a></h2>
+<p>In Dependency Injection, there are Interface Injection, Setter Injection, Constructor Injection, and Method Injection.
+Method Injection is original of S2.S2 supports all types and the hybrids.</p>
+<h2><a name="ConstructorInjection">Constructor Injection</a></h2>
+<p>The example of passing 0 of int to the constructor of Integer is as follows.</p>
+<h4>examples/dicon/xml/ConstructorInjection.dicon</h4>
+<pre>&lt;components&gt;<br />    &lt;component name=&quot;foo&quot; class=&quot;java.lang.Integer&quot;&gt;<br />        &lt;arg&gt;0&lt;/arg&gt;<br />    &lt;/component&gt;
+    &lt;component class=&quot;java.util.Date&gt;<br />        &lt;arg&gt;foo&lt;/arg&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
+</pre>
+<p>The value is written in the body of the arg tag.
+Please refer to <a href="http://www.ognl.org/2.6.5/Documentation/html/LanguageGuide/index.html">the manual of OGNL</a> for details. 
+Two or more arg tags are defined when there are two or more arguments.
+The component tag can be used for the child tag of the arg tag. </p>
+<h4>examples.dicon.xml.ConstructorInjectionClient</h4>
+<pre>
+private static final String PATH =<br />    &quot;examples/dicon/xml/ConstructorInjection.dicon&quot;;<br />
+S2Container container = S2ContainerFactory.create(PATH);
+System.out.println(container.getComponent("foo"));
+System.out.println(container.getComponent(Date.class));</pre> 
+<p>To make S2Container, passing XML is specified for the first argument of S2ContainerFactory.create().
+It is necessary to include XML in CLASSPATH.
+The component can be acquired even in the name and the type.</p>
+
+<h2><a name="SetterInjection">Setter Injection</a></h2>
+<p>The example of setting 0 to property time of Date is as follows.</p>
+<h4>examples/dicon/xml/SetterInjection.dicon</h4>
+<pre>&lt;components&gt;<br />    &lt;component class=&quot;java.util.Date&quot;&gt;<br />        &lt;property name=&quot;time&quot;&gt;0&lt;/property&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
+</pre>
+<p>Two or more property tags are defined when there is two or more property.
+The component tag can be used for the child tag of the property tag.
+Other components can be referred to by specifying the component name for the body of the property tag as well as the arg tag.
+<h4>examples.dicon.xml.SetterInjectionClient</h4>
+<pre>
+private static final String PATH =<br />    &quot;examples/dicon/xml/SetterInjection.dicon&quot;;<br />
+S2Container container = S2ContainerFactory.create(PATH);
+System.out.println(container.getComponent(Date.class));</pre> 
+
+<h2><a name="MethodInjection">Method Injection</a></h2>
+<p>The value can be set by calling the method.</p>
+<h4>examples/dicon/xml/MethodInjection.dicon</h4>
+<pre>&lt;components&gt;<br />    &lt;component class=&quot;java.util.HashMap&quot;&gt;<br />        &lt;initMethod name=&quot;put&quot;&gt;<br />            &lt;arg&gt;&quot;aaa&quot;&lt;/arg&gt;<br />            &lt;arg&gt;&quot;111&quot;&lt;/arg&gt;<br />        &lt;/initMethod&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
+</pre>
+<p>The name of the method is specified by the name attribute of the initMethod tag.
+The usage of the arg tag is similar to constructor's case.
+Two or more initMethod tag can be defined.</p>
+<h4>examples.dicon.xml.MethodInjectionClient</h4>
+<pre>
+private static final String PATH =<br />    &quot;examples/dicon/xml/MethodInjection.dicon&quot;;<br />
+S2Container container = S2ContainerFactory.create(PATH);
+Map map = (Map) container.getComponent(Map.class);<br />System.out.println(map.get(&quot;aaa&quot;));</pre> 
+<p>In the timing of S2Container.destroy(), the call method can be specified with the destroyMethod tag.
+If OGNL is used, the method can be called more easily.</p>
+<pre>&lt;components&gt;
+    &lt;component class=&quot;java.util.HashMap&quot;&gt;
+        &lt;initMethod&gt;#self.put(&quot;aaa&quot;, &quot;111&quot;)&lt;/initMethod&gt;
+        &lt;initMethod&gt;#out.println(&quot;Hello&quot;)&lt;/initMethod&gt;
+    &lt;component&gt;
+&lt;/components&gt;
+
+</pre>
+<p>
+#self means the component. 
+#out means System.out. </p>
+<h2><a name="ComponentByOgnl">Definition of component by OGNL</a></h2>
+<p>The component can be defined by using <a href="http://www.ognl.org/">OGNL</a>.</p>
+<pre>&lt;component name=&quot;initialContext&quot;&gt;new javax.naming.InitialContext()&lt;/component&gt;
+&lt;component name=&quot;dataSource&quot;&gt;initialContext.lookup(&quot;jdbc/oracle&quot;)&lt;/component&gt;</pre>
+
+<h2><a name="Aop">AOP</a></h2>
+<p><a href="aop.html">AOP</a> can be applied to the component.
+The example of applying <a href="aop.html#TraceInterceptor">TraceInterceptor</a> to ArrayList is as follows.</p>
+<pre>&lt;components&gt;<br />    &lt;component name=&quot;traceInterceptor&quot;<br />        class=&quot;org.seasar.framework.aop.interceptors.TraceInterceptor&quot;/&gt;<br />    &lt;component class=&quot;java.util.ArrayList&quot;&gt;<br />        &lt;aspect&gt;traceInterceptor&lt;/aspect&gt;<br />    &lt;/component&gt;
+    &lt;component class=&quot;java.util.Date&quot;&gt;<br />        &lt;arg&gt;0&lt;/arg&gt;<br />        &lt;aspect pointcut=&quot;getTime, hashCode&quot;&gt;traceInterceptor&lt;/aspect&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
+</pre>
+<p>The name of Interceptor is specified by the body of the aspect tag.
+The method name is specified for pointcut attribute by the comma delimitation.
+When the pointcut attribute is not specified, all the methods of the interface which the component inpliments.
+The regular expression (reqex of JDK1.4) can be used for the method name.</p>
+<h4>examples.dicon.xml.AopClient</h4>
+<pre>
+private static final String PATH =<br />    &quot;examples/dicon/xml/Aop.dicon&quot;;<br />
+S2Container container = S2ContainerFactory.create(PATH);<br />List list = (List) container.getComponent(List.class);<br />list.size();<br />Date date = (Date) container.getComponent(Date.class);<br />date.getTime();<br />date.hashCode();<br />date.toString();</pre> 
+<p>The execution result is as follows.</p>
+<pre>
+BEGIN java.util.ArrayList#size()
+END java.util.ArrayList#size() : 0
+BEGIN java.util.Date#getTime()
+END java.util.Date#getTime() : 0
+BEGIN java.util.Date#hashCode()
+BEGIN java.util.Date#getTime()
+END java.util.Date#getTime() : 0
+END java.util.Date#hashCode() : 0
+BEGIN java.util.Date#getTime()
+END java.util.Date#getTime() : 0
+</pre>
+<h2><a name="Include">Division and include of component definition</a></h2>
+<p>If all components are described in one file, the file expands immediately and management becomes difficult.
+Therefore, the function to divide the definition of the component into the plural and the divided definition are provided for one and the function to bring is provided in S2Container. 
+The definition of each usecase is recommended to be divided. 
+</p>
+<pre>&lt;components&gt;
+    &lt;include path=&quot;"Definition of component of usecase 1".dicon&quot;/&gt;
+    &lt;include path=&quot;"Definition of component of usecase 2".dicon&quot;/&gt;
+&lt;/components&gt;</pre>
+
+<h2><a name="Namespace">Namespace</a></h2>
+<p>The namespace can be specified by the namespace attribute of the components tag so that the name should not coflict between two or more component definitions.</p>
+<h4>foo.dicon</h4>
+<pre>&lt;components namespace=&quot;foo&quot;&gt;
+    &lt;component name=&quot;aaa&quot; .../&gt;
+    &lt;component name=&quot;bbb&quot; ...&gt;
+        &lt;arg&gt;aaa&lt;/arg&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</pre>
+<h3>bar.dicon</h3>
+<pre>&lt;components namespace=&quot;bar&quot;&gt;
+    &lt;component name=&quot;aaa&quot; .../&gt;
+    &lt;component name=&quot;bbb&quot; ...&gt;
+        &lt;arg&gt;aaa&lt;/arg&gt;
+    &lt;/component&gt;
+    &lt;component name=&quot;ccc&quot; ...&gt;
+        &lt;arg&gt;foo.aaa&lt;/arg&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</pre>
+<h3>app.dicon</h3>
+<pre>&lt;components&gt;
+    &lt;include path=&quot;foo.dicon&quot;/&gt;
+    &lt;include path=&quot;bar.dicon&quot;/&gt;
+&lt;/components&gt;
+</pre>
+<p>It is possible to refer in the same component definition without the namespace.
+When the component of other component definitions is referred, namespace dot(.) is applied to the head of the component name.
+Because the namespace is different, foo.aaa and bar.aaa are recognized as a different component though give the same name.
+It is recommended that the name of the definition file be made namespace.dicon as a custom.</p>
+<h2><a name="InstanceMode">Instance management</a></h2>
+<p>The instance of the component managed with the container is managed with Singleton for default.
+The component returned by S2Container.getComponent() is always a meaning of the same.
+When you want the component newly made to be returned whenever S2Container.getComponent() is called, prototype is specified for instance attribute of the component tag.
+As for the instance attribute, singleton becomes default.</p>
+<p>When the dependency is injected into the component outside the container, S2Container.injectDependency(Object outerComponent,Class componentClass) and S2Container.injectDependency(Object outerComponent,String componentName) are used.
+Outer is specified for instance attribute for the component made on the outside.</p>
+<pre>&lt;components&gt;
+    &lt;component name=&quot;employeeService&quot; class=&quot;...&quot;/&gt;
+    &lt;component name=&quot;home&quot; class=&quot;..HomePage&quot; instance=&quot;outer&quot;&gt;
+        &lt;property name=employeeService&gt;employeeService&lt;/property&gt;
+    &lt;/componet&gt;
+&lt;/components&gt;
+</pre>
+
+<h2><a name="Lifecycle">Lifecycle</a></h2>
+<p>
+The lifecycle of the component can be managed with the container by using the initMethod tag and the destroyMethod tag.
+The method of the specification with the initMethod tag when the container is begun is called.
+The method of the specification with the destroyMethod tag when the container is ended is called.
+Even if destroyMethod is specified, except when the instance attribute is singleton, S2Container is disregarded.</p>
+
+<h2><a name="AutoBindingMode">AutoBinding</a></h2>
+<p>It is possible to control in detail by specifying the autoBinding attribute of the component tag.</p>
+
+<table width="744" border="1">
+<tr bgcolor="#d1f3f4" align="center">
+<th width="104" scope="col">autoBinding</th>
+<th width="624" scope="col">description</th>
+</tr>
+<tr>
+<td>auto</td>
+<td>When constructor's argument is specified specifying, S2Container follows it.
+When the default constructor who does not have the argument is defined, the component is made by handling the constructor.
+The component is made by the constructor which the number of constructor's arguments is one or more and the type of all the arguments is an interface when there is no constructor of default.
+When property is specified specifying, S2Container follows it.
+明示的に指定されていないプロパティで型がインターフェースの場合は自動的にバインドします。</td>
+</tr>
+<tr>
+<td>constructor</td>
+<td>コンストラクタの引数が明示的に指定されている場合は、それに従います。指定されていない場合、引数のないデフォルトコンストラクタが定義されている場合はそのコンストラクタを使ってコンポーネントが作成されます。デフォルトのコンストラクタがない場合、コンストラクタの引数の数が1以上で、引数の型がすべてインターフェースのコンストラクタを使ってコンポーネントを作成します。プロパティが明示的に指定されている場合はそれに従います。</td>
+</tr>
+<tr>
+<td>property</td>
+<td>コンストラクタの引数が明示的に指定されている場合は、それに従います。指定されていない場合は、デフォルトのコンストラクタでコンポーネントを作成します。型がインターフェースのプロパティを自動的にバインドします。</td>
+</tr>
+<tr>
+<td>none</td>
+<td>コンストラクタの引数が明示的に指定されている場合は、それに従います。プロパティが明示的に指定されている場合はそれに従います。</td>
+</tr>
+</table>
+
+<h2><a name="UseS2Container">コンポーネントでS2Containerを利用する</a></h2>
+<p>コンポーネントはコンテナに依存しないことが望ましいのですが、コンポーネントによっては、コンテナのサービスを呼び出したい場合もあるでしょう。S2Container自身もcontainerという名前で、コンテナに登録されているので、arg,propertyタグのボディでcontainerを指定することで、コンテナのインスタンスを取得できます。また、S2Container型のsetterメソッドを定義しておいて自動バインディングで設定することもできます。</p>
+
+<h2><a name="S2ContainerServlet">誰がS2Containerを作成するのか</a></h2>
+<p>誰がS2Containerを作成するのでしょうか。その目的のためにS2ContainerServletが用意されています。S2ContainerServletを使うためには、web.xmlに次の項目を記述します。src/org/seasar/framework/container/servlet/web.xmlに記述例もあります。</p>
+<pre>
+&lt;servlet&gt;<br />    &lt;servlet-name&gt;s2servlet&lt;/servlet-name&gt;<br />    &lt;servlet-class&gt;org.seasar.framework.container.servlet.S2ContainerServlet&lt;/servlet-class&gt;<br />    &lt;init-param&gt;<br />        &lt;param-name&gt;configPath&lt;/param-name&gt;<br />        &lt;param-value&gt;app.dicon&lt;/param-value&gt;<br />    &lt;/init-param&gt;<br />    &lt;load-on-startup/&gt;
+&lt;/servlet&gt;<br />&lt;servlet-mapping&gt;<br />    &lt;servlet-name&gt;s2servlet&lt;/servlet-name&gt;<br />    &lt;url-pattern&gt;/s2servlet&lt;/url-pattern&gt;<br />&lt;/servlet-mapping&gt;</pre>
+<p>configPathでメインとなる定義ファイルを指定します。定義ファイルはWEB-INF/classesにおきます。S2ContainerServletは、他のサーブレットよりもはやく起動されるようにload-on-startupタグを調整してください。S2ContainerServletが起動した後は、SingletonS2ContainerFactory.getContainer()でS2Containerのインスタンスを取得できます。S2Containerのライフサイクルは、S2ContainerServletと連動します。</p>
+
+<h2><a name="app.dicon">app.diconの役割</a></h2>
+<p>app.diconの役割は、分割されたXML定義をインクルードすることです。app.diconにはコンポーネントの定義はしないようにしてください。サンプルで、他の定義ファイルをインクルードしているケースもありますが、あくまでもサンプルなためで、実際の開発では、インクルードはapp.diconのみで行うことを推奨します。場所は、CLASSPATHに通してあるディレクトリに置く必要があります。通常はWEB-INF/classesにおくと良いでしょう。</p>
+
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright">&copy; Copyright The Seasar Project and the others 2004, all rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>
