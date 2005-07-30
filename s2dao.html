@@ -48,6 +48,7 @@
 								<li><a href="#DefMethod">メソッドの定義</a></li>
 								<li><a href="#NoPersistentPropsAnnotation">NO_PERSISTENT_PROPSアノテーション</a></li>
 								<li><a href="#PersistentPropsAnnotation">PERSISTENT_PROPSアノテーション</a></li>
+								<li><a href="#SqlAnnotation">SQLアノテーション</a></li>
 							</ul>
                 		<li type="circle"><a href="#diconfile">diconファイル</a></li>
                 		<li type="circle"><a href="#SQLfile">SQLファイル</a></li>
@@ -442,6 +443,58 @@ public int removeDept(Department department);
 	<pre>public static final String insert_PERSISTENT_PROPS = "deptno";</pre>
 	<p>上記のように指定すると、insertメソッドで、プライマリーキー、versionNo、timestampのプロパティに加えて、
 	PERSISTENT_PROPSアノテーションで指定したプロパティが永続化の対象になります。</p>
+ 	<h5><a name="SqlAnnotation">SQLアノテーション</a></h5>
+	<p>バージョン1.0.28より、SQLアノテーションを使用することが可能です。機能はSQLファイルと同様で、アノテーションにてSQL及びSQLコメントを使用することが可能です。</p>
+ 	<p>SQLアノテーションに命名規則があります。</p>
+ 	<ul>
+ 	<li>SQLファイルとDaoに定義したメソッドの関連付け</li>
+ 	<p>SQLアノテーションとDaoに定義したメソッドの関連付けをするには、SQLアノテーションを以下の形式にする必要があります。</p>
+ 	<p>-  <span class="italic">メソッド名</span>_SQL</p>
+ 	examples.dao.EmployeeDao#getAllEmployees()に対応するSQLアノテーションは以下のようになります。
+ 	<pre>public static final String getAllEmployees_SQL = "SELECT
+emp.*, dept.dname dname_0, dept.loc loc_0 FROM emp, dept
+ WHERE emp.deptno = dept.deptno ORDER BY emp.empno;";</pre>
+ 	<li>複数DBMS対応</li>
+ 	<p>DBMSごとに使用するSQLアノテーションを指定することができます。
+ 	どのDBMSを使っているのかはjava.sql.DatabaseMetadata#getDatabaseProductName()に応じて、S2Daoが自動的に判断しています。
+ 	S2DaoのほうでDBMSごとにサフィックスを決めているので、SQLアノテーションにサフィックスを追加します。
+ 	例えばオラクルの場合、サフィックスはoracleなので、「getAllEmployees_oracle_SQL」というSQLアノテーションになります。</p>
+ 	DBMSとサフィックスの関係は以下の通りです。
+ 	<table class="main" border="1">
+ 		<tbody><tr align="center" bgcolor="#d1f3f4">
+ 			<th scope="col">DBMS</th>
+ 			<th scope="col">サフィックス</th>
+ 		</tr>
+ 		<tr>
+ 			<td>Oracle</td>
+ 			<td>oracle</td>
+ 		</tr>
+ 		<tr>
+ 			<td>DB2</td>
+ 			<td>db2</td>
+ 		</tr>
+ 		<tr>
+ 			<td>MSSQLServer</td>
+ 			<td>mssql</td>
+ 		</tr>
+ 		<tr>
+ 			<td>MySQL</td>
+ 			<td>mysql</td>
+ 		</tr>
+ 		<tr>
+ 			<td>PostgreSQL</td>
+ 			<td>postgre</td>
+ 		</tr>
+ 		<tr>
+ 			<td>Firebird</td>
+ 			<td>firebird</td>
+ 		</tr>
+ 		<tr>
+ 			<td>HSQL</td>
+ 			<td>hsql</td>
+ 		</tr>
+ 	</tbody></table>
+ 	</ul>
 
     <h4><a name="diconfile">diconファイル</a></h4>
     	<p>diconファイルはDaoをコンテナにコンポーネント登録します。Dao機能を使用するには、登録したDaoに対して、AOPを適用する必要があります。
