@@ -117,7 +117,7 @@ StrutsƒIƒŠƒWƒiƒ‹‚ÌƒT[ƒuƒŒƒbƒg‚ğg—p‚·‚éê‡‚ÍAstruts-config.xml‚Éorg.seasar.st
   &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;s2container&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/s2container&lt;/url-pattern&gt;
-  &lt;/servlet-mapping&gt;</p><p> &lt;!-- Standard Action Servlet Mapping --&gt;<br />
+  &lt;/servlet-mapping&gt;<p> &lt;!-- Standard Action Servlet Mapping --&gt;<br />
   &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;action&lt;/servlet-name&gt;
     &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
@@ -186,12 +186,11 @@ RegistActionClassPlugIn‚ğ“o˜^‚·‚é–‚É‚æ‚èAS2‚Æ˜A“®‚·‚éAction‚ğA–¾¦“I‚ÉƒRƒ“ƒ|
   &lt;component class=&quot;org.seasar.struts.examples.MultiplyServiceImpl&quot;/&gt;
 &lt;/components&gt;
 </pre>
-</p>
 <p>
 ƒCƒ“ƒXƒ^ƒ“ƒX‘®«‚ÍA”CˆÓ‚Å‚·B‚±‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`ƒtƒ@ƒCƒ‹‚Å‚ÍA‚Å‚ÍA‘¼‚Ì‰‰ZƒTƒ“ƒvƒ‹‚Æ‚Ì”äŠr‚Ì‚½‚ß‚ÉAprototype‚ğw’è‚µ‚Ä‚¢‚Ü‚·B
 singleton‚Æ‚·‚é‚Ì‚Å‚ ‚ê‚ÎA–¾¦“I‚Èw’è‚Ì•K—v‚Í‚ ‚è‚Ü‚¹‚ñBinstance‘®«‚ÉAprototype‚ğw’è‚ğ‚µ‚Ä‚¢‚·‚é‚ÆA
 ActionƒNƒ‰ƒX‚ğAÀ‘•‚·‚é‚ÉAƒCƒ“ƒXƒ^ƒ“ƒXƒtƒB[ƒ‹ƒh‚ğg—p‚Å‚«‚é‚Æ‚¢‚¤—˜“_‚ª‚ ‚è‚Ü‚·B
-
+</p>
 <p>
 ‚Ü‚½A‚±‚ê‚ç‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ÍAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘S‘Ì‚Ì’è‹`‚Å‚ ‚é<a href="#app.dicon">app.dicon</a>‚É“o˜^‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B
 </p>
@@ -254,13 +253,13 @@ org.apache.struts.action.Action‚ğŒp³‚µ‚È‚¢POJO‚ğAction‚Æ‚µ‚Äg—p‚·‚é–‚ªo—ˆ‚Ü‚
 <h4>EchoActionImpl</h4>
 <pre>public class EchoActionImpl implements EchoAction {
     private StringForm strForm;
-
+    
     public EchoActionImpl() {
     }
 
     public String echo() {
         strForm.setResult(strForm.getInput());
-
+        
         return FowardNameConstants.SUCCESS;
     }
 
@@ -389,7 +388,7 @@ HTML‚É•ÏŠ·‚³‚ê‚é‚ÆˆÈ‰º‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B
     ...
     &lt;action
       path=&quot;<b>/subtract</b>&quot;
-      type=&quot;org.seasar.struts.ProxyAction&quot;
+      type=&quot;org.seasar.struts.action.ProxyAction&quot;
       name=&quot;calcForm&quot;
       scope=&quot;request&quot;
       validate=&quot;false&quot;
