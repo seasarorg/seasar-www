@@ -24,22 +24,24 @@
 <tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
 <!-- don't edit end -->
 <!-- document start -->
-<p>S2では、コンテナを使った開発のテストを楽しくおこなえるようにテスティングフレームワークが組み込まれています。JUnitを拡張しています。主な機能は以下のとおりです。</p>
-<ul>
-<li>テストメソッド(testXxx)ごとに自動的にS2Containerを作成します。</li>
-<li>S2Containerに対するregister(),getComponent(),include()が用意されています。</li>
-<li>include()するPATHがテストクラスと同じパッケージにある場合は、パッケージ部分のパスは省略できます。例えば、aaa.bbb.CccTestクラスがaaa/bbb/hoge.diconをinclude()する場合、include(&quot;hoge.dicon&quot;)と記述することができます。</li>
-<li>TestCaseのstaticでもないfinalでもないフィールドがあり、その名前からアンダースコア(_)を除いた名前のコンポーネントがコンテナに存在すれば自動的にセットされます。</li>
-<li>TestCaseのフィールドにインターフェース型の変数が定義されていればS2Containerから取り出して自動的にセットされます。</li>
-<li>テストメソッドが終わると自動セットされた値は自動的にクリア(nullをセット)されます。</li>
-<li>テストメソッド(testXxx)に対応するsetUpXxx(),tearDownXxx()を定義しておくと、setUp()の後、tearDown()の前に自動的に呼び出されます。個別のテストメソッドごとの初期化・終了処理を簡単に行えるようになります。</li>
-<li>include(&quot;j2ee.dicon&quot;)をしておいて、テストメソッド名の最後にTxをつける(testXxxTx)と、テストメソッドの直前にトランザクションを開始し、テストメソッドの直後にトランザクションをロールバックするので、データベースに関するテストを行った場合のクリーンアップの処理が不要になります。</li>
-</ul>
-<h2><a name="Example">Example</a></h2>
-<p>ここでは、<a href="tx.html">トランザクションの自動制御</a>をテストするRequiredInterceptorTestを見てみましょう。</p>
-<h4>TxBean.java</h4>
-<pre>
-package test.org.seasar.extension.tx;
+            <P>Testing framework based on JUnit is integrated with S2 to make tests on development using containers fun. Followings are some features:</P>
+            <UL>
+              <LI>S2Container is automatically generated for each test method(textXXX).
+              <LI>register(),getComponent(), and include() for a S2Container is made available.
+              <LI>If include() path is the same package as test class package, is is possible to omit path in a package. As an example, if aaa.bbb.CccTest class includes aaa/bbb/hoge.dicon, it is possible to write include statement as include("hoge.dicon").
+              <LI>TestCase fields that are not static nor final are automatically set with underscore character (_) omitted from their names.
+
+              <LI>TestCase fields with interface type variable definitions are automatically set by S2Container.
+
+              <LI>Values automatically assigned are cleared (set to null) afer test method ends.
+              <LI>If test method(testXxx) is defined with corresponding setUpXxx() and tearDownXxx() methods, it is invoked after setUp() and before tearDown() are invoked. Thus, it makes initialization and finalization process easier.
+
+              <LI>By ending test method names with Tx(e.g.testXxxTx) in include("j2ee.dicon") file, transaction is initiated just before the test method and rolled back after the test method is invoked. Thus, it is unnecessary to recovery database data after each test.
+              </LI></UL>
+            <H2><A name=Example>Example</A></H2>
+            <P>Let's look at<A 
+            href="http://www.seasar.org/en/tx.html">automatic transaction processing</A> which tests RequiredInterceptorTest.</P>
+            <H4>TxBean.java</H4><PRE>package test.org.seasar.extension.tx;
 
 import javax.transaction.SystemException;
 
@@ -47,10 +49,8 @@ public interface TxBean {
 
     public boolean hasTransaction() throws SystemException;
 }
-</pre>
-<h4>TxBeanImpl.java</h4>
-<pre>
-package test.org.seasar.extension.tx;
+</PRE>
+            <H4>TxBeanImpl.java</H4><PRE>package test.org.seasar.extension.tx;
 
 import javax.transaction.Status;
 import javax.transaction.SystemException;
@@ -68,13 +68,10 @@ public class TxBeanImpl implements TxBean {
         System.out.println(tm_.getTransaction());
         return tm_.getStatus() != Status.STATUS_NO_TRANSACTION;
     }
-}</pre>
-<h4>RequiredＩｎｔｅｒｃｅｐｔｏｒTest.dicon</h4>
-<pre>&lt;components&gt;<br />    &lt;component class=&quot;org.seasar.extension.jta.TransactionManagerImpl&quot;/&gt;<br />    &lt;component name=&quot;requiredTx&quot;<br />        class=&quot;org.seasar.extension.tx.RequiredInterceptor&quot;/&gt;<br />    &lt;component class=&quot;test.org.seasar.extension.tx.TxBeanImpl&quot;&gt;<br />        &lt;aspect&gt;requiredTx&lt;/aspect&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
-</pre>
-<h4>RequiredInterceptorTest.java</h4>
-<pre>
-package test.org.seasar.extension.tx;
+}</PRE>
+            <H4>Required InterceptioTest.dicon</H4><PRE>&lt;components&gt;<BR>    &lt;component class="org.seasar.extension.jta.TransactionManagerImpl"/&gt;<BR>    &lt;component name="requiredTx"<BR>        class="org.seasar.extension.tx.RequiredInterceptor"/&gt;<BR>    &lt;component class="test.org.seasar.extension.tx.TxBeanImpl"&gt;<BR>        &lt;aspect&gt;requiredTx&lt;/aspect&gt;<BR>    &lt;/component&gt;<BR>&lt;/components&gt;
+</PRE>
+            <H4>RequiredInterceptorTest.java</H4><PRE>package test.org.seasar.extension.tx;
 
 import javax.transaction.Status;
 import javax.transaction.TransactionManager;
@@ -123,21 +120,19 @@ public class RequiredInterceptorTest extends S2TestCase {
             new String[] { RequiredInterceptorTest.class.getName()});
     }
 }
-</pre>
-コンポーネントの組み立てやコンポーネントの取り出しといった作業はS2TestCaseが自動的にやってくれて、各テストメソッドは本来必要なことに集中できることが分かっていただけたと思います。
-<h2><a name="DBTest">データベースに対するテスト</a></h2>
-<p>S2では、データベースに対するテストも簡単に行えるような仕組みを用意しています。それではさっそく例を見てみましょう。SQL文を発行するためのフレームワークとしてここでは最も単純な<a href="s2jdbc.html">S2JDBC</a>を使います。</p>
-
-<h2><a name="SelectTest">Select文に対するテスト</a></h2>
-<p>今回は、従業員を従業員番号で検索するDAOをサンプルにします。シナリオとして従業員番号9900で検索をかけると、従業員番号9900の従業員テーブルと部署番号99の部署テーブルをジョインして返す想定とします。このケースをテストするためには、検索のための従業員テーブルと部署テーブルのデータと検索した結果を検証するためのデータが必要です。データはExcelで用意します。シート名がテーブル名で、シートの第1行にカラム名を2行目以降にデータを書き込みます。1から手でデータを作成してもいいのですが、ここでは既存のテーブルのデータを利用してテストデータを作成します。<a href="setup.html">セットアップ</a>を参照してHSQLDBを起動しておきます。データベースの内容をExcelに書き出すDb2Excelが用意されているのでそれを使います。</p>
-<h3>test/examples/unit/Db2Excel.dicon</h3>
-<pre>&lt;components&gt;<br />    &lt;include path=&quot;j2ee.dicon&quot;/&gt;<br />    &lt;component class=&quot;org.seasar.extension.dataset.impl.SqlReader&quot;&gt;<br />        &lt;initMethod&gt;#self.addTable(&quot;emp&quot;, &quot;empno = 7788&quot;)&lt;/initMethod&gt;<br />        &lt;initMethod&gt;#self.addTable(&quot;dept&quot;, &quot;deptno = 20&quot;)&lt;/initMethod&gt;<br />    &lt;/component&gt;<br />    &lt;component class=&quot;org.seasar.extension.dataset.impl.XlsWriter&quot;<br />        instance=&quot;prototype&quot;&gt;<br />        &lt;arg&gt;&quot;../src/test/examples/unit/getEmployeePrepare.xls&quot;&lt;/arg&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
-</pre>
-<p>データベースの内容をDataSetに読み込んでくれるのがSqlReaderです。addTable()の最初の引数はテーブル名(シート名)です。2番目の引数は条件になります。</p>
-<p>DataSetをExcelに書き出してくれるのがXlsWriterです。コンストラクタでファイルのパスを指定します。パスはEclipseのデフォルト出力フォルダが起点になります。</p>
-<h3>test.examples.unit.Db2Excel</h3>
-<pre>
-package test.examples.unit;
+</PRE>The example demonstrates component construction and access are automatically handled by S2TestCase allowing each test method to focus on what really is to be tested.
+            <H2><A name=DBTest>Testing with Database</A></H2>
+            <P>S2 has a feature to make testing with database easier. Let's look at an example. To execute a simple SQL statement, <A href="http://www.seasar.org/en/s2jdbc.html">S2JDBC</A> framework is used.</P>
+            <H2><A name=SelectTest>Testing a Select statement</A></H2>
+            <P>This example inquires empno in EMP table using DAO. When empno=9900 is inquired, a result set consisting of a join of emp table where empno=9900 and dept table where deptno=99 should be returned. To test this case, Emp table, dept table, and data to verify the result are necessary.<BR />
+Verification data is entered in MS Excel with sheet name as a table name, first row containing column name, and following rows holding test verification data.
+It si possible to manually enter all the verification data, but we will generate result data from the database table. Please refer to <A 
+            href="http://www.seasar.org/en/setup.html">setup</A> to initialize HSQLDB database. We will use Db2Excel to create Excel data from the database table.</P>
+            <H3>test/examples/unit/Db2Excel.dicon</H3><PRE>&lt;components&gt;<BR>    &lt;include path="j2ee.dicon"/&gt;<BR>    &lt;component class="org.seasar.extension.dataset.impl.SqlReader"&gt;<BR>        &lt;initMethod&gt;#self.addTable("emp", "empno = 7788")&lt;/initMethod&gt;<BR>        &lt;initMethod&gt;#self.addTable("dept", "deptno = 20")&lt;/initMethod&gt;<BR>    &lt;/component&gt;<BR>    &lt;component class="org.seasar.extension.dataset.impl.XlsWriter"<BR>        instance="prototype"&gt;<BR>        &lt;arg&gt;"../src/test/examples/unit/getEmployeePrepare.xls"&lt;/arg&gt;<BR>    &lt;/component&gt;<BR>&lt;/components&gt;
+</PRE>
+            <P>SqlReader is used to read database data into DataSet. The first argument to addTable() is table name (sheet name). The second argument is the condition.</P>
+            <P>XlsWriter writes out DataSet to Excel. File path is specified in the constructor. File path is relative to Eclipse's default file output folder.</P>
+            <H3>test.examples.unit.Db2Excel</H3><PRE>package test.examples.unit;
 
 import org.seasar.extension.dataset.impl.SqlReader;
 import org.seasar.extension.dataset.impl.XlsWriter;
@@ -162,17 +157,16 @@ public class Db2Excel {
             container.destroy();
         }
     }
-}</pre>
-<p>S2ContainerからSqlReaderを取り出しread()、XlsWriterを取り出しwrite()するだけで、データベースの内容をExcelに書き出すことができます。なんかダイコン時代のプログラムって感じですね(笑)。Eclipseでtest.examples.unitのパッケージを最新表示させると、getEmployeePrepare.xlsが作成されていることが確認できると思います。getEmployeePrepare.xlsを右クリックしてアプリケーションから開く-&gt;システムエディタを選ぶとExcelが起動します。単にダブルクリックするとEclipse上にExcelが表示されてかなり使いにくいので気をつけてください。empシートのEMPNOを9900、ENAMEをSCOTT2に変更します。続いてdeptシートのDEPTNOを99、DNAMEをRESEARCH2に変更します。これで検索用の元データは用意できました。Excelで保存を選び終了させます。つぎにgetEmployeePrepare.xlsを右クリックして最新表示を選びます。これをやることで、Eclipseが変更があったことを認識し、デフォルトの出力フォルダにブックをコピーしてくれます。</p>
-<p>次に結果を検証するためのデータを用意します。Db2Excel.diconを次のように書き換えます。</p>
-<h3>test/examples/unit/Db2Excel.dicon</h3>
-<pre>&lt;components&gt;<br />    &lt;include path=&quot;j2ee.dicon&quot;/&gt;<br />    &lt;component class=&quot;org.seasar.extension.dataset.impl.SqlReader&quot;&gt;<br />        &lt;initMethod&gt;<br />#self.addSql(&quot;SELECT e.empno, e.ename, e.deptno, d.dname<br />FROM emp e, dept d WHERE empno = 7788 AND e.deptno = d.deptno&quot;, &quot;emp&quot;)
-        &lt;/initMethod&gt;<br />    &lt;/component&gt;<br />    &lt;component class=&quot;org.seasar.extension.dataset.impl.XlsWriter&quot;<br />        instance=&quot;prototype&quot;&gt;<br />        &lt;arg&gt;&quot;../src/test/examples/unit/getEmployeeResult.xls&quot;&lt;/arg&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
-</pre>
-<p>先ほどと同様な手順でgetEmployeeResult.xlsのempシートのEMPNOを9900、ENAMEをSCOTT2、DEPTNOを99、DNAMEをRESEARCH2に書き換えて保存します。直接作ったほうが早かった気がしますが、SqlReader.addSql()で任意のSelect文を実行できるんだよというデモということで(^^;)。これでテスト用のデータがそろいました。いよいよテストに取り掛かります。</p>
-<h3>test.examples.unit.EmployeeDaoImplTest</h3>
-<pre>
-package test.examples.unit;
+}</PRE>
+            <P>Database data can be written out to Excel simply by invoking read() method in SqlReader and write() method in XlsWriter. Refresh view on test.examples.unit package in Eclipse to confirm that getEmployeePrepare.xls was created.
+Right click on getEmployeePrepare.xls and choose Open -&gt; System editor to open the file in Excel (MS Excel must be installed in the machine). If you just double click on getEmployeePrepase.xls, Excel is opened within Eclipse. In emp sheet, change EMPNO to 9900 and ENAME to SCOTT2. In dept sheet, chante DEPTNO to 99 and DNAME to RESEARCH2. Save the result and exit Excel.
+Next, right click EmployeePrepare.xls and choose Refresh to tell Eclipse that we just edited the file. Eclipse should copy the book to the default output folder.</P>
+            <P>Next, we need to prepare verification data. Edit Db2Excel.dicon as follows:</P>
+            <H3>test/examples/unit/Db2Excel.dicon</H3><PRE>&lt;components&gt;<BR>    &lt;include path="j2ee.dicon"/&gt;<BR>    &lt;component class="org.seasar.extension.dataset.impl.SqlReader"&gt;<BR>        &lt;initMethod&gt;<BR>#self.addSql("SELECT e.empno, e.ename, e.deptno, d.dname<BR>FROM emp e, dept d WHERE empno = 7788 AND e.deptno = d.deptno", "emp")
+        &lt;/initMethod&gt;<BR>    &lt;/component&gt;<BR>    &lt;component class="org.seasar.extension.dataset.impl.XlsWriter"<BR>        instance="prototype"&gt;<BR>        &lt;arg&gt;"../src/test/examples/unit/getEmployeeResult.xls"&lt;/arg&gt;<BR>    &lt;/component&gt;<BR>&lt;/components&gt;
+</PRE>
+            <P>Create getEmployeeResult.xls file in the same manner as above. Set EMPNO=9900 and ENAME=SCOTT2 in emp sheet and DEPTNO=99 and DNAME=RESEARCH2 in dept sheet. Let's start testing!</P>
+            <H3>test.examples.unit.EmployeeDaoImplTest</H3><PRE>package test.examples.unit;
 
 import org.seasar.extension.dataset.DataSet;
 import org.seasar.extension.dataset.DataTable;
@@ -208,13 +202,11 @@ public class EmployeeDaoImplTest extends S2TestCase {
     public static void main(String[] args) {
         junit.textui.TestRunner.run(EmployeeDaoImplTest.class);
     }
-}</pre>
-<p>setUp()が<a href="DIContainer.html#app.dicon">app.dicon</a>の役割を担います。testGetEmployeeTxのようにテストメソッド名の最後にTxをつけるとテストメソッドを開始する直前にトランザクションを開始し、テストメソッドが終了した直後にトランザクションがロールバックされます。テストのためにデータベースに格納したデータもすべてロールバックしてもとに戻るためデータのクリーンアップを考える必要がなくなります。</p>
-<p>readXlsWriteDb()、readXlsAllReplaceDb()で、テストのために用意したデータをデータベースに格納します。Excelのファイルがテストクラスと同じパッケージにある場合は、パッケージのパスを省略できます。readXlsWriteDb()、readXlsAllReplaceDb()はテスト後にロールバックしてデータが元に戻るようにtestXxxTx()の最初に実行してください。これらのメソッドは、シートの定義の逆順に削除した後にデータを挿入します。readXlsAllReplaceDb()を使う場合、外部キー制約に引っかからないように、データのないシートを用意する必要がある場合があります。例えば、テーブルAの外部キーでテーブルBを参照している場合、テーブルAのデータしか使わない場合でも、テーブルB用にシート名だけのシートを用意する必要があります。シートの定義順は、テーブルA、テーブルBの順になります。</p>
-<p>インターフェース型でインスタンス変数(dao_)を宣言しておけば、テストメソッドを開始する前にS2Containerから取り出されて自動的に設定されます。Daoを呼び出して取得したデータは、Excelで用意したデータと結果を比較するためにDataTableに変換します。DataTable.setupColumns(Class)でJavaBeansのメタ情報よりカラムのデータを構築します。後は、DataTable.copyFrom()でDaoを呼び出した結果をDataTableにコピーします。copyFromの引数には、JavaBeans,Map,JavaBeansやMapを要素に持つListを指定することができます。</p>
-<p>readXls()で結果検証用のExcelデータを読み込み、Daoの結果と比較します。S2Unitを使えば、楽しく・効率良くテストを行えるということを分かっていただけたと思います。</p>
-
-<!-- document end -->
+}</PRE>
+            <P>setUp() reads <A href="http://www.seasar.org/en/DIContainer.html#app.dicon">app.dicon</A>. By ending the test method name with Tx as testGetEmployeeTx in the above example, a transaction is started before the test method is called and it is rolled back afterward so the database will be left unmodified by the test.</P>
+            <P>readXlsWriteDb() and readXlsAllReplaceDb() saves test data into the database. When Excel file is in the same package as the test class, package path may be omitted. Invoke readXlsWriteDb() and readXlsAllReplaceDb() in first row of textXxxTx() so database can rollback after the test. These methods insert data after deleting data from sheets in the opposite direction from their definitions. When using readXlsAllReplaceDb(), it may sometimes be necessary to create an empty sheet to avoid foreign key constraint error. As an example, if there is a foreign key constraint on table A to table B, it is necessary to create table B even though only data from table A is to be used. It is necessary to define table A then define table B.</P>
+            <P>If interface variable(dao_) is declared as an interface, it will be taken out from S2Container and set before the test method is started. Data returned from Dao will be converted to DataTable so they can be compared with data from Excel. DataTable.setupColumns(Class) is used to construct column data from JavaBeans meta information. Result of calling Dao from DataTable.copyFrom() is copied to DataTable. copyFrom method may have JavaBeans, Map, JavaBeans, orMap List as an argument.</P>
+            <P>readXls() reads data verification data from Excel and compares it with Dao result.</P><!-- document end -->
 <!-- don't edit start -->
 </td>
 <td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>

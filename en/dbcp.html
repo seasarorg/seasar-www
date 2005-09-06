@@ -24,74 +24,62 @@
 <tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
 <!-- don't edit end -->
 <!-- document start -->
-<p>S2DBCPの機能を使って、コネクションプーリングを実現できます。<a href="tx.html">JTA</a>と連動するので、トランザクション中にコネクションを取得し閉じるということを何度か行っても、トランザクションは維持されます。JDBCで行っていたようなトランザクションを維持したいがために複数のクラスでコネクションを持ちまわるようなことはもう必要なくなります。<a href="tx.html">S2Tx</a>を使えば、トランザクションも<a href="aop.html#Aspect">Aspect</a>で自動的に処理することができます。</p>
-<h2><a name="Setup">セットアップ</a></h2>
-<p>XADataSource、ConnectionPoolの設定をおこないます。JDBC DriverがXADataSourceの機能を提供している場合は、 それをそのまま使えますが、提供されていない場合、S2で用意しているXADataSourceImplを使って、XAの機能をエミュレートします。</p>
-<h3>org.seasar.extension.dbcp.impl.XADataSourceImpl</h3>
-<table border="1">
-<tr bgcolor="#d1f3f4" align="center">
-<th width="96">プロパティ</th>
-<th width="167">説明</th>
-<th width="468">例</th>
-</tr>
-<tr>
-<td>driverClassName</td>
-<td>JDBC Driverのクラス名 </td>
-<td>&quot;oracle.jdbc.driver.OracleDriver&quot;</td>
-</tr>
-<tr>
-<td>URL</td>
-<td>RDBMS固有のURL</td>
-<td>&quot;jdbc:oracle:thin:@xxx:1521:yyy&quot;</td>
-</tr>
-<tr>
-<td>user</td>
-<td>ユーザ名</td>
-<td>&quot;hoge&quot;</td>
-</tr>
-<tr>
-<td>password</td>
-<td>パスワード</td>
-<td>&quot;password&quot;</td>
-</tr>
-</table>
-<h3>org.seasar.extension.dbcp.impl.ConnectionPoolImpl</h3>
-<table border="1">
-<tr bgcolor="#d1f3f4" align="center">
-<th width="118">プロパティ</th>
-<th width="289">説明</th>
-<th width="186">例</th>
-</tr>
-<tr>
-<td>XADataSource</td>
-<td><p>XADataSourceのインスタンスを設定します。S2Containerで設定する場合は、XADataSourceのコンポーネント名を設定します。</p></td>
-<td>xaDataSource</td>
-</tr>
-<tr>
-<td>transactionManager</td>
-<td>TransactionManagerのインスタンスを設定します。S2Containerで設定する場合は、TransactionManagerのコンポーネント名を設定します。</td>
-<td>transactionManager</td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>プールに戻されたコネクションがここで指定された秒数以上未使用だった場合、物理的にクローズされて破棄されます。デフォルトは600(10分)です。</td>
-<td>600</td>
-</tr>
-<tr>
-<td>maxPoolSize</td>
-<td> 同時にアクティブになれる コネクションの数を指定します。 この数を超える要求があると、コネクションがプールに返されるまで その要求はブロックされます。 デフォルトは10です。</td>
-<td>10</td>
-</tr>
-</table>
-<p>コンポーネントの設定は以下のようになります。環境に合わせて書き換えてください。</p>
-<h3>j2ee.dicon</h3>
-<pre>&lt;components namespace=&quot;j2ee&quot;&gt;<br />    &lt;component name=&quot;transactionManager&quot;<br />        class=&quot;org.seasar.extension.jta.TransactionManagerImpl&quot;/&gt;<br />    &lt;component name=&quot;requiredTx&quot;<br />        class=&quot;org.seasar.extension.tx.RequiredAdvice&quot;/&gt;<br />    &lt;component name=&quot;requiresNewTx&quot;<br />        class=&quot;org.seasar.extension.tx.RequiresNewAdvice&quot;/&gt;<br />    &lt;component name=&quot;mandatoryTx&quot;<br />        class=&quot;org.seasar.extension.tx.MandatoryAdvice&quot;/&gt;
-<br />    &lt;component name=&quot;xaDataSource&quot;<br />        class=&quot;org.seasar.extension.dbcp.impl.XADataSourceImpl&quot;&gt;<br />        &lt;property name=&quot;driverClassName&quot;&gt;<br />            &quot;oracle.jdbc.driver.OracleDriver&quot;<br />        &lt;/property&gt;<br />        &lt;property name=&quot;URL&quot;&gt;<br />            &quot;jdbc:oracle:thin:@xxx:1521:yyy&quot;<br />        &lt;/property&gt;<br />        &lt;property name=&quot;user&quot;&gt;&quot;aaa&quot;&lt;/property&gt;<br />        &lt;property name=&quot;password&quot;&gt;&quot;bbb&quot;&lt;/property&gt;<br />    &lt;/component&gt;<br />    &lt;component name=&quot;connectionPool&quot;<br />        class=&quot;org.seasar.extension.dbcp.impl.ConnectionPoolImpl&quot;&gt;<br />        &lt;property name=&quot;timeout&quot;&gt;600&lt;/property&gt;<br />        &lt;property name=&quot;maxPoolSize&quot;&gt;10&lt;/property&gt;<br />        &lt;destroyMethod name=&quot;close&quot;/&gt;<br />    &lt;/component&gt;<br />    &lt;component name=&quot;dataSource&quot;<br />        class=&quot;org.seasar.extension.dbcp.impl.DataSourceImpl&quot;/&gt;<br />    <br />&lt;/components&gt;</pre>
-
-<h2><a name="Example">Example</a></h2>
-<h3>EmployeeDao.java</h3>
-<pre>
-package examples.dbcp;
+            <P>S2DBCP offers database connection pooling using POJO. By integrating with <A href="http://www.seasar.org/en/tx.html">JTA</A>, transactions are maintained even after connections are opened and closed several times. Hence, it is no longer necessary to have several classes pass connections to maintain JDBC transactions.
+Furthermore, it is possible to use <A 
+            href="http://www.seasar.org/en/tx.html">S2Tx</A>, to automatically manage transactions with <A href="http://www.seasar.org/en/aop.html#Aspect">Aspect</A>.</P>
+            <H2><A name=Setup>Configuration</A></H2>
+            <P>It is necessary to configure XADataSource and ConnectionPool to use S2DBCP. XADataSource may be use if it is supported by the JDBC driver. If it is not supported, S2's XADataSourceImpl interface may be used to emulate XA.</P>
+            <H3>org.seasar.extension.dbcp.impl.XADataSourceImpl</H3>
+            <TABLE border=1>
+              <TBODY>
+              <TR align=middle bgColor=#d1f3f4>
+                <TH width=96>Property</TH>
+                <TH width=167>Description</TH>
+                <TH width=468>Example</TH></TR>
+              <TR>
+                <TD>driverClassName</TD>
+                <TD>JDBC Driver class name</TD>
+                <TD>"oracle.jdbc.driver.OracleDriver"</TD></TR>
+              <TR>
+                <TD>URL</TD>
+                <TD>Oracle database URL</TD>
+                <TD>"jdbc:oracle:thin:@xxx:1521:yyy"</TD></TR>
+              <TR>
+                <TD>user</TD>
+                <TD>User name to connect to database</TD>
+                <TD>"hoge"</TD></TR>
+              <TR>
+                <TD>password</TD>
+                <TD>Password of user to connect to database</TD>
+                <TD>"password"</TD></TR></TBODY></TABLE>
+            <H3>org.seasar.extension.dbcp.impl.ConnectionPoolImpl</H3>
+            <TABLE border=1>
+              <TBODY>
+              <TR align=middle bgColor=#d1f3f4>
+                <TH width=118>Property</TH>
+                <TH width=289>Description</TH>
+                <TH width=186>Example</TH></TR>
+              <TR>
+                <TD>XADataSource</TD>
+                <TD>XADataSource instance. When using S2Container, set to component name of XADataSource.</TD>
+                <TD>xaDataSource</TD></TR>
+              <TR>
+                <TD>transactionManager</TD>
+                <TD>TransactionManager instance. When using S2Container, set to component name of TransactionManager.</TD>
+                <TD>transactionManager</TD></TR>
+              <TR>
+                <TD>timeout</TD>
+                <TD>Time interval in seconds for unused connections which are returned to the pool to be closed and destroyed. Default value is 600 seconds (10 minutes).</TD>
+                <TD>600</TD></TR>
+              <TR>
+                <TD>maxPoolSize</TD>
+                <TD>Maximum number of concurrent connections. When number of connections exceeds this number, a new request are blocked until a connection is returned to the pool. Default value is 10 connections.</TD>
+                <TD>10</TD></TR></TBODY></TABLE>
+            <P>Connections are set as follows. Please modify it as needed to make it specific for your application.</P>
+            <H3>j2ee.dicon</H3><PRE>&lt;components namespace="j2ee"&gt;<BR>    &lt;component name="transactionManager"<BR>        class="org.seasar.extension.jta.TransactionManagerImpl"/&gt;<BR>    &lt;component name="requiredTx"<BR>        class="org.seasar.extension.tx.RequiredAdvice"/&gt;<BR>    &lt;component name="requiresNewTx"<BR>        class="org.seasar.extension.tx.RequiresNewAdvice"/&gt;<BR>    &lt;component name="mandatoryTx"<BR>        class="org.seasar.extension.tx.MandatoryAdvice"/&gt;
+<BR>    &lt;component name="xaDataSource"<BR>        class="org.seasar.extension.dbcp.impl.XADataSourceImpl"&gt;<BR>        &lt;property name="driverClassName"&gt;<BR>            "oracle.jdbc.driver.OracleDriver"<BR>        &lt;/property&gt;<BR>        &lt;property name="URL"&gt;<BR>            "jdbc:oracle:thin:@xxx:1521:yyy"<BR>        &lt;/property&gt;<BR>        &lt;property name="user"&gt;"aaa"&lt;/property&gt;<BR>        &lt;property name="password"&gt;"bbb"&lt;/property&gt;<BR>    &lt;/component&gt;<BR>    &lt;component name="connectionPool"<BR>        class="org.seasar.extension.dbcp.impl.ConnectionPoolImpl"&gt;<BR>        &lt;property name="timeout"&gt;600&lt;/property&gt;<BR>        &lt;property name="maxPoolSize"&gt;10&lt;/property&gt;<BR>        &lt;destroyMethod name="close"/&gt;<BR>    &lt;/component&gt;<BR>    &lt;component name="dataSource"<BR>        class="org.seasar.extension.dbcp.impl.DataSourceImpl"/&gt;<BR>    <BR>&lt;/components&gt;</PRE>
+            <H2><A name=Example>Example</A></H2>
+            <H3>EmployeeDao.java</H3><PRE>package examples.dbcp;
 
 import java.sql.SQLException;
 
@@ -99,10 +87,8 @@ public interface EmployeeDao {
 
     public String getEmployeeName(int empno) throws SQLException;
 }
-</pre>
-<h4>EmployeeDaoImpl.java</h4>
-<pre>
-package examples.dbcp;
+</PRE>
+            <H4>EmployeeDaoImpl.java</H4><PRE>package examples.dbcp;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -144,10 +130,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return ename;
     }
 }
-</pre>
-<h3>EmployeeService.java</h3>
-<pre>
-package examples.dbcp;
+</PRE>
+            <H3>EmployeeService.java</H3><PRE>package examples.dbcp;
 
 import java.sql.SQLException;
 
@@ -155,10 +139,8 @@ public interface EmployeeService {
 
     public String getEmployeeName(int empno) throws SQLException;
 }
-</pre>
-<h3>EmployeeServiceImpl.java</h3>
-<pre>
-package examples.dbcp;
+</PRE>
+            <H3>EmployeeServiceImpl.java</H3><PRE>package examples.dbcp;
 
 import java.sql.SQLException;
 
@@ -174,13 +156,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         return dao_.getEmployeeName(empno);
     }
 }
-</pre>
-<h3>Employee.dicon</h3>
-<pre>&lt;components&gt;<br />    &lt;include path=&quot;j2ee.dicon&quot;/&gt;<br />    &lt;component class=&quot;examples.dbcp.EmployeeDaoImpl&quot;/&gt;<br />    &lt;component class=&quot;examples.dbcp.EmployeeServiceImpl&quot;&gt;<br />        &lt;aspect&gt;j2ee.requiredTx&lt;/aspect&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
-</pre>
-<h3>EmployeeClient.java</h3>
-<pre>
-package examples.dbcp;
+</PRE>
+            <H3>Employee.dicon</H3><PRE>&lt;components&gt;<BR>    &lt;include path="j2ee.dicon"/&gt;<BR>    &lt;component class="examples.dbcp.EmployeeDaoImpl"/&gt;<BR>    &lt;component class="examples.dbcp.EmployeeServiceImpl"&gt;<BR>        &lt;aspect&gt;j2ee.requiredTx&lt;/aspect&gt;<BR>    &lt;/component&gt;<BR>&lt;/components&gt;
+</PRE>
+            <H3>EmployeeClient.java</H3><PRE>package examples.dbcp;
 
 import java.sql.SQLException;
 
@@ -194,19 +173,14 @@ public class EmployeeClient {
         
     public static void main(String[] args) {
         S2Container container = S2ContainerFactory.create(PATH);
-        container.init();<br />        try {<br />            EmployeeService service = (EmployeeService)<br />            container.getComponent(EmployeeService.class);<br />            System.out.println(service.getEmployeeName(7788));<br />        } catch (SQLException ex) {<br />            ex.printStackTrace();<br />        } finally {<br />            container.destroy();<br />        } 
+        container.init();<BR>        try {<BR>            EmployeeService service = (EmployeeService)<BR>            container.getComponent(EmployeeService.class);<BR>            System.out.println(service.getEmployeeName(7788));<BR>        } catch (SQLException ex) {<BR>            ex.printStackTrace();<BR>        } finally {<BR>            container.destroy();<BR>        } 
     }
-}</pre>
-<h3>実行結果</h3>
-<pre>
-DEBUG 2004-03-21 12:51:35,653 [main] Transaction.begin()
+}</PRE>
+            <H3>Result</H3><PRE>DEBUG 2004-03-21 12:51:35,653 [main] Transaction.begin()
 DEBUG 2004-03-21 12:51:37,075 [main] Transaction.commit()
-SCOTT</pre>
-<p>
-これまで、JTAやJTAと連動したコネクションプールに対して、敷居が高いなぁと感じていた方も、POJOでこんなに簡単に利用できるということが分かっていただけたと思います。
-</p>
-
-<!-- document end -->
+SCOTT</PRE>
+            <P>As you can see, it is much easier to write codes using POJO than writing JTA codes to handle database connection pooling.
+            </P><!-- document end -->
 <!-- don't edit start -->
 </td>
 <td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
