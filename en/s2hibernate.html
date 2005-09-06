@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- don't edit start -->
-<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
 </head><body onload="preload('en')">
@@ -24,13 +24,13 @@
 <tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
 <!-- don't edit end -->
 <!-- document start -->
-<p>S2Hibernate���g���ƁAS2��JTA��ConnectionPool��<a href="http://www.hibernate.org/">Hibernate</a>���ȒP�ɘA������悤�ɂȂ�܂��B����܂�Hibernate�ŊJ������Ƃ��̔Y�݂̎킾����Session�Ǘ���S2Hibernate�������I�ɍs���Ă����̂ŁA�J���҂�Session�̃I�[�v���E�N���[�Y�ATransaction��������J������܂��BSession��JTA�̃g�����U�N�V�������͈ێ�����A�g�����U�N�V�����̏I�����Ɏ����I�ɃN���[�Y(flush��)����܂��B</p>
-<h2><a name="Setup">�Z�b�g�A�b�v</a></h2>
-<p>S2�Ɠ��l��JDK1.4�ȏオ�K�v�ł��BS2HibernateVx.x.x.jar���𓀂��Ăł���s2hibernate�f�B���N�g����Eclipse��Java�v���W�F�N�g�Ƃ��Ċۂ��ƃC���|�[�g���Ă��������B.classpath���㏑�����邩�������̂ŁA���ׂĂ͂��̃{�^�����N���b�N���āA���ׂĂ���荞�݂܂��B ����ŁA���ƑS���������ɂȂ�܂��Bsrc/examples�z���ɃT���v��������܂��B</p>
-<p> S2Hibernate�Ƃ��ĕK�v��jar�t�@�C���́As2hibernate/lib�ɂ�����Ă܂��BHibernate�̓R�l�N�V�����v�[����L���b�V���̎��������낢��I�ׂ�悤�ɂȂ��Ă���̂ŁAS2Hibernate�ŗp�ӂ��Ă��Ȃ��������K�v�ȏꍇ�́A<a href="http://www.hibernate.org/">Hibernate�̃T�C�g</a>���_�E�����[�h���Ă��������B�ȒP�ɋ@�\���������Ƃ��ł���悤�ɁARDBMS�Ƃ���HSQLDB��p�ӂ��Ă��܂��B�@�\�������O�ɂ��炩����HSQLDB�����s���Ă����Ă��������BHSQLDB�����s����ɂ́Abin/runHsqldb.bat���_�u���N���b�N(Windows�̏ꍇ)���܂��Blib/hsqldb.jar��HSQLDB�����s�����ł͕K�v�ł����A�{�Ԃł͕K�v����܂���Blib��jar�t�@�C��(hsqldb.jar�ȊO)��src��hibernate.cfg.xml�Aehcache.xml�Aj2ee.dicon�Alog4j.properties��CLASSPATH�ɂƂ����΁AS2Hibernate�����s�ł��܂��BEclipse�ɃC���|�[�g���Ďg���ꍇ�͐ݒ�͕s�v�ł��B</p>
+<p>S2Hibernateを使うと、S2のJTAやConnectionPoolと<a href="http://www.hibernate.org/">Hibernate</a>が簡単に連動するようになります。これまでHibernateで開発するときの悩みの種だったSession管理をS2Hibernateが自動的に行ってくれるので、開発者はSessionのオープン・クローズ、Transaction処理から開放されます。SessionはJTAのトランザクション中は維持され、トランザクションの終了時に自動的にクローズ(flushも)されます。</p>
+<h2><a name="Setup">セットアップ</a></h2>
+<p>S2と同様にJDK1.4以上が必要です。S2HibernateVx.x.x.jarを解凍してできたs2hibernateディレクトリをEclipseのJavaプロジェクトとして丸ごとインポートしてください。.classpathを上書きするか聞かれるので、すべてはいのボタンをクリックして、すべてを取り込みます。 これで、私と全く同じ環境になります。src/examples配下にサンプルもあります。</p>
+<p> S2Hibernateとして必要なjarファイルは、s2hibernate/libにそろってます。Hibernateはコネクションプールやキャッシュの実装をいろいろ選べるようになっているので、S2Hibernateで用意していない実装が必要な場合は、<a href="http://www.hibernate.org/">Hibernateのサイト</a>よりダウンロードしてください。簡単に機能を試すことができるように、RDBMSとしてHSQLDBを用意しています。機能を試す前にあらかじめHSQLDBを実行しておいてください。HSQLDBを実行するには、bin/runHsqldb.batをダブルクリック(Windowsの場合)します。lib/hsqldb.jarはHSQLDBを実行する上では必要ですが、本番では必要ありません。libのjarファイル(hsqldb.jar以外)とsrcのhibernate.cfg.xml、ehcache.xml、j2ee.dicon、log4j.propertiesをCLASSPATHにとおせば、S2Hibernateを実行できます。Eclipseにインポートして使う場合は設定は不要です。</p>
 
-<h2><a name="Usage">�g����</a></h2>
-<p>Hibernate���g�������N���X�́AS2SessionFactory�^�̃t�B�[���h���`���ăR���X�g���N�^���邢�̓v���p�e�B�o�R�Ŏ����N���X(S2SessionFactoryImpl)���󂯎��܂��B���Ƃ́AS2SessionFactory.getSession()���Ăяo����Hibernate�̋@�\�����R�Ɏg�����Ƃ��ł��܂��BSession�̃I�[�v���E�N���[�Y�A�g�����U�N�V��������͈�ؕK�v����܂���BS2SessionFactory.getSession()���Ԃ��I�u�W�F�N�g�́AHibernate��Session�̃��b�p�[�ł���S2Session�ł��B���s�ł��郁�\�b�h��Hibernate��Session�Ɠ����ŁA������O(HibernateException)�����s����O(HibernateRuntimeException)�ɕϊ����Ă���܂��B���̂��߁AHibernateException��catch�������Ȃ��N���X�͓��ɉ�������K�v�͂���܂���Bcatch����K�v������ꍇ�́AHibernateRuntimeException��catch����getCause()��HibernateException�����o���܂��B</p>
+<h2><a name="Usage">使い方</a></h2>
+<p>Hibernateを使いたいクラスは、S2SessionFactory型のフィールドを定義してコンストラクタあるいはプロパティ経由で実装クラス(S2SessionFactoryImpl)を受け取ります。あとは、S2SessionFactory.getSession()を呼び出してHibernateの機能を自由に使うことができます。Sessionのオープン・クローズ、トランザクション制御は一切必要ありません。S2SessionFactory.getSession()が返すオブジェクトは、HibernateのSessionのラッパーであるS2Sessionです。実行できるメソッドはHibernateのSessionと同じで、検査例外(HibernateException)を実行時例外(HibernateRuntimeException)に変換してくれます。そのため、HibernateExceptionをcatchしたくないクラスは特に何もする必要はありません。catchする必要がある場合は、HibernateRuntimeExceptionでcatchしてgetCause()でHibernateExceptionを取り出します。</p>
 <h3><a name="Example">Example</a></h3>
 <h3>Employee.java</h3>
 <pre>
@@ -250,12 +250,12 @@ public class EmployeeClient {
 
     }
 }</pre>
-<h3>���s����</h3>
-<pre>DEBUG 2004-04-07 18:53:52,511 [main] �g�����U�N�V�������J�n���܂���<br />2004/04/07 18:53:52 net.sf.hibernate.cfg.Environment &lt;clinit&gt;<br />���: Hibernate 2.1.2<br />�ȗ�
-DEBUG 2004-04-07 18:53:54,654 [main] �����I�ȃR�l�N�V�������擾���܂���<br />DEBUG 2004-04-07 18:53:54,744 [main] �_���I�ȃR�l�N�V�������擾���܂���<br />Hibernate: select employee0_.EMPNO as EMPNO, employee0_.ENAME as ENAME, employee0_.JOB as JOB,
+<h3>実行結果</h3>
+<pre>DEBUG 2004-04-07 18:53:52,511 [main] トランザクションを開始しました<br />2004/04/07 18:53:52 net.sf.hibernate.cfg.Environment &lt;clinit&gt;<br />情報: Hibernate 2.1.2<br />省略
+DEBUG 2004-04-07 18:53:54,654 [main] 物理的なコネクションを取得しました<br />DEBUG 2004-04-07 18:53:54,744 [main] 論理的なコネクションを取得しました<br />Hibernate: select employee0_.EMPNO as EMPNO, employee0_.ENAME as ENAME, employee0_.JOB as JOB,
   employee0_.MGR as MGR, employee0_.HIREDATE as HIREDATE, employee0_.SAL as SAL,
-  employee0_.COMM as COMM, employee0_.DEPTNO as DEPTNO from EMP employee0_ where (empno=? )<br />DEBUG 2004-04-07 18:53:55,605 [main] �_���I�ȃR�l�N�V��������܂���<br />DEBUG 2004-04-07 18:53:55,625 [main] �g�����U�N�V�������R�~�b�g���܂���<br />SCOTT<br />DEBUG 2004-04-07 18:53:55,625 [main] �����I�ȃR�l�N�V��������܂���</pre> 
-S2Hibernate���g���΁AHibernate�̂��������Ƃ��낾�����ȒP�ɗ��p�ł���Ƃ������Ƃ��������Ă����������Ǝv���܂��B
+  employee0_.COMM as COMM, employee0_.DEPTNO as DEPTNO from EMP employee0_ where (empno=? )<br />DEBUG 2004-04-07 18:53:55,605 [main] 論理的なコネクションを閉じました<br />DEBUG 2004-04-07 18:53:55,625 [main] トランザクションをコミットしました<br />SCOTT<br />DEBUG 2004-04-07 18:53:55,625 [main] 物理的なコネクションを閉じました</pre> 
+S2Hibernateを使えば、Hibernateのおいしいところだけを簡単に利用できるということが分かっていただけたと思います。
 <!-- document end -->
 <!-- don't edit start -->
 </td>

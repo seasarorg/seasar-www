@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- don't edit start -->
-<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
 </head><body onload="preload('en')">
@@ -24,11 +24,11 @@
 <tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
 <!-- don't edit end -->
 <!-- document start -->
-<p>S2Struts‚ğg‚¤‚ÆAS2‚Æ<a href="http://jakarta.apache.org/struts/">Struts</a>‚ªŠÈ’P‚É˜A“®‚·‚é‚æ‚¤‚É‚È‚è‚Ü‚·BActionƒNƒ‰ƒX‚ÉƒT[ƒrƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚ª©“®“I‚Éİ’è‚³‚ê‚é‚Ì‚ÅAActionƒNƒ‰ƒX‚Ì–ğŠ„‚Í“KØ‚ÈƒT[ƒrƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚ğŒÄ‚Ño‚·‚¾‚¯‚É‚È‚è‚Ü‚·BActionƒNƒ‰ƒX‚ÍƒRƒ“ƒgƒ[ƒ‰‚É“O‚·‚é‚±‚Æ‚ÅAƒvƒŒƒ[ƒ“ƒe[ƒVƒ‡ƒ“‘w‚ÆƒT[ƒrƒX‘w‚Ì–ğŠ„•ª’S‚à–¾Šm‚É‚È‚è‚Ü‚·BAction‚É‘Î‚µ‚Ä<a href="http://homepage3.nifty.com/seasar/aop.html">AOP</a>‚ğ“K—p‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B</p>
-<h2><a name="Setup">ƒZƒbƒgƒAƒbƒv</a></h2>
-<p>S2‚Æ“¯—l‚ÉJDK1.4ˆÈã‚ª•K—v‚Å‚·BƒTƒ“ƒvƒ‹‚ÍA<a href="http://jakarta.apache.org/tomcat/">Tomcat</a>‚Æ<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>‚ğg‚¤‚±‚Æ‚ğ‘O’ñ‚É‚µ‚Ä‚¢‚Ü‚·B‚ ‚ç‚©‚¶‚ßƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä’u‚¢‚Ä‚­‚¾‚³‚¢BS2StrutsVx.x.x.jar‚ğ‰ğ“€‚µ‚Ä‚Å‚«‚½s2strutsƒfƒBƒŒƒNƒgƒŠ‚ğEclipse‚ÌJavaƒvƒƒWƒFƒNƒg‚Æ‚µ‚ÄŠÛ‚²‚ÆƒCƒ“ƒ|[ƒg‚µ‚Ä‚­‚¾‚³‚¢B.classpath‚ğã‘‚«‚·‚é‚©•·‚©‚ê‚é‚Ì‚ÅA‚·‚×‚Ä‚Í‚¢‚Ìƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚µ‚ÄA‚·‚×‚Ä‚ğæ‚è‚İ‚Ü‚·B ‚±‚ê‚ÅA„‚Æ‘S‚­“¯‚¶ŠÂ‹«‚É‚È‚è‚Ü‚·BƒTƒ“ƒvƒ‹‚ÍS2StrutsExamleVx.x.x.jar‚Æ‚µ‚Ä•Ê“r—pˆÓ‚³‚ê‚Ä‚¢‚é‚Ì‚ÅAƒ_ƒEƒ“ƒ[ƒh‚µ‚Ä‰ğ“€‚µ‚Ä‚­‚¾‚³‚¢BEclipse‚Ås2struts-example‚Æ‚¢‚¤–¼‘O‚ÅJavaƒvƒƒWƒFƒNƒg‚ğì¬‚µ‚Ü‚·BTomcatƒvƒƒWƒFƒNƒg‚Å‚Í‚È‚¢‚Ì‚Å‹C‚ğ‚Â‚¯‚Ä‚­‚¾‚³‚¢B‰ğ“€‚µ‚Ä‚Å‚«‚½s2struts-exampleƒfƒBƒŒƒNƒgƒŠ‚ğŠÛ‚²‚ÆƒCƒ“ƒ|[ƒg‚µ‚Ä‚­‚¾‚³‚¢B.classpath‚ğã‘‚«‚·‚é‚©•·‚©‚ê‚é‚Ì‚ÅA‚·‚×‚Ä‚Í‚¢‚Ìƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚µ‚ÄA‚·‚×‚Ä‚ğæ‚è‚İ‚Ü‚·Bs2struts-exampleƒvƒƒWƒFƒNƒg‚ğ‰EƒNƒŠƒbƒN‚µ‚ÄƒvƒƒpƒeƒB-&gt;Tomcat‚ğ‘I‚Ñ‚Ü‚·BTomcatƒvƒƒWƒFƒNƒg‚Å‚ ‚é‚ğƒ`ƒFƒbƒN‚µAƒAƒvƒŠƒP[ƒVƒ‡ƒ“URI‚ğ/s2struts-example‚Æ‚µ‚Ü‚·B‚±‚ê‚ÅATomcat‚ğÄ‹N“®‚µ‚ÄAƒuƒ‰ƒEƒU‚©‚ç<a href="http://localhost:8080/s2struts-example/">http://localhost:8080/s2struts-example/</a>‚ÉƒAƒNƒZƒX‚·‚é‚Æ‘«‚µZ‚ÌƒTƒ“ƒvƒ‹‚ğŒ©‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B</p>
-<h2><a name="Usage">g‚¢•û</a></h2>
-<p>S2Container‚ğ‹N“®‚·‚é‚½‚ß‚ÉS2ContainerServlet‚ğweb.xml‚É“o˜^‚µ‚Ü‚·BB</p>
+<p>S2Strutsã‚’ä½¿ã†ã¨ã€S2ã¨<a href="http://jakarta.apache.org/struts/">Struts</a>ãŒç°¡å˜ã«é€£å‹•ã™ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚Actionã‚¯ãƒ©ã‚¹ã«ã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè‡ªå‹•çš„ã«è¨­å®šã•ã‚Œã‚‹ã®ã§ã€Actionã‚¯ãƒ©ã‚¹ã®å½¹å‰²ã¯é©åˆ‡ãªã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‘¼ã³å‡ºã™ã ã‘ã«ãªã‚Šã¾ã™ã€‚Actionã‚¯ãƒ©ã‚¹ã¯ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã«å¾¹ã™ã‚‹ã“ã¨ã§ã€ãƒ—ãƒ¬ã‚¼ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³å±¤ã¨ã‚µãƒ¼ãƒ“ã‚¹å±¤ã®å½¹å‰²åˆ†æ‹…ã‚‚æ˜ç¢ºã«ãªã‚Šã¾ã™ã€‚Actionã«å¯¾ã—ã¦<a href="http://homepage3.nifty.com/seasar/aop.html">AOP</a>ã‚’é©ç”¨ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</p>
+<h2><a name="Setup">ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—</a></h2>
+<p>S2ã¨åŒæ§˜ã«JDK1.4ä»¥ä¸ŠãŒå¿…è¦ã§ã™ã€‚ã‚µãƒ³ãƒ—ãƒ«ã¯ã€<a href="http://jakarta.apache.org/tomcat/">Tomcat</a>ã¨<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>ã‚’ä½¿ã†ã“ã¨ã‚’å‰æã«ã—ã¦ã„ã¾ã™ã€‚ã‚ã‚‰ã‹ã˜ã‚ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ç½®ã„ã¦ãã ã•ã„ã€‚S2StrutsVx.x.x.jarã‚’è§£å‡ã—ã¦ã§ããŸs2strutsãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’Eclipseã®Javaãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ä¸¸ã”ã¨ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¦ãã ã•ã„ã€‚.classpathã‚’ä¸Šæ›¸ãã™ã‚‹ã‹èã‹ã‚Œã‚‹ã®ã§ã€ã™ã¹ã¦ã¯ã„ã®ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€ã™ã¹ã¦ã‚’å–ã‚Šè¾¼ã¿ã¾ã™ã€‚ ã“ã‚Œã§ã€ç§ã¨å…¨ãåŒã˜ç’°å¢ƒã«ãªã‚Šã¾ã™ã€‚ã‚µãƒ³ãƒ—ãƒ«ã¯S2StrutsExamleVx.x.x.jarã¨ã—ã¦åˆ¥é€”ç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã®ã§ã€ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦è§£å‡ã—ã¦ãã ã•ã„ã€‚Eclipseã§s2struts-exampleã¨ã„ã†åå‰ã§Javaãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚Tomcatãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã¯ãªã„ã®ã§æ°—ã‚’ã¤ã‘ã¦ãã ã•ã„ã€‚è§£å‡ã—ã¦ã§ããŸs2struts-exampleãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ä¸¸ã”ã¨ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¦ãã ã•ã„ã€‚.classpathã‚’ä¸Šæ›¸ãã™ã‚‹ã‹èã‹ã‚Œã‚‹ã®ã§ã€ã™ã¹ã¦ã¯ã„ã®ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€ã™ã¹ã¦ã‚’å–ã‚Šè¾¼ã¿ã¾ã™ã€‚s2struts-exampleãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å³ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£-&gt;Tomcatã‚’é¸ã³ã¾ã™ã€‚Tomcatãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ã‚’ãƒã‚§ãƒƒã‚¯ã—ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³URIã‚’/s2struts-exampleã¨ã—ã¾ã™ã€‚ã“ã‚Œã§ã€Tomcatã‚’å†èµ·å‹•ã—ã¦ã€ãƒ–ãƒ©ã‚¦ã‚¶ã‹ã‚‰<a href="http://localhost:8080/s2struts-example/">http://localhost:8080/s2struts-example/</a>ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã¨è¶³ã—ç®—ã®ã‚µãƒ³ãƒ—ãƒ«ã‚’è¦‹ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚</p>
+<h2><a name="Usage">ä½¿ã„æ–¹</a></h2>
+<p>S2Containerã‚’èµ·å‹•ã™ã‚‹ãŸã‚ã«S2ContainerServletã‚’web.xmlã«ç™»éŒ²ã—ã¾ã™ã€‚ã€‚</p>
 <h3>web.xml</h3>
 <pre>&lt;web-app&gt;<br />  &lt;display-name&gt;Struts Application&lt;/display-name&gt;<br />  &lt;servlet&gt;<br />    &lt;servlet-name&gt;s2container&lt;/servlet-name&gt;<br />    &lt;servlet-class&gt;org.seasar.framework.container.servlet.S2ContainerServlet&lt;/servlet-class&gt;<br />    &lt;load-on-startup/&gt;<br />  &lt;/servlet&gt;<br />  <br />  &lt;!-- Standard Action Servlet Configuration (with debugging) --&gt;<br />  &lt;servlet&gt;<br />    &lt;servlet-name&gt;action&lt;/servlet-name&gt;<br />    &lt;servlet-class&gt;org.apache.struts.action.ActionServlet&lt;/servlet-class&gt;<br />    &lt;init-param&gt;<br />      &lt;param-name&gt;config&lt;/param-name&gt;<br />      &lt;param-value&gt;/WEB-INF/struts-config.xml&lt;/param-value&gt;<br />    &lt;/init-param&gt;<br />    &lt;init-param&gt;<br />      &lt;param-name&gt;debug&lt;/param-name&gt;<br />      &lt;param-value&gt;2&lt;/param-value&gt;<br />    &lt;/init-param&gt;<br />    &lt;init-param&gt;<br />      &lt;param-name&gt;detail&lt;/param-name&gt;<br />      &lt;param-value&gt;2&lt;/param-value&gt;<br />    &lt;/init-param&gt;<br />    &lt;load-on-startup&gt;2&lt;/load-on-startup&gt;<br />  &lt;/servlet&gt;
 <p>  &lt;servlet-mapping&gt;
@@ -59,7 +59,7 @@
     &lt;taglib-location&gt;/WEB-INF/struts-tiles.tld&lt;/taglib-location&gt;
   &lt;/taglib&gt;</p><p>&lt;/web-app&gt;</p>
 </pre>
-<p>S2‚ÆStruts‚ğ˜A“®‚³‚¹‚é‚½‚ß‚É‚ÍAS2—p‚ÌRequestProcessor‚ğstruts-config.xml‚É“o˜^‚·‚é•K—v‚ª‚ ‚è‚Ü‚·BS2RequestProcessor‚ÆS2TilesRequestProcessor‚ğ—pˆÓ‚µ‚Ä‚¢‚Ü‚·B</p>
+<p>S2ã¨Strutsã‚’é€£å‹•ã•ã›ã‚‹ãŸã‚ã«ã¯ã€S2ç”¨ã®RequestProcessorã‚’struts-config.xmlã«ç™»éŒ²ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚S2RequestProcessorã¨S2TilesRequestProcessorã‚’ç”¨æ„ã—ã¦ã„ã¾ã™ã€‚</p>
 <h3>struts-config.xml</h3>
 <pre>&lt;struts-config&gt;
   ...
@@ -67,13 +67,13 @@
   ...
 &lt;/struts-config&gt;
 </pre>
-<p>S2‚Æ˜A“®‚·‚éAction‚ÍƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`‚É“o˜^‚µ‚Ä‚¨‚­•K—v‚ª‚ ‚è‚Ü‚·B‚Ü‚½A‚±‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ÍAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘S‘Ì‚Ì’è‹`‚Å‚ ‚éapp.dicon‚É“o˜^‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B</p>
+<p>S2ã¨é€£å‹•ã™ã‚‹Actionã¯ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå®šç¾©ã«ç™»éŒ²ã—ã¦ãŠãå¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã¾ãŸã€ã“ã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å…¨ä½“ã®å®šç¾©ã§ã‚ã‚‹app.diconã«ç™»éŒ²ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚</p>
 <h3>Add.dicon</h3>
 <pre>&lt;components&gt;<br />    &lt;component class=&quot;examples.struts.AddAction&quot;/&gt;<br />    &lt;component class=&quot;examples.struts.AddServiceImpl&quot;/&gt;<br />&lt;/components&gt;
 </pre>
 <h3>app.dicon</h3>
 <pre>&lt;components&gt;<br />    &lt;include path=&quot;examples/struts/Add.dicon&quot;/&gt;<br />&lt;/components&gt;</pre>
-<p>ƒT[ƒrƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚ğó‚¯æ‚é‚½‚ß‚ÉActionƒNƒ‰ƒX‚ÍƒRƒ“ƒXƒgƒ‰ƒNƒ^‚à‚µ‚­‚ÍƒZƒbƒ^[ƒƒ\ƒbƒh‚ğ’è‹`‚µ‚Ä‚¨‚«‚Ü‚·Bexecute()‚Å‚Íˆ—‚ğƒT[ƒrƒX‚ÉˆÏ÷‚µ‚Ä‚¢‚é‚Ì‚Å”ñí‚É‚·‚Á‚«‚è‚µ‚½ƒR[ƒh‚É‚È‚Á‚Ä‚¢‚é‚±‚Æ‚ª•ª‚©‚é‚Æv‚¢‚Ü‚·B</p>
+<p>ã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å—ã‘å–ã‚‹ãŸã‚ã«Actionã‚¯ãƒ©ã‚¹ã¯ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚‚ã—ãã¯ã‚»ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¦ãŠãã¾ã™ã€‚execute()ã§ã¯å‡¦ç†ã‚’ã‚µãƒ¼ãƒ“ã‚¹ã«å§”è­²ã—ã¦ã„ã‚‹ã®ã§éå¸¸ã«ã™ã£ãã‚Šã—ãŸã‚³ãƒ¼ãƒ‰ã«ãªã£ã¦ã„ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚‹ã¨æ€ã„ã¾ã™ã€‚</p>
 <h3>AddAction</h3>
 <pre>
 package examples.struts;
