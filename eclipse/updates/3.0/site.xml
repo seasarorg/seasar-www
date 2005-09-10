@@ -4,10 +4,10 @@
    <description url="http://www.seasar.org/eclipse/updates/3.0/">
       
    </description>
-   <feature url="features/org.seasar.kijimuna_0.6.23.jar" id="org.seasar.kijimuna" version="0.6.23">
+   <feature url="features/org.seasar.kijimuna_0.6.24.jar" id="org.seasar.kijimuna" version="0.6.24">
       <category name="Kijimuna"/>
    </feature>
-   <feature url="features/org.seasar.kijimuna_0.6.24.jar" id="org.seasar.kijimuna" version="0.6.24">
+   <feature url="features/org.seasar.kijimuna_0.6.25.jar" id="org.seasar.kijimuna" version="0.6.25">
       <category name="Kijimuna"/>
    </feature>
    <feature url="features/org.seasar.s2jsfplugin.feature_0.0.6.jar" id="org.seasar.s2jsfplugin.feature" version="0.0.6">
