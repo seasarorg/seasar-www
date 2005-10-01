@@ -571,21 +571,24 @@ public class EmployeeDaoImplTest extends S2TestCase {
 }
 </PRE>
             <P><B>Results</B></P>
-            <P>If message "OK (Test Count test)" is displayed, assertEquals() method obtained the expected result.</P><PRE>.DEBUG 2004-10-08 13:10:00,762 [main] Transaction started
+            <P>If message "OK (Test Count test)" is displayed, assertEquals() method obtained the expected result.</P>
+<PRE>.DEBUG 2004-10-08 13:10:00,762 [main] Transaction started
 DEBUG 2004-10-08 13:10:05,379 [main] physical connection opened
 DEBUG 2004-10-08 13:10:05,469 [main] logical connection opened
 DEBUG 2004-10-08 13:10:05,990 [main] logical connection closed
-DEBUG 2004-10-08 13:10:06,140 [main] INSERT INTO emp(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL,
-COMM, DEPTNO) VALUES(9900, 'SCOTT2', 'ANALYST', 7566, '1982-12-09 00.00.00', 3000, null, 99)
+DEBUG 2004-10-08 13:10:06,140 [main] INSERT INTO emp(EMPNO, ENAME, JOB, MGR, HIREDATE,
+  SAL, COMM, DEPTNO) VALUES(9900, 'SCOTT2', 'ANALYST', 7566, '1982-12-09 00.00.00',
+  3000, null, 99)
 DEBUG 2004-10-08 13:10:06,140 [main] logical connection opened
 DEBUG 2004-10-08 13:10:06,901 [main] logical connection closed
 DEBUG 2004-10-08 13:10:06,911 [main] logical connection opened
 DEBUG 2004-10-08 13:10:07,151 [main] logical connection closed
-DEBUG 2004-10-08 13:10:07,151 [main] INSERT INTO dept(DEPTNO, DNAME, LOC) VALUES(99, 'RESEARCH2',
-'DALLAS')
+DEBUG 2004-10-08 13:10:07,151 [main] INSERT INTO dept(DEPTNO, DNAME, LOC) VALUES(99,
+  'RESEARCH2', 'DALLAS')
 DEBUG 2004-10-08 13:10:07,151 [main] logical connection opened
 DEBUG 2004-10-08 13:10:07,151 [main] logical connection closed
-DEBUG 2004-10-08 13:10:07,151 [main] SELECT e.empno, e.ename, e.deptno, d.dname FROM emp e, dept d
+DEBUG 2004-10-08 13:10:07,151 [main] SELECT e.empno, e.ename, e.deptno, d.dname
+  FROM emp e, dept d
 WHERE e.empno = 9900 AND e.deptno = d.deptno
 DEBUG 2004-10-08 13:10:07,151 [main] logical connecion opened
 DEBUG 2004-10-08 13:10:07,312 [main] logical connection closed
@@ -599,19 +602,15 @@ OK (1 test)
             <P>In this way, test result verification data is read from Excel sheet and compared with results from Dao. Furthermore, all data updated in the database during the test are rollbacked so the values are returned to those before the test was conducted.</P>
             <P>Examples are in seasar2/src/test/examples/unit directory.</P><!-- document end -->
 <!-- don't edit start -->
-</td>
-<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
-</tr><tr>
+</td></tr><tr>
 <td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
-<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
-</tr><tr>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
 <td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
-<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=744><TR><TD align="left">Trans. by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and 
-            the others. All rights reserved.</TD>
-</tr></table>
-<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
-<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
-<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
-</tr></table></body>
-<!-- don't edit end -->
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=766><TR><TD align="left">Trans. by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and 
+            the others. All rights reserved.</TD></TR></TABLE></TD>
+</tr></tbody></table>
+</td><td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left" height="16" valign="top" width="780">&nbsp;</td>
+<td class="backcorner" align="left" height="16" valign="top">&nbsp;</td>
+</tr></tbody></table><!-- don't edit end -->
 </html>
