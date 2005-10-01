@@ -35,12 +35,24 @@
 <li><a href="#forEachList">forEachList.html</a></li>
 <li><a href="#forEachResult">forEachResult.html</a></li>
 <li><a href="#forEach2List">forEach2List.html</a></li>
+<li><a href="#forEach3List">forEach3List.html</a></li>
 <li><a href="#converter">converter.html</a></li>
 <li><a href="#validator">validator.html</a></li>
 <li><a href="#checkbox">checkbox.html</a></li>
 <li><a href="#selectOneMenu">selectOneMenu.html</a></li>
 <li><a href="#selectManyCheckbox">selectManyCheckbox.html</a></li>
 <li><a href="#selectManyListbox">selectManyListbox.html</a></li>
+<li><a href="#selectOneRadio">selectOneRadio.html</a></li>
+<li><a href="#inputTextarea">inputTextarea.html</a></li>
+<li><a href="#inputSecret">inputSecret.html</a></li>
+<li><a href="#pageTran1">pageTran1.html</a></li>
+<li><a href="#employeeManagement">Employee Management</a></li>
+<ul>
+<li><a href="#employeeSearch">employeeSearch.html</a></li>
+<li><a href="#employeeEdit">employeeEdit.html</a></li>
+<li><a href="#employeeConfirm">employeeConfirm.html</a></li>
+<li><a href="#employeeList">employeeList.html</a></li>
+</ul>
 </ul>
 </ul>
 
@@ -287,7 +299,7 @@ public class AddActionImpl implements AddAction {
 15:&lt;/body&gt;
 16:&lt;/html&gt;
 </pre>
-<p>2行目のhtmlタグのaction属性で、ページを初期化するメソッドを指定しています｡それでは、Actionクラスを見てみましょう｡</p>
+<p>2行目のhtmlタグのaction属性で、ページを初期処理するメソッドを指定しています｡それでは、Actionクラスを見てみましょう｡</p>
 <pre>
 package examples.jsf.action.impl;
 
@@ -370,7 +382,65 @@ public class ForEach2ListActionImpl implements ForEach2ListAction {
     }
 }
 </pre>
-
+<h3><a name="forEach3List">forEach3List.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>forEachタグのネスト方法。</li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>
+01:&lt;form&gt;
+02:    &lt;table border=&quot;1&quot;&gt;
+03:        &lt;span m:inject=&quot;s:forEach&quot; m:items=&quot;#{forEach3DtoList}&quot; m:var=&quot;e&quot;&gt;
+04:        &lt;tr&gt;
+05:            &lt;span m:inject=&quot;s:forEach&quot; m:items=&quot;#{e}&quot; m:var=&quot;e2&quot;&gt;
+06:                &lt;td&gt;&lt;input type=&quot;text&quot; m:value=&quot;#{e2.value}&quot;&lt;/td&gt;
+07:            &lt;/span&gt;
+08:        &lt;/tr&gt;
+09:        &lt;/span&gt;
+10:    &lt;/table&gt;
+11:    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;
+&lt;/form&gt;
+</pre>
+<p>5行目を見てみるとわかるように、forEachタグの中でforEachタグを使用して繰り返しを行っています｡forEach3DtoListは/examples/jsf/dicon/foreach3.diconを見るとListの中にListがありますので、初めのforEachタグでvar属性をeとしているので2つ目のforEachタグでitems属性を&quot;#{e}&quot;とすることでforEach3DtoListの中のListを使用して繰り返し処理を行います。</p>
+<pre>
+&lt;components&gt;
+    &lt;component name=&quot;forEach3DtoList&quot; class=&quot;java.util.ArrayList&quot; instance=&quot;session&quot;&gt;
+        &lt;initMethod name=&quot;add&quot; &gt;
+            &lt;arg&gt;
+                &lt;component class=&quot;java.util.ArrayList&quot;&gt;
+                    &lt;initMethod name=&quot;add&quot;&gt;
+                        &lt;arg&gt;
+                            new examples.jsf.dto.ForEach3Dto(&quot;11&quot;)
+                        &lt;/arg&gt;
+                    &lt;/initMethod&gt;
+                    &lt;initMethod name=&quot;add&quot;&gt;
+                        &lt;arg&gt;
+                            new examples.jsf.dto.ForEach3Dto(&quot;12&quot;)
+                        &lt;/arg&gt;
+                    &lt;/initMethod&gt;
+                &lt;/component&gt;
+            &lt;/arg&gt;
+        &lt;/initMethod&gt;
+        &lt;initMethod name=&quot;add&quot; &gt;
+            &lt;arg&gt;
+                &lt;component class=&quot;java.util.ArrayList&quot;&gt;
+                    &lt;initMethod name=&quot;add&quot;&gt;
+                        &lt;arg&gt;
+                            new examples.jsf.dto.ForEach3Dto(&quot;21&quot;)
+                        &lt;/arg&gt;
+                    &lt;/initMethod&gt;
+                    &lt;initMethod name=&quot;add&quot;&gt;
+                        &lt;arg&gt;
+                            new examples.jsf.dto.ForEach3Dto(&quot;22&quot;)
+                        &lt;/arg&gt;
+                    &lt;/initMethod&gt;
+                &lt;/component&gt;
+            &lt;/arg&gt;
+        &lt;/initMethod&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</pre>
 <h3><a name="converter">converter.html</a></h3>
 <p>このサンプルでは、次のことを学びます｡</p>
 <ul>
@@ -389,16 +459,51 @@ public class ForEach2ListActionImpl implements ForEach2ListAction {
 <p>このサンプルでは、次のことを学びます｡</p>
 <ul>
 <li>validatorタグの使い方。</li>
+<li>関連チェックを行うバリデーションの方法。</li>
 <li>messageタグの使い方。</li>
+<li>バリデーションのメッセージでm:labelを使用する方法。</li>
 </ul>
 <p>それでは、HTMLの一部を見てみましょう｡ </p>
-<pre>&lt;form&gt;<br>    &lt;span m:inject=&quot;h:messages&quot; m:globalOnly=&quot;true&quot;/&gt;<br>    UserName(2 letters or more):<br>    &lt;input id=&quot;userName&quot; type=&quot;text&quot;<br>        m:value=&quot;#{validatorDto.userName}&quot; m:required=&quot;true&quot;&gt;<br>        &lt;span m:inject=&quot;s:validator&quot; m:binding=&quot;#{userNameLengthValidator}&quot;/&gt;<br>    &lt;/input&gt;<br>    &lt;span m:inject=&quot;h:message&quot; m:for=&quot;userName&quot;/&gt;&lt;br /&gt;<br>    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;<br>&lt;/form&gt;
+<pre>
+01:&lt;form&gt;
+02:    &lt;span m:inject=&quot;h:messages&quot; m:globalOnly=&quot;true&quot;/&gt;
+03:    UserName(2 letters or more):
+04:    &lt;input id=&quot;userName&quot; type=&quot;text&quot;
+05:        m:label = &quot;User Name&quot;
+06:        m:value=&quot;#{validatorDto.userName}&quot; m:required=&quot;true&quot;&gt;
+07:        &lt;span m:inject=&quot;s:validator&quot; m:binding=&quot;#{userNameLengthValidator}&quot;/&gt;
+08:    &lt;/input&gt;
+09:    &lt;span m:inject=&quot;h:message&quot; m:for=&quot;userName&quot;/&gt;&lt;br /&gt;
+10:    From:
+11:    &lt;input id=&quot;from&quot; type=&quot;text&quot;
+12:        m:label = &quot;From&quot;&gt;
+13:    &lt;/input&gt; - 
+14:    To:
+15:    &lt;input id=&quot;to&quot; type=&quot;text&quot;
+16:        m:label = &quot;To&quot;&gt;
+17:        &lt;span m:inject=&quot;s:validator&quot;
+18:            m:binding=&quot;#{greaterEqualValidator}&quot;
+19:            m:targetId=&quot;from&quot;/&gt;
+20:    &lt;/input&gt;
+21:    &lt;span m:inject=&quot;h:message&quot; m:for=&quot;to&quot;/&gt;&lt;br /&gt;
+22:    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;
+23:&lt;/form&gt;
 </pre>
-<p>バリデーションをかけたい場合、バリデーションの対象となるタグ(id:userName)の子タグとしてvalidatorタグを記述します｡実際のバリデータは、validatorタグのbinding属性で指定します｡この例におけるバリデータは、examples/jsf/dicon/allvalidator.diconで次のように定義されています｡</p>
-<pre>&lt;component name=&quot;userNameLengthValidator&quot; class=&quot;javax.faces.validator.LengthValidator&quot;&gt;<br>    &lt;property name=&quot;minimum&quot;&gt;2&lt;/property&gt;<br>&lt;/component&gt;
+<p>バリデーションをかけたい場合、4行目のようにバリデーションの対象となるタグ(id:userName)の子タグとしてvalidatorタグを記述します｡関連チェックバリデーションをかけたい場合、15行目のようにバリデーションの対象となるタグ(id:to)の子タグとしてvalidatorタグを記述します｡validatorタグでは、targetId属性で関連チェックする相手を指定します。実際のバリデータは、validatorタグのbinding属性で指定します｡この例におけるバリデータは、examples/jsf/dicon/allvalidator.diconで次のように定義されています｡</p>
+<pre>
+&lt;component name=&quot;userNameLengthValidator&quot; class=&quot;javax.faces.validator.LengthValidator&quot;&gt;
+    &lt;property name=&quot;minimum&quot;&gt;2&lt;/property&gt;
+&lt;/component&gt;
+&lt;component name=&quot;greaterEqualValidator&quot; class=&quot;org.seasar.jsf.validator.S2GreaterEqualValidator&quot;
+    instance=&quot;prototype&quot; /&gt;
 </pre>
+
+<p>S2GreaterEqualValidatorは、targetIdで関連チェックする相手を指定するのですが、diconファイルの定義は1つでhtmlでtargetIdを追加するようになっています。同じような処理で複数指定する場合があるので、diconファイルのinstance属性はprototypeにします。</p>
 <p>このようにバリデータをHTMLで個別に定義するのではなく、diconファイルで一元管理することで、バリデータの定義が分散することを防ぐことが出来ます｡</p>
+
+
 <p>バリデーションエラーになったときに表示させるメッセージは、messageタグで組み込みます｡for属性で対象となるタグのidを指定します｡messagesタグでglobalOnly属性をfalseにすることで、messagesタグに表示させることも出来ますが、どのタグでバリデーションエラーがおきたのかをわかりやすくするために、個別のタグのバリデーションエラーは、messageタグを使って表示させたほうが良いと思います｡</p>
+<p>また、label属性に定義した値をバリデーションのメッセージに使用することが出来ます。label属性を使用する場合は、UIComponentとValidatorがそれぞれ対応している必要があります。標準のUIComponentとValidatorについては、それぞれ対応するUIComponentとValidatorをS2JSFで用意しています。独自のUIComponent、Validatorを作る場合は、S2JSFを参考にして機能を追加してください。</p>
 
 <h3><a name="checkbox">checkbox.html</a></h3>
 <p>このサンプルでは、次のことを学びます｡</p>
@@ -524,6 +629,1120 @@ public class ForEach2ListActionImpl implements ForEach2ListAction {
 <p>15行目からはじまるselectタグは、items属性で要素を指定しています｡この例の場合、個々の要素はJavaBeansなので、さらにitemValue属性とitemLabel属性で、どのプロパティを値として使うのか、どのプロパティをラベルとして使うのかを指定します。selectManyListboxCccItemsは、examples/jsf/dicon/selectmanylistbox.diconで次のように定義されています｡</p>
 <pre>&lt;component name=&quot;selectManyListboxCccItems&quot; class=&quot;java.util.ArrayList&quot;&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;10&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;ACOUNTING&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;20&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;RESEARCH&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;30&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;SALES&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;add&quot; &gt;<br>        &lt;arg&gt;<br>            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;<br>                &lt;property name=&quot;deptno&quot;&gt;40&lt;/property&gt;<br>                &lt;property name=&quot;dname&quot;&gt;&quot;OPERATIONS&quot;&lt;/property&gt;<br>            &lt;/component&gt;<br>        &lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>&lt;/component&gt;
 </pre>
+<h3><A name=selectOneRadio>selectOneRadio.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>selectOneRadioで直接radioで要素を定義する方法。 </li>
+<li>selectOneRadioで必須チェックを定義する方法｡  </li>
+<li>selectOneRadioでJavaBeansで要素を定義する方法｡ </li>
+</ul>
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>01:&lt;form&gt;
+02:    &lt;span m:inject=&quot;s:selectOneRadio2&quot; id=&quot;radio1&quot;
+03:        m:value=&quot;#{selectOneRadioDto.aaa}&quot;&gt;
+04:        &lt;input type=&quot;radio&quot;
+05:            name=&quot;aaa&quot;/&gt;Non-selection
+06:        &lt;input type=&quot;radio&quot;
+07:            name=&quot;aaa&quot; value=&quot;1&quot;/&gt;One
+08:        &lt;input type=&quot;radio&quot;
+09:            name=&quot;aaa&quot; value=&quot;2&quot; checked=&quot;checked&quot;/&gt;Two
+10:        &lt;input type=&quot;radio&quot;
+11:            name=&quot;aaa&quot; value=&quot;3&quot;/&gt;Three
+12:    &lt;/span&gt;&lt;br /&gt;
+13:
+14:    &lt;span m:inject=&quot;s:selectOneRadio2&quot; id=&quot;radio2&quot;
+15:        m:value=&quot;#{selectOneRadioDto.bbb}&quot;
+16:        m:required=&quot;true&quot;&gt;
+17:        &lt;input type=&quot;radio&quot;
+18:            name=&quot;bbb&quot; value=&quot;1&quot;/&gt;One
+19:        &lt;input type=&quot;radio&quot;
+20:            name=&quot;bbb&quot; value=&quot;2&quot;/&gt;Two
+21:        &lt;input type=&quot;radio&quot;
+22:            name=&quot;bbb&quot; value=&quot;3&quot;/&gt;Three
+23:    &lt;/span&gt;&lt;br /&gt;
+24:
+25:    &lt;span m:inject=&quot;s:selectOneRadio2&quot;
+26:        m:value=&quot;#{selectOneRadioDto.ccc}&quot;&gt;
+27:        &lt;span m:inject=&quot;s:forEach&quot;
+28:            m:items=&quot;#{selectOneRadioCccItems}&quot;
+29:            m:var=&quot;e&quot;&gt;
+30:            &lt;input type=&quot;radio&quot;
+31:                name=&quot;ccc&quot; value=&quot;#{e.deptno}&quot;/&gt;
+32:            &lt;span m:value=&quot;#{e.dname}&quot;&gt;ACOUNTING&lt;/span&gt;
+33:        &lt;/span&gt;
+34:        &lt;span m:rendered=&quot;false&quot;&gt;
+35:            &lt;input type=&quot;radio&quot;
+36:                name=&quot;ccc&quot; value=&quot;20&quot;/&gt;RESEARCH
+37:        &lt;/span&gt;
+38:    &lt;/span&gt;&lt;br /&gt;
+39:
+40:    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;
+41:&lt;/form&gt;
+</pre>
+<P>2行目からはじまるselectOneRadio2タグは、子タグのradioタグで直接要素を指定しています｡選択された値は、value属性で指定したプロパティに設定されます｡4行目からはじまるradioタグのようにvalue属性を記述しない場合は、nullが設定されます。</P>
+<P>14行目からはじまるselectOneRadio2タグは、required属性で&quot;true&quot;を指定しています｡required属性で&quot;true&quot;を指定した場合、実行時に必須チェックが行われます。選択されていない場合、次のようなバリデーションエラーメッセージが表示されます。</P>
+<pre><ul><li>バリデーションエラー &quot;radio2&quot;: 値を入力して下さい.</ul></li></pre>
+<P>この例では、forEachを使って要素を定義しています。</P>            
+<P>25行目からはじまるselectOneRadio2タグは、子タグのforEachタグのitems属性で要素を指定しています｡この例の場合、個々の要素はJavaBeansなので、さらにradioタグのvalue属性と32行目からはじまるタグのvalue属性で、どのプロパティを値として使うのか、どのプロパティをラベルとして使うのかを指定します。</p>
+<p>34行目からはじまるタグは、rendered属性で&quot;false&quot;を指定しています｡rendered属性で&quot;false&quot;を指定した場合、子タグのradioタグは実行時には無視されます｡selectOneRadioCccItemsは、examples/jsf/dicon/selectoneradio.diconで次のように定義されています｡</P>
+<pre>&lt;component name=&quot;selectOneRadioCccItems&quot; class=&quot;java.util.ArrayList&quot;&gt;
+    &lt;initMethod name=&quot;add&quot; &gt;
+        &lt;arg&gt;
+            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;
+                &lt;property name=&quot;deptno&quot;&gt;10&lt;/property&gt;
+                &lt;property name=&quot;dname&quot;&gt;&quot;ACOUNTING&quot;&lt;/property&gt;
+            &lt;/component&gt;
+        &lt;/arg&gt;
+    &lt;/initMethod&gt;
+    &lt;initMethod name=&quot;add&quot; &gt;
+        &lt;arg&gt;
+            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;
+                &lt;property name=&quot;deptno&quot;&gt;20&lt;/property&gt;
+                &lt;property name=&quot;dname&quot;&gt;&quot;RESEARCH&quot;&lt;/property&gt;
+            &lt;/component&gt;
+        &lt;/arg&gt;
+    &lt;/initMethod&gt;
+    &lt;initMethod name=&quot;add&quot; &gt;
+        &lt;arg&gt;
+            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;
+                &lt;property name=&quot;deptno&quot;&gt;30&lt;/property&gt;
+                &lt;property name=&quot;dname&quot;&gt;&quot;SALES&quot;&lt;/property&gt;
+            &lt;/component&gt;
+        &lt;/arg&gt;
+    &lt;/initMethod&gt;
+    &lt;initMethod name=&quot;add&quot; &gt;
+        &lt;arg&gt;
+            &lt;component class=&quot;examples.jsf.entity.Department&quot;&gt;
+                &lt;property name=&quot;deptno&quot;&gt;40&lt;/property&gt;
+                &lt;property name=&quot;dname&quot;&gt;&quot;OPERATIONS&quot;&lt;/property&gt;
+            &lt;/component&gt;
+        &lt;/arg&gt;
+    &lt;/initMethod&gt;
+&lt;/component&gt;
+</pre>
+
+<h3><a name=inputTextarea>inputTextarea.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>textareaの入力値をJavaBeansのプロパティと連動させる方法。</li>
+</ul>
+
+<p>それでは、HTMLの一部を見てみましょう｡ </p>
+<pre>01:&lt;form&gt;
+02:    &lt;span m:inject=&quot;h:messages&quot; m:globalOnly=&quot;false&quot; m:showDetail=&quot;true&quot;/&gt;
+03:    &lt;textarea m:rows=&quot;5&quot; m:cols=&quot;50&quot; 
+04:        wrap=&quot;soft&quot; m:value=&quot;#{inputTextareaDto.aaa}&quot;&gt;for test&lt;/textarea&gt;
+05:    &lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;
+06:&lt;/form&gt;
+</pre>
+
+<p>3行目からはじまるtextareaタグのvalue属性で、JavaBeansのプロパティを連動させています｡入力した値は、バリデーションがOKなら、JavaBeansのプロパティに格納され、NGの場合は、入力された値がそのままページに表示されることになります｡textareaタグの要素は、あくまでもブラウザでのプレビュー用です｡</p>
+
+<h3><a name="inputSecret">inputSecret.html</a></h3>
+<p>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>バリデーションのメッセージでm:labelを使用する方法。</li>
+</ul>
+</p>
+<p>それでは、HTMLの中身から見てみましょう｡ </p>
+<pre>
+&lt;span m:inject=&quot;h:messages&quot; m:globalOnly=&quot;false&quot; m:showDetail=&quot;true&quot;/&gt;
+&lt;input type=&quot;password&quot; m:required=&quot;true&quot; m:label=&quot;password&quot;/&gt; 
+&lt;input type=&quot;submit&quot; value=&quot;submit&quot;/&gt;
+</pre>
+<p>m:required=&quot;true&quot;としてあるので、何も入力せずにボタンをクリックすると以下のようにエラーメッセージにlabal属性のpasswordが使用されているのが分かります。</p>
+<pre>
+バリデーションエラー &quot;password&quot;: を値を入力して下さい
+</pre>
+<h3><a name="pageTran1">pageTran1.html</a></h3>
+<p>このサンプルでは、次のことを学びます｡</p>
+<ul>
+<li>エラーページの設定方法。</li>
+</ul>
+<p>それでは、HTMLの中身から見てみましょう｡ </p>
+<pre>
+01:&lt;form&gt;
+02:    &lt;input type=&quot;button&quot; value=&quot;The exception due to action&quot; m:action=&quot;#{page1Action.throwException}&quot;/&gt;
+03:    &lt;input type=&quot;button&quot; value=&quot;The exception due to initialize action&quot; m:action=&quot;pageTran2&quot; 
+04:                    onclick=&quot;location.href='pageTran2.html'&quot; m:immediate=&quot;true&quot;/&gt;
+05:&lt;/form&gt;
+</pre>
+<p>一つ目のボタンタグのaction属性のActionクラスを見てみましょう｡</p>
+<pre>
+public class Page1ActionImpl implements Page1Action {
+    public String throwException() {
+        throw new ErrorPage1RuntimeException(&quot;errorPage1&quot;);
+    }
+}
+</pre>
+<p>examples.jsf.action.impl.Page1ActionImplクラスのthrowExceptionはErrorPage1RuntimeExceptionを発生させているだけです。ErrorPage1RuntimeExceptionはjava.lang.RuntimeExceptionのサブクラスでメッセージに"errorPage1"をセットしています。ErrorPage1RuntimeExceptionのエラーが発生した場合の画面の遷移先はjsfErrorPage.diconで以下のように設定しています。</p>
+<pre>
+&lt;component class=&quot;org.seasar.jsf.runtime.ErrorPageManagerImpl&quot;&gt;
+    <b>&lt;initMethod name=&quot;addErrorPage&quot;&gt;
+        &lt;arg&gt;@examples.jsf.exception.ErrorPage1RuntimeException@class&lt;/arg&gt;
+        &lt;arg&gt;&quot;/errorpage/errorPage1.html&quot;&lt;/arg&gt;</b>
+    &lt;/initMethod&gt;
+    &lt;initMethod name=&quot;addErrorPage&quot;&gt;
+        &lt;arg&gt;@examples.jsf.exception.ErrorPage2RuntimeException@class&lt;/arg&gt;
+        &lt;arg&gt;&quot;/errorpage/errorPage2.html&quot;&lt;/arg&gt;
+    &lt;/initMethod&gt;
+    &lt;initMethod name=&quot;addErrorPage&quot;&gt;
+        &lt;arg&gt;@org.seasar.framework.exception.SQLRuntimeException@class&lt;/arg&gt;
+        &lt;arg&gt;&quot;/errorpage/errorPageHsqldb.html&quot;&lt;/arg&gt;
+    &lt;/initMethod&gt;
+&lt;/component&gt;
+</pre>
+<p>org.seasar.jsf.runtime.ErrorPageManagerImplクラスでエラーが発生した場合の画面の遷移先を管理します。今回のErrorPage1RuntimeExceptionの場合は、errorPage1.htmlに遷移します。このようにしてエラーページの設定をjsfErrorPage.diconにまとめて管理することができます。</p>
+<p>errorPage1.htmlではm:value="#{requestScope['seasar.jsf.error.message']}"でErrorPage1RuntimeExceptionでセットしたメッセージを表示しています。</p>
+<pre>
+&lt;body&gt;
+&lt;span m:inject=&quot;f:param&quot; m:name=&quot;layoutTitle&quot; m:value=&quot;The page transition with exception1&quot;/&gt;
+&lt;span m:inject=&quot;s:insert&quot; m:name=&quot;body&quot;&gt;
+<b>&lt;span m:value=&quot;#{requestScope['seasar.jsf.error.message']}&quot;&gt;error message&lt;/span&gt;</b>
+&lt;/span&gt;
+&lt;/body&gt;
+</pre>
+<p>それでは、pageTran1.htmlのもう一つのボタンを見てみましょう。</p>
+<pre>
+&lt;input type=&quot;button&quot; value=&quot;The exception due to initialize action&quot; m:action=&quot;pageTran2&quot; 
+                onclick=&quot;location.href='pageTran2.html'&quot; m:immediate=&quot;true&quot;/&gt;
+</pre>
+<p>アクション属性のpageTran2はWEB-INF/faces-config.xmlでは/errorpage/pageTran2.htmlと定義されています。</p>
+<p>pageTran2.htmlを見てみましょう</p>
+<pre>
+01:&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot;
+02:    <b>m:action=&quot;#{page2InitAction.initialize}&quot;</b>
+03:    m:extends=&quot;/WEB-INF/layout/layout.html&quot;&gt;
+</pre>
+<p>2行目のアクション属性のActionクラスを見てみましょう｡</p>
+<pre>
+public class Page2InitActionImpl implements Page2InitAction {
+    
+    public String initialize() {
+        throw new ErrorPage2RuntimeException(&quot;errorPage2&quot;);
+    }
+
+}
+</pre>
+<p>この処理も先ほどと同じようにErrorPage2RuntimeExceptionを発生させています。ErrorPage2RuntimeExceptionはjsfErrorPage.diconを見るとerrorPage2.htmlに遷移するように設定してありますので、errorPage2.htmlに遷移して設定したメッセージが表示されます。</p>
+<h3><a name="employeeManagement">Employee Management</a></h3>
+<p>このサンプルの従業員管理アプリケーションでは新規、修正、削除、照会を行います。このサンプルを動かす前にs2jsf-example/WEB-INF/binにあるrunHsqldb.batでHSQLDBを起動させておいてください。</p>
+<p>s2jsfでは、Actionクラス、ロジッククラス、dicon、Dto、Daoという構成でなりたっています。今回のサンプルは以下のようになっています。</p>
+<pre>
+・Actionクラス
+examples/jsf/action
+                  EmployeeConfirmAction.java     (確認処理インターフェース)
+                  EmployeeConfirmInitAction.java (確認初期処理Actionインターフェース)
+                  EmployeeEditAction.java        (編集処理インターフェース)
+                  EmployeeEditInitAction.java    (編集初期処理インターフェース)
+                  EmployeeListAction.java        (一覧処理インターフェース) 
+                  EmployeeListInitAction.java    (一覧初期処理インタフェース)
+                  EmployeeSearchAction.java      (検索処理インターフェース)
+                  EmployeeSearchInitAction.java  (検索初期処理インターフェース)
+
+・Action実装クラス                    
+examples/jsf/action/impl
+                  EmployeeConfirmActionImpl.java     (確認処理実装クラス)
+                  EmployeeConfirmInitActionImpl.java (確認初期処理実装クラス)
+                  EmployeeEditActionImpl.java        (編集処理実装クラス)
+                  EmployeeEditInitActionImpl.java    (編集初期処理実装クラス)
+                  EmployeeListActionImpl.java        (一覧処理実装クラス) 
+                  EmployeeListInitActionImpl.java    (一覧初期処理実装クラス)
+                  EmployeeSearchActionImpl.java      (検索処理実装クラス)
+                  EmployeeSearchInitActionImpl.java  (検索初期処理実装クラス)
+
+・ロジッククラス
+examples/jsf/logic
+                  EmployeeLogic.java (業務ロジックインタフェース)
+
+・ロジック実装クラス
+examples/jsf/logic/impl
+                  EmployeeLogicImpl.java (業務ロジック実装クラス)
+
+・diconファイル
+examples/jsf/dicon
+             employee.dicon  (各Actionクラスとロジッククラスの定義ファイル)
+             
+・Dto
+examples/jsf/dto
+             EmployeeSearchDto.java (検索画面用Dto)
+             EmployeeDto.java       (従業員用Dto)
+             DepartmentDto.java     (部署用Dto)
+
+・Dao
+examples/jsf/Dao
+             DepartmentDtoDao.java  (DEPTテーブルDao)
+             EmployeeDtoDao.java    (EMPテーブルDao)
+             
+             
+</pre>
+<h3><a name="employeeSearch">employeeSearch.html</a></h3>
+<p>それでは、初めのemployeeSearch.htmlから見てみましょう。見ていく順番は以下のようになります。 </p>
+<ul>
+<li><a href="#EmployeeSearchInitialize">ページの初期処理の説明</a></li>
+    <ul>
+    <li><a href="#EmployeeSearchInitializeDicon">ページの初期処理のdiconファイル</a></li>
+    <li><a href="#EmployeeSearchInitializeClass">ページの初期処理のクラス</a></li>
+    <ul>
+        <li><a href="#EmployeeSearchInitializeProperty">プロパティ</a></li>
+        <li><a href="#EmployeeSearchInitializeMethod">ページの初期処理するメソッド</a></li>
+    </ul>
+    </ul>
+<li><a href="#EmployeeSearchInitializeView">画面の説明</a></li>
+    <ul>
+    <li><a href="EmployeeSearchInitializeTagu">タグ</a></li>
+    </ul>
+<li><a href="#EmployeeSearchAction">Actionクラスの説明</a></li>
+    <ul>
+    <li><a href="#EmployeeSearchActionDicon">Actionクラスのdiconファイル</a></li>
+    <li><a href="#EmployeeSearchActionClass">Actionクラス</a></li>
+    <ul>
+        <li><a href="#EmployeeSearchActionProperty">プロパティ</a></li>
+        <li><a href="#EmployeeSearchActionMethod">Actionクラスのメソッド(MethodBinding)</a></li>
+    </ul>
+    </ul>
+</ul>
+<h4><a name="EmployeeSearchInitialize">ページの初期処理の説明</a></h4>
+<pre>01:&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot;
+02:    <b>m:action=&quot;#{employeeSearchInitAction.initialize}&quot;</b>
+03:    m:extends=&quot;/WEB-INF/layout/layout.html&quot;&gt;
+</pre>
+<p>2行目のaction属性でページを初期するメソッドを指定しています。この初期処理では以下のselectタグのitems属性のdepartmentDtoListにDAOから取得したjavaBeanのListがセットされます。
+</p>
+<pre>71:&lt;select id=&quot;deptno&quot; m:value=&quot;#{employeeSearchDto.deptno}&quot;
+72:    m:items=&quot;<b>#{departmentDtoList}&quot;</b>
+73:    m:itemValue=&quot;deptno&quot;
+74:    m:itemLabel=&quot;dname&quot;
+75:    m:nullLabel=&quot;Please select&quot;&gt;
+76:    &lt;option value=&quot;&quot;&gt;Please select&lt;/option&gt;
+77:    &lt;option value=&quot;10&quot;&gt;ACCOUNTING&lt;/option&gt;
+78:    &lt;option value=&quot;20&quot;&gt;RESEARCH&lt;/option&gt;
+79:    &lt;option value=&quot;30&quot;&gt;SALES&lt;/option&gt;
+80:    &lt;option value=&quot;40&quot;&gt;OPERATIONS&lt;/option&gt;
+81:&lt;/select&gt;
+</pre>
+<h4><a name="EmployeeSearchInitializeDicon">ページの初期処理のdiconファイル</a></h4>
+<p>それでは、そのaction属性のemployeeSearchInitActionの定義ファイルを見ていきましょう。employeeSearchInitActionはexamples/jsf/dicon/employee.diconで定義されています。</p>
+<pre>&lt;component name=&quot;employeeSearchInitAction&quot; 
+            class=&quot;examples.jsf.action.impl.EmployeeSearchInitActionImpl&quot; instance=&quot;request&quot;&gt;
+    <b>&lt;aspect&gt;actionInterceptorChain&lt;/aspect&gt;</b>
+&lt;/component&gt;
+</pre>
+<p>このaspectタグで指定しているactionInterceptorChainはexamples/jsf/dicon/allaop.diconで以下のように定義されています。</p>
+<pre>
+&lt;component name=&quot;actionInterceptorChain&quot; class=&quot;org.seasar.framework.aop.interceptors.InterceptorChain&quot;&gt;
+    <b>&lt;initMethod name=&quot;add&quot;&gt;&lt;arg&gt;aop.traceInterceptor&lt;/arg&gt;&lt;/initMethod&gt;
+    &lt;initMethod name=&quot;add&quot;&gt;&lt;arg&gt;actionThrowsInterceptor&lt;/arg&gt;&lt;/initMethod&gt;</b>
+&lt;/component&gt;
+</pre>
+<p>org.seasar.framework.aop.interceptors.InterceptorChainは、複数のInterceptorをグルーピング化し、再利用しやすくします。この場合、aop.traceInterceptorとactionThrowsInterceptorを一つにまとめています。最初のaop.traceInterceptorはaop.diconで以下のように定義さています。</p>
+<pre>
+&lt;component name=&quot;traceInterceptor&quot;
+            <b>class=&quot;org.seasar.framework.aop.interceptors.TraceInterceptor&quot;/&gt;</b>
+</pre>
+<p>org.seasar.framework.aop.interceptors.TraceInterceptorはS2AOPで用意されているInterceptorでトレース処理を行うものです。actionInterceptorChainの2つ目のaspectタグで指定しているactionThrowsInterceptorはexamples/jsf/dicon/allaop.diconで以下のように定義されています。</p>
+
+<pre>
+&lt;component name=&quot;actionThrowsInterceptor&quot; 
+            <b>class=&quot;examples.jsf.interceptor.ActionThrowsInterceptor&quot;/&gt;</b>
+</pre>
+<p>examples.jsf.interceptor.ActionThrowsInterceptorは独自のThrowsInterceptorで以下のようになっています。</p>
+<pre>public class ActionThrowsInterceptor extends ThrowsInterceptor {
+    public String handleThrowable(AppRuntimeException ex, MethodInvocation invocation)throws Throwable{
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, MessageUtil.getErrorMessage(ex.getMessageId(), ex.getArgs()));
+        return null;
+    }
+}
+</pre>
+<p>AppRuntimeExceptionをハンドリングしてID/引数をとりだして、以下のメッセージタグにメッセージを自動的にセットします。このようにエラー処理をInterceptorにまかせれば、実装はPOJOで作成することができます。</p>
+<pre>
+&lt;span m:inject=&quot;h:messages&quot; m:globalOnly=&quot;true&quot; m:class=&quot;error&quot;/&gt;
+</pre>
+<h4><a name="EmployeeSearchInitializeClass">ページの初期処理のクラス</a></h4>
+<p>それでは、examples.jsf.action.impl.EmployeeSearchInitActionImplを見ていきましょう。</p>
+<h4><a name="EmployeeSearchInitializeProperty">プロパティ</a></h4>
+<p>初期処理のActionクラスは次のプロパティを持っています。</p>
+<pre>
+public class EmployeeSearchInitActionImpl implements EmployeeSearchInitAction {
+
+    <b>private EmployeeLogic employeeLogic;
+    private List departmentDtoList;</b>
+                  :
+}
+</pre>
+<p>EmployeeLogicはインターフェースなのでS2Containerによって、そのインターフェースを実装したクラスが自動的に設定されます｡EmployeeLogicを実装したクラスは、examples/jsf/dicon/employee.diconで以下のように定義されています。<p>
+<pre>&lt;component class=&quot;examples.jsf.logic.impl.EmployeeLogicImpl&quot;&gt;
+    <b>&lt;aspect&gt;logicInterceptorChain&lt;/aspect&gt;</b>
+&lt;/component&gt;
+</pre>
+<p>このaspectタグで定義されているlogicInterceptorChainの定義先はexamples/jsf/dicon/allaop.diconです。これは次のように定義されています。</p>
+<pre>
+&lt;component name=&quot;logicInterceptorChain&quot; class=&quot;org.seasar.framework.aop.interceptors.InterceptorChain&quot;&gt;
+    <b>&lt;initMethod name=&quot;add&quot;&gt;&lt;arg&gt;aop.traceThrowsInterceptor&lt;/arg&gt;&lt;/initMethod&gt;
+    &lt;initMethod name=&quot;add&quot;&gt;&lt;arg&gt;aop.traceInterceptor&lt;/arg&gt;&lt;/initMethod&gt;
+    &lt;initMethod name=&quot;add&quot;&gt;&lt;arg&gt;j2ee.requiredTx&lt;/arg&gt;&lt;/initMethod&gt;</b>
+&lt;/component&gt;
+</pre>
+<p>最初の２つはS2AOPで用意されているInterceptorでトレース処理を行うものです。詳しくは<a href="aop.html#AOPInterceptor">S2AOPで用意されているInterceptor</a>を参照してください。３つめのj2ee.requiredTxはトランザクション制御用コンポーネントでトランザクションが開始されていなければ、自動的にトランザクションを開始します。 
+既にトランザクションが開始されていれば、そのトランザクションを引き継ぎます。詳しくは<a href="tx.html">トランザクションの自動制御</a> を参照してください。
+</p>
+<p>examples.jsf.logic.impl.EmployeeLogicImplは以下の2つのsetterメソッドに対してDAOを自動バインディングしてセットします。DAOの詳しい説明は<a href="s2dao.html">s2Dao</a>を参照してください。
+<pre>
+public class EmployeeLogicImpl implements EmployeeLogic {
+    private EmployeeDtoDao employeeDtoDao;
+    private DepartmentDtoDao departmentDtoDao;
+
+    <b>public void setEmployeeDtoDao(EmployeeDtoDao employeeDtoDao) {
+        this.employeeDtoDao = employeeDtoDao;
+    }</b>
+    
+    <b>public void setDepartmentDtoDao(DepartmentDtoDao departmentDtoDao) {
+        this.departmentDtoDao = departmentDtoDao;
+    }</b>
+                        :
+                        :
+</pre>
+<p>EmployeeDtoDaoではBEANアノテーションでexamples.jsf.dto.EmployeeDtoを定義しています。</p>
+<pre>
+public interface EmployeeDtoDao {
+    <b>public Class BEAN = EmployeeDto.class;</b>
+                        :
+}
+</pre>
+<p>BEANアノテーションで指定しているexamples.jsf.dto.EmployeeDtoはexamples.jsf.entity.Employeeのサブクラスで、このexamples.jsf.entity.EmployeeでTABLEアノテーションでEMPテーブルとの関連付けを行っています。</p>
+<pre>public class Employee implements Serializable {
+    <b>public static final String TABLE = "EMP";</b>
+                        :
+}
+</pre>
+<p>examples.jsf.dto.EmployeeDtoはプロパティdnameとそのsetter/getterを追加したもので、これはDepartment.dname用のものです。もう一方のDepartmentDtoDaoも同じようにBEANアノテーションでexamples.jsf.dto.DepartmentDtoを定義しています。</p>
+<pre>
+public interface DepartmentDtoDao {
+    <b>public Class BEAN = DepartmentDto.class;</b>
+                        :
+}
+</pre>
+<p>BEANアノテーションで指定しているexamples.jsf.dto.DepartmentDtoはexamples.jsf.entity.Departmentのサブクラスで、このexamples.jsf.entity.DepartmentでTABLEアノテーションでDEPTテーブルとの関連付けを行っています。</p>
+<pre>public class Department implements Serializable {
+    <b>public static final String TABLE = "DEPT";</b>
+                        :
+}
+</pre>
+<p>この2つのDAOをexamples/jsf/dicon/alldao.diconに以下のように定義して生成します。</p>
+<pre>
+&lt;components&gt;
+    &lt;include path=&quot;dao.dicon&quot;/&gt;
+    &lt;include path=&quot;aop.dicon&quot;/&gt;
+
+    &lt;component class=&quot;examples.jsf.dao.EmployeeDtoDao&quot;&gt;
+        &lt;aspect&gt;aop.traceInterceptor&lt;/aspect&gt;
+        &lt;aspect&gt;dao.interceptor&lt;/aspect&gt;
+    &lt;/component&gt;
+    
+    &lt;component class=&quot;examples.jsf.dao.DepartmentDtoDao&quot;&gt;
+        &lt;aspect&gt;aop.traceInterceptor&lt;/aspect&gt;
+        &lt;aspect&gt;dao.interceptor&lt;/aspect&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</pre>
+<p>aspectタグのうちdao.interceptorは、dao.diconで定義されています。これはS2Daoを機能させるためのInterceptor(org.seasar.dao.interceptors.S2DaoInterceptor)であり、org.seasar.dao.impl.DaoMetaDataFactoryImplはS2DaoInterceptorのコンストラクタの引数となるのでとともに定義されています。</p>
+<pre>
+&lt;components namespace=&quot;dao&quot;&gt;
+    &lt;include path=&quot;j2ee.dicon&quot;/&gt;
+    &lt;component 
+        class=&quot;org.seasar.dao.impl.DaoMetaDataFactoryImpl&quot;/&gt;
+    &lt;component name=&quot;interceptor&quot;
+        class=&quot;org.seasar.dao.interceptors.S2DaoInterceptor&quot;/&gt;
+&lt;/components&gt;
+</pre>
+<p>これらの定義によりEmployeeDtoDao、DepartmentDtoDaoはインタフェースに対して、実装クラスを自動的に生成して、EmployeeLogicImplのプロパティに設定しています。</p>
+<h5><a name="EmployeeSearchInitializeMethod">ページの初期処理するメソッド</a></h5>
+<p>EmployeeSearchInitActionImpl#initialize()のメソッドでEmployeeLogicImpl#getAllDepartments()の戻り値(DepartmentDtoのList)をプロパティdepartmentDtoListにセットしてgetterメソッドとしてgetDepartmentDtoListがあるので、このプロパティが自動的にrequestスコープの属性として保存されます。そのためセレクトタグのitem属性のdepartmentDtoListにセットされます。</p>
+<pre>
+public class EmployeeSearchInitActionImpl implements EmployeeSearchInitAction {
+                  :
+    <b>public String initialize() {
+        departmentDtoList = employeeLogic.getAllDepartments();
+        return null;
+    }</b>
+}
+</pre>
+<h4><a name="EmployeeSearchInitializeView">画面の説明</a></h4>
+<p>この画面(employeeSearch.html)の各入出力用のタグを見ていきましょう。各入出力用のタグはJavaBeans(employeeSearchDto)のプロパティを連動させています｡</p>
+<h5><a name="EmployeeSearchInitializeTagu">タグの説明</a></h5>
+<p>EmployeeNoのタグは次のようになっています。</p>
+<pre>&lt;tr&gt;
+    &lt;td class=&quot;label&quot;&gt;EmployeeNo&lt;/td&gt;
+    &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;empno&quot;
+            m:value=&quot;#{employeeSearchDto.empno}&quot;
+            class=&quot;right&quot;&gt;
+            &lt;span m:inject=&quot;s:validator&quot; m:binding=&quot;#{empnoRangeValidator}&quot;/&gt;
+        &lt;/input&gt;
+        &lt;span m:inject=&quot;h:message&quot; m:for=&quot;empno&quot; m:class=&quot;error&quot;/&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+</pre>
+<p>このvalidatorタグですがサンプルの<a href="#validator">validator.html</a>と同じようにvalidatorタグのbinding属性でempnoRangeValidatorを指定しています。このバリデータは、examples/jsf/dicon/allvalidator.diconで次のように定義されています｡</p>
+<pre>
+&lt;component name=&quot;empnoRangeValidator&quot; class=&quot;javax.faces.validator.LongRangeValidator&quot;&gt;
+    &lt;property name=&quot;maximum&quot;&gt;10000&lt;/property&gt;
+&lt;/component&gt;
+</pre>
+<p>EmployeeName, Job, Managerも特に変わった設定はありません。HireDateではvalidatorが無いのにmessageタグが用意されています。</p>
+<pre>
+&lt;tr&gt;
+    &lt;td class=&quot;label&quot;&gt;HireDate&lt;/td&gt;
+    &lt;td&gt;&lt;input id=&quot;fromHiredate&quot; type=&quot;text&quot;
+            m:value=&quot;#{employeeSearchDto.fromHiredate}&quot;/&gt;
+        &lt;span m:inject=&quot;h:message&quot; m:for=&quot;fromHiredate&quot; m:class=&quot;error&quot;/&gt;～
+        &lt;input id=&quot;toHiredate&quot; type=&quot;text&quot;
+            m:value=&quot;#{employeeSearchDto.toHiredate}&quot;/&gt;
+        &lt;span m:inject=&quot;h:message&quot; m:for=&quot;toHiredate&quot; m:class=&quot;error&quot;/&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+</pre>
+<p>これはJSFの標準機能でJavaBeanのプロパティの型をString型と相互に変換する標準のコンバータを適用してくれます。標準コンバータの呼び出しでもvalidationが行われるためコンバータが解釈できなければエラーメッセージがセットされます。Salaryも同様に標準のコンバータが適応されます。</br>
+ただし、このs2jsf-exampleではJavaBeanのプロパティの型がjava.util.Dateの場合、org.seasar.jsf.convert.S2DateTimeConverterを使用するようにしてあります。この定義はfaces-config.xmlで次のように定義してあります。</p>
+<pre>
+&lt;converter&gt;
+    &lt;converter-for-class&gt;java.util.Date&lt;/converter-for-class&gt;
+    &lt;converter-class&gt;org.seasar.jsf.convert.S2DateTimeConverter&lt;/converter-class&gt;
+&lt;/converter&gt;
+</pre>
+<p>次にcreate、searchボタンを見ていきましょう。action属性でメソッドを呼び出しています(MethodBinding)。onclick属性のlocation.href='employeeEdit.html'の部分はプレビュー用です。</p>
+<pre>
+&lt;input type=&quot;button&quot; value=&quot;create&quot;
+    m:action=&quot;#{employeeSearchAction.goEditForCreate}&quot;
+    onclick=&quot;location.href='employeeEdit.html'&quot;/&gt;
+&lt;input type=&quot;button&quot; value=&quot;search&quot;
+    m:action=&quot;#{employeeSearchAction.checkSearchCount}&quot;
+    onclick=&quot;location.href='employeeList.html'&quot;/&gt;
+</pre>
+<h4><a name="EmployeeSearchAction">Actionクラスの説明</a></h4>
+<p>createボタンのアクション属性のemployeeSearchActionを見ていきましょう。</p>
+<h5><a name="EmployeeSearchActionDicon">Actionクラスのdiconファイル</a></h5>
+<p>employeeSearchActionはexamples/jsf/dicon/employee.diconで以下のように定義されています。aspectタグのactionInterceptorChainは先ほどの<a href="#EmployeeSearchInitializeDicon">ページの初期処理のdiconファイル</a>で説明した通りです。</p>
+<pre>
+&lt;component name=&quot;employeeSearchAction&quot; 
+        class=&quot;examples.jsf.action.impl.EmployeeSearchActionImpl&quot; instance=&quot;request&quot;&gt;
+    &lt;aspect&gt;actionInterceptorChain&lt;/aspect&gt;
+&lt;/component&gt;
+</pre>
+<h4><a name="EmployeeSearchActionClass">Actionクラス</a></h4>
+<a>examples.jsf.action.impl.EmployeeSearchActionImplクラスを見ていきましょう。</a>
+<h5><a name="EmployeeSearchActionProperty">プロパティ</a></h5>
+<p>examples.jsf.action.impl.EmployeeSearchActionImplは以下のプロパティを持っています。</p>
+<pre>
+public class EmployeeSearchActionImpl implements EmployeeSearchAction {
+    private EmployeeLogic employeeLogic;
+    private EmployeeSearchDto employeeSearchDto;
+    <b>private ProcessModeDto processModeDto;</b>
+                    :
+}
+</pre>
+<p>examples.jsf.dto.ProcessModeDtoは状態を表すDTOです。これはexamples/jsf/dicon/employee.diconでincludeしているexamples/jsf/dicon/processmode.diconに定義してあります。</p>
+<pre>
+&lt;components&gt;
+    &lt;component name=&quot;processModeDto&quot; class=&quot;examples.jsf.dto.ProcessModeDto&quot; instance=&quot;session&quot;/&gt;
+&lt;/components&gt;
+</pre>
+<p>ProcessModeDtoはプロパティとしてprocessModeがあるだけのクラスです。そのインスタンスがsessionで管理されています。</p>
+<h5><a name="EmployeeSearchActionMethod">Actionクラスのメソッド(MethodBinding)</a></h5>
+<p>それでは、createボタンが押されたときに実行されるexamples.jsf.action.impl.EmployeeSearchActionImplのgoEditForCreate()を見てみましょう。</p>
+<pre>
+public String goEditForCreate() {
+    processModeDto.setProcessMode(Constants.CREATE_MODE);
+    return &quot;employeeEdit&quot;;
+}
+</pre>
+<p>Constants(examples.jsf.common.Constants)は以下のように処理の状態を表す定数を定義しただけのインタフェースです。</p>
+<pre>
+public interface Constants {
+    public int CREATE_MODE = 1;
+    public int UPDATE_MODE = 2;
+    public int DELETE_MODE = 3;
+    public int REFER_MODE = 4;
+}
+</pre>
+<p>ProcessModeDtoに「CREATE_MODE」という状態が記録され、最後に"employeeEdit"が返されます。実際faces-config.xmlを見てみると、employeeEditは/employee/employeeEdit.htmlと定義されています。
+<pre>
+&lt;navigation-rule&gt;
+    &lt;navigation-case&gt;
+        &lt;from-outcome&gt;employeeEdit&lt;/from-outcome&gt;
+        &lt;to-view-id&gt;/employee/employeeEdit.html&lt;/to-view-id&gt;
+    &lt;/navigation-case&gt;
+&lt;/navigation-rule&gt;
+</pre>
+<h3><a name="employeeEdit">employeeEdit.html</a></h3>
+<p>/employee/employeeEdit.htmlを見てみましょう。見ていく順番は以下のようになります。</p>
+<ul>
+<li><a href="#EmployeeEditInitialize">ページの初期処理の説明</a></li>
+    <ul>
+    <li><a href="#EmployeeEditInitializeDicon">ページの初期処理のdiconファイル</a></li>
+    <li><a href="#EmployeeEditInitializeClass">ページの初期処理のクラス</a></li>
+    <ul>
+        <li><a href="#EmployeeEditInitializeProperty">プロパティ</a></li>
+        <li><a href="#EmployeeEditInitializeMethod">ページの初期処理するメソッド</a></li>
+    </ul>
+    </ul>
+<li><a href="#EmployeeEditView">画面の説明</a></li>
+    <ul>
+    <li><a href="#EmployeeEditTagu">タグ</a></li>
+    </ul>
+<li><a href="#EmployeeEditAction">Actionクラスの説明</a></li>
+    <ul>
+    <li><a href="#EmployeeEditActionDicon">Actionクラスのdiconファイル</a></li>
+    <li><a href="#EmployeeEditActionClass">Actionクラス</a></li>
+    <ul>
+        <li><a href="#EmployeeEditActionProperty">プロパティ</a></li>
+        <li><a href="#EmployeeEditActionMethod">Actionクラスのメソッド(MethodBinding)</a></li>
+    </ul>
+    </ul>
+</ul>
+<h4><a name="EmployeeEditInitialize">ページの初期処理の説明</a></h4>
+<pre>
+&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot;
+    <b>m:action=&quot;#{employeeEditInitAction.initialize}&quot;</b>
+    m:extends=&quot;/WEB-INF/layout/layout.html&quot;&gt;
+</pre>
+<p>2行目のaction属性でページの初期処理をするメソッドを指定しています。</a>
+<h5><a name ="EmployeeEditInitializeDicon">ページの初期処理のdiconファイル</a></h5>
+<p>この初期化メソッドのemployeeEditInitActionはexamples/jsf/dicon/employee.diconで以下のように宣言されています。aspectタグのactionInterceptorChainは<a href="#EmployeeSearchInitializeDicon">こちら</a>で説明した通りです。</p>
+<pre>
+&lt;component name=&quot;employeeEditInitAction&quot; 
+            class=&quot;examples.jsf.action.impl.EmployeeEditInitActionImpl&quot; instance=&quot;request&quot;&gt;
+    &lt;aspect&gt;actionInterceptorChain&lt;/aspect&gt;
+&lt;/component&gt;
+</pre>
+<h5><a name="EmployeeEditInitializeClass">ページの初期処理のクラス</a></h5>
+<a>examples.jsf.action.impl.EmployeeSearchInitActionImplを見ていきましょう。</a>
+<h5><a name="EmployeeEditInitializeProperty">プロパティ</a></h5>
+<p>examples.jsf.action.impl.EmployeeEditInitActionImplクラスは以下のプロパティを持っています。</p>
+<pre>
+public class EmployeeEditInitActionImpl implements EmployeeEditInitAction {
+    private EmployeeLogic employeeLogic;
+    private Integer empno;
+    private ProcessModeDto processModeDto;
+    private EmployeeDto employeeDto;
+    private List departmentDtoList;
+                :
+}
+</pre>
+<p>empnoは単なるプロパティで、ProcessModeDtoは前に書いたように、プログラムの状態管理です。最後のdepartmentDtoListはsetterメソッドがないので、EmployeeEditInitActionImpl生成時点では何も行われません。action属性で指定されたinitialize()の中でセットされます。そのinitialize()は次のようになっています。</p>
+<h5><a name="EmployeeEditInitializeMethod">ページの初期処理するメソッド</a></h5>
+<p>getAllDepartments()でテーブルDEPTの全レコードを取得しています。次のif文では、現在の状態がUPDATE_MODE(編集状態)ならempnoをキーにテーブルEMPを検索した結果をemployeeDtoへ設定します。これをHTMLファイルでValueBindingすることにより、値が自動的に画面表示されます。今回はCREATE_MODEなので検索は行われずemployeeDtoは空になります。</p>
+<pre>
+public String initialize() {
+    departmentDtoList = employeeLogic.getAllDepartments();
+    if (processModeDto.getProcessMode() == Constants.UPDATE_MODE) {
+        employeeDto = employeeLogic.getEmployeeDto(empno);
+    }
+    return null;
+}
+</pre>
+<h4><a name="EmployeeEditView">画面の説明</a></h4>
+<p>この画面(employeeEdit.html)の各入出力用のタグを見ていきましょう。各入出力用のタグはJavaBeans(employeeDto)のプロパティを連動させています｡</p>
+<h5><a name="EmployeeEditTagu">タグの説明</a></h5>
+<p>画面に表示させる処理モードの表示方法は次のようになります。</p>
+<pre>
+&lt;span m:value=&quot;Create&quot;
+    <b>m:rendered=&quot;#{processModeDto.processMode == 1}&quot;</b>
+    m:class=&quot;display&quot; class=&quot;notdisplay&quot;&gt;
+    Create
+&lt/span&gt;
+&lt;span m:value=&quot;Edit&quot;
+    m:rendered=&quot;#{processModeDto.processMode == 2}&quot;&gt;
+    Edit
+&lt;/span&gt;
+</pre>
+<p>renderedは条件分岐で以下のように設定します。</p>
+<pre>
+&lt;span m:value=&quot;値１&quot; m:rendered=&quot;条件式１&quot;&gt;値２&lt;/span&gt;
+&lt;span m:rendered=&quot;条件式２&quot;&gt;値３&lt;/span&gt;
+</pre>
+<p>上の場合、このspanタグの評価結果は</p>
+<ul>
+<li>条件式１がtrueなら値１。falseなら何も返さない。値２はプレビュー用。</li>
+<li>条件式２がtrueなら値３。falseなら何も返さない。値３プレビューでも使われる。</li>
+</ul>
+<p>値３にはまた別なspanタグを書いたりしてネストすることもできます。最初のspanタグはprocessModeDto.processMode == 1ならvalue属性の"Create"になります。spanタグで囲まれている方の"Create"はプレビュー用です。spanタグのm:classはrendered = true(つまりS2JSF環境で実行して条件が成立したとき)使われるCSSのclassで、ただのclass(notdisplay)はプレビュー用のものとなります。プレビュー用のclass(notdisplay)はCreateを表示させないようにしています。プレビューで見たときCreateとEditの両方が表示されてしまうためです。またm:class="display"を記述しておかないとS2JSF環境で実行した場合、プレビュー用のclass(notdisplay)が適応されて表示されなくなってしまいます。</p>
+<p>次に出てくるhiddenタグを見てみましょう。</p>
+<pre>
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.versionNo}&quot;
+    m:rendered=&quot;#{processModeDto.processMode == 2}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.empno}&quot;
+    m:rendered=&quot;#{processModeDto.processMode == 2}&quot;/&gt;
+</pre>
+<p>これもrenderedを使用してUPDATE_MODEの時は、これらの値をhiddenで保持します。</p>
+<p>次にEmployeeNo(主キーempno)用のフィールドを見ていきましょう。</p>
+<pre>
+&lt;td class=&quot;label&quot;&gt;EmployeeNo&lt;/td&gt;
+&lt;td&gt;
+    &lt;input id=&quot;empno&quot; type=&quot;text&quot;
+        m:value=&quot;#{employeeDto.empno}&quot;
+        m:class=&quot;display right&quot;
+        class=&quot;notdisplay&quot;
+        m:required=&quot;true&quot;
+        m:rendered=&quot;#{processModeDto.processMode == 1}&quot;/&gt;
+    &lt;span m:inject=&quot;h:message&quot; m:for=&quot;empno&quot; m:class=&quot;error&quot;
+        m:rendered=&quot;#{processModeDto.processMode == 1}&quot;/&gt;
+    &lt;div class=&quot;right&quot; m:rendered=&quot;#{processModeDto.processMode == 2}&quot;&gt;
+        &lt;span m:value=&quot;#{employeeDto.empno}&quot;&gt;7788&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/td&gt;
+</pre>
+<p>このinputタグはrenderedでCREATE_MODEの時だけ生成されます。またrequired属性がtrueなので入力必須となります。messageも同様にCREATE_MODEの時だけ生成されるようになっています。UPDATE_MODEで生成されるのは、その後のdivタグの部分となります。 </p>
+<p>EmployeeName、Job、Manager、HireDate、Salary、Commissionの各フィールドはemployeeDtoを連動するようになっています。</p>
+<pre>
+&lt;td class=&quot;label&quot;&gt;EmployeeName&lt;/td&gt;
+&lt;td&gt;&lt;input type=&quot;text&quot; m:value=&quot;#{employeeDto.ename}&quot; value=&quot;SCOTT&quot;/&gt;&lt;/td&gt;
+</pre>
+<p>CREATE_MODEの場合、各プロパティには何もセットされていない(デフォルト値)。 UPDATE_MODEの場合、該当EMPレコードの内容が表示されるようになっています。何かが表示されるのは、UPDATE_MODEのときだけとなります。</p>
+<p>employeeEdit.htmlの残りボタンを見ていきましょう。</p>
+<pre>
+&lt;input type=&quot;button&quot; value=&quot;confirm&quot; m:action=&quot;#{employeeEditAction.goConfirm}&quot;
+    onclick=&quot;location.href='employeeConfirm.html'&quot;/&gt;
+&lt;input type=&quot;button&quot; value=&quot;previous&quot;
+    m:action=&quot;#{employeeEditAction.goPrevious}&quot;
+    <b>m:immediate=&quot;true&quot;</b>
+    onclick=&quot;location.href='employeeList.html'&quot;/&gt;
+</pre>
+<p>immediate="true"を指定することでバリデーションをかけないでページ遷移が可能となります。</p>
+<h4><a name="EmployeeEditAction">Actionクラスの説明</a></h4>
+<p>action属性のemployeeEditActionを見てみましょう。</p>
+<h5><a name="EmployeeEditActionDiocn">Actionクラスのdiconファイル</a></h5>
+<p>employeeEditActionはemployee.diconで定義されています。その定義を見るとexamples.jsf.action.impl.EmployeeEditActionImplのインスタンスで、requestスコープというのがわかります。aspectタグのactionInterceptorChainは<a href="#EmployeeSearchInitializeDicon">こちら</a>で説明した通りです。</p>
+<pre>
+&lt;component name=&quot;employeeEditAction&quot; 
+            class=&quot;examples.jsf.action.impl.EmployeeEditActionImpl&quot; instance=&quot;request&quot;&gt;
+    &lt;aspect&gt;actionInterceptorChain&lt;/aspect&gt;
+&lt;/component&gt;
+</pre>
+<h4><a name="EmployeeEditActionClass">Actionクラス</a></h4>
+<p>examples.jsf.action.impl.EmployeeSearchActionImplクラスを見ていきましょう。 </p>
+<h5><a name="EmployeeEditActionProperty">プロパティ</a></h5>
+<p>examples.jsf.action.impl.EmployeeEditActionImplは以下のプロパティを持っています。</p>
+<pre>
+public class EmployeeEditActionImpl implements EmployeeEditAction {
+    private EmployeeLogic employeeLogic;
+    private ProcessModeDto processModeDto;
+    private EmployeeDto employeeDto;
+                ：
+}
+</pre>
+<p>EmployeeLogicはテーブルEMPを操作するインタフェース。その実装クラスEmployeeLogicImplがセットされます。ProcessModeDtoはプログラムの状態を管理するDTOです。EmployeeDtoはemployeeEdit.htmlでは各フィールドをemployeeDtoのプロパティにValueBindingしていて、そのbindされたemployeeDtoがrequestスコープに保存されています。</p>
+<h4><a name="EmployeeEditActionMethod">Actionクラスのメソッド(MethodBinding)</a></h4>
+<p>それではボタンのMethodbindingのemployeeEditAction.goPreviousから見てみましょう。</p>
+<pre>
+public String goPrevious() {
+    switch (processModeDto.getProcessMode()) {
+        case Constants.CREATE_MODE :
+            return &quot;employeeSearch&quot;;
+        case Constants.UPDATE_MODE :
+            return &quot;employeeList&quot;;
+        default:
+            return null;
+    }
+}
+</pre>
+<p>action属性で指定されているgoPrevious()は、現在の状態に合わせて戻り先を決めているだけです。またimmediate="true"を指定していたので入力内容を反映せずにページ遷移が可能となります。残りのMethodbindingのemployeeEditAction.goConfirm()は次のようになっています。</p>
+<pre>
+public String goConfirm() {
+    if (processModeDto.getProcessMode() == Constants.CREATE_MODE
+            && <b>employeeLogic.existEmployee(employeeDto.getEmpno())</b>) {
+        throw new EmployeeAlreadyExistRuntimeException(employeeDto
+                .getEmpno().intValue());
+    }
+    return "employeeConfirm";
+}
+</pre>
+<p>まずexistEmployee()はEmployeeLogicの以下のメソッドを呼んでいます。</p>
+<pre>
+public boolean existEmployee(Integer empno) {
+    return employeeDtoDao.getEmployeeDto(empno) != null;
+}
+</pre>
+<p>引数empnoをキーにテーブルEMPを検索し、該当レコードをjava.util.Listに格納して、この戻り値がnullでない場合trueを返します。呼び出し元のif文ではこれを使ってCREATE_MODEで同じempnoを持つレコードがテーブルEMPにあれば例外EmployeeAlreadyExistRuntimeExceptionをスローしています。</p>
+<p>EmployeeAlreadyExistRuntimeExceptionはjava.lang.RuntimeExceptionのサブクラス(正確には間にexamples.jsf.exceptionAppRuntimeExceptionが入る)なのでthrowsを書く必要がありません。結果「従業員(xxxx)は既に存在します」というメッセージとして表示されます。これはこのemployeeEditActionにactionInterceptorChainが適用されるからです。</br>
+empnoが重複していなければ"employeeConfirm"が返され、/employee/employeeConfirm.htmlに遷移します。</p>
+<h3><a name="EmployeeConfirm">employeeConfirm.html</a></h3>
+<p>employeeSearch.htmlでcreateボタンが押された後に表示されるemployee/employeeConfirm.htmlを見ていきましょう。見ていく順番は以下のようになります。</p>
+<ul>
+<li><a href="#EmployeeConfirmInitialize">ページの初期処理の説明</a></li>
+    <ul>
+    <li><a href="#EmployeeConfirmInitializeDicon">ページの初期処理のdiconファイル</a></li>
+    <li><a href="#EmployeeConfirmInitializeClass">ページの初期処理のクラス</a></li>
+    <ul>
+        <li><a href="#EmployeeConfirmInitializeProperty">プロパティ</a></li>
+        <li><a href="#EmployeeConfirmInitializeMethod">ページの初期処理するメソッド</a></li>
+    </ul>
+    </ul>
+<li><a href="#EmployeeConfirmView">画面の説明</a></li>
+    <ul>
+    <li><a href="#EmployeeConfirmTagu">タグ</a></li>
+    </ul>
+<li><a href="#EmployeeConfirmAction">Actionクラスの説明</a></li>
+    <ul>
+    <li><a href="#EmployeeConfirmActionDicon">Actionクラスのdiconファイル</a></li>
+    <li><a href="#EmployeeConfirmActionClass">Actionクラス</a></li>
+    <ul>
+        <li><a href="#EmployeeConfirmActionProperty">プロパティ</a></li>
+        <li><a href="#EmployeeConfirmActionMethod">Actionクラスのメソッド(MethodBinding)</a></li>
+    </ul>
+    </ul>
+</ul>
+<h4><a name="EmployeeConfirmInitialize">ページの初期処理の説明</a></h4>
+
+<pre>
+01:&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot;
+02:    <b>m:action=&quot;#{employeeConfirmInitAction.initialize}&quot;</b>
+03:    m:extends=&quot;/WEB-INF/layout/layout.html&quot;&gt;
+</pre>
+<p>2行目のaction属性でページを初期化するメソッドを指定しています。</p>
+<h5><a name="EmployeeConfirmInitializeDicon">ページの初期処理のdiconファイル</a></h5>
+<p>この初期化メソッドのemployeeConfirmInitActionはexamples/jsf/dicon/employee.diconで以下のように宣言されています。</p>
+<pre>
+&lt;component name="employeeConfirmInitAction" 
+            class="examples.jsf.action.impl.EmployeeConfirmInitActionImpl" instance="request"&gt;
+    &lt;aspect&gt;actionInterceptorChain&lt;/aspect&gt;
+&lt;/component&gt;
+</pre>
+<h5><a name="EmployeeConfirmInitializeClass">ページの初期処理のクラス</a></h5>
+<p>examples.jsf.action.impl.EmployeeSearchInitActionImplを見ていきましょう。</p>
+<h5><a name="EmployeeConfirmInitializeProperty">プロパティ</a></h5>
+<p>examples.jsf.action.impl.EmployeeConfirmInitActionImplのプロパティは以下のようになっています。</p>
+<pre>
+public class EmployeeConfirmInitActionImpl implements EmployeeConfirmInitAction {
+    private EmployeeLogic employeeLogic;
+    private EmployeeDto employeeDto;
+            :
+}
+</pre>
+<p>EmployeeLogicはテーブルEMPを操作するインタフェース定義で、その実装クラス(EmployeeLogicImp)がセットされます。EmployeeDtoは、このemployeeConfirm.htmlの場合、前画面のemployeeEdit.htmlの各フィールドでValueBindingされた結果が入っています。</p>
+<h5><a name="EmployeeConfirmInitializeMethod">ページを初期処理するメソッド</a></h5>
+<p>初期化処理(initialize())は次のようになっています。</p>
+<pre>
+public String initialize() {
+    if (employeeDto.getDeptno() != null) {
+        String dname = employeeLogic.getDname(employeeDto.getDeptno());
+        employeeDto.setDname(dname);
+    }
+    return null;
+}
+</pre>
+<p>employeeDto.getDeptno()で返されるのは、employeeEdit.htmlのDepartmentコンボボックスで選択された値であり、それに対応する選択肢の名称(つまりdname)は一緒にValueBindingで取り出せないので、ここで取得しています。</p>
+<h4><a name="EmployeeConfirmView">画面の説明</a></h4>
+<p>それでは/employee/employeeConfirm.htmlのbody部分を見ていきましょう。<p>
+<h5><a name="EmployeeConfirmTagu">タグの説明</a></h5>
+<p>まず初めにrenderedが４つあります。このemployeeConfirm.htmlは全モード共通で使われる画面のためです。</p>
+<pre>
+&lt;span m:value=&quot;Create&quot;
+    m:rendered=&quot;#{processModeDto.processMode == 1}&quot;
+    m:class=&quot;display&quot; class=&quot;notdisplay&quot;&gt;
+    Create
+&lt;/span&gt;
+&lt;span m:value=&quot;Edit&quot;
+    m:rendered=&quot;#{processModeDto.processMode == 2}&quot;&gt;
+    Edit
+&lt;/span&gt;
+&lt;span m:value=&quot;Delete&quot;
+    m:rendered=&quot;#{processModeDto.processMode == 3}&quot;
+    m:class=&quot;display&quot; class=&quot;notdisplay&quot;&gt;
+    Delete
+&lt;/span&gt;
+&lt;span m:value=&quot;Inquire&quot;
+    m:rendered=&quot;#{processModeDto.processMode == 4}&quot;
+    m:class=&quot;display&quot; class=&quot;notdisplay&quot;&gt;
+    Inquire
+&lt;/span&gt;
+</pre>
+<p>その次に以下のようにhiddenタグが設定されています。</p>
+<pre>
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.versionNo}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.empno}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.ename}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.job}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.mgr}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.hiredate}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.sal}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.comm}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.deptno}&quot;/&gt;
+&lt;input type=&quot;hidden&quot; m:value=&quot;#{employeeDto.dname}&quot;/&gt;
+</pre>
+<p>このemployeeConfirm.htmlではemployeeDtoにセットされている値、つまり前の画面で入力された値を</p>
+<pre>
+&lt;td class=&quot;label&quot;&gt;EmployeeNo&lt;/td&gt;
+&lt;td class=&quot;right&quot;&gt;&lt;span m:value=&quot;#{employeeDto.empno}&quot;&gt;7788&lt;/span&gt;&lt;/td&gt;
+</pre>
+<p>といった単なる文字列で表示するため、次の画面に(employeeDtoの内容を)渡せないのでhiddenを使ってValueBindingしています。</p>
+<p>最後にボタンの定義を見ていきましょう。</p>
+<pre>
+&lt;input type=&quot;button&quot; value=&quot;store&quot;
+    m:action=&quot;#{employeeConfirmAction.store}&quot;
+    m:rendered=&quot;#{processModeDto.processMode != 4}&quot;
+    onclick=&quot;location.href='employeeSearch.html'&quot;/&gt;
+&lt;input type=&quot;button&quot; value=&quot;previous&quot;
+    m:action=&quot;#{employeeConfirmAction.goPrevious}&quot;
+    onclick=&quot;location.href='employeeEdit.html'&quot;/&gt;
+</pre>
+<p>storeはrenderedの条件式がprocessModeDto.processMode != 4 なので、CREATE_MODE, UPDATE_MODE, DELETE_MODEのとき表示されます。</p>
+<h4><a name="EmployeeConfirmAction">Actionクラスの説明</a></h4>
+<p>アクション属性のemployeeConfirmActionを見ていきましょう。</p>
+<h5><a name="EmployeeConfirmActionDicon">Actionクラスのdiconファイル</a></h5>
+<p>employeeConfirmActionはemployee.diconで以下のように定義されています。</p>
+<pre>
+&lt;component name=&quot;employeeConfirmAction&quot; 
+            class=&quot;examples.jsf.action.impl.EmployeeConfirmActionImpl&quot; instance=&quot;request&quot;&gt;
+    &lt;aspect&gt;actionInterceptorChain&lt;/aspect&gt;
+&lt;/component&gt;
+</pre>
+<h4><a name="EmployeeConfirmActionClass">Actionクラス</a></h4>
+<p>examples.jsf.action.impl.EmployeeConfirmActionImplクラスを見ていきましょう。</p>
+<h5><a name="EmployeeConfirmActionProperty">プロパティ</a></h5>
+<p>EmployeeConfirmActionImplは以下のプロパティを持っています。</p>
+<pre>
+public class EmployeeConfirmActionImpl implements EmployeeConfirmAction {
+    private EmployeeLogic employeeLogic;
+    private ProcessModeDto processModeDto;
+    private EmployeeDto employeeDto;
+                :
+}
+</pre>
+<p>EmployeeLogicはインタフェースで実際はEmployeeLogicImplというテーブルEMPに対する操作を実装したクラスのインスタンスがセットされます。ProcessModeDtoはプログラムの状態を管理用。EmployeeDtoには前画面から渡されたデータが入っています。</p>
+<h4><a name="EmployeeConfirmActionMethod">Actionクラスのメソッド(MethodBinding)</a></h4>
+<p>storeボタンが押されたとき呼び出されるEmployeeLogic#store()を見てみましょう。</p>
+<pre>
+public String store() {
+    switch (processModeDto.getProcessMode()) {
+        case Constants.CREATE_MODE :
+            employeeLogic.insert(employeeDto);
+            break;
+        case Constants.UPDATE_MODE :
+            employeeLogic.update(employeeDto);
+            break;
+        case Constants.DELETE_MODE :
+            employeeLogic.delete(employeeDto);
+            break;
+    }
+    return "employeeSearch";
+}
+</pre>
+<p>現在の処理モードに合わせてメソッドを呼び分けています。EmployeeLogicImpl側のメソッド定義は次のようになっています。</p>
+<pre>
+public void insert(EmployeeDto dto) {
+    employeeDtoDao.insert(dto);
+}
+
+public void update(EmployeeDto dto) {
+    employeeDtoDao.update(dto);
+}
+
+public void delete(EmployeeDto dto) {
+    employeeDtoDao.delete(dto);
+}
+</pre>
+<p>EmployeeDtoDao経由でS2Daoを使用して処理を行っています。</p>
+<pre>
+public void insert(EmployeeDto dto);
+public void update(EmployeeDto dto);
+public void delete(EmployeeDto dto);
+</pre>
+<p>これだけでS2Daoは更新系SQLを自動的に生成して実行してくれます。</p>
+<p>previousボタンで呼び出されるgoPrevious()は単に次の表示ページを決めるための文字列を返しているだけです。</p>
+<pre>
+public String goPrevious() {
+    switch (processModeDto.getProcessMode()) {
+        case Constants.CREATE_MODE :
+        case Constants.UPDATE_MODE :
+            return &quot;employeeEdit&quot;;
+        default:
+            return &quot;employeeList&quot;;
+    }
+}
+</pre>
+<p>いままでがemployeeSearch.htmlのcreateボタンを押されて始まる一連の処理となります。次は同じくemployeeSearch.htmlにあるsearchボタンが押されたときの処理を見てみましょう。</p>
+<pre>
+&lt;input type=&quot;button&quot; value=&quot;search&quot;
+    m:action=&quot;#{employeeSearchAction.checkSearchCount}&quot;
+    onclick=&quot;location.href='employeeList.html'&quot;/&gt;
+</pre>
+<p>employeeSearchActionについてはこちらを参照してください。このボタンが押されるとEmployeeSearchActionImpl#checkSearchCount()が呼び出されます。</p>
+<pre>
+public String checkSearchCount() {
+    if (employeeLogic.getSearchCount(employeeSearchDto) == 0) {
+        throw new BadCriteriaRuntimeException();
+    }
+    return &quot;employeeList&quot;;
+}
+</pre>
+<p>先に該当レコード数をチェックします。この場合employeeLogicにはテーブルEMPを操作するインタフェースEmployeeLogicを実装したクラスEmployeeLogicImpのインスタンスがセットされていて、employeeSearchDtoにはemployeeSearch.htmlへ入力された結果がValueBindingされているいます。getSearchCount()は次のようにemployeeDtoDaoのgetSearchCount()を呼んでいるだけです。</p>
+<pre>
+public int getSearchCount(EmployeeSearchDto dto) {
+    return employeeDtoDao.getSearchCount(dto);
+}
+</pre>
+<p>getSearchCount()でDTOを検索条件として該当レコード数を取得しています。この結果でcheckSearchCount()は該当レコードがなければ例外BadCriteriaRuntimeExceptionをスローします。 該当あれば"employeeList"を返します。この結果、/employee/employeeList.htmlへ遷移します。 
+</p>
+<h3><a name="employeeList">employeeList.html</a></h3>
+<p>/employee/employeeList.htmlはemployeeSearch.htmlへ入力された条件に該当するレコードをリスト表示する画面です。見ていく順番は以下のようになります。</p>
+<ul>
+<li><a href="#EmployeeListInitialize">ページの初期処理の説明</a></li>
+    <ul>
+    <li><a href="#EmployeeListInitializeDicon">ページの初期処理のdiconファイル</a></li>
+    <li><a href="#EmployeeListInitializeClass">ページの初期処理のクラス</a></li>
+    <ul>
+        <li><a href="#EmployeeListInitializeProperty">プロパティ</a></li>
+        <li><a href="#EmployeeListInitializeMethod">ページの初期処理するメソッド</a></li>
+    </ul>
+    </ul>
+<li><a href="#EmployeeListView">画面の説明</a></li>
+    <ul>
+    <li><a href="#EmployeeListTagu">タグ</a></li>
+    </ul>
+<li><a href="#EmployeeListAction">Actionクラスの説明</a></li>
+    <ul>
+    <li><a href="#EmployeeListActionDicon">Actionクラスのdiconファイル</a></li>
+    <li><a href="#EmployeeListActionClass">Actionクラス</a></li>
+    <ul>
+        <li><a href="#EmployeeListActionProperty">プロパティ</a></li>
+        <li><a href="#EmployeeListActionMethod">Actionクラスのメソッド(MethodBinding)</a></li>
+    </ul>
+    </ul>
+</ul>
+<h4><a name="EmployeeListInitialize">ページの初期処理の説明</a></h4>
+<pre>
+01:&lt;html xmlns:m=&quot;http://www.seasar.org/maya&quot;
+02:    <b>m:action=&quot;#{employeeListInitAction.initialize}&quot;</b>
+03:    m:extends=&quot;/WEB-INF/layout/layout.html&quot;&gt;
+</pre>
+<p>2行目のaction属性でページを初期化するメソッドを指定しています。 </p>
+<h5><a name="EmployeeListInitializeDicon">ページの初期処理のdiconファイル</a></h5>
+<p>employeeListInitActionはemployee.diconでexamples.jsf.action.impl.EmployeeListInitActionImplクラスのインスタンスで、requestスコープと宣言しています。</p>
+<pre>
+&lt;component name=&quot;employeeListInitAction&quot; 
+            class=&quot;examples.jsf.action.impl.EmployeeListInitActionImpl&quot; instance=&quot;request&quot;&gt;
+    &lt;aspect&gt;actionInterceptorChain&lt;/aspect&gt;
+&lt;/component&gt;
+</pre>
+<h5><a name="EmployeeListInitializeProperty">プロパティ</p></h5>
+<p>定義されているプロパティは次の通りです。</p>
+<pre>
+public class EmployeeListInitActionImpl implements EmployeeListInitAction {
+    private EmployeeSearchDto employeeSearchDto;
+    private EmployeeLogic employeeLogic;
+    private List employeeDtoList;
+                    :
+}
+</pre>
+<p>employeeSearchDtoは前画面のemployeeSearch.htmlに入力された内容を保持するもので、sessionスコープで管理されています(employee.dicon参照)。それがsetterメソッドsetEmployeeSearchDto()経由でここにセットされます。employeeLogicにはテーブルEMPを操作するインタフェースEmployeeLogicを実装したクラスEmployeeLogicImpのインスタンスがセットされます。employeeDtoListは、initialize()の中でセットされます。そのinitialize()は次のようになっています。</p>
+<h5><a name="EmployeeListInitializeMethod">ページの初期処理するメソッド</a></h5>
+<pre>
+public String initialize() {
+    employeeDtoList = employeeLogic.searchEmployeeDtoList(employeeSearchDto);
+    return null;
+}
+</pre>
+<p>EmployeeLogicImp#searchEmployeeDtoList()もEmployeeDtoDaoの同名メソッドを呼び出すだけです。</p>
+<pre>
+public List searchEmployeeDtoList(EmployeeSearchDto dto) {
+    return employeeDtoDao.searchEmployeeDtoList(dto);
+}
+</pre>
+
+<p>この結果がemployeeDtoListにセットされます。そのemployeeDtoListはgetterメソッドとしてgetEmployeeDtoListがあるので、このプロパティが自動的にrequestスコープの属性として保管されます。</p>
+<h5><a name="EmployeeListView">画面の説明</a></h5>
+<p>employeeList.htmlの画面組み立てを見ていきましょう。</p>
+<h5><a name="EmployeeListTagu"">タグの説明</a></h5>
+<p>forEachタグを見てみましょう。</p>
+<pre>
+&lt;span m:inject=&quot;s:forEach&quot;
+    m:items=&quot;#{employeeDtoList}&quot;
+    m:var=&quot;e&quot;
+    m:varIndex=&quot;i&quot;&gt;
+            ：
+&lt;/span&gt;
+</pre>
+<p>サンプルのforEachタグを見てもらえば分かるように、この場合はemployeeDtoList(初期化処理で作成されたテーブルEMPの検索結果)の各要素をeとし、それが何番目の要素かはiで表す、ということになります。実際に繰り返されるのはこのspanタグにはさまれたtrタグです。そのtrタグは以下のようになっています。</p>
+<pre>
+&lt;tr class=&quot;evenRow&quot; m:class=&quot;#{i % 2 == 0 ? 'evenRow' : 'oddRow'}&quot;&gt;
+    &lt;td class=&quot;right&quot;&gt;&lt;span m:value=&quot;#{e.empno}&quot;&gt;7369&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span m:value=&quot;#{e.ename}&quot;&gt;SMITH&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span m:value=&quot;#{e.job}&quot;&gt;CLERK&lt;/span&gt;&lt;/td&gt;
+    &lt;td class=&quot;right&quot;&gt;&lt;span m:value=&quot;#{e.mgr}&quot;&gt;7902&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span m:value=&quot;#{e.hiredate}&quot;&gt;1980/12/07&lt;/span&gt;&lt;/td&gt;
+    &lt;td class=&quot;right&quot;&gt;&lt;span m:value=&quot;#{e.sal}&quot;&gt;800&lt;/span&gt;&lt;/td&gt;
+    &lt;td class=&quot;right&quot;&gt;&lt;span m:value=&quot;#{e.comm}&quot;/&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span m:value=&quot;#{e.dname}&quot;&gt;RESEARCH&lt;/span&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;a href=&quot;employeeEdit.html&quot; m:action=&quot;#{employeeListAction.goNext}&quot;&gt;Edit
+            &lt;span m:inject=&quot;f:param&quot; m:name=&quot;empno&quot; m:value=&quot;#{e.empno}&quot;/&gt;
+            &lt;span m:inject=&quot;f:param&quot; m:name=&quot;processMode&quot; m:value=&quot;2&quot;/&gt;
+        &lt;/a&gt;
+        &lt;a href=&quot;employeeConfirm.html&quot; m:action=&quot;#{employeeListAction.goNext}&quot;&gt;Delete
+            &lt;span m:inject=&quot;f:param&quot; m:name=&quot;empno&quot; m:value=&quot;#{e.empno}&quot;/&gt;
+            &lt;span m:inject=&quot;f:param&quot; m:name=&quot;processMode&quot; m:value=&quot;3&quot;/&gt;
+        &lt;/a&gt;
+        &lt;a href=&quot;employeeConfirm.html&quot; m:action=&quot;#{employeeListAction.goNext}&quot;&gt;Inquire
+            &lt;span m:inject=&quot;f:param&quot; m:name=&quot;empno&quot; m:value=&quot;#{e.empno}&quot;/&gt;
+            &lt;span m:inject=&quot;f:param&quot; m:name=&quot;processMode&quot; m:value=&quot;4&quot;/&gt;
+        &lt;/a&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/span&gt;
+</pre>
+<p>以下のようtrタグのm:classに条件式を使用して背景を変えることもできます。</p>
+<pre>
+&lt;tr class=&quot;evenRow&quot; m:class=&quot;#{i % 2 == 0 ? 'evenRow' : 'oddRow'}&quot;&gt;
+</pre>
+<p>各行の右端には"Edit","Delete","Inquire"のリンクでセットするパラメータが違うだけで、基本的には同じです。Editは次のようになっています。</p>
+<pre>
+&lt;a href=&quot;employeeEdit.html&quot; m:action=&quot;#{employeeListAction.goNext}&quot;&gt;Edit
+    &lt;span m:inject=&quot;f:param&quot; m:name=&quot;empno&quot; m:value=&quot;#{e.empno}&quot;/&gt;
+    &lt;span m:inject=&quot;f:param&quot; m:name=&quot;processMode&quot; m:value=&quot;2&quot;/&gt;
+&lt/a&gt;
+</pre>
+<h4><a name="EmployeeListAction">Actionクラスの説明</a></h4>
+<p>アクション属性のemployeeListActionを見ていきましょう。</p>
+<h5><a name="EmployeeListActionDicon">Actionクラスのdiconファイル</a></h5>
+<p>このemployeeListActionはexamples/jsf/dicon/employee.diconで以下のように定義されています。aspectタグのactionInterceptorChainはこちらで説明した通りです。</p>
+<pre>
+&lt;component name=&quot;employeeListAction&quot; 
+            class=&quot;examples.jsf.action.impl.EmployeeListActionImpl&quot; instance=&quot;request&quot;&gt;
+    &lt;aspect&gt;actionInterceptorChain&lt;/aspect&gt;
+&lt;/component&gt;
+</pre>
+<h4><a name="EmployeeListActionClass">Actionクラス</a></h4>
+<p>examples.jsf.action.impl.EmployeeListActionImplクラスを見ていきましょう。</p>
+<h5><a name="EmployeeListActionProperty">プロパティ</a></h5>
+<p>定義されてるプロパティは以下の通りです。</p>
+<pre>
+public class EmployeeListActionImpl implements EmployeeListAction {
+    private int processMode;
+    private ProcessModeDto processModeDto;
+    private Integer empno;
+    private EmployeeLogic employeeLogic;
+    private EmployeeDto employeeDto;
+                :
+}
+</pre>
+<p>processModeとempnoはaタグの子タグでとして指定されたf:paramタグのパラメータ名に一致してsetterメソッドがあるので、S2JSFがMethodBindingで指定したgoNext()を実行する前にパラメータ値をセットします。</p>
+<h5><a name="EmployeeListActionMethod">Actionクラスのメソッド(MethodBinding)</a></h5>
+<p>goNext()は、processModeを使って遷移先を決定します。</p>
+<pre>
+public String goNext() {
+    processModeDto.setProcessMode(processMode);
+    switch (processModeDto.getProcessMode()) {
+        case Constants.UPDATE_MODE :
+            return "employeeEdit";
+        default :
+            employeeDto = employeeLogic.getEmployeeDto(empno);
+            return "employeeConfirm";
+    }
+}
+</pre>
+<p>processModeDtoに選択されたモードをセットして、UPDATE_MODE(Edit)のときは/employee/employeeEdit.html(=employeeEdit) それ以外は/employee/employeeConfirm.html(=employeeConfirm) へ遷移させます。</p>
+
 
 <!-- document end -->
 <!-- don't edit start -->
