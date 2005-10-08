@@ -198,8 +198,8 @@
     <h5>クラス名</h5>
     <p>org.seasar.framework.aop.interceptors.DelegateInterceptor</p>
     <h5>説明</h5>
-    <p>メソッド呼び出しを別のコンポーネントに委譲するためのInterceptorです。使用方法はDelegateInterceptorのtargetプロパティに委譲したい相手を指定します。委譲するときのメソッド名が異なる場合には、DeleateInterceptor#addMethodNameMap(String
-methodName, String targetMethodName)で指定します。例えば、bar()というメソッドをfoo.bar2()に委譲する場合、DeleateInterceptor#setTarget(foo)，DeleateInterceptor#addMethodNameMap(&quot;bar&quot;,
+    <p>メソッド呼び出しを別のコンポーネントに委譲するためのInterceptorです。使用方法はDelegateInterceptorのtargetプロパティに委譲したい相手を指定します。委譲するときのメソッド名が異なる場合には、DelegateInterceptor#addMethodNameMap(String
+methodName, String targetMethodName)で指定します。例えば、bar()というメソッドをfoo.bar2()に委譲する場合、DelegateInterceptor#setTarget(foo)，DelegateInterceptor#addMethodNameMap(&quot;bar&quot;,
 &quot;bar2&quot;)のように指定します。詳しい使用方法は<a href="#DelegateInterceptorSample">DelegateInterceptor</a>を参照してください。</p>
 <h5>注意</h5>
 <p>targetプロパティに指定されたコンポーネントは、コンテナの初期化時にコンテナから取得されます。このため、targetプロパティに指定されたコンポーネントのinstance属性がprototypeであっても、常に同じインスタンスが使われます。メソッド呼び出しの度に新しいインスタンスをコンテナから取得したい場合は次のPrototypeDelegateInterceptorを使用してください。</p>
@@ -207,8 +207,8 @@ methodName, String targetMethodName)で指定します。例えば、bar()というメソッドをf
     <h5>クラス名</h5>
     <p>org.seasar.framework.aop.interceptors.PrototypeDelegateInterceptor</p>
     <h5>説明</h5>
-    <p>メソッド呼び出しを別のコンポーネントに委譲するためのInterceptorです。メソッド呼び出しの度にコンポーネントをコンテナから取得します。使用方法はPrototypeDelegateInterceptorのtargetNameプロパティに委譲したい相手の名前を指定します。委譲するときのメソッド名が異なる場合には、PrototypeDeleateInterceptor#addMethodNameMap(String
-methodName, String targetMethodName)で指定します。例えば、bar()というメソッドをfoo.bar2()に委譲する場合、PrototypeDeleateInterceptor#setTarget(foo)，PrototypeDeleateInterceptor#addMethodNameMap(&quot;bar&quot;,
+    <p>メソッド呼び出しを別のコンポーネントに委譲するためのInterceptorです。メソッド呼び出しの度にコンポーネントをコンテナから取得します。使用方法はPrototypeDelegateInterceptorのtargetNameプロパティに委譲したい相手の名前を指定します。委譲するときのメソッド名が異なる場合には、PrototypeDelegateInterceptor#addMethodNameMap(String
+methodName, String targetMethodName)で指定します。例えば、bar()というメソッドをfoo.bar2()に委譲する場合、PrototypeDelegateInterceptor#setTarget(foo)，PrototypeDelegateInterceptor#addMethodNameMap(&quot;bar&quot;,
 &quot;bar2&quot;)のように指定します。詳しい使用方法は<a href="#PrototypeDelegateInterceptorSample">PrototypeDelegateInterceptor</a>を参照してください。</p>
 
 	<h4><a name="SyncInterceptor">(6) SyncInterceptor</a></h4>
@@ -309,7 +309,7 @@ proxy.getTime();
 	<p><b>実行ファイルの作成</b></p>
     <ul>
 		<li type="circle">org.seasar.framework.container.S2Container#create()メソッドの最初の引数に作成したdiconファイル(Trace.dicon)のパスを指定してコンテナを作成します。</li>
-        <li type="circle">org.seasar.framework.container.S2Container#getComponent()メソッドの第１引数にコンポーネントに登録したクラス名（ArrayList.class、Date.class)を指定してコンポーネントを取得します。</li>
+        <li type="circle">org.seasar.framework.container.S2Container#getComponent()メソッドの第１引数にコンポーネントに登録したクラス名（List.class、Date.class)を指定してコンポーネントを取得します。</li>
         <li type="circle">トレースがAspectされるか確認するために取得したコンポーネントのArrayListのsize()メソッドを実行します。</li>
         <li type="circle">同様に取得したコンポーネントのDateのgetTime()メソッド、hashCode()メソッドを実行します。</li>
 	</ul>
