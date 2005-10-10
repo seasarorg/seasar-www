@@ -3,5 +3,8 @@
    <feature url="features/org.seasar.kijimuna_0.6.25.jar" id="org.seasar.kijimuna" version="0.6.25">
       <category name="Kijimuna"/>
    </feature>
+   <feature url="features/org.seasar.kijimuna_0.6.26.jar" id="org.seasar.kijimuna" version="0.6.26">
+      <category name="Kijimuna"/>
+   </feature>
    <category-def name="Kijimuna" label="Kijimuna"/>
 </site>
