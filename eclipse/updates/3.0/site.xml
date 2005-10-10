@@ -10,6 +10,9 @@
    <feature url="features/org.seasar.kijimuna_0.6.25.jar" id="org.seasar.kijimuna" version="0.6.25">
       <category name="Kijimuna"/>
    </feature>
+   <feature url="features/org.seasar.kijimuna_0.6.26.jar" id="org.seasar.kijimuna" version="0.6.26">
+      <category name="Kijimuna"/>
+   </feature>
    <feature url="features/org.seasar.s2jsfplugin.feature_0.0.6.jar" id="org.seasar.s2jsfplugin.feature" version="0.0.6">
       <category name="S2JSF Plugin"/>
    </feature>
