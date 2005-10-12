@@ -3,7 +3,7 @@
 <!-- don't edit start -->
 <head>
 <title>Seasar - DI Container with AOP - </title>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
 </head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
@@ -25,145 +25,436 @@
 <!-- don't edit end -->
 <!-- document start -->
             <ul>
-              <li><a href="#S2Container">S2ContainerŠT—v</a>
-                <ul>
-                  <li><a href="#DifferentPoint">¡‚Ü‚Å‚Æ‰½‚ªˆá‚¤‚Ì‚©</a></li>
-                  <li><a href="#S2Merit">‰½‚ª‚¤‚ê‚µ‚¢‚Ì‚©</a></li>
-                </ul>
+              <li><a href="#QuickStart">ã‚¯ã‚¤ãƒƒã‚¯ã‚¹ã‚¿ãƒ¼ãƒˆ</a>
+			 ã€€<ul>
+				<li><a href="#FirstStep">æœ€åˆã®ä¸€æ­©</a>
+				<li><a href="#NextStep">æ¬¡ã®ä¸€æ­©</a>
+ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€</ul>
               </li>
 
-              <li><a href="#S2ContainerReference">S2ContainerƒŠƒtƒ@ƒŒƒ“ƒX</a>
+              <li><a href="#S2ContainerReference">S2Containerãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹</a>
                 <ul>
-                  <li><a href="#CreateFile">ì¬‚·‚×‚«ƒtƒ@ƒCƒ‹</a></li>
-                  <li><a href="#S2ContainerDefinition">S2Container‚Ì’è‹`</a></li>
-                  <li><a href="#S2ContainerCreation">S2Container‚Ì¶¬</a>
+                  <li><a href="#CreateFile">ä½œæˆã™ã¹ããƒ•ã‚¡ã‚¤ãƒ«</a></li>
+                  <li><a href="#S2ContainerDefinition">S2Containerã®å®šç¾©</a></li>
+                  <li><a href="#S2ContainerCreation">S2Containerã®ç”Ÿæˆ</a>
 <ul>
-<li><a href="#SingletonS2ContainerFactory">SingletonS2ContainerFactory‚ğg—p‚·‚é</a>
-<li><a href="#S2ContainerFactory">S2ContainerFactory‚ğg—p‚·‚é</a>
+<li><a href="#SingletonS2ContainerFactory">SingletonS2ContainerFactoryã‚’ä½¿ç”¨ã™ã‚‹</a>
+<li><a href="#S2ContainerFactory">S2ContainerFactoryã‚’ä½¿ç”¨ã™ã‚‹</a>
 </ul>
 </li>
-                  <li><a href="#getComponent">ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìæ“¾</a></li>
-                  <li><a href="#DIType">Dependency Injection‚Ìƒ^ƒCƒv</a>
+                  <li><a href="#getComponent">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å–å¾—</a></li>
+                  <li><a href="#DIType">Dependency Injectionã®ã‚¿ã‚¤ãƒ—</a>
                     <ul>
-                      <li type="circle"><a href="#ConstructorInjection">ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a></li>
-                      <li type="circle"><a href="#SetterInjection">ƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a></li>
-                      <li type="circle"><a href="#MethodInjection">ƒƒ\ƒbƒhEƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a></li>
+                      <li type="circle"><a href="#ConstructorInjection">ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</a></li>
+                      <li type="circle"><a href="#SetterInjection">ã‚»ãƒƒã‚¿ãƒ¼ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</a></li>
+                      <li type="circle"><a href="#MethodInjection">ãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</a></li>
                     </ul>
                   </li>
-                  <li><a href="#Include">S2Container’è‹`‚Ì•ªŠ„‚ÆƒCƒ“ƒNƒ‹[ƒh</a></li>
-                  <li><a href="#Namespace">–¼‘O‹óŠÔ</a></li>
-                  <li><a href="#InstanceMode">ƒCƒ“ƒXƒ^ƒ“ƒXŠÇ—</a></li>
-                  <li><a href="#Lifecycle">ƒ‰ƒCƒtƒTƒCƒNƒ‹</a></li>
-                  <li><a href="#AutoBindingMode">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO</a></li>
-                  <li><a href="#UseS2Container">ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÅS2Container‚ğ—˜—p‚·‚é</a></li>
+                  <li><a href="#Include">S2Containerå®šç¾©ã®åˆ†å‰²ã¨ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰</a></li>
+                  <li><a href="#Namespace">åå‰ç©ºé–“</a></li>
+                  <li><a href="#InstanceMode">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç®¡ç†</a></li>
+                  <li><a href="#Lifecycle">ãƒ©ã‚¤ãƒ•ã‚µã‚¤ã‚¯ãƒ«</a></li>
+                  <li><a href="#AutoBindingMode">è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°</a></li>
+                  <li><a href="#UseS2Container">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã§S2Containerã‚’åˆ©ç”¨ã™ã‚‹</a></li>
                   <li><a href="#S2ContainerServlet">S2ContainerServlet</a></li>
-                  <li><a href="#app.dicon">app.dicon‚Ì–ğŠ„</a></li>
-                  <li><a href="#Aop">AOP‚Ì“K—p</a></li>
-				  <li><a href="#Meta">ƒƒ^ƒf[ƒ^</a></li>
-				  <li><a href="#Request">Request‚Ì©“®ƒoƒCƒ“ƒfƒBƒ“ƒO</a></li>
+                  <li><a href="#app.dicon">app.diconã®å½¹å‰²</a></li>
+                  <li><a href="#Aop">AOPã®é©ç”¨</a></li>
+				  <li><a href="#Meta">ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿</a></li>
+				  <li><a href="#Request">Requestã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°</a></li>
+				  <li><a href="#ComponentAutoRegister">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²</a></li>
+				  <li><a href="#AspectAutoRegister">ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®è‡ªå‹•ç™»éŒ²</a></li>
                 </ul>
               </li>
-              <li><a href="#DefReference">S2Container’è‹`ƒ^ƒOƒŠƒtƒ@ƒŒƒ“ƒX</a>
+              <li><a href="#DefReference">S2Containerã‚¿ã‚°ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹</a>
                 <ul>
                   <li><a href="#DOCTYPE">DOCTYPE</a></li>
-                  <li><a href="#componentsTag">componentsƒ^ƒO</a></li>
-                  <li><a href="#includeTag">includeƒ^ƒO</a></li>
-                  <li><a href="#componentTag">componentƒ^ƒO</a></li>
-                  <li><a href="#argTag">argƒ^ƒO</a></li>
-                  <li><a href="#propertyTag">propertyƒ^ƒO</a></li>
-				  <li><a href="#metaTag">metaƒ^ƒO</a></li>
-                  <li><a href="#initMethodTag">initMethodƒ^ƒO</a></li>
-                  <li><a href="#destroyMethodTag">destroyMethodƒ^ƒO</a></li>
-                  <li><a href="#aspectTag">aspectƒ^ƒO</a></li>
-                  <li><a href="#descriptionTag">descriptionƒ^ƒO</a></li>
-                  <li><a href="#ognlExpr">OGNL®</a></li>
+                  <li><a href="#componentsTag">componentsã‚¿ã‚°</a></li>
+                  <li><a href="#includeTag">includeã‚¿ã‚°</a></li>
+                  <li><a href="#componentTag">componentã‚¿ã‚°</a></li>
+                  <li><a href="#argTag">argã‚¿ã‚°</a></li>
+                  <li><a href="#propertyTag">propertyã‚¿ã‚°</a></li>
+				  <li><a href="#metaTag">metaã‚¿ã‚°</a></li>
+                  <li><a href="#initMethodTag">initMethodã‚¿ã‚°</a></li>
+                  <li><a href="#destroyMethodTag">destroyMethodã‚¿ã‚°</a></li>
+                  <li><a href="#aspectTag">aspectã‚¿ã‚°</a></li>
+                  <li><a href="#descriptionTag">descriptionã‚¿ã‚°</a></li>
+                  <li><a href="#ognlExpr">OGNLå¼</a></li>
                 </ul>
               </li>
-              <li><a href="#Example">Example</a>
+			  <li><a href="#AnnotationReference">S2Containerã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹</a>
                 <ul>
-                  <li><a href="#ConstructorInjectionEx">ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a></li>
-                  <li><a href="#SetterInjectionEx">ƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a></li>
-                  <li><a href="#MethodInjectionEx">ƒƒ\ƒbƒhEƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a></li>
-                  <li><a href="#AutoConstructorInjectionEx">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO(ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“)</a></li>
-                  <li><a href="#AutoSetterInjectionEx">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO(ƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“)</a></li>
-                </ul>
-              </li>
-              <li><a href="DIContainerExercise.html">DIContainerƒGƒNƒTƒTƒCƒY</a></li>
+                  <li><a href="#ComponentAnnotation">Componentã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a></li>
+				  <li><a href="#BindingAnnotation">Bindingã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a></li>
+				  <li><a href="#AspectAnnotation">Aspectã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a></li>
+				</ul>
+			  </li>
+              <li><a href="DIContainerExercise.html">DIContainerã‚¨ã‚¯ã‚µã‚µã‚¤ã‚º</a></li>
             </ul>
 
             
-<h2><a name="S2Container">S2Container‚ÌŠT—v</a></h2>
-            <p>S2Container‚Å‚ÍADIContainer‹@”\‚ğ’ñ‹Ÿ‚µ‚Ä‚¢‚Ü‚·BDIContainer‚Æ‚ÍADependency Injection‚ğ‚¨‚±‚È‚¤Œy—ÊƒRƒ“ƒeƒi‚Å‚·BDependency Injection‚Æ‚ÍAƒCƒ“ƒ^[ƒtƒF[ƒX‚ÆÀ‘•‚ğ•ª—£‚µ‚ÄƒRƒ“ƒ|[ƒlƒ“ƒg“¯m‚ªƒCƒ“ƒ^[ƒtƒF[ƒX‚Ì‚İ‚Å‰ï˜b‚·‚é‚æ‚¤‚É‚µAÀÛ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì¶¬‚âİ’è‚ğAŠOo‚µ‚É‚µ‚æ‚¤‚Æ‚¢‚¤l‚¦•û‚Å‚·BDependency Injection‚É‚Â‚¢‚Ä‚Í<A href="http://www.kakutani.com/trans/fowler/injection.html">Martin Fowler ‚ÌuInversion of Control Containers and the Dependency Injection patternv</A>‚Å•ª‚©‚è‚â‚·‚­à–¾‚³‚ê‚Ä‚¢‚Ü‚·BƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚ÍA‚±‚±‚Å‚ÍJava‚ÌƒNƒ‰ƒX‚Ì‚±‚Æ‚ğ‚¢‚¢‚Ü‚·B•¡”‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğŠi”[EŠÇ—‚µ‚Ä‚¢‚é‚Ì‚ÅƒRƒ“ƒeƒi‚ÆŒÄ‚ÑAŒy—Ê‚ÍAEJB‚ÌƒRƒ“ƒeƒi‚È‚Ç‚Æ”ä‚×èŒy‚Ég‚¦‚é‚Æ‚¢‚¤ˆÓ–¡‚Å‚·B
-            </p><p>DIContainer‚ÌƒCƒ[ƒW‚ÍAŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+<h2><a name="QuickStart">ã‚¯ã‚¤ãƒƒã‚¯ã‚¹ã‚¿ãƒ¼ãƒˆ</a></h2>
+            <p>S2Containerã¯ã€Dependency Injectionï¼ˆä»¥é™DIã¨ç•¥ã—ã¾ã™ï¼‰ã‚’ãŠã“ãªã†è»½é‡ã‚³ãƒ³ãƒ†ãƒŠã§ã™ã€‚DIã¨ã¯ã€ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¨å®Ÿè£…ã‚’åˆ†é›¢ã—ã¦ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåŒå£«ãŒã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®ã¿ã§ä¼šè©±ã™ã‚‹ã‚ˆã†ã«ã—ã‚ˆã†ã¨ã„ã†è€ƒãˆæ–¹ã§ã™ã€‚</p>
 
-	<IMG src="images/container01.gif" border="0">
+<h3><a name="FirstStep">æœ€åˆã®ä¸€æ­©</a></h3>
+<p>æ—©é€Ÿè©¦ã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚ç™»å ´è‡ªåˆ†ç‰©ã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<ul>
+<li>ã‚ã„ã•ã¤ã‚¯ãƒ©ã‚¹
+<ul>
+<li>ã‚ã„ã•ã¤ç”¨ã®æ–‡å­—åˆ—ã‚’è¿”ã™ã€‚</li>
+</ul>
+</li>
 
-            <p>}‚Ì‚æ‚¤‚ÉDIContainer‚É‘Î‚µ‚Ä—v‹‚·‚é‚ÆADIContainer‚ÍƒRƒ“ƒeƒi“à‚ğŒŸõ‚µ‚ÄƒCƒ“ƒ^[ƒtƒF[ƒX‚ÉŠÖ˜A‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg(À‘•ƒNƒ‰ƒX)‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚µ‚Ü‚·BƒCƒ“ƒ^[ƒtƒF[ƒX‚ÆƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌŠÖ˜A‚Ã‚¯‚ÍA©“®‚ÅDIContainer‚ªs‚¢‚Ü‚·BƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒRƒ“ƒeƒi“o˜^‚ÍA’è‹`ƒtƒ@ƒCƒ‹‚ğ’è‹`‚·‚é‚¾‚¯‚ÅŠÈ’P‚É‚Å‚«‚Ü‚·BDIContainer‚ªAƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌŠÇ—Eİ’è‚ğs‚Á‚Ä‚­‚ê‚é‚½‚ßƒvƒƒOƒ‰ƒ€‚ÍƒCƒ“ƒ^[ƒtƒF[ƒX‚Ì‚İ‚ğˆÓ¯‚·‚é‚±‚Æ‚É‚È‚è‚Ü‚·BÀÛ‚É}’†‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX(Hoge)‚ÆƒRƒ“ƒ|[ƒlƒ“ƒg(HogeImpl)‚Ì—v‹Eæ“¾‚ğƒvƒƒOƒ‰ƒ€‚Å•\‚·‚ÆAŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+<li>ã‚ã„ã•ã¤ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¯ãƒ©ã‚¹
+<ul>
+<li>ã‚ã„ã•ã¤ã‚¯ãƒ©ã‚¹ã‹ã‚‰å–å¾—ã—ãŸã‚ã„ã•ã¤ï¼ˆæ–‡å­—åˆ—ï¼‰ã‚’ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚</li>
+</ul>
+</li>
 
+<li>ã‚ã„ã•ã¤ãƒ¡ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹
+<ul>
+<li>èµ·å‹•ç”¨ã®ã‚¯ãƒ©ã‚¹ã€‚ã‚ã„ã•ã¤ã‚¯ãƒ©ã‚¹ã¨ã‚ã„ã•ã¤ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚¯ãƒ©ã‚¹ã®çµ„ã¿ç«‹ã¦ã‚‚è¡Œã†ï½¡
+</li>
+</ul>
+</li>
+
+</ul>
+<h5>Greeting.java</h5>
+<p>ã‚ã„ã•ã¤ã®ãŸã‚ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§ã™ã€‚æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹å´ã¯ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ç”¨æ„ã—ã¾ã™</p>
 <pre>
-public interface Hoge {
-    public void showMessage();
+package examples.di;
+
+public interface Greeting {
+
+    String greet();
 }
 </pre>
 
+<h5>GreetingImpl.java</h5>
+<p>ã‚ã„ã•ã¤ã®å®Ÿè£…ã§ã™ã€‚</p>
 <pre>
-public class HogeImpl implements Hoge {
-    public void showMessage() {
-        System.out.println(&quot;Hello World!&quot;);
+package examples.di.impl;
+
+import examples.di.Greeting;
+
+public class GreetingImpl implements Greeting {
+
+    public String greet() {
+        return "Hello World!";
     }
 }
 </pre>
 
-<p>ƒCƒ“ƒ^[ƒtƒF[ƒX‚Å‚Í showMessage()‚ğ’è‹`‚µAÀ‘•ƒNƒ‰ƒX‚Å‚ÍAshowMessage()‚Å&quot;Hello World!&quot;‚ğ•\¦‚µ‚Ä‚¢‚Ü‚·B</p>
-
+<h5>GreetingClient.java</h5>
+<p>ã‚ã„ã•ã¤ã‚’åˆ©ç”¨ã™ã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§ã™ã€‚</p>
 <pre>
-&lt;components&gt;
-    &lt;component class=&quot;examples.dicon.HogeImpl&quot;/&gt;
-&lt;/components&gt;
+package examples.di;
+
+public interface GreetingClient {
+
+    void execute();
+}
 </pre>
 
-<p>ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒRƒ“ƒeƒi‚É“o˜^‚·‚é’è‹`‚ÍA‚±‚ê‚¾‚¯‚Å‚·BÚ‚µ‚¢’è‹`•û–@‚ÍA<a href="#S2ContainerDefinition">S2Container‚Ì’è‹`</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢BŸ‚ÍAÀsƒNƒ‰ƒX(ƒCƒ“ƒ^[ƒtƒF[ƒX‚Æ‰ï˜b‚ğ‚·‚é•”•ª)‚Å‚·B</p>
-
+<h5>GreetingClientImpl.java</h5>
+<p>ã‚ã„ã•ã¤ã‚’åˆ©ç”¨ã™ã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®å®Ÿè£…ã§ã™ã€‚GreetingImplï¼ˆå®Ÿè£…ï¼‰ã‚’ç›´æ¥åˆ©ç”¨ã™ã‚‹ã®ã§ã¯ãªãï½¤Greetingï¼ˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ï¼‰ã‚’é€šã˜ã¦æ©Ÿèƒ½ã‚’åˆ©ç”¨ã™ã‚‹ã‚ˆã†ã«ã—ã¾ã™ã€‚</p>
 <pre>
-public class HelloClient {
+package examples.di.impl;
 
-    private static String PATH = &quot;examples/dicon/Hello.dicon&quot;;
+import examples.di.Greeting;
+import examples.di.GreetingClient;
+
+public class GreetingClientImpl implements GreetingClient {
+
+    private Greeting greeting;
+
+    public void setGreeting(Greeting greeting) {
+        this.greeting = greeting;
+    }
+    
+    public void execute() {
+        System.out.println(greeting.greet());
+    }
+}
+</pre>
+
+<p>æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹å´ã¨åˆ©ç”¨ã™ã‚‹å´ã®æº–å‚™ãŒã§ãã¾ã—ãŸã€‚å®Ÿè¡Œã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚</p>
+<h5>GreetingMain.java</h5>
+<pre>
+package examples.di.main;
+
+import examples.di.Greeting;
+import examples.di.impl.GreetingClientImpl;
+import examples.di.impl.GreetingImpl;
+
+public class GreetingMain {
 
     public static void main(String[] args) {
-        S2Container container = S2ContainerFactory.create(PATH);
-        Hoge hoge = (Hoge) container.getComponent(Hoge.class);
-        hoge.showMessage();
+        Greeting greeting = new GreetingImpl();
+        GreetingClientImpl greetingClient = new GreetingClientImpl();
+        greetingClient.setGreeting(greeting);
+        greetingClient.execute();
+    }
+}
+</pre>
+<p>å®Ÿè¡Œçµæœã¯ä¸‹è¨˜ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<pre>
+Hello World!
+</pre>
+
+<p>ã“ã®ã‚ˆã†ã«æ©Ÿèƒ½ã®åˆ©ç”¨è€…(GreetingClientImpl)ã¯ï½¤ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹(Greeting)çµŒç”±ã§æ©Ÿèƒ½ã‚’åˆ©ç”¨ã™ã‚‹ã‚ˆã†ã«ã—ï½¤å…·ä½“çš„ãªå®Ÿè£…ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€
+å®Ÿè¡Œæ™‚ã«ç¬¬ä¸‰è€…(ã“ã®å ´åˆã¯GreetingMain)ãŒæä¾›ã™ã‚‹ã¨ã„ã†ã®ãŒã€DIã®åŸºæœ¬çš„ãªè€ƒãˆæ–¹ã«ãªã‚Šã¾ã™ã€‚</p>
+<p>ã§ã‚‚ã€GeetingMainã®ã‚ˆã†ã«è¨­å®šå†…å®¹ã‚’ã‚½ãƒ¼ã‚¹ã«ç›´æ¥æ›¸ã„ã¦ã—ã¾ã†ã¨ã€è¨­å®šã«å¤‰æ›´ãŒèµ·ãã‚‹ãŸã³ã«
+ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’ä¿®æ­£ã™ã‚‹å¿…è¦ãŒå‡ºã¦ãã¾ã™ã€‚ãã‚Œã‚’é¿ã‘ã‚‹ãŸã‚ã«ï½¤ç™»å ´ã™ã‚‹ã®ãŒDIContainerã§ã™ã€‚
+è¨­å®šå†…å®¹ã‚’å¤–å‡ºã—ã®è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ã—ã¦ã€DIContainerãŒãã®è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚“ã§ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®çµ„ã¿ç«‹ã¦ã‚’è¡Œã†ã®ã§ã™ã€‚</p>
+<p>ãã‚Œã§ã¯ã€å…ˆç¨‹ã®è¨­å®šå†…å®¹ã‚’è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãå‡ºã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚S2Containerã§ã¯ã€æ‹¡å¼µå­ãŒdiconã®XMLãƒ•ã‚¡ã‚¤ãƒ«ã§æŒ‡å®šã™ã‚‹ã“ã¨ã«ãªã‚Šã¾ã™ã€‚</p>
+
+<h5>GreetingMain2.dicon</h5>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;!DOCTYPE components PUBLIC<br>    &quot;-//SEASAR//DTD S2Container 2.3//EN&quot;<br>    &quot;http://www.seasar.org/dtd/components23.dtd&quot;&gt;<br>&lt;components&gt;<br>    &lt;component name=&quot;greeting&quot;<br>        class=&quot;examples.di.impl.GreetingImpl&quot;/&gt;<br>    &lt;component name=&quot;greetingClient&quot;<br>        class=&quot;examples.di.impl.GreetingClientImpl&quot;&gt;<br>        &lt;property name=&quot;greeting&quot;&gt;greeting&lt;/property&gt;<br>    &lt;/component&gt;<br>&lt;/components&gt;
+
+</pre>
+
+<p>è©³ã—ãã¯ã€<a href="#DefReference">S2Containerã‚¿ã‚°ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚ã¾ãšã€ãƒã‚¤ãƒ³ãƒˆã‚’èª¬æ˜ã—ã¾ã™ã€‚</p>
+
+<pre>&lt;component name=&quot;greeting&quot;<br>    class=&quot;examples.di.impl.GreetingImpl&quot;/&gt;
+</pre>
+<p>ã§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å®šç¾©ã—ã¦ã„ã¾ã™ã€‚ã“ã‚Œã¯ã€ä¸‹è¨˜ã®Javaã®ã‚³ãƒ¼ãƒ‰ã«ç›¸å½“ã—ã¾ã™ã€‚</p>
+
+<pre>
+Greeting greeting = new GreetingImpl();
+</pre>
+
+<p>conponentã‚¿ã‚°ã®nameå±æ€§ã§å¤‰æ•°åã‚’æŒ‡å®šã—ï½¤classå±æ€§ã§ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ã¾ã™ã€‚æ¬¡ã¯ï½¤greetingClientã®è¨­å®šã§ã™ã€‚</p>
+
+<pre>&lt;component name=&quot;greetingClient&quot;<br>    class=&quot;examples.di.impl.GreetingClientImpl&quot;&gt;<br>    &lt;property name=&quot;greeting&quot;&gt;greeting&lt;/property&gt;<br>&lt;/component&gt;
+</pre>
+
+<p>propertyã‚¿ã‚°ãŒæ–°ã—ãå‡ºã¦ãã¾ã—ãŸã€‚nameå±æ€§ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’æŒ‡å®šã—ï½¤ãƒœãƒ‡ã‚£ã§è¨­å®šã—ãŸã„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’æŒ‡å®šã—ã¾ã™ã€‚ã“ã‚Œã¯ã€ä¸‹è¨˜ã®Javaã®ã‚³ãƒ¼ãƒ‰ã«ç›¸å½“ã—ã¾ã™ã€‚ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã¯ã€ã€Œ&quot;ã€ã§å›²ã¾ãªã„ã“ã¨ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚ã€Œ&quot;ã€ã§å›²ã‚€ã¨æ–‡å­—åˆ—ã¨ã¿ãªã•ã‚Œã¦ã—ã¾ã„ã¾ã™ã€‚</p>
+
+<pre>GreetingClientImpl greetingClient = new GreetingClientImpl();
+greetingClient.setGreeting(greeting);
+</pre>
+
+<p>S2Containerã‚’åˆ©ç”¨ã™ã‚‹èµ·å‹•ã‚¯ãƒ©ã‚¹ã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<h5>GreetingMain2.java</h5>
+<pre>
+package examples.di.main;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+
+import examples.di.GreetingClient;
+
+public class GreetingMain2 {
+
+    private static final String PATH =
+        "examples/di/dicon/GreetingMain2.dicon";
+ 
+    public static void main(String[] args) {
+        S2Container container =
+            S2ContainerFactory.create(PATH);
+        GreetingClient greetingClient = (GreetingClient)
+            container.getComponent("greetingClient");
+        greetingClient.execute();
+    }
+}</pre>
+
+<p>S2Containerã¯ã€S2ContainerFactory#create(String path)ã‚’ä½¿ã£ã¦ä½œæˆã—ã¾ã™ã€‚è©³ã—ãã¯ï½¤
+<a href="#S2ContainerCreation">S2Containerã®ä½œæˆ</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
+<p>S2Containerã‚’ä½œæˆã—ãŸã‚‰ï½¤ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’æŒ‡å®šã—ã¦ï½¤S2Container#getComponent(String componentName)ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚
+è©³ã—ãã¯ï½¤<a href="#getComponent">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å–å¾—</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
+<p>å®Ÿè¡Œçµæœã¯å…ˆç¨‹ã¨åŒæ§˜ã«ä¸‹è¨˜ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<pre>
+Hello World!
+</pre>
+
+<p>DIã¨ã‚»ãƒƒãƒˆã§ã‚ˆãç”¨ã„ã‚‰ã‚Œã‚‹æŠ€è¡“ã«AOPãŒã‚ã‚Šã¾ã™ã€‚AOPã¨ã¯ã€ãƒ­ã‚°å‡ºåŠ›ã ã¨ã‹è¤‡æ•°ã®ã‚¯ãƒ©ã‚¹ã«åˆ†æ•£ã™ã‚‹ãƒ­ã‚¸ãƒƒã‚¯ã‚’
+ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åŒ–ã—ã¦ã€å…ƒã®ã‚½ãƒ¼ã‚¹ã‚’ä¿®æ­£ã™ã‚‹ã“ã¨ãªãé©ç”¨ã™ã‚‹æŠ€è¡“ã§ã™ã€‚ãã‚Œã§ã¯ã€æ—¢ã«ä½œæˆæ¸ˆã¿ã®
+GreetingImplã€GreetingClinetImplã®ã‚½ãƒ¼ã‚¹ã‚’ä¿®æ­£ã™ã‚‹ã“ã¨ãªãï½¤ãƒ­ã‚°ï¼ˆãƒˆãƒ¬ãƒ¼ã‚¹ï¼‰ã‚’å‡ºåŠ›ã•ã›ã¦è¦‹ã¾ã—ã‚‡ã†ã€‚
+AOPã‚’é©ç”¨ã—ãŸè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã¯ï½¤æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚
+</p>
+
+<h5>GreetingMain3.dicon</h5>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;!DOCTYPE components PUBLIC<br>    &quot;-//SEASAR//DTD S2Container 2.3//EN&quot;<br>    &quot;http://www.seasar.org/dtd/components23.dtd&quot;&gt;<br>&lt;components&gt;<br>    &lt;include path=&quot;aop.dicon&quot;/&gt;<br>    &lt;component name=&quot;greeting&quot;<br>        class=&quot;examples.di.impl.GreetingImpl&quot;&gt;<br>        &lt;aspect&gt;aop.traceInterceptor&lt;/aspect&gt;<br>    &lt;/component&gt;<br>    &lt;component name=&quot;greetingClient&quot;<br>        class=&quot;examples.di.impl.GreetingClientImpl&quot;&gt;<br>        &lt;property name=&quot;greeting&quot;&gt;greeting&lt;/property&gt;<br>        &lt;aspect&gt;aop.traceInterceptor&lt;/aspect&gt;<br>    &lt;/component&gt;<br>&lt;/components&gt;
+</pre>
+
+<p>Seasar2ã§ã¯ã€è‰¯ãä½¿ã‚ã‚Œã‚‹AOPã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒaop.diconã®ä¸­ã«ã‚ã‚‰ã‹ã˜ã‚å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚
+æ¬¡ã®ã‚ˆã†ã«ã—ã¦ã€includeã‚¿ã‚°ã§aop.diconã‚’èª­ã¿è¾¼ã¿ã¾ã™ã€‚
+è©³ã—ãã¯ï½¤<a href="#Include">S2Containerå®šç¾©ã®åˆ†å‰²ã¨ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
+<pre>&lt;include path=&quot;aop.dicon&quot;/&gt;
+</pre>
+
+<p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«AOPã‚’é©ç”¨ã™ã‚‹ã«ã¯ï½¤<a href="#componentTag">componentã‚¿ã‚°</a>ã®å­ã‚¿ã‚°ã®
+<a href="#aspectTag">aspectã‚¿ã‚°</a>ã®ãƒœãƒ‡ã‚£ã«AOPã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åã‚’æŒ‡å®šã—ã¾ã™ã€‚aop.traceInterceptorãŒAOPã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åã«ãªã‚Šã¾ã™ã€‚</p>
+<pre>&lt;aspect&gt;aop.traceInterceptor&lt;/aspect&gt;
+</pre>
+
+<p>AOPã®è¨­å®šã¯ä»¥ä¸Šã§ã™ã€‚ãã‚Œã§ã¯GreetingMain3ã‚’å®Ÿè¡Œã—ã¦ã¿ã¾ã™ã€‚GreetingMain2ã¨ã®é•ã„ã¯ï½¤è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã ã‘ã§ã™ã€‚</p>
+
+<h5>GreetingMain3.java</h5>
+<pre>
+package examples.di.main;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+
+import examples.di.GreetingClient;
+
+public class GreetingMain3 {
+
+    private static final String PATH =
+        "examples/di/dicon/GreetingMain3.dicon";
+ 
+    public static void main(String[] args) {
+        S2Container container =
+            S2ContainerFactory.create(PATH);
+        GreetingClient greetingClient = (GreetingClient)
+            container.getComponent("greetingClient");
+        greetingClient.execute();
     }
 }
 </pre>
 
-<p>À‘•ƒNƒ‰ƒX(HogeImpl)‚ª“oê‚µ‚Ä‚¢‚È‚¢‚±‚Æ‚©‚çAg‚¤‘¤‚ÍƒCƒ“ƒ^[ƒtƒF[ƒX‚Ì‚İ‚ğˆÓ¯‚·‚ê‚Î‚æ‚¢‚Æ‚¢‚¤‚±‚Æ‚ª‚í‚©‚é‚Æv‚¢‚Ü‚·BS2Container‚ÌÚ‚µ‚¢g—p•û–@‚ÍA<a href="#S2ContainerReference">S2ContainerƒŠƒtƒ@ƒŒƒ“ƒX</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B</p>
+<p>å®Ÿè¡Œçµæœã¯ã€ä¸‹è¨˜ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚å…ƒã®ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’ä¿®æ­£ã—ã¦ã„ãªã„ã®ã«ã€ãƒ­ã‚°ãŒå‡ºåŠ›ã•ã‚Œã¦ã„ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚Šã¾ã™ã€‚</p>
+<pre>
+DEBUG 2005-10-11 21:01:49,655 [main] BEGIN examples.di.impl.GreetingClientImpl#execute()
+DEBUG 2005-10-11 21:01:49,665 [main] BEGIN examples.di.impl.GreetingImpl#greet()
+DEBUG 2005-10-11 21:01:49,665 [main] END examples.di.impl.GreetingImpl#greet() : Hello World!
+Hello World!
+DEBUG 2005-10-11 21:01:49,675 [main] END examples.di.impl.GreetingClientImpl#execute() : null
+</pre>
+
+<p>ã“ã‚Œã§ã€S2Containerã®åŸºæœ¬çš„ãªä½¿ã„æ–¹ã‚’ãƒã‚¹ã‚¿ãƒ¼ã™ã‚‹ã“ã¨ãŒã§ãã¾ã—ãŸã€‚</p>
+
+<h3><a name="NextStep">æ¬¡ã®ä¸€æ­©</a></h3>
+<p>ã§ã‚‚ã€ãªã‚“ã ã‹è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãã®ã£ã¦é¢å€’ã§ã™ã‚ˆã­ã€‚
+S2Containerã§ã¯ã€ã§ãã‚‹ã ã‘è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®è¨˜è¿°é‡ã‚’æ¸›ã‚‰ã™ãŸã‚ã«ã€æ¬¡ã®ã‚³ãƒ³ã‚»ãƒ—ãƒˆãŒå®Ÿç¾ã•ã‚Œã¦ã„ã¾ã™ã€‚</p>
+<ul>
+<li>Convention over Configuration</li>
+</ul>
+
+<p>ã“ã‚Œã¯é©åˆ‡ãªè¦ç´„ã‚’æ±ºã‚ï½¤ãã®è¦ç´„ã‚’å®ˆã£ã¦ã„ã‚Œã°ï½¤è¨­å®šãªã—ã§ã‚‚å‹•ãã‚ˆã†ã«ã™ã‚‹ã¨ã„ã†ã‚‚ã®ã§ã™ã€‚
+ä¾‹ãˆã°ï½¤å…ˆç¨‹ã®è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã§ã€ä¸‹è¨˜ã®ã‚ˆã†ã«æ˜ç¤ºçš„ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æŒ‡å®šã—ã¦ã„ã‚‹éƒ¨åˆ†ãŒã‚ã‚Šã¾ã—ãŸã€‚</p>
+
+<pre>&lt;component name=&quot;greetingClient&quot;<br>    class=&quot;examples.di.impl.GreetingClientImpl&quot;&gt;<br>    &lt;property name=&quot;greeting&quot;&gt;greeting&lt;/property&gt;<br>&lt;/component&gt;
+</pre>
+
+<p>S2Containerã«ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ãŒã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å ´åˆï½¤
+ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã‚’å®Ÿè£…ã—ãŸã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚³ãƒ³ãƒ†ãƒŠã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚Œã°ã€
+ç‰¹ã«è¨­å®šã‚’ã—ãªãã¦ã‚‚è‡ªå‹•çš„ã«DIã™ã‚‹ã¨ã„ã†æ©Ÿèƒ½ãŒã‚ã‚Šã¾ã™ã€‚
+ã“ã‚Œã¯ã€ã€Œãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã‚’ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§å®šç¾©ã™ã‚‹ã€ã¨ã„ã†DIã§<b>æ¨å¥¨ã•ã‚Œã¦ã„ã‚‹è¦ç´„</b>ã‚’å®ˆã‚Œã°ï½¤
+S2ContainerãŒè‡ªå‹•çš„ã«å‡¦ç†ã—ã¦ãã‚Œã‚‹ã¨ã„ã†ã“ã¨ã§ã™ã€‚</p>
+<p>è¦ç´„ã¨ã„ã†ã¨ã‚ã‚“ã©ãã•ã„ã¨æ€ã‚ã‚ŒãŒã¡ã§ã™ãŒï½¤ã€Œæ¨å¥¨ã•ã‚Œã¦ã„ã¦ã€ã‹ã¤å®ˆã‚‹ã¨é–‹ç™ºãŒæ¥½ã«ãªã‚‹ã€ãªã‚‰ã€
+è¦ç´„ã«æº–æ‹ ã—ã‚ˆã†ã¨ã„ã†ãƒ¢ãƒãƒ™ãƒ¼ã‚·ãƒ§ãƒ³ãŒç”Ÿã¾ã‚Œã¾ã™ã€‚ãã“ãŒãƒã‚¤ãƒ³ãƒˆãªã®ã§ã™ã€‚</p>
+
+<p>ä¸Šè¨˜ã®è¨­å®šã¯ï½¤æ¬¡ã®ã‚ˆã†ã«ç°¡ç•¥åŒ–ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚</p>
+<pre>&lt;component name=&quot;greetingClient&quot;<br>    class=&quot;examples.di.impl.GreetingClientImpl&quot;&gt;<br>&lt;/component&gt;
+</pre>
+
+<p>å®Ÿã¯ï½¤å…ˆç¨‹ã®AOPã®ä¾‹ã§ã‚‚ã€ŒConvention over Configurationã€ãŒé©ç”¨ã•ã‚Œã¦ã„ã¾ã™ã€‚
+AOPã§ã¯é€šå¸¸ï½¤AOPã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã©ã“ï¼ˆä¾‹ãˆã°ã©ã®ãƒ¡ã‚½ãƒƒãƒ‰ï¼‰ã«é©ç”¨ã™ã‚‹ã®ã‹ã¨ã„ã†ã“ã¨ã‚’
+pointcutã§æŒ‡å®šã™ã‚‹ã®ã§ã™ãŒï½¤<a href="aop.html">S2AOP</a>ã®å ´åˆï½¤
+ã€Œã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä½¿ã£ã¦ä»•æ§˜ã¨å®Ÿè£…ã‚’åˆ†é›¢ã™ã‚‹ã€ã¨ã„ã†<b>æ¨å¥¨ã•ã‚Œã¦ã„ã‚‹è¦ç´„</b>ãŒå®ˆã‚‰ã‚Œã¦ã„ã‚Œã°ï½¤
+pointcutã‚’æŒ‡å®šã—ãªãã¦ã‚‚ï½¤è‡ªå‹•çš„ã«ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§å®šç¾©ã•ã‚Œã¦ã„ã‚‹ã™ã¹ã¦ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«é©ç”¨ã™ã‚‹ã¨ã„ã†æ©Ÿèƒ½ãŒç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚
+ãã®ãŸã‚ã€å…ˆç¨‹ã®ä¾‹ã§ã¯ã€pointcutã‚’æŒ‡å®šã™ã‚‹å¿…è¦ãŒç„¡ã‹ã£ãŸã®ã§ã™ã€‚</p>
+<p>ã€ŒConvention over Configurationã€ã«ã‚ˆã£ã¦ã€DIã‚„AOPã®è¨­å®šã¯ï½¤ç°¡ç•¥åŒ–ã§ãã¾ã™ãŒï½¤
+æ‰±ã†ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æ•°ãŒå¢—ãˆã‚‹ã¨ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ç™»éŒ²ã‚‚ã‹ãªã‚Šå¤§å¤‰ãªä½œæ¥­ã«ãªã£ã¦ãã¾ã™ã€‚
+ã“ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ç™»éŒ²ã‚‚è‡ªå‹•åŒ–ã—ã¦ã—ã¾ã†ã®ãŒ<a href="#ComponentAutoRegister">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²</a>æ©Ÿèƒ½ã§ã™ã€‚
+ãã®æ©Ÿèƒ½ã¯FileSystemComponentAutoRegisterã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ã‚ˆã£ã¦æä¾›ã•ã‚Œã¾ã™ã€‚
+å…ˆç¨‹ã®GreetingImplã€GreetingClientImplã®ç™»éŒ²ã‚’è‡ªå‹•åŒ–ã™ã‚‹è¨­å®šã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+
+<pre>&lt;component<br>  class=&quot;org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister&quot;&gt;<br>    &lt;property name=&quot;fileNameOfRoot&quot;&gt;&quot;aop.dicon&quot;&lt;/property&gt;<br>    &lt;property name=&quot;autoNaming&quot;&gt;<br>	    &lt;component class=&quot;org.seasar.framework.container.autoregister.DefaultAutoNaming&quot;/&gt;<br>    &lt;/property&gt;<br>    &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>        &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;registAll&quot;/&gt;<br>&lt;/component&gt;</pre>
+
+<p>FileSystemComponentAutoRegisterã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯ã€fileNameOfRootãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ãŒ
+å­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ã®ãƒ«ãƒ¼ãƒˆ(ä¾‹ãˆã°ã€WEB-INF/classes)ã¨ã¿ãªã—ã€
+addClassPatternãƒ¡ã‚½ãƒƒãƒ‰ã§æŒ‡å®šã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ ã‹ã‚‰æ¢ã—ã¦ï½¤
+S2Containerã«è‡ªå‹•ç™»éŒ²ã—ã¾ã™ã€‚initMethodã‚¿ã‚°ã«ã¤ã„ã¦ã¯ï½¤<a href="#MethodInjection">ãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
+<p>addClassPatternãƒ¡ã‚½ãƒƒãƒ‰ã®æœ€åˆã®å¼•æ•°ã¯ï½¤è‡ªå‹•ç™»éŒ²ã—ãŸã„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã§ã™ã€‚
+å­ä¾›ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚‚å†å¸°çš„ã«æ¤œç´¢ã—ã¾ã™ã€‚2ç•ªç›®ã®å¼•æ•°ã¯ï½¤ã‚¯ãƒ©ã‚¹åã§ã™ã€‚æ­£è¦è¡¨ç¾ãŒä½¿ãˆã¾ã™ã€‚ã€Œ,ã€åŒºåˆ‡ã‚Šã§è¤‡æ•°è¨˜è¿°ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</p>
+
+<p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²ã¯ï½¤ä¸€åº¦è¨­å®šã‚’æ›¸ã„ã¦ã—ã¾ãˆã°ï½¤å¾Œã‹ã‚‰ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒå¢—ãˆã¦ã‚‚ï½¤è¨­å®šã‚’è¿½åŠ ã™ã‚‹å¿…è¦ãŒç„¡ã„ã®ã§ï½¤
+æ‰‹é–“ã‚’å¤§å¹…ã«å‰Šæ¸›ã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+
+<p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ç™»éŒ²ãŒè‡ªå‹•åŒ–ã§ãã‚‹ã‚ˆã†ã«ãªã‚‹ã¨ã€æ¬¡ã¯ï½¤ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®ç™»éŒ²ã‚’è‡ªå‹•åŒ–ã—ãŸããªã‚‹ã“ã¨ã§ã—ã‚‡ã†ã€‚
+ãã®æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ã®ãŒã€FileSystemComponentAutoRegisterã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ãªã‚Šã¾ã™ã€‚
+å…ˆç¨‹ã®GreetingImplã€GreetingClientImpã¸ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®ç™»éŒ²ã‚’è‡ªå‹•åŒ–ã™ã‚‹è¨­å®šã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+
+<pre>&lt;include path=&quot;aop.dicon&quot;/&gt;
+...
+&lt;component<br>  class=&quot;org.seasar.framework.container.autoregister.AspectAutoRegister&quot;&gt;<br>    &lt;property name=&quot;interceptor&quot;&gt;aop.traceInterceptor&lt;/property&gt;<br>    &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>        &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;registAll&quot;/&gt;<br>&lt;/component&gt;
+</pre>
+
+<p>interceptorãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§AOPã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åã‚’æŒ‡å®šã—ã¾ã™ã€‚addClassPatternãƒ¡ã‚½ãƒƒãƒ‰ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²ã¨åŒæ§˜ãªã®ã§ï½¤
+ç‰¹ã«èª¬æ˜ã¯å¿…è¦ãªã„ã§ã—ã‚‡ã†ã€‚æ³¨æ„ç‚¹ã¯ï½¤ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²ã¨çµ„ã¿åˆã‚ã›ã‚‹å ´åˆã¯ï½¤
+ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²ã®è¨­å®šã‚ˆã‚Šã‚‚å¾Œã«ã€AspectAutoRegisterã®è¨­å®šã‚’è¨˜è¿°ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã¨ã„ã†ã“ã¨ã§ã™ã€‚
+ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²ã¨ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®è‡ªå‹•ç™»éŒ²ã‚’çµ„ã¿åˆã‚ã›ãŸä¾‹ã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+
+<h5>GreetingMain4.dicon</h5>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container 2.3//EN&quot; <br>	&quot;http://www.seasar.org/dtd/components23.dtd&quot;&gt;
+&lt;components&gt;<br>    &lt;include path=&quot;aop.dicon&quot;/&gt;
+
+    &lt;component<br>      class=&quot;org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister&quot;&gt;<br>        &lt;property name=&quot;fileNameOfRoot&quot;&gt;&quot;aop.dicon&quot;&lt;/property&gt;<br>        &lt;property name=&quot;autoNaming&quot;&gt;<br>	        &lt;component class=&quot;org.seasar.framework.container.autoregister.DefaultAutoNaming&quot;/&gt;<br>        &lt;/property&gt;<br>        &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>            &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>            &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>        &lt;/initMethod&gt;<br>        &lt;initMethod name=&quot;registAll&quot;/&gt;<br>    &lt;/component&gt;
+
+    &lt;component<br>      class=&quot;org.seasar.framework.container.autoregister.AspectAutoRegister&quot;&gt;<br>        &lt;property name=&quot;interceptor&quot;&gt;aop.traceInterceptor&lt;/property&gt;<br>        &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>            &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>            &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>        &lt;/initMethod&gt;<br>        &lt;initMethod name=&quot;registAll&quot;/&gt;<br>    &lt;/component&gt;<br>&lt;/components&gt;
+</pre>
+
+<p>ãã‚Œã§ã¯GreetingMain4ã‚’å®Ÿè¡Œã—ã¦ã¿ã¾ã™ã€‚GreetingMain3ã¨ã®é•ã„ã¯ï½¤è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã ã‘ã§ã™ã€‚</p>
+
+<h5>GreetingMain4.java</h5>
+<pre>
+package examples.di.main;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+
+import examples.di.GreetingClient;
+
+public class GreetingMain4 {
+
+    private static final String PATH =
+        "examples/di/dicon/GreetingMain4.dicon";
+ 
+    public static void main(String[] args) {
+        S2Container container =
+            S2ContainerFactory.create(PATH);
+        GreetingClient greetingClient = (GreetingClient)
+            container.getComponent("greetingClient");
+        greetingClient.execute();
+    }
+}
+</pre>
+
+<p>å®Ÿè¡Œçµæœã¯ã€GreetingMain3ã¨åŒæ§˜ã«ä¸‹è¨˜ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<pre>
+DEBUG 2005-10-12 16:00:08,093 [main] BEGIN examples.di.impl.GreetingClientImpl#execute()
+DEBUG 2005-10-12 16:00:08,103 [main] BEGIN examples.di.impl.GreetingImpl#greet()
+DEBUG 2005-10-12 16:00:08,103 [main] END examples.di.impl.GreetingImpl#greet() : Hello World!
+Hello World!
+DEBUG 2005-10-12 16:00:08,103 [main] END examples.di.impl.GreetingClientImpl#execute() : null
+</pre>
+
+<p>ãŸã„ã¦ã„ã®å ´åˆï½¤è‡ªå‹•ç™»éŒ²ã¨è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã®ä»•çµ„ã¿ã§ã†ã¾ãã„ãã§ã—ã‚‡ã†ã€‚</p>
+<p>è‡ªå‹•ç™»éŒ²ã—ãŸããªã„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚ã‚‹å ´åˆã«ã¯ï½¤FileSystemComponentAutoRegisterã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã€
+AspectAutoRegisterã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ç”¨æ„ã•ã‚Œã¦ã„ã‚‹addIgnoreClassPatternãƒ¡ã‚½ãƒƒãƒ‰ã§ã€
+è‡ªå‹•ç™»éŒ²ã®å¯¾è±¡å¤–ã«ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚</p>
+<p>è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã—ãŸããªã„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒã‚ã‚‹å ´åˆã¯ï½¤<a href="#BindingAnnotation">Bindingã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a>ã‚’ä½¿ã„ï½¤
+è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ã‚ãšã«ã€ç´°ã‹ã„èª¿æ•´ã‚’ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</p>
+<p>ã“ã‚Œã§ã€S2Containerã®é«˜åº¦ãªä½¿ã„æ–¹ã‚’ãƒã‚¹ã‚¿ãƒ¼ã™ã‚‹ã“ã¨ãŒã§ãã¾ã—ãŸã€‚å¾Œã¯ï½¤å¿…è¦ã«å¿œã˜ã¦ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ã‚’å‚ç…§ã™ã‚‹ã¨è‰¯ã„ã§ã—ã‚‡ã†ã€‚</p>
 
 
+<h2><a name="S2ContainerReference">S2Containerãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹</a></h2>
 
-            <h3><a name="DifferentPoint">¡‚Ü‚Å‚Æ‰½‚ªˆá‚¤‚Ì‚©</a></h3>
-            <p>ƒRƒ“ƒ|[ƒlƒ“ƒg“¯m‚ªƒCƒ“ƒ^[ƒtƒF[ƒX‚Ì‚İ‚Å‰ï˜b‚·‚é‚±‚Æ‚É‚æ‚èˆË‘¶ŠÖŒW‚ğ‚È‚­‚·‚Æ‚¢‚¤l‚¦•û‚ÍA]—ˆ‚©‚çƒIƒuƒWƒFƒNƒgwŒü‚Ì¢ŠE‚É‚ ‚è‚Ü‚µ‚½B‚µ‚©‚µAŠJ”­‚ÉƒCƒ“ƒ^[ƒtƒF[ƒX‚Ì‚İ‚ÅˆË‘¶ŠÖŒW‚ğ‚È‚­‚·‚æ‚¤‚ÉİŒv‚µ‚Ä‚àAŠ®¬‚Ü‚Å‚É‚Íƒ\[ƒXƒR[ƒh‚Ì‚Ç‚±‚©‚ÉˆË‘¶ŠÖŒW‚ğ‹Lq‚·‚é•K—v‚ª‚ ‚è‚Ü‚µ‚½B‚»‚ÌˆË‘¶ŠÖŒW‚ğDIContainer‚ğ—p‚¢‚ÄAÀs‚ÉŠO‚©‚ç‘g‚İ—§‚Ä‚é‚Æ‚¢‚¤l‚¦•û‚ª¡‚Ü‚Å‚Æˆá‚¤“_‚Å‚·B</p>
-            <h3><a name="S2Merit">‰½‚ª‚¤‚ê‚µ‚¢‚Ì‚©</a></h3>
-            <p>DIContainer‚ÌƒƒŠƒbƒg‚É‚ÍŸ‚Ì“_‚ª‹“‚°‚ç‚ê‚Ü‚·B</p>
-              <ul>
-                <li>ƒƒ“ƒeƒiƒ“ƒX«‚ÌŒüã<br/>- À‘•ƒNƒ‰ƒX“¯m‚ÌˆË‘¶“x‚ª‰º‚ª‚é‚½‚ßŒã‚©‚çƒƒWƒbƒN‚ğ•ÏX‚µ‚Ä‚à‚»‚Ì‰e‹¿”ÍˆÍ‚ğ‹É¬‰»‚Å‚«‚Ü‚·B</li>
-                <li>•i¿‚ÌŒüã<br/>- ƒ‚ƒbƒN‚ğg‚Á‚ÄŠÈ’P‚ÉƒeƒXƒg‚Å‚«‚é‚æ‚¤‚É‚È‚é‚½‚ßƒeƒXƒ^ƒrƒŠƒeƒB‚ªŒüã‚µ‚Ü‚·B</li>
-                <li>ŠJ”­ŠúŠÔ‚Ì’Zk<br/>- g‚¢‚½‚¢‹@”\‚ÌÀ‘•‚ªo—ˆã‚ª‚Á‚Ä‚È‚­‚Ä‚àÀ‘•EƒeƒXƒg‚ğ‚¨‚±‚È‚¦‚é‚½‚ß•Às‚µ‚Äì‹Æ‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚·B</li>
-                <li>Ä—˜—p«‚ÌŒüã<br/>- ƒRƒ“ƒ|[ƒlƒ“ƒg‚Í’Êí‚ÌJava‚ÌƒNƒ‰ƒX(POJO)‚Å‚ ‚è“Á’è‚ÌAPI(EJB‚È‚Ç)‚ÉˆË‘¶‚µ‚È‚¢‚Ì‚ÅÄ—˜—p‚Å‚«‚é‹@‰ï‚ª‘‚¦‚Ü‚·B</li>
-              </ul>
+<h3><a name="CreateFile"><b>ä½œæˆã™ã¹ããƒ•ã‚¡ã‚¤ãƒ«</b></a></h3>
+<p>S2Containerã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã«ã¯ã€å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
+å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’çµ„ã¿ç«‹ã¦ã‚‹ãŸã‚ã®è¨­è¨ˆæ›¸ã®ã‚ˆã†ãªã‚‚ã®ã§ã™ã€‚
+å½¢å¼ã¯XMLã§ã€æ‹¡å¼µå­ã¯ã€diconã§ã™ã€‚</p>
 
-            <h2><a name="S2ContainerReference">S2ContainerƒŠƒtƒ@ƒŒƒ“ƒX</a></h2>
-
-            <h3><a name="CreateFile"><b>ì¬‚·‚×‚«ƒtƒ@ƒCƒ‹</b></a></h3>
-            <p>S2Container‚ğg—p‚·‚é‚½‚ß‚É‚ÍA’è‹`ƒtƒ@ƒCƒ‹‚ğì¬‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B<br/>’è‹`ƒtƒ@ƒCƒ‹‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘g‚İ—§‚Ä‚é‚½‚ß‚ÌİŒv‘‚Ì‚æ‚¤‚È‚à‚Ì‚Å‚·B<br/>Œ`®‚ÍXML‚ÅAŠg’£q‚ÍAdicon‚Å‚·Bdicon‚ÍAƒ_ƒCƒRƒ“‚Æ“Ç‚İ‚Ü‚·B</p>
-
-            <h3><a name="S2ContainerDefinition"><b>S2Container‚Ì’è‹`</b></a></h3>
-            <p>S2Container‚Ì’è‹`‚ÍAŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+            <h3><a name="S2ContainerDefinition"><b>S2Containerã®å®šç¾©</b></a></h3>
+            <p>S2Containerã®å®šç¾©ã¯ã€æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 
 <pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container 2.3//EN&quot;
+&quot;http://www.seasar.org/dtd/components23.dtd&quot;&gt;
 &lt;components&gt;
     &lt;component name=&quot;...&quot; class=&quot;...&quot;&gt;
             ...
@@ -174,7 +465,7 @@ public class HelloClient {
 &lt;/components&gt;
 </pre>
 
-            <p>DOCTYPE‚ÍÈ—ª‚Å‚«‚Ü‚¹‚ñBdiconƒtƒ@ƒCƒ‹‚ğì¬‚·‚éê‡‚ÍAã‹L‚ÌƒTƒ“ƒvƒ‹‚ğƒRƒs[•ƒy[ƒXƒg‚µ‚Ä‚­‚¾‚³‚¢Bƒ‹[ƒg‚Í<a href="#componentsTag">componentsƒ^ƒO</a>‚Å‚·BƒRƒ“ƒ|[ƒlƒ“ƒg‚²‚Æ‚ÉA<a href="#componentTag">componentƒ^ƒO</a>‚ğ’è‹`‚µ‚Ä‚¢‚«‚Ü‚·Bcomponentƒ^ƒO‚Ìclass‘®«‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒNƒ‰ƒX‚ÌŠ®‘SŒÀ’è–¼‚ğw’è‚µ‚Ü‚·Bname‘®«‚É‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğw’è‚µ‚Ü‚·BÚ×‚ÍA<a href="#DefReference">S2Container’è‹`ƒ^ƒOƒŠƒtƒ@ƒŒƒ“ƒX</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B</p>
+            <p>DOCTYPEã¯çœç•¥ã§ãã¾ã›ã‚“ã€‚diconãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹å ´åˆã¯ã€ä¸Šè¨˜ã®ã‚µãƒ³ãƒ—ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ï¼†ãƒšãƒ¼ã‚¹ãƒˆã—ã¦ãã ã•ã„ã€‚ãƒ«ãƒ¼ãƒˆã¯<a href="#componentsTag">componentsã‚¿ã‚°</a>ã§ã™ã€‚ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã”ã¨ã«ã€<a href="#componentTag">componentã‚¿ã‚°</a>ã‚’å®šç¾©ã—ã¦ã„ãã¾ã™ã€‚componentã‚¿ã‚°ã®classå±æ€§ã§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚¯ãƒ©ã‚¹ã®å®Œå…¨é™å®šåã‚’æŒ‡å®šã—ã¾ã™ã€‚nameå±æ€§ã«ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’æŒ‡å®šã—ã¾ã™ã€‚è©³ç´°ã¯ã€<a href="#DefReference">S2Containerå®šç¾©ã‚¿ã‚°ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
 
 
 <pre>
@@ -184,69 +475,70 @@ public class HelloClient {
 </pre>
 
 
-            <h3><a name="S2ContainerCreation">S2Container‚Ì¶¬</a></h3>
-<p>S2Container‚ğ¶¬‚·‚é•û–@‚Í“ñ’Ê‚è‚ ‚è‚Ü‚·B</p>
+            <h3><a name="S2ContainerCreation">S2Containerã®ç”Ÿæˆ</a></h3>
+<p>S2Containerã‚’ç”Ÿæˆã™ã‚‹æ–¹æ³•ã¯äºŒé€šã‚Šã‚ã‚Šã¾ã™ã€‚</p>
 <ul>
-<li>SingletonS2ContainerFactory‚ğg—p‚·‚éB
-<li>S2ContainerFactory‚ğg—p‚·‚éB
+<li>SingletonS2ContainerFactoryã‚’ä½¿ç”¨ã™ã‚‹ã€‚
+<li>S2ContainerFactoryã‚’ä½¿ç”¨ã™ã‚‹ã€‚
 </ul>
-<h4><a name="SingletonS2ContainerFactory">SingletonS2ContainerFactory‚ğg—p‚·‚é</a></h4>
-<p>SingletonS2ContainerFactory‚ğg—p‚·‚éê‡‚ÍAŸ‚Ìƒƒ\ƒbƒh‚ğg—p‚µ‚Ü‚·B</p>
+<h4><a name="SingletonS2ContainerFactory">SingletonS2ContainerFactoryã‚’ä½¿ç”¨ã™ã‚‹</a></h4>
+<p>SingletonS2ContainerFactoryã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€æ¬¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã—ã¾ã™ã€‚</p>
             <p>- org.seasar.framework.container.factory.SingletonS2ContainerFactory#init()</p>
 <p>
-’è‹`ƒtƒ@ƒCƒ‹‚ÍCLASSPATH‚Åw’è‚³‚ê‚Ä‚¢‚éƒfƒBƒŒƒNƒgƒŠ‚É‚ ‚éapp.dicon‚ªg‚í‚ê‚Ü‚·B </p>
-<p>ì¬‚µ‚½S2Container‚ÍA‚Ç‚±‚©‚ç‚Å‚àŸ‚Ìƒƒ\ƒbƒh‚Åæ“¾‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B</p>
+å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¯CLASSPATHã§æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚ã‚‹app.diconãŒä½¿ã‚ã‚Œã¾ã™ã€‚ </p>
+<p>ä½œæˆã—ãŸS2Containerã¯ã€ã©ã“ã‹ã‚‰ã§ã‚‚æ¬¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚</p>
 <p>- org.seasar.framework.container.factory.SingletonS2ContainerFactory#getContainer()</p>
 <pre>SingletonS2ContainerFactory.init();
 ...
 S2Container container = SingletonS2ContainerFactory.getContainer();</pre>
-<p>’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚éê‡‚Íinit()‚ğŒÄ‚Ño‚·‘O‚ÉŸ‚Ìƒƒ\ƒbƒh‚ğg—p‚µ‚Ü‚·B</p>
+<p>å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯init()ã‚’å‘¼ã³å‡ºã™å‰ã«æ¬¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã—ã¾ã™ã€‚</p>
 <p>- org.seasar.framework.container.factory.SingletonS2ContainerFactory#setConfigPath(String
 Path)</p>
-<p>ˆø”path‚ÍCLASSPATH‚Åw’è‚³‚ê‚Ä‚¢‚éƒfƒBƒŒƒNƒgƒŠ‚ğƒ‹[ƒg‚Æ‚·‚é’è‹`ƒtƒ@ƒCƒ‹‚Ìâ‘ÎƒpƒX‚Å‚·B—á‚¦‚ÎAWEB-INF/classes/aaa.dicon
-‚Ìê‡‚Í aaa.dicon ‚ÉAWEB-INF/classes/aaa/bbb/ccc.dicon ‚Ìê‡‚Í aaa/bbb/ccc.dicon
-‚É‚È‚è‚Ü‚·BƒZƒpƒŒ[ƒ^‚ÍAWindows‚Å‚àUnix‚Å‚à/‚Å‚·B</p>
+<p>å¼•æ•°pathã¯CLASSPATHã§æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ãƒ«ãƒ¼ãƒˆã¨ã™ã‚‹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®çµ¶å¯¾ãƒ‘ã‚¹ã§ã™ã€‚ä¾‹ãˆã°ã€WEB-INF/classes/aaa.dicon
+ã®å ´åˆã¯ aaa.dicon ã«ã€WEB-INF/classes/aaa/bbb/ccc.dicon ã®å ´åˆã¯ aaa/bbb/ccc.dicon
+ã«ãªã‚Šã¾ã™ã€‚ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã¯ã€Windowsã§ã‚‚Unixã§ã‚‚/ã§ã™ã€‚</p>
 <pre>private static final String PATH = &quot;aaa/bbb/ccc.dicon&quot;;
 ...
 SingletonS2ContainerFactory.setConfigPath(PATH);
 SingletonS2ContainerFactory.init();
 ...
 S2Container container = SingletonS2ContainerFactory.getContainer();</pre>
-<h4><a name="S2ContainerFactory">S2ContainerFactory‚ğg—p‚·‚é</a></h4>
-<p>S2ContainerFactory‚ğg—p‚·‚éê‡‚ÍAŸ‚Ìƒƒ\ƒbƒh‚ğg—p‚µ‚Ü‚·B</p>
+<h4><a name="S2ContainerFactory">S2ContainerFactoryã‚’ä½¿ç”¨ã™ã‚‹</a></h4>
+<p>S2ContainerFactoryã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€æ¬¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã—ã¾ã™ã€‚</p>
 <p>- org.seasar.framework.container.factory.S2ContainerFactory#create(String path)</p>
-<p>S2Container‚ğ¶¬‚µ‚½Œã‚ÉŸ‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B</p>
+<p>S2Containerã‚’ç”Ÿæˆã—ãŸå¾Œã«æ¬¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚</p>
 <p>- org.seasar.framework.container.S2Container#init()</p>
 <pre>private static final String PATH = &quot;aaa/bbb/ccc.dicon&quot;;
 ...
 S2Container container = S2ContainerFactory.create(PATH);
 container.init();</pre>
-<p>‚±‚Ì•û–@‚Åæ“¾‚µ‚½ƒRƒ“ƒeƒi‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÍAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÅŠÇ—‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B</p>
-<h3><a name="getComponent">ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìæ“¾</a></h3>
-            <p>S2Container‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ‚èo‚·‚É‚ÍAŸ‚Ìƒƒ\ƒbƒh‚ğg—p‚µ‚Ü‚·B</p>
+<p>ã“ã®æ–¹æ³•ã§å–å¾—ã—ãŸã‚³ãƒ³ãƒ†ãƒŠã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§ç®¡ç†ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚</p>
+<h3><a name="getComponent">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å–å¾—</a></h3>
+            <p>S2Containerã‹ã‚‰ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–ã‚Šå‡ºã™ã«ã¯ã€æ¬¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã—ã¾ã™ã€‚</p>
             <p>- org.seasar.framework.container.S2Container#getComponent(Object componentKey)</p>
-            ˆø”‚É‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒNƒ‰ƒX‚à‚µ‚­‚ÍƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğw’è‚Å‚«‚Ü‚·BÚ‚µ‚­‚ÍA<a href="#componentTag">componentƒ^ƒO</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢BƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒNƒ‰ƒX‚ğw’è‚·‚éê‡AƒRƒ“ƒ|[ƒlƒ“ƒg instanceof ƒNƒ‰ƒX‚ªtrue‚ğ•Ô‚·ƒNƒ‰ƒX‚È‚çw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‚µ‚©‚µAS2Container‚Ì’†‚Éw’è‚µ‚½ƒNƒ‰ƒX‚ğÀ‘•‚µ‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ª•¡”‚ ‚éê‡AS2Container‚ÍA‚Ç‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ•Ô‚¹‚Î‚æ‚¢‚Ì‚©”»’f‚Å‚«‚È‚¢‚½‚ßATooManyRegistrationRuntimeException‚ª”­¶‚µ‚Ü‚·BÀ‘•ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒ†ƒj[ƒN‚ÉŒˆ‚Ü‚éƒNƒ‰ƒX‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢BƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚Åæ“¾‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B‚»‚Ìê‡‚àA“¯ˆê‚Ì–¼‘O‚ğ‚à‚ÂƒRƒ“ƒ|[ƒlƒ“ƒg‚ª•¡”“o˜^‚³‚ê‚Ä‚¢‚éê‡ATooManyRegistrationRuntimeException‚ª”­¶‚µ‚Ü‚·BƒRƒ“ƒ|[ƒlƒ“ƒg–¼w’è‚Ìê‡AƒXƒyƒ‹ƒ~ƒX‚ğ‚·‚é‰Â”\«‚à‚ ‚é‚Ì‚ÅA‚Å‚«‚é‚¾‚¯ƒNƒ‰ƒXw’è‚Ì‚Ù‚¤‚ª—Ç‚¢‚Å‚µ‚å‚¤B<br/><br/>
+            å¼•æ•°ã«ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚¯ãƒ©ã‚¹ã‚‚ã—ãã¯ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’æŒ‡å®šã§ãã¾ã™ã€‚è©³ã—ãã¯ã€<a href="#componentTag">componentã‚¿ã‚°</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã™ã‚‹å ´åˆã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ instanceof ã‚¯ãƒ©ã‚¹ãŒtrueã‚’è¿”ã™ã‚¯ãƒ©ã‚¹ãªã‚‰æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ã—ã‹ã—ã€S2Containerã®ä¸­ã«æŒ‡å®šã—ãŸã‚¯ãƒ©ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè¤‡æ•°ã‚ã‚‹å ´åˆã€S2Containerã¯ã€ã©ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿”ã›ã°ã‚ˆã„ã®ã‹åˆ¤æ–­ã§ããªã„ãŸã‚ã€TooManyRegistrationRuntimeExceptionãŒç™ºç”Ÿã—ã¾ã™ã€‚å®Ÿè£…ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒãƒ¦ãƒ‹ãƒ¼ã‚¯ã«æ±ºã¾ã‚‹ã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã§å–å¾—ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚ãã®å ´åˆã‚‚ã€åŒä¸€ã®åå‰ã‚’ã‚‚ã¤ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè¤‡æ•°ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆã€TooManyRegistrationRuntimeExceptionãŒç™ºç”Ÿã—ã¾ã™ã€‚ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåæŒ‡å®šã®å ´åˆã€ã‚¹ãƒšãƒ«ãƒŸã‚¹ã‚’ã™ã‚‹å¯èƒ½æ€§ã‚‚ã‚ã‚‹ã®ã§ã€ã§ãã‚‹ã ã‘ã‚¯ãƒ©ã‚¹æŒ‡å®šã®ã»ã†ãŒè‰¯ã„ã§ã—ã‚‡ã†ã€‚<br/><br/>
 
-            <p>—áj ƒNƒ‰ƒX‚ğw’è‚µ‚ÄƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚éê‡</p>
+            <p>ä¾‹ï¼‰ ã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã—ã¦ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹å ´åˆ</p>
 <pre>
 S2Container container = S2ContainerFactory.create(PATH);
 Hoge hoge = (Hoge) container.getComponent(Hoge.class);
 </pre>
 
-            <p>—áj ƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğw’è‚µ‚ÄƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚·‚éê‡</p>
+            <p>ä¾‹ï¼‰ ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’æŒ‡å®šã—ã¦ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã™ã‚‹å ´åˆ</p>
 <pre>
 S2Container container = S2ContainerFactory.create(PATH);
 Hoge hoge = (Hoge) container.getComponent("hoge");
 </pre>
 
-            <h3><a name="DIType">Dependency Injection‚Ìƒ^ƒCƒv</a></h3>
-            <p>Dependency Injection‚É‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì\¬‚É•K—v‚È’l‚ğƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Åİ’è‚·‚é(Constructor Injection)‚Ì‚©AƒZƒbƒ^[Eƒƒ\ƒbƒh‚Åİ’è‚·‚é(Setter Injection)‚Ì‚©A‰Šú‰»ƒƒ\ƒbƒh‚Åİ’è‚·‚é(Method Injection)‚Ì‚©‚ÅAƒ^ƒCƒv‚ª•ª‚©‚ê‚Ü‚·BMethod Injection‚ÍS2‚ÌƒIƒŠƒWƒiƒ‹‚Å‚·BS2‚Í‚·‚×‚Ä‚Ìƒ^ƒCƒv‚Æ‚»‚ÌƒnƒCƒuƒŠƒbƒhŒ^‚àƒTƒ|[ƒg‚µ‚Ü‚·B</p>
+            <h3><a name="DIType">Dependency Injectionã®ã‚¿ã‚¤ãƒ—</a></h3>
+            <p>Dependency Injectionã«ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æ§‹æˆã«å¿…è¦ãªå€¤ã‚’ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§è¨­å®šã™ã‚‹(Constructor Injection)ã®ã‹ã€ã‚»ãƒƒã‚¿ãƒ¼ãƒ»ãƒ¡ã‚½ãƒƒãƒ‰ã§è¨­å®šã™ã‚‹(Setter Injection)ã®ã‹ã€åˆæœŸåŒ–ãƒ¡ã‚½ãƒƒãƒ‰ã§è¨­å®šã™ã‚‹(Method Injection)ã®ã‹ã§ã€ã‚¿ã‚¤ãƒ—ãŒåˆ†ã‹ã‚Œã¾ã™ã€‚Method Injectionã¯S2Containerã®ã‚ªãƒªã‚¸ãƒŠãƒ«ã§ã™ã€‚S2Containerã¯ã™ã¹ã¦ã®ã‚¿ã‚¤ãƒ—ã¨ãã®ãƒã‚¤ãƒ–ãƒªãƒƒãƒ‰å‹ã‚‚ã‚µãƒãƒ¼ãƒˆã—ã¾ã™ã€‚</p>
 
-            <h3><a name="ConstructorInjection"><b>ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</b></a></h3>
-            <p>ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚Æ‚ÍA”CˆÓ‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”’l‚ÉDependency Injection‚µ‚Ü‚·B<br/>S2Container‚Ì’è‹`ƒtƒ@ƒCƒ‹‚É‚ÍAŸ‚Ì“à—e‚ğ‹Lq‚µ‚Ü‚·B</p>
+            <h3><a name="ConstructorInjection"><b>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</b></a></h3>
+            <p>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã¨ã¯ã€ä»»æ„ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°ã«DIã‚’è¡Œã„ã¾ã™ã€‚<br/>
+S2Containerã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã«ã¯ã€æ¬¡ã®å†…å®¹ã‚’è¨˜è¿°ã—ã¾ã™ã€‚</p>
          <ul>
-            <li><b>ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìw’è</b><br/>ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÍAcomponentƒ^ƒO‚Å‘g‚İ—§‚Ä‚Ü‚·Bclass‘®«‚ÅƒNƒ‰ƒX–¼‚ğw’è‚µ‚Ü‚·B<br/>name‘®«‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚É–¼‘O‚ğ•t‚¯‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B</li>
-            <li><b>ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚Ìw’è</b><br/>ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚ÍAcomponentƒ^ƒO‚Ìqƒ^ƒO‚Å‚ ‚éargƒ^ƒO‚ğg‚Á‚Äw’è‚µ‚Ü‚·B<br/>•¶š—ñ‚Ìê‡‚ÍAƒ_ƒuƒ‹ƒR[ƒe[ƒVƒ‡ƒ“(")‚ÅˆÍ‚İ‚Ü‚·B</li>
+            <li><b>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æŒ‡å®š</b><br/>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯ã€componentã‚¿ã‚°ã§çµ„ã¿ç«‹ã¦ã¾ã™ã€‚classå±æ€§ã§ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ã¾ã™ã€‚<br/>nameå±æ€§ã§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«åå‰ã‚’ä»˜ã‘ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</li>
+            <li><b>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°ã®æŒ‡å®š</b><br/>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°ã¯ã€componentã‚¿ã‚°ã®å­ã‚¿ã‚°ã§ã‚ã‚‹argã‚¿ã‚°ã‚’ä½¿ã£ã¦æŒ‡å®šã—ã¾ã™ã€‚<br/>æ–‡å­—åˆ—ã®å ´åˆã¯ã€ãƒ€ãƒ–ãƒ«ã‚³ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³(")ã§å›²ã¿ã¾ã™ã€‚</li>
          </ul>
 
 <pre>
@@ -257,14 +549,12 @@ Hoge hoge = (Hoge) container.getComponent("hoge");
 &lt;/components&gt;
 </pre>
 
-
-            Ú‚µ‚¢g—p•û–@‚ÍAExample‚Ì<a href="#ConstructorInjectionEx">ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B<br/><br/>
-
-            <h3><a name="SetterInjection"><b>ƒZƒbƒ^[¥ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</b></a></h3>
-            <p>ƒZƒbƒ^[¥ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚Æ‚ÍA”CˆÓ‚ÌƒvƒƒpƒeƒB‚ÉƒZƒbƒ^[ƒƒ\ƒbƒh‚ğg—p‚µ‚ÄDependency Injection‚µ‚Ü‚·B<br/>S2Container‚Ì’è‹`ƒtƒ@ƒCƒ‹‚É‚ÍAŸ‚Ì“à—e‚ğ‹Lq‚µ‚Ü‚·B</p>
+            <h3><a name="SetterInjection"><b>ã‚»ãƒƒã‚¿ãƒ¼ï½¥ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</b></a></h3>
+            <p>ã‚»ãƒƒã‚¿ãƒ¼ï½¥ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã¨ã¯ã€ä»»æ„ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚»ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã—ã¦DIã‚’è¡Œã„ã¾ã™ã€‚<br/>
+S2Containerã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã«ã¯ã€æ¬¡ã®å†…å®¹ã‚’è¨˜è¿°ã—ã¾ã™ã€‚</p>
          <ul>
-            <li><b>ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìw’è</b><br/>ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìw’è‚ÍAƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚Æ“¯—l‚Å‚·B<br/>name‘®«‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚É–¼‘O‚ğ•t‚¯‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B</li>
-            <li><b>ƒvƒƒpƒeƒB‚Ìw’è</b><br/>ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒvƒƒpƒeƒB‚ÍAcomponentƒ^ƒO‚Ìqƒ^ƒO‚Å‚ ‚épropertyƒ^ƒO‚ğg‚Á‚Äw’è‚µ‚Ü‚·B<br/>name‘®«‚ÅƒvƒƒpƒeƒB–¼‚ğw’è‚µ‚Ü‚·B</li>
+            <li><b>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æŒ‡å®š</b><br/>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æŒ‡å®šã¯ã€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã¨åŒæ§˜ã§ã™ã€‚<br/>nameå±æ€§ã§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«åå‰ã‚’ä»˜ã‘ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</li>
+            <li><b>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æŒ‡å®š</b><br/>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯ã€componentã‚¿ã‚°ã®å­ã‚¿ã‚°ã§ã‚ã‚‹propertyã‚¿ã‚°ã‚’ä½¿ã£ã¦æŒ‡å®šã—ã¾ã™ã€‚<br/>nameå±æ€§ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’æŒ‡å®šã—ã¾ã™ã€‚</li>
          </ul>
 
 <pre>
@@ -275,14 +565,12 @@ Hoge hoge = (Hoge) container.getComponent("hoge");
 &lt;/components&gt;
 </pre>
 
-
-            Ú‚µ‚¢g—p•û–@‚ÍAExample‚Ì<a href="#SetterInjectionEx">ƒZƒbƒ^[¥ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B<br/>
-
-            <h3><a name="MethodInjection"><b>ƒƒ\ƒbƒhEƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</b></a></h3>
-            <p>ƒƒ\ƒbƒhEƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚Æ‚ÍA”CˆÓ‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚ÄADependency Injection‚µ‚Ü‚·B<br/>S2Container‚Ì’è‹`ƒtƒ@ƒCƒ‹‚É‚ÍAŸ‚Ì“à—e‚ğ‹Lq‚µ‚Ü‚·B</p>
+<h3><a name="MethodInjection"><b>ãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</b></a></h3>
+<p>ãƒ¡ã‚½ãƒƒãƒ‰ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã¨ã¯ã€ä»»æ„ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¦ã€DIã‚’è¡Œã„ã¾ã™ã€‚<br/>
+S2Containerã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã«ã¯ã€æ¬¡ã®å†…å®¹ã‚’è¨˜è¿°ã—ã¾ã™ã€‚</p>
          <ul>
-            <li><b>ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìw’è</b><br/>ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìw’è‚ÍAƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚Æ“¯—l‚Å‚·B<br/>name‘®«‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚É–¼‘O‚ğ•t‚¯‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B</li>
-            <li><b>‰Šú‰»ƒƒ\ƒbƒh‚Ìw’è</b><br/>initMethodƒ^ƒO‚ğg‚Á‚ÄAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì”CˆÓ‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·Bname‘®«‚ÅAƒƒ\ƒbƒh–¼‚ğw’è‚µ‚Ü‚·Bˆø”‚ÍAargƒ^ƒO‚ğqƒ^ƒO‚Ég‚¢‚Ü‚·Bname‘®«‚ğÈ—ª‚µ‚ÄAƒ{ƒfƒB‚ÅA<a href="#ognlExpr">OGNL®</a>‚ğg‚¤‚±‚Æ‚à‚Å‚«‚Ü‚·B‚»‚ÌÛAƒRƒ“ƒ|[ƒlƒ“ƒg©g‚Í#self‚Å•\‚µ‚Ü‚·B</li>
+            <li><b>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æŒ‡å®š</b><br/>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æŒ‡å®šã¯ã€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã¨åŒæ§˜ã§ã™ã€‚<br/>nameå±æ€§ã§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«åå‰ã‚’ä»˜ã‘ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</li>
+            <li><b>åˆæœŸåŒ–ãƒ¡ã‚½ãƒƒãƒ‰ã®æŒ‡å®š</b><br/>initMethodã‚¿ã‚°ã‚’ä½¿ã£ã¦ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ä»»æ„ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚nameå±æ€§ã§ã€ãƒ¡ã‚½ãƒƒãƒ‰åã‚’æŒ‡å®šã—ã¾ã™ã€‚å¼•æ•°ã¯ã€argã‚¿ã‚°ã‚’å­ã‚¿ã‚°ã«ä½¿ã„ã¾ã™ã€‚nameå±æ€§ã‚’çœç•¥ã—ã¦ã€ãƒœãƒ‡ã‚£ã§ã€<a href="#ognlExpr">OGNLå¼</a>ã‚’ä½¿ã†ã“ã¨ã‚‚ã§ãã¾ã™ã€‚ãã®éš›ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè‡ªèº«ã¯#selfã§è¡¨ã—ã¾ã™ã€‚</li>
          </ul>
 
 <pre>
@@ -293,17 +581,15 @@ Hoge hoge = (Hoge) container.getComponent("hoge");
 &lt;/components&gt;
 </pre>
 
-            Ú‚µ‚¢g—p•û–@‚ÍAExample‚Ì<a href="#MethodInjectionEx">ƒƒ\ƒbƒhEƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B<br/>
-
-            <h3><a name="Include">S2Container’è‹`‚Ì•ªŠ„‚ÆƒCƒ“ƒNƒ‹[ƒh</a></h3>
-            <p>‚·‚×‚Ä‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ1‚Â‚Ìƒtƒ@ƒCƒ‹‚É‹Lq‚·‚é‚ÆA’¼‚®‚É”ì‘å‰»‚µ‚Ä‚µ‚Ü‚¢ŠÇ—‚ª“ï‚µ‚­‚È‚è‚Ü‚·B‚»‚Ì‚½‚ßAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì’è‹`‚ğ•¡”‚É•ªŠ„‚·‚é‹@”\‚Æ•ªŠ„‚³‚ê‚½’è‹`‚ğƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä1‚Â‚É‚Ü‚Æ‚ß‚é‹@”\‚ªS2Container‚É‚ ‚è‚Ü‚·BS2Container’è‹`ƒtƒ@ƒCƒ‹‚ÌƒCƒ“ƒNƒ‹[ƒh‚ÍŸ‚Ì‚æ‚¤‚É‚µ‚Äs‚¢‚Ü‚·B</p>
+<h3><a name="Include">S2Containerå®šç¾©ã®åˆ†å‰²ã¨ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰</a></h3>
+<p>ã™ã¹ã¦ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’1ã¤ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«è¨˜è¿°ã™ã‚‹ã¨ã€ç›´ãã«è‚¥å¤§åŒ–ã—ã¦ã—ã¾ã„ç®¡ç†ãŒé›£ã—ããªã‚Šã¾ã™ã€‚ãã®ãŸã‚ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å®šç¾©ã‚’è¤‡æ•°ã«åˆ†å‰²ã™ã‚‹æ©Ÿèƒ½ã¨åˆ†å‰²ã•ã‚ŒãŸå®šç¾©ã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦1ã¤ã«ã¾ã¨ã‚ã‚‹æ©Ÿèƒ½ãŒS2Containerã«ã‚ã‚Šã¾ã™ã€‚S2Containerå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã¯æ¬¡ã®ã‚ˆã†ã«ã—ã¦è¡Œã„ã¾ã™ã€‚</p>
 
 <pre>&lt;components&gt;
     &lt;include path=&quot;bar.dicon&quot;/&gt;
 &lt;/components&gt;
 </pre>
 
-            <p><a href="#includeTag">includeƒ^ƒO</a>‚Ìpath‘®«‚Åæ‚è‚İ‚½‚¢S2Container’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚µ‚Ü‚·BÚ‚µ‚­‚ÍA<a href="#includeTag">includeƒ^ƒO</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B<br/>ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌŒŸõ‡‚ÍAæ‚¸©•ª©g‚É“o˜^‚³‚ê‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’T‚µ‚ÄAŒ©‚Â‚©‚ç‚È‚¢ê‡‚ÍAinclude‚³‚ê‚Ä‚¢‚é‡‚Éq‹Ÿ‚ÌS2Container‚É“o˜^‚³‚ê‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğŒŸõ‚µAÅ‰‚ÉŒ©‚Â‚©‚Á‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ª•Ô‚³‚ê‚Ü‚·B<br/>Ÿ‚Ì‚æ‚¤‚Èê‡‚ÍAFoo(©g‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg)¨aaa(q‹Ÿ‚ÌS2Container)¨bbb(q‹Ÿ‚ÌS2Container)‚Ì‡‚ÉŒŸõ‚µ‚Ü‚·B</p>
+            <p><a href="#includeTag">includeã‚¿ã‚°</a>ã®pathå±æ€§ã§å–ã‚Šè¾¼ã¿ãŸã„S2Containerå®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¾ã™ã€‚è©³ã—ãã¯ã€<a href="#includeTag">includeã‚¿ã‚°</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚<br/>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æ¤œç´¢é †ã¯ã€å…ˆãšè‡ªåˆ†è‡ªèº«ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æ¢ã—ã¦ã€è¦‹ã¤ã‹ã‚‰ãªã„å ´åˆã¯ã€includeã•ã‚Œã¦ã„ã‚‹é †ã«å­ä¾›ã®S2Containerã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æ¤œç´¢ã—ã€æœ€åˆã«è¦‹ã¤ã‹ã£ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè¿”ã•ã‚Œã¾ã™ã€‚<br/>æ¬¡ã®ã‚ˆã†ãªå ´åˆã¯ã€Foo(è‡ªèº«ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ)â†’aaa(å­ä¾›ã®S2Container)â†’bbb(å­ä¾›ã®S2Container)ã®é †ã«æ¤œç´¢ã—ã¾ã™ã€‚</p>
 
 <pre>
 &lt;components&gt;
@@ -313,7 +599,7 @@ Hoge hoge = (Hoge) container.getComponent("hoge");
 &lt;/components&gt;
 </pre>
 
-            <p>©“®‚Å<a href="#ConstructorInjection">ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a>‚â<a href="#SetterInjection">ƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a>‚ğs‚¤ê‡AS2Container‚ÍƒCƒ“ƒNƒ‹[ƒhæ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ©“®ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B©“®‚ÅDependency Injection‚ğs‚¤ê‡‚ÌğŒ‚Í<a href="#AutoBindingMode">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B<br/>Ÿ‚Ì‚æ‚¤‚ÉƒZƒbƒ^[¥ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚ÅƒvƒƒpƒeƒB‚Éw’è‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒCƒ“ƒNƒ‹[ƒhæ‚Ìaaa.dicon‚Æbbb.dicon‚É“o˜^‚³‚ê‚Ä‚¢‚éê‡AŠeHelloClient‚Å‚ÍA‚Ç‚¿‚ç‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ªg—p‚³‚ê‚é‚©‚ğ‚İ‚Ä‚Ü‚µ‚å‚¤B</p>
+            <p>è‡ªå‹•ã§<a href="#ConstructorInjection">ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</a>ã‚„<a href="#SetterInjection">ã‚»ãƒƒã‚¿ãƒ¼ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</a>ã‚’è¡Œã†å ´åˆã€S2Containerã¯ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰å…ˆã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è‡ªå‹•ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚è‡ªå‹•ã§Dependency Injectionã‚’è¡Œã†å ´åˆã®æ¡ä»¶ã¯<a href="#AutoBindingMode">è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚<br/>æ¬¡ã®ã‚ˆã†ã«ã‚»ãƒƒã‚¿ãƒ¼ï½¥ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«æŒ‡å®šã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰å…ˆã®aaa.diconã¨bbb.diconã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆã€å„HelloClientã§ã¯ã€ã©ã¡ã‚‰ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒä½¿ç”¨ã•ã‚Œã‚‹ã‹ã‚’ã¿ã¦ã¾ã—ã‚‡ã†ã€‚</p>
 
             <h5>root.dicon</h5>
 <pre>
@@ -346,7 +632,7 @@ Hoge hoge = (Hoge) container.getComponent("hoge");
 &lt;/components&gt;
 </pre>
 
-            <p>ŠeƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì“à—e‚ÍAŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+            <p>å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å†…å®¹ã¯ã€æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 
 <pre>
 package examples.dicon.include;
@@ -377,7 +663,7 @@ public class RootHelloClient implements HelloClient {
 }
 </pre>
 
-            <p>AaaHelloClient‚ÆBbbHelloClient‚ÍRootHelloClient“¯—l‚ÌÀ‘•‚Å‚·B</p>
+            <p>AaaHelloClientã¨BbbHelloClientã¯RootHelloClientåŒæ§˜ã®å®Ÿè£…ã§ã™ã€‚</p>
 
 <pre>
 package examples.dicon.include;
@@ -404,30 +690,30 @@ public class HelloImpl implements Hello {
 }
 </pre>
 
-           <p>HelloImpl‚ÍMessageƒvƒƒpƒeƒB‚ğ’è‹`‚µ‚Ä‚¢‚é‚¾‚¯‚Å‚·BŠeHelloClient‚ÌshowMessage()‚ğŒÄ‚Ño‚µ‚½ê‡‚ÌÀsŒ‹‰Ê‚ÍŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+           <p>HelloImplã¯Messageãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å®šç¾©ã—ã¦ã„ã‚‹ã ã‘ã§ã™ã€‚å„HelloClientã®showMessage()ã‚’å‘¼ã³å‡ºã—ãŸå ´åˆã®å®Ÿè¡Œçµæœã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 
-           <h5>RootHelloClient‚ÌÀsŒ‹‰Ê</h5>
+           <h5>RootHelloClientã®å®Ÿè¡Œçµæœ</h5>
 <pre>
 Hello Aaa!
 </pre>
-           <p>‚Ü‚¸AS2Container‚Íroot.dicon‚ÉHelloImpl‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©‚ğŒŸõ‚µ‚Ü‚·Broot.dicon‚É‚Í‚È‚¢‚Ì‚ÅAŸ‚ÉƒCƒ“ƒNƒ‹[ƒhæ‚Ìaaa.dicon‚ğŒŸõ‚µ‚Ü‚·Baaa.dicon‚É‚ÍHelloImpl‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚Ì‚ÅA‚»‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğg—p‚µ‚Ü‚·B</p>
+           <p>ã¾ãšã€S2Containerã¯root.diconã«HelloImplãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹ã‚’æ¤œç´¢ã—ã¾ã™ã€‚root.diconã«ã¯ãªã„ã®ã§ã€æ¬¡ã«ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰å…ˆã®aaa.diconã‚’æ¤œç´¢ã—ã¾ã™ã€‚aaa.diconã«ã¯HelloImplãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã®ã§ã€ãã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½¿ç”¨ã—ã¾ã™ã€‚</p>
 
-           <h5>AaaHelloClient‚ÌÀsŒ‹‰Ê</h5>
+           <h5>AaaHelloClientã®å®Ÿè¡Œçµæœ</h5>
 <pre>
 Hello Aaa!
 </pre>
 
-           <p>AaaHelloClient‚ÍAaaa.dicon‚É“o˜^‚³‚ê‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğg—p‚µ‚Ü‚·B©“®‚ÅƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚ğs‚¤ê‡Aq‹Ÿ‚ÌS2Container‚Íe‚ÌS2Container‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğg—p‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñB—á‚¦‚ÎAroot.dicon‚ÉHelloImpl‚ğ“o˜^‚µ‚Ä‚¢‚Ä‚àAaaHelloClient‚É‚Í©“®ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚³‚ê‚È‚¢‚Æ‚¢‚¤‚±‚Æ‚Å‚·B</p>
+           <p>AaaHelloClientã¯ã€aaa.diconã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½¿ç”¨ã—ã¾ã™ã€‚è‡ªå‹•ã§ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¡Œã†å ´åˆã€å­ä¾›ã®S2Containerã¯è¦ªã®S2Containerã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½¿ç”¨ã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚ä¾‹ãˆã°ã€root.diconã«HelloImplã‚’ç™»éŒ²ã—ã¦ã„ã¦ã‚‚AaaHelloClientã«ã¯è‡ªå‹•ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã•ã‚Œãªã„ã¨ã„ã†ã“ã¨ã§ã™ã€‚</p>
 
-           <h5>BbbHelloClient‚ÌÀsŒ‹‰Ê</h5>
+           <h5>BbbHelloClientã®å®Ÿè¡Œçµæœ</h5>
 <pre>
 Hello Bbb!
 </pre>
 
-           <p>AaaHelloClient‚Æ“¯—l‚ÉBbbHelloClient‚àbbb.dicon‚É“o˜^‚³‚ê‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğg—p‚µ‚Ü‚·B<br/>‚±‚ÌƒTƒ“ƒvƒ‹‚ÍAseasar2/src/examples/dicon/includeˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</p>
+           <p>AaaHelloClientã¨åŒæ§˜ã«BbbHelloClientã‚‚bbb.diconã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ä½¿ç”¨ã—ã¾ã™ã€‚</p>
 
-            <h3><a name="Namespace">–¼‘O‹óŠÔ</a></h3>
-            <p>ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì’è‹`‚ğ•ªŠ„‚µ‚½ê‡‚ÉA•¡”‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`ŠÔ‚Å–¼‘O‚ªÕ“Ë‚µ‚È‚¢‚æ‚¤‚ÉA<a href="#componentsTag">componentsƒ^ƒO</a>‚Ìnamespace‘®«‚Å–¼‘O‹óŠÔ‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B</p>
+            <h3><a name="Namespace">åå‰ç©ºé–“</a></h3>
+            <p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å®šç¾©ã‚’åˆ†å‰²ã—ãŸå ´åˆã«ã€è¤‡æ•°ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå®šç¾©é–“ã§åå‰ãŒè¡çªã—ãªã„ã‚ˆã†ã«ã€<a href="#componentsTag">componentsã‚¿ã‚°</a>ã®namespaceå±æ€§ã§åå‰ç©ºé–“ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚</p>
             <h5>foo.dicon</h5>
 <pre>
 &lt;components namespace=&quot;foo&quot;&gt;
@@ -461,43 +747,43 @@ Hello Bbb!
 &lt;/components&gt;
 </pre>
 
-            <p>“¯ˆê‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`“à‚Å‚ÍA–¼‘O‹óŠÔ‚È‚µ‚ÅQÆ‚Å‚«‚Ü‚·B‘¼‚ÌS2Container’è‹`‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğQÆ‚·‚éê‡‚ÍA–¼‘O‹óŠÔ.‚ğƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚Ì“ª‚É‚Â‚¯‚Ü‚·Bfoo.aaa‚Æbar.aaa‚Í“¯‚¶–¼‘O‚ª‚Â‚¢‚Ä‚¢‚Ü‚·‚ªA–¼‘O‹óŠÔ‚ªˆÙ‚È‚Á‚Ä‚¢‚é‚Ì‚ÅAˆá‚¤ƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚µ‚Ä”F¯‚³‚ê‚Ü‚·BŠµK‚Æ‚µ‚ÄA’è‹`ƒtƒ@ƒCƒ‹‚Ì–¼‘O‚ÍA–¼‘O‹óŠÔ.dicon‚É‚·‚é‚±‚Æ‚ğ„§‚µ‚Ü‚·B</p>
+            <p>åŒä¸€ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå®šç¾©å†…ã§ã¯ã€åå‰ç©ºé–“ãªã—ã§å‚ç…§ã§ãã¾ã™ã€‚ä»–ã®S2Containerå®šç¾©ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‚ç…§ã™ã‚‹å ´åˆã¯ã€åå‰ç©ºé–“.ã‚’ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã®é ­ã«ã¤ã‘ã¾ã™ã€‚foo.aaaã¨bar.aaaã¯åŒã˜åå‰ãŒã¤ã„ã¦ã„ã¾ã™ãŒã€åå‰ç©ºé–“ãŒç•°ãªã£ã¦ã„ã‚‹ã®ã§ã€é•ã†ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ã—ã¦èªè­˜ã•ã‚Œã¾ã™ã€‚æ…£ç¿’ã¨ã—ã¦ã€å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®åå‰ã¯ã€åå‰ç©ºé–“.diconã«ã™ã‚‹ã“ã¨ã‚’æ¨å¥¨ã—ã¾ã™ã€‚</p>
 
 
-<h3><a name="InstanceMode">ƒCƒ“ƒXƒ^ƒ“ƒXŠÇ—</a></h3>
-            <p>S2Container‚ÅAƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ‚Ç‚Ì‚æ‚¤‚ÉŠÇ—‚·‚é‚Ì‚©‚ğw’è‚·‚é‚Ì‚ªA<a href="#componentTag">componentƒ^ƒO</a>‚Ìinstance‘®«‚Å‚·BƒfƒtƒHƒ‹ƒg‚Ísingleton‚ÅA‚±‚ê‚ÍAS2Container.getComponent()‚É‚æ‚Á‚Ä•Ô‚³‚ê‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚Íí‚É“¯‚¶‚¾‚Æ‚¢‚¤ˆÓ–¡‚Å‚·BS2Container.getComponent()‚ğŒÄ‚Ño‚·‚½‚Ñ‚ÉAV‚½‚Éì¬‚³‚ê‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ•Ô‚µ‚Ä—~‚µ‚¢ê‡‚ÍAinstance‘®«‚Éprototype‚ğw’è‚µ‚Ü‚·BƒŠƒNƒGƒXƒg(HttpServletRequest)‚²‚Æ‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg‚ğŠÇ—‚µ‚½‚¢ê‡‚ÍAinstance‘®«‚Érequest‚ğw’è‚µ‚Ü‚·BƒZƒbƒVƒ‡ƒ“(HttpSession)‚²‚Æ‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg‚ğŠÇ—‚µ‚½‚¢ê‡‚ÍAinstance‘®«‚Ésession‚ğw’è‚µ‚Ü‚·B</p>
-            <p>ƒvƒŒƒ[ƒ“ƒe[ƒVƒ‡ƒ“‚ÌƒtƒŒ[ƒ€ƒ[ƒN‚Æ‘g‚İ‡‚í‚¹‚é‚Æ‚«‚ÉAƒvƒŒƒ[ƒ“ƒe[ƒVƒ‡ƒ“ƒtƒŒ[ƒ€ƒ[ƒN‚ªì¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚É‘Î‚µ‚ÄAS2Container‚ÅŠÇ—‚³‚ê‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒZƒbƒg‚µ‚½‚¢ê‡‚ª‚ ‚è‚Ü‚·B‚»‚Ì‚æ‚¤‚ÈS2ContainerŠO‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚É‘Î‚µ‚Ä<a href="http://www.kakutani.com/trans/fowler/injection.html">Dependency Injection</a>‚µ‚½‚¢‚Æ‚«‚É‚ÍAŸ‚Ìƒƒ\ƒbƒh‚ğg—p‚µ‚Ü‚·B<br/><br/>- org.seasar.framework.container.S2Container#injectDependency(Object outerComponent)<br/>- org.seasar.framework.container.S2Container#injectDependency(Object outerComponent, Class componentClass)<br/>- org.seasar.framework.container.S2Container#injectDependency(Object outerComponent, String componentName)</p>
-            ‘æˆêˆø”‚É‚ÍAŠO•”‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğw’è‚µ‚Ü‚·B‘æ“ñˆø”‚É‚ÍAŠO•”ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒNƒ‰ƒXA‚Ü‚½‚ÍƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğw’è‚µ‚Ü‚·B<br/>‚»‚Ì‚Æ‚«AS2Container’è‹`‚Å‚ÍAinstance‘®«‚Éouter‚ğw’è‚µ‚Ü‚·B
+<h3><a name="InstanceMode">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç®¡ç†</a></h3>
+            <p>S2Containerã§ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ã©ã®ã‚ˆã†ã«ç®¡ç†ã™ã‚‹ã®ã‹ã‚’æŒ‡å®šã™ã‚‹ã®ãŒã€<a href="#componentTag">componentã‚¿ã‚°</a>ã®instanceå±æ€§ã§ã™ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯singletonã§ã€ã“ã‚Œã¯ã€S2Container.getComponent()ã«ã‚ˆã£ã¦è¿”ã•ã‚Œã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯å¸¸ã«åŒã˜ã ã¨ã„ã†æ„å‘³ã§ã™ã€‚S2Container.getComponent()ã‚’å‘¼ã³å‡ºã™ãŸã³ã«ã€æ–°ãŸã«ä½œæˆã•ã‚ŒãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿”ã—ã¦æ¬²ã—ã„å ´åˆã¯ã€instanceå±æ€§ã«prototypeã‚’æŒ‡å®šã—ã¾ã™ã€‚ãƒªã‚¯ã‚¨ã‚¹ãƒˆ(HttpServletRequest)ã”ã¨ã«ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç®¡ç†ã—ãŸã„å ´åˆã¯ã€instanceå±æ€§ã«requestã‚’æŒ‡å®šã—ã¾ã™ã€‚ã‚»ãƒƒã‚·ãƒ§ãƒ³(HttpSession)ã”ã¨ã«ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç®¡ç†ã—ãŸã„å ´åˆã¯ã€instanceå±æ€§ã«sessionã‚’æŒ‡å®šã—ã¾ã™ã€‚</p>
+            <p>ãƒ—ãƒ¬ã‚¼ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã¨çµ„ã¿åˆã‚ã›ã‚‹ã¨ãã«ã€ãƒ—ãƒ¬ã‚¼ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ãŒä½œæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«å¯¾ã—ã¦ã€S2Containerã§ç®¡ç†ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚»ãƒƒãƒˆã—ãŸã„å ´åˆãŒã‚ã‚Šã¾ã™ã€‚ãã®ã‚ˆã†ãªS2Containerå¤–ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«å¯¾ã—ã¦<a href="http://www.kakutani.com/trans/fowler/injection.html">Dependency Injection</a>ã—ãŸã„ã¨ãã«ã¯ã€æ¬¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã—ã¾ã™ã€‚<br/><br/>- org.seasar.framework.container.S2Container#injectDependency(Object outerComponent)<br/>- org.seasar.framework.container.S2Container#injectDependency(Object outerComponent, Class componentClass)<br/>- org.seasar.framework.container.S2Container#injectDependency(Object outerComponent, String componentName)</p>
+            ç¬¬ä¸€å¼•æ•°ã«ã¯ã€å¤–éƒ¨ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒ‡å®šã—ã¾ã™ã€‚ç¬¬äºŒå¼•æ•°ã«ã¯ã€å¤–éƒ¨ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚¯ãƒ©ã‚¹ã€ã¾ãŸã¯ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’æŒ‡å®šã—ã¾ã™ã€‚<br/>ãã®ã¨ãã€S2Containerå®šç¾©ã§ã¯ã€instanceå±æ€§ã«outerã‚’æŒ‡å®šã—ã¾ã™ã€‚
 
 <table width="744" border="1">
   <tr bgcolor="#d1f3f4" align="center">
-    <th width="104" scope="col">instance‘®«</th>
-    <th width="624" scope="col">à–¾</th>
+    <th width="104" scope="col">instanceå±æ€§</th>
+    <th width="624" scope="col">èª¬æ˜</th>
   </tr>
   <tr>
     <td>singleton(default)</td>
-    <td>S2Container.getComponent()‚ğ‰½“xŒÄ‚Ño‚µ‚Ä‚à“¯‚¶ƒCƒ“ƒXƒ^ƒ“ƒX‚ª•Ô‚³‚ê‚Ü‚·B</td>
+    <td>S2Container.getComponent()ã‚’ä½•åº¦å‘¼ã³å‡ºã—ã¦ã‚‚åŒã˜ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¿”ã•ã‚Œã¾ã™ã€‚</td>
   </tr>
   <tr>
     <td>prototype</td>
-    <td>S2Container.getComponent()‚ğŒÄ‚Ño‚·‚½‚Ñ‚ÉV‚½‚ÈƒCƒ“ƒXƒ^ƒ“ƒX‚ª•Ô‚³‚ê‚Ü‚·B</td>
+    <td>S2Container.getComponent()ã‚’å‘¼ã³å‡ºã™ãŸã³ã«æ–°ãŸãªã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¿”ã•ã‚Œã¾ã™ã€‚</td>
   </tr>
   <tr>
 <td>request</td>
-<td>ƒŠƒNƒGƒXƒg–ˆ‚É1‚Â‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ªì¬‚³‚ê‚Ü‚·Bname‘®«‚Éw’è‚µ‚½–¼‘O‚ÅAƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒŠƒNƒGƒXƒg‚ÉŠi”[‚³‚ê‚Ü‚·Brequest‚ğg‚¤ê‡‚ÍA<a href="#request">S2ContainerFilter</a>‚ğİ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B</td>
+<td>ãƒªã‚¯ã‚¨ã‚¹ãƒˆæ¯ã«1ã¤ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒä½œæˆã•ã‚Œã¾ã™ã€‚nameå±æ€§ã«æŒ‡å®šã—ãŸåå‰ã§ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒãƒªã‚¯ã‚¨ã‚¹ãƒˆã«æ ¼ç´ã•ã‚Œã¾ã™ã€‚requestã‚’ä½¿ã†å ´åˆã¯ã€<a href="#request">S2ContainerFilter</a>ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚</td>
 </tr>
 <tr>
 <td>session</td>
-<td>ƒZƒbƒVƒ‡ƒ“–ˆ‚É1‚Â‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ªì¬‚³‚ê‚Ü‚·Bname‘®«‚Éw’è‚µ‚½–¼‘O‚ÅAƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒZƒbƒVƒ‡ƒ“‚ÉŠi”[‚³‚ê‚Ü‚·Bsession‚ğg‚¤ê‡‚ÍA<a href="#request">S2ContainerFilter</a>‚ğİ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B</td>
+<td>ã‚»ãƒƒã‚·ãƒ§ãƒ³æ¯ã«1ã¤ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒä½œæˆã•ã‚Œã¾ã™ã€‚nameå±æ€§ã«æŒ‡å®šã—ãŸåå‰ã§ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚»ãƒƒã‚·ãƒ§ãƒ³ã«æ ¼ç´ã•ã‚Œã¾ã™ã€‚sessionã‚’ä½¿ã†å ´åˆã¯ã€<a href="#request">S2ContainerFilter</a>ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚</td>
 </tr>
 <tr>
   <td>outer</td>
-  <td>ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÍAS2ContainerŠO‚Åì¬‚µADependency Injection‚¾‚¯‚ğs‚¢‚Ü‚·B<a href="#Aop">ƒAƒXƒyƒNƒg</a>A<a href="#ConstructorInjection">ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a>‚Í“K—p‚Å‚«‚Ü‚¹‚ñB</td>
+  <td>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã¯ã€S2Containerå¤–ã§ä½œæˆã—ã€Dependency Injectionã ã‘ã‚’è¡Œã„ã¾ã™ã€‚<a href="#Aop">ã‚¢ã‚¹ãƒšã‚¯ãƒˆ</a>ã€<a href="#ConstructorInjection">ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</a>ã¯é©ç”¨ã§ãã¾ã›ã‚“ã€‚</td>
 </tr>
 </table>
 
-            <h3><a name="Lifecycle">ƒ‰ƒCƒtƒTƒCƒNƒ‹</a></h3>
-            <p>initMethod‚âdestroyMethod‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒ‰ƒCƒtƒTƒCƒNƒ‹‚àƒRƒ“ƒeƒi‚ÅŠÇ—‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BS2Container‚ÌŠJn(S2Container.init())‚É<a href="#initMethodTag">initMethodƒ^ƒO</a>‚Åw’è‚µ‚½ƒƒ\ƒbƒh‚ªŒÄ‚Ño‚³‚êAS2Container‚ÌI—¹(S2Container.destroy())‚É<a href="#destroyMethodTag">destroyMethodƒ^ƒO</a>‚Åw’è‚µ‚½ƒƒ\ƒbƒh‚ªŒÄ‚Ño‚³‚ê‚é‚æ‚¤‚É‚È‚è‚Ü‚·BinitMethod‚ÍƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒRƒ“ƒeƒi‚É“o˜^‚µ‚½‡”Ô‚ÉÀs‚³‚êAdestroyMethod‚Í‚»‚Ì‹t‡‚ÉŒÄ‚Ño‚³‚ê‚é‚±‚Æ‚É‚È‚è‚Ü‚·Binstance‘®«‚ªsingletonˆÈŠO‚Ìê‡AdestroyMethod‚ğw’è‚µ‚Ä‚à–³‹‚³‚ê‚Ü‚·Bjava.util.HashMap#put()ƒƒ\ƒbƒh‚É‰Šú‰»(aaa‚É111‚ğİ’è)EI—¹ˆ—(aaa‚Énull‚ğİ’è)‚ğİ’è‚·‚éê‡‚ÍAŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+            <h3><a name="Lifecycle">ãƒ©ã‚¤ãƒ•ã‚µã‚¤ã‚¯ãƒ«</a></h3>
+            <p>initMethodã‚„destroyMethodã§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ©ã‚¤ãƒ•ã‚µã‚¤ã‚¯ãƒ«ã‚‚ã‚³ãƒ³ãƒ†ãƒŠã§ç®¡ç†ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚S2Containerã®é–‹å§‹æ™‚(S2Container.init())ã«<a href="#initMethodTag">initMethodã‚¿ã‚°</a>ã§æŒ‡å®šã—ãŸãƒ¡ã‚½ãƒƒãƒ‰ãŒå‘¼ã³å‡ºã•ã‚Œã€S2Containerã®çµ‚äº†æ™‚(S2Container.destroy())ã«<a href="#destroyMethodTag">destroyMethodã‚¿ã‚°</a>ã§æŒ‡å®šã—ãŸãƒ¡ã‚½ãƒƒãƒ‰ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚initMethodã¯ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚³ãƒ³ãƒ†ãƒŠã«ç™»éŒ²ã—ãŸé †ç•ªã«å®Ÿè¡Œã•ã‚Œã€destroyMethodã¯ãã®é€†é †ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã“ã¨ã«ãªã‚Šã¾ã™ã€‚instanceå±æ€§ãŒsingletonä»¥å¤–ã®å ´åˆã€destroyMethodã‚’æŒ‡å®šã—ã¦ã‚‚ç„¡è¦–ã•ã‚Œã¾ã™ã€‚java.util.HashMap#put()ãƒ¡ã‚½ãƒƒãƒ‰ã«åˆæœŸåŒ–(aaaã«111ã‚’è¨­å®š)ãƒ»çµ‚äº†å‡¦ç†(aaaã«nullã‚’è¨­å®š)ã‚’è¨­å®šã™ã‚‹å ´åˆã¯ã€æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 <pre>
 &lt;components namespace=&quot;bar&quot;&gt;
     &lt;component name=&quot;map&quot; class=&quot;java.util.HashMap&quot;&gt;
@@ -514,50 +800,83 @@ Hello Bbb!
 </pre>
 
 
-            <h3><a name="AutoBindingMode">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO</a></h3>
-            <p>ƒRƒ“ƒ|[ƒlƒ“ƒgŠÔ‚ÌˆË‘¶ŠÖŒW‚ÍAŒ^‚ªƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìê‡AƒRƒ“ƒeƒi‚É‚æ‚Á‚Ä©“®“I‚É‰ğŒˆ‚³‚ê‚Ü‚·B‚±‚ê‚ªS2Container‚ÌƒfƒtƒHƒ‹ƒg‚Å‚·‚ªA<a href="#componentTag">componentƒ^ƒO</a>‚ÌautoBinding‘®«‚ğw’è‚·‚é‚±‚Æ‚Å×‚©‚­§Œä‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B</p>
+            <h3><a name="AutoBindingMode">è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°</a></h3>
+            <p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆé–“ã®ä¾å­˜é–¢ä¿‚ã¯ã€å‹ãŒã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å ´åˆã€ã‚³ãƒ³ãƒ†ãƒŠã«ã‚ˆã£ã¦è‡ªå‹•çš„ã«è§£æ±ºã•ã‚Œã¾ã™ã€‚ã“ã‚ŒãŒS2Containerã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã™ãŒã€<a href="#componentTag">componentã‚¿ã‚°</a>ã®autoBindingå±æ€§ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã§ç´°ã‹ãåˆ¶å¾¡ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</p>
 
 <table width="744" border="1">
 <tr bgcolor="#d1f3f4" align="center">
 <th width="104" scope="col">autoBinding</th>
-<th width="624" scope="col">à–¾</th>
+<th width="624" scope="col">èª¬æ˜</th>
 </tr>
 <tr>
 <td>auto(default)</td>
 <td>
-
-<p>ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚ª–¾¦“I‚Éw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ê‚É]‚¢‚Ü‚·B<br/>
-w’è‚³‚ê‚Ä‚¢‚È‚¢ê‡Aˆø”‚Ì‚È‚¢ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ª’è‹`‚³‚ê‚Ä‚¢‚éê‡‚Í‚»‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğg‚¢‚Ü‚·B<br/>
-ƒfƒtƒHƒ‹ƒg‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ª‚È‚¢ê‡AƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚Ì”‚ª1ˆÈã‚ÅAˆø”‚ÌŒ^‚ª‚·‚×‚ÄƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅÅ‚àˆø”‚Ì”‚ª‘½‚¢‚à‚Ì‚ğg‚¢‚Ü‚·B<br/>
-ƒvƒƒpƒeƒB‚ª–¾¦“I‚Éw’è‚³‚ê‚Ä‚¢‚éê‡‚Í‚»‚ê‚É]‚¢‚Ü‚·B<br/>
-–¾¦“I‚Éw’è‚³‚ê‚Ä‚¢‚È‚¢ƒvƒƒpƒeƒB‚ÅAŒ^‚ªƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìê‡‚Í©“®“I‚ÉƒoƒCƒ“ƒh‚µ‚Ü‚·B</p>
+ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ï½¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãŒé©ç”¨ã•ã‚Œã¾ã™ã€‚
 </td>
 </tr>
 <tr>
 <td>constructor</td>
-<td>ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚ª–¾¦“I‚Éw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ê‚É]‚¢‚Ü‚·B<br/>
-w’è‚³‚ê‚Ä‚¢‚È‚¢ê‡Aˆø”‚Ì‚È‚¢ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ª’è‹`‚³‚ê‚Ä‚¢‚éê‡‚Í‚»‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğg‚¢‚Ü‚·B<br/>
-ƒfƒtƒHƒ‹ƒg‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ª‚È‚¢ê‡AƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚Ì”‚ª1ˆÈã‚ÅAˆø”‚ÌŒ^‚ª‚·‚×‚ÄƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅÅ‚àˆø”‚Ì”‚ª‘½‚¢‚à‚Ì‚ğg‚¢‚Ü‚·B<br/>
-ƒvƒƒpƒeƒB‚ª–¾¦“I‚Éw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ê‚É]‚¢‚Ü‚·B</td>
+<td>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãŒé©ç”¨ã•ã‚Œã¾ã™ã€‚</td>
 </tr>
 <tr>
 <td>property</td>
-<td>ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚ª–¾¦“I‚Éw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ê‚É]‚¢‚Ü‚·B<br/>
-w’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAƒfƒtƒHƒ‹ƒg‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğg‚¢‚Ü‚·B<br/>
-Œ^‚ªƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌƒvƒƒpƒeƒB‚ğ©“®“I‚ÉƒoƒCƒ“ƒh‚µ‚Ü‚·B</td>
+<td>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãŒé©ç”¨ã•ã‚Œã¾ã™ã€‚</td>
 </tr>
 <tr>
 <td>none</td>
-<td>ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚ª–¾¦“I‚Éw’è‚³‚ê‚Ä‚¢‚éê‡‚ÍA‚»‚ê‚É]‚¢‚Ü‚·B<br/>
-ƒvƒƒpƒeƒB‚ª–¾¦“I‚Éw’è‚³‚ê‚Ä‚¢‚éê‡‚Í‚»‚ê‚É]‚¢‚Ü‚·B</td>
+<td>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®æ‰‹å‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã®ã¿ã€‚</td>
 </tr>
 </table>
-            <br/>
 
-            <p>Ú‚µ‚­‚ÍA<a href="#AutoConstructorInjectionEx">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO(ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“)</a>‚Æ<a href="#AutoSetterInjectionEx">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO(ƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“)</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B</p>
+<br />
+<p>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã®ãƒ«ãƒ¼ãƒ«ã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<ul>
+<li>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°ãŒæ˜ç¤ºçš„ã«æŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã‚Œã«å¾“ã„ã€è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã¯é©ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚</li>
+<li>ä¸Šè¨˜ã«è©²å½“ã—ãªã„å ´åˆã€å¼•æ•°ã®ãªã„ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ãªã‚‰ã€ãã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’ä½¿ã„ã€è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã¯é©ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚</li>
+<li>ä¸Šè¨˜ã«è©²å½“ã—ãªã„å ´åˆã€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°ã®æ•°ãŒ1ä»¥ä¸Šã§ã€
+å¼•æ•°ã®å‹ãŒã™ã¹ã¦ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§æœ€ã‚‚å¼•æ•°ã®æ•°ãŒå¤šã„ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’ä½¿ã„ã¾ã™ã€‚ãã—ã¦ã€
+å¼•æ•°ã®å‹ã‚’å®Ÿè£…ã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚³ãƒ³ãƒ†ãƒŠã‹ã‚‰å–å¾—ã—ã¦é©ç”¨ã—ã¾ã™ã€‚</li>
+<li>ä¸Šè¨˜ã«è©²å½“ã—ãªã„å ´åˆï½¤è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã¯é©ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚</li>
+</ul>
 
-            <h3><a name="UseS2Container">ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÅS2Container‚ğ—˜—p‚·‚é</a></h3>
-            <p>ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÍS2Container‚ÉˆË‘¶‚µ‚È‚¢‚±‚Æ‚ª–]‚Ü‚µ‚¢‚Ì‚Å‚·‚ªAƒRƒ“ƒ|[ƒlƒ“ƒg‚É‚æ‚Á‚Ä‚ÍAS2Container‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½‚¢ê‡‚à‚ ‚é‚Å‚µ‚å‚¤BS2Container©g‚àcontainer‚Æ‚¢‚¤–¼‘O‚ÅA“o˜^‚³‚ê‚Ä‚¢‚é‚Ì‚ÅAarg,propertyƒ^ƒO‚Ìƒ{ƒfƒB‚Åcontainer‚ğw’è‚·‚é‚±‚Æ‚ÅAƒRƒ“ƒeƒi‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚Å‚«‚Ü‚·B‚Ü‚½AS2ContainerŒ^‚Ìsetterƒƒ\ƒbƒh‚ğ’è‹`‚µ‚Ä‚¨‚¢‚Ä©“®ƒoƒCƒ“ƒfƒBƒ“ƒO‚Åİ’è‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·Barg,propertyƒ^ƒO‚Åcontainer‚ğw’è‚·‚éê‡‚ÍAŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+<p>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã®ãƒ«ãƒ¼ãƒ«ã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<ul>
+<li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæ˜ç¤ºçš„ã«æŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€ãã‚Œã«å¾“ã„ã€è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã¯é©ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚</li>
+<li>ä¸Šè¨˜ã«è©²å½“ã—ãªã„å ´åˆï½¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ãŒã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§ãªã„ãªã‚‰ï½¤è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ã‚°ã®å¯¾è±¡å¤–ã«ãªã‚Šã¾ã™ã€‚</li>
+<li>ä¸Šè¨˜ã«è©²å½“ã—ãªã„å ´åˆï½¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨åŒä¸€ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚³ãƒ³ãƒ†ãƒŠã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚Œã°ã€
+ãã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒé©ç”¨ã•ã‚Œã¾ã™ã€‚</li>
+<li>ä¸Šè¨˜ã«è©²å½“ã—ãªã„å ´åˆï½¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã‚’å®Ÿè£…ã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚³ãƒ³ãƒ†ãƒŠã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚Œã°ã€
+ãã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒé©ç”¨ã•ã‚Œã¾ã™ã€‚</li>
+<li>ä¸Šè¨˜ã«è©²å½“ã—ãªã„å ´åˆï½¤è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã¯é©ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚</li>
+</ul>
+<p>propertyã‚¿ã‚°ã®bindingTypeå±æ€§ã§ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã”ã¨ã«ç´°ã‹ãåˆ¶å¾¡ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</p>
+<table width="744" border="1">
+<tr bgcolor="#d1f3f4" align="center">
+<th width="104" scope="col">bindingType</th>
+<th width="624" scope="col">èª¬æ˜</th>
+</tr>
+<tr>
+<td>must</td>
+<td>è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãŒé©ç”¨ã•ã‚Œãªã„å ´åˆï½¤ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã™ã€‚
+</td>
+</tr>
+<tr>
+<td>should(default)</td>
+<td>è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãŒé©ç”¨ã•ã‚Œãªã„å ´åˆï½¤è­¦å‘Šã‚’é€šçŸ¥ã—ã¾ã™ã€‚</td>
+</tr>
+<tr>
+<td>may</td>
+<td>è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãŒé©ç”¨ã•ã‚Œãªã„å ´åˆï½¤ä½•ã‚‚ãŠãã¾ã›ã‚“ã€‚</td>
+</tr>
+<tr>
+<td>none</td>
+<td>autoBindingå±æ€§ãŒã€autoã€propertyã®å ´åˆã§ã‚‚ï½¤è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã¯é©ç”¨ã•ã‚Œã¾ã›ã‚“ã€‚</td>
+</tr>
+</table>
+<br/>
+
+            <h3><a name="UseS2Container">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã§S2Containerã‚’åˆ©ç”¨ã™ã‚‹</a></h3>
+            <p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯S2Containerã«ä¾å­˜ã—ãªã„ã“ã¨ãŒæœ›ã¾ã—ã„ã®ã§ã™ãŒã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ã‚ˆã£ã¦ã¯ã€S2Containerã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸã„å ´åˆã‚‚ã‚ã‚‹ã§ã—ã‚‡ã†ã€‚S2Containerè‡ªèº«ã‚‚containerã¨ã„ã†åå‰ã§ã€ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã®ã§ã€arg,propertyã‚¿ã‚°ã®ãƒœãƒ‡ã‚£ã§containerã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã§ã€ã‚³ãƒ³ãƒ†ãƒŠã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã§ãã¾ã™ã€‚ã¾ãŸã€S2Containerå‹ã®setterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¦ãŠã„ã¦è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã§è¨­å®šã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚arg,propertyã‚¿ã‚°ã§containerã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯ã€æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 
 <pre>
 &lt;components&gt;
@@ -573,9 +892,9 @@ Hello Bbb!
 
 
             <h3><a name="S2ContainerServlet">S2ContainerServlet</a></h3>
-            <p>‚±‚ê‚Ü‚Å‚ÍAJavaƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÅA–¾¦“I‚ÉS2Container‚ğì¬‚µ‚Ä‚¢‚Ü‚µ‚½‚ªAWebƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ìê‡A’N‚ªS2Container‚ğì¬‚·‚é‚Ì‚Å‚µ‚å‚¤‚©B‚»‚Ì–Ú“I‚Ì‚½‚ß‚ÉŸ‚ÌƒNƒ‰ƒX‚ª—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</p>
+            <p>ã“ã‚Œã¾ã§ã¯ã€Javaã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§ã€æ˜ç¤ºçš„ã«S2Containerã‚’ä½œæˆã—ã¦ã„ã¾ã—ãŸãŒã€Webã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®å ´åˆã€èª°ãŒS2Containerã‚’ä½œæˆã™ã‚‹ã®ã§ã—ã‚‡ã†ã‹ã€‚ãã®ç›®çš„ã®ãŸã‚ã«æ¬¡ã®ã‚¯ãƒ©ã‚¹ãŒç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚</p>
             <p>- org.seasar.framework.container.servlet#S2ContainerServlet</p>
-            S2ContainerServlet‚ğg‚¤‚½‚ß‚É‚ÍAweb.xml‚ÉŸ‚Ì€–Ú‚ğ‹Lq‚µ‚Ü‚·B<br/>src/org/seasar/framework/container/servlet/web.xml‚É‹Lq—á‚à‚ ‚è‚Ü‚·B
+            S2ContainerServletã‚’ä½¿ã†ãŸã‚ã«ã¯ã€web.xmlã«æ¬¡ã®é …ç›®ã‚’è¨˜è¿°ã—ã¾ã™ã€‚<br/>src/org/seasar/framework/container/servlet/web.xmlã«è¨˜è¿°ä¾‹ã‚‚ã‚ã‚Šã¾ã™ã€‚
 
 <pre>
 &lt;servlet&gt;
@@ -598,26 +917,26 @@ Hello Bbb!
 &lt;/servlet-mapping&gt;
 </pre>
 
-            <p>configPath‚ÅƒƒCƒ“‚Æ‚È‚éS2Container’è‹`‚ÌƒpƒX‚ğw’è‚µ‚Ü‚·B’è‹`ƒtƒ@ƒCƒ‹‚ÍWEB-INF/classes‚É‚¨‚«‚Ü‚·BS2ContainerServlet‚ÍA‘¼‚ÌƒT[ƒuƒŒƒbƒg‚æ‚è‚à‚Í‚â‚­‹N“®‚³‚ê‚é‚æ‚¤‚Éload-on-startupƒ^ƒO‚ğ’²®‚µ‚Ä‚­‚¾‚³‚¢BS2ContainerServlet‚ª‹N“®‚µ‚½Œã‚ÍAŸ‚Ìƒƒ\ƒbƒh‚ÅS2Container‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B</p>
+            <p>configPathã§ãƒ¡ã‚¤ãƒ³ã¨ãªã‚‹S2Containerå®šç¾©ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¾ã™ã€‚å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¯WEB-INF/classesã«ãŠãã¾ã™ã€‚S2ContainerServletã¯ã€ä»–ã®ã‚µãƒ¼ãƒ–ãƒ¬ãƒƒãƒˆã‚ˆã‚Šã‚‚ã¯ã‚„ãèµ·å‹•ã•ã‚Œã‚‹ã‚ˆã†ã«load-on-startupã‚¿ã‚°ã‚’èª¿æ•´ã—ã¦ãã ã•ã„ã€‚S2ContainerServletãŒèµ·å‹•ã—ãŸå¾Œã¯ã€æ¬¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§S2Containerã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚</p>
             <p>- org.seasar.framework.container.factory.SingletonS2ContainerFactory#getContainer()</p>
-            <p>‚Ü‚½AS2Container‚Ìƒ‰ƒCƒtƒTƒCƒNƒ‹‚ÍAS2ContainerServlet‚Æ˜A“®‚µ‚Ü‚·Bdebugƒpƒ‰ƒ[ƒ^‚ğtrue‚É‚·‚é‚ÆAŸ‚Ì‚æ‚¤‚É‚µ‚ÄA‰Ò“®’†‚ÉS2Container‚ğÄ‹N“®‚Å‚«‚Ü‚·Bxxx‚ÍWebƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒRƒ“ƒeƒLƒXƒg–¼‚Å‚·B</p>
+            <p>ã¾ãŸã€S2Containerã®ãƒ©ã‚¤ãƒ•ã‚µã‚¤ã‚¯ãƒ«ã¯ã€S2ContainerServletã¨é€£å‹•ã—ã¾ã™ã€‚debugãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’trueã«ã™ã‚‹ã¨ã€æ¬¡ã®ã‚ˆã†ã«ã—ã¦ã€ç¨¼å‹•ä¸­ã«S2Containerã‚’å†èµ·å‹•ã§ãã¾ã™ã€‚xxxã¯Webã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆåã§ã™ã€‚</p>
 			<pre>http://localhost:8080/xxx/s2servlet?command=restart
-			</pre>
-			<p>S2ContainerServlet‚ğg‚Á‚Ä‚¢‚éê‡AServletContext‚ğservletContext‚Æ‚¢‚¤–¼‘O‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚µ‚ÄƒAƒNƒZƒX‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+            </pre>
+            <p>S2ContainerServletã‚’ä½¿ã£ã¦ã„ã‚‹å ´åˆã€ServletContextã‚’servletContextã¨ã„ã†åå‰ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ã—ã¦ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 
-            <h3><a name="app.dicon">app.dicon‚Ì–ğŠ„</a></h3>
-            <p>‚·‚×‚Ä‚ÌS2Container’è‹`‚Ìƒ‹[ƒg‚É‚È‚é’è‹`ƒtƒ@ƒCƒ‹‚ÍAŠµ—á‚Åapp.dicon‚Æ‚¢‚¤–¼‘O‚É‚µ‚Ü‚·Bapp.dicon‚É‚ÍƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì’è‹`‚Í‚µ‚È‚¢‚æ‚¤‚É‚µ‚Ä‚­‚¾‚³‚¢B’Êí‚ÍWEB-INF/classes‚É‚¨‚­‚Æ—Ç‚¢‚Å‚µ‚å‚¤B</p>
+            <h3><a name="app.dicon">app.diconã®å½¹å‰²</a></h3>
+            <p>ã™ã¹ã¦ã®S2Containerå®šç¾©ã®ãƒ«ãƒ¼ãƒˆã«ãªã‚‹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€æ…£ä¾‹ã§app.diconã¨ã„ã†åå‰ã«ã—ã¾ã™ã€‚app.diconã«ã¯ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å®šç¾©ã¯ã—ãªã„ã‚ˆã†ã«ã—ã¦ãã ã•ã„ã€‚é€šå¸¸ã¯WEB-INF/classesã«ãŠãã¨è‰¯ã„ã§ã—ã‚‡ã†ã€‚</p>
 
 <pre>
 &lt;components&gt;
     &lt;include path=&quot;examples/foo.dicon&quot;/&gt;
     &lt;include path=&quot;examples/bar.dicon&quot;/&gt;
-          F &lt;!-- ’è‹`ƒtƒ@ƒCƒ‹‚Ì”•ª‹Lq‚µ‚Ü‚· --&gt;
+          ...
 &lt;/components&gt;
 </pre>
 
-<h3><a name="Aop">AOP‚Ì“K—p</a></h3>
-<p>ƒRƒ“ƒ|[ƒlƒ“ƒg‚É<a href="aop.html">AOP</a>‚ğ“K—p‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B—á‚¦‚ÎAArrayList‚É<a href="aop.html#TraceInterceptor">TraceInterceptor</a>‚ğ“K—p‚µ‚½‚¢ê‡Ÿ‚Ì‚æ‚¤‚É‚µ‚Ü‚·B</p>
+<h3><a name="Aop">AOPã®é©ç”¨</a></h3>
+<p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«<a href="aop.html">AOP</a>ã‚’é©ç”¨ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚ä¾‹ãˆã°ã€ArrayListã«<a href="aop.html#TraceInterceptor">TraceInterceptor</a>ã‚’é©ç”¨ã—ãŸã„å ´åˆæ¬¡ã®ã‚ˆã†ã«ã—ã¾ã™ã€‚</p>
 
 <pre>
 &lt;components&gt;
@@ -633,7 +952,7 @@ Hello Bbb!
 &lt;/components&gt;
 </pre>
 
-<p>aspectƒ^ƒO‚Ìƒ{ƒfƒB‚Å<a href="aop.html#Advice">Interceptor</a>‚Ì–¼‘O‚ğw’è‚µ‚Ü‚·Bpointcut‘®«‚ÉƒJƒ“ƒ}‹æØ‚è‚Å‘ÎÛ‚Æ‚È‚éƒƒ\ƒbƒh–¼‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·Bpointcut‘®«‚ğw’è‚µ‚È‚¢ê‡‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg‚ªÀ‘•‚µ‚Ä‚¢‚éƒCƒ“ƒ^[ƒtƒF[ƒX‚Ì‚·‚×‚Ä‚Ìƒƒ\ƒbƒh‚ª‘ÎÛ‚É‚È‚è‚Ü‚·Bƒƒ\ƒbƒh–¼‚É‚Í³‹K•\Œ»(JDK1.4‚Ìregex)‚àg‚¦‚Ü‚·B‚±‚Ì’è‹`‚ğg‚¤ƒTƒ“ƒvƒ‹‚ÍŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+<p>aspectã‚¿ã‚°ã®ãƒœãƒ‡ã‚£ã§<a href="aop.html#Advice">Interceptor</a>ã®åå‰ã‚’æŒ‡å®šã—ã¾ã™ã€‚pointcutå±æ€§ã«ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§å¯¾è±¡ã¨ãªã‚‹ãƒ¡ã‚½ãƒƒãƒ‰åã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚pointcutå±æ€§ã‚’æŒ‡å®šã—ãªã„å ´åˆã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒå®Ÿè£…ã—ã¦ã„ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®ã™ã¹ã¦ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒå¯¾è±¡ã«ãªã‚Šã¾ã™ã€‚ãƒ¡ã‚½ãƒƒãƒ‰åã«ã¯æ­£è¦è¡¨ç¾(JDK1.4ã®regex)ã‚‚ä½¿ãˆã¾ã™ã€‚ã“ã®å®šç¾©ã‚’ä½¿ã†ã‚µãƒ³ãƒ—ãƒ«ã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 
 <pre>
 private static final String PATH =
@@ -647,7 +966,7 @@ date.hashCode();
 date.toString();
 </pre>
 
-            <p>ÀsŒ‹‰Ê‚ÍŸ‚Ì‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+            <p>å®Ÿè¡Œçµæœã¯æ¬¡ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 
 <pre>
 BEGIN java.util.ArrayList#size()
@@ -663,15 +982,15 @@ END java.util.Date#getTime() : 0
 </pre>
 
 
-<h3><a name="Meta">ƒƒ^ƒf[ƒ^</a></h3>
+<h3><a name="Meta">ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿</a></h3>
 
-<p>componentsAcomponentAargApropertyƒ^ƒO‚Éƒƒ^ƒf[ƒ^<a href="aop.html"></a>‚ğw’è‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·Bmetaƒ^ƒO‚Íƒƒ^ƒf[ƒ^‚ğw’è‚µ‚½‚¢ƒ^ƒO‚Ìqƒ^ƒO‚Éw’è‚µ‚Ü‚·B—á‚¦‚ÎAcomponentsƒ^ƒO‚Éƒƒ^ƒf[ƒ^‚ğw’è‚µ‚½‚¢ê‡Ÿ‚Ì‚æ‚¤‚É‚µ‚Ü‚·B</p>
+<p>componentsã€componentã€argã€propertyã‚¿ã‚°ã«ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿<a href="aop.html"></a>ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚metaã‚¿ã‚°ã¯ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šã—ãŸã„ã‚¿ã‚°ã®å­ã‚¿ã‚°ã«æŒ‡å®šã—ã¾ã™ã€‚ä¾‹ãˆã°ã€componentsã‚¿ã‚°ã«ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šã—ãŸã„å ´åˆæ¬¡ã®ã‚ˆã†ã«ã—ã¾ã™ã€‚</p>
 
 <pre>&lt;components&gt;
     &lt;meta name=&quot;aaa&quot;&gt;111&lt;/meta&gt;
 &lt;/components&gt;
 </pre>
-<p>componentsAcomponentAargApropertyƒ^ƒO‚Éw’è‚µ‚½ƒƒ^ƒf[ƒ^‚Ìî•ñ‚ÍAS2ContainerAComponentDefAArgDefAPropertyDef‚Å’è‹`‚³‚ê‚Ä‚¢‚éŸ‚Ìƒƒ\ƒbƒh‚Åæ“¾‚·‚é‚±‚Æ‚ªo—ˆ‚Ü‚·B</p>
+<p>componentsã€componentã€argã€propertyã‚¿ã‚°ã«æŒ‡å®šã—ãŸãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®æƒ…å ±ã¯ã€S2Containerã€ComponentDefã€ArgDefã€PropertyDefã§å®šç¾©ã•ã‚Œã¦ã„ã‚‹æ¬¡ã®ãƒ¡ã‚½ãƒƒãƒ‰ã§å–å¾—ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚</p>
 <ul>
 <li>public int getMetaDefSize()</li>
 <li>public MetaDef getMetaDef(int index)</li>
@@ -680,23 +999,102 @@ END java.util.Date#getTime() : 0
 </ul>
 
 
-<h3><a name="request">ƒŠƒNƒGƒXƒg‚Ì©“®ƒoƒCƒ“ƒfƒBƒ“ƒO</a></h3>
-
-<p>ƒRƒ“ƒ|[ƒlƒ“ƒg‚É‘Î‚µ‚ÄAHttpServletRequest‚ğ©“®“I‚ÉƒoƒCƒ“ƒfƒBƒ“ƒO‚·‚é‚±‚Æ‚ªo—ˆ‚Ü‚·B‚»‚Ì‚½‚ß‚É‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg‚ÉAsetRequest(HttpServletRequest request)‚Ìƒƒ\ƒbƒh‚ğ’è‹`‚µ‚Ü‚·B‚»‚¤‚·‚é‚ÆAS2Container‚ª©“®“I‚ÉƒŠƒNƒGƒXƒg‚ğİ’è‚µ‚Ü‚·B‚Ü‚½AŸ‚Ì‚æ‚¤‚ÉFilter‚ğweb.xml‚É’è‹`‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B</p>
+<h3><a name="request">ãƒªã‚¯ã‚¨ã‚¹ãƒˆã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°</a></h3>
+<p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«å¯¾ã—ã¦ã€HttpServletRequestã‚’è‡ªå‹•çš„ã«ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ãã®ãŸã‚ã«ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«ã€setRequest(HttpServletRequest request)ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚ãã†ã™ã‚‹ã¨ã€S2ContainerãŒè‡ªå‹•çš„ã«ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’è¨­å®šã—ã¾ã™ã€‚ã¾ãŸã€æ¬¡ã®ã‚ˆã†ã«Filterã‚’web.xmlã«å®šç¾©ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚</p>
 <pre>&lt;web-app&gt;
-<br>	&lt;filter&gt;<br>        &lt;filter-name&gt;s2filter&lt;/filter-name&gt;<br>        &lt;filter-class&gt;org.seasar.framework.container.filter.S2ContainerFilter&lt;/filter-class&gt;<br>    &lt;/filter&gt;<br>    <br>    &lt;filter-mapping&gt;<br>        &lt;filter-name&gt;s2filter&lt;/filter-name&gt;<br>        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;<br>    &lt;/filter-mapping&gt;<br>&lt;/web-app&gt;
+<br>    &lt;filter&gt;<br>        &lt;filter-name&gt;s2filter&lt;/filter-name&gt;<br>        &lt;filter-class&gt;org.seasar.framework.container.filter.S2ContainerFilter&lt;/filter-class&gt;<br>    &lt;/filter&gt;<br>    <br>    &lt;filter-mapping&gt;<br>        &lt;filter-name&gt;s2filter&lt;/filter-name&gt;<br>        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;<br>    &lt;/filter-mapping&gt;<br>&lt;/web-app&gt;
 </pre>
-<p>“¯—l‚ÉHttpServletResponseAHttpSession‚àsetterƒƒ\ƒbƒh‚ğ’è‹`‚·‚é‚¾‚¯‚ÅA©“®ƒoƒCƒ“ƒfƒBƒ“ƒO‚·‚é‚±‚Æ‚ªo—ˆ‚Ü‚·B‚Ü‚½AS2ContainerFilter‚ğg‚¤‚ÆAHttpServletRequestAHttpServletResponseAHttpSession‚ğ‚»‚ê‚¼‚êrequestAresponseAsession‚Æ‚¢‚¤–¼‘O‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Æ‚µ‚ÄƒAƒNƒZƒX‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
+<p>åŒæ§˜ã«HttpServletResponseã€HttpSessionã‚‚setterãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã™ã‚‹ã ã‘ã§ã€è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ã¾ãŸã€S2ContainerFilterã‚’ä½¿ã†ã¨ã€HttpServletRequestã€HttpServletResponseã€HttpSessionã‚’ãã‚Œãã‚Œrequestã€responseã€sessionã¨ã„ã†åå‰ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¨ã—ã¦ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 
-<h2><a name="DefReference">S2Container’è‹`ƒ^ƒOƒŠƒtƒ@ƒŒƒ“ƒX</a></h2>
+<h3><a name="ComponentAutoRegister">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²</a></h3>
+<p><a href="#AutoBindingMode">è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°</a>ã«ã‚ˆã‚Šã€DIã®è¨­å®šã¯ã»ã¼è‡ªå‹•åŒ–ã§ãã¾ã™ã€‚
+<a href="#AnnotationReference">ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a>ã‚’ä½¿ã£ã¦ç´°ã‹ãåˆ¶å¾¡ã™ã‚‹ã“ã¨ã‚‚å¯èƒ½ã§ã™ã€‚
+ã•ã‚‰ã«ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ç™»éŒ²ã‚‚è‡ªå‹•åŒ–ã—ã¦ã—ã¾ãŠã†ã¨ã„ã†ã®ãŒã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²æ©Ÿèƒ½ã§ã™ã€‚
+ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²ã«ã¯ï½¤FileSystemComponentAutoRegisterã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’åˆ©ç”¨ã—ã¾ã™ã€‚</p>
+<h5>org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister</h5>
+<table border="1">
+<tr bgcolor="#d1f3f4" align="center">
+<th width="96">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</th>
+<th width="167">èª¬æ˜</th>
+</tr>
+<tr>
+<td><code>fileNameOfRoot</code></td>
+<td>ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã™ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ã®ãƒ«ãƒ¼ãƒˆ(ä¾‹ãˆã°ã€WEB-INF/classes)ã¨ã¿ãªã—ã¾ã™ã€‚</td>
+</tr>
+<tr>
+<td><code>autoNaming</code></td>
+<td>ã‚¯ãƒ©ã‚¹åã‹ã‚‰ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è‡ªå‹•çš„ã«æ±ºå®šã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã€‚org.seasar.framework.container.autoregister.AutoNamingã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚</td>
+</tr>
+</table>
+<br />
+<table border="1">
+<tr bgcolor="#d1f3f4" align="center">
+<th width="96">ãƒ¡ã‚½ãƒƒãƒ‰</th>
+<th width="167">èª¬æ˜</th>
+</tr>
+<tr>
+<td><code>addClassPattern</code></td>
+<td>è‡ªå‹•ç™»éŒ²ã—ãŸã„ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ç™»éŒ²ã—ã¾ã™ã€‚æœ€åˆã®å¼•æ•°ã¯ï½¤ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã§ã™ã€‚å­ä¾›ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚‚å†å¸°çš„ã«æ¤œç´¢ã—ã¾ã™ã€‚2ç•ªç›®ã®å¼•æ•°ã¯ï½¤ã‚¯ãƒ©ã‚¹åã§ã™ã€‚æ­£è¦è¡¨ç¾ãŒä½¿ãˆã¾ã™ã€‚ã€Œ,ã€åŒºåˆ‡ã‚Šã§è¤‡æ•°è¨˜è¿°ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</td>
+</tr>
+<tr>
+<td><code>addIgnoreClassPatten</code></td>
+<td>è‡ªå‹•ç™»éŒ²ã—ãŸããªã„ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ç™»éŒ²ã—ã¾ã™ã€‚æœ€åˆã®å¼•æ•°ã¯ï½¤ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã§ã™ã€‚å­ä¾›ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚‚å†å¸°çš„ã«æ¤œç´¢ã—ã¾ã™ã€‚2ç•ªç›®ã®å¼•æ•°ã¯ï½¤ã‚¯ãƒ©ã‚¹åã§ã™ã€‚æ­£è¦è¡¨ç¾ãŒä½¿ãˆã¾ã™ã€‚ã€Œ,ã€åŒºåˆ‡ã‚Šã§è¤‡æ•°è¨˜è¿°ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</td>
+</tr>
+</table>
+<br />
+<h5>ä¾‹</h5>
+<pre>&lt;component<br>  class=&quot;org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister&quot;&gt;<br>    &lt;property name=&quot;fileNameOfRoot&quot;&gt;&quot;aop.dicon&quot;&lt;/property&gt;<br>    &lt;property name=&quot;autoNaming&quot;&gt;<br>	    &lt;component class=&quot;org.seasar.framework.container.autoregister.DefaultAutoNaming&quot;/&gt;<br>    &lt;/property&gt;<br>    &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>        &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;registAll&quot;/&gt;<br>&lt;/component&gt;</pre>
+
+<h3><a name="AspectAutoRegister">ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®è‡ªå‹•ç™»éŒ²</a></h3>
+<p><a href="#ComponentAutoRegister">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®è‡ªå‹•ç™»éŒ²</a>ã«ã‚ˆã‚Šã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ç™»éŒ²ã¯è‡ªå‹•åŒ–ã§ãã¾ã™ã€‚
+ã•ã‚‰ã«ã€ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®ç™»éŒ²ã‚‚è‡ªå‹•åŒ–ã—ã¦ã—ã¾ãŠã†ã¨ã„ã†ã®ãŒã€ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®è‡ªå‹•ç™»éŒ²æ©Ÿèƒ½ã§ã™ã€‚ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®è‡ªå‹•ç™»éŒ²ã«ã¯ï½¤AspectAutoRegisterã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’åˆ©ç”¨ã—ã¾ã™ã€‚</p>
+<h5>org.seasar.framework.container.autoregister.AspectAutoRegister</h5>
+<table border="1">
+<tr bgcolor="#d1f3f4" align="center">
+<th width="96">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</th>
+<th width="167">èª¬æ˜</th>
+</tr>
+<tr>
+<td><code>interceptor</code></td>
+<td>ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒ‡å®šã—ã¾ã™ã€‚è¤‡æ•°ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’æŒ‡å®šã—ãŸã„å ´åˆã¯ï½¤<a href="aop.html#InterceptorChain">InterceptorChain</a>ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚</td>
+</tr>
+<tr>
+<td><code>pointcut</code></td>
+<td> ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’é©ç”¨ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šã§æŒ‡å®šã—ã¾ã™ã€‚pointcutã‚’æŒ‡å®šã—ãªã„å ´åˆã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒå®Ÿè£…ã—ã¦ã„ã‚‹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®ã™ã¹ã¦ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒå¯¾è±¡ã«ãªã‚Šã¾ã™ã€‚ãƒ¡ã‚½ãƒƒãƒ‰åã«ã¯æ­£è¦è¡¨ç¾(JDK1.4ã®regex)ã‚‚ä½¿ãˆã¾ã™ã€‚ </td>
+</tr>
+</table>
+<br />
+<table border="1">
+<tr bgcolor="#d1f3f4" align="center">
+<th width="96">ãƒ¡ã‚½ãƒƒãƒ‰</th>
+<th width="167">èª¬æ˜</th>
+</tr>
+<tr>
+<td><code>addClassPattern</code></td>
+<td>è‡ªå‹•ç™»éŒ²ã—ãŸã„ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ç™»éŒ²ã—ã¾ã™ã€‚æœ€åˆã®å¼•æ•°ã¯ï½¤ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã§ã™ã€‚å­ä¾›ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚‚å†å¸°çš„ã«æ¤œç´¢ã—ã¾ã™ã€‚2ç•ªç›®ã®å¼•æ•°ã¯ï½¤ã‚¯ãƒ©ã‚¹åã§ã™ã€‚æ­£è¦è¡¨ç¾ãŒä½¿ãˆã¾ã™ã€‚ã€Œ,ã€åŒºåˆ‡ã‚Šã§è¤‡æ•°è¨˜è¿°ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</td>
+</tr>
+<tr>
+<td><code>addIgnoreClassPatten</code></td>
+<td>è‡ªå‹•ç™»éŒ²ã—ãŸããªã„ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ç™»éŒ²ã—ã¾ã™ã€‚æœ€åˆã®å¼•æ•°ã¯ï½¤ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã§ã™ã€‚å­ä¾›ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚‚å†å¸°çš„ã«æ¤œç´¢ã—ã¾ã™ã€‚2ç•ªç›®ã®å¼•æ•°ã¯ï½¤ã‚¯ãƒ©ã‚¹åã§ã™ã€‚æ­£è¦è¡¨ç¾ãŒä½¿ãˆã¾ã™ã€‚ã€Œ,ã€åŒºåˆ‡ã‚Šã§è¤‡æ•°è¨˜è¿°ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚</td>
+</tr>
+</table>
+<br />
+<h5>ä¾‹</h5>
+<pre>&lt;include path=&quot;aop.dicon&quot;/&gt;
+...
+&lt;component<br>  class=&quot;org.seasar.framework.container.autoregister.AspectAutoRegister&quot;&gt;<br>    &lt;property name=&quot;interceptor&quot;&gt;aop.traceInterceptor&lt;/property&gt;<br>    &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>        &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;registAll&quot;/&gt;<br>&lt;/component&gt;
+</pre>
+
+
+<h2><a name="DefReference">S2Containerã‚¿ã‚°ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹</a></h2>
 
 <h3><a name="DOCTYPE">DOCTYPE</a></h3>
-<p>DOCTYPE‚ÍAXMLéŒ¾‚ÌŸ‚Éw’è‚µ‚Ü‚·B‰º‹L‚Ì‚æ‚¤‚Éw’è‚µ‚Ä‚­‚¾‚³‚¢B</p>
+<p>DOCTYPEã¯ã€XMLå®£è¨€ã®æ¬¡ã«æŒ‡å®šã—ã¾ã™ã€‚ä¸‹è¨˜ã®ã‚ˆã†ã«æŒ‡å®šã—ã¦ãã ã•ã„ã€‚</p>
 
 <pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container 2.3//EN&quot;
+&quot;http://www.seasar.org/dtd/components23.dtd&quot;&gt;
 &lt;components&gt;
     &lt;component name=&quot;hello&quot; class=&quot;examples.dicon.HelloConstructorInjection&quot;&gt;
         &lt;arg&gt;&quot;Hello World!&quot;&lt;/arg&gt;
@@ -704,73 +1102,77 @@ END java.util.Date#getTime() : 0
 &lt;/components&gt;
 </pre>
 
-            <h3><a name="componentsTag">componentsƒ^ƒO(•K{)</a></h3>
-            <p>ƒ‹[ƒg‚Ìƒ^ƒO‚É‚È‚è‚Ü‚·B</p>
-            <h4><a name="namespaceAttr">namespace‘®«(”CˆÓ)</a></h4>
-            <p><a href="#Namespace">–¼‘O‹óŠÔ</a>‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BJava‚Ì¯•Êq‚Æ‚µ‚Äg‚¦‚é‚à‚Ì‚É‚µ‚Ü‚·</p>
+            <h3><a name="componentsTag">componentsã‚¿ã‚°(å¿…é ˆ)</a></h3>
+            <p>ãƒ«ãƒ¼ãƒˆã®ã‚¿ã‚°ã«ãªã‚Šã¾ã™ã€‚</p>
+            <h4><a name="namespaceAttr">namespaceå±æ€§(ä»»æ„)</a></h4>
+            <p><a href="#Namespace">åå‰ç©ºé–“</a>ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚Javaã®è­˜åˆ¥å­ã¨ã—ã¦ä½¿ãˆã‚‹ã‚‚ã®ã«ã—ã¾ã™</p>
 
 <pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container 2.3//EN&quot;
+&quot;http://www.seasar.org/dtd/components23.dtd&quot;&gt;
 &lt;components namespace=&quot;hoge&quot;&gt;
     ...
 &lt;/components&gt;
 </pre>
 
-            <h3><a name="includeTag">includeƒ^ƒO(”CˆÓ)</a></h3>
-            <p>•ªŠ„‚³‚ê‚½S2Container‚Ì’è‹`‚ğ<a href="#Include">æ‚è‚Ş</a>ê‡‚Ég‚¢‚Ü‚·B</p>
-            <h4><a name="pathAttr">path‘®«(•K{)</a></h4>
-            <p>’è‹`ƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BCLASSPATH‚Åw’è‚³‚ê‚Ä‚¢‚éƒfƒBƒŒƒNƒgƒŠ‚ğƒ‹[ƒg‚Æ‚·‚é’è‹`ƒtƒ@ƒCƒ‹‚Ìâ‘ÎƒpƒX‚Å‚·B—á‚¦‚ÎAWEB-INF/classes/aaa.dicon
-‚Ìê‡‚Í aaa.dicon ‚ÉAWEB-INF/classes/aaa/bbb/ccc.dicon ‚Ìê‡‚Í aaa/bbb/ccc.dicon
-‚É‚È‚è‚Ü‚·ƒZƒpƒŒ[ƒ^‚ÍAWindows‚Å‚àUnix‚Å‚à/‚Å‚·Bcomponentƒ^ƒO‚Ì‘O‚É‹Lq‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B</p>
+            <h3><a name="includeTag">includeã‚¿ã‚°(ä»»æ„)</a></h3>
+            <p>åˆ†å‰²ã•ã‚ŒãŸS2Containerã®å®šç¾©ã‚’<a href="#Include">å–ã‚Šè¾¼ã‚€</a>å ´åˆã«ä½¿ã„ã¾ã™ã€‚</p>
+            <h4><a name="pathAttr">pathå±æ€§(å¿…é ˆ)</a></h4>
+            <p>å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚CLASSPATHã§æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ãƒ«ãƒ¼ãƒˆã¨ã™ã‚‹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã®çµ¶å¯¾ãƒ‘ã‚¹ã§ã™ã€‚ä¾‹ãˆã°ã€WEB-INF/classes/aaa.dicon
+ã®å ´åˆã¯ aaa.dicon ã«ã€WEB-INF/classes/aaa/bbb/ccc.dicon ã®å ´åˆã¯ aaa/bbb/ccc.dicon
+ã«ãªã‚Šã¾ã™ã‚»ãƒ‘ãƒ¬ãƒ¼ã‚¿ã¯ã€Windowsã§ã‚‚Unixã§ã‚‚/ã§ã™ã€‚componentã‚¿ã‚°ã®å‰ã«è¨˜è¿°ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚</p>
 
 <pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container 2.3//EN&quot;
+&quot;http://www.seasar.org/dtd/components23.dtd&quot;&gt;
 &lt;components&gt;
     &lt;include path=&quot;aaa/bbb/ccc.dicon&quot; /&gt;
 &lt;/components&gt;
 </pre>
 
-            <h3><a name="componentTag">componentƒ^ƒO(”CˆÓ)</a></h3>
-            <p>ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’è‹`‚µ‚Ü‚·B</p>
-            <h4><a name="classAttr">class‘®«(”CˆÓ)</a></h4>
-            <p>ƒNƒ‰ƒX‚ÌŠ®‘SŒÀ’è–¼‚ğw’è‚µ‚Ü‚·Bƒ{ƒfƒB‚ÅA<a href="#ognlExpr">OGNL®</a>‚ğg‚Á‚ÄƒRƒ“ƒ|[ƒlƒ“ƒg‚ğw’è‚µ‚½ê‡‚ÍAclass‘®«‚ğÈ—ª‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BOGNL®‚ğg‚Á‚½ê‡‚Éclass‘®«‚ğw’è‚·‚é‚ÆAŒ^ƒ`ƒFƒbƒN‚ğs‚¢‚Ü‚·B</p>
-            <h4><a name="componentTag.nameAttr">name‘®«(”CˆÓ)</a></h4>
-            <p>–¼‘O‚ğw’è‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·BJava‚Ì¯•Êq‚Æ‚µ‚Äg‚¦‚é‚à‚Ì‚É‚µ‚Ü‚·BÚ‚µ‚­‚ÍA<a href="#getComponent">ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìæ“¾</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B</p>
-            <h4><a name="instanceAttr">instance‘®«(”CˆÓ)</a></h4>
-            <p>S2Container‚ª‚Ç‚Ì‚æ‚¤‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğŠÇ—‚·‚é‚Ì‚©‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·Bsingleton(ƒfƒtƒHƒ‹ƒg)AprototypeAouterArequestAsession‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BÚ‚µ‚­‚ÍA<a href="#InstanceMode">ƒCƒ“ƒXƒ^ƒ“ƒXŠÇ—</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B</p>
-            <h4><a name="autoBindingAttr">autoBinding‘®«(”CˆÓ)</a></h4>
-            <p>S2Container‚ªƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌˆË‘¶ŠÖŒW‚ğ‚Ç‚Ì‚æ‚¤‚É‰ğŒˆ‚·‚é‚Ì‚©‚ğw’è‚Å‚«‚Ü‚·Bauto(ƒfƒtƒHƒ‹ƒg)AconstructorApropertyAnone‚ğw’è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BÚ‚µ‚­‚ÍA<a href="#AutoBindingMode">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B</p>
+            <h3><a name="componentTag">componentã‚¿ã‚°(ä»»æ„)</a></h3>
+            <p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å®šç¾©ã—ã¾ã™ã€‚</p>
+            <h4><a name="classAttr">classå±æ€§(ä»»æ„)</a></h4>
+            <p>ã‚¯ãƒ©ã‚¹ã®å®Œå…¨é™å®šåã‚’æŒ‡å®šã—ã¾ã™ã€‚ãƒœãƒ‡ã‚£ã§ã€<a href="#ognlExpr">OGNLå¼</a>ã‚’ä½¿ã£ã¦ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒ‡å®šã—ãŸå ´åˆã¯ã€classå±æ€§ã‚’çœç•¥ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚OGNLå¼ã‚’ä½¿ã£ãŸå ´åˆã«classå±æ€§ã‚’æŒ‡å®šã™ã‚‹ã¨ã€å‹ãƒã‚§ãƒƒã‚¯ã‚’è¡Œã„ã¾ã™ã€‚</p>
+            <h4><a name="componentTag.nameAttr">nameå±æ€§(ä»»æ„)</a></h4>
+            <p>åå‰ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚Javaã®è­˜åˆ¥å­ã¨ã—ã¦ä½¿ãˆã‚‹ã‚‚ã®ã«ã—ã¾ã™ã€‚è©³ã—ãã¯ã€<a href="#getComponent">ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å–å¾—</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
+            <h4><a name="instanceAttr">instanceå±æ€§(ä»»æ„)</a></h4>
+            <p>S2ContainerãŒã©ã®ã‚ˆã†ã«ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç®¡ç†ã™ã‚‹ã®ã‹ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚singleton(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ)ã€prototypeã€outerã€requestã€sessionã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚è©³ã—ãã¯ã€<a href="#InstanceMode">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç®¡ç†</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
+            <h4><a name="autoBindingAttr">autoBindingå±æ€§(ä»»æ„)</a></h4>
+            <p>S2ContainerãŒã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ä¾å­˜é–¢ä¿‚ã‚’ã©ã®ã‚ˆã†ã«è§£æ±ºã™ã‚‹ã®ã‹ã‚’æŒ‡å®šã§ãã¾ã™ã€‚auto(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ)ã€constructorã€propertyã€noneã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚è©³ã—ãã¯ã€<a href="#AutoBindingMode">è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
 
-            <h3><a name="argTag">argƒ^ƒO(”CˆÓ)</a></h3>
-            <p><a href="#componentTag">componentƒ^ƒO</a>‚Ìqƒ^ƒO‚Æ‚µ‚Äg‚Á‚½ê‡‚ÍAƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚É‚È‚è‚Ü‚·B‹Lq‚µ‚½‡”Ô‚ÅƒRƒ“ƒXƒgƒ‰ƒNƒ^‚É“n‚³‚ê‚Ü‚·B
-            <a href="#initMethodTag">initMethodƒ^ƒO</a>A<a href="#destroyMethodTag">destroyMethodƒ^ƒO</a>‚Ìqƒ^ƒO‚Æ‚µ‚Äg‚Á‚½ê‡‚ÍAƒƒ\ƒbƒh‚Ìˆø”‚É‚È‚è‚Ü‚·B‹Lq‚µ‚½‡”Ô‚Åƒƒ\ƒbƒh‚É“n‚³‚ê‚Ü‚·B
-            ˆø”‚Æ‚µ‚Ä“n‚³‚ê‚éÀÛ‚Ì’l‚ÍAƒ{ƒfƒB‚ÅA<a href="#ognlExpr">OGNL®</a>‚ğg‚¤‚©Aqƒ^ƒO‚ÅA<a href="#componentTag">componentƒ^ƒO</a>‚ğg‚¢‚Ü‚·B</p>
+            <h3><a name="argTag">argã‚¿ã‚°(ä»»æ„)</a></h3>
+            <p><a href="#componentTag">componentã‚¿ã‚°</a>ã®å­ã‚¿ã‚°ã¨ã—ã¦ä½¿ã£ãŸå ´åˆã¯ã€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°ã«ãªã‚Šã¾ã™ã€‚è¨˜è¿°ã—ãŸé †ç•ªã§ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã«æ¸¡ã•ã‚Œã¾ã™ã€‚
+            <a href="#initMethodTag">initMethodã‚¿ã‚°</a>ã€<a href="#destroyMethodTag">destroyMethodã‚¿ã‚°</a>ã®å­ã‚¿ã‚°ã¨ã—ã¦ä½¿ã£ãŸå ´åˆã¯ã€ãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•°ã«ãªã‚Šã¾ã™ã€‚è¨˜è¿°ã—ãŸé †ç•ªã§ãƒ¡ã‚½ãƒƒãƒ‰ã«æ¸¡ã•ã‚Œã¾ã™ã€‚
+            å¼•æ•°ã¨ã—ã¦æ¸¡ã•ã‚Œã‚‹å®Ÿéš›ã®å€¤ã¯ã€ãƒœãƒ‡ã‚£ã§ã€<a href="#ognlExpr">OGNLå¼</a>ã‚’ä½¿ã†ã‹ã€å­ã‚¿ã‚°ã§ã€<a href="#componentTag">componentã‚¿ã‚°</a>ã‚’ä½¿ã„ã¾ã™ã€‚</p>
 
-            <h3><a name="propertyTag">propertyƒ^ƒO(”CˆÓ)</a></h3>
-            <p><a href="#componentTag">componentƒ^ƒO</a>‚Ìqƒ^ƒO‚Æ‚µ‚Äg‚¢‚Ü‚·BƒvƒƒpƒeƒB‚Æ‚µ‚Äİ’è‚³‚ê‚éÀÛ‚Ì’l‚ÍAƒ{ƒfƒB‚ÅA<a href="#ognlExpr">OGNL®</a>‚ğg‚¤‚©Aqƒ^ƒO‚ÅA<a href="#componentTag">componentƒ^ƒO</a>‚ğg‚¢‚Ü‚·B</p>
-            <h4><a name="propertyTag.nameAttr">name‘®«(•K{)</a></h4>
-            <p>ƒvƒƒpƒeƒB–¼‚ğw’è‚µ‚Ü‚·B</p>
-
-			<h3><a name="metaTag">metaƒ^ƒO(”CˆÓ)</a></h3>
-            <p><a href="#componentsTag">componentsƒ^ƒO</a>A<a href="#componentTag">componentƒ^ƒO</a>A<a href="#argTag">argƒ^ƒO</a>A<a href="#propertyTag">propertyƒ^ƒO</a>‚Ìqƒ^ƒO‚Æ‚µ‚Äg‚¢‚Ü‚·Bƒƒ^ƒf[ƒ^‚Ì’l‚ÍAƒ{ƒfƒB‚ÅA<a href="#ognlExpr">OGNL®</a>‚ğg‚¤‚©Aqƒ^ƒO‚ÅA<a href="#componentTag">componentƒ^ƒO</a>‚ğg‚¢‚Ü‚·B</p>
+            <h3><a name="propertyTag">propertyã‚¿ã‚°(ä»»æ„)</a></h3>
+            <p><a href="#componentTag">componentã‚¿ã‚°</a>ã®å­ã‚¿ã‚°ã¨ã—ã¦ä½¿ã„ã¾ã™ã€‚ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¨ã—ã¦è¨­å®šã•ã‚Œã‚‹å®Ÿéš›ã®å€¤ã¯ã€ãƒœãƒ‡ã‚£ã§ã€<a href="#ognlExpr">OGNLå¼</a>ã‚’ä½¿ã†ã‹ã€å­ã‚¿ã‚°ã§ã€<a href="#componentTag">componentã‚¿ã‚°</a>ã‚’ä½¿ã„ã¾ã™ã€‚</p>
             
-<h4><a name="propertyTag.nameAttr">name‘®«(”CˆÓ)</a></h4>
+			<h4><a name="propertyTag.nameAttr">nameå±æ€§(å¿…é ˆ)</a></h4>
+            <p>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’æŒ‡å®šã—ã¾ã™ã€‚</p>
+			
+			<h4><a name="propertyTag.bindingTypeAttr">bindingTypeå±æ€§(ä»»æ„)</a></h4>
+            <p>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã”ã¨ã«è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã‚’ç´°ã‹ãåˆ¶å¾¡ã§ãã¾ã™ã€‚mustã€should(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ)ã€mayã€noneã‚’æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚è©³ã—ãã¯ã€<a href="#AutoBindingMode">è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
 
-            <p>ƒƒ^–¼‚ğw’è‚µ‚Ü‚·B</p>
+			<h3><a name="metaTag">metaã‚¿ã‚°(ä»»æ„)</a></h3>
+            <p><a href="#componentsTag">componentsã‚¿ã‚°</a>ã€<a href="#componentTag">componentã‚¿ã‚°</a>ã€<a href="#argTag">argã‚¿ã‚°</a>ã€<a href="#propertyTag">propertyã‚¿ã‚°</a>ã®å­ã‚¿ã‚°ã¨ã—ã¦ä½¿ã„ã¾ã™ã€‚ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã®å€¤ã¯ã€ãƒœãƒ‡ã‚£ã§ã€<a href="#ognlExpr">OGNLå¼</a>ã‚’ä½¿ã†ã‹ã€å­ã‚¿ã‚°ã§ã€<a href="#componentTag">componentã‚¿ã‚°</a>ã‚’ä½¿ã„ã¾ã™ã€‚</p>
+            
+<h4><a name="propertyTag.nameAttr">nameå±æ€§(ä»»æ„)</a></h4>
 
-            <h3><a name="initMethodTag">initMethodƒ^ƒO(”CˆÓ)</a></h3>
-            <p><a href="#componentTag">componentƒ^ƒO</a>‚Ìqƒ^ƒO‚Æ‚µ‚Äg‚¢‚Ü‚·Bˆø”‚ÍAqƒ^ƒO‚ÅA<a href="#argTag">argƒ^ƒO</a>‚ğg‚¢‚Ü‚·Bname‘®«‚ğ‘‚©‚¸‚ÉA<a href="#ognlExpr">OGNL®</a>‚ğg‚Á‚ÄAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·‚±‚Æ‚à‚Å‚«‚Ü‚·BinitMethodƒ^ƒO‚ª’è‹`‚³‚ê‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg©g‚ğ•\‚·#selfASystem.out‚ğ•\‚·#outASystem.err‚ğ•\‚·#err‚ªinitMethodƒ^ƒO“à‚¾‚¯‚Å—LŒø‚ÈƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Äg‚¦‚Ü‚·B</p>
-            <h4><a name="initMethodTag.nameAttr">name‘®«(”CˆÓ)</a></h4>
-            <p>ƒƒ\ƒbƒh–¼‚ğw’è‚µ‚Ü‚·B</p>
+            <p>ãƒ¡ã‚¿åã‚’æŒ‡å®šã—ã¾ã™ã€‚</p>
+
+            <h3><a name="initMethodTag">initMethodã‚¿ã‚°(ä»»æ„)</a></h3>
+            <p><a href="#componentTag">componentã‚¿ã‚°</a>ã®å­ã‚¿ã‚°ã¨ã—ã¦ä½¿ã„ã¾ã™ã€‚å¼•æ•°ã¯ã€å­ã‚¿ã‚°ã§ã€<a href="#argTag">argã‚¿ã‚°</a>ã‚’ä½¿ã„ã¾ã™ã€‚nameå±æ€§ã‚’æ›¸ã‹ãšã«ã€<a href="#ognlExpr">OGNLå¼</a>ã‚’ä½¿ã£ã¦ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™ã“ã¨ã‚‚ã§ãã¾ã™ã€‚initMethodã‚¿ã‚°ãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆè‡ªèº«ã‚’è¡¨ã™#selfã€System.outã‚’è¡¨ã™#outã€System.errã‚’è¡¨ã™#errãŒinitMethodã‚¿ã‚°å†…ã ã‘ã§æœ‰åŠ¹ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ä½¿ãˆã¾ã™ã€‚</p>
+            <h4><a name="initMethodTag.nameAttr">nameå±æ€§(ä»»æ„)</a></h4>
+            <p>ãƒ¡ã‚½ãƒƒãƒ‰åã‚’æŒ‡å®šã—ã¾ã™ã€‚</p>
 
 <pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container 2.3//EN&quot;
+&quot;http://www.seasar.org/dtd/components23.dtd&quot;&gt;
 &lt;components&gt;
     &lt;component class=&quot;java.util.HashMap&quot;&gt;
         &lt;initMethod name=&quot;put&quot;&gt;
@@ -783,578 +1185,162 @@ END java.util.Date#getTime() : 0
 &lt;/components&gt;
 </pre>
 
-            <h3><a name="destroyMethodTag">destroyMethodƒ^ƒO(”CˆÓ)</a></h3>
-            <p>initMethodƒ^ƒO‚Æ“¯—l‚Å‚·B</p>
+            <h3><a name="destroyMethodTag">destroyMethodã‚¿ã‚°(ä»»æ„)</a></h3>
+            <p>initMethodã‚¿ã‚°ã¨åŒæ§˜ã§ã™ã€‚</p>
 
-            <h3><a name="aspectTag">aspectƒ^ƒO(”CˆÓ)</a></h3>
-            <p>ƒAƒXƒyƒNƒg‚ğƒRƒ“ƒ|[ƒlƒ“ƒg‚É‘g‚İ‚İ‚Ü‚·BÚ‚µ‚­‚ÍAS2AOP‚Ì<a href="aop.html#aspectTag">aspectƒ^ƒO</a>‚Ìà–¾‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B</p>
+            <h3><a name="aspectTag">aspectã‚¿ã‚°(ä»»æ„)</a></h3>
+            <p>ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚’ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«çµ„ã¿è¾¼ã¿ã¾ã™ã€‚è©³ã—ãã¯ã€S2AOPã®<a href="aop.html#aspectTag">aspectã‚¿ã‚°</a>ã®èª¬æ˜ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</p>
 
-            <h3><a name="descriptionTag">descriptionƒ^ƒO(”CˆÓ)</a></h3>
+            <h3><a name="descriptionTag">descriptionã‚¿ã‚°(ä»»æ„)</a></h3>
 
-            <p><a href="#componentsTag">componentsƒ^ƒO</a>A<a href="#componentTag">componentƒ^ƒO</a>A<a href="#argTag">argƒ^ƒO</a>A<a href="#propertyTag">propertyƒ^ƒO</a>‚Ìqƒ^ƒO‚Æ‚µ‚Ädescriptionƒ^ƒO‚ğg‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚·B©—R‚Éà–¾‚ğ‹Lq‚Å‚«‚Ü‚·B</p>
+            <p><a href="#componentsTag">componentsã‚¿ã‚°</a>ã€<a href="#componentTag">componentã‚¿ã‚°</a>ã€<a href="#argTag">argã‚¿ã‚°</a>ã€<a href="#propertyTag">propertyã‚¿ã‚°</a>ã®å­ã‚¿ã‚°ã¨ã—ã¦descriptionã‚¿ã‚°ã‚’ä½¿ã†ã“ã¨ãŒã§ãã¾ã™ã€‚è‡ªç”±ã«èª¬æ˜ã‚’è¨˜è¿°ã§ãã¾ã™ã€‚</p>
 
-            <h3><a name="ognlExpr">OGNL®</a></h3>
-            <p>S2Container‚Å‚ÍA®Œ¾Œê‚Æ‚µ‚Ä<a href="http://www.ognl.org/">OGNL</a>‚ğ—˜—p‚µ‚Ä‚¢‚Ü‚·BXML‚Ì’†‚ÅA•¶š—ñ‚Å‹Lq‚µ‚½“à—e(®)‚ğJava‚ÌƒIƒuƒWƒFƒNƒg‚É•ÏŠ·‚·‚é‚½‚ß‚Ì‚à‚Ì‚¾‚Æv‚Á‚ÄŠÔˆá‚¢‚È‚¢‚Æv‚¢‚Ü‚·B</p>
+            <h3><a name="ognlExpr">OGNLå¼</a></h3>
+            <p>S2Containerã§ã¯ã€å¼è¨€èªã¨ã—ã¦<a href="http://www.ognl.org/">OGNL</a>ã‚’åˆ©ç”¨ã—ã¦ã„ã¾ã™ã€‚XMLã®ä¸­ã§ã€æ–‡å­—åˆ—ã§è¨˜è¿°ã—ãŸå†…å®¹(å¼)ã‚’Javaã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¤‰æ›ã™ã‚‹ãŸã‚ã®ã‚‚ã®ã ã¨æ€ã£ã¦é–“é•ã„ãªã„ã¨æ€ã„ã¾ã™ã€‚</p>
 
             <ul>
-            <li>•¶š—ñ‚ÍA&quot;hoge&quot;‚Ì‚æ‚¤‚É&quot;‚ÅˆÍ‚İ‚Ü‚·B</li>
-            <li>char‚ÍA'a'‚Ì‚æ‚¤‚É'‚ÅˆÍ‚İ‚Ü‚·B</li>
-            <li>”’l‚ÍA123‚Ì‚æ‚¤‚É‚»‚Ì‚Ü‚Ü‹Lq‚µ‚Ü‚·B</li>
-            <li>˜_—’l‚ÍAtrue,false‚Ì‚æ‚¤‚É‚»‚Ì‚Ü‚Ü‹Lq‚µ‚Ü‚·B</li>
-            <li>new java.util.Date(0)‚Ì‚æ‚¤‚ÉƒNƒ‰ƒX‚ÌŠ®‘SŒÀ’è–¼‚ÅƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğŒÄ‚Ño‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·B</li>
-            <li> @java.lang.Math@max(1, 2)‚Ì‚æ‚¤‚Éstatic‚Èƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Œ‹‰Ê‚ğQÆ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B</li>
-            <li>@java.lang.String@class‚Ì‚æ‚¤‚ÉƒNƒ‰ƒX‚ğQÆ‚Å‚«‚Ü‚·B</li>
-            <li>hoge.toString()‚Ì‚æ‚¤‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚½Œ‹‰Ê‚ğQÆ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‚±‚Ì—á‚ÍA‚Ç‚±‚©‚Åhoge‚Æ‚¢‚¤–¼‘O‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ª’è‹`‚³‚ê‚Ä‚¢‚é‚Æ‚¢‚¤‘O’ñ‚Å‚·B</li>
+            <li>æ–‡å­—åˆ—ã¯ã€&quot;hoge&quot;ã®ã‚ˆã†ã«&quot;ã§å›²ã¿ã¾ã™ã€‚</li>
+            <li>charã¯ã€'a'ã®ã‚ˆã†ã«'ã§å›²ã¿ã¾ã™ã€‚</li>
+            <li>æ•°å€¤ã¯ã€123ã®ã‚ˆã†ã«ãã®ã¾ã¾è¨˜è¿°ã—ã¾ã™ã€‚</li>
+            <li>è«–ç†å€¤ã¯ã€true,falseã®ã‚ˆã†ã«ãã®ã¾ã¾è¨˜è¿°ã—ã¾ã™ã€‚</li>
+            <li>new java.util.Date(0)ã®ã‚ˆã†ã«ã‚¯ãƒ©ã‚¹ã®å®Œå…¨é™å®šåã§ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’å‘¼ã³å‡ºã™ã“ã¨ãŒã§ãã¾ã™ã€‚</li>
+            <li> @java.lang.Math@max(1, 2)ã®ã‚ˆã†ã«staticãªãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸçµæœã‚’å‚ç…§ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚</li>
+            <li>@java.lang.String@classã®ã‚ˆã†ã«ã‚¯ãƒ©ã‚¹ã‚’å‚ç…§ã§ãã¾ã™ã€‚</li>
+            <li>hoge.toString()ã®ã‚ˆã†ã«ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ãŸçµæœã‚’å‚ç…§ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ã“ã®ä¾‹ã¯ã€ã©ã“ã‹ã§hogeã¨ã„ã†åå‰ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒå®šç¾©ã•ã‚Œã¦ã„ã‚‹ã¨ã„ã†å‰æã§ã™ã€‚</li>
             </ul>
-            Ú‚µ‚­‚ÍA<a href="http://www.ognl.org/2.6.7/Documentation/html/LanguageGuide/index.html">OGNL‚Ìƒ}ƒjƒ…ƒAƒ‹</a>‚ğQÆ‚µ‚Ä‚­‚¾‚³‚¢B<br/>
+            è©³ã—ãã¯ã€<a href="http://www.ognl.org/2.6.7/Documentation/html/LanguageGuide/index.html">OGNLã®ãƒãƒ‹ãƒ¥ã‚¢ãƒ«</a>ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚<br/>
             <br/>
+			
+<h2><a name="AnnotationReference">S2Containerã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹</a></h2>
+<p>S2Containerã§ã¯ã€ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®å®Ÿè£…æ–¹æ³•ã¨ã—ã¦ï½¤
+Tigerã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï½¤backport175ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï½¤å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®3ç¨®é¡ã‚’ç”¨æ„ã—ã¦ã„ã¾ã™ã€‚ä¸€èˆ¬çš„ã«ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¨ã„ãˆã°ï½¤Java 5ã‹ã‚‰å°å…¥ã•ã‚ŒãŸ
+Tigerã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã§ã™ãŒï½¤ãã‚Œã ã‘ã ã¨ã€JDK1.4ã®ãƒ¦ãƒ¼ã‚¶ãŒåˆ©ç”¨ã§ããªããªã£ã¦ã—ã¾ã„ã¾ã™ã€‚</p>
+<p>ã§ãã‚‹ã ã‘ã€å¤šãã®æ–¹ã«ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä¾¿åˆ©ã«ä½¿ã£ã¦ã‚‚ã‚‰ã„ãŸã„ãŸã‚ï½¤JDK1.4ã§ã€
+Tigeré¢¨ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³(JSR-175)ã‚’ä½¿ã†ã“ã¨ã®ã§ãã‚‹
+<a href="http://backport175.codehaus.org/">backport175</a>ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã€public static finalãªå®šæ•°ã‚’åˆ©ç”¨ã™ã‚‹å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ç”¨æ„ã—ã¦ã„ã¾ã™ã€‚ </p>
 
-            <h2><a name="Example">Example</a></h2>
-            <p>ˆÈ‰º‚ÌƒTƒ“ƒvƒ‹‚ğÀs‚·‚éê‡‚ÍA<a href="http://homepage3.nifty.com/seasar/setup.html">ƒZƒbƒgƒAƒbƒv</a>‚ğs‚¤•K—v‚ª‚ ‚è‚Ü‚·B</p>
-
-            <h3><a name="ConstructorInjectionEx">ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a></h3>
-            <p>ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚ğg‚Á‚ÄƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Ü‚µ‚å‚¤Bì¬‚·‚éƒtƒ@ƒCƒ‹‚ÍˆÈ‰º‚Ì‚Æ‚¨‚è‚Å‚·B</p>
-
-        <ul>
-            <li type="circle">ƒCƒ“ƒ^[ƒtƒF[ƒX(Hello.java)</li>
-            <li type="circle">À‘•ƒNƒ‰ƒX(HelloConstructorInjection.java)</li>
-            <li type="circle">diconƒtƒ@ƒCƒ‹(HelloConstructorInjection.dicon)</li>
-            <li type="circle">ÀsƒNƒ‰ƒX(HelloConstructorInjectionClient.java)</li>
-        </ul>
-
-            <h5>ƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìì¬</h5>
-        <ul>
-            <li type="circle">showMessage()‚ğ’è‹`‚µ‚Ü‚·B</li>
-        </ul>
-            <p>æ‚¸Å‰‚ÍƒCƒ“ƒ^[ƒtƒF[ƒX‚ğl‚¦‚Ü‚·BƒCƒ“ƒ^[ƒtƒF[ƒX‚ÆÀ‘•‚ğ•ª—£‚·‚é‚±‚Æ‚ÅAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì—˜—pÒ‚ÍAƒCƒ“ƒ^[ƒtƒF[ƒX‚ğ’m‚Á‚Ä‚¢‚ê‚ÎÀ‘•‚Ì‚±‚Æ‚Í’m‚ç‚È‚­‚Ä‚àÏ‚Ş‚æ‚¤‚É‚È‚è‚Ü‚·B‚Ü‚½AƒeƒXƒg‚Ì‚É‚ÍÀ‘•‚ğƒ‚ƒbƒN‚É’u‚«Š·‚¦‚é‚±‚Æ‚ÅŠÈ’P‚ÉƒeƒXƒg‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
-
+<h3><a name="ComponentAnnotation">Componentã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a></h3>
+<p><a href="#componentTag">componentã‚¿ã‚°</a>ã®ã‹ã‚ã‚Šã«ä½¿ãˆã‚‹ãŒã€Componentã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã§ã™ã€‚</p>
+<p>Tigerã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 <pre>
-package examples.dicon;
+@Component(name="xxx", instance=InstanceType.PROTOTYPE,
+        autoBinding=AutoBindingType.PROPERTY)
+public class Xxx {
+    ...
+}
+</pre>
+<p>backport175ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<pre>
+/**
+ * @org.seasar.framework.container.annotation.Component(
+ *      name = "xxx",
+ *      instance = "prototype",
+ *      autoBinding = "property")
+ */
+public class Xxx {    
+    ...
+}
+</pre>
+<p>å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<pre>
+public static final String COMPONENT =
+  "name = xxx, instance = prototype, autoBinding = property";
+</pre>
 
-public interface Hello {
+<h3><a name="BindingAnnotation">Bindingã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a></h3>
+<p><a href="#propertyTag">propertyã‚¿ã‚°</a>ã®ã‹ã‚ã‚Šã«ä½¿ãˆã‚‹ãŒã€Bindingã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã§ã™ã€‚</p>
+<p>Tigerã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<pre>
+@Binding(value="aaa2")
+public void setAaa(String aaa) {
+    ...
+}
+    
+@Binding(bindingType=BindingType.NONE)
+public void setBbb(String bbb) {
+    ...
+}
+    
+@Binding
+public void setCcc(String ccc) {
+    ...
+}
+</pre>
+<p>backport175ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<pre>
+/**
+ * @param aaa
+ * @org.seasar.framework.container.annotation.Binding(value="aaa2")
+ */
+public void setAaa(String aaa) {
+    ...
+}
+    
+/**
+ * @param bbb
+ * @org.seasar.framework.container.annotation.Binding(bindingType="none")
+ */
+public void setBbb(String bbb) {
+    ...
+}
+    
+/**
+ * @param ccc
+ * @org.seasar.framework.container.annotation.Binding
+ */
+public void setCcc(String ccc) {
+    ...
+}
+</pre>
+<p>å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å_BINDINGã§æŒ‡å®šã—ã¾ã™ã€‚</p>
+<pre>
+public static final String aaa_BINDING = "value=aaa2";
 
-    public void showMessage();
+public static final String bbb_BINDING = "bindingType=none";
+        
+public static final String ccc_BINDING = null;
+
+public void setAaa(String aaa) {
+    ...
+}
+
+public void setBbb(String bbb) {
+    ...
+}
+        
+public void setCcc(String ccc) {
+    ...
 }
 </pre>
 
-            <h5>À‘•ƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle">ˆø”‚ªStringŒ^‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">showMessage()‚ğÀ‘•‚µ‚Ü‚·B</li>
-        </ul>
-            <p>Ÿ‚Í‚¢‚æ‚¢‚æÀ‘•‚Å‚·BƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅƒƒbƒZ[ƒW‚ğó‚¯æ‚èAshowMessage()‚Åó‚¯æ‚Á‚½ƒƒbƒZ[ƒW‚ğo—Í‚µ‚Ü‚·B</p>
-
+<h3><a name="AspectAnnotation">Aspectã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³</a></h3>
+<p><a href="aop.html#aspectTag">aspectã‚¿ã‚°</a>ã®ã‹ã‚ã‚Šã«ä½¿ãˆã‚‹ãŒã€Aspectã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã§ã™ã€‚aspectã‚¿ã‚°ã¨ç•°ãªã‚Šï½¤è¤‡æ•°å®šç¾©ã™ã‚‹ã“ã¨ã¯ã§ããªã„ã®ã§ï½¤
+è¤‡æ•°ã®ã‚¤ãƒ³ã‚¿ãƒ¼ã‚»ãƒ—ã‚¿ã‚’é©ç”¨ã—ãŸã„å ´åˆã¯ï½¤<a href="aop.html#InterceptorChain">InterceptorChain</a>ã‚’ä½¿ã£ã¦ãã ã•ã„ã€‚</p>
+<p>Tigerã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 <pre>
-package examples.dicon;
-
-public class HelloConstructorInjection implements Hello {
-    private String message;
-
-    public HelloConstructorInjection(String message) {
-        this.message = message;
-    }
-
-    public void showMessage() {
-        System.out.println(message);
-    }
+@Aspect(interceptor="aop.traceInterceptor", pointcut="getAaa")
+public class Xxx {
+    ...
 }
 </pre>
-
-            <h5>diconƒtƒ@ƒCƒ‹‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle"><a href="#componentTag">componentƒ^ƒO</a>‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">componentƒ^ƒO‚Ìqƒ^ƒO‚Ì<a href="#argTag">argƒ^ƒO</a>‚ÅƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”’l‚ğ’è‹`‚µ‚Ü‚·B</li>
-        </ul>
-
-             <p>ƒƒbƒZ[ƒW‚ğƒRƒ“ƒ|[ƒlƒ“ƒg‚Éİ’è‚·‚é‚Ì‚ÍAS2Container‚Ìd–‚Å‚·B’è‹`ƒtƒ@ƒCƒ‹‚ÉŠî‚Ã‚¢‚ÄƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ‘g‚İ—§‚Ä‚Ü‚·B<br/><br/>examples/dicon/HelloConstructorInjection.dicon</p>
-
-
+<p>backport175ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
 <pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
-&lt;components&gt;
-    &lt;component name=&quot;hello&quot; class=&quot;examples.dicon.HelloConstructorInjection&quot;&gt;
-        &lt;arg&gt;&quot;Hello World!&quot;&lt;/arg&gt;
-    &lt;/component&gt;
-&lt;/components&gt;
-</pre>
-
-            <h5>ÀsƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle"><a href="#S2ContainerCreation">S2ContainerFactory.create(String path)‚ğŒÄ‚Ño‚µ‚ÄS2Container‚ğì¬‚µ‚Ü‚·</a>B</li>
-            <li type="circle">getComponent()‚ğg—p‚µ‚ÄA<a href="#getComponent">S2Container‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ‚èo‚µ‚Ü‚·</a>B</li>
-            <li type="circle">æ“¾‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B</li>
-        </ul>
-
-<pre>
-package examples.dicon;
-
-import org.seasar.framework.container.S2Container;
-import org.seasar.framework.container.factory.S2ContainerFactory;
-
-public class HelloConstructorInjectionClient {
-    private static final String PATH =
-        &quot;examples/dicon/HelloConstructorInjection.dicon&quot;;
-
-    public static void main(String[] args) {
-        S2Container container = S2ContainerFactory.create(PATH);
-        Hello hello = (Hello) container.getComponent(Hello.class);
-        hello.showMessage();
-
-        Hello hello2 = (Hello) container.getComponent(&quot;hello&quot;);
-        hello2.showMessage();
-    }
+/**
+ * @org.seasar.framework.container.annotation.Aspect(
+ *  interceptor="aop.traceInterceptor",
+ *  pointcut="getAaa")
+ */
+public class Xxx {    
+    ...
 }
 </pre>
-
-            <h5>ÀsŒ‹‰Ê</h5>
-            <p>argƒ^ƒO‚Åw’è‚µ‚½•¶š—ñ‚ª³‚µ‚­•\¦‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ªŠm”F‚Å‚«‚Ü‚·B</p>
+<p>å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚pointcutã‚’è¤‡æ•°æŒ‡å®šã—ãŸã„å ´åˆã¯ï½¤pointcut= get.*\nexecute.*ã®ã‚ˆã†ã«\nã§åŒºåˆ‡ã£ã¦ãã ã•ã„ã€‚
+\nä»¥å¤–ã®åŒºåˆ‡ã‚Šæ–‡å­—ã‚’ä½¿ã£ã¦ã¯ã„ã‘ã¾ã›ã‚“ã€‚</p>
 <pre>
-Hello World!
-Hello World!
-</pre>
-            <p>‚±‚Ì‰‰K‚ÍAseasar2/src/examples/diconˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</p>
-
-            <h3><a name="SetterInjectionEx">ƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a></h3>
-            <p>ƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚ğg‚Á‚ÄƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Ü‚µ‚å‚¤Bì¬‚·‚éƒtƒ@ƒCƒ‹‚ÍˆÈ‰º‚Ì‚Æ‚¨‚è‚Å‚·B</p>
-
-        <ul>
-            <li type="circle">ƒCƒ“ƒ^[ƒtƒF[ƒX(Hello.java)</li>
-            <li type="circle">À‘•ƒNƒ‰ƒX(HelloSetterInjection.java)</li>
-            <li type="circle">diconƒtƒ@ƒCƒ‹(HelloSetterInjection.dicon)</li>
-            <li type="circle">ÀsƒNƒ‰ƒX(HelloSetterInjectionClient.java)</li>
-        </ul>
-
-            <h5>ƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìì¬</h5>
-        <ul>
-            <li type="circle">showMessage()‚ğ’è‹`‚µ‚Ü‚·B</li>
-        </ul>
-            <p>ƒCƒ“ƒ^[ƒtƒF[ƒX‚ÍƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚Ìê‡‚Æ“¯‚¶‚Å‚·BƒvƒƒpƒeƒB‚É‘Î‚·‚éƒQƒbƒ^[Eƒƒ\ƒbƒhAƒZƒbƒ^[Eƒƒ\ƒbƒh‚ğ’è‹`‚·‚é•K—v‚Í‚ ‚è‚Ü‚¹‚ñB‚È‚º‚È‚çADependency Injection‚·‚é‚Ì‚ÉƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğg‚¤‚Ì‚©ƒZƒbƒ^[Eƒƒ\ƒbƒh‚ğg‚¤‚Ì‚©‚ÍÀ‘•‚Ì–â‘è‚¾‚©‚ç‚Å‚·B </p>
-
-<pre>
-package examples.dicon;
-
-public interface Hello {
-    public void showMessage();
-}
+public static final String ASPECT =
+    "interceptor=aop.traceInterceptor, pointcut=getAaa";
 </pre>
 
-            <h5>À‘•ƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle">ƒZƒbƒ^[Eƒƒ\ƒbƒh(setMessage)‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">showMessage()‚ğÀ‘•‚µ‚Ü‚·B</li>
-        </ul>
-
-            <p>Ÿ‚ÍÀ‘•‚Å‚·BƒZƒbƒ^[Eƒƒ\ƒbƒh‚ÅƒƒbƒZ[ƒW‚ğó‚¯æ‚èAshowMessage()‚Åó‚¯æ‚Á‚½ƒƒbƒZ[ƒW‚ğo—Í‚µ‚Ü‚·B</p>
-
-<pre>
-package examples.dicon;
-
-public class HelloSetterInjection implements Hello {
-    private String message;
-
-    public HelloSetterInjection() {
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public void showMessage() {
-        System.out.println(message);
-    }
-}
-</pre>
-
-            <h5>diconƒtƒ@ƒCƒ‹‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle">componentƒ^ƒO‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">componentƒ^ƒO‚Ìqƒ^ƒO‚Ì<a href="#propertyTag">propertyƒ^ƒO</a>‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒvƒƒpƒeƒB’l‚ğ’è‹`‚µ‚Ü‚·B</li>
-        </ul>
-
-           <p>examples/dicon/HelloSetterInjection.dicon</p>
-<pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
-&lt;components&gt;
-    &lt;component class=&quot;examples.dicon.HelloSetterInjection&quot;&gt;
-        &lt;property name=&quot;message&quot;&gt;&quot;Hello World!&quot;&lt;/property&gt;
-    &lt;/component&gt;
-&lt;/components&gt;
-</pre>
-
-            <h5>ÀsƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle">S2ContainerFactory.create(String path)‚ğŒÄ‚Ño‚µ‚ÄS2Container‚ğì¬‚µ‚Ü‚·B</li>
-            <li type="circle">getComponent()‚ğg—p‚µ‚ÄAS2Container‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ‚èo‚µ‚Ü‚·B</li>
-            <li type="circle">æ“¾‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B</li>
-        </ul>
-
-<pre>
-package examples.dicon;
-
-import org.seasar.framework.container.S2Container;
-import org.seasar.framework.container.factory.S2ContainerFactory;
-
-public class HelloSetterInjectionClient {
-    private static final String PATH =
-        &quot;examples/dicon/HelloSetterInjection.dicon&quot;;
-
-    public static void main(String[] args) {
-        S2Container container = S2ContainerFactory.create(PATH);
-        Hello hello = (Hello) container.getComponent(Hello.class);
-        hello.showMessage();
-    }
-}
-</pre>
-
-            <h5>ÀsŒ‹‰Ê</h5>
-            <p>propertyƒ^ƒO‚Åw’è‚µ‚½•¶š—ñ‚ª³‚µ‚­•\¦‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ªŠm”F‚Å‚«‚Ü‚·B</p>
-<pre>
-Hello World!
-</pre>
-
-            <p>‚±‚Ì‰‰K‚ÍAseasar2/src/examples/diconˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</p>
-
-            <h3><a name="MethodInjectionEx">ƒƒ\ƒbƒhEƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</a></h3>
-            <p>ƒƒ\ƒbƒhEƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚ğg‚Á‚ÄƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Ü‚µ‚å‚¤Bì¬‚·‚éƒtƒ@ƒCƒ‹‚ÍˆÈ‰º‚Ì‚Æ‚¨‚è‚Å‚·B</p>
-
-        <ul>
-            <li type="circle">ƒCƒ“ƒ^[ƒtƒF[ƒX(Hello.java)</li>
-            <li type="circle">À‘•ƒNƒ‰ƒX(HelloMethodInjection.java)</li>
-            <li type="circle">diconƒtƒ@ƒCƒ‹(HelloMethodInjection.dicon)</li>
-            <li type="circle">ÀsƒNƒ‰ƒX(HelloMethodInjectionClient.java)</li>
-        </ul>
-
-            <h5>ƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìì¬</h5>
-        <ul>
-            <li type="circle">showMessage()‚ğ’è‹`‚µ‚Ü‚·B</li>
-        </ul>
-            <p>’Ç‰Á‚Ìƒƒ\ƒbƒh‚ğ•¡”‰ñŒÄ‚Ño‚·‚æ‚¤‚ÈƒP[ƒX‚ª‘ã•\“I‚Èg‚¢•û‚Å‚·‚ªA¡‰ñ‚Ì‰‰K‚Å‚ÍAƒCƒ“ƒ^[ƒtƒF[ƒX‚ÍƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚Ìê‡‚Æ“¯‚¶‚É‚µ‚Ü‚µ‚½B </p>
-
-<pre>
-package examples.dicon;
-
-public interface Hello {
-    public void showMessage();
-}
-</pre>
-
-            <h5>À‘•ƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle">addMessage()‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">showMessage()‚ğÀ‘•‚µ‚Ü‚·B</li>
-        </ul>
-             <p>Ÿ‚ÍÀ‘•‚Å‚·BaddMessage(String message)‚ÅƒƒbƒZ[ƒW‚ğ•¡”‰ñ’Ç‰Á‚µ‚ÄAshowMessage()‚Åó‚¯æ‚Á‚½ƒƒbƒZ[ƒW‚ğo—Í‚µ‚Ü‚·B</p>
-
-<pre>
-package examples.dicon;
-
-public class HelloMethodInjection implements Hello {
-    private StringBuffer buf = new StringBuffer();
-
-    public HelloMethodInjection() {
-    }
-
-    public void addMessage(String message) {
-        this.buf.append(message);
-    }
-
-    public void showMessage() {
-        System.out.println(buf.toString());
-    }
-}
-</pre>
-
-            <h5>diconƒtƒ@ƒCƒ‹‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle">componentƒ^ƒO‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">componentƒ^ƒO‚Ìqƒ^ƒO‚Ì<a href="#initMethodTag">initMethodƒ^ƒO</a>‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚Ìˆø”’l‚ğ’è‹`‚µ‚Ü‚·B</li>
-        </ul>
-
-
-            <p>æ‚¸‚ÍAargƒ^ƒO‚ğg‚Á‚ÄaddMessage(String message)‚É&quot;Hello &quot;‚ğw’è‚µ‚Ü‚·B<br/>Ÿ‚ÉOGNL®‚ğg‚Á‚ÄaddMessage(String message)‚É&quot;WorldI&quot;‚ğw’è‚µ‚Ü‚·B<br/><br/>examples/dicon/HelloMethodInjection.dicon</p>
-
-<pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
-&lt;components&gt;
-    &lt;component class=&quot;examples.dicon.HelloMethodInjection&quot;&gt;
-        &lt;initMethod name=&quot;addMessage&quot;&gt;
-            &lt;arg&gt;&quot;Hello &quot;&lt;/arg&gt;
-        &lt;/initMethod&gt;
-        &lt;initMethod&gt;#self.addMessage(&quot;World!&quot;)&lt;/initMethod&gt;
-    &lt;/component&gt;
-&lt;/components&gt;
-</pre>
-
-            <h5>ÀsƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle">S2ContainerFactory.create(String path)‚ğŒÄ‚Ño‚µ‚ÄS2Container‚ğì¬‚µ‚Ü‚·B</li>
-            <li type="circle">getComponent()‚ğg—p‚µ‚ÄAS2Container‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ‚èo‚µ‚Ü‚·B</li>
-            <li type="circle">æ“¾‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B</li>
-        </ul>
-
-<pre>
-package examples.dicon;
-
-import org.seasar.framework.container.S2Container;
-import org.seasar.framework.container.factory.S2ContainerFactory;
-
-public class HelloMethodInjectionClient {
-    private static final String PATH =
-        &quot;examples/dicon/HelloMethodInjection.dicon&quot;;
-
-    public static void main(String[] args) {
-        S2Container container = S2ContainerFactory.create(PATH);
-        Hello hello = (Hello) container.getComponent(Hello.class);
-        hello.showMessage();
-    }
-}
-</pre>
-
-            <h5>ÀsŒ‹‰Ê</h5>
-            <p>initMethodƒ^ƒO‚Åw’è‚µ‚½•¶š—ñ‚ª³‚µ‚­•\¦‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ªŠm”F‚Å‚«‚Ü‚·B</p>
-<pre>
-Hello World!
-</pre>
-            <p>‚±‚Ì‰‰K‚ÍAseasar2/src/examples/diconˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</p>
-
-
-            <h3><a name="AutoConstructorInjectionEx">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO(ƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“)</a></h3>
-            <p>©“®ƒoƒCƒ“ƒfƒBƒ“ƒO‚ÅƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Ä‚İ‚Ü‚µ‚å‚¤Bì¬‚·‚éƒtƒ@ƒCƒ‹‚ÍˆÈ‰º‚Ì‚Æ‚¨‚è‚Å‚·B</p>
-        <ul>
-            <li type="circle">ƒCƒ“ƒ^[ƒtƒF[ƒX(Hello.java)</li>
-            <li type="circle">ƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX(AutoHelloConstructorInjection.java)</li>
-            <li type="circle">diconƒtƒ@ƒCƒ‹(AutoHelloConstructorInjection.dicon)</li>
-            <li type="circle">ÀsƒNƒ‰ƒX(AutoHelloConstructorInjectionClient.java)</li>
-        </ul>
-
-            <h5>ƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìì¬</h5>
-        <ul>
-            <li type="circle">showMessage()‚ğ’è‹`‚µ‚Ü‚·B</li>
-        </ul>
-
-<pre>
-package examples.dicon.autobinding;
-
-public interface Hello {
-    public void showMessage();
-}
-</pre>
-
-            <h5>À‘•ƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle">ˆø”‚ªMap‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">showMessage()‚ğÀ‘•‚µ‚Ü‚·B</li>
-        </ul>
-            <p>ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ÅMap‚ğó‚¯æ‚èAshowMessage()‚Åhello‚ğƒL[‚Æ‚µ‚ÄMap‚©‚ç’l‚ğæ“¾‚µ‚Äo—Í‚µ‚Ü‚·B</p>
-
-<pre>
-package examples.dicon.autobinding;
-
-import java.util.Map;
-
-public class AutoHelloConstructorInjection implements Hello {
-    private Map map;
-
-    public AutoHelloConstructorInjection(Map map) {
-        this.map = map;
-    }
-
-    public void showMessage() {
-        System.out.println(map.get(&quot;hello&quot;));
-    }
-}
-</pre>
-
-            <h5>diconƒtƒ@ƒCƒ‹‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle"><a href="#componentTag">componentƒ^ƒO</a>‚Åjava.util.Map‚ÌÀ‘•ƒNƒ‰ƒX‚Å‚ ‚éjava.util.HashMap‚ğƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">componentƒ^ƒO‚Ìqƒ^ƒO‚Å‚ ‚é<a href="#initMethodTag">initMethodƒ^ƒO</a>‚ÅHashMap‚ÉƒL[‚Æ‚µ‚Ä"hello"A’l‚Æ‚µ‚Ä"Hello World!"‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">componentƒ^ƒO‚ÅAutoHelloConstructorInjection‚ğƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`‚µ‚Ü‚·BautoBinding‘®«‚Éauto‚ğw’è‚µ‚Ü‚·B<br/>‰‰K‚Å‚ ‚é‚½‚ß auto ‚ğ–¾¦“I‚Éw’è‚µ‚Ä‚¢‚Ü‚·‚ªAautoBinding‘®«‚ÌƒfƒtƒHƒ‹ƒg’l‚Å‚ ‚é‚½‚ß–{—ˆ‚ÍÈ—ª‚µ‚Ü‚·B</li>
-        </ul>
-
-             <p>AutoHelloConstructorInjection‚É‚ÍAargƒ^ƒO‚ª’è‹`‚³‚ê‚Ä‚¢‚È‚¢‚±‚Æ‚É’–Ú‚µ‚Ä‚­‚¾‚³‚¢BƒRƒ“ƒXƒgƒ‰ƒNƒ^EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚ğs‚¤ê‡Aargƒ^ƒO‚ğ’è‹`‚·‚é•K—v‚ª‚ ‚è‚Ü‚·‚ªAS2Container“à‚ÉMap‚ÌÀ‘•ƒNƒ‰ƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚ê‚ÎAS2Container‚ªƒRƒ“ƒeƒi“à‚ğŒŸõ‚µ‚Ä©“®“I‚Éˆø”‚ğİ’è‚µ‚Ü‚·B‚½‚¾‚µAˆø”‚ÌŒ^‚ªƒCƒ“ƒ^[ƒtƒF[ƒX‚Å‚È‚¢ê‡A©“®ƒoƒCƒ“ƒfƒBƒ“ƒO‚Í‚Å‚«‚Ü‚¹‚ñB<br/><br/>examples/dicon/autobinding/AutoHelloConstructorInjection.dicon</p>
-
-<pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
-&lt;components&gt;
-    &lt;component class=&quot;java.util.HashMap&quot;&gt;
-        &lt;initMethod name=&quot;put&quot;&gt;
-            &lt;arg&gt;&quot;hello&quot;&lt;/arg&gt;
-            &lt;arg&gt;&quot;Hello World!&quot;&lt;/arg&gt;
-        &lt;/initMethod&gt;
-    &lt;/component&gt;
-
-    &lt;component autoBinding=&quot;auto&quot;
-               class=&quot;examples.dicon.autobinding.AutoHelloConstructorInjection&quot;/&gt;
-&lt;/components&gt;
-</pre>
-
-            <h5>ÀsƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle"><a href="#S2ContainerCreation">S2ContainerFactory.create(String path)‚ğŒÄ‚Ño‚µ‚ÄS2Container‚ğì¬‚µ‚Ü‚·</a>B</li>
-            <li type="circle">getComponent()‚ğg—p‚µ‚ÄA<a href="#getComponent">S2Container‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ‚èo‚µ‚Ü‚·</a>B</li>
-            <li type="circle">æ“¾‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B</li>
-        </ul>
-
-<pre>
-package examples.dicon.autobinding;
-
-import org.seasar.framework.container.S2Container;
-import org.seasar.framework.container.factory.S2ContainerFactory;
-
-public class AutoHelloConstructorInjectionClient {
-    private static final String PATH =
-        &quot;examples/dicon/autobinding/AutoHelloConstructorInjection.dicon&quot;;
-
-    public static void main(String[] args) {
-        S2Container container = S2ContainerFactory.create(PATH);
-        Hello hello = (Hello) container.getComponent(Hello.class);
-        hello.showMessage();
-    }
-}
-</pre>
-
-            <h5>ÀsŒ‹‰Ê</h5>
-            <p>HashMap‚Ì’l‚ª•\¦‚³‚ê‚Ä‚¢‚é‚±‚Æ‚©‚çA©“®“I‚ÉƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”‚ğİ’è‚µ‚Ä‚¢‚é‚±‚Æ‚ªŠm”F‚Å‚«‚Ü‚·B</p>
-<pre>
-Hello World!
-</pre>
-            <p>‚±‚Ì‰‰K‚ÍAseasar2/src/examples/dicon/autobindingˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</p>
-
-            <h3><a name="AutoSetterInjectionEx">©“®ƒoƒCƒ“ƒfƒBƒ“ƒO(ƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“)</a></h3>
-            <p>©“®ƒoƒCƒ“ƒfƒBƒ“ƒO‚ÅƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Ä‚İ‚Ü‚µ‚å‚¤Bì¬‚·‚éƒtƒ@ƒCƒ‹‚ÍˆÈ‰º‚Ì‚Æ‚¨‚è‚Å‚·B</p>
-        <ul>
-            <li type="circle">ƒCƒ“ƒ^[ƒtƒF[ƒX(Hello.java)</li>
-            <li type="circle">ƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌÀ‘•ƒNƒ‰ƒX(AutoHelloSetterInjection.java)</li>
-            <li type="circle">diconƒtƒ@ƒCƒ‹(AutoHelloSetterInjection.dicon)</li>
-            <li type="circle">ÀsƒNƒ‰ƒX(AutoHelloSetterInjectionClient.java)</li>
-        </ul>
-
-            <h5>ƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìì¬</h5>
-        <ul>
-            <li type="circle">showMessage()‚ğ’è‹`‚µ‚Ü‚·B</li>
-        </ul>
-
-<pre>
-package examples.dicon.autobinding;
-
-public interface Hello {
-    public void showMessage();
-}
-</pre>
-
-            <h5>À‘•ƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle">ˆø”‚ªMap‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">showMessage()‚ğÀ‘•‚µ‚Ü‚·B</li>
-        </ul>
-            <p>setMessage(Map map)‚ÅMap‚ğó‚¯æ‚èAshowMessage()‚Åhello‚ğƒL[‚Æ‚µ‚ÄMap‚©‚ç’l‚ğæ“¾‚µ‚Äo—Í‚µ‚Ü‚·B</p>
-
-<pre>
-package examples.dicon.autobinding;
-
-import java.util.Map;
-
-public class AutoHelloSetterInjection implements Hello {
-    private Map map;
-
-    public AutoHelloSetterInjection() {
-    }
-
-    public void setMessage(Map map) {
-        this.map = map;
-    }
-
-    public void showMessage() {
-        System.out.println(map.get("hello"));
-    }
-}
-</pre>
-
-            <h5>diconƒtƒ@ƒCƒ‹‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle"><a href="#componentTag">componentƒ^ƒO</a>‚Åjava.util.Map‚ÌÀ‘•ƒNƒ‰ƒX‚Å‚ ‚éjava.util.HashMap‚ğƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">componentƒ^ƒO‚Ìqƒ^ƒO‚Å‚ ‚é<a href="#initMethodTag">initMethodƒ^ƒO</a>‚ÅHashMap‚ÉƒL[‚Æ‚µ‚Ä"hello"A’l‚Æ‚µ‚Ä"Hello World!"‚ğ’è‹`‚µ‚Ü‚·B</li>
-            <li type="circle">componentƒ^ƒO‚ÅAutoHelloSetterInjection‚ğƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`‚µ‚Ü‚·BautoBinding‘®«‚Éauto‚ğw’è‚µ‚Ü‚·B<br/>‰‰K‚Å‚ ‚é‚½‚ß auto ‚ğ–¾¦“I‚Éw’è‚µ‚Ä‚¢‚Ü‚·‚ªAautoBinding‘®«‚ÌƒfƒtƒHƒ‹ƒg’l‚Å‚ ‚é‚½‚ß–{—ˆ‚ÍÈ—ª‚µ‚Ü‚·B</li>
-        </ul>
-
-             <p>AutoHelloSetterInjection‚É‚ÍApropertyƒ^ƒO‚ª’è‹`‚³‚ê‚Ä‚¢‚È‚¢‚±‚Æ‚É’–Ú‚µ‚Ä‚­‚¾‚³‚¢BƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚ğs‚¤ê‡Apropertyƒ^ƒO‚Å”CˆÓ‚ÌƒvƒƒpƒeƒB‚ğ’è‹`‚·‚é•K—v‚ª‚ ‚è‚Ü‚·‚ªAS2Container“à‚ÉMap‚ÌÀ‘•ƒNƒ‰ƒX‚ª“o˜^‚³‚ê‚Ä‚¢‚ê‚ÎAS2Container‚ªƒRƒ“ƒeƒi“à‚ğŒŸõ‚µ‚Ä©“®“I‚ÉƒvƒƒpƒeƒB‚ğİ’è‚µ‚Ü‚·B‚½‚¾‚µAƒvƒƒpƒeƒB‚ÌŒ^‚ªƒCƒ“ƒ^[ƒtƒF[ƒX‚Å‚È‚¢ê‡A©“®ƒoƒCƒ“ƒfƒBƒ“ƒO‚Í‚Å‚«‚Ü‚¹‚ñB<br/><br/>examples/dicon/autobinding/AutoHelloSetterInjection.dicon</p>
-
-<pre>
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;
-&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR2.1//DTD S2Container//EN&quot;
-&quot;http://www.seasar.org/dtd/components21.dtd&quot;&gt;
-&lt;components&gt;
-    &lt;component class=&quot;java.util.HashMap&quot;&gt;
-        &lt;initMethod name=&quot;put&quot;&gt;
-            &lt;arg&gt;&quot;hello&quot;&lt;/arg&gt;
-            &lt;arg&gt;&quot;Hello World!&quot;&lt;/arg&gt;
-        &lt;/initMethod&gt;
-    &lt;/component&gt;
-
-    &lt;component autoBinding=&quot;auto&quot;
-               class=&quot;examples.dicon.autobinding.AutoHelloSetterInjection&quot;/&gt;
-&lt;/components&gt;
-</pre>
-
-            <h5>ÀsƒNƒ‰ƒX‚Ìì¬</h5>
-
-        <ul>
-            <li type="circle"><a href="#S2ContainerCreation">S2ContainerFactory.create(String path)‚ğŒÄ‚Ño‚µ‚ÄS2Container‚ğì¬‚µ‚Ü‚·</a>B</li>
-            <li type="circle">getComponent()‚ğg—p‚µ‚ÄA<a href="#getComponent">S2Container‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ‚èo‚µ‚Ü‚·</a>B</li>
-            <li type="circle">æ“¾‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B</li>
-        </ul>
-
-<pre>
-package examples.dicon.autobinding;
-
-import org.seasar.framework.container.S2Container;
-import org.seasar.framework.container.factory.S2ContainerFactory;
-
-public class AutoHelloSetterInjectionClient {
-    private static final String PATH =
-        &quot;examples/dicon/autobinding/AutoHelloSetterInjection.dicon&quot;;
-
-    public static void main(String[] args) {
-        S2Container container = S2ContainerFactory.create(PATH);
-        Hello hello = (Hello) container.getComponent(Hello.class);
-        hello.showMessage();
-    }
-}
-</pre>
-
-            <h5>ÀsŒ‹‰Ê</h5>
-            <p>HashMap‚Ì’l‚ª•\¦‚³‚ê‚Ä‚¢‚é‚±‚Æ‚©‚çA©“®“I‚ÉƒvƒƒpƒeƒB‚ğİ’è‚µ‚Ä‚¢‚é‚±‚Æ‚ªŠm”F‚Å‚«‚Ü‚·B</p>
-<pre>
-Hello World!
-</pre>
-
-            <p>‚±‚Ì‰‰K‚ÍAseasar2/src/examples/dicon/autobindingˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</p>
-
-            <br/>
-            <br/>
 
 <!-- document end -->
 <!-- don't edit start -->
@@ -1365,7 +1351,7 @@ Hello World!
 <td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
 </tr><tr>
 <td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
-<td width="766" class="copyright">&copy; Copyright The Seasar Project and the others 2004-2005, all rights reserved.</td>
+<td width="766" class="copyright">Copyright&copy; 2004-2005, The Seasar Foundation and the others. All rights reserved.</td>
 </tr></table>
 <td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
 <td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
