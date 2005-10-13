@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+            <UL>
+              <LI><A href="http://www.seasar.org/en/s2hsqldb.html#introduction">Introduction</A> 
+              <LI><A href="http://www.seasar.org/en/s2hsqldb.html#requirements">Requirements</A>
+              <LI><A href="http://www.seasar.org/en/s2hsqldb.html#download">Download</A>
+              <LI><A href="http://www.seasar.org/en/s2hsqldb.html#installation">Installation</A>
+              <LI><A href="http://www.seasar.org/en/s2hsqldb.html#usage">Usage</A>						</UL>
+            <H1><A name=introduction>Introduction</A></H1>
+            <P>S2HsqldbServer is a S2 component ot start hsqldb database server when Seaser2 starts.</P>
+            <H1><A name=requirements>Requirements</A></H1>
+						<P>S2HsqldbServer requires the followings:</P>
+<table border="1">
+<colgroup><col span="3" align="center" width="150"></colgroup><tbody>
+<tr>
+<th>S2</th>
+<th>hsqldb</th>
+</tr>
+<tr>
+<td>2.1.11 or later</td>
+<td>1.7.3 or later</td>
+</tr>
+</tbody>
+</table>
+            <H1><A name=download>Download</A></H1>
+						<P>S2Hsqldb may be downloaded from <a href="http://www.seasar.org/en/products.html">here</a>.</P>
+            <H1><A name=installation>Installation</A></H1>
+            <P>S2 and Hsqldb must be installed before using S2Hsqldb. Hsqldb should be setup as follows:</P>
+						<UL>
+							<LI>Extract files from downloaded archive file to some directory.
+							<LI>Export/Import extracted hsqldb directory to the project directory (where development will be done).
+							<LI>In the following explanation, Hsqldb directory will be<BR/> referenced by <CODE>%DBDATA_PATH%</CODE>, and database name will be referenced by <CODE>%DBDATA_NAME%</CODE>.
+						</UL>
+						<P>After installing these software, S2Hsqldb is installed as follows:</P>
+						<UL>
+              <LI>Extract files from downloaded archive file to some directory.
+              <LI>Move the file s2-hsqldbserver-x.x.x.jar that was extracted from the archive file to a directory where CLASSPATH is set.
+						<LI>Add s2-hsqldbserver-x.x.x.jar to the CLASSPATH.
+						</UL>
+            <H1><A name=usage>Usage</A></H1>
+						<P>To use S2Hsqldb, following 3 files must be modified:</P>
+						<UL>
+							<LI>hsql.dicon
+							<LI>app.dicon
+							<LI>j2ee.dicon
+						</UL>
+<H2>Modifying hsql.dicon file</H2>
+<UL>
+<LI>Modify hsql.dicon file included in the zip archive file as follows:
+<H3>hsql.dicon</H3>
+<pre>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+    "http://www.seasar.org/dtd/components21.dtd"&gt;
+
+&lt;components namespace="S2HsqldbServer"&gt;
+  &lt;component name="xaDataSource" class="org.seasar.server.hsqldb.HsqldbServerImpl"&gt;
+    &lt;!-- Modify database property replacing %DBDATA_PATH% and %DBDATA_NAME%
+         with the actual values --&gt;
+    &lt;property name="database"&gt;"%DBDATA_PATH%/%DBDATA_NAME"&lt;/property&gt;
+    &lt;property name="dbname"&gt;"dbname"&lt;/property&gt; &lt;- This row may be deleted
+    &lt;property name="port"&gt;9001&lt;/property&gt;
+    &lt;property name="silent"&gt;false&lt;/property&gt;
+    &lt;property name="trace"&gt;false&lt;/property&gt;
+    &lt;property name="tls"&gt;false&lt;/property&gt;
+    
+    &lt;property name="user"&gt;"sa"&lt;/property&gt;
+    &lt;property name="password"&gt;""&lt;/property&gt;
+    
+    &lt;initMethod    name="start" /&gt;
+    &lt;destroyMethod name="stop"&gt;
+      &lt;arg&gt;@org.seasar.server.hsqldb.HsqldbServer@SHUTDOWN_MODE_COMPACT&lt;/arg&gt;
+    &lt;/destroyMethod&gt;
+  &lt;/component&gt;
+&lt;/components&gt;</pre>
+<LI>Move this hsql.dicon file to some directory. This directory will be reference as <CODE>%DICON_PATH%</CODE>.
+</UL>
+<H2>Modifying app.dicon file</H2>
+<P>Modify app.dicon file as follows replacing <CODE>%DICON_PATH%</CODE> with the actual directory of where hsql.dicon is located.</P>
+<H3>app.dicon</H3>
+<pre>&lt;components&gt;
+    ...
+    &lt;include path="%DICON_PATH$/hsql.dicon"/&gt;
+&lt;/components&gt;</pre>
+<H2>Modifying j2ee.dicon file</H2>
+<P>Deploy your application. If you are using Tomcat, start Tomcat. When S2<BR/>
+starts, dicon files will be read in app.dicon, hsql.dicon order.</P>
+<P>Modify the j2ee.dicon file to set database connection information.</P>
+<H3>j2ee.dicon</H3>
+<pre>    &lt;component name="xaDataSource"
+        class="org.seasar.extension.dbcp.impl.XADataSourceImpl"&gt;
+        &lt;property name="driverClassName"&gt;
+            "org.hsqldb.jdbcDriver"
+        &lt;/property&gt;
+        &lt;property name="URL"&gt;
+            "jdbc:hsqldb:hsql://localhost:9001"
+        &lt;/property&gt;
+        &lt;property name="user"&gt;"sa"&lt;/property&gt;
+        &lt;property name="password"&gt;""&lt;/property&gt;
+    &lt;/component&gt;</pre>
+</pre>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="737"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=736><TR><TD align="left">Trans. by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and 
+            the others. All rights reserved.</TD></TR></TABLE></TD>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>

@@ -1,0 +1,1677 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+            <UL>
+              <LI><A href="#S2Summary">S2Dao Summary</A> 
+              <LI><A 
+              href="#S2DaoReference">S2Dao Reference</A> 
+
+              <UL>
+                <LI><A href="#SetUp">Setup</A> 
+                <LI><A 
+                href="#DaoMakeFile">Files Needed to be Created</A> 
+
+                <UL>
+                  <LI type=circle><A 
+                  href="#JavaBeans">JavaBeans</A> 
+
+                  <UL>
+                    <LI><A 
+                    href="#TableAnnotation">TABLE Annotation</A> 
+
+                    <LI><A 
+                    href="#ColumnAnnotation">COLUMN Annotation</A> 
+
+                    <LI><A 
+                    href="#N1Mapping">N:1 Mapping</A> 
+
+                    <LI><A 
+                    href="#IDAutoGenerate">Automatic Generation of IDs</A> 
+
+                    <LI><A 
+                    href="#NoPersistentColumns">Non-persistent Columns</A> 
+
+                    <LI><A 
+                    href="#VersionNoPropertyAnnotation">VERSION_NO_PROPERTY Annotation</A> 
+
+                    <LI><A 
+                    href="#TimestampPropertyAnnotation">TIMESTAMP_PROPERTY Annotation</A> 
+
+                    <LI><A 
+                    href="#property">Column Property Declaration</A> 
+
+                    <LI><A 
+                    href="#GetterSetterMethod">getter/setter Method Implementation</A> 
+                    </LI></UL>
+                  <LI type=circle><A 
+                  href="#Dao">Dao(Data Access 
+                  Object)</A> 
+                  <UL>
+                    <LI><A 
+                    href="#BeanAnnotation">BEAN Annotation</A> 
+
+                    <LI><A 
+                    href="#ArgsAnnotation">ARGS Annotation</A> 
+
+                    <LI><A 
+                    href="#QueryAnnotation">QUERY Annotation</A> 
+
+                    <LI><A 
+                    href="#DefMethod">Method Definition</A> 
+
+                    <LI><A 
+                    href="#NoPersistentPropsAnnotation">NO_PERSISTENT_PROPS Annotation</A> 
+
+                    <LI><A 
+                    href="#PersistentPropsAnnotation">PERSISTENT_PROPS Annotation</A> 
+
+                    <LI><A 
+                    href="#SqlAnnotation">SQL Annotation</A> 
+                    </LI></UL>
+                  <LI type=circle><A href="#diconfile">dicon File</A> 
+
+                  <LI type=circle><A href="#SQLfile">SQL File</A> 
+                  </LI></UL>
+                <LI><A href="#SQLBind">SQL Comment</A> 
+                <LI><A 
+                href="#EntityManager">Executing a Query Using EntityManager</A> 
+                <LI><A href="#AutoUpdate">Automatic Generation of Update SQL</A>
+                <LI><A 
+                href="#VersionNo">Locking by VersionNo</A>
+                <LI><A 
+                href="#Timestamp">Locking by Timestamp</A>
+                <LI><A href="#Batch">Batch Update</A> 
+                <LI><A 
+                href="#AutoSelect">Automatic Generation of Query SQL</A>
+                <LI><A 
+                href="#IDAutoGenerate">Automatic Generation of IDs</A>
+                <LI><A 
+                href="#HowToRun">Executing S2Dao</A> 
+                <LI><A 
+                href="http://www.seasar.org/testtech.html#S2DaoTestCase">S2DaoTestCase</A> 
+
+                <LI><A 
+                href="http://www.seasar.org/s2jdbc.html#OracleUnicode">Unicode Problem with Oracle</A> 
+
+                <LI><A 
+                href="http://www.seasar.org/s2jdbc.html#BooleanToInt">Handling Boolean</A> 
+                </LI></UL>
+              <LI><A href="#Example">Example</A> 
+
+              <UL>
+                <LI><A 
+                href="#SelectExample">Example using SQL command</A> 
+
+                <LI><A 
+                href="#AutoUpdateExample">Example of Generating SQL Update Command</A> 
+
+                <LI><A 
+                href="#AutoSelectExample">Example of Generating SQL Query Command</A> 
+
+                <LI><A 
+                href="#EntityManagerExample">Example of Using EntityManager</A> 
+
+                <LI><A 
+                href="http://www.seasar.org/testtech.html#S2DaoTestCaseExample">Example of S2DaoTestCase</A> 
+                </LI></UL>
+              <LI><A 
+              href="http://www.seasar.org/s2DaoExercise.html">S2Dao Exercises</A> 
+              </LI></UL>
+            <H2><A name=S2Summary>S2Dao Summary</A></H2>
+            <P>S2Dao has the following features:</P>
+            <UL>
+              <LI>O/R mapping without a XML document
+              <P>Many current O/R mapping framework depends on XML to hold large amount of information.<BR>S2Dao does not require XML. O/R mapping is accomplished by just adding metadate to Java source code.</P></LI></UL>
+            <UL>
+              <LI>Does not require JDBC knowledge
+              <P>Java applications use JDBC to connect to a database.
+              <BR>When using S2Dao, database connections are handled by S2Dao. Developers are able to connect to a database without knowing intricate detailsof JDBC api. It is not necessary to write codes to connect and disconnect from the database.</P></LI></UL>
+            <UL>
+              <LI>SQL programmers and Java programmers can work separately on what they know the best
+              <P>S2Dao is able to read SQL commands written in external files. These SQL commands may be tested using tools like Oracle SQL*Plus. Java mappings are written as comments in these files. Thus, these SQL commands can still be executed. Files which contain SQL commands with Java codes in comments are called 2 way SQL. It is also possible to map with Java read in by S2Dao.<BR>
+As stated, SQL commands are written in external files separately from Java logic programming files. This allows SQL programmers to work independently from Java logic programmers which results in shortening the overall development schedule.
+</P></LI></UL>
+            <UL>
+              <LI>Automatic generation of SQL commands
+              <P>If Java method names are named in a prescribed manner, it is possible to generate SQL commands.<BR>In most circumstances, generated SQL command will suffice, but in cases of complex SQL commands or when SQL command needs to be customized, SQL commands should be written manually.
+              </P></LI></UL>
+            <UL>
+              <LI>Separation of interface and implementation
+              <P>By just defining interfaces, it is possible to apply <A href="http://www.seasar.org/aop.html">Aspect</A> and to generate SQL commands.</P></LI></UL>
+            <H2><A name="S2Dao Reference">S2Dao Reference</A></H2>
+            <H3><A name=SetUp>Setup</A></H3>
+            <P>As is required by Seasar2, S2Dao requires JDK1.4 or later. Extract the S2DaoVx.x.x.zip archive file to some directory. Open Eclipse project and import extracted files in s2dao directory by selecting [File]- [Existing Projects into Workspace]. Samples files are located under src/examples directory.</P>
+            <P>Files necessary to use S2Dao are included in the s2dao/lib directory. HSQLDB RDBMS is included to allow easier testing with a database. To use HSQLDB, it is necessary that it is started. To start HSQLDB, execute /bin/runHsqldb.bat file (for Windows users). lib/hsqldb.jar is required to use HSQLDB, but it is unnecessary in a production environment which does not use HSQLDB. To use S2Dao, add to the CLASSPATH *.jar files under the lib directory (excep hsqldb.jar) and j2ee.dicon, dao.diocon, log4j.properties under the src directory. If S2Dao files are imported to an Eclipse workspace, it is not necessary to add these files to the CLASSPATH.</P>
+            <H3><A name=DaoMakeFile>Files Needed to be Created</A></H3>
+            <P>To use S2Dao, it is necessary to create JavaBeans, Dao(.java), dicon file, and SQL file (.sql).
+            <BR>Files are associated as in the following diagram:</P><IMG src="images/dao_relation_image.gif"> 
+            <P>JavaBeans is associated with a table, Dao to JavaBeans, dicon file to Dao, SQL file to Dao.<BR>Files are implemented and set as follows:</P>
+            <H4><A name=JavaBeans>JavaBeans</A></H4>
+            <P>JavaBeans is used to associate with a table.
+            To associate a JavaBeans to a table, following constants declaration and method implementation are necessary:</P>
+            <UL>
+              <LI>Table association (<A href="#TableAnnotation">TABLE Annotation</A>) 
+
+              <LI>Column association (<A href="#ColumnAnnotation">COLUMN Annotation</A>) 
+
+              <LI>Key to join tables (<A href="#N1Mapping">N:1 Mapping</A>) 
+              <LI><A 
+              href="#IDAutoGenerate">Automatic Generation of IDs</A> 
+
+              <LI><A 
+              href="#NoPersistentColumns">Non-persistent columns</A> 
+
+              <LI><A href="#property">Column correspondence property declaration</A><IL> 
+
+              <LI><A href="#GetterSetterMethod">getter/setter method implementation</A> 
+              </LI></UL>
+            <P>JavaBeans composition and tables to use in description are as follows</>Table: EMP<BR>
+            <TABLE class=main border=1>
+              <TBODY>
+              <TR align=middle bgColor=#d1f3f4>
+                <TH>Column Name</TH>
+                <TH>Type</TH>
+                <TH>NotNull</TH>
+                <TH>Primary Key</TH></TR>
+              <TR>
+                <TD>EMPNO</TD>
+                <TD>NUMBER</TD>
+                <TD align=middle>yes</TD>
+                <TD align=middle>yes</TD></TR>
+              <TR>
+                <TD>ENAME</TD>
+                <TD>VARCHAR</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>DEPTNUM</TD>
+                <TD>NUMBER</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR></TBODY></TABLE><BR>Table: DEPT<BR>
+            <TABLE class=main border=1>
+              <TBODY>
+              <TR align=middle bgColor=#d1f3f4>
+                <TH>Column Name</TH>
+                <TH>Type</TH>
+                <TH>NotNull</TH>
+                <TH>Primary Key</TH></TR>
+              <TR>
+                <TD>DEPTNO</TD>
+                <TD>NUMBER</TD>
+                <TD align=middle>yes</TD>
+                <TD align=middle>yes</TD></TR>
+              <TR>
+                <TD>DNAME</TD>
+                <TD>VARCHAR</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR></TBODY></TABLE>
+            <H5><A name=TableAnnotation>TABLE Annotation</A></H5>
+            <P>Tables are associated using TABLE annotation.
+ TABLE annotation are declared as follows:</P>
+            <P>- public static final String TABLE = "<SPAN class=italic>table name</SPAN>";</P>
+            <P>EMP table annotation is declared as follows:</P><PRE>public static final String TABLE = "EMP";</PRE>
+            <P>It is also possible to define schema. Schema for "SCOTT" is defined as follows:</P><PRE>public static final String TABLE = "SCOTT.EMP";</PRE>Note: If the table name is the same as the class name without the package name, it is not necessary to define TABLE annotation.
+            <H5><A name=ColumnAnnotation>COLUMN Annotation</A></H5>
+            <P>Table columns are associated using COLUMN annotation.<BR>COLUMN annotation constant is declared as follows:</P>
+            <P>- public static final String <SPAN 
+            class=italic>Property name</SPAN>_COLUMN = "<SPAN 
+            class=italic>column name</SPAN>";</P>EMPNO column is associated to property employeeNo as follows:<PRE>public static final String employeeNo_COLUMN = "EMPNO";</PRE>Note: If the property name is the same as the column name, it is not necessary to define COLUMN annotation. Properties not in the table are ignored - statement to avoid these properties are not necessary.
+            <H5><A name=N1Mapping>N:1 Mapping</A></H5>
+            <P>N:1 mapping is when several rows are associated with one row. For example, several employees are mapped to one department.<BR>To use N:1 mapping, it is required to declare constants RELNO and RELKEYS.<BR>Constant RELNO is declared as follows:</P>
+            <P>- public static final int <SPAN class=italic>Property name</SPAN>_RELNO 
+            = <SPAN class=italic>value</SPAN>;</P>
+            <P>Constant RELNO is consecutive number in N:1 mapping.<BR>For example, if AAA table has N:1 mapping to tables BBB and CCC, RELNO are 0 and 1 for tables BBB and CCC respectively.
+            <BR>RELNO is used to identify columns in result set with the associated table.<BR>For example, if there is a SELECT command like follows: SELECT 
+            ..., BBB.HOGE AS HOGE_0, ... FROM AAA, BBB ... 
+            HOGE_0 implies it is associated with column HOGE in table BBB.<BR>RELKEYS constant is as follows:</P>
+            <P>- public static final String <SPAN 
+            class=italic>Property name</SPAN>_RELKEYS = "<SPAN 
+            class=italic>column name of the table with N rows: column name the table with 1 row</SPAN>";</P>
+            <P>N:1 mapping key is specified by RELKEYS constant. When there are several keys, keys are separaed by commas ( , ). For example, mykey1:yourkey1,  mykey2:yourkey2.<BR>DEPTNUM column in EMP table is associated to DEPTNO in DEPT table as follows:</P><PRE>public static final int department_RELNO = 0;
+public static final String department_RELKEYS = "DEPTNUM:DEPTNO";
+</PRE>
+            <P>When column names in both tables are the same, column name of thetable with 1 row may be omitted. Following is an example associating DEPTNO in EMP table with DEPT table when both tables have column DEPTNO.</P><PRE>public static final String department_RELKEYS = "DEPTNO";</PRE>
+            <P>Furthermore, when associating columns when columns in both tables are the same and when the column is a primary key in the table with 1 row, RELKEYS declaration may be omitted.</P>
+            <H5><A name=IDAutoGenerate>Automatic generation of IDs</A></H5>
+            <P>ID (primary key) values that are automatically set by RDBMS may be automatically set to generated Beans by using ID annotation. ID annotation is specified as follows: property name_ID = "identity".</P><PRE>public static final String id_ID = "identity";</PRE>
+            <P>SEQUENCE may be used. Replace myseq in the following example with the actual SEQUENCE to be used.</P><PRE>public static final String id_ID = "sequence, sequenceName=myseq";
+</PRE>
+            <P>When ID is set manually, there is no other required setting. Primary keys are recognized from table definition (JDBC metadata). However, it is also possible to explicitly specify a primary key by "assign".</P><PRE>public static final String id_ID = "assigned";
+</PRE>
+            <H5><A name=NoPersistentColumns>Non-persistent column</A></H5>
+            <P>Columns are recognized as persistent from table definition (JDBC metadata). However, it is also possible to explicitly specify a column as non-persistent by using NO_PERSISTENT_PROPS. When NO_PERSISTENT_PROPS is set to an empty string, information from JDBC metadata will not be used and all properties are considered to be persistent.</P><PRE>public static final String NO_PERSISTENT_PROPS = "dummy1, dummy2";
+</PRE>
+            <H5><A name=VersionNoPropertyAnnotation>VERSION_NO_PROPERTY Annotation</A></H5>
+            <P>VERSION_NO_PROPERTY annotation is used to change <A href="#VersionNo">versionNo</A> based lock control property name from the default versionNo. Syntax is as follows:</P><PRE>public static final String VERSION_NO_PROPERTY = "myVersionNo";</PRE>
+            <H5><A name=TimestampPropertyAnnotation>TIMESTAMP_PROPERTY Annotation</A></H5>
+            <P>TIMESTAMP_PROPERTY annotation is used to change the default <A href="#Timestamp">timestamp</A> lock control property name "timestamp". Syntax is as follows:</P><PRE>public static final String TIMESTAMP_PROPERTY = "myTimestamp";</PRE>
+            <H5><A name=property>Property declaration of columns</A></H5>
+            <P>Declare variable name associated with a column.</P>Following is an example to declare a variable empno which is to be associated with column named EMPNO of type NUMBER to a variable. (Related topic:<A href="#ColumnAnnotation">COLUMN annotation</A>)
+<PRE>private long empno;</PRE>
+            <P>Note: When a column is Null, Java variable of primitive type returns 0 (zero) when Null. To get Null from a variable, use Java wrapper class (e.g. java.lang.Integer instead of primitive type int).</P>
+            <H5><A name=GetterSetterMethod>getter/setter methods</A></H5>
+            <P>Implements getter/setter methods associated with table column properties. Method naming convention is as follows:</P>getter method
+
+            <P>- public <SPAN class=italic>type</SPAN> get<SPAN 
+            class=italic>Property name</SPAN>()</P>setter method
+            <P>- public void set<SPAN class=italic>property name(argument)</SPAN></P>For example, getter/setter methods for property private long empno is as follows:<PRE>private long empno;
+
+public long getEmpno() {
+    return empno;
+}
+
+public void setEmpno(long empno) {
+    this.empno = empno;
+}
+</PRE>
+            <P>JavaBans associated with EMP table having the above settings are as follows:</P><PRE>import java.io.Serializable;
+
+public class Employee implements Serializable {
+    public static final String TABLE = "EMP";
+
+    public static final int department_RELNO = 0;
+
+    public static final String department_RELKEYS = "DEPTNUM:DEPTNO";
+
+    private long empno;
+
+    private String ename;
+
+    private Short deptnum;
+
+    private Department department;
+
+    public Employee() {
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Short getDeptnum() {
+        return deptnum;
+    }
+
+    public void setDeptnum(Short deptnum) {
+        this.deptnum = deptnum;
+    }
+
+    public long getEmpno() {
+        return empno;
+    }
+
+    public void setEmpno(long empno) {
+        this.empno = empno;
+    }
+
+    public String getEname() {
+        return ename;
+    }
+
+    public void setEname(String ename) {
+        this.ename = ename;
+    }
+}
+</PRE>
+            <H4><A name=Dao>Dao (Data Access Object)</A></H4>
+            <P>Dao is created as an interface. By separating persistent data and logic, aim of Dao to have persistent bean is achieved. There is a one to one relationship between a JavaBean and Dao. So, there is one Dao for one JavaBean. By calling on Dao method, SQL command written in the associated SQL file is executed. To create a Dao, followings are required:</P>
+            <UL>
+              <LI>Constant declaration of JavaBeans association (<A 
+              href="#BeanAnnotation">BEAN annotation</A>) 
+
+              <LI><A 
+              href="#DefMethod">Definition of Methods</A> 
+            </LI></UL>
+            <P>Following annotations are used to reference method argument in SQL command and to specify property which uses insert/update SQL commands WHERE clause and/or ORDER clause.</P>
+            <UL>
+              <LI><A 
+              href="#ArgsAnnotation">ARGS Annotation</A> 
+
+              <LI><A 
+              href="#QueryAnnotation">QUERY Annotation</A> 
+
+              <LI><A 
+              href="#NoPersistentPropsAnnotation">NO_PERSISTENT_PROPS Annotation</A> 
+
+              <LI><A 
+              href="#PersistentPropsAnnotation">PERSISTENT_PROPS Annotation</A> 
+
+              <LI><A 
+              href="#SqlAnnotation">SQL Annotation</A> 
+              </LI></UL>
+            <H5><A name=BeanAnnotation>BEAN Annotation</A></H5>
+            <P>BEAN annotation is used to associate Dao with a JavaBean (entity).
+<BR>BEAN annotation has the following syntax:</P>
+            <P>- public static final Class BEAN = <SPAN 
+            class=italic>JavaBeans name</SPAN>.class;</P>
+            <P>Following is an example definition to associate EmployeeDao class with Employee entity:</P><PRE>public static final Class BEAN = Employee.class;</PRE>
+            <H5><A name=ArgsAnnotation>ARGS Annotation</A></H5>
+            <P>ARGS annotation is used to reference method argument in SQL commands. Method argument name can not be referenced using reflection.<BR>ARGS annotation has the following syntax:</P>
+            <P>- public static final String <SPAN class=italic>method name</SPAN>_ARGS 
+            = "<SPAN class=italic> argument name</SPAN>";</P>
+            <P>Following is an example that defines argument name used in a public Employee getEmployee(int empno) method which is defined in Dao.</P><PRE>public static final String getEmployee_ARGS = "empno";</PRE>
+            <P>When the method argument is associated with a table column name, <SPAN class=italic>argument name</SPAN> is set to the table column name. For example. if method argument name is "empno" and table column name is "employeeno" then employeeno is specified. When there are several arguments, they are separated by a comman. When there is only one argument, ARGS annotation may be omitted.</P>
+            <H5><A name=QueryAnnotation>QUERY Annotation<A></H5>
+            <P>QUERY annotation is used to add WHERE clause and ORDER BY clause to automatically generated SELECT statement.<BR>QUERY Annotation has the following syntax:</P>
+            <P>- public static final String <SPAN class=italic>Method name</SPAN>_QUERY = "<SPAN class=italic>WHERE clause ORDER BY clause</SPAN>";</P>
+            <P>Following is an example to query employees within a specified salary range:</P><PRE>public static final String getEmployeesBySal_QUERY = "sal BETWEEN ? AND ? ORDER BY empno";
+
+public List getEmployeesBySal(Float minSal, Float maxSal);
+</PRE>
+            <P>"?" in the above example is called a bind variable. Bind variables in QUERY annotation are replaced with values in method arguments in order they are used. It is not required to have an ARGS annotation. When using only ORDER BY clause, start with ORDER BY. <A href="#SQLbind">SQL comment</A> may be used. Following is an example of using SQL comment.</P>
+<PRE>public static final String getEmployees_QUERY =
+    "job = /*job*/'CLERK'/*IF deptno != null*/ AND deptno = /*deptno*/20/*END*/";
+</PRE>
+            <P>The following example add the condition to get only those rows which have non-null deptno and which have deptno value equivalent to the value in the argument. Refer to <A href="#SQLbind">SQL comment</A> for further details.</P>
+            <H5><A name=DefMethod>Method definition</A></H5>
+            <P>By calling Dao method, SQL command in associated SQL file is executed. There is a naming convention to these INSERT, UPDATE, and DELETE methods. S2Dao determines type of SQL commands by matching the called method name with the naming convention. Currently, method can not be overloaded.</P>
+            <UL>
+              <LI>INSERT 
+              <P>Name of method to INSERT data is required to start with either insert, add, or create. Method return type must be either void or int. When return type is int, number of updated row is returned. Argument type must match with entity type.<BR>Following is an example of using this method:</P><PRE>public void insert(Department department);
+public int addDept(Department department);
+public void createDept(Department department);
+</PRE>
+              <LI>UPDATE
+              <P>Name of method to UPDATE data is required to start with either update, modify, or store. Method return type must be either void or int. When return type is int, number of updated row is returned. Argument type must match with entity type.<BR>Following is an example of using this method:</P><PRE>public int update(Department department);
+public int modifyDept(Department department);
+public void storeDept(Department department);
+</PRE>
+              <LI>DELETE 
+              <P>Name of method to DELET data is required to start with either delete or remove. Method return type must be either void or int. When return type is int, number of updated row is returned. Argument type must match with entity type.<BR>Following is an example of using this method:</P><PRE>public void delete(Department department);
+public int removeDept(Department department);
+</PRE>
+              <LI>Query (SELECT) 
+              <P>To retrieve information from a query, type of return value must be specified. When return type is set to java.util.List, SELECT command returns a list of entities. When return type is set to an entity type array, array of entity type is returned. When return type is set to just an entity type, an entity is returned. Other return type returns only one column from one row as when SELECT count(*) FROM emp returns only one int value.</P></LI></UL>
+            <H5><A name=NoPersistentPropsAnnotation>NO_PERSISTENT_PROPS Annotation</A></H5>
+            <P>When a property should not be included in a SQL command during update, NO_PERSISTENT_PROPS annotation is used.</P><PRE>public static final String insert_NO_PERSISTENT_PROPS = "sal, comm";</PRE>
+            <P>In the above example, sal and comm properties are treated as non-persistent in an insert method.</P>
+            <H5><A name=PersistentPropsAnnotation>PERSISTENT_PROPS Annotation</A></H5>
+            <P>To include only specified properties in a SQL command during an update, PERSISTENT_PROPS annotation is used.</P><PRE>public static final String insert_PERSISTENT_PROPS = "deptno";</PRE>
+            <P>In the above example, primary key, versionNo, and timestamp along with properties specified in PERSISTENT_PROPS annotation are treated as persistent in an insert method.</P>
+            <H5><A name=SqlAnnotation>SQL Annotation</A></H5>
+            <P>SQL annotation became available in version 1.0.28. As in SQL file, SQL annotation supports both SQL command and SQL comment.</P>
+            <P>There is a name SQL Annotation naming convention.</P>
+            <UL>
+              <LI>Associating SQL file with a method defined in Dao
+              <P>SQL annotation is associated with method defined in Dao as follows:</P>
+              <P>- <SPAN 
+              class=italic>method name</SPAN>_SQL</P>SQL annotation associated with examples.dao.EmployeeDao#getAllEmployees() method is as follows:
+<PRE>public static final String getAllEmployees_SQL = "SELECT
+emp.*, dept.dname dname_0, dept.loc loc_0 FROM emp, dept
+ WHERE emp.deptno = dept.deptno ORDER BY emp.empno;";</PRE>
+              <LI>Multiple DBMS support 
+              <P>It is possible to switch SQL annotation for differing DBMSs. Database that is currently being used is automatically determined by S2Dao using the java.sql.DatabaseMetadata#getDatabaseProductName() method. S2Dao determines which SQL annotation to use by comparing the currently used DBMS with SQL annotation suffix. For example, SQL annotation for oracle should have "oracle" as a suffix as in "getAllEmployees_oracle_SQL".</P>Following is a list of suffixes with their corresponding DBMS.
+
+              <TABLE class=main border=1>
+                <TBODY>
+                <TR align=middle bgColor=#d1f3f4>
+                  <TH scope=col>DBMS</TH>
+                  <TH scope=col>Suffix</TH></TR>
+                <TR>
+                  <TD>Oracle</TD>
+                  <TD>oracle</TD></TR>
+                <TR>
+                  <TD>DB2</TD>
+                  <TD>db2</TD></TR>
+                <TR>
+                  <TD>MSSQLServer</TD>
+                  <TD>mssql</TD></TR>
+                <TR>
+                  <TD>MySQL</TD>
+                  <TD>mysql</TD></TR>
+                <TR>
+                  <TD>PostgreSQL</TD>
+                  <TD>postgre</TD></TR>
+                <TR>
+                  <TD>Firebird</TD>
+                  <TD>firebird</TD></TR>
+                <TR>
+                  <TD>HSQL</TD>
+                  <TD>hsql</TD></TR></TBODY></TABLE></LI></UL>
+            <H4><A name=diconfile>dicon file</A></H4>
+            <P>dicon file registers Dao as a component to a container. To use Dao, it is necessary to apply AOP to the registered Dao. dicon file may be place any where but it is usually place in the directory as the Dao. Refer to <A href="http://www.seasar.org/DIContainer.html">DIContainer</A> for further information.</P>
+            <H5>Applying S2DaoInterceptor</H5>
+            <P>To use Dao, it is necessary to apply AOP to Dao registered with org.seasar.dao.interceptors.S2DaoInterceptor.<BR>Refer to <A href="http://www.seasar.org/aop.html">AOP</A> for further information on AOP.<BR>Following is an example of registering Dao(example.dao.EmployeeDao) as a component:</P>EmployeeDao.dicon 
+<PRE>&lt;components&gt;
+    &lt;include path="dao.dicon"/&gt;
+    &lt;component class="example.dao.EmployeeDao"&gt;
+        &lt;aspect&gt;dao.interceptor&lt;/aspect&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE>dao.dicon <PRE>&lt;components namespace="dao"&gt;
+    &lt;include path="j2ee.dicon"/&gt;
+    &lt;component
+        class="org.seasar.dao.impl.DaoMetaDataFactoryImpl"/&gt;
+    &lt;component name="interceptor"
+        class="org.seasar.dao.interceptors.S2DaoInterceptor"/&gt;
+&lt;/components&gt;
+</PRE>
+            <P>&lt;component class="org.seasar.dao.implDaoMetaDataFactoryImpl"/&gt; becomes an argument to S2DaoInterceptor constructor. So, org.seasar.dao.impl.DaoMetaDataFactoryImpl is also written.</P>
+            <H4><A name=SQLfile>SQL file</A></H4>
+            <P>When a method defined in Dao is called, query and update SQL commands are written in SQL file is executed. These SQL files should be place in the same directory as the Dao files. Note: S2Dao will <A href="#AutoUpdate">automatically create SQL commands</A> when there is no corresponding SQL file.</P>
+            <H5>SQL file name</H5>
+            <P>S2Dao and SQL files should be named in accordance with their naming convention.</P>
+            <UL>
+              <LI>Associating SQL file with method defined in Dao
+              <P>To associate SQL file to a method defined in Dao, SQL file should be named as described below:</P>
+              <P>- <SPAN class=italic>Dao class name</SPAN>_<SPAN 
+              class=italic>method name</SPAN>.sql</P>SQL file associated with examples.dao.EmployeeDao#getAllEmployees() is as follows:
+<PRE>examples/dao/EmployeeDao_getAllEmployees.sql	</PRE>
+              <LI>Multiple DBMS support
+              <P>
+It is possible to switch SQL file for differing DBMSs. Database that is currently being used is automatically determined by S2Dao using the java.sql.DatabaseMetadata#getDatabaseProductName() method. S2Dao determines which SQL file to use by comparing the currently used DBMS with SQL file name suffix. For example, SQL file name for oracle should have "oracle" as a suffix as in "EmployeeDao_getAllEmployees_oracle.sql".</P>Following is a list of suffixes with their corresponding DBMS.
+
+              <TABLE class=main border=1>
+                <TBODY>
+                <TR align=middle bgColor=#d1f3f4>
+                  <TH scope=col>DBMS</TH>
+                  <TH scope=col>Suffix</TH></TR>
+                <TR>
+                  <TD>Oracle</TD>
+                  <TD>oracle</TD></TR>
+                <TR>
+                  <TD>DB2</TD>
+                  <TD>db2</TD></TR>
+                <TR>
+                  <TD>MSSQLServer</TD>
+                  <TD>mssql</TD></TR>
+                <TR>
+                  <TD>MySQL</TD>
+                  <TD>mysql</TD></TR>
+                <TR>
+                  <TD>PostgreSQL</TD>
+                  <TD>postgre</TD></TR>
+                <TR>
+                  <TD>Firebird</TD>
+                  <TD>firebird</TD></TR>
+                <TR>
+                  <TD>HSQL</TD>
+                  <TD>hsql</TD></TR></TBODY></TABLE></LI></UL>
+            <H5>SQL command</H5>
+            <P>In a SQL file, ordinary SQL commands such as "SELECT * FROM EMP" and "DELETE FROM EMP WHERE EMPNO = 7788" may be written. It is also possible to write a statement that dynamically changes condition in a WHERE clause. Refer to <A href="#SQLbind">SQL comment</A> for details.</P>
+            <H3><A name=SQLBind>SQL comment</A></H3>
+            <P>In S2Dao, association of arguments in a method to SQL bind variables are written within comment declaration such as within "/**/" and "--". SQL commands may still be executed because non-SQL association statements are written within comments. As a best practice, it is better to first write and test SQL commands and then write associations within comments.</P>
+            <P>To write actual comments in SQL file, insert a space after "/*" before the comment string. For example, /* hoge*/. S2Dao will recognize the space after the "/*" and treat the content as an actual comment string.</P>
+            <H4>Bind variable comment</H4>
+            <P>To use value of an argument in a method defined by Dao, bind variable comment is used. Literal to the right of bind variable comment is automatically replace with a value and executed. Bind variable comment is written as follows:</P>
+            <P>- /*<SPAN class=italic>variable name</SPAN>*/<SPAN 
+            class=italic>Literal</SPAN></P>
+            <P>Argument that is a JavaBeans is written as follows:</P>
+            <P>- /*<SPAN class=itaic>argument name</SPAN>.<SPAN 
+            class=italic>Property name</SPAN>*/<SPAN class=italic>Literal</SPAN></P>
+            <P>Argument name is required to be the same as the ARGS annotation value set in Dao. (However, when there is only one argument, there is not name restriction.)</P><PRE>public String getEmployee_ARGS = "empno";
+
+public Employee getEmployee(int empno);
+</PRE>
+            <P>When the above method is defined in Dao, SQL file (EmploeeDao_getEmployee.sql) may use bind variable as follows. Value of getEmployee method is automatically set.</P><PRE>SELECT * FROM emp WHERE empno = /*empno*/7788</PRE>
+            <P>Following is an example of using bind variable in an IN clause.</P>
+            <P>- IN /*<SPAN class=italic>argument name</SPAN>*/(...)</P><PRE>IN /*names*/('aaa', 'bbb')</PRE>
+            <P>Argument is java.util.List or an array. For the IN clause in the above example, argument is written as follows:</P><PRE>String[] names = new String[]{"SCOTT", "SMITH", "JAMES"};</PRE>
+            <P>String array names is automatically replaced with bind variables.</P>
+            <P>Following is an example of using "LIKE":</P><PRE>ename LIKE /*ename*/'hoge'</PRE>
+            <P>To use a wild card character, include it in a method argument. To specify to include "COT", wild card character is embedded in the argument as follows:</P><PRE>employeeDao.findEmployees("%COT%");</PRE>
+            <H4>Embedded variable comment</H4>
+            <P>To embed argument value of a method defined in Dao directly into a SQL command as a string, variable comment is written in a SQL command. Literal to the right of the variable comment is replace with the argument value. Embedded variable comment has the following syntax:</P>
+            <P>- /*<SPAN class=italic>$variable name</SPAN>*/<SPAN 
+            class=italic>literal</SPAN></P>
+            <P>When an argument is a JavaBean, embedded variable comment has the following syntax:</P>
+            <P>- /*<SPAN class=italic>$variable name</SPAN>.<SPAN 
+            class=italic>property name</SPAN>*/<SPAN class=italic>literal</SPAN></P>
+            <H4>IF comment</H4>
+            <P>To change SQL command during execution based on a condition. IF comments are used. IF comment has the following syntax:</P>
+            <P>- /*IF <SPAN class=italic>condition</SPAN>*/ .../*END*/</P>
+            <P>Following is an example of an IF comment:</P><PRE>/*IF hoge != null*/hoge = /*hoge*/'abc'/*END*/</PRE>
+            <P>When the condition results in true, statements in /*IF*/ and /*END*/ are evaluated. In the above example, only when variable hoge is not null will hoge = /*hoge*/'abc' be evaluated.<BR>ELSE comment may be used to execute statements when condition is false. Following is an example of IF comment with an ELSE.</P><PRE>/*IF hoge != null*/hoge = /*hoge*/'abc'
+  -- ELSE hoge is null
+/*END*/
+</PRE>
+            <P>When the variable hoge is not null, expression "hoge is null" is evaluated.</P>
+            <H4>BEGIN comment</H4>
+            <P>BEGIN comment is used to not output WHERE clause when all IF comment in a WHERE clause, which does not include an ELSE, is false. BEGIN comment is used with IF comment.<BR>Syntax of BEGIN comment is as follows:</P>
+            <P>- /*BEGIN*/<SPAN 
+            class=italic>WHERE clause</SPAN>/*END*/</P>Following is an example:<PRE>/*BEGIN*/WHERE
+  /*IF job != null*/job = /*job*/'CLERK'/*END*/
+  /*IF deptno != null*/AND deptno = /*deptno*/20/*END*/
+/*END*/
+</PRE>
+            <P>In the above example, when job and deptno are null, WHERE clause will not be outputted. When job == null,deptno != null, "WHERE depno = ?" is outputted. When job != null,deptno == null, "WHERE job = ?" is outputted. When job != null,deptno != null, "WHERE job = ? AND depno = ?" is outputted.</P>
+            <H3><A name=EntityManager>Executing query using EntityManager</A></H3>
+            <P>By using EntityManager, WHERE clause and ORDER BY clause may be inserted automatically into a SELECT statement. Syntax is the same as <A hre="#QueryAnnotation">QUERY annotation</A>. It is mainly used to dynamically create a query command. To use EntityManager, extend the following class</P>
+            <P>- org.seasar.dao.impl.AbstractDao</P>
+            <P>Dao interface name must end with "Dao". S2Dao treats interface implementation of class extending AbstractDao with name ending with "Dao" as Dao interface.</P>EntityManager has the following methods:
+
+            <DL>
+              <DT style="TEXT-INDENT: 1em">find() method
+              <DD>Returns as java.util.List. Arguments are as follows:<BR>public List 
+              find(String query);<BR>public List find(String query, Object 
+              arg1);<BR>public List find(String query, Object arg1, Object 
+              arg2);<BR>public List find(String query, Object arg1, Object arg2, 
+              Object arg3);<BR>public List find(String query, Object[] 
+              args);<BR><BR>
+              <DT style="TEXT-INDENT: 1em">findArray() method
+              <DD>Returns an array. Arguments are as follows:<BR>public Object[] findArray(String 
+              query);<BR>public Object[] findArray(String query, Object 
+              arg1);<BR>public Object[] findArray(String query, Object arg1, 
+              Object arg2);<BR>public Object[] findArray(String query, Object 
+              arg1, Object arg2, Object arg3);<BR>public Object[] 
+              findArray(String query, Object[] args);<BR><BR>
+              <DT style="TEXT-INDENT: 1em">findBean() method
+              <DD>Returns a JavaBeans. Arguments are as follows:<BR>public Object 
+              findBean(String query);<BR>public Object findBean(String query, 
+              Object arg1);<BR>public Object findBean(String query, Object arg1, 
+              Object arg2);<BR>public Object findBean(String query, Object arg1, 
+              Object arg2, Object arg3);<BR>public Object findBean(String query, 
+              Object[] args);<BR><BR>
+              <DT style="TEXT-INDENT: 1em">findObject() method
+              <DD>Returns a single value such as of type int when count(*) is executed. Arguments are as follows:<BR>public Object 
+              findObject(String query);<BR>public Object findObject(String 
+              query, Object arg1);<BR>public Object findObject(String query, 
+              Object arg1, Object arg2);<BR>public Object findObject(String 
+              query, Object arg1, Object arg2, Object arg3);<BR>public Object 
+              findObject(String query, Object[] args); 
+            </DD></DL>Argument is similar to QUERY annotation. Where there are 4 or more arguments of type Object, use array of type Object.
+
+            <H4>Basic way to implement class extending AbstractDao.</H4>
+            <OL>
+              <LI>Extend org.seasar.dao.impl.AbstractDao
+              <LI>Implement Dao
+              <BR>it is required to end interface name of Dao to implement with "Dao".
+              <LI>Implement constructor 
+              <BR>Call super(org.seasar.dao.DaoMetaDataFactory) with org.seasar.dao.DaoMetaDataFactory as an argument.
+              <LI>Implement method defined in Dao
+              <BR>When using method supported by EntityManager, EntityManager may be retrieved by using getEntityManager() method. For example, getEntityManager().find(...);.
+              <BR></LI></OL>Following is an example of class extending AbstractDao:<PRE>package examples.dao;
+
+import java.util.List;
+
+import org.seasar.dao.DaoMetaDataFactory;
+import org.seasar.dao.impl.AbstractDao;
+
+public class Employee2DaoImpl extends AbstractDao implements Employee2Dao {
+
+    public Employee2DaoImpl(DaoMetaDataFactory daoMetaDataFactory) {
+        super(daoMetaDataFactory);
+    }
+
+    public List getEmployees(String ename) {
+        return getEntityManager().find("ename LIKE ?", "%" + ename + "%");
+    }
+}
+</PRE>
+            <P>Refer to <A href="#EntityManagerExample">Example using EntityManager</A> for detailed information.</P>
+            <H3><A name=AutoUpdate>Generation of update SQL command</A></H3>
+            <P>Update SQL command is automatically generated if the method name must abide to the <A href="#DefMethod">naming convention</A> and there is one method with JavaBeans in an argument. It is not necessary to create a SQL file. Following is an example to automatically generate a SQL insert command.</P><PRE>public int insert(Department department);
+</PRE>
+            <H3><A name=VersionNo>Locking using VersionNo</A></H3>
+            <P>S2Dao is also able to automatically control locks on data.<BR>To automatically set locks, create a column in a table for locking and define versionNo as of type int in a JavaBeans. Locking will be done based on this versionNo column.</P>
+            <P>For example, when 2 users try to update versionNo=0 data, the first user will be able to update the record. When the data is updated, value of versionNo is incremented by 1. When the second user tries to update the data, S2Dao compares the versionNo column and finds that the second user's versionNo is still 0 while the data's versionNo is now 1. Because there is a difference, S2Dao raises UpdateFailureRuntimeException and aborts the data update.</P>
+            <H3><A name=Timestamp>Lock control with Timestamp</A></H3>
+            <P>Beside VersionNo, S2Dao is able to lock data based on Timestamp. Just define a property named timestamp of data type Timestamp. Be aware that when the timestamp column is set to null, lock fails because S2Dao tries to compare with value null.</P>
+            <H3><A name=batch>Batch Update</A></H3>
+            <P>SQL command is automatically is generated when in an update method, argument is set to an entity class array or a List. The generated SQL command may then be used in a batch update.</P><PRE>int insertBatch(Employee[] employees)</PRE>
+            <H3><A name=AutoSelect>Automatic Generation of Query SQL</A></H3>
+            <P>S2Dao may generate SELECT command automatically depending on method signature. SQL command with dynamically changing WHERE clause depending on an argument can be set by specifying column name in ARGS annotation.</P><PRE>SELECT * FROM emp
+/*BEGIN*/WHERE
+  /*IF job != null*/job = /*job*/'CLERK'/*END*/
+  /*IF deptno != null*/AND deptno = /*deptno*/20/*END*/
+/*END*/
+</PRE>
+            <P>Following definition is use to automatically generate SQL command like those above. For information on string sequence /**/ in the above example, refer to <A href="#SQLBind">SQL comment</A>.</P><PRE>public static final String getEmployeeByJobDeptno_ARGS = "job, deptno";
+public List getEmployeeByJobDeptno(String job, Integer deptno);
+</PRE>
+            <P><A href="#N1Mapping">N:1 mapped</A> column is specified by "column name_association number". N:1 mapped Bean retrieves data as 1 SQL command by using left outer join operation. If RDBMS does not support left outer join, S2Dao will not automatically generate SQL commands. S2Dao,however, is able to recognize RDBMS, and properly treats RDBMS like Oracle which has a proprietary left outer joins operation.</P>
+            <P>It is possible to specify DTO (Data Transter Object) in an argument. In this situation, ARGS annotation should not be specified. When there is 1 argument and ARGS annotation is not specified, S2Dao will treat the argument as DTO and will use that DTO7s property to automatically generate SQL command. When property name and column name are different, COLUMN annotation is used to specify the column name. To specify N:1 mapped column, use "column name_association number". Propery (column) not in a table are ignored. It is possible to dynamically create a SQL command with changing WHERE clause based on a property.<BR>It is possible to both dynamically generate SQL command as well as have QUERY annotation starting with ORDER BY.</P><PRE>package examples.dao;
+
+public class EmployeeSearchCondition {
+
+    public static final String dname_COLUMN = "dname_0";
+    private String job;
+    private String dname;
+    ...
+}
+</PRE><PRE>List getEmployeesBySearchCondition(EmployeeSearchCondition dto);</PRE>
+          <P>In a similar format, Entity may be specified in an argument. Refer to <A href="#AutoSelectExample">Example of generating SQL Query command</A> for details on using DTO. 
+
+<H3><A name=HowToRun>Executing S2Dao</A></H3>
+            <P>Basic Dao execution steps are as follows:</P>
+            <OL>
+              <LI>Construct S2Container using directory path of the created dicon file as an argument
+              <LI>Call getComponent method in constructed S2Container and get registered Dao
+              <LI>Execute the method in retrieved Dao</LI></OL>
+            <P>S2Dao does not control transactions. Refer to <A href="http://www.seasar.org/tx.html">Automatic transaction control</A> for information of transaction control.</P>Example of execution class
+<PRE>package examples.dao;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+
+public class EmployeeDaoClient {
+
+    private static final String PATH = "examples/dao/EmployeeDao.dicon";
+
+    public static void main(String[] args) {
+
+        S2Container container = S2ContainerFactory.create(PATH); /* step 1 */
+        container.init();
+        try {
+            EmployeeDao dao = (EmployeeDao)
+                container.getComponent(EmployeeDao.class);/* step 2 */
+            System.out.println(dao.getAllEmployee(7788));/* step3 */
+        } finally {
+            container.destroy();
+        }
+    }
+}
+</PRE>
+            <H2><A name=Example>Example</A></H2>
+            <P>This example uses the following table, JavaBeans, and dao.dicon file</P>Table: EMP 
+            <TABLE class=main border=1>
+              <TBODY>
+              <TR align=middle bgColor=#d1f3f4>
+                <TH>Column Name</TH>
+                <TH>Label</TH>
+                <TH>Type</TH>
+                <TH>NotNull</TH>
+                <TH>Primary Key</TH></TR>
+              <TR>
+                <TD>EMPNO</TD>
+                <TD>Employee Number</TD>
+                <TD>NUMBER</TD>
+                <TD align=middle>yes</TD>
+                <TD align=middle>yes</TD></TR>
+              <TR>
+                <TD>ENAME</TD>
+                <TD>Employee Name</TD>
+                <TD>VARCHAR</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>JOB</TD>
+                <TD>Job</TD>
+                <TD>VARCHAR</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>MGR</TD>
+                <TD>Manager</TD>
+                <TD>NUMBER</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>HIREDATE</TD>
+                <TD>Hire Date</TD>
+                <TD>DATE</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>SAL</TD>
+                <TD>Salary</TD>
+                <TD>NUMBER</TD>
+
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>COMM</TD>
+                <TD>Commission</TD>
+                <TD>NUMBER</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>DEPTNO</TD>
+                <TD>Department Number</TD>
+                <TD>NUMBER</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>TSTAMP</TD>
+                <TD>Timestamp</TD>
+                <TD>TIMESTAMP</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR></TBODY></TABLE><BR>Table: DEPT 
+            <TABLE class=main border=1>
+              <TBODY>
+              <TR align=middle bgColor=#d1f3f4>
+                <TH>Column Name</TH>
+                <TH>Label</TH>
+                <TH>Type</TH>
+                <TH>NotNull</TH>
+                <TH>Primary Key</TH></TR>
+              <TR>
+                <TD>DEPTNO</TD>
+                <TD>Department Number</TD>
+                <TD>NUMBER</TD>
+                <TD align="middle">yes</TD>
+                <TD align="middle">yes</TD></TR>
+              <TR>
+                <TD>DNAME</TD>
+                <TD>Department Name</TD>
+                <TD>VARCHAR</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>LOC</TD>
+                <TD>Location</TD>
+                <TD>VARCHAR</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR>
+              <TR>
+                <TD>VERSIONNO</TD>
+                <TD>Version Number</TD>
+                <TD>NUMBER</TD>
+                <TD><BR></TD>
+                <TD><BR></TD></TR></TBODY></TABLE><BR>
+            <P>EMP table is associated with the following JavaBeans:</P><PRE>package examples.dao;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+public class Employee implements Serializable {
+
+    public static final String TABLE = "EMP";
+
+    public static final int department_RELNO = 0;
+
+    public static final String timestamp_COLUMN = "tstamp";
+
+    private long empno;
+
+    private String ename;
+
+    private String job;
+
+    private Short mgr;
+
+    private java.util.Date hiredate;
+
+    private Float sal;
+
+    private Float comm;
+
+    private int deptno;
+
+    private Timestamp timestamp;
+
+    private Department department;
+
+    public Employee() {
+    }
+
+    public Employee(long empno) {
+        this.empno = empno;
+    }
+
+    public long getEmpno() {
+        return this.empno;
+    }
+
+    public void setEmpno(long empno) {
+        this.empno = empno;
+    }
+
+    public java.lang.String getEname() {
+        return this.ename;
+    }
+
+    public void setEname(java.lang.String ename) {
+        this.ename = ename;
+    }
+
+    public java.lang.String getJob() {
+        return this.job;
+    }
+
+    public void setJob(java.lang.String job) {
+        this.job = job;
+    }
+
+    public Short getMgr() {
+        return this.mgr;
+    }
+
+    public void setMgr(Short mgr) {
+        this.mgr = mgr;
+    }
+
+    public java.util.Date getHiredate() {
+        return this.hiredate;
+    }
+
+    public void setHiredate(java.util.Date hiredate) {
+        this.hiredate = hiredate;
+    }
+
+    public Float getSal() {
+        return this.sal;
+    }
+
+    public void setSal(Float sal) {
+        this.sal = sal;
+    }
+
+    public Float getComm() {
+        return this.comm;
+    }
+
+    public void setComm(Float comm) {
+        this.comm = comm;
+    }
+
+    public int getDeptno() {
+        return this.deptno;
+    }
+
+    public void setDeptno(int deptno) {
+        this.deptno = deptno;
+    }
+
+    public Timestamp getTimestamp() {
+        return this.timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public Department getDepartment() {
+        return this.department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public boolean equals(Object other) {
+        if (!(other instanceof Employee))
+            return false;
+        Employee castOther = (Employee) other;
+        return this.getEmpno() == castOther.getEmpno();
+    }
+
+    public String toString() {
+        StringBuffer buf = new StringBuffer();
+        buf.append(empno).append(", ");
+        buf.append(ename).append(", ");
+        buf.append(job).append(", ");
+        buf.append(mgr).append(", ");
+        buf.append(hiredate).append(", ");
+        buf.append(sal).append(", ");
+        buf.append(comm).append(", ");
+        buf.append(deptno).append(", ");
+        buf.append(timestamp).append(" {");
+        buf.append(department).append("}");
+        return buf.toString();
+    }
+
+    public int hashCode() {
+        return (int) this.getEmpno();
+    }
+}
+</PRE>
+            <P>DEPT table is associated with the following JavaBeans:</P><PRE>package examples.dao;
+
+import java.io.Serializable;
+
+public class Department implements Serializable {
+
+    public static final String TABLE = "DEPT";
+
+    private int deptno;
+
+    private String dname;
+
+    private String loc;
+
+    private int versionNo;
+
+    public Department() {
+    }
+
+    public int getDeptno() {
+        return this.deptno;
+    }
+
+    public void setDeptno(int deptno) {
+        this.deptno = deptno;
+    }
+
+    public java.lang.String getDname() {
+        return this.dname;
+    }
+
+    public void setDname(java.lang.String dname) {
+        this.dname = dname;
+    }
+
+    public java.lang.String getLoc() {
+        return this.loc;
+    }
+
+    public void setLoc(java.lang.String loc) {
+        this.loc = loc;
+    }
+
+    public int getVersionNo() {
+        return this.versionNo;
+    }
+
+    public void setVersionNo(int versionNo) {
+        this.versionNo = versionNo;
+    }
+
+    public boolean equals(Object other) {
+        if (!(other instanceof Department))
+            return false;
+        Department castOther = (Department) other;
+        return this.getDeptno() == castOther.getDeptno();
+    }
+
+    public String toString() {
+        StringBuffer buf = new StringBuffer();
+        buf.append(deptno).append(", ");
+        buf.append(dname).append(", ");
+        buf.append(loc).append(", ");
+        buf.append(versionNo);
+        return buf.toString();
+    }
+
+    public int hashCode() {
+        return (int) this.getDeptno();
+    }
+}
+</PRE>
+            <P>Examples use includes the following dao.dicon file:</P><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components.dtd"&gt;
+&lt;components namespace="dao"&gt;
+    &lt;include path="j2ee.dicon"/&gt;
+    &lt;component
+        class="org.seasar.dao.impl.DaoMetaDataFactoryImpl"/&gt;
+    &lt;component name="interceptor"
+        class="org.seasar.dao.interceptors.S2DaoInterceptor"/&gt;
+&lt;/components&gt;
+</PRE>
+            <H3><A name=SelectExample>Example using SQL command</A></H3>
+            <P>This example creates a SQL file and executes SQL command in it from Dao.<BR>Following files are created:</P>
+            <UL>
+              <LI type=circle>Dao(EmployeeDao.java) 
+              <LI type=circle>SQL file(EmployeeDao_getAllEmployees.sql, 
+              EmployeeDao_getEmployee.sql, EmployeeDao_getCount.sql, 
+              EmployeeDao_getEmployeeByJobDeptno.sql, EmployeeDao_update.sql) 
+              <LI type=circle>dicon file(EmployeeDao.dicon) 
+              <LI type=circle>Executable class(EmployeeDaoClient.java) </LI></UL>
+            <H5>Creating Dao</H5>
+            <UL>
+              <LI type=circle>Associate EMP table with corresponding JavaBeans
+              <LI type=circle>Define a method.<BR>Method to retrieve all rows (getAllEmployees() method)<BR>Method to retrieve rows matching employee number specified in the argument( getEmployee(int empno) method)<BR>Method to return number of employees (getCount() method)<BR> Method to retrieve rows matching job and department number specified in arguments. (getEmployeeByJobDeptno(String job, Integer deptno) method)<BR>Method to update employee data (update(Employee employee) method)
+              <LI type=circle>SQL command and method argument are associated using <A href="#ArgsAnnotation">ARGS annotation</A>.
+
+              <LI type=circle>getCount() method that returns the number of rows in the EMP table returns only one row, so the data type of return value is declared as int.</LI></UL><PRE>package examples.dao;
+
+import java.util.List;
+
+public interface EmployeeDao {
+
+    public Class BEAN = Employee.class;
+
+    public List getAllEmployees();
+
+    public String getEmployee_ARGS = "empno";
+
+    public Employee getEmployee(int empno);
+
+    public int getCount();
+
+    public String getEmployeeByJobDeptno_ARGS = "job, deptno";
+
+    public List getEmployeeByJobDeptno(String job, Integer deptno);
+
+    public int update(Employee employee);
+}
+</PRE>
+            <H5>Creating SQL file</H5>
+            UL>
+              <LI type=circle>Create SQL files corresponding to methods defined in Dao.
+              <LI type=circle>File is named in accordance with the naming convention - "class name_ method name.sql".
+              <LI type=circle>Dynamic SQL is generated by <A href="#SQLbind">SQL comment</A>.
+              </LI></UL>EmployeeDao_getAllEmployees.sql <PRE>SELECT emp.*, dept.dname dname_0, dept.loc loc_0 FROM emp, dept
+WHERE emp.deptno = dept.deptno ORDER BY emp.empno
+</PRE>EmployeeDao_getEmployee.sql <PRE>SELECT emp.*, dept.dname dname_0, dept.loc loc_0 FROM emp, dept
+WHERE empno = /*empno*/7788 AND emp.deptno = dept.deptno
+</PRE>EmployeeDao_getCount.sql <PRE>SELECT count(*) FROM emp
+</PRE>EmployeeDao_getEmployeeByJobDeptno.sql <PRE>SELECT * FROM emp
+/*BEGIN*/WHERE
+  /*IF job != null*/job = /*job*/'CLERK'/*END*/
+  /*IF deptno != null*/AND deptno = /*deptno*/20/*END*/
+/*END*/
+</PRE>EmployeeDao_update.sql <PRE>UPDATE emp SET ename = /*employee.ename*/'SCOTT'
+WHERE empno = /*employee.empno*/7788
+</PRE>
+            <H5>Creating dicon file</H5>
+            <UL>
+              <LI type=circle>include dao.dicon
+              <LI type=circle>Define created Dao as a component
+              <LI type=circle>Apply dao.interceptor(S2DaoInterceptor) to Dao 
+            </LI></UL><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components.dtd"&gt;
+&lt;components&gt;
+   &lt;include path="dao.dicon"/&gt;
+   &lt;component class="examples.dao.EmployeeDao"&gt;
+       &lt;aspect&gt;dao.interceptor&lt;/aspect&gt;
+   &lt;/component&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>Creating execution file</H5>
+            <UL>
+              <LI type=circle>Create a container by passing directory path of the created dicon file (EmployeeDao.dicon) as the first argument to org.seasar.framework.container.S2Container#create() method.
+              <LI type=circle>Get component by passing class name (EmployeeDao.class) of registered component as the first argument to org.seasar.framework.container.S2Container#getComponent() method.
+              <LI type=circle>Executte method defined in Dao</LI></UL><PRE>package examples.dao;
+
+import java.util.List;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+
+public class EmployeeDaoClient {
+
+    private static final String PATH = "examples/dao/EmployeeDao.dicon";
+
+    public static void main(String[] args) {
+        S2Container container = S2ContainerFactory.create(PATH);
+        container.init();
+        try {
+            EmployeeDao dao = (EmployeeDao) container
+                    .getComponent(EmployeeDao.class);
+            List employees = dao.getAllEmployees();
+            for (int i = 0; i &lt; employees.size(); ++i) {
+                System.out.println(employees.get(i));
+            }
+
+            Employee employee = dao.getEmployee(7788);
+            System.out.println(employee);
+
+            int count = dao.getCount();
+            System.out.println("count:" + count);
+
+            dao.getEmployeeByJobDeptno(null, null);
+            dao.getEmployeeByJobDeptno("CLERK", null);
+            dao.getEmployeeByJobDeptno(null, new Integer(20));
+            dao.getEmployeeByJobDeptno("CLERK", new Integer(20));
+
+            System.out.println("updatedRows:" + dao.update(employee));
+        } finally {
+            container.destroy();
+        }
+
+    }
+}
+</PRE>
+            <H5>Result</H5>
+<PRE>DEBUG 2004-10-12 11:07:01,117 [main] physical connection opened
+DEBUG 2004-10-12 11:07:01,133 [main] logical connection opened
+DEBUG 2004-10-12 11:07:01,914 [main] logical connection closed
+DEBUG 2004-10-12 11:07:02,742 [main] SELECT emp.*, dept.dname dname_0, dept.loc loc_0
+  FROM emp, dept WHERE emp.deptno = dept.deptno ORDER BY emp.empno
+DEBUG 2004-10-12 11:07:02,758 [main] logical connection opened
+DEBUG 2004-10-12 11:07:02,867 [main] logical connection closed
+7369, SMIT, CLERK, 7902, 1980-12-17 00:00:00.0, 800.0, null, 20,
+  1980-12-17 00:00:00.0, {0, RESEARCH, DALLAS, 0}
+7499, ALLEN, SALESMAN, 7698, 1981-02-20 00:00:00.0, 1600.0, 300.0, 30,
+  1980-12-17 00:00:00.0, {0, SALES, CHICAGO, 0}
+7521, WARD, SALESMAN, 7698, 1981-02-22 00:00:00.0, 1250.0, 500.0, 30,
+  1980-12-17 00:00:00.0, {0, SALES, CHICAGO, 0}
+7566, JONES, MANAGER, 7839, 1981-04-02 00:00:00.0, 2975.0, null, 20,
+  1980-12-17 00:00:00.0, {0, RESEARCH, DALLAS, 0}
+7654, MARTIN, SALESMAN, 7698, 1981-09-28 00:00:00.0, 1250.0, 1400.0, 30,
+  1980-12-17 00:00:00.0, {0, SALES, CHICAGO, 0}
+7698, BLAKE, MANAGER, 7839, 1981-05-01 00:00:00.0, 2850.0, null, 30,
+  1980-12-17 00:00:00.0, {0, SALES, CHICAGO, 0}
+7782, CLARK, MANAGER, 7839, 1981-06-09 00:00:00.0, 2450.0, null, 10,
+  1980-12-17 00:00:00.0, {0, ACCOUNTING, NEW YORK, 0}
+7788, SCOTT, ANALYST, 7566, 1982-12-09 00:00:00.0, 3000.0, null, 20,
+  2004-10-12 10:15:54.914, {0, RESEARCH, DALLAS, 0}
+7839, KING, PRESIDENT, null, 1981-11-17 00:00:00.0, 5000.0, null, 10,
+  1980-12-17 00:00:00.0, {0, ACCOUNTING, NEW YORK, 0}
+7844, TURNER, SALESMAN, 7698, 1981-09-08 00:00:00.0, 1500.0, 0.0, 30,
+  1980-12-17 00:00:00.0, {0, SALES, CHICAGO, 0}
+7876, ADAMS, CLERK, 7788, 1983-01-12 00:00:00.0, 1100.0, null, 20,
+  1980-12-17 00:00:00.0, {0, RESEARCH, DALLAS, 0}
+7900, JAMES, CLERK, 7698, 1981-12-03 00:00:00.0, 950.0, null, 30,
+  1980-12-17 00:00:00.0, {0, SALES, CHICAGO, 0}
+7902, FORD, ANALYST, 7566, 1981-12-03 00:00:00.0, 3000.0, null, 20,
+  1980-12-17 00:00:00.0, {0, RESEARCH, DALLAS, 0}
+7934, MILLER, CLERK, 7782, 1982-01-23 00:00:00.0, 1300.0, null, 10,
+  1980-12-17 00:00:00.0, {0, ACCOUNTING, NEW YORK, 0}
+DEBUG 2004-10-12 11:07:02,883 [main] SELECT emp.*, dept.dname dname_0, dept.loc loc_0
+  FROM emp, dept WHERE empno = 7788 AND emp.deptno = dept.deptno
+DEBUG 2004-10-12 11:07:02,883 [main] logical connection opened
+DEBUG 2004-10-12 11:07:02,914 [main] logical connection closed
+7788, SCOTT, ANALYST, 7566, 1982-12-09 00:00:00.0, 3000.0, null, 20,
+  2004-10-12 10:15:54.914, {0, RESEARCH, DALLAS, 0}
+DEBUG 2004-10-12 11:07:02,914 [main] SELECT count(*) FROM emp
+DEBUG 2004-10-12 11:07:02,914 [main] logical connection opened
+DEBUG 2004-10-12 11:07:02,914 [main] logical connection closed
+count:14
+DEBUG 2004-10-12 11:07:02,929 [main] SELECT * FROM emp
+
+DEBUG 2004-10-12 11:07:02,929 [main] logical connection opened
+DEBUG 2004-10-12 11:07:02,945 [main] logical connection closed
+DEBUG 2004-10-12 11:07:02,945 [main] SELECT * FROM emp
+WHERE
+  job = 'CLERK'
+
+
+DEBUG 2004-10-12 11:07:02,945 [main] logical connection opened
+DEBUG 2004-10-12 11:07:02,961 [main] logical connection closed
+DEBUG 2004-10-12 11:07:02,961 [main] SELECT * FROM emp
+WHERE
+
+  deptno = 20
+
+DEBUG 2004-10-12 11:07:02,961 [main] logical connection opened
+DEBUG 2004-10-12 11:07:02,961 [main] logical connection closed
+DEBUG 2004-10-12 11:07:02,961 [main] SELECT * FROM emp
+WHERE
+  job = 'CLERK'
+  AND deptno = 20
+
+DEBUG 2004-10-12 11:07:02,961 [main] logical connection opened
+DEBUG 2004-10-12 11:07:03,008 [main] logical connection closed
+DEBUG 2004-10-12 11:07:03,023 [main] UPDATE emp SET ename = 'SCOTT'
+WHERE empno = 7788
+DEBUG 2004-10-12 11:07:03,023 [main] logical connection opened
+DEBUG 2004-10-12 11:07:03,023 [main] logical connection closed
+updatedRows:1
+DEBUG 2004-10-12 11:07:03,023 [main] physical connection closed
+</PRE>
+            <P>Number of rows that has been updated may be found from the value in "updatedRows".<BR>Files in this example is under the s2dao/src/examples/dao directory.</P>
+            <H3><A name=AutoUpdateExample>Example of generating SQL update command</A></H3>
+            <P>This is an example of automatically generating UPDATE, INSERT, DELETE SQL commands and of lock control using VersionNo. This example does not require creating a SQL file.<BR>Following files are created:</P>
+            <UL>
+              <LI type=circle>Dao(DepartmentDao.java) </LI>
+              <LI type=circle>dicon file(DepartmentDao.dicon) </LI>
+              <LI type=circle>Execution class(DepartmentDaoClient.java) </LI>
+			</UL>
+            <H5>Creating Dao</H5>
+            <UL>
+              <LI type=circle>Associate DEPT table with related JavaBeans
+              <LI 
+              type=circle>Define update method.<BR>Method to insert a department (insert(Department department) method)<BR>Method to update a department (update(Department 
+              department) method)<BR>Method to delete a department (delete(Department department) method)
+              </LI></UL><PRE>package examples.dao;
+
+public interface DepartmentDao {
+
+    public Class BEAN = Department.class;
+
+    public void insert(Department department);
+
+    public void update(Department department);
+
+    public void delete(Department department);
+}
+</PRE>
+            <H5>Creating dicon file</H5>
+            <UL>
+              <LI type=circle>include dao.dicon
+              <LI type=circle>Define component based on created Dao
+              <LI type=circle>Apply dao.interceptor(S2DaoInterceptor) to Dao
+            </LI></UL><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components.dtd"&gt;
+&lt;components&gt;
+  &lt;include path="dao.dicon"/&gt;
+  &lt;component class="examples.dao.DepartmentDao"&gt;
+    &lt;aspect&gt;dao.interceptor&lt;/aspect&gt;
+  &lt;/component&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>Creating execution file</H5>
+            <UL>
+              <LI type=circle>Create a container by using org.seasar.framework.container.S2Container#create()method with the first argument set to the path of created dicon file (DepartmentDao.dicon).
+              <LI type=circle>Retrieve the component by using org.seasar.framework.container.S2Container#getComponent() method with the first argument set to the class name (DepartmentDao.class) registered with the component.
+              <LI type=circle>Execute method defined in Dao</LI></UL><PRE>package examples.dao;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+
+public class DepartmentDaoClient {
+
+    private static final String PATH = "examples/dao/DepartmentDao.dicon";
+
+    public static void main(String[] args) {
+        S2Container container = S2ContainerFactory.create(PATH);
+        container.init();
+        try {
+            DepartmentDao dao = (DepartmentDao) container
+                    .getComponent(DepartmentDao.class);
+
+            Department dept = new Department();
+            dept.setDeptno(99);
+            dept.setDname("foo");
+            dao.insert(dept);
+            dept.setDname("bar");
+
+            System.out.println("before update versionNo:" + dept.getVersionNo());
+            dao.update(dept);
+            System.out.println("after update versionNo:" + dept.getVersionNo());
+            dao.delete(dept);
+        } finally {
+            container.destroy();
+        }
+    }
+}
+</PRE>
+            <H5>Result</H5><PRE>DEBUG 2004-09-09 19:22:10,588 [main] physical connection opened
+DEBUG 2004-09-09 19:22:10,588 [main] logical connection opened
+DEBUG 2004-09-09 19:22:11,447 [main] logical connection closed
+DEBUG 2004-09-09 19:22:11,603 [main] logical connection opened
+DEBUG 2004-09-09 19:22:11,603 [main] INSERT INTO DEPT (deptno, dname, versionNo, loc)
+  VALUES(99, 'foo', 0, null)
+DEBUG 2004-09-09 19:22:11,666 [main] logical connection closed
+before update versionNo:0
+DEBUG 2004-09-09 19:22:11,666 [main] logical connection opened
+DEBUG 2004-09-09 19:22:11,666 [main] UPDATE DEPT SET dname = 'bar',
+  versionNo = versionNo + 1, loc = null   WHERE deptno = 99 AND versionNo = 0
+DEBUG 2004-09-09 19:22:11,666 [main] logical connection closed
+after update versionNo:1
+DEBUG 2004-09-09 19:22:11,666 [main] logical connection opened
+DEBUG 2004-09-09 19:22:11,666 [main] DELETE FROM DEPT WHERE deptno = 99 AND versionNo = 1
+DEBUG 2004-09-09 19:22:11,681 [main] logical connection closed
+DEBUG 2004-09-09 19:22:11,681 [main] physical connect closed
+</PRE>
+            <P>The reslt shows SQL commands being automatically generated. Also, JavaBeans (Departmen) has a datatype int property versionNo which is being incremented by 1 to lock rows. Before update method was called, versionNo was 0 but became 1 after the call.<BR>Files in this example is available under the s2dao/src/examples/dao directory.</P>
+            <H3><A name=AutoSelectExample>Example of generating SQL query command</A></H3>
+            <P>This is a sample to automatically generate a SELECT command and <A href="#Timestamp">locking based on Timestamp</A>. SQL file is not necessary. A method that uses DTO as an argument is also shown.
+            Following files are created:</P>
+            <UL>
+              <LI type=circle>Dao(EmployeeAutoDao.java) 
+              <LI type=circle>DTO(EmployeeSearchCondition.java) 
+              <LI type=circle>dicon file(EmployeeAutoDao.dicon) 
+              <LI type=circle>Execution class (EmployeeAutoDaoClient.java) </LI></UL>
+            <H5>Creating Dao</H5>
+            <UL>
+              <LI type=circle>Associate EMP table with related JavaBeans
+              <LI type=circle>Define method.<BR>Method (getAllEmployees() method) to query all data<BR>Method (getEmployeeByJobDeptno(String job, Integer deptno) method) to take job and department number as arguments and return matching employees.<BR>Method (getEmployeeByEmpno(int empno) method) to retrieve employee number matching the employee number passed in the argument<BR>Method (getEmployeesBySal(float minSal, float maxSal) method) to retrieve employee with salary within range of those specified in the argument.<BR>Method (getEmployeeByDname(String dname) method) to retrieve employee in department specified in the argument.<BR>Method with DTO argument (getEmployeesBySearchCondition(EmployeeSearchCondition dto) method) to retrieve employee<BR>Method to update employee (update(Employee employee) method)</LI></UL><PRE>package examples.dao;
+
+import java.util.List;
+
+public interface EmployeeAutoDao {
+
+    public Class BEAN = Employee.class;
+
+    public List getAllEmployees();
+
+    public String getEmployeeByJobDeptno_ARGS = "job, deptno";
+
+    public List getEmployeeByJobDeptno(String job, Integer deptno);
+
+    public String getEmployeeByEmpno_ARGS = "empno";
+
+    public Employee getEmployeeByEmpno(int empno);
+
+    public String getEmployeesBySal_QUERY = "sal BETWEEN ? AND ? ORDER BY empno";
+
+    public List getEmployeesBySal(float minSal, float maxSal);
+
+    public String getEmployeeByDname_ARGS = "dname_0";
+
+    public List getEmployeeByDname(String dname);
+
+    public List getEmployeesBySearchCondition(EmployeeSearchCondition dto);
+
+    public void update(Employee employee);
+}
+</PRE>
+            <H5>Creating DTO</H5>
+            <UL>
+              <LI type=circle>Associate column and dname property using <A href="#COLUMNAnnotation">COLUMN Annotation</A>.
+
+              <LI type=circle>Declare property</LI></UL><PRE>package examples.dao;
+
+public class EmployeeSearchCondition {
+
+    public static final String dname_COLUMN = "dname_0";
+    private String job;
+    private String dname;
+
+    public String getDname() {
+        return dname;
+    }
+
+    public void setDname(String dname) {
+        this.dname = dname;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+}
+</PRE>
+            <H5>Creating dicon file</H5>
+            <UL>
+              <LI type=circle>Include dao.dicon
+              <LI type=circle>Define created Dao as a component
+              <LI type=circle>Apply Daoにdao.interceptor(S2DaoInterceptor)
+            </LI></UL><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components.dtd"&gt;
+&lt;components&gt;
+  &lt;include path="dao.dicon"/&gt;
+  &lt;component class="examples.dao.EmployeeAutoDao"&gt;
+    &lt;aspect&gt;dao.interceptor&lt;/aspect&gt;
+  &lt;/component&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>Create execution file</H5>
+            <UL>
+              <LI type=circle>Create a container by using org.seasar.framework.container.S2Container#create() method with the first argument set to the path of created dicon file (EmployeeAutoDao.dicon). 
+              <LI type=circle>Retrieve the component by using org.seasar.framework.container.S2Container#getComponent() method with the first argument set to the class name (EmployeeAutoDao.class) registered with the component. 
+              <LI type=circle>Execute method defined in Dao</LI></UL><PRE>package examples.dao;
+
+import java.util.List;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+
+public class EmployeeAutoDaoClient {
+
+    private static final String PATH = "examples/dao/EmployeeAutoDao.dicon";
+
+    public static void main(String[] args) {
+        S2Container container = S2ContainerFactory.create(PATH);
+        container.init();
+        try {
+            EmployeeAutoDao dao = (EmployeeAutoDao) container
+                    .getComponent(EmployeeAutoDao.class);
+
+            dao.getEmployeeByJobDeptno(null, null);
+            dao.getEmployeeByJobDeptno("CLERK", null);
+            dao.getEmployeeByJobDeptno(null, new Integer(20));
+            dao.getEmployeeByJobDeptno("CLERK", new Integer(20));
+
+            List employees = dao.getEmployeesBySal(0, 1000);
+            for (int i = 0; i &lt; employees.size(); ++i) {
+                System.out.println(employees.get(i));
+            }
+
+            employees = dao.getEmployeeByDname("SALES");
+            for (int i = 0; i &lt; employees.size(); ++i) {
+                System.out.println(employees.get(i));
+            }
+
+            EmployeeSearchCondition dto = new EmployeeSearchCondition();
+            dto.setDname("RESEARCH");
+            employees = dao.getEmployeesBySearchCondition(dto);
+            for (int i = 0; i &lt; employees.size(); ++i) {
+                System.out.println(employees.get(i));
+            }
+
+            Employee employee = dao.getEmployeeByEmpno(7788);
+            System.out.println("before timestamp:" + employee.getTimestamp());
+            dao.update(employee);
+            System.out.println("after timestamp:" + employee.getTimestamp());
+        } finally {
+            container.destroy();
+        }
+
+    }
+}
+</PRE>
+            <H5>Result</H5>
+<PRE>DEBUG 2004-10-12 11:35:22,054 [main] physical connection opened
+DEBUG 2004-10-12 11:35:22,069 [main] logical connection opened
+DEBUG 2004-10-12 11:35:22,897 [main] logical connection closed
+DEBUG 2004-10-12 11:35:23,726 [main] SELECT EMP.tstamp, EMP.empno, EMP.ename, EMP.job,
+  EMP.mgr, EMP.hiredate, EMP.sal, EMP.comm, EMP.deptno, department.dname AS dname_0,
+  department.deptno AS deptno_0, department.loc AS loc_0,
+  department.versionNo AS versionNo_0 FROM EMP LEFT OUTER JOIN DEPT department
+  ON EMP.deptno = department.deptno
+DEBUG 2004-10-12 11:35:23,726 [main] logical connection opened
+DEBUG 2004-10-12 11:35:23,866 [main] logical connection closed
+DEBUG 2004-10-12 11:35:23,866 [main] SELECT EMP.tstamp, EMP.empno, EMP.ename, EMP.job,
+  EMP.mgr, EMP.hiredate, EMP.sal, EMP.comm, EMP.deptno, department.dname AS dname_0,
+  department.deptno AS deptno_0, department.loc AS loc_0,
+  department.versionNo AS versionNo_0 FROM EMP LEFT OUTER JOIN DEPT department
+  ON EMP.deptno = department.deptno WHERE  EMP.job = 'CLERK'
+DEBUG 2004-10-12 11:35:23,866 [main] ogical connection opened
+DEBUG 2004-10-12 11:35:23,882 [main] logical connection closed
+DEBUG 2004-10-12 11:35:23,882 [main] SELECT EMP.tstamp, EMP.empno, EMP.ename, EMP.job,
+  EMP.mgr, EMP.hiredate, EMP.sal, EMP.comm, EMP.deptno, department.dname AS dname_0,
+  department.deptno AS deptno_0, department.loc AS loc_0,
+  department.versionNo AS versionNo_0 FROM EMP LEFT OUTER JOIN DEPT department
+  ON EMP.deptno = department.deptno WHERE EMP.deptno = 20
+DEBUG 2004-10-12 11:35:23,882 [main] logical connection opened
+DEBUG 2004-10-12 11:35:23,913 [main] loical connection closed
+DEBUG 2004-10-12 11:35:23,913 [main] SELECT EMP.tstamp, EMP.empno, EMP.ename, EMP.job,
+  EMP.mgr, EMP.hiredate, EMP.sal, EMP.comm, EMP.deptno, department.dname AS dname_0,
+  department.deptno AS deptno_0, department.loc AS loc_0,
+  department.versionNo AS versionNo_0 FROM EMP LEFT OUTER JOIN DEPT department
+  ON EMP.deptno = department.deptno WHERE  EMP.job = 'CLERK' AND EMP.deptno = 20
+DEBUG 2004-10-12 11:35:23,913 [main] logical connection opened
+DEBUG 2004-10-12 11:35:23,929 [main] logical connection closed
+DEBUG 2004-10-12 11:35:23,929 [main] SELECT EMP.tstamp, EMP.empno, EMP.ename, EMP.job,
+  EMP.mgr, EMP.hiredate, EMP.sal, EMP.comm, EMP.deptno, department.dname AS dname_0,
+  department.deptno AS deptno_0, department.loc AS loc_0,
+  department.versionNo AS versionNo_0 FROM EMP LEFT OUTER JOIN DEPT department
+  ON EMP.deptno = department.deptno WHERE sal BETWEEN 0.0 AND 1000.0 ORDER BY empno
+DEBUG 2004-10-12 11:35:23,929 [main] logical connection opened
+DEBUG 2004-10-12 11:35:23,944 [main] logical connection closed
+7369, SMITH, CLERK, 7902, 1980-12-17 00:00:00.0, 800.0, null, 20,
+  1980-12-17 00:00:00.0, {20, RESEARCH, DALLAS, 0}
+7900, JAMES, CLERK, 7698, 1981-12-03 00:00:00.0, 950.0, null, 30,
+  1980-12-17 00:00:00.0, {30, SALES, CHICAGO, 0}
+DEBUG 2004-10-12 11:35:23,944 [main] SELECT EMP.tstamp, EMP.empno, EMP.ename, EMP.job,
+  EMP.mgr, EMP.hiredate, EMP.sal, EMP.comm, EMP.deptno, department.dname AS dname_0,
+  department.deptno AS deptno_0, department.loc AS loc_0,
+  department.versionNo AS versionNo_0 FROM EMP LEFT OUTER JOIN DEPT department
+  ON EMP.deptno = department.deptno WHERE  department.dname = 'SALES'
+DEBUG 2004-10-12 11:35:23,944 [main] logical connection opened
+DEBUG 2004-10-12 11:35:23,960 [main] logical connection closed
+7499, ALLEN, SALESMAN, 7698, 1981-02-20 00:00:00.0, 1600.0, 300.0, 30,
+  1980-12-17 00:00:00.0, {30, SALES, CHICAGO, 0}
+7521, WARD, SALESMAN, 7698, 1981-02-22 00:00:00.0, 1250.0, 500.0, 30,
+  1980-12-17 00:00:00.0, {30, SALES, CHICAGO, 0}
+7654, MARTIN, SALESMAN, 7698, 1981-09-28 00:00:00.0, 1250.0, 1400.0, 30,
+  1980-12-17 00:00:00.0, {30, SALES, CHICAGO, 0}
+7698, BLAKE, MANAGER, 7839, 1981-05-01 00:00:00.0, 2850.0, null, 30,
+  1980-12-17 00:00:00.0, {30, SALES, CHICAGO, 0}
+7844, TURNER, SALESMAN, 7698, 1981-09-08 00:00:00.0, 1500.0, 0.0, 30,
+  1980-12-17 00:00:00.0, {30, SALES, CHICAGO, 0}
+7900, JAMES, CLERK, 7698, 1981-12-03 00:00:00.0, 950.0, null, 30,
+  1980-12-17 00:00:00.0, {30, SALES, CHICAGO, 0}
+DEBUG 2004-10-12 11:35:23,960 [main] SELECT EMP.tstamp, EMP.empno, EMP.ename, EMP.job,
+  EMP.mgr, EMP.hiredate, EMP.sal, EMP.comm, EMP.deptno, department.dname AS dname_0,
+  department.deptno AS deptno_0, department.loc AS loc_0,
+  department.versionNo AS versionNo_0 FROM EMP LEFT OUTER JOIN DEPT department
+  ON EMP.deptno = department.deptno WHERE  department.dname = 'RESEARCH'
+DEBUG 2004-10-12 11:35:23,976 [main] logical connection opened
+DEBUG 2004-10-12 11:35:23,976 [main] logical connection closed
+7369, SMITH, CLERK, 7902, 1980-12-17 00:00:00.0, 800.0, null, 20,
+  1980-12-17 00:00:00.0, {20, RESEARCH, DALLAS, 0}
+7566, JONES, MANAGER, 7839, 1981-04-02 00:00:00.0, 2975.0, null, 20,
+  1980-12-17 00:00:00.0, {20, RESEARCH, DALLAS, 0}
+7788, SCOTT, ANALYST, 7566, 1982-12-09 00:00:00.0, 3000.0, null, 20,
+  2004-10-12 10:15:54.914, {20, RESEARCH, DALLAS, 0}
+7876, ADAMS, CLERK, 7788, 1983-01-12 00:00:00.0, 1100.0, null, 20,
+  1980-12-17 00:00:00.0, {20, RESEARCH, DALLAS, 0}
+7902, FORD, ANALYST, 7566, 1981-12-03 00:00:00.0, 3000.0, null, 20,
+  1980-12-17 00:00:00.0, {20, RESEARCH, DALLAS, 0}
+DEBUG 2004-10-12 11:35:23,976 [main] SELECT EMP.tstamp, EMP.empno, EMP.ename, EMP.job,
+  EMP.mgr, EMP.hiredate, EMP.sal, EMP.comm, EMP.deptno, department.dname AS dname_0,
+  department.deptno AS deptno_0, department.loc AS loc_0,
+  department.versionNo AS versionNo_0 FROM EMP LEFT OUTER JOIN DEPT department
+  ON EMP.deptno = department.deptno WHERE  EMP.empno = 7788
+DEBUG 2004-10-12 11:35:23,991 [main] logical connection opened
+DEBUG 2004-10-12 11:35:23,991 [main] logical connection closed
+before tmestamp:2004-10-12 10:15:54.914
+DEBUG 2004-10-12 11:35:23,991 [main] logical connection opened
+DEBUG 2004-10-12 11:35:23,991 [main] UPDATE EMP SET tstamp = '2004-10-12 11.35.23',
+  ename = 'SCOTT', job = 'ANALYST', mgr = 7566, hiredate = '1982-12-09 00.00.00',
+  sal = 3000.0, comm = null, deptno = 20
+  WHERE empno = 7788 AND tstamp = '2004-10-12 10.15.54'
+DEBUG 2004-10-12 11:35:24,054 [main] logical connection closed
+after timestamp:2004-10-12 11:35:23.991
+DEBUG 2004-10-12 11:35:24,054 [main] physical connection closed
+</PRE>
+            <P>The result shows SQL commands being automatically generated.<BR> Also, value of Timestamp before and after update is different suggesting that this value is used to lock a row.<BR>Files in this example is available under the s2dao/src/examples/dao directory.</P>
+            <H3><A name=EntityManagerExample>Example of using EntityManager</A></H3>
+            <P>This example uses <A href="#EntityManager">EntityManager</A> to query employees whose name contain the specified string.<BR>Following files are created:</P>
+            <UL>
+              <LI type=circle>Dao(Employee2Dao.java) 
+              <LI type=circle>Class (Employee2DaoImpl.java) extending AbstractDao
+              <LI type=circle>dicon file(Employee2Dao.dicon) 
+              <LI type=circle>Execution class (Employee2DaoClient.java) </LI></UL>
+            <H5>Creating Dao</H5>
+            <UL>
+              <LI type=circle>Interface name must end with string "Dao".
+              <LI type=circle>Associate with JavaBeans relating to the EMP table
+              <LI 
+              type=circle>Define method to query.<BR>Method to query employee (getEmployees(String ename)) </LI></UL><PRE>package examples.dao;
+
+import java.util.List;
+
+public interface Employee2Dao {
+
+    public Class BEAN = Employee.class;
+
+    public List getEmployees(String ename);
+}
+</PRE>
+            <H5>Creating class extending AbstractDao</H5>
+            <UL>
+              <LI type=circle>Extend org.seasar.dao.impl.AbstractDao
+              <LI type=circle>implement Employee2Dao
+              <LI type=circle>Implement getEmployees method. Query with string containing specified name
+            </LI></UL><PRE>package examples.dao;
+
+import java.util.List;
+
+import org.seasar.dao.DaoMetaDataFactory;
+import org.seasar.dao.impl.AbstractDao;
+
+public class Employee2DaoImpl extends AbstractDao implements Employee2Dao {
+
+    public Employee2DaoImpl(DaoMetaDataFactory daoMetaDataFactory) {
+        super(daoMetaDataFactory);
+    }
+
+    public List getEmployees(String ename) {
+        return getEntityManager().find("ename LIKE ?", "%" + ename + "%");
+    }
+}
+</PRE>
+            <H5>Creating dicon file</H5>
+            <UL>
+              <LI type=circle>include dao.dicon
+              <LI type=circle>Define as a component the class that extends AbstractDao 
+              <LI 
+              type=circle>Apply dao.interceptor(S2DaoInterceptor) to registered component
+              </LI></UL><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components.dtd"&gt;
+&lt;components&gt;
+    &lt;include path="dao.dicon"/&gt;
+    &lt;component class="examples.dao.Employee2DaoImpl"&gt;
+        &lt;aspect&gt;dao.interceptor&lt;/aspect&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>Creating execution file</H5>
+            <UL>
+              <LI type=circle>Create a container by using org.seasar.framework.container.S2Container#create()method with the first argument set to the path of created dicon file (Employee2Dao.dicon).
+              <LI  type=circle>Retrieve the component by using org.seasar.framework.container.S2Container#getComponent() method with the first argument set to the class name (Employee2Dao.class) registered with the component.
+              <LI type=circle>Specify condition to include string "CO" in a name
+              <LI type=circle>Execute method defined in Dao</LI></UL><PRE>ackage examples.dao;
+
+import java.util.List;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+
+public class Employee2DaoClient {
+
+    private static final String PATH = "examples/dao/Employee2Dao.dicon";
+
+    public static void main(String[] args) {
+        S2Container container = S2ContainerFactory.create(PATH);
+        container.init();
+        try {
+            Employee2Dao dao = (Employee2Dao) container
+                    .getComponent(Employee2Dao.class);
+            List employees = dao.getEmployees("CO");
+            for (int i = 0; i &lt; employees.size(); ++i) {
+                System.out.println(employees.get(i));
+            }
+        } finally {
+            container.destroy();
+        }
+
+    }
+}
+</PRE>
+            <H5>Result</H5>
+<PRE>DEBUG 2004-10-01 10:14:39,333 [main] physical connection opened
+DEBUG 2004-10-01 10:14:39,333 [main] logical connection opened
+DEBUG 2004-10-01 10:14:40,379 [main] logical connetion closed
+DEBUG 2004-10-01 10:14:41,254 [main] SELECT EMP.empno, EMP.ename, EMP.job, EMP.mgr,
+  EMP.hiredate, EMP.sal, EMP.comm, EMP.deptno, department.deptno AS deptno_0,
+  department.dname AS dname_0,
+  department.loc AS loc_0, department.versionNo AS versionNo_0 FROM EMP
+  LEFT OUTER JOIN DEPT department ON EMP.deptno = department.deptno
+  WHERE ename LIKE '%CO%'
+DEBUG 2004-10-01 10:14:41,270 [main] logical connection opened
+DEBUG 2004-10-01 10:14:41,426 [main] logical connection closed
+7788, SCOTT, ANALYST, 7566, 1982-12-09 00:00:00.0, 3000.0, null, 20
+  {20, RESEARCH, DALLAS, 0}
+DEBUG 2004-10-01 10:14:41,442 [main] physical connection closed
+</PRE>
+            <P>Source codes of above examples are in s2dao/src/examples/dao.</P>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=744><TR><TD align="left">Trans. by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and 
+            the others. All rights reserved.</TD></TR></TABLE></TD>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table>
+</body>
+<!-- don't edit end -->
+</html>

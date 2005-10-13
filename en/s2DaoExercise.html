@@ -1,0 +1,908 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen">
+<script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+<script src="s2DaoAns.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+            <UL>
+              <LI><A 
+              href="#JavaBeans">JavaBeans</A> 
+
+              <LI><A 
+              href="#Dao">Dao (Data 
+              Access Object) Exercise</A> 
+              <LI><A 
+              href="#diconFile">dicon File</A> 
+
+              <LI><A 
+              href="#SQLFile">SQL File</A> 
+
+              <LI><A 
+              href="#SQLCommentProblem">SQL Comment</A> 
+
+              <LI><A 
+              href="#EntityManager">EntityManager</A> 
+
+              <LI><A 
+              href="#AutoUpdate">Automatic Generation of Update SQL</A> 
+
+              <LI><A 
+              href="#BatchUpdateQue">Batch Update</A> 
+
+              <LI><A 
+              href="#AutoSelectQue">Automatic Generation of Query SQL</A> 
+              </LI></UL>
+            <H2>S2DaoExercise</H2>
+            <P>This exercise will check on your knowledge of <A href="s2dao.html">S2Dao</A>. Check the correct statement and select the "Check" button below.</P>
+            <H3><A name=JavaBeans>JavaBeans</A></H3>
+            <P><A 
+            name=Table><B>[Question 1]</B></A><BR>When the class name of the JavaBeans is Employee and table name is EMP, which of the statement below is the correct declaration to associate JavaBeans to the table?<BR>Hint: <A href="s2dao.html#TableAnnotation">TABLE Annotation</A></P>
+            <FORM name=myForm>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Table1 
+                  name=Table> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public static final String 
+                  Employee_TABLE = "EMP";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Table2 
+                  name=Table> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public static final String 
+                  TABLE = "Employee_EMP";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Table3 
+                  name=Table> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public static final String 
+                  TABLE = "EMP";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Table4 
+                  name=Table> </TD>
+                <TD width=474 bgColor=#66ffcc>4). private static final String 
+                  TABLE = "EMP";</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('Table','Column')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=Column><B>[Question 2]</B></A><BR>When the property name is employeeNo and the column name in the EMP table is EMPNO, which of the statement below is the correct constant declaration?<BR>Hint: <A href="s2dao.html#ColumnAnnotation">COLUMN Annotation</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Column1 
+                  name=Column> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public static final String 
+                  employeeNo = "EMPNO";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Column2 
+                  name=Column> </TD>
+                <TD width=474 bgColor=#66ffcc>2). private static final String 
+                  employeeNo_COLUMN = "EMPNO";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Column3 
+                  name=Column> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public static final String 
+                  employeeNo_COLUMN = "EMPNO";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Columne4 
+                  name=Column> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public final String 
+                  employeeNo_COLUMN = "EMPNO";</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('Column','ColumnNothing')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=ColumnNothing><B>[Question 3]</B></A><BR>When the property name is ename and the column name in the EMP table is ENAME, which of the statment below is the correct constant declaration?<BR>Hint:<A href="s2dao.html#ColumnAnnotation">COLUMN Annotation</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=ColumnNothing1 name=ColumnNothing> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public static final String 
+                  ename_EMP = "ENAME";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=ColumnNothing2 name=ColumnNothing> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public static final String 
+                  ename = "EMP_ENAME";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=ColumnNothing3 name=ColumnNothing> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public static final String 
+                  ename = "ENAME_COLUMN";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=ColumnNothing4 name=ColumnNothing> </TD>
+                <TD width=474 bgColor=#66ffcc>4). It is not necessary to declare.</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('ColumnNothing','Relno')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=Relno><B>[Question 4]</B></A><BR>When EMP table and SEC, DEPT tables are mapped N:1, which of the statement below is the correct RELNO constant declaration? Assume SEC table is associated with JavaBeans class Section. DEPT table is associated with JavaBeans class department.
+<BR>Hint:<A href="s2dao.html#N1Mapping">N:1 Mapping</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="90%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Relno1 
+                  name=Relno> </TD>
+                <TD width=600 bgColor=#d1f3f4>1). public static final int 
+                  section_RELNO = 0; public static final int department_RELNO = 
+                  0;</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Relno2 
+                  name=Relno> </TD>
+                <TD width=600 bgColor=#66ffcc>2). public static final int 
+                  section_RELNO = 0; public static final int department_RELNO = 
+                  1;</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Relno3 
+                  name=Relno> </TD>
+                <TD width=600 bgColor=#d1f3f4>3). public static final String 
+                  section_RELNO = "0"; public static final String 
+                  department_RELNO = "1";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Relno4 
+                  name=Relno> </TD>
+                <TD width=600 bgColor=#66ffcc>4). public static final int[ ] 
+                  section_department_RELNO = {0,1};</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('Relno','Relkeys')" type=button value=Check name=btnTable></P>
+            <P><A name=Relkeys><B>[Question 5]</B></A><BR>Which of the statement below is the correct RELKEYS constant declaration to associate DEPTNO column in EMP table with DEPTNO is DEPT table? Assume DEPTNO is the primary key in DEPT table.<BR>Hint:<A href="s2dao.html#N1Mapping">N:1 Mapping</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="90%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Relkeys1 
+                  name=Relkeys> </TD>
+                <TD width=600 bgColor=#d1f3f4>1). public static final String 
+                  department = "DEPTNUM:DEPTNO";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUTtype=radio value=Relkeys2 
+                  name=Relkeys> </TD>
+                <TD width=600 bgColor=#66ffcc>2). public static final String 
+                  department_RELKEYS = "DEPTNUM,DEPTNO";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Relkeys3 
+                  name=Relkeys> </TD>
+                <TD width=600 bgColor=#d1f3f4>3). public static final String 
+                  department = "DEPTNO_RELKEYS";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Relkeys4 
+                  name=Relkeys> </TD>
+                <TD width=600 bgColor=#66ffcc>4). 
+            It is not necessary to declare.</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('Relkeys','N1Mapping')" type=button value=Check name=btnTable></P>
+            <P><A name=N1Mapping><B>[Question 6]</B></A><BR>Which of the statement below is the correct declaration to associate both DEPTNUM column in the EMP table with DEPTNO column in the DEPT table and DEPTKEY column in the EMP table with DEPTID column in the DEPT table?<BR>Hint:<A href="s2dao.html#N1Mapping">N:1 Mapping</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="90%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=N1Mapping1 name=N1Mapping> </TD>
+                <TD width=600 bgColor=#d1f3f4>1). public static final String 
+                  department_RELKEYS = 
+              "<B>DEPTNUM:DEPTKEY,DEPTNO:DEPTID</B>";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=N1Mapping2 name=N1Mapping> </TD>
+                <TD width=600 bgColor=#66ffcc>2). public static final String 
+                  department_RELKEYS = 
+              "<B>DEPTNUM:DEPTNO,DEPTKEY:DEPTID</B>";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=N1Mapping3 name=N1Mapping> </TD>
+                <TD width=600 bgColor=#d1f3f4>3). public static final String 
+                  department_RELKEYS = 
+              "<B>DEPTNUM,DEPTNO:DEPTKEY,DEPTID</B>";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=N1Mapping4 name=N1Mapping> </TD>
+                <TD width=600 bgColor=#66ffcc>4). 
+            It is not necessary to declare.</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('N1Mapping','Dao')" type=button value=Check name=btnTable></P><BR>
+            <H3><A name=Dao>Dao(Data Access Object)</A></H3>
+            <P><A 
+            name=Bean><B>[Question 1]</B></A><BR>Which of the statement below is the correct declaration to associate EmployeeDao class with the Employee entity?
+            <BR>Hint:<A href="s2dao.html#BeanAnnotation">BEAN Annotation</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Bean1 
+                  name=Bean> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public static final Class 
+                  BEAN = Employee.class</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Bean2 
+                  name=Bean> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public static final Class 
+                  Employee = BEAN.class</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Bean3 
+                  name=Bean> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public static final String 
+                  BEAN = "Employee.class"</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Bean4 
+                  name=Bean> </TD>
+                <TD width=474 bgColor=#66ffcc>4). It isnot necessary to declare.</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('Bean','Args')" type=button value=Check name=btnTable></P>
+            <P><A name=Args><B>[Question 2]</B></A><BR>When public Employee getEmployee(int employeeno) method is defined, which of the statement below is the correct ARGS annotation declaration? Assume column name of the table associated with method argument is empno.<BR>Hint:<A href="s2dao.html#ArgsAnnotation">ARGS Annotation</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Args1 
+                  name=Args> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public static final String 
+                  getEmployee_ARGS = "employeeno";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Args2 
+                  name=Args> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public static final String 
+                  getEmployee_ARGS = "empno";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Args3 
+                  name=Args> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public static final String 
+                  ARGS_getEmployee = "empno";</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Args4 
+                  name=Args> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public static final String 
+                  empno = "getEmployee_ARGS";</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('Args','ManyArgs')" type=button value=Check name=btnTable></P>
+            <P><A name=ManyArgs><B>[Question 3]</B></A><BR>When public List getEmployeeByJobDeptno(String job, Integer deptno) method is defined, which of the statement below is the correct ARGS annotation declaration? Assume column name of the table is the same as the method argument name.<BR>Hint:<A href="s2dao.html#ArgsAnnotation">ARGS Annotation</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=ManyArgs1 
+                  name=ManyArgs> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public String 
+                  getEmployeeByJobDeptno_ARGS = <B>"job：deptno"</B>;</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=ManyArgs2 
+                  name=ManyArgs> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public String 
+                  getEmployeeByJobDeptno_ARGS = <B>"job,deptno"</B>;</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=ManyArgs3 
+                  name=ManyArgs> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public String 
+                  getEmployeeByJobDeptno_ARGS = <B>"job deptno"</B>;</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=ManyArgs4 
+                  name=ManyArgs> </TD>
+                <TD width=474 bgColor=#66ffcc>4). It is not recommended, but the declaration can be omitted.</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('ManyArgs','Query')" type=button value=Check name=btnTable></P>
+            <P><A name=Query><B>[Question 4]</B></A><BR>When public List getEmployeesBySal(Float minSal, Float maxSal) method that has arguments to limits the lower and upper salary (SAL) range is used to generate a SQL command, which of the QUERY annotation below will generate SQL command with a WHERE clause?
+<BR>Hint:<A href="s2dao.html#QueryAnnotation">QUERY Annotation</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Query1 
+                  name=Query> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public static final String 
+                  getEmployeesBySal_QUERY = <BR>
+                  <DIV align=right>"sal BETWEEN 'minSal' AND 'maxSal' ORDER BY 
+                  empno";</DIV></TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Query2 
+                  name=Query> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public static final String 
+                  getEmployeesBySal_QUERY = <BR>
+                  <DIV align=right>"sal BETWEEN /*?*/ AND /*?*/ ORDER BY 
+                  empno";</DIV></TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=Query3 
+                  name=Query> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public static final String 
+                  getEmployeesBySal_QUERY = <BR>
+                  <DIV align=right>"sal BETWEEN ? AND ? ORDER BY 
+              empno";</DIV></TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=Query4 
+                  name=Query> </TD>
+                <TD width=474 bgColor=#66ffcc>4). 
+            It is not necessary to declare.</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('Query','QuerySQLComment')" type=button value=Check name=btnTable></P>
+            <P><A name=QuerySQLComment><B>[Question 5]</B></A><BR>Which statement below is the correct way to use QUERY Annotation in a SQL comment?<BR>Hint:<A 
+            href="s2dao.html#QueryAnnotation">QUERY Annotation</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=QuerySQLComment1 name=QuerySQLComment> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public static final String 
+                  getEmployees_QUERY = <BR>
+                  <DIV align=right>"job = ?'CLERK'/*IF deptno != null*/ AND 
+                  deptno = ?20/*END*/;</DIV></TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=QuerySQLComment2 name=QuerySQLComment> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public static final String 
+                  getEmployees_QUERY_SQLCOMMENT = <BR>
+                  <DIV align=right>"job = /*job*/'CLERK'/*IF deptno != null*/ 
+                  AND deptno = /*deptno*/20/*END*/";</DIV></TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=QuerySQLComment3 name=QuerySQLComment> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public static final String 
+                  getEmployees_QUERY = <BR>
+                  <DIV align=right>"job = /*job*/'CLERK'/*IF deptno != null*/ 
+                  AND deptno = /*deptno*/20/*END*/";</DIV></TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=QuerySQLComment4 name=QuerySQLComment> </TD>
+                <TD width=474 bgColor=#66ffcc>4). It is not possible to use QUERY annotation in a SQL comment.</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('QuerySQLComment','DefInsert')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=DefInsert><B>[Question 6]</B></A><BR>Which of the statement below is the incorrect method definition to Insert data?<BR>Hint:<A 
+            href="s2dao.html#DefMethod">Defining a Method</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=DefInsert1 name=DefInsert> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public void 
+                  deptInsert(Department departmnt);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=DefInsert2 name=DefInsert> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public void 
+                  insert(Department department);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=DefInsert3 name=DefInsert> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public int 
+                  addDept(Department department);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=DefInsert4 name=DefInsert> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public int 
+                  createDept(Department department);</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('DefInsert','DefUpdate')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=DefUpdate><B>[Question 7]</B></A><BR>Which of the statement below is the incorrect method definition to Update data?<BR>Hint:<A 
+            href="s2dao.html#DefMethod">Method Definition</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=DefUpdate1 name=DefUpdate> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public int update(Department 
+                  department);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=DefUpdate2 name=DefUpdate> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public int 
+                  modifyDept(Department department);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=DefUpdate3 name=DefUpdate> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public void 
+                  storeDept(Department department);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=DefUpdate4 name=DefUpdate> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public void 
+                  commitDept(Department department);</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('DefUpdate','DefDelete')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=DefDelete><B>[Question 8]</B></A><BR>Which of the statement below is the incorrect method definition to Delete data?<BR>Hint:<A 
+            href="s2dao.html#DefMethod">Defining a Method</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=DefDelete1 name=DefDelete> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public int delete(Department 
+                  department);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=DefDelete2 name=DefDelete> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public String 
+                  deleteDept(Department department);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=DefDelete3 name=DefDelete> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public void 
+                  removeDept(Department department);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=DefDelete4 name=DefDelete> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public int 
+                  removeDept(Department department);</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('DefDelete','diconFile')" type=button value=Check name=btnTable></P><BR>
+            <H3><A name=diconFiledicon File</A></H3>
+            <P><A 
+            name=Interceptor><B>[Question 1]</B></A><BR>To use Dao, it is necessary to apply AOP to the registered Dao. Which of the statement below is the Interceptor to apply?<BR>Hint:<A 
+            href="s2dao.html#diconfile">dicon file</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=Interceptor1 name=Interceptor> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). TraceInterceptor</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=Interceptor2 name=Interceptor> </TD>
+                <TD width=474 bgColor=#66ffcc>2). DelegateInterceptor</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=Interceptor3 name=Interceptor> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). MockInterceptor</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=Interceptor4 name=Interceptor> </TD>
+                <TD width=474 bgColor=#66ffcc>4). 
+              S2DaoInterceptor</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('Interceptor','DefDicon')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=DefDicon><B>[Question 2]</B></A><BR>Which of the statement below is the correct dicon file definition? Assume S2DaoInterceptor is registered in dicon file dao.dicon.<BR>Hint:<A 
+            href="s2dao.html#diconfile">dicon file</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=DefDicon1 
+                  name=DefDicon> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). <PRE>&lt;components&gt;
+    &lt;include path="dao.dicon"/&gt;
+    &lt;component class="example.dao.EmployeeDao"/&gt;
+&lt;/components&gt;
+</PRE></TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=DefDicon2 
+                  name=DefDicon> </TD>
+                <TD width=474 bgColor=#66ffcc>2). <PRE>&lt;components&gt;
+    &lt;include path="dao.dicon"/&gt;
+    &lt;component class="example.dao.EmployeeDao"&gt;
+        &lt;arg&gt;dao.interceptor&lt;/arg&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE></TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=DefDicon3 
+                  name=DefDicon> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). <PRE>&lt;components&gt;
+    &lt;component class="example.dao.EmployeeDao"&gt;
+        &lt;aspect&gt;dao.interceptor&lt;/aspect&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE></TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=DefDicon4 
+                  name=DefDicon> </TD>
+                <TD width=474 bgColor=#66ffcc>4). <PRE>&lt;components&gt;
+    &lt;include path="dao.dicon"/&gt;
+    &lt;component class="example.dao.EmployeeDao"&gt;
+        &lt;aspect&gt;dao.interceptor&lt;/aspect&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE></TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('DefDicon','SQLFile')" type=button value=Check name=btnTable></P><BR>
+            <H3><A name=SQLFile>SQL File</A></H3>
+            <P><A 
+            name=SQLFileName><B>[Question 1]</B></A><BR>Which of the file name below is the correct SQL file name to associate Employee method in EmployeeDao class with a SQL file?<BR>Hint:<A 
+            href="s2dao.html#SQLfile">SQL file</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                 value=SQLFileName1 name=SQLFileName> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). getEmployee.sql</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=SQLFileName2 name=SQLFileName> </TD>
+                <TD width=474 bgColor=#66ffcc>2). 
+                EmployeeDao_getEmployee.sql</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=SQLFileName3 name=SQLFileName> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). EmployeeDao.sql</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=SQLFileName4 name=SQLFileName> </TD>
+                <TD width=474 bgColor=#66ffcc>4). 
+                getEmployee_EmployeeDao.sql</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('SQLFileName','SQLCommentProblem')" type=button value=Check name=btnTable></P><BR>
+            <H3><A name=SQLCommentProblem>SQL Comment</A></H3>
+            <P><A name=SQLComment><B>[Question 1]</B></A><BR>public String 
+            getEmployee_ARGS = "empno";<BR>public List getEmployees(int 
+            empno);<BR>When there is a Dao with the above ARGS annotation and a method which specifies the empno (employee number), which of the statements below is the correct usage of bind variable?<BR>Hint:<A href="s2dao.html#SQLBind">SQL Comment</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=SQLComment1 name=SQLComment> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). SELECT * FROM emp WHERE 
+                  empno = /*empno 7788*/</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=SQLComment2 name=SQLComment> </TD>
+                <TD width=474 bgColor=#66ffcc>2). SELECT * FROM emp WHERE 
+                  empno = 7788/*empno*/</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=SQLComment3 name=SQLComment> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). SELECT * FROM emp WHERE 
+                  empno = /*empno*/7788</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=SQLComment4 name=SQLComment> </TD>
+                <TD width=474 bgColor=#66ffcc>4). SELECT * FROM emp WHERE 
+                  empno = /* empno*/7788</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('SQLComment','SQLIf')" type=button value=Check name=btnTable></P>
+            <P><A name=SQLIf><B>[Question 2]</B></A><BR>public String 
+            getEmployeeCommBy_ARGS = "comm";<BR>public List 
+            getEmployeesByComm(Float 
+            comm);<BR>When there is a Dao with the above ARGS annotation and a method which specifies the Comm (commission), which of statement below will create a SQL statement with the following conditions: If Comm is not null then set the condition to that Comm. If Comm is null, then set the condition to 0.<BR>SELECT emp.*, dept.dname 
+            dname_0, dept.loc loc_0 FROM emp, dept WHERE emp.deptno = 
+            dept.deptno <BR>Hint:<A 
+            href="s2dao.html#SQLBind">SQL Comment</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=SQLIf1 
+                  name=SQLIf> </TD>
+                <TD width=600 bgColor=#d1f3f4>1). /*IF comm != null*/comm = 
+                  /*comm*/300 -- ELSE comm = 0 /*END*/</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=SQLIf2 
+                  name=SQLIf> </TD>
+                <TD width=600 bgColor=#66ffcc>2). /*and IF comm != null*/comm 
+                 = /*comm*/300 -- and ELSE comm = 0 /*END*/</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=SQLIf3 
+                  name=SQLIf> </TD>
+                <TD width=600 bgColor=#d1f3f4>3). /*IF comm != null*/ and comm 
+                  = /*comm*/300 /*ELSE*/ and comm = 0 /*END*/</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=SQLIf4 
+                  name=SQLIf> </TD>
+                <TD width=600 bgColor=#66ffcc>4). /*IF comm != null*/ and comm 
+                  = /*comm*/300 -- ELSE and comm = 0 
+            /*END*/</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('SQLIf','SQLBegin')" type=button value=Check name=btnTable></P>
+            <P><A name=SQLBegin><B>[Question 3]</B></A><BR>SELECT * FROM EMP 
+            <BR>/*BEGIN*/WHERE<BR>/*IF job != null*/job = 
+            /*job*/'CLERK'/*END*/<BR>/*IF deptno != null*/AND deptno = 
+            /*deptno*/20/*END*/<BR>/*END*/<BR>When the SQL file contains the above statements, which of the SQL statement below will be generated?<BR>Hint:<A 
+            href="s2dao.html#SQLBind">SQL Comment</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=SQLBegin1 
+                  name=SQLBegin> </TD>
+                <TD width=600 bgColor=#d1f3f4>1). SELECT * FROM EMP 
+WHERE</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=SQLBegin2 
+                  name=SQLBegin> </TD>
+                <TD width=600 bgColor=#66ffcc>2). SELECT * FROM EMP WHERE job 
+                  = null and deptno = null</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=SQLBegin3 
+                  name=SQLBegin> </TD>
+                <TD width=600 bgColor=#d1f3f4>3). SELECT * FROM EMP</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=SQLBegin4 
+                  name=SQLBegin> </TD>
+                <TD width=600 bgColor=#66ffcc>4). 
+            SQL文は発行されない</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('SQLBegin','EntityManager')" type=button value=Check name=btnTable></P><BR>
+            <H3><A name=EntityManager>EntityManager</A></H3>
+            <P><A 
+            name=EntityManagerClass><B>[Question 1]</B></A><BR>Which of the class definition below will correctly use an EntityManager to execute a Query? Assume Dao is EmployeeDao interface.<BR>Hint:<A href="s2dao.html#EntityManager">Executing Query with EntityManager</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerClass1 name=EntityManagerClass> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public class EmployeeDaoImpl 
+                  extends EmployeeDao implements AbstractDao</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerClass2 name=EntityManagerClass> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public class EmployeeDaoImpl 
+                  extends AbstractDao implements EmployeeDao</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerClass3 name=EntityManagerClass> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public class EmployeeDaoImpl 
+                  implements AbstractDao, EmployeeDao</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerClass4 name=EntityManagerClass> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public class EmployeeDaoImpl 
+                  implements EmployeeDao</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('EntityManagerClass','EntityManagerArgs')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=EntityManagerArgs><B>[Question 2]</B></A><BR>When EntityManager method is used to excute a Query and there are more than 4 variables to bind, which of the statement below is correct?<BR>Hint:<A href="s2dao.html#EntityManager">Executing Query with EntityManager</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerArgs1 name=EntityManagerArgs> </TD>
+                <TD width=600 bgColor=#d1f3f4>1). public List 
+                  findManyArgs(String query, Object arg1, Object arg2, Object 
+                  arg3, Object arg4);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerArgs2 name=EntityManagerArgs> </TD>
+                <TD width=600 bgColor=#66ffcc>2). public List find(String 
+                  query, Object arg1, Object arg2, Object arg3, Object 
+              arg4);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerArgs3 name=EntityManagerArgs> </TD>
+                <TD width=600 bgColor=#d1f3f4>3). public List find(String 
+                  query, Object[] args);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerArgs4 name=EntityManagerArgs> </TD>
+                <TD width=600 bgColor=#66ffcc>4). Only up to 3 variables may be bound to an EntityManager method.</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('EntityManagerArgs','EntityManagerFind')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=EntityManagerFind><B>[Question 3]</B></A><BR>Which of the method below will return a List when EntityManager method is used?<BR>Hint:<A 
+            href="s2dao.html#EntityManager">Executing Query with EntityManager</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerFind1 name=EntityManagerFind> </TD>
+                <TD width=600 bgColor=#d1f3f4>1). public List findList(String 
+                  query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerFind2 name=EntityManagerFind> </TD>
+                <TD width=600 bgColor=#66ffcc>2). public List getList(String 
+                  query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerFind3 name=EntityManagerFind> </TD>
+                <TD width=600 bgColor=#d1f3f4>3). public List find(String 
+                  query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerFind4 name=EntityManagerFind> </TD>
+                <TD width=600 bgColor=#66ffcc>4). public List get(String 
+                  query);</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('EntityManagerFind','EntityManagerFindArray')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=EntityManagerFindArray><B>[Question 4]</B></A><BR>Which of the method below will return an array when EntityManager method is used?<BR>Hint:<A href="s2dao.html#EntityManager">Executing Query with EntityManager</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                 value=EntityManagerFindArray1 name=EntityManagerFindArray> </TD>
+                <TD width=600 bgColor=#d1f3f4>1). public Object[] 
+                  findArray(String query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerFindArray2 name=EntityManagerFindArray> </TD>
+                <TD width=600 bgColor=#66ffcc>2). public Object[] 
+                  getArray(String query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerFindArray3 name=EntityManagerFindArray> </TD>
+                <TD width=600 bgColor=#d1f3f4>3). public Object[] find(String 
+                  query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerFindArray4 name=EntityManagerFindArray> </TD>
+                <TD width=600 bgColor=#66ffcc>4). public Object[] get(String 
+                  query);</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('EntityManagerFindArray','EntityManagerFindBean')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=EntityManagerFindBean><B>[Question 5]</B></A><BR>Which of the method below will return a JavaBeans when EntityManager method is used?<BR>Hint:<A href="s2dao.html#EntityManager">Executing Query with EntityManager</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerFindBean1 name=EntityManagerFindBean> </TD>
+                <TD width=600 bgColor=#d1f3f4>1). public Object getBean(String 
+                  query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerFindBean2 name=EntityManagerFindBean> </TD>
+                <TD width=600 bgColor=#66ffcc>2). public Object 
+                  findJavaBeans(String query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerFindBean3 name=EntityManagerFindBean> </TD>
+                <TD width=600 bgColor=#d1f3f4>3). public Object get(String 
+                  query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerFindBean4 name=EntityManagerFindBean> </TD>
+                <TD width=600 bgColor=#66ffcc>4). public Object 
+                  findBean(String query);</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('EntityManagerFindBean','EntityManagerFindObject')" type=button value=Check name=btnTable></P>
+            <P><A 
+            name=EntityManagerFindObject><B>[Question 6]</B></A><BR>Which of the method below will return one value, such as from a result from count(*), when EntityManager method is used?<BR>Hint:<A href="s2dao.html#EntityManager">Executing Query with EntityManager</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerFindObject1 name=EntityManagerFindObject> 
+                </TD>
+                <TD width=600 bgColor=#d1f3f4>1). public Object 
+                  findBean(String query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerFindObject2 name=EntityManagerFindObject> 
+                </TD>
+                <TD width=600 bgColor=#66ffcc>2). public Object 
+                  findObject(String query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=EntityManagerFindObject3 name=EntityManagerFindObject> 
+               </TD>
+                <TD width=600 bgColor=#d1f3f4>3). public Object 
+                  getObject(String query);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=EntityManagerFindObject4 name=EntityManagerFindObject> 
+                </TD>
+                <TD width=600 bgColor=#66ffcc>4). public Object find(String 
+                  query);</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('EntityManagerFindObject','AutoUpdate')" type=button value=Check name=btnTable></P><BR>
+            <H3><A name=AutoUpdate>Automatic Generation of Update SQL</A></H3>
+            <P><A 
+            name=AutoDef><B>[Question 1]</B></A><BR>Which of the statement below is correct when automatically generating update SQL statement?<BR>Hint:<A href="s2dao.html#AutoUpdate">Automatic Generation of Update SQL</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=AutoDef1 
+                  name=AutoDef> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). It is not necessary to abide to the method naming convention</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=AutoDef2 
+                  name=AutoDef> </TD>
+                <TD width=474 bgColor=#66ffcc>2). Any data type can be specified as a method return value.</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio value=AutoDef3 
+                  name=AutoDef> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). Method argument must be JavaBeans.</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio value=AutoDef4 
+                  name=AutoDef> </TD>
+                <TD width=474 bgColor=#66ffcc>4). SQL file is required.</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('AutoDef','BatchUpdate')" type=button value=Check name=btnTable></P><BR>
+            <H3><A name=BatchUpdateQue>Batch Update</A></H3>
+            <P><A 
+            name=BatchUpdate><B>[Question 1]</B></A><BR>Which of the method definition will correctly automatically create update SQL statement and do a batch update?<BR>Hint:<A 
+            href="s2dao.html#batch">Batch Update</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=BatchUpdate1 name=BatchUpdate> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public int 
+                  insertBatch(Employee[] employees);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=BatchUpdate2 name=BatchUpdate> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public Employee[] 
+                  insertBatch();</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=BatchUpdate3 name=BatchUpdate> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public int insertBatch(Map 
+                  map);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=BatchUpdate4 name=BatchUpdate> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public int 
+                  insertBatch(Employee employee);</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('BatchUpdate','AutoSelectQue')" type=button value=Check name=btnTable></P><BR>
+            <H3><A name=AutoSelectQue>Automatic Generation of Query SQL</A></H3>
+            <P><A 
+            name=AutoSelect><B>[Question 1]</B></A><BR>Which of the method definition below will automatically generate query SQL statement?<BR>Hint:<A 
+            href="s2dao.html#AutoSelect">Automati Generation of Query SQL</A>,<A 
+            href="s2dao.html#DefMethod">Defining a Method</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=AutoSelect1 name=AutoSelect> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public Employee 
+                  insertEmployee(Integer empno);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=AutoSelect2 name=AutoSelect> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public String 
+                  getEmployeeByEmpno(Integer empno);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=AutoSelect3 name=AutoSelect> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public Employee 
+                  getEmployeeByEmpno(Integer empno);</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=AutoSelect4 name=AutoSelect> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public Map 
+                  getEmployeeByEmpno(Integer empno);</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('AutoSelect','AutoSelect2')" type=button value=Check name=btnTable></P>
+            <P><A name=AutoSelect2><B>[Question 2]</B></A><BR>SELECT * FROM EMP WHERE 
+            empno = 
+            /*empno*/7788<BR>Which of the method definition below will automatically generate SQL statement similar to the manually written SQL statement above. Assume empno is a primary key.<BR>Hint:<A href="s2dao.html#AutoSelect">Automatic Generation of Query SQL</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=AutoSelect2_1 name=AutoSelect2> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public List 
+              getEmployees()</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=AutoSelect2_2 name=AutoSelect2> </TD>
+                <TD width=474 bgColor=#66ffcc>2). public Employee 
+                getEmployee()</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=AutoSelect2_3 name=AutoSelect2> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). private Employee 
+                  getEmployeeByEmpno(int empno)</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=AutoSelect2_4 name=AutoSelect2> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public Employee 
+                  getEmployeeByEmpno(int empno)</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('AutoSelect2','AutoSelect3')" type=button value=Check name=btnTable></P>
+            <P><A name=AutoSelect3><B>[Question 3]</B></A><BR>SELECT * FROM 
+            emp<BR>/*BEGIN*/WHERE<BR>/*IF deptno != null*/deptno = 
+            /*deptno*/20/*END*/<BR>/*END*/ 
+            <BR>Which of the method definition below will automatically generate SQL statement similar to the manually written SQL statement above.<BR>Hint:<A 
+            href="s2dao.html#AutoSelect">Automatic Generation of Query SQL</A></P>
+            <TABLE cellSpacing=1 cellPadding=5 width="80%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=AutoSelect3_1 name=AutoSelect3> </TD>
+                <TD width=474 bgColor=#d1f3f4>1). public List 
+                  getEmployeesByDeptno()</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=AutoSelect3_2 name=AutoSelect3> </D>
+                <TD width=474 bgColor=#66ffcc>2). public Employee 
+                  getEmployeesByDeptno()</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#d1f3f4><INPUT type=radio 
+                  value=AutoSelect3_3 name=AutoSelect3> </TD>
+                <TD width=474 bgColor=#d1f3f4>3). public List 
+                  getEmployeeByDeptno(int deptno)</TD></TR>
+              <TR>
+                <TD width=23 bgColor=#66ffcc><INPUT type=radio 
+                  value=AutoSelect3_4 name=AutoSelect3> </TD>
+                <TD width=474 bgColor=#66ffcc>4). public List 
+                  getEmployeeByDeptno(Integer deptno)</TD></TR></TBODY></TABLE><BR>
+            <P><INPUT onclick="check('AutoSelect3','')" type=button value=Check name=btnTable></P></FORM>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="737"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=736><TR><TD align="left">Trans. by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and 
+            the others. All rights reserved.</TD></TR></TABLE></TD>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>

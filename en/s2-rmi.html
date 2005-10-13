@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+            <UL>
+              <LI><A href="http://www.seasar.org/en/s2-rmi.html#abstraction">Introcution</A> 
+
+              <LI><A href="http://www.seasar.org/en/s2-rmi.html#setup">Setup</A> 
+              <UL>
+                <LI><A 
+                href="http://www.seasar.org/en/s2-rmi.html#requirement">Requirements</A> 
+                <LI><A 
+                href="http://www.seasar.org/en/s2-rmi.html#downlod">Download</A> 
+                <LI><A 
+                href="http://www.seasar.org/en/s2-rmi.html#install">Installation</A> 
+              </LI></UL>
+              <LI><A href="http://www.seasar.org/en/s2-rmi.html#usage">Basic Usage</A> 
+              <UL>
+                <LI><A href="http://www.seasar.org/en/s2-rmi.html#service">Service</A> 
+
+                <LI><A 
+                href="http://www.seasar.org/en/s2-rmi.html#server">Server Settings</A> 
+                <LI><A 
+                href="http://www.seasar.org/en/s2-rmi.html#client">Client Settings</A> 
+                </LI></UL>
+              <LI><A href="http://www.seasar.org/en/s2-rmi.html#custom">Custom RMI Socket Factory Settings</A> </LI></UL>
+            <H1><A name=abstraction>Introduction</A></H1>
+            <P>S2RMI is an implementation of RMI based on <A href="http://www.seasar.org/en/en/s2-remoting.html">S2Remoting</A>. S2RMI allows to call on components (POJO) contained in S2Container on other JavaVM.</P>
+            <H1><A name=setup>Setup</A></H1>
+            <H2><A name=requirement>Requirements</A></H2>
+            <TABLE border=1>
+              <COLGROUP>
+              <COL span=3 align=middle width=150>
+              <TBODY>
+              <TR>
+                <TH>S2RMI</TH>
+                <TH>S2</TH>
+                <TH>S2Remoting</TH></TR>
+              <TR>
+                <TD>1.0.0</TD>
+                <TD>2.1.11 or later</TD>
+                <TD>0.0.7 or later</TD></TR></TBODY></TABLE>
+            <H3>Environment</H3>
+            <P>S2RMI requires the follows:</P>
+            <UL>
+              <LI>JDK (J2SE SDK) 1.4 or later. S2RMI-V1.0.0 is developed and tested on JDK 1.4.2_08. It can be downloaded from <A href="http://java.sun.com/j2se/1.4.2/ja/download.html">here</A>.
+              <LI>S2 version2.1.11 or later is required. (When using J2SE5.0, S2.2 or later is required). S2RMI-V1.0.0 is developed and tested on S2.2.7.. It may be downloaded from <A href="http://www.seasar.org/en/products.html">here</A>. 
+              <LI>S2Remoting version 0.0.7 or later is required. S2RMI-V1.0.0 is developed and tested on S2Remoting1.0.0.. It may be downloaded from <A 
+              href="http://www.seasar.org/en/products.html">here</A>. </LI></UL>
+            <H3>Development Environment</H3>
+            <P>Similar to other S2 software, S2RMI is distributed as archived Eclipse Java Project.</P>
+            <UL>
+              <LI>Eclipse 3.0 or later is required. It may be downloaded from は<A href="http://www.eclipse.org/downloads/index.php">here</A>.
+              <LI>S2 version 2.1.11 or later is required. It may be downloaded from <A href="http://www.seasar.org/en/products.html">here</A>. 
+              <LI>S2Remoting version 0.0.7 or later is required. It may be downloaded from <A href="http://www.seasar.org/en/products.html">here</A>. </LI></UL>
+            <H2><A name=downlod>Download</A></H2>
+            <P>S2RMI may be downloaded from <A  href="http://www.seasar.org/en/products.html">here</A>.</P>
+            <H2><A name=install>Installation</A></H2>
+            <P>S2 and S2Remoting must be imported into Eclipse workspace before S2RMI is imported.</P>
+            <UL>
+              <LI>Extract files from downloaded archive file<CODE>S2RMI-V<VAR>x.y.z</VAR>.zip</CODE> to some directory.
+
+              <LI>Start Eclipse and select [File]-[Import] from the menu.
+              <LI>From [Import] wizard, select [Existing Projects into Workspace] and then select the [Next>] button.
+              <LI>Select [Select root directory] radio button and then select the [Browse] button to the right of it. Browse through directories to the where the archive files where extracted. Select the [OK] button to select this directory.
+              <LI>Select the [Finish] button to import from this directory.</LI></UL>
+            <H1><A name=usage>Basic Usage</A></H1>
+            <P>Files used in these examples are located under the src/example directory. S2RMI makes components registered in the S2Container into remote objects. service.Hello interface is a normal interface. Furthermore, service.impl.HelloImpl class is an implementation class (POJO) of Hello interface. Remote objects are released by S2RMI using Hello interface and its implementation class.</P>
+            <H2><A name=service>Service</A></H2>
+            <H3>service.Hello.java</H3><PRE>public interface Hello {
+    public String say();
+}
+</PRE>
+            <H3>service.impl.HelloImpl.java</H3><PRE>public class HelloImpl implements Hello {
+    public String say() {
+        return "Hello";
+    }
+}
+</PRE>
+            <H2><A name=server>Server Settings</A></H2>
+            <P>Following 3 components must be defined in a dicon file on a server.
+            <UL>
+              <LI>org.seasar.remoting.rmi.adaptor.RMIAdaptorImpl 
+              <LI>org.seasar.remoting.rmi.deployer.RMIAdaptorDeployer 
+              <LI>service.impl.HelloImpl (implementation class of interface of remote object to be released)
+            </LI></UL>RMIAdaptorImpl class is an adapter that uses ComponentInvokerImpl class to call component registered in the S2Container.
+            RMIAdaptorDeployer registers RMIAdaptorImpl class into RMI registry.
+            <P></P>
+            <H3>server.dicon</H3><PRE>&lt;components&gt;
+  &lt;component name="rmiAdapptor" class="org.seasar.remoting.rmi.adaptor.RMIAdaptorImpl"&gt;
+    &lt;property name="invoker"&gt;
+      &lt;component class="org.seasar.extension.component.impl.ComponentInvokerImpl"/&gt;
+    &lt;/property&gt;
+  &lt;/component&gt;
+
+  &lt;component class="org.seasar.remoting.rmi.deployer.RMIAdaptorDeployer"&gt;
+    &lt;property name="adaptor"&gt;rmiAdapptor&lt;/property&gt;
+    &lt;property name="registryPort"&gt;1108&lt;/property&gt;
+    &lt;property name="servicePort"&gt;1109&lt;/property&gt;
+    &lt;initMethod name="deploy"/&gt;
+  &lt;/component&gt;
+
+  &lt;component name="hello" class="service.impl.HelloImpl"/&gt;
+&lt;/components&gt;
+</PRE>
+            <H3>RMIAdaptorDeployer property</H3>
+            <DL>
+              <DT><CODE>&lt;property name="registryPort"&gt;</CODE> 
+              <DD>Port number of rmiregistry. When omitted, default port (1099) is used.
+              <DT><CODE>&lt;property name="servicePort"&gt;</CODE> 
+              <DD>Port number to be used by RMIAdaptorImpl. When omitted, port is set to the default port (0) and anonymous port is used.
+              </DD></DL>
+            <H3>Starting RMIAdaptorDeployer</H3>
+            <P>A component in S2Container can be called remotely by initializing the S2Container. S2Container is initialized by defining &lt;initMethod name="deploy"/&gt; in the dicon file.</P>
+            <H4>server.ServerMain.java</H4><PRE>package server;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+import org.seasar.remoting.common.deployer.Deployer;
+
+public class ServerMain {
+    public static void main(String[] args) {
+        S2ContainerFactory.create("server/server.dicon").init();
+    }
+}
+</PRE>
+            <P>To execute ServerMain, right click on  ServerMain.java in the package explorer and select [Execute]-[Java Application].</P>
+            <H2><A name=client>Client Settings</A></H2>
+            <P>Following 3 components must be defined in a dicon file on a client.
+            <UL>
+              <LI>org.seasar.remoting.rmi.connector.RMIConnector 
+              <LI>org.seasar.remoting.common.interceptor.RemotingInterceptor 
+              <LI>service.Hello (interface to call on a remote object)
+            </LI></UL>RMIConnector call retrieves RMIAdaptorImpl class from RMI registry and calls a component on the server.
+RemotingInterceptor class uses RMIConnector to set by AOP an interface (Hello) to call on remote object. Name of remote object to call and name of component to be called (hello) must be the same.
+            <P></P>
+            <P>S2RMI is an implementation of S2Remoting.
+Therefore, it is possible to switch so remote object are called using S2Axis just be changing connector setting in RemotingInterceptor from RMIConnector to org.seasar.remoting.axis.connector.AxisConnector. Refer to <A href="http://www.seasar.org/en/s2-axis.html">Setting S2Axis Server</A> for information on using S2Axis.</P>
+            <H3>clinet.dicon</H3>
+<PRE>&lt;components&gt;
+  &lt;component name="rmiConnector" class="org.seasar.remoting.rmi.connector.RMIConnector"&gt;
+    &lt;property name="baseURL"&gt;new java.net.URL("rmi://localhost:1108/")&lt;/propert&gt;
+    &lt;initMethod name="lookup"/&gt;
+  &lt;/component&gt;
+
+  &lt;component name="remoting"
+    class="org.seasar.remoting.common.interceptor.RemotingInterceptor"&gt;
+    &lt;property name="connector"&gt;rmiConnector&lt;/property&gt;
+  &lt;/component&gt;
+
+  &lt;component name="hello" class="service.Hello"&gt;
+    &lt;aspect&gt;remoting&lt;/aspect&gt;
+  &lt;/component&gt;
+&lt;/components&gt;
+</PRE>
+            <H3>Calling Remote Object</H3>
+            <P>When a method in interface which is defined as AOP to RemoteingInterceptor on the client is called, following tasks are executed:
+<PRE>Hello.say() -&gt; RMIConnector -&gt; RMIAdaptor -&gt; ComponentInvoker -&gt; HelloImpl.say()
+</PRE>. Following ClientMain is an example of executable class on a client.
+            <P></P>
+            <H4>client.ClientMain.java</H4><PRE>package client;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+import service.Hello;
+
+public class ClientMain {
+    public static void main(String[] args) {
+        S2Container container = S2ContainerFactory
+                .create("client/client.dicon");
+        container.init();
+        Hello hello = (Hello) container
+                .getComponent(service.Hello.class);
+
+        System.out.println(hello.say());
+    }
+}
+</PRE>
+            <P>To execute ClientMain, right click on ClientMain.java in the package explorer and select [Execute]-[Java Application].</P>
+            <H2><A name=custom>Custom RMI Socket Factory Settings </A></H2>
+            <P>Implementation class of RMIClientSocketFactory and RMIServerSocketFactory may be set in RMIAdaptorDeployer.</P>
+            <H3>Detailed RMIAdaptorDeployer Settings</H3><PRE>  &lt;component class="org.seasar.remoting.rmi.deployer.RMIAdaptorDeployer"&gt;
+    &lt;property name="adaptor"&gt;rmiAdapptor&lt;/property&gt;
+    &lt;property name="registryPort"&gt;1108&lt;/property&gt;
+    &lt;property name="servicePort"&gt;1109&lt;/property&gt;
+    &lt;initMethod name="deploy"/&gt;
+    &lt;initMethod name="addCustomSocketFactory"&gt;
+      &lt;arg&gt;
+        &lt;component class="server.rmisocfac.XorClientSocketFactory"&gt;
+          &lt;arg&gt;0xAC&lt;/arg&gt;
+        &lt;/component&gt;
+      &lt;/arg&gt;
+      &lt;arg&gt;
+        &lt;component class="server.rmisocfac.XorServerSocketFactory"&gt;
+          &lt;arg&gt;0xAC&lt;/arg&gt;
+        &lt;/component&gt;
+      &lt;/arg&gt;
+    &lt;/initMethod&gt;
+  &lt;/component&gt;
+</PRE>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="737"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=736><TR><TD align="left">Trans. by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and 
+            the others. All rights reserved.</TD></TR></TABLE></TD>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>
