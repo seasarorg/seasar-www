@@ -397,7 +397,8 @@ S2Containerに自動登録します。initMethodタグについては､<a href=
     &lt;component<br>      class=&quot;org.seasar.framework.container.autoregister.AspectAutoRegister&quot;&gt;<br>        &lt;property name=&quot;interceptor&quot;&gt;aop.traceInterceptor&lt;/property&gt;<br>        &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>            &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>            &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>        &lt;/initMethod&gt;<br>        &lt;initMethod name=&quot;registAll&quot;/&gt;<br>    &lt;/component&gt;<br>&lt;/components&gt;
 </pre>
 
-<p>それではGreetingMain4を実行してみます。GreetingMain3との違いは､設定ファイルのパスだけです。</p>
+<p>それではGreetingMain4を実行してみます。GreetingMain3との違いは､設定ファイルのパスとS2Containerのinitメソッド､destroyメソッドを呼び出している部分です。
+自動登録を使う場合は､必ず､initメソッドを呼び出す必要があります。</p>
 
 <h5>GreetingMain4.java</h5>
 <pre>
@@ -416,9 +417,14 @@ public class GreetingMain4 {
     public static void main(String[] args) {
         S2Container container =
             S2ContainerFactory.create(PATH);
-        GreetingClient greetingClient = (GreetingClient)
-            container.getComponent("greetingClient");
-        greetingClient.execute();
+        container.init();
+        try {
+            GreetingClient greetingClient = (GreetingClient)
+                container.getComponent("greetingClient");
+            greetingClient.execute();
+        } finally {
+            container.destroy();
+        }
     }
 }
 </pre>
