@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<link href="seasar_b.css" type="text/css" rel="stylesheet"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" height="100%"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_ja.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_ja.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu03_b_ja.gif" height="30" width="110" border="0" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)"></a></td>
+<td><a href="resources.html"><img src="images/menu04_b_ja.gif" height="30" width="113" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><img src="images/menu05_b_ja.gif" height="30" width="109" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" height="100%" class="white">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="752" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<h2><a name="Abstract">概要</a></h2>
+<p>S2JSFでの開発を支援するEclipseプラグインです。以下のような機能を備えています。</p>
+<ul>
+	<li>HTMLエディタ
+		<ul>
+			<li>強調表示</li>
+			<li>HTMLタグ、S2JSF用の属性、マネージド・ビーンなどの入力補完</li>
+			<li>CTRL+クリックによるハイパーリンク機能</li>
+			<li>ブラウザプレビュー機能</li>
+			<li>アウトライン表示</li>
+		</ul>
+	</li>
+	
+	<li>faces-config.xmlエディタ
+		<ul>
+			<li>強調表示</li>
+			<li>DTDベースのタグ、属性の入力補完</li>
+			<li>CTRL+クリックによるハイパーリンク機能</li>
+			<li>パッケージ・エクスプローラなどからドラッグ＆ドロップでナビゲーションを追加</li>
+			<li>アウトライン表示</li>
+		</ul>
+	</li>
+	
+	<li>プロジェクトのバリデーション
+		<ul>
+			<li>HTMLファイルのS2JSF用属性、ELのチェック</li>
+			<li>HTMLファイルのタグの閉じわすれのチェック（オプションで無効にできます）</li>
+			<li>faces-config.xmlのDTDベースの検証、HTMLファイルの存在チェック</li>
+		</ul>
+	</li>
+	
+	<li>HTMLファイルの新規作成ウィザード</li>
+	
+</ul>
+
+<h2><a name="Setup">セットアップ</a></h2>
+<p>Eclipse3.0以降で動作します。以下の更新サイトからインストールしてください（Eclipse 3.0用の更新サイトですが、3.1でも動作します）。</p>
+<ul>
+	<li><a href="http://www.seasar.org/eclipse/updates/3.0/ ">http://www.seasar.org/eclipse/updates/3.0/ </a></li>
+</ul>
+
+<h2><a name="Usage">使い方</a></h2>
+<p>まずはプロジェクトの設定を行います。</p>
+<ul>
+	<li>プロジェクトのプロパティーで「S2JSF」を選択し、「HTMLファイルのバリデーション」にチェックを入れます。</li>
+	<li>タグの閉じわすれもチェックしたい場合は「タグの閉じわすれを警告する」にもチェックを入れます。</li>
+	<li>プロジェクトのルートフォルダとWebアプリケーションのルートフォルダが異なる場合は「ルート」に適切なフォルダを指定します。</li>
+</ul>
+
+<p>エディタの設定は「ウィンドウ」→「設定」の「S2JSF」で行うことができます。</p>
+
+
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright">&copy; Copyright The Seasar Foundation and the others 2004-2005, all rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>
