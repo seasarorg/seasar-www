@@ -362,10 +362,9 @@ pointcutを指定しなくても､自動的にインターフェースで定義
 その機能はFileSystemComponentAutoRegisterコンポーネントによって提供されます。
 先程のGreetingImpl、GreetingClientImplの登録を自動化する設定は次のようになります。</p>
 
-<pre>&lt;component<br>  class=&quot;org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister&quot;&gt;<br>    &lt;property name=&quot;fileNameOfRoot&quot;&gt;&quot;aop.dicon&quot;&lt;/property&gt;<br>    &lt;property name=&quot;autoNaming&quot;&gt;<br>	    &lt;component class=&quot;org.seasar.framework.container.autoregister.DefaultAutoNaming&quot;/&gt;<br>    &lt;/property&gt;<br>    &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>        &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;registAll&quot;/&gt;<br>&lt;/component&gt;</pre>
+<pre>&lt;component<br>  class=&quot;org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister&quot;&gt;<br>    &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>        &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;registAll&quot;/&gt;<br>&lt;/component&gt;</pre>
 
-<p>FileSystemComponentAutoRegisterコンポーネントは、fileNameOfRootプロパティで指定されたファイルが
-存在するディレクトリをクラスパスのルート(例えば、WEB-INF/classes)とみなし、
+<p>FileSystemComponentAutoRegisterコンポーネントは、
 addClassPatternメソッドで指定されたクラスをファイルシステムから探して､
 S2Containerに自動登録します。initMethodタグについては､<a href="#MethodInjection">メソッド・インジェクション</a>を参照してください。</p>
 <p>addClassPatternメソッドの最初の引数は､自動登録したいコンポーネントのパッケージ名です。
@@ -375,7 +374,7 @@ S2Containerに自動登録します。initMethodタグについては､<a href=
 手間を大幅に削減できるようになります。</p>
 
 <p>コンポーネントの登録が自動化できるようになると、次は､アスペクトの登録を自動化したくなることでしょう。
-その機能を提供するのが、FileSystemComponentAutoRegisterコンポーネントになります。
+その機能を提供するのが、AspectAutoRegisterコンポーネントになります。
 先程のGreetingImpl、GreetingClientImpへのアスペクトの登録を自動化する設定は次のようになります。</p>
 
 <pre>&lt;include path=&quot;aop.dicon&quot;/&gt;
@@ -392,7 +391,7 @@ S2Containerに自動登録します。initMethodタグについては､<a href=
 <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container 2.3//EN&quot; <br>	&quot;http://www.seasar.org/dtd/components23.dtd&quot;&gt;
 &lt;components&gt;<br>    &lt;include path=&quot;aop.dicon&quot;/&gt;
 
-    &lt;component<br>      class=&quot;org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister&quot;&gt;<br>        &lt;property name=&quot;fileNameOfRoot&quot;&gt;&quot;aop.dicon&quot;&lt;/property&gt;<br>        &lt;property name=&quot;autoNaming&quot;&gt;<br>	        &lt;component class=&quot;org.seasar.framework.container.autoregister.DefaultAutoNaming&quot;/&gt;<br>        &lt;/property&gt;<br>        &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>            &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>            &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>        &lt;/initMethod&gt;<br>        &lt;initMethod name=&quot;registAll&quot;/&gt;<br>    &lt;/component&gt;
+    &lt;component<br>      class=&quot;org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister&quot;&gt;<br>        &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>            &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>            &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>        &lt;/initMethod&gt;<br>        &lt;initMethod name=&quot;registAll&quot;/&gt;<br>    &lt;/component&gt;
 
     &lt;component<br>      class=&quot;org.seasar.framework.container.autoregister.AspectAutoRegister&quot;&gt;<br>        &lt;property name=&quot;interceptor&quot;&gt;aop.traceInterceptor&lt;/property&gt;<br>        &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>            &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>            &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>        &lt;/initMethod&gt;<br>        &lt;initMethod name=&quot;registAll&quot;/&gt;<br>    &lt;/component&gt;<br>&lt;/components&gt;
 </pre>
@@ -1016,8 +1015,9 @@ END java.util.Date#getTime() : 0
 <p><a href="#AutoBindingMode">自動バインディング</a>により、DIの設定はほぼ自動化できます。
 <a href="#AnnotationReference">アノテーション</a>を使って細かく制御することも可能です。
 さらに、コンポーネントの登録も自動化してしまおうというのが、コンポーネントの自動登録機能です。
-コンポーネントの自動登録には､FileSystemComponentAutoRegisterコンポーネントを利用します。</p>
-<h5>org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister</h5>
+コンポーネントの自動登録には､ファイルシステム上のclassファイルを検索するFileSystemComponentAutoRegisterコンポーネントやjarファイルの中を検索するJarComponentAutoRegisterを利用します。</p>
+
+<h5><a name="FileSystemComponentAutoRegister">org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister</a></h5>
 <table border="1">
 <tr bgcolor="#d1f3f4" align="center">
 <th width="96">プロパティ</th>
@@ -1025,11 +1025,54 @@ END java.util.Date#getTime() : 0
 </tr>
 <tr>
 <td><code>fileNameOfRoot</code></td>
-<td>このプロパティで指定されたファイルが存在するディレクトリをクラスパスのルート(例えば、WEB-INF/classes)とみなします。</td>
+<td>このプロパティで指定されたファイルが存在するディレクトリをクラスパスのルート(例えば、WEB-INF/classes)とみなします。デフォルトは、j2ee.diconになります。</td>
+</tr>
+<tr>
+<td><code>instanceDef</code></td>
+<td>自動登録されるコンポーネントに適用するInstanceDefを指定します。XMLで指定する場合､@org.seasar.framework.container.deployer.InstanceDefFactory@REQUESTのように指定します。</td>
 </tr>
 <tr>
 <td><code>autoNaming</code></td>
-<td>クラス名からコンポーネント名を自動的に決定するコンポーネント。org.seasar.framework.container.autoregister.AutoNamingインターフェースを実装している必要があります。</td>
+<td>クラス名からコンポーネント名を自動的に決定するコンポーネント。org.seasar.framework.container.autoregister.AutoNamingインターフェースを実装している必要があります。デフォルトは､org.seasar.framework.container.autoregister.DefaultAutoNamingクラスのインスタンスになります。</td>
+</tr>
+</table>
+<br />
+<table border="1">
+<tr bgcolor="#d1f3f4" align="center">
+<th width="96">メソッド</th>
+<th width="167">説明</th>
+</tr>
+<tr>
+<td><code>addClassPattern</code></td>
+<td>自動登録したいクラスパターンを登録します。最初の引数は､コンポーネントのパッケージ名です。子供のパッケージも再帰的に検索します。2番目の引数は､クラス名です。正規表現が使えます。「,」区切りで複数記述することもできます。</td>
+</tr>
+<tr>
+<td><code>addIgnoreClassPatten</code></td>
+<td>自動登録したくないクラスパターンを登録します。最初の引数は､コンポーネントのパッケージ名です。子供のパッケージも再帰的に検索します。2番目の引数は､クラス名です。正規表現が使えます。「,」区切りで複数記述することもできます。</td>
+</tr>
+</table>
+
+<h5><a name="JarComponentAutoRegister">org.seasar.framework.container.autoregister.JarComponentAutoRegister</a></h5>
+<table border="1">
+<tr bgcolor="#d1f3f4" align="center">
+<th width="96">プロパティ</th>
+<th width="167">説明</th>
+</tr>
+<tr>
+<td><code>jarFileNames</code></td>
+<td>対象のjarファイル名を指定します。正規表現も使えます。ただし､拡張子は含まれません。複数指定する場合は､「,」で区切ります。例えば､myapp.*, yourapp.*のようになります。</td>
+</tr>
+<tr>
+<td><code>classInJar</code></td>
+<td>このプロパティで指定されたクラスが存在するjarファイルの親ディレクトリをベースのディレクトリ(例えば、WEB-INF/lib)とみなします。デフォルトは、org.aopalliance.intercept.MethodInterceptor.classになります。</td>
+</tr>
+<tr>
+<td><code>instanceDef</code></td>
+<td>自動登録されるコンポーネントに適用するInstanceDefを指定します。XMLで指定する場合､@org.seasar.framework.container.deployer.InstanceDefFactory@REQUESTのように指定します。</td>
+</tr>
+<tr>
+<td><code>autoNaming</code></td>
+<td>クラス名からコンポーネント名を自動的に決定するコンポーネント。org.seasar.framework.container.autoregister.AutoNamingインターフェースを実装している必要があります。デフォルトは､org.seasar.framework.container.autoregister.DefaultAutoNamingクラスのインスタンスになります。</td>
 </tr>
 </table>
 <br />
@@ -1048,8 +1091,32 @@ END java.util.Date#getTime() : 0
 </tr>
 </table>
 <br />
+
+<h5>org.seasar.framework.container.autoregister.DefaultAutoNaming</h5>
+<p>クラスの完全修飾名からパッケージ部分を除き、最後がImplで終わっていたら削除し､
+先頭を小文字にした名前をコンポーネントの名前に設定します。
+例えば､aaa.HogeImplクラスの場合､コンポーネント名は､hogeになります。</p>
+<table border="1">
+<tr bgcolor="#d1f3f4" align="center">
+<th width="96">メソッド</th>
+<th width="167">説明</th>
+</tr>
+<tr>
+<td><code>setCustomizedName</code></td>
+<td>デフォルトのルールに従わないクラスを登録します。最初の引数は､クラスの完全修飾名です。
+2番目の引数は､コンポーネント名です。</td>
+</tr>
+</table>
+
+<br />
 <h5>例</h5>
-<pre>&lt;component<br>  class=&quot;org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister&quot;&gt;<br>    &lt;property name=&quot;fileNameOfRoot&quot;&gt;&quot;aop.dicon&quot;&lt;/property&gt;<br>    &lt;property name=&quot;autoNaming&quot;&gt;<br>	    &lt;component class=&quot;org.seasar.framework.container.autoregister.DefaultAutoNaming&quot;/&gt;<br>    &lt;/property&gt;<br>    &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>        &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;registAll&quot;/&gt;<br>&lt;/component&gt;</pre>
+<pre>&lt;component<br>  class=&quot;org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister&quot;&gt;<br>    &lt;property name=&quot;autoNaming&quot;&gt;<br>	    &lt;component class=&quot;org.seasar.framework.container.autoregister.DefaultAutoNaming&quot;&gt;
+            &lt;initMethod name=&quot;setCustomizedName&quot;&gt;<br>                &lt;arg&gt;&quot;examples.di.impl.HogeImpl&quot;&lt;/arg&gt;<br>                &lt;arg&gt;&quot;hoge2&quot;&lt;/arg&gt;<br>            &lt;/initMethod&gt;
+        &lt;/component&gt;<br>    &lt;/property&gt;<br>    &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>        &lt;arg&gt;&quot;examples.di.impl&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;.*Impl&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;registAll&quot;/&gt;<br>&lt;/component&gt;</pre>
+
+<pre>&lt;component class=&quot;org.seasar.framework.container.autoregister.JarComponentAutoRegister&quot;&gt;<br>    &lt;property name=&quot;classInJar&quot;&gt;<br>        @junit.framework.TestSuite@class<br>    &lt;/property&gt;<br>    &lt;property name=&quot;jarFileNames&quot;&gt;&quot;junit.*&quot;&lt;/property&gt;<br>    &lt;initMethod name=&quot;addClassPattern&quot;&gt;<br>        &lt;arg&gt;&quot;junit.framework&quot;&lt;/arg&gt;<br>        &lt;arg&gt;&quot;TestSuite&quot;&lt;/arg&gt;<br>    &lt;/initMethod&gt;<br>    &lt;initMethod name=&quot;registAll&quot;&gt;&lt;/initMethod&gt;<br>&lt;/component&gt;
+
+</pre>
 
 <h3><a name="AspectAutoRegister">アスペクトの自動登録</a></h3>
 <p><a href="#ComponentAutoRegister">コンポーネントの自動登録</a>により、コンポーネントの登録は自動化できます。
@@ -1238,7 +1305,7 @@ public class Xxx {
 <p>backport175アノテーションは以下のようになります。</p>
 <pre>
 /**
- * @org.seasar.framework.container.annotation.Component(
+ * @org.seasar.framework.container.annotation.backport175.Component(
  *      name = "xxx",
  *      instance = "prototype",
  *      autoBinding = "property")
@@ -1257,7 +1324,7 @@ public static final String COMPONENT =
 <p><a href="#propertyTag">propertyタグ</a>のかわりに使えるが、Bindingアノテーションです。</p>
 <p>Tigerアノテーションは以下のようになります。</p>
 <pre>
-@Binding(value="aaa2")
+@Binding("aaa2")
 public void setAaa(String aaa) {
     ...
 }
@@ -1275,24 +1342,22 @@ public void setCcc(String ccc) {
 <p>backport175アノテーションは以下のようになります。</p>
 <pre>
 /**
- * @param aaa
- * @org.seasar.framework.container.annotation.Binding(value="aaa2")
+
+ * @org.seasar.framework.container.annotation.backport175.Binding("aaa2")
  */
 public void setAaa(String aaa) {
     ...
 }
     
 /**
- * @param bbb
- * @org.seasar.framework.container.annotation.Binding(bindingType="none")
+ * @org.seasar.framework.container.annotation.backport175.Binding(bindingType="none")
  */
 public void setBbb(String bbb) {
     ...
 }
     
 /**
- * @param ccc
- * @org.seasar.framework.container.annotation.Binding
+ * @org.seasar.framework.container.annotation.backport175.Binding
  */
 public void setCcc(String ccc) {
     ...
@@ -1300,7 +1365,7 @@ public void setCcc(String ccc) {
 </pre>
 <p>定数アノテーションはプロパティ名_BINDINGで指定します。</p>
 <pre>
-public static final String aaa_BINDING = "value=aaa2";
+public static final String aaa_BINDING = "aaa2";
 
 public static final String bbb_BINDING = "bindingType=none";
         
@@ -1321,23 +1386,41 @@ public void setCcc(String ccc) {
 
 <h3><a name="AspectAnnotation">Aspectアノテーション</a></h3>
 <p><a href="aop.html#aspectTag">aspectタグ</a>のかわりに使えるが、Aspectアノテーションです。aspectタグと異なり､複数定義することはできないので､
-複数のインターセプタを適用したい場合は､<a href="aop.html#InterceptorChain">InterceptorChain</a>を使ってください。</p>
+複数のインターセプタを適用したい場合は､<a href="aop.html#InterceptorChain">InterceptorChain</a>を使ってください。ポイントカットを指定したいときは､pointcut属性を指定します。クラスに対するアノテーションの場合､pointcutを指定しないときは､そのクラスが実装しているすべてのインターフェースのメソッドが対象になります。</p>
 <p>Tigerアノテーションは以下のようになります。</p>
 <pre>
-@Aspect(interceptor="aop.traceInterceptor", pointcut="getAaa")
+@Aspect("aop.traceInterceptor")
 public class Xxx {
     ...
+}
+
+public class Xxx {
+    ...
+    @Aspect("aop.traceInterceptor")
+    public void hoge() {
+        ...
+    }
 }
 </pre>
 <p>backport175アノテーションは以下のようになります。</p>
 <pre>
 /**
- * @org.seasar.framework.container.annotation.Aspect(
- *  interceptor="aop.traceInterceptor",
- *  pointcut="getAaa")
+ * @org.seasar.framework.container.annotation.backport175.Aspect(
+ *  "aop.traceInterceptor")
  */
 public class Xxx {    
     ...
+}
+
+public class Xxx {    
+    ...
+    /**
+     * @org.seasar.framework.container.annotation.backport175.Aspect(
+     *  "aop.traceInterceptor")
+     */
+    public void hoge() {
+        ...
+    }
 }
 </pre>
 <p>定数アノテーションは以下のようになります。pointcutを複数指定したい場合は､pointcut= get.*\nexecute.*のように\nで区切ってください。
