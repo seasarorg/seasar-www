@@ -13,9 +13,6 @@
    <feature url="features/org.seasar.kijimuna_0.6.26.jar" id="org.seasar.kijimuna" version="0.6.26">
       <category name="Kijimuna"/>
    </feature>
-   <feature url="features/org.seasar.kijimuna_0.7.0.jar" id="org.seasar.kijimuna" version="0.7.0">
-      <category name="Kijimuna"/>
-   </feature>
    <feature url="features/org.seasar.s2jsfplugin.feature_0.0.6.jar" id="org.seasar.s2jsfplugin.feature" version="0.0.6">
       <category name="S2JSF Plugin"/>
    </feature>
@@ -26,6 +23,9 @@
       <category name="S2JSF Plugin"/>
    </feature>
    <feature url="features/org.seasar.s2jsfplugin.feature_0.0.9.jar" id="org.seasar.s2jsfplugin.feature" version="0.0.9">
+      <category name="S2JSF Plugin"/>
+   </feature>
+   <feature url="features/org.seasar.s2jsfplugin.feature_0.0.10.jar" id="org.seasar.s2jsfplugin.feature" version="0.0.10">
       <category name="S2JSF Plugin"/>
    </feature>
    <category-def name="Kijimuna" label="Kijimuna"/>
