@@ -96,6 +96,13 @@
 	list-style: url("images/item_little.gif") disc outside;
 }
 
+.menu dd {
+	font-size: 10pt;
+	font-weight: bold;
+	margin: 14px 14px 3px 23px;
+	line-height: 200%;
+}
+
 .copyright {
 	text-align: right;
 	border-top: 1px solid #888888;
