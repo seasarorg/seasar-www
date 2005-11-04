@@ -22,6 +22,9 @@
    <feature url="features/org.seasar.s2jsfplugin.feature_0.0.10.jar" id="org.seasar.s2jsfplugin.feature" version="0.0.10">
       <category name="S2JSF Plugin"/>
    </feature>
+   <feature url="features/org.seasar.s2jsfplugin.feature_0.0.11.jar" id="org.seasar.s2jsfplugin.feature" version="0.0.11">
+      <category name="S2JSF Plugin"/>
+   </feature>
    <category-def name="Kijimuna" label="Kijimuna"/>
    <category-def name="S2JSF Plugin" label="S2JSF Plugin"/>
 </site>
