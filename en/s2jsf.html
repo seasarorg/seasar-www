@@ -37,48 +37,36 @@
 </ul>
 
 <h2><a name="Preface">Preface</a></h2>
-<p>Using JSP, you just want to check layout of the page but you need to deploy
-and start the application server. Have you ever had such experiences?
-Or have you experienced to cooperate with a designer?
-
-With S2JSF, you don't need such troubles anymore.
-The template view of S2JSF is HTML, not JSP, and it makes you free to
-such irritated things.
-
-｡</p>
+<p>Have you ever been tired of starting up an application server and deploy an application just to check some minor modification in a JSP application? Or had trouble communicating with a site designer?<br />If you had, S2JSF is for you. J2JSF allows you to write view templates in HTML so they can be more easily displayed.</p>
 <h2><a name="SetUp">Setup</a></h2>
-<p>Same as Seasar2 requirements, JDK1.4 or higher is required.
-All you need to do is just extract S2JSFVx.x.x.zip and import unzipped s2jsfdirectory 
-to Eclipse workspace(File -> import -> Existing Project into workspace)</p>
-<p>The samples of S2JSF is prepared separately, so download and extract it.
-Same as before, import unzipped file to Eclipse workspace.
-This sample makes the use of <a href="http://jakarta.apache.org/tomcat/">Tomcat5</a> and
-<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>.
-
-If you do not intall these, please install before trying these samples.</p>
-<p>Starting Tomcat, you can see S2JSF samples as accesing http://localhost:8080/s2jsf-example/ on your browser.</p>
-
+<p>S2JSF requirements are the same as Seasar2 requirements. It requires JDK1.4 or higher. Just extract downloaded S2JSFVx.x.x.zip archive file and import unzipped s2jsfdirectory to Eclipse workspace(File -> import -> Existing Project into Workspace)</p>
+<p>S2JSF sample files must be downloaded separately. The sample uses  <a href="http://jakarta.apache.org/tomcat/">Tomcat5</a> and <a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>. Download and setup these software before installing S2JSF samples.<br />
+Execute the following steps to used the samples:
+<ol>
+<li>Download and extract downloaded archive file
+<li>Import the unzipped file into Eclipse workspace.
+<li>Start Tomcat
+<li>S2JSF samples may be viewed by accesing http://localhost:8080/s2jsf-example/ from your web browser (assuming tomcat was installed on port 8080.)
+</ol>
 <h2><a name="Sample">Samples</a></h2>
 <h3><a name="hello">hello.html</a></h3>
-<p>Let's go to http://localhost:8080/s2jsf-example/hello/hello.html?message=aaa.<br>
-It must display "Hello aaa" as you see.From this sample, you can get things described below:</p>
+<p>Enter http://localhost:8080/s2jsf-example/hello/hello.html?message=Hitoshi as a URI in a web browser. "Hello Hitoshi should be displayed.<br />
+This sample show how to do the followings:</p>
 <ul>
-<li>define the namespace of S2JSF</li>
-<li>layout function</li>
-<li>how to use taglib</li>
-<li>pointing tags by inject attribute</li>
-<li>how to use title tag</li>
-<li>how to change page by page with link</li>
-<li>how to pass parameters when changing pages</li>
-<li>describe navigation-rule</li>
-<li>how to print out string using ValueBinding</li>
+<li>Declaring S2JSF namespace</li>
+<li>Layout function</li>
+<li>Using taglib</li>
+<li>Specifying tags by inject attribute</li>
+<li>Using title tag</li>
+<li>Changing pages by page with link</li>
+<li>Passing parameters between pages</li>
+<li>Writing navigation-rule</li>
+<li>Printing string using ValueBinding</li>
 </ul>
-<p>Let's take a look contents of HTML.</p>
-<pre><center><strong>fig1. hello.html</strong></center>01:&lt;html xmlns:m="http://www.seasar.org/maya" m:extends="/WEB-INF/layout/layout.html"&gt;<br>02:&lt;head&gt;<br>03:&lt;meta http-equiv="Content-Type" content="text/html; charset=Windows-31j" /&gt;<br>04:&lt;title&gt;Hello&lt;/title&gt;<br>05:&lt;/head&gt;<br>06:&lt;body&gt;<br>07:    &lt;span m:inject="f:param" m:name="layoutTitle" m:value="Hello"/&gt;<br>08:    &lt;span m:inject="s:insert" m:name="body"&gt;<br>09:        Hello &lt;span m:value="#{message}"&gt;hoge&lt;/span&gt;<br>10:    &lt;/span&gt;<br>11:&lt;/body&gt;<br>12:&lt;/html&gt;</pre>
-<p>The first line in the fig.1, xmlns:m="http://www.seasar.org/maya" specifies namespace.
-This URL(http://www.seasar.org/maya) must be fixed.The prefix, which is "m" in the sample, you can use anything you want to use, 
-"m" is used in the custom.</p>
-<p>The next attribute, m:extends, points out extending layout.
+<p>Let's look at the HTML:</p>
+<pre><strong>fig1. hello.html</strong><br />01:&lt;html xmlns:m="http://www.seasar.org/maya" m:extends="/WEB-INF/layout/layout.html"&gt;<br>02:&lt;head&gt;<br>03:&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;<br>04:&lt;title&gt;Hello&lt;/title&gt;<br>05:&lt;/head&gt;<br>06:&lt;body&gt;<br>07:    &lt;span m:inject="f:param" m:name="layoutTitle" m:value="Hello"/&gt;<br>08:    &lt;span m:inject="s:insert" m:name="body"&gt;<br>09:        Hello &lt;span m:value="#{message}"&gt;hoge&lt;/span&gt;<br>10:    &lt;/span&gt;<br>11:&lt;/body&gt;<br>12:&lt;/html&gt;</pre>
+<p>The first line, xmlns:m="http://www.seasar.org/maya", is the S2JSF namespace declaration. It is used to associate namespace URI, http://www.seasar.org/maya, to a prefix character. Character "m" is usually used as this character, but it may be any arbitrary character string consistent with the XML namespace specification.</p>
+<p>m:extends attribute specifies the layout to inherit.
 To provide consistent look &amp; feel, the layout of pages are constructed by header, menu, body, and footer.
 This is very usual need.For corresponding such needs, S2JSF provides function that defining layout of the page in
 the based page, and in the each individual pages extends the base page and overwrites specific parts of its page.
@@ -203,13 +191,11 @@ So, where addAction at line14 is defined?
 addAction defines at add.dicon as follows.</p>
 <pre><strong><center>fig10.add.dicon(partial)</center></strong>&lt;component name="addAction" class="examples.jsf.action.impl.AddActionImpl" instance="request"/&gt;
 </pre>
-<p>Actionクラスは、入力された内容をプロパティ経由で受け取ることになるので、instance属性をrequestにします。それでは、
-AddActionインターフェース、AddActionImplクラスを見てみましょう｡インターフェースと実装を必ず分離しなければならないというこ
-とはないのですが、このように分離したほうが、仕様が明確に伝わり易いと思います｡</p>
+<p>Action class received entered value through property so the instance is set to <span class="enter">request</span>.<br />
+It is not neccessary separate an interface with an implementation, but it offers a clearer specification.</p>
 <pre>package examples.jsf.action;
 
 public interface AddAction {
-
     public String calculate();
 }
 </pre>
@@ -239,8 +225,10 @@ public class AddActionImpl implements AddAction {
     }
 }
 </pre>
-<p>入力された値を受け取るために、addDtoというプロパティのsetterメソッドを定義しています｡S2JSFは、MethodBinding
-で指定したメソッドを呼び出す直前にsetterメソッドの定義されているプロパティがないか調べ、もしある場合は、プロパティ名と同様の変数が、リクエ
+<p>To receive entered value, setter method is defined to addDto property.<br />
+S2JSF 
+right before calling on method specified in MethodBinding.
+S2JSFは、MethodBindingで指定したメソッドを呼び出す直前にsetterメソッドの定義されているプロパティがないか調べ、もしある場合は、プロパティ名と同様の変数が、リクエ
 ストの属性、パラメータ、セッションの属性、S2Containerに存在するか調べ、もし存在する場合には、自動的にsetterメソッドを呼び出し、
 その変数を設定します｡</p>
 <p>addLogicという変数は、どこにも定義されていないのですが、プロパティの型がインターフェースの場合、S2Containerによって、そ
@@ -360,9 +348,9 @@ String プロパティ名_EXPORT =
 <td width="744"><img src="images/spacer.gif" alt="" height="30" width="744"></td>
 <td width="18"><img src="images/spacer.gif" alt="" height="16" width="18"></td></tr><tr>
 <td width="18"><img src="images/spacer.gif" alt="" height="14" width="18"></td>
-<td class="copyright" width="744">&#169; Copyright The Seasar Foundation and the others 2004, all rights reserved.</td>
-<td width="18"><img src="images/spacer.gif" alt="" height="16" width="18"></td>
-</tr></tbody></table>
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=736><TR><TD align="left">Edited and partially translated by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and 
+            the others. All rights reserved.</TD></TR></TABLE></TD>
+</tr></table>
 </td><td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
 <td class="backunder" align="left" height="14" valign="top" width="780">&nbsp;</td>
 <td class="backcorner" align="left" height="14" valign="top">&nbsp;</td>

@@ -77,6 +77,10 @@
 	font-weight: bold;
 }
 
+.main span.enter {
+	background: #CCDDEE;
+}
+
 .menu {
 	font-style: normal;
 	background-color: #ffffff;
