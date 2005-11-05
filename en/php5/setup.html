@@ -38,24 +38,38 @@
           <TD width=18><IMG height=14 alt="" src="../images/spacer.gif" 
             width=18></TD>
           <TD class=main width=744><!-- don't edit end --><!-- document start -->
-            <H1>S2Dao.PHP5</H1>
-            <H2>News</H2>
-            <P><STRONG>Will release beta1 soon.</STRONG></P>
-            <H2>Introduction</H2>
-            <P>Ported S2Dao to PHP5</P>
-            <H3>Documentation</H3>
-            <P>Still in development</P>
-            <H2>Miscellaneous</H2>
-            <UL>
-              <LI>Development Environment
-              <UL>
-                <LI>OS: Linux(SUSE 10.0) 
-                <LI>PHP: PHP-5.1RC1 (tarball) </LI></UL>
-              <LI>Tested Environments: 
-              <UL>
-                <LI>Windows XP(sp2) PHP-5.0.5 (Win32 binary), PHP-5.1RC1 
-                (Win32 binary) 
-                <LI>SUSE 9.3 PHP-5.0.3(rpm) </LI></UL></LI></UL><!-- document end --><!-- don't edit start --></TD>
+            <H3>Setup</H3>
+            <P>Extract files from s2container.php5.version.zip. Following folders will be created:</P><PRE>s2container.php5/
+  +-- docs/                ----- Document folder
+  +-- src/                 ----- Source code folder
+  +-- test/                ----- Test folder
+  +-- SEASAR-LICENSE.TXT   ----- Seasar license
+  +-- s2container.inc.php  ----- S2Container.PHP5 configuration file
+</PRE>
+            <P>Open the s2container.inc.php file to enable S2Container.PHP5.</P><PRE>&lt;?php
+require_once('/path/to/s2container.php5/s2container.inc.php');
+?&gt;
+</PRE><BR>
+            <H3>About Class Definition AutoLoad</H3>
+            <P>S2Container.PHP5 uses __autoload function to read class definition files.<BR>__autoload function is defined in the s2container.inc.php file.</P><PRE>&lt;?php
+...
+function __autoload($class=null){
+    if(S2ContainerClassLoader::load($class)){return;}
+}
+...
+?&gt;
+</PRE>If __autoload function is already defined by another program, comment out __autoload function in the s2container.inc.php file as follows:<PRE>&lt;?php
+...
+/*
+function __autoload($class=null){
+    if(S2ContainerClassLoader::load($class)){return;}
+}
+*/
+...
+?&gt;
+</PRE>After commenting out the __autoload functin, insert the following 1 for before the __autoload function defined by another program.
+<PRE>if(S2ContainerClassLoader::load($class)){return;}
+</PRE>*** Note: Before __autoload function is loaded, do items in the "required" in the s2container.inc.php file.<BR>*** Note: pass an argument in __autoload function to argument ($class) in S2ContainerClassLoader::load method.<!-- document end --><!-- don't edit start --></TD>
           <TD width=14><IMG height=14 alt="" src="../images/spacer.gif" 
             width=14></TD></TR>
         <TR>
