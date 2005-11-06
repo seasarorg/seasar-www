@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- don't edit start -->
 <head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -24,14 +24,56 @@
 <tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
 <!-- don't edit end -->
 <!-- document start -->
-<p>S2Hibernateを使うと、S2のJTAやConnectionPoolと<a href="http://www.hibernate.org/">Hibernate</a>が簡単に連動するようになります。これまでHibernateで開発するときの悩みの種だったSession管理をS2Hibernateが自動的に行ってくれるので、開発者はSessionのオープン・クローズ、Transaction処理から開放されます。SessionはJTAのトランザクション中は維持され、トランザクションの終了時に自動的にクローズ(flushも)されます。</p>
-<h2><a name="Setup">セットアップ</a></h2>
-<p>S2と同様にJDK1.4以上が必要です。S2HibernateVx.x.x.jarを解凍してできたs2hibernateディレクトリをEclipseのJavaプロジェクトとして丸ごとインポートしてください。.classpathを上書きするか聞かれるので、すべてはいのボタンをクリックして、すべてを取り込みます。 これで、私と全く同じ環境になります。src/examples配下にサンプルもあります。</p>
-<p> S2Hibernateとして必要なjarファイルは、s2hibernate/libにそろってます。Hibernateはコネクションプールやキャッシュの実装をいろいろ選べるようになっているので、S2Hibernateで用意していない実装が必要な場合は、<a href="http://www.hibernate.org/">Hibernateのサイト</a>よりダウンロードしてください。簡単に機能を試すことができるように、RDBMSとしてHSQLDBを用意しています。機能を試す前にあらかじめHSQLDBを実行しておいてください。HSQLDBを実行するには、bin/runHsqldb.batをダブルクリック(Windowsの場合)します。lib/hsqldb.jarはHSQLDBを実行する上では必要ですが、本番では必要ありません。libのjarファイル(hsqldb.jar以外)とsrcのhibernate.cfg.xml、ehcache.xml、j2ee.dicon、log4j.propertiesをCLASSPATHにとおせば、S2Hibernateを実行できます。Eclipseにインポートして使う場合は設定は不要です。</p>
 
-<h2><a name="Usage">使い方</a></h2>
-<p>Hibernateを使いたいクラスは、S2SessionFactory型のフィールドを定義してコンストラクタあるいはプロパティ経由で実装クラス(S2SessionFactoryImpl)を受け取ります。あとは、S2SessionFactory.getSession()を呼び出してHibernateの機能を自由に使うことができます。Sessionのオープン・クローズ、トランザクション制御は一切必要ありません。S2SessionFactory.getSession()が返すオブジェクトは、HibernateのSessionのラッパーであるS2Sessionです。実行できるメソッドはHibernateのSessionと同じで、検査例外(HibernateException)を実行時例外(HibernateRuntimeException)に変換してくれます。そのため、HibernateExceptionをcatchしたくないクラスは特に何もする必要はありません。catchする必要がある場合は、HibernateRuntimeExceptionでcatchしてgetCause()でHibernateExceptionを取り出します。</p>
-<h3><a name="Example">Example</a></h3>
+<ul>
+<li><a href="#Introduction">Introduction</a></li>
+<li><a href="#Requirements">Requirements</a></li>
+<li><a href="#Setup">Setup</a></li>
+<li><a href="#Usage">Usage</a></li>
+<li><a href="#Examples">Examples</a></li>
+<ul>
+<li><a href="#Employee">Employee</a></li>
+</ul>
+</ul>
+<a name="Introduction">
+<p>S2Hibernate makes it easier to use JTA and ConnectionPool supported by Seasar2 with <a href="http://www.hibernate.org/">Hibernate</a>. S2Hibernate will automatically manage Session so developers will not have to explicitly open and close Session and explicitly manage transactions. Sessions are maintained through JTA transaction and flushed and closed when the transaction ends.</p>
+<h2><a name="Requirements">Requirements</h2>
+S2Hibernate requires the following software:
+<ul>
+<li><a href="http://java.sun.com/downloads/">JDK1.4</a> or later
+<li><a href="http://s2container.seasar.org/en/index.html#download">S2Container</a>
+<li><a href="http://www.seasar.org/en/products.html#s2hibernate">S2Hibernate</a>
+<li><a href="http://www.hibernate.org/">Hibernate</a> (minimum required files are contained in S2Hibernate distribution)
+</ul>
+<h2><a name="Setup">Setup</a></h2>
+Follows the steps below to setup S2Hibernate to use on Eclipse:
+<ol>
+<li>Extract files from the S2HibernateVx.x.x.jar distribution archive file.
+<li>Open an Eclipse workspace and import the extracted files as a Java project. Answer "yes" to all prompts asking whether you want to overwrite the .classpath. Sample files are included in the src/examples folder.
+</ol>
+</p>
+<p>All jar files necessary to use S2Hibernate are in s2hibernate/lib folder.
+Hibernate offers many implementations of connection pool and cache which may not be include in S2Hibernate. To use Hibernate features not included with S2Hibernate, download necessary software separately from the <a href="http://www.hibernate.org/">Hibernate site</a>.<br />
+<a href="http://www.hsqldb.org/">HSQLDB</a> RDBMS is included with S2Hiberate to allow developers to easily test database applications. To use HSQLDB, it is necessary to start the database. The database may be started by double clicking the runHsqldb.bat script file in the bin folder.<br />
+hsqldb.jar in lib folder is only necessary when using HSQLDB. If the production application does not use HSQLDB, hsqldb.jar is not required on the production server.<br />
+It is not necessary to set CLASSPATH to use S2Hibernate from Eclipse, but it is convenient to set the CLASSPATH of the following files to run S2Hibernate application from the command line.
+<ul>
+<li>files with jar extension in the lib file (hsqldb.jar is not necessary if HSQLDB is not used
+<li>following files in src folder:
+<ul>
+<li>hibernate.cfg.xml
+<li>ehcache.xml
+<li>j2ee.dicon
+<li>log4j.properties
+</ul>
+</ul>
+
+<h2><a name="Usage">Usage</a></h2>
+<p>A class that needs to use Hibernate needs to define S2SessionFactory type field and retrieve implementation class (S2SessionFactoryImpl) through constructor or through deployment. Then, Hibernate functions may be used by calling S2SessionFactory.getSession() method and obtaining a S2Session object, which is a wrapper to Hibernate Session object. Methods supported by Hibernate Session object may be called through this S2Session.<br />
+S2Session converts HibernateException into HibernateRuntimeException so a class that does not need to catch HibernateException does not require a catch clause.
+It is not necessary to explicitly open and close session and to control transactions. To catch error exception, catch HibernateRuntimeException and call the getCause() method to get HibernateException.</p>
+<h3><a name="Examples">Example</a></h3>
+<a name="Employee" />
 <h3>Employee.java</h3>
 <pre>
 package examples.hibernate.entity;
@@ -39,25 +81,17 @@ package examples.hibernate.entity;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
-
     private long empno;
-
     private String ename;
-
     private String job;
-
     private Short mgr;
-
     private java.util.Date hiredate;
-
     private Float sal;
-
     private Float comm;
-
     private short deptno;
 
-    public Employee(long empno, java.lang.String ename, java.lang.String job, Short mgr,
-	  java.util.Date hiredate, Float sal, Float comm, short deptno) {
+    public Employee(long empno, java.lang.String ename, java.lang.String job,
+      Short mgr, java.util.Date hiredate, Float sal, Float comm, short deptno) {
         this.empno = empno;
         this.ename = ename;
         this.job = job;
@@ -67,84 +101,64 @@ public class Employee implements Serializable {
         this.comm = comm;
         this.deptno = deptno;
     }
-
     public Employee() {
     }
-
     public Employee(long empno) {
         this.empno = empno;
     }
-
     public long getEmpno() {
         return this.empno;
     }
-
     public void setEmpno(long empno) {
         this.empno = empno;
     }
-
     public java.lang.String getEname() {
         return this.ename;
     }
-
     public void setEname(java.lang.String ename) {
         this.ename = ename;
     }
-
     public java.lang.String getJob() {
         return this.job;
     }
-
     public void setJob(java.lang.String job) {
         this.job = job;
     }
-
     public Short getMgr() {
         return this.mgr;
     }
-
     public void setMgr(Short mgr) {
         this.mgr = mgr;
     }
-
     public java.util.Date getHiredate() {
         return this.hiredate;
     }
-
     public void setHiredate(java.util.Date hiredate) {
         this.hiredate = hiredate;
     }
-
     public Float getSal() {
         return this.sal;
     }
-
     public void setSal(Float sal) {
         this.sal = sal;
     }
-
     public Float getComm() {
         return this.comm;
     }
-
     public void setComm(Float comm) {
         this.comm = comm;
     }
-
     public short getDeptno() {
         return this.deptno;
     }
-
     public void setDeptno(short deptno) {
         this.deptno = deptno;
     }
-
     public boolean equals(Object other) {
         if ( !(other instanceof Employee) ) return false;
         Employee castOther = (Employee) other;
         return this.getEmpno() == castOther.getEmpno();
     }
-
     public int hashCode() {
         return (int) this.getEmpno();
     }
@@ -165,11 +179,8 @@ public interface EmployeeDao {
 package examples.hibernate.dao;
 
 import java.util.List;
-
 import net.sf.hibernate.Hibernate;
-
 import org.seasar.hibernate.S2SessionFactory;
-
 import examples.hibernate.entity.Employee;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -229,7 +240,6 @@ package examples.hibernate.client;
 
 import org.seasar.framework.container.S2Container;
 import org.seasar.framework.container.factory.S2ContainerFactory;
-
 import examples.hibernate.service.EmployeeService;
 
 public class EmployeeClient {
@@ -250,12 +260,15 @@ public class EmployeeClient {
 
     }
 }</pre>
-<h3>実行結果</h3>
-<pre>DEBUG 2004-04-07 18:53:52,511 [main] トランザクションを開始しました<br />2004/04/07 18:53:52 net.sf.hibernate.cfg.Environment &lt;clinit&gt;<br />情報: Hibernate 2.1.2<br />省略
-DEBUG 2004-04-07 18:53:54,654 [main] 物理的なコネクションを取得しました<br />DEBUG 2004-04-07 18:53:54,744 [main] 論理的なコネクションを取得しました<br />Hibernate: select employee0_.EMPNO as EMPNO, employee0_.ENAME as ENAME, employee0_.JOB as JOB,
-  employee0_.MGR as MGR, employee0_.HIREDATE as HIREDATE, employee0_.SAL as SAL,
-  employee0_.COMM as COMM, employee0_.DEPTNO as DEPTNO from EMP employee0_ where (empno=? )<br />DEBUG 2004-04-07 18:53:55,605 [main] 論理的なコネクションを閉じました<br />DEBUG 2004-04-07 18:53:55,625 [main] トランザクションをコミットしました<br />SCOTT<br />DEBUG 2004-04-07 18:53:55,625 [main] 物理的なコネクションを閉じました</pre> 
-S2Hibernateを使えば、Hibernateのおいしいところだけを簡単に利用できるということが分かっていただけたと思います。
+<h3>Result</h3>
+<pre>DEBUG 2004-04-07 18:53:52,511 [main] transaction started<br />2004/04/07 18:53:52 net.sf.hibernate.cfg.Environment &lt;clinit&gt;<br />INFO: Hibernate 2.1.2<br />...
+DEBUG 2004-04-07 18:53:54,654 [main] Physical connection opened<br />DEBUG 2004-04-07 18:53:54,744 [main] Logical connection opened
+Hibernate: select employee0_.EMPNO as EMPNO, employee0_.ENAME as ENAME,
+  employee0_.JOB as JOB, employee0_.MGR as MGR, employee0_.HIREDATE as HIREDATE,
+  employee0_.SAL as SAL, employee0_.COMM as COMM,
+  employee0_.DEPTNO as DEPTNO from EMP employee0_ where (empno=? )
+DEBUG 2004-04-07 18:53:55,605 [main] logical connection closed<br />DEBUG 2004-04-07 18:53:55,625 [main] Transaction committed<br />SCOTT<br />DEBUG 2004-04-07 18:53:55,625 [main] Physical connection closed</pre>
+
 <!-- document end -->
 <!-- don't edit start -->
 </td>
