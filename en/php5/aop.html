@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+�ｻｿ<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- don't edit start -->
-<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link href="../seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
 </head>
@@ -52,7 +52,7 @@
                   <LI><A href="#DelegateInterceptor">DelegateInterceptor</A> 
                   <LI><A href="#PrototypeDelegateInterceptor">PrototypeDelegateInterceptor</A> 
                   <LI><A href="#InterceptorChain">InterceptorChain</A> 
-                  <LI><A href="#OriginalInterceptor">Custom Interceptor</A> 
+                  <LI><A href="#OriginalInterceptor">Custom Implementation of Interceptor</A> 
                   </LI></UL>
                 <LI><A href="#nodicon">Using Aspect without a dicon file</A> 
                 </LI></UL>
@@ -62,7 +62,7 @@
                 <LI><A href="#ThrowsInterceptorSample">ThrowsInterceptor</A> 
                 <LI><A href="#DelegateInterceptorSample">DelegateInterceptor</A> 
                 <LI><A href="#PrototypeDelegateInterceptorSample">PrototypeDelegateInterceptor</A> 
-                <LI><A href="#OriginalInterceptorSample">Custom Interceptor</A> 
+                <LI><A href="#OriginalInterceptorSample">Custom Implementation of Interceptor</A> 
                 </LI></UL></LI></UL><BR>
             <H3><A name=Warning>Warnings</A></H3>
             <UL>
@@ -72,21 +72,16 @@
               </LI></UL>
             <H2><A name=S2AOPReference>S2AOP Reference</A></H2>
             <H3><A name=AOPMakeFile>Required Files</A></H3>
-            <P>S2AOP を使用するにはS2Container 
-            の設定ファイル(diconファイル)で行います。設定ファイルの配置場所は、とくに指定がありませんが、通常「Crosscutting 
-            Concern」と同じ場所に配置するか、設定を行うコンポーネントと同じ場所に配置します。</P>
+            <P>S2AOP is defined in S2Container configuration file (dicon file). There is no restriction on placement of the configuration file, but it is usually placed in the same folder as the Crosscutting Concern or in the same folder as the component it configures.</P>
             <H3><A name=AOPExplanationFile>Configuration File</A></H3>
-            <H4><A name=aspecTtag>aspectタグ（AOPを使用する場合は必須）</A></H4>
-            <P>アスペクトをコンポーネントに組み込みます。Interceptorの指定は、ボディでPHP式を使うか、子タグでcomponentタグを使います。<BR>1つのコンポーネントに複数のアスペクトを組み込んだ場合はアスペクトの登録順に組み込まれ実行されます。詳しい説明は<A 
-            href="#OriginalInterceptor">独自実装のInterceptor</A>を参照してください。</P>
-            <H5>注意点</H5>
-            <P>aspectタグで指定されたコンポーネントは、コンテナの初期化時にコンテナから取得されます。そのため、aspectタグで指定されたコンポーネントのinstance属性がprototypeだったとしても、Interceptor 
-            のメソッドが呼び出される度に新しいインスタンスが作成されるわけではありません。</P>
-            <H5>pointcut属性(任意)</H5>
-            <P>カンマ区切りで対象となるメソッド名を指定することができます。pointcutを指定しない場合は、コンポーネントが実装しているインターフェースのすべてのメソッドが対象になります。メソッド名には正規表現も使えます。</P>
-            <H5>設定例</H5>
-            <P>pointcut 属性を指定してDateのgetTime()メソッドを対象とする場合以下のようになります。 
-            pointcut属性を指定しない場合はDateが実装しているインターフェースのメソッドが対象になります。</P><PRE>&lt;?php
+            <H4><A name=aspecTtag>aspect tag (required when using AOP)</A></H4>
+            <P>Weave an aspect into a component. Interceptor is specified in a PHP statement in a BODY or in a component tag in a child tag.<BR>If several aspects are weaved into a component, the are processes in the order they are declared. Refer to <A href="#OriginalInterceptor">Custom implementation of Interceptor</A> for further details.</P>
+            <H5>Warning:</H5>
+            <P>Components specified by the aspect tag are gotten from the contrainer when the container is initialized. Therefore, even if the instance attribute of a component specified by the aspect tag is set to "prototype", new instance will NOT be created on each invocation of a method in an Interceptor.</P>
+            <H5>pointcut attribute (optional)</H5>
+            <P>Several method names may be specified by delimiting the names with a comma. Not specifying any pointcut implies all methods in an interface implemented by a component. Regular expression may be used to specify method names.</P>
+            <H5>Example</H5>
+            <P>Following is a example of a definition to apply aspect to getTime() method in Date by specifying pointcut attribute. If pointcut attribute is not specified, aspect will be applied to all methods in the interface implemented by Date.</P><PRE>&lt;?php
 class Date {
     function Date() {}
     
@@ -99,69 +94,54 @@ class Date {
     }
 }
 ?&gt;
-</PRE>正規表現を使ってjava.util.Dateのpublicなメソッドすべてを対象としたい場合は、以下のように設定します。 <PRE>&lt;component class="Date"&gt;
+</PRE>Following is an example using a regular expression to apply aspect to all public methods in java.util.Date. Note that this example applies to ALL public methods regardless of whether they are implemented by the class or not.
+<PRE>&lt;component class="Date"&gt;
     &lt;aspect pointcut=".*"&gt;
         &lt;component class="TraceInterceptor"/&gt;
     &lt;/aspect&gt;
 &lt;/component&gt;
 </PRE>
-            <H3><A name=AOPInterceptor>S2AOPで用意されているInterceptor</A></H3>
-            <P>S2AOPでは、以下のInterceptorを用意しています。また独自のInterceptorを簡単に作成できるようになっています。</P>
+            <H3><A name=AOPInterceptor>Available S2AOP Interceptor</A></H3>
+            <P>Following are Interceptors made available by S2AOP. Custom Interceptors may also be created.</P>
             <H4><A name=TraceInterceptor>(1) TraceInterceptor</A></H4>
-            <H5>クラス名</H5>
+            <H5>Class name</H5>
             <P>TraceInterceptor</P>
-            <H5>説明</H5>
-            <P>トレース処理を「Crosscutting 
-            Concern」として扱うためのInterceptorです。DateクラスにTraceInterceptorを適用したdiconファイルは、以下のようになります。対象とするメソッドはgetTime()とします。</P><PRE>&lt;component class="Date"&gt;
+            <H5>Description</H5>
+            <P>Interceptor to process trace as a "Crosscutting Concern". Following is an example of a dicon file that applies TraceInterceptor to the Date class. getTime() method will be applied in this example.</P><PRE>&lt;component class="Date"&gt;
     &lt;aspect pointcut="getTime"&gt;
         &lt;component class="TraceInterceptor"/&gt;
     &lt;/aspect&gt;
 &lt;/component&gt;
 </PRE>
-            <P>詳しい使用方法は<A 
-            href="#TraceInterceptorSample">TraceInterceptor</A>を参照してください。</P>
+            <P>Refer to <A href="#TraceInterceptorSample">TraceInterceptor</A> for detailed information.</P>
             <H4><A name=ThrowsInterceptor>(2) ThrowsInterceptor</A></H4>
-            <H5>クラス名</H5>
+            <H5>Class name</H5>
             <P>ThrowsInterceptor</P>
-            <H5>説明</H5>
-            <P>例外処理を「Crosscutting 
-            concern」として扱うためのInterceptorです。使用するにはThrowsInterceptorを継承し、function 
-            handleThrowable(Exception, MethodInvocation)を実装するだけです。詳しい使用方法は<A 
-            href="#ThrowsInterceptorSample">ThrowsInterceptor</A>を参照してください。</P>
+            <H5>Description</H5>
+            <P>Interceptor to process Exception as a "Crosscutting Concern". To use this Interceptor, just extend ThrowsInterceptor class and implement function handleThrowable(Exception, MethodInvocation) method. Refer to <A  href="#ThrowsInterceptorSample">ThrowsInterceptor</A> for detailed information.</P>
             <H4><A name=MockInterceptor>(3) MockInterceptor</A></H4>
-            <H5>クラス名</H5>
+            <H5>Class name</H5>
             <P>MockInterceptor</P>
-            <H5>説明</H5>
-            <P>Mockを使ったテストを簡単に行うためのInterceptorです。詳しい説明はテスト技法の<A 
-            href="http://homepage3.nifty.com/seasar/testtech.html#MockMake">モックを作成するための設定</A>を参照してください。</P>
+            <H5>Description</H5>
+            <P>Interceptor to make tests using Mock easier. Refer to <A href="http://s2container.seasar.org/en/testtech.html#MockMake"></A> for further details.</P>
             <H4><A name=DelegateInterceptor>(4) DelegateInterceptor</A></H4>
-            <H5>クラス名</H5>
+            <H5>Class name</H5>
             <P>DelegateInterceptor</P>
-            <H5>説明</H5>
-            <P>メソッド呼び出しを別のコンポーネントに委譲するためのInterceptorです。使用方法はDelegateInterceptorのtargetプロパティに委譲したい相手を指定します。委譲するときのメソッド名が異なる場合には、 
-            DeleateInterceptor#addMethodNameMap( $methodName, 
-            $targetMethodName)で指定します。例えば、bar()というメソッドをfoo-&gt;bar2()に委譲する場合、 
-            DeleateInterceptor#setTarget(foo)，DeleateInterceptor#addMethodNameMap 
-            ("bar", "bar2")のように指定します。詳しい使用方法は<A 
-            href="#DelegateInterceptorSample">DelegateInterceptor</A>を参照してください。</P>
-            <H5>注意</H5>
-            <P>targetプロパティに指定されたコンポーネントは、コンテナの初期化時にコンテナから取得されます。このため、targetプロパティに指定されたコンポーネントのinstance属性がprototypeであっても、常に同じインスタンスが使われます。メソッド呼び出しの度に新しいインスタンスをコンテナから取得したい場合は次のPrototypeDelegateInterceptorを使用してください。</P>
+            <H5>Description</H5>
+            <P>Interceptor to delegate method invocation to another component. To use, specify a component to delegate in a target property in DelegateInterceptor. To use a different method name in delegation, specify DeleateInterceptor#addMethodNameMap( $methodName, $targetMethodName). For example, to delegate method bar() to foo-&gt;bar2(), specify DeleateInterceptor#setTarget(foo)�ｼ轡eleateInterceptor#addMethodNameMap("bar", "bar2"). Refer to <A href="#DelegateInterceptorSample">DelegateInterceptor</A> for detailed information.</P>
+            <H5>Warning:</H5>
+            <P>Component specified by target property is gotten during container initialization. Therefore, the same instance will be used even when the instance property is set to "prototype". To get a new instance from a container on every method invocation, use <A href="#PrototypeDelegateInterceptor">PrototypeDelegateInterceptor</A>.</P>
             <H4><A name=PrototypeDelegateInterceptor>(5) 
             PrototypeDelegateInterceptor</A></H4>
-            <H5>クラス名</H5>
+            <H5>Class name</H5>
             <P>PrototypeDelegateInterceptor</P>
-            <H5>説明</H5>
-            <P>メソッド呼び出しを別のコンポーネントに委譲するためのInterceptorです。メソッド呼び出しの度にコンポーネントをコンテナから取得します。使用方法はPrototypeDelegateInterceptorのtargetNameプロパティに委譲したい相手の名前を指定します。委譲するときのメソッド名が異なる場合には、PrototypeDeleateInterceptor#addMethodNameMap($methodName, 
-            $targetMethodName)で指定します。例えば、bar()というメソッドをfoo-&gt;bar2()に委譲する場合、 
-            PrototypeDeleateInterceptor#setTarget(foo)， 
-            PrototypeDeleateInterceptor#addMethodNameMap("bar", 
-            "bar2")のように指定します。詳しい使用方法は<A 
-            href="#PrototypeDelegateInterceptorSample">PrototypeDelegateInterceptor</A>を参照してください。</P>
+            <H5>Description</H5>
+            <P>Interceptor to delegate method invocation to another component. Get component on every method invocation. To use, specify a component to delegate in a target property in PrototypeDelegateInterceptor. To use a different method name in delegation, specify PrototypeDeleateInterceptor#addMethodNameMap($methodName, $targetMethodName). For example, to delegate method bar() to foo-&gt;bar2(), specify PrototypeDeleateInterceptor#setTarget(foo)�ｼ� PrototypeDeleateInterceptor#addMethodNameMap("bar", "bar2"). Refer to <A href="#PrototypeDelegateInterceptorSample">PrototypeDelegateInterceptor</A> for detailed information.</P>
             <H4><A name=InterceptorChain>(6) InterceptorChain</A></H4>
-            <H5>クラス名</H5>
+            <H5>Class name</H5>
             <P>InterceptorChain</P>
-            <H5>説明</H5>
-            <P>複数のInterceptorをグルーピング化し、再利用しやすくします。複数のInterceptorの組み合わせを複数コンポーネントに適用する場合は、InterceptorChainで複数のInterceptor1つにまとめて、各コンポーネントにはInterceptorChainを指定するようにするといいでしょう。</P><PRE>&lt;component name="interceptor1" .../&gt;
+            <H5>Description</H5>
+            <P>Group several Interceptors to make it easier to manage and reuse. If several Interceptors are often used in several components, Interceptors may be bundled into Interceptor1 by using InterceptorChain. Each component can then specify InterceptorChain instead of several Interceptors.</P><PRE>&lt;component name="interceptor1" .../&gt;
 &lt;component name="interceptor2" .../&gt;
 &lt;component name="interceptor3" .../&gt;<BR>&lt;component name="chain" class="InterceptorChain"&gt;<BR>    &lt;initMethod name="add"&gt;&lt;arg&gt;interceptor1&lt;/arg&gt;&lt;/initMethod&gt;<BR>    &lt;initMethod name="add"&gt;&lt;arg&gt;interceptor2&lt;/arg&gt;&lt;/initMethod&gt;<BR>    &lt;initMethod name="add"&gt;&lt;arg&gt;interceptor3&lt;/arg&gt;&lt;/initMethod&gt;<BR>&lt;/component&gt;
 &lt;component ...&gt;
@@ -170,60 +150,52 @@ class Date {
 &lt;component ...&gt;
     &lt;aspect&gt;chain&lt;/aspect&gt;
 &lt;/component&gt;</PRE>
-            <H4><A name=OriginalInterceptor>(7) 独自実装によるInterceptor</A></H4>
-            <H5>説明</H5>
-            <P>独自にInterceptorを作成する場合は、次のインターフェースまたは、抽象クラスを実装します。</P>
+            <H4><A name=OriginalInterceptor>(7) Custom implementation of Interceptor</A></H4>
+            <H5>Description</H5>
+            <P>To create an custom Interceptor, implement following interface or abstract class.</P>
             <DL>
               <DT style="TEXT-INDENT: 1em">MethodInterceptor 
               <DT style="TEXT-INDENT: 1em">AbstractInterceptor </DT></DL>
-            <P>どちらの場合も実装するメソッドは、以下のinvoke()メソッドの１つだけです。</P>
+            <P>In either cases, only method invoke() is required.</P>
             <DL>
               <DT style="TEXT-INDENT: 1em">public function 
               invoke(MethodInvocation $methodInvocation) </DT></DL>
-            <P>AbstractInterceptor 
-            は、MethodInterceptorをimplementsした抽象クラスです。AbstractInterceptorには、Proxyオブジェクトを取得するcreateProxy()メソッドとアスペクトを適用するクラスを取得するgetTargetClass()メソッドがあります。アスペクトを適用したクラス名を必要とするInterceptor(例えば、ログ出力を行うInterceptor)を作成する場合は、 
-            AbstractInterceptorを使用することで簡単にクラス名を取得することができます。</P>
+            <P>AbstractInterceptor is an abstract class that implements MethodInterceptor. AbstractInterceptor has createProxy() method, which gets Proxy object, and getTargetClass() method, which gets class to apply aspect. To create an Interceptor that requires a class name with aspect applied (e.g. Interceptor to log output), class name may be obtained by using AbstractInterceptor.</P>
             <DL>
               <DT style="TEXT-INDENT: 1em">public function 
               createProxy($proxyClass) 
               <DT style="TEXT-INDENT: 1em">protected function 
               getTargetClass(MethodInvocation $methodInvocation) </DT></DL>
-            <P>MethodInvocation 
-            のgetThis()、getMethod()、getArguments()で対象となるオブジェクト、メソッド、引数を取得できます。proceed()を呼び出すと実際のメソッドが呼び出され実行結果を取得することができます。以下のような独自のInterceptorを作成したとします。</P>
-            <H5>作成例</H5><PRE>&lt;?php
+            <P>Get object, method, arguments that is the target of getThis(), getMethod(), getArguments() in MethodInvocation. When proceed() is invoked, the actual method is invoked and execution result is returned. Following is an example of custom Interceptor:</P>
+            <H5>Example</H5><PRE>&lt;?php
 class ABS implements MethodInterceptor {
     public function invoke(MethodInvocation $invocation){
 
-        print "Before \n";             &lt;-- 呼ぶ前は Before
+        print "Before \n";             &lt;-- Before invocation
 
         $ret = $invocation-&gt;proceed();
 
-        print "After \n";              &lt;-- 呼んだ後は After
+        print "After \n";              &lt;-- After invocation
 
         return $ret;
     }
 }
 ?&gt;
 </PRE>
-            <P>MethodInvocation#proceed()を呼ぶ前と後で2分され、呼ぶ前は 
-            Beforeの個所を実行し、呼んだ後はAfterの個所を実行します。1つのコンポーネントに複数のアスペクトが定義されている場合は、以下のよう実行されます。</P>
+            <P>In this example, "Before" is outputted before MethodInvocation#proceed() is invoked and "After" is outputted after the invocation. When several aspects are defined to one component, aspects are invoked as follows:</P>
             <OL>
-              <LI>Aspectの登録順にMethodInterceptorのbefore部分が実行されます。 
-              <LI>最後のMethodInterceptorのbefore部分を実行した後にコンポーネント自身のメソッドが呼び出されます。 
-              <LI>Aspectの登録の逆順にMethodInterceptorのafter部分が実行されます。 </LI></OL>
-            <P>詳しい使用方法は<A 
-            href="#OriginalInterceptorSample">独自実装によるInterceptor</A>を参照してください。</P>
-            <H3><A name=nodicon>diconファイルを使用しないでアスペクトを組み込む方法</A></H3>
-            <P>diconファイルの設定を行わずプログラム上でアスペクトを組み込むこともできます。作成方法は次のようになります。</P>
+              <LI>Aspects before MethodInterceptor are invoked in order as they are defined in the dicon file.
+              <LI>Component is invoked after the last aspect defined before MethodInterceptor is invoked
+              <LI>Aspects after MethodInterceptor are invoked in reverse order as they are defined in the dicon file.</LI></OL>
+            <P>Refer to <A href="#OriginalInterceptorSample">Custom implementation of Interceptor</A> for detailed information.</P>
+            <H3><A name=nodicon>Using Aspect without a dicon file</A></H3>
+            <P>It is possible to use aspect in a program without manually creating a dicon file by doing the followings:</P>
             <UL>
-              <LI>PointcutImpl 
-              のコンストラクタの引数で対象となるメソッド名を指定(複数可)しますクラスを指定することで、そのクラスが実装しているインターフェースのメソッドをすべて自動的に適用させることもできます。 
-
-              <LI>AspectImplのコンストラクタの第1引数にInterceptorを指定して、第2引数にPointcutImplで作成したPointcutを指定します。 
-
-              <LI>AopProxyのコンストラクタで、対象となるクラスとAspectImplで作成したAspectの配列を指定します。 
-              <LI>AopProxy#create()でAspectが適用されたオブジェクトを取得できます。 </LI></UL>
-            <P>DateクラスにTraceInterceptorをプログラム上で適用する場合は、次のようになります。対象となるメソッドはgetTime()とします。</P><PRE>&lt;?php
+              <LI>Specify name of class (several names may be specified) to apply an aspect as PointcutImpl constructor arguments. All methods implemented by the class are automatically applied.
+              <LI>Specify Interceptor as the first argument and Pointcut created from PointcutImpl as the second argument to AspectImpl constructor.
+              <LI>Specify the target class and an array of Aspect created from AspectImpl to AopProxy constructor
+              <LI>Objects that had aspect applied may be gotten by using AopProxy#create()</LI></UL>
+            <P>In the following example, TraceInterceptor is applied to the Date class. Target method is getTime().</P><PRE>&lt;?php
 $pointcut = new PointcutImpl(array("getTime"));
 $aspect = new AspectImpl(new TraceInterceptor(), $pointcut);
 $aopProxy = new AopProxy('Date', array($aspect));
@@ -232,24 +204,20 @@ $proxy-&gt;getTime();
 ?&gt;
 </PRE><BR>
             <H2><A name=Example>Example</A></H2>
-            <P>以下のサンプルを実行する場合は、<A 
-            href="http://s2container.php5.sandbox.seasar.org/setup.html">セットアップ</A>を行う必要があります。</P>
+            <P>S2Container.PHP needs to be <A href="http://www.seasar.org/en/php5/setup.html">setup</A> before trying this example.</P>
             <H3><A name=TraceInterceptorSample>TraceInterceptor</A></H3>
-            <P>TraceInterceptor 
-            を使用してDateクラスのgetTime()メソッドが呼ばれた場合にトレースを出力させましょう。作成するファイルは以下のとおりです。</P>
+            <P>This example uses TraceInterceptor to output trace when getTime() method in Date class is invoked. Following files are created in this example:</P>
             <UL>
-              <LI type=circle>コンポーネントを定義するdiconファイル(Trace.dicon) 
-              <LI type=circle>設定が正しく行われているか確認する実行スクリプト(AopTraceClient.php) 
+              <LI type=circle>dicon file (Trace.dicon) with component definition
+              <LI type=circle>Execution script file (AopTraceClient.php) to test the settings
             </LI></UL>
-            <P><B>diconファイルの作成</B></P>
+            <P><B>Create a dicon File</B></P>
             <UL>
-              <LI 
-              type=circle>TraceInterceptorをコンポーネント定義します。name属性をtraceInterceptorとします。 
+              <LI type=circle>Define TraceInterceptor component. Set name attribute to "traceInterceptor"
 
-              <LI type=circle>Date 
-              クラスのコンポーネントの定義します。pointcut属性にgetTime()メソッドを指定します。aspectタグにInterceptorを指定します。 
+              <LI type=circle>Define Date class. Set pointcut attribute to getTime() method. Set aspect tag to Interceptor
               </LI></UL>
-            <P>Trace.dicon</P><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+            <P>Trace.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -261,15 +229,11 @@ $proxy-&gt;getTime();
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <P><B>実行スクリプトの作成</B></P>
+            <P><B>Create an Execution Script</B></P>
             <UL>
-              <LI 
-              type=circle>S2Container#create()メソッドの最初の引数に作成したdiconファイル(Trace.dicon)のパスを指定してコンテナを作成します。 
-
-              <LI type=circle>S2Container#getComponent 
-              ()メソッドの第１引数にコンポーネントに登録したクラス名（Date)を指定してコンポーネントを取得します。 
-              <LI 
-              type=circle>トレースがAspectされるか確認するために取得したコンポーネントのDateのgetTime()メソッドを実行します。 
+              <LI type=circle>Create container by specifying dicon file (Trace.dicon) as the first argument to S2Container#create() method
+              <LI type=circle>Get component by specifying class name (Date) as the first argument to S2Container#getComponent() method
+              <LI type=circle>Invoke getTime() method in Date component to check if trace aspect was properly applied
               </LI></UL>
             <P>AopTraceClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/trace.inc.php');
@@ -281,28 +245,25 @@ $date = $container-&gt;getComponent('Date');
 $date-&gt;getTime();
 ?&gt;
 </PRE>
-            <P><B>実行結果</B></P>
-            <P>メソッドが呼ばれる前と後でトレースが出力されているのが確認できます。</P><PRE>% php AopTraceClient.php
+            <P><B>Results</B></P>
+            <P>Trace is outputted before and after method is invoked.</P><PRE>% php AopTraceClient.php
 BEGIN Date#getTime()
 END   Date#getTime() : 12:00:30
 %
 </PRE>
-            <P>このサンプルは、s2container.php5/src/examples/aop/traceinterceptor以下に用意されています。</P><BR>
+            <P>Files in this example are available in the s2container.php5/src/examples/aop/traceinterceptor folder.</P><BR>
             <H3><A name=ThrowsInterceptorSample>ThrowsInterceptor</A></H3>
-            <P>(1) 
-            ThrowsInterceptorを使って、例外が発生した場合でも処理を続けられるようにしましょう。作成するファイルは以下のようになります。</P>
+            <P>(1) This example uses ThrowsInterceptor so process will continue even after an exception is thrown. Following files are created in this example:</P>
             <UL>
-              <LI type=circle>Exceptionを発生させるクラス(Checker.class.php) 
-              <LI 
-              type=circle>ThrowsInterceptorを継承して作成するInterceptor(HandleThrowableInterceptor.class.php) 
-
-              <LI type=circle>コンポーネントの定義をするdiconファイル(Checker.dicon) 
-              <LI type=circle>設定が正しく行われているか確認する実行ファイル(AopCheckerClient.php) 
+              <LI type=circle>Class that throws an Exception (Checker.class.php) 
+              <LI type=circle>Interceptor that extends ThrowsInterceptor (HandleThrowableInterceptor.class.php) 
+              <LI type=circle>dicon file (Checker.dicon) with component definition
+              <LI type=circle>Execution file (AopCheckerClient.php) to check if the settings are correct
             </LI></UL>
-            <P><B>例外を発生させるクラスの作成</B></P>
+            <P><B>Create class that throws an exception</B></P>
             <UL>
-              <LI type=circle>run()メソッドの引数がnullでは無い場合は、引数の文字をコンソールに出力します。 
-              <LI type=circle>引数がnullの場合は、Exceptionを発生させます。 </LI></UL>
+              <LI type=circle>If the argument to run() method is not null, output the argument
+              <LI type=circle>If the argument is null, throw and Exception</LI></UL>
             <P>Checker.class.php</P><PRE>&lt;?php
 class Checker {
     public function check($str) {
@@ -315,11 +276,10 @@ class Checker {
 }
 ?&gt;
 </PRE>
-            <P><B>ThrowsInterceptorを継承するInterceptorの作成</B></P>
+            <P><B>Create Interceptor that extends ThrowsInterceptor</B></P>
             <UL>
-              <LI type=circle>ThrowsInterceptorを継承します。 
-              <LI type=circle>handleThrowable(Exception, 
-              MethodInvocation)を実装します。 </LI></UL>
+              <LI type=circle>Extend ThrowsInterceptor
+              <LI type=circle>Implement handleThrowable(Exception, MethodInvocation)</LI></UL>
             <P>HandleThrowableInterceptor.class.php</P><PRE>&lt;?php
 class HandleThrowableInterceptor extends ThrowsInterceptor {
 	
@@ -328,15 +288,12 @@ class HandleThrowableInterceptor extends ThrowsInterceptor {
 }
 ?&gt;
 </PRE>
-            <P><B>diconファイルの作成</B></P>
+            <P><B>Create a dicon File</B></P>
             <UL>
-              <LI 
-              type=circle>作成したInterceptorをコンポーネント定義します。name属性をhandleThrowableInterceptorとします。 
-
-              <LI 
-              type=circle>例外を発生させるCheckerクラスのcheck()メソッドに作成したHandleThrowableInterceptorをアスペクトします。 
+              <LI type=circle>Define created Interceptor as a component. Set name attribute to handleThrowableInterceptor
+              <LI type=circle>Aspect HandleThrowableInterceptor to the check() method in Check class which throws an exception
               </LI></UL>
-            <P>Checker.dicon</P><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+            <P>Checker.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -348,17 +305,13 @@ class HandleThrowableInterceptor extends ThrowsInterceptor {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <P><B>実行ファイルの作成</B></P>
+            <P><B>Create an Execution File</B></P>
             <UL>
-              <LI 
-              type=circle>S2Container#create()メソッドの第１引数に作成したdiconファイル(Checker.dicon)のパスを指定してコンテナを作成します。 
-
-              <LI 
-              type=circle>S2Container#getComponent()メソッドの第１引数にコンポーネントに登録したクラス名（Foo.class)を指定して取得します。 
-
-              <LI type=circle>Checker#check()メソッドの引数に"foo"の文字列を渡します。 
-              <LI type=circle>Checker#check()メソッドの引数にnullを渡して例外を発生させます。 
-              <LI type=circle>Checker#check()メソッドの引数に"hoge"の文字列を渡します。 </LI></UL>
+              <LI type=circle>Create a container by specifying the path to the created dicon file (Checker.dicon) as the first argument to S2Container#create() method
+              <LI type=circle>Gets component by specifying class name (Foo.class) as the first argument to S2Container#getComponent() method
+              <LI type=circle>Specify String "foo" as an argument to Checker#check() method
+              <LI type=circle>Make it throw an Exception by specifying null to Checker#check() method
+              <LI type=circle>Specify String "hoge" as an argument to Checker#check() method</LI></UL>
             <P>AopCheckerClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/throws.inc.php');
 
@@ -384,18 +337,16 @@ try{
 }
 ?&gt;
 </PRE>
-            <P><B>実行結果</B></P>
-            <P>例外で処理が止まっていないことが確認できます。</P><PRE>% php AopCheckerClient.php
+            <P><B>Result</B></P>
+            <P>Check to make sure process is not stopped by an Exception.</P><PRE>% php AopCheckerClient.php
 foo
 hoge
 %
 </PRE>
-            <P>このサンプルは、s2container.php5/src/examples/aop/throwsinterceptor以下に用意されています。</P><BR>
-            <P>(2) 
-            例外を別の例外に変換するInterceptorを作成して変換したメッセージを表示させましょう。作成するInterceptorは、先ほど 
-            ThrowsInterceptorを継承して作成したクラス(HandleThrowableInterceptor.class.php)を応用して作成しましょう</P>　 
-            <B>例外を別の例外に変換するInterceptorの作成</B> 
-            <P>S2RuntimeExceptionを発生させてメッセージを変更します。</P><PRE>&lt;?php
+            <P>Files for this example are available in the s2container.php5/src/examples/aop/throwsinterceptor folder</P><BR>
+            <P>(2) This example creates an Interceptor that will replace an Exception to a different Exception and display a different message. The Interceptor is created by using class (HandleThrowableInterceptor.class.php) which extends ThrowsInterceptor.</P>
+            <B>Create Interceptor that replaces Exception with another Exception</B> 
+            <P>Create a new message by throwing a new S2RuntimeException exception</P><PRE>&lt;?php
 class HandleThrowableInterceptor extends ThrowsInterceptor {
 	
     public function handleThrowable(Exception $t, MethodInvocation $invocation){
@@ -404,45 +355,44 @@ class HandleThrowableInterceptor extends ThrowsInterceptor {
 }
 ?&gt;
 </PRE>
-            <P>先ほど作成した実行ファイルを使って実行します。</P><B>実行結果</B> 
-            <P>エラーメッセージが変わっているのが確認できます。</P><PRE>% php AopCheckerClient.php
+            <P>Invoke the method by selecting the execution file created above</P><B>Result</B> 
+            <P>Confirm the change in error message.</P><PRE>% php AopCheckerClient.php
 foo
 Exception : arg should not be null or empty
 hoge
 %
 </PRE>
-            <P>このサンプルは、s2container.php5/src/examples/aop/throwsinterceptor以下に用意されています。</P>
+            <P>Files in this example are available in the s2container.php5/src/examples/aop/throwsinterceptor folder.</P>
             <H3><A name=DelegateInterceptorSample>DelegateInterceptor</A></H3>
-            <P>S2AOPで用意されているDelegateInterceptorを使って、他のクラスのメソッドに委譲させましょう。<BR>ここでは、インターフェースで抽象メソッドを作成して、抽象クラスと普通のクラスの両方にそのインターフェースを実装させます。抽象クラスで実装したメソッドを普通のクラスで実装したメソッドに委譲させましょう。作成するファイルは以下のとおりです。</P>
+            <P>This example uses DelegateInterceptor to delegate to a method in another class.<BR>Create an abstract method in an interface and implement that interface to both an abstract class and non-abstract class. Then, delegate method implemented in an abstract class to method implemented in a non-abstract class. Following files are created in this example:</P>
             <UL>
-              <LI type=circle>インターフェース(IBase.class.php) 
-              <LI type=circle>インターフェースを実装した抽象クラス(Dummy.class.php) 
-              <LI type=circle>インターフェースを実装したクラス(Substance.class.php) 
-              <LI type=circle>委譲を設定するdiconファイル(Delegate.dicon) 
-              <LI 
-              type=circle>設定が正しく行われているか確認する実行ファイル(AopDelegateClient.class.php) 
+              <LI type=circle>Interface(IBase.class.php) 
+              <LI type=circle>Abstract class (Dummy.class.php) implementing an interface
+              <LI type=circle>Class (Substance.class.php)  implementing an interface
+              <LI type=circle>dicon file (Delegate.dicon) configuring Delegation
+              <LI type=circle>Execution file (AopDelegateClient.class.php) to check if the configuration is correct.
               </LI></UL>
-            <P><B>インターフェースの作成</B></P>
+            <P><B>Create an interface</B></P>
             <UL>
-              <LI type=circle>抽象メソッドを作成します。 </LI></UL>
+              <LI type=circle>Create abstract method</LI></UL>
             <P>IBase.class.php</P><PRE>&lt;?php
 interface IBase {
     public function run();
 }
 ?&gt;
 </PRE>
-            <P><B>インターフェースを実装した抽象クラスの作成</B></P>
+            <P><B>Create abstract class implementing an interface</B></P>
             <UL>
-              <LI type=circle>作成したインターフェースを実装します。 </LI></UL>
+              <LI type=circle>Implement created interface</LI></UL>
             <P>Dummy.class.php</P><PRE>&lt;?php
 abstract class Dummy implements IBase {
 }
 ?&gt;
 </PRE>
-            <P><B>インターフェースを実装したクラスの作成</B></P>
+            <P><B>Create an class implementing an interface</B></P>
             <UL>
-              <LI type=circle>作成したインターフェースを実装します。 
-              <LI type=circle>実装したインタフェースの抽象メソッドの実装します。 </LI></UL>
+              <LI type=circle>Implement created interface
+              <LI type=circle>Implement abstract method in an implemented interface</LI></UL>
             <P>Substance.class.php</P><PRE>&lt;?php
 class Substance implements IBase{
     public function run() {
@@ -451,13 +401,12 @@ class Substance implements IBase{
 }
 ?&gt;
 </PRE>
-            <P><B>diconファイルの作成</B></P>
+            <P><B>Create dicon file</B></P>
             <UL>
-              <LI type=circle>抽象クラス(Dummy)をコンポーネント定義します。 
-              <LI type=circle>DelegateInterceptor 
-              のコンポーネントをaspectタグに定義します。DelegateInterceptor#setTarget()を使って委譲したい相手を指定します。委譲したいクラスはSubstanceクラスなのでメソッド・インジェクションを使ってセットします。 
+              <LI type=circle>Define abstract class (Dummy) as a component
+              <LI type=circle>Define DelegateInterceptor component in aspect tag. Specify target to delegation by using DelegateInterceptor#setTarget(). Target of the delegation is Substance class so use method injection.
               </LI></UL>
-            <P>Delegate.dicon</P><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+            <P>Delegate.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -471,15 +420,11 @@ class Substance implements IBase{
         &lt;/aspect&gt;
     &lt;/component&gt;
 &lt;/components&gt;</PRE>
-            <P><B>実行ファイルの作成</B></P>
+            <P><B>Create execution file</B></P>
             <UL>
-              <LI 
-              type=circle>S2Container#create()メソッドの最初の引数に作成したdiconファイル(Delegate.dicon)のパスを指定してコンテナを作成します。 
-
-              <LI 
-              type=circle>S2Container#getComponent()メソッドの第１引数にコンポーネントに登録したクラス名（IBase)を指定して取得します。 
-
-              <LI type=circle>コンテナから取得したIBase#run()メソッドを実行します。 
+              <LI type=circle>Create a S2Container by specifying path to the dicon file (Delegate.dicon) as the first argument in S2Container#create() method
+              <LI type=circle>Get component by specifying class name (IBase) as the first argument to S2Container#getComponent() method. 
+              <LI type=circle>Invoke IBase#run() method gotten from the container
             </LI></UL>AopDelegateCilent.php <PRE>&lt;?php
 require_once(dirname(__FILE__) . '/delegate.inc.php');
 $PATH = EXAMPLE_DIR . "/aop/delegateinterceptor/Delegate.dicon";
@@ -488,44 +433,42 @@ $base = $container-&gt;getComponent('Dummy');
 $base-&gt;run();
 ?&gt;
 </PRE>
-            <P><B>実行結果</B></P>
-            <P>コンソールに"substance"と表示されているのでDummy#run()がSubstance#run()に委譲されているのが確認できます。</P><PRE>% php AopDelegateCilent.php
+            <P><B>Result</B></P>
+            <P>String "substance" is outputted implying that Dummy#run() method delegated to Substance#run() method.</P><PRE>% php AopDelegateCilent.php
 substance
 %
 </PRE>
-            <P>このサンプルは、s2container.php5/src/examples/aop/delegateinterceptor以下に用意されています。</P><BR>
-            <H3><A 
-            name=PrototypeDelegateInterceptorSample>PrototypeDelegateInterceptor</A></H3>
-            <P>S2AOPで用意されているPrototypeDelegateInterceptorを使って、singletonのコンポーネントからprototypeのコンポーネントのメソッドに委譲させましょう。<BR>ここでは、インターフェースで抽象メソッドを作成して、抽象クラス(singleton)と普通のクラス(prototype)の両方にそのインターフェースを実装させます。抽象クラスで実装したメソッドを普通のクラスで実装したメソッドに委譲させましょう。作成するファイルは以下のとおりです。</P>
+            <P>Files in this example are available in the s2container.php5/src/examples/aop/delegateinterceptor folder.</P><BR>
+            <H3><A name=PrototypeDelegateInterceptorSample>PrototypeDelegateInterceptor</A></H3>
+            <P>This examples uses PrototypeDelegateInterceptor to delegate from a singleton component to a prototype component.<BR>create abstract interface and implement the method on both abstract class (singleton) and non-abstract class (prototype). Delegate method implemented in an abstract class to method implemented in a non-abstract class. Following files are created in this example.</P>
             <UL>
-              <LI type=circle>インターフェース(IBase.class.php) 
-              <LI type=circle>インターフェースを実装したsingletonの抽象クラス(Dummy.class.php) 
-              <LI type=circle>インターフェースを実装したprototypeのクラス(Substance.class.php) 
-              <LI type=circle>委譲を設定するdiconファイル(Delegate.dicon) 
-              <LI 
-              type=circle>設定が正しく行われているか確認する実行ファイル(AopPrototypeDelegateClient.php) 
+              <LI type=circle>Interface (IBase.class.php) 
+              <LI type=circle>singleton abstract class (Dummy.class.php) that implements an interface
+              <LI type=circle>Class (Substance.class.php) implementing an interface
+              <LI type=circle>dicon file (Delegate.dicon) with delegation settings
+              <LI type=circle>Execution file (AopPrototypeDelegateClient.php) to test if the settings are correct
               </LI></UL>
-            <P><B>インターフェースの作成</B></P>
+            <P><B>Create an interface</B></P>
             <UL>
-              <LI type=circle>抽象メソッドを作成します。 </LI></UL>
+              <LI type=circle>Create an abstract method</LI></UL>
             <P>IBase.class.php</P><PRE>&lt;?php
 interface IBase {
     public abstract function run();
 }
 ?&gt;
 </PRE>
-            <P><B>インターフェースを実装した抽象クラスの作成</B></P>
+            <P><B>Create abstract class implmenting an interface</B></P>
             <UL>
-              <LI type=circle>作成したインターフェースを実装します。 </LI></UL>
+              <LI type=circle>Implement created interface</LI></UL>
             <P>Dummy.class.php</P><PRE>&lt;?php
 abstract class Dummy implements IBase {
 }
 ?&gt;
 </PRE>
-            <P><B>インターフェースを実装したクラスの作成</B></P>
+            <P><B>Create class implementing an interface</B></P>
             <UL>
-              <LI type=circle>作成したインターフェースを実装します。 
-              <LI type=circle>実装したインタフェースの抽象メソッドの実装します。 </LI></UL>
+              <LI type=circle>Implement created interface
+              <LI type=circle>Implement abstract method in implemented interface</LI></UL>
             <P>Substance.class.php</P><PRE>&lt;?php
 class Substance implements IBase{
     private $sum = 0;
@@ -537,16 +480,13 @@ class Substance implements IBase{
 }
 ?&gt;
 </PRE>
-            <P><B>diconファイルの作成</B></P>
+            <P><B>Create dicon file</B></P>
             <UL>
-              <LI type=circle>抽象クラス(Dummy)をコンポーネント定義します。このコンポーネントはsingletonです。 
-              <LI 
-              type=circle>PrototypeDelegateInterceptorのコンポーネントをaspectタグに定義します。PrototypeDelegateInterceptorのtargetNameプロパティに委譲したい相手の名前("target")を指定します。 
-
-              <LI 
-              type=circle>委譲したいクラス(Substance)をコンポーネント定義します。このコンポーネントのinstance属性はprototypeです。 
+              <LI type=circle>Define abstract class(Dummy) as a component. This component is a singleton.
+              <LI type=circle>Define component PrototypeDelegateInterceptor in aspect tag. Specify name of object to delegate to ("target") in targetName property of PrototypeDelegateInterceptor.
+              <LI type=circle>Define delegated class (Substance) as a component. instance attribute of this component is prototype.
               </LI></UL>
-            <P>PrototypeDelegate.dicon</P><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+            <P>PrototypeDelegate.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -560,15 +500,11 @@ class Substance implements IBase{
 
     &lt;component name="target" class="Substance" instance="prototype"/&gt;
 &lt;/components&gt;</PRE>
-            <P><B>実行ファイルの作成</B></P>
+            <P><B>Create execution file</B></P>
             <UL>
-              <LI 
-              type=circle>S2Container#create()メソッドの最初の引数に作成したdiconファイル(PrototypeDelegate.dicon)のパスを指定してコンテナを作成します。 
-
-              <LI 
-              type=circle>S2Container#getComponent()メソッドの第１引数にコンポーネントに登録したクラス名（IBase)を指定して取得します。 
-
-              <LI type=circle>コンテナから取得したIBase#run()メソッドを繰り返し実行します。 
+              <LI type=circle>Create a container by specifying the path to the created dicon file (PrototypeDelegate.dicon) as the first argument to S2Container#create() method
+              <LI  type=circle>Gets component by specifying class name (IBase) as the first argument to S2Container#getComponent() method 
+              <LI type=circle>repetitively invoke IBase#run() method gotten from the container
             </LI></UL>AopPrototypeDelegateCilent.php <PRE>&lt;?php
 require_once(dirname(__FILE__) . '/prototype.inc.php');
 
@@ -580,9 +516,8 @@ for ($i = 0; $i &lt; 5; ++$i) {
 }
 ?&gt;
 </PRE>
-            <P><B>実行結果</B></P>
-            <P>コンソールに"sum : 0"と表示されているので 
-            Dummy#run()がSubstance#run()に委譲されているのが確認できます。また、sumの値がすべて"0"となっていることから，run()メソッドを呼び出すたびに新しいSubstanceのインスタンスが作成されていることが分かります。</P><PRE>% php AopPrototypeDelegateCilent.php
+            <P><B>Result</B></P>
+            <P>"sum : 0" is outputted implying Dummy#run() method delegated to Substance#run() method. Additionally, sum are all 0 implying new Substance instance was created on each invocation of run() method.</P><PRE>% php AopPrototypeDelegateCilent.php
 sum : 0
 sum : 0
 sum : 0
@@ -590,29 +525,24 @@ sum : 0
 sum : 0
 %
 </PRE>
-            <P>このサンプルは、s2container.php5/src/examples/aop/delegateinterceptor以下に用意されています。</P><BR>
-            <H3><A name=OriginalInterceptorSample>独自実装によるInterceptor</A></H3>
-            <P>クラス名、メソッド名、引数とメソッドの処理時間を計測してトレースするInterceptorを作成しましょう。また、そのInterceptorを使用して重い処理を行った時間をトレースさせましょう。作成するファイルは以下のとおりです。</P>
+            <P>Files in this example are available in the s2container.php5/src/examples/aop/delegateinterceptor folder.</P><BR>
+            <H3><A name=OriginalInterceptorSample>Custom implementation of Interceptor</A></H3>
+            <P>This example creates an Interceptor that will trace class name, method name, arguments, and time required by the thread. Use this Iterceptor to trace "heavy" threads. Following files are created in this example:</P>
             <UL>
-              <LI 
-              type=circle>クラス名、メソッド名、引数とメソッドの処理時間を計測して出力するInterceptor(MeasurementInterceptor.java) 
-
-              <LI type=circle>重い処理を行うクラス(HeavyProcess.java) 
-              <LI type=circle>コンポーネントの定義を行うdiconファイル(Measurement.dicon) 
-              <LI type=circle>設定が正しく行われているか確認する実行ファイル(AopMeasurementClient.java) 
+              <LI type=circle>Interceptor(MeasurementInterceptor.java) method that displays class name, method name, arguments, time required by the thread
+              <LI type=circle>Class to process "heavy" tasks (HeavyProcess.java)
+              <LI type=circle>dicon file (Measurement.dicon) with component definition
+              <LI type=circle>Execution file (AopMeasurementClient.java) to check if settings are correct
               </LI></UL>
-            <P><B>独自実装のIntercepterの作成</B></P>
+            <P><B>Create custom implementation Intercepter</B></P>
             <UL>
-              <LI type=circle>AbstractInterceptorクラスを実装します。 
-              <LI type=circle>invoke(MethodInvocation $invocation)メソッドを実装します。 
-              <LI 
-              type=circle>getTargetClass($invocation)-&gt;getName()でクラス名を取得します。 
-              <LI 
-              type=circle>$invocation-&gt;getMethod()-&gt;getName()でメソッド名を取得します。 
+              <LI type=circle>Implement AbstractInterceptor class
+              <LI type=circle>Implement invoke(MethodInvocation $invocation) method
+              <LI type=circle>Get class name by invoking getTargetClass($invocation)-&gt;getName()
+              <LI type=circle>Get method name by invoking $invocation-&gt;getMethod()-&gt;getName()
 
-              <LI type=circle>$invocation-&gt;getArguments()で引数を取得します。 
-              <LI 
-              type=circle>$invocation-&gt;proceed()で実際のメソッドが呼ばれるので、その前の時間を取得します。 
+              <LI type=circle>Get arguments by invoking $invocation-&gt;getArguments()
+              <LI type=circle>Get the time before $invocation-&gt;proceed() actual method invocation.
               </LI></UL>
             <P>MeasurementInterceptor.class.php</P><PRE>&lt;?php
 class MeasurementInterceptor extends AbstractInterceptor {
@@ -649,9 +579,9 @@ class MeasurementInterceptor extends AbstractInterceptor {
 }
 ?&gt;
 </PRE>
-            <P><B>重い処理を行うクラスの作成</B></P>
+            <P><B>Create class to process "heavy" threads</B></P>
             <UL>
-              <LI type=circle>重い処理を行ったということにするために5秒間sleepします。 </LI></UL>
+              <LI type=circle>sleep 5 seconds when a thread requires extensive resources</LI></UL>
             <P>HeavyProcess.class.php</P><PRE>&lt;?php
 class HeavyProcess {
     public function heavy(){
@@ -659,15 +589,12 @@ class HeavyProcess {
     }
 }
 ?&gt;
-</PRE><B>diconファイルの作成</B> 
+</PRE><B>Create dicon file</B> 
             <UL>
-              <LI 
-              type=circle>作成したMeasurementInterceptorをコンポーネント定義します。name属性をmeasurementとします。 
-
-              <LI 
-              type=circle>HeavyProcessクラスのheavy()メソッドにMeasurementInterceptorをaspectします。 
+              <LI type=circle>Define MeasurementInterceptor as a component Set name attribute to measurement
+              <LI type=circle>Apply MeasurementInterceptor as an aspect to heavy() method in HeavyProcess class
               </LI></UL>
-            <P>Measurement.dicon</P><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+            <P>Measurement.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components32.dtd"&gt;
 &lt;components&gt;
@@ -679,15 +606,11 @@ class HeavyProcess {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <P><B>実行ファイルの作成</B></P>
+            <P><B>Create execution file</B></P>
             <UL>
-              <LI 
-              type=circle>S2Container#create()メソッドの第１引数に作成したdiconファイル(Measurement.dicon)のパスを指定してコンテナを作成します。 
-
-              <LI 
-              type=circle>S2Container#getComponent()メソッドの第１引数にコンポーネントに登録したクラス名（HeavyProcess)を指定して取得します。 
-
-              <LI type=circle>コンテナから取得したHeavyProcess#heavy()メソッドを実行します。 </LI></UL>
+              <LI type=circle>Create a container by specifying the path to the created dicon file (Measurement.dicon) as the first argument to S2Container#create() method
+              <LI type=circle>Get component by specifying class name (HeavyProcess) as the first argument to S2Container#getComponent() method 
+              <LI type=circle>Invoke HeavyProcess#heavy() method gotten from the container</LI></UL>
             <P>AopMeasurementClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/original.inc.php');
 $PATH = EXAMPLE_DIR . "/aop/originalinterceptor/Measurement.dicon";
@@ -697,12 +620,12 @@ $heavyProcess = $container-&gt;getComponent('HeavyProcess');
 $heavyProcess-&gt;heavy();
 ?&gt;
 </PRE>
-            <P><B>実行結果</B></P>
-            <P>クラス名、メソッド名、引数とメソッドの処理時間がトレースされているのが確認できます。</P><PRE>% php AopMeasurementClient.php
+            <P><B>Result</B></P>
+            <P>Class name, method name, arguments, and time used to process a thread are displayed.</P><PRE>% php AopMeasurementClient.php
 HeavyProcess#heavy() : 5.0025010108948
 %
 </PRE>
-            <P>このサンプルは、s2container.php5/src/examples/aop/originalinterceptor以下に用意されています。</P><!-- document end --><!-- don't edit start --></TD>
+            <P>Files in this example are available in the s2container.php5/src/examples/aop/originalinterceptor folder</P><!-- document end --><!-- don't edit start --></TD>
           <TD width=14><IMG height=14 alt="" src="../images/spacer.gif" 
             width=14></TD></TR>
         <TR>
