@@ -23,11 +23,14 @@
           <TD colSpan=3><IMG height=117 alt="" 
             src="../images/spacer.gif" width=256></TD></TR>
 <tr><td rowspan="2"><img src="../images/top04.gif" alt="" height="49" width="235"></td>
-<td><a href="http://www.seasar.org/en/index.html"><img src="../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
-<td><a href="http://www.seasar.org/en/projects.html"><img src="../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
-<td><a href="http://www.seasar.org/en/products.html"><img src="../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
-<td><a href="http://www.seasar.org/en/resources.html"><img src="../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<td><a href="../index.html"><img src="../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="../projects.html"><img src="../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="../products.html"><img src="../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="../documents.html"><img src="../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="../resources.html"><img src="../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
 <td><img src="../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
 <td><img height="30" width="34" src="../images/menu06.gif" alt=""></td></tr><tr>
         <TR>
           <TD colSpan=6><IMG height=19 alt="" 
@@ -43,38 +46,23 @@
             <UL>
               <LI><A 
               href="#S2ContainerReference">S2Container Reference</A> 
-
               <UL>
-                <LI><A 
-                href="#CreateFile">Required Files</A> 
-
-                <LI><A 
-                href="#S2ContainerDefinition">S2Container Definition</A> 
-
-                <LI><A 
-                href="#S2ContainerCreation">S2Container Creation</A> 
-
-                <LI><A 
-                href="#getComponent">Getting a Component</A> 
-
-                <LI><A 
-                href="#DIType">Dependency Injection Type</A> 
+                <LI><A href="#CreateFile">Required Files</A> 
+                <LI><A href="#S2ContainerDefinition">S2Container Definition</A> 
+                <LI><A href="#S2ContainerCreation">S2Container Creation</A> 
+                <LI><A href="#getComponent">Getting a Component</A> 
+                <LI><A href="#DIType">Dependency Injection Types</A> 
                 <UL>
-                  <LI type=circle><A 
-                  href="#ConstructorInjection">Constructor Injection</A> 
-
-                  <LI type=circle><A 
-                  href="#SetterInjection">Settter Injection</A> 
-
-                  <LI type=circle><A 
-                  href="#MethodInjection">Method Injection</A> 
+                  <LI type=circle><A href="#ConstructorInjection">Constructor Injection</A> 
+                  <LI type=circle><A href="#SetterInjection">Settter Injection</A> 
+                  <LI type=circle><A href="#MethodInjection">Method Injection</A> 
                   </LI></UL>
                 <LI><A href="#Include">Dividing and Including S2Container Definition</A> 
                 <LI><A href="#Namespace">Namespace</A> 
                 <LI><A  href="#InstanceMode">Instance Management</A> 
                 <LI><A href="#Lifecycle">Lifecycle</A> 
                 <LI><A href="#AutoBindingMode">Automatic Binding</A> 
-                <LI><A href="#UseS2Container">Using S2Container from Component</A>
+                <LI><A href="#UseS2Container">Using S2Container from a Component</A>
                 <LI><A href="#Aop">Applying AOP</A> 
                 <LI><A href="#Meta">MetaData</A> 
                 </LI></UL>
@@ -92,8 +80,7 @@
                 <LI><A href="#aspectTag">aspect Tag</A> 
                 <LI><A href="#descriptionTag">description Tag</A> 
                 </LI></UL>
-              <LI><A 
-              href="#Example">Example</A> 
+              <LI><A href="#Example">Examples</A> 
               <UL>
                 <LI><A href="#ConstructorInjectionEx">Constructor Injection</A> 
                 <LI><A  href="#SetterInjectionEx">Setter Injection</A>
@@ -117,69 +104,60 @@
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <P>DOCTYPE may not be omitted. When creating a dicon file, cut and paste the above sample. Root tag is a <A href="#componentsTag">component tag</A>.コンポーネントごとに、<A href="#componentTag">component tag</A>を定義していきます。componentタグのclass属性でコンポーネントのクラス名を指定します。name属性には、コンポーネント名を指定します。詳細は、<A 
-            href="#DefReference">S2Container定義タグリファレンス</A>を参照してください。</P><PRE>&lt;components&gt;
+            <P>DOCTYPE may not be omitted. When creating a dicon file, cut and paste the above sample. Root element is a <A href="#componentsTag">component</A>. Each component is defined by a <A href="#componentTag">component</A> tag and class name is defined in a class attribute of a component tag. Component name is defined in a name attribute of a component. Refer to <A href="#DefReference">S2Container Definition Reference</A> for further details.</P><PRE>&lt;components&gt;
     &lt;component name="hoge" class="HogeImpl"/&gt;
 &lt;/components&gt;
 </PRE><A name=S2ContainerCreation>
             <H3>Creating a S2Container</H3></A>
             <P>Following methods are used to create a S2Container:</P>
-            <P>- S2ContainerFactory#create($path)</P>引数$pathは設定ファイルのパスです。 <PRE>&lt;?php
+            <P>- S2ContainerFactory#create(<SPAN class="enter">$path</SPAN>)</P>Argument <SPAN class="enter">$path</SPAN> is a path to the configuration file<PRE>&lt;?php
 $PATH = "path/to/ccc.dicon";
 ...
 $container = S2ContainerFactory::create($PATH);
 ?&gt;
 </PRE><A name=getComponent>
             <H3>Getting a Component</H3></A>
-            <P>S2Containerからコンポーネントを取り出すには、次のメソッドを使用します。</P>
-            <P>- 
-            S2Container#getComponent($componentKey)</P>引数には、コンポーネントのクラスもしくはコンポーネント名を指定できます。詳しくは、<A 
-            href="#componentTag">componentタグ</A>を参照してください。コンポーネントのクラスを指定する場合、コンポーネント 
-            instanceof 
-            クラスがtrueを返すクラスなら指定することができます。しかし、S2Containerの中に指定したクラスを実装しているコンポーネントが複数ある場合、S2Containerは、どのコンポーネントを返せばよいのか判断できないため、 
-            TooManyRegistrationRuntimeExceptionが発生します。実装コンポーネントがユニークに決まるクラスを指定してください。コンポーネント名で取得することもできます。その場合も、同一の名前をもつコンポーネントが複数登録されている場合、 
-            TooManyRegistrationRuntimeExceptionが発生します。<BR><BR>
-            <P>例） 以下のように Hoge クラスがコンポーネント名 hoge で設定されているとします。 <PRE>&lt;components&gt;
+            <P>Following method is used to get a component from the S2Container:</P>
+            <P>- S2Container#getComponent(<SPAN class="enter">$componentKey</SPAN>)</P>Argument <SPAN class="enter">$componentKey</SPAN> is a component class or a component name of component to get. Refer to <A href="#componentTag">component Tag</A> for further details. Component class where instanceof class is true may be gotten from the container. The class, however, should be associated with an unique component in the S2Container. If there are several components of the class, TooManyRegistrationRuntimeException is raised because S2Container can not determine which component to get.<BR />
+Similarly, component name should be unique in the S2Container. Specifying non-unique component name will raise a TooManyRegistrationRuntimeException.<BR><BR>
+            <P>Example: Following defines component named "hoge" of class "Hoge"<PRE>&lt;components&gt;
     &lt;component name="hoge" class="Hoge"/&gt;
 &lt;/components&gt;
 </PRE>
-            <P>クラスを指定してコンポーネントを取得する場合</P><PRE>&lt;?php
+            <P>Following code gets the component "hoge" by specifying class "Hoge":</P><PRE>&lt;?php
 $container = S2ContainerFactory::create($PATH);
 $hoge = $container-&gt;getComponent('Hoge');
 ?&gt;
 </PRE>
-            <P>コンポーネント名を指定してコンポーネントを取得する場合</P><PRE>&lt;?php
+            <P>Following code gets the component "hoge" by specifying component name "hoge":</P><PRE>&lt;?php
 $container = S2ContainerFactory::create($PATH);
 $hoge = $container-&gt;getComponent('hoge');
 ?&gt;
 </PRE><A name=DIType>
-            <H3>Dependency 
-            Injectionのタイプ</H3></A>　DependencyInjectionには以下のタイプがあります。 
+            <H3>Dependency Injection types</H3></A>Following is a list of DependencyInjection types:
             <TABLE cellSpacing=0 cellPadding=0 border=0 hspace="0" vspace="0">
               <TBODY>
               <TR>
                 <TD>ConstructorInjection</TD>
                 <TD>:</TD>
-                <TD>コンポーネントの構成に必要な値をコンストラクタで設定する</TD>
+                <TD>Use a constructor to set values necessary to construct a component</TD>
               <TR>
               <TR>
                 <TD>SetterInjection</TD>
                 <TD>:</TD>
-                <TD>コンポーネントの構成に必要な値をセッター・メソッドで設定する</TD>
+                <TD>Use a setter method to set values necessary to construct a component</TD>
               <TR>
               <TR>
                 <TD>MethodInjection</TD>
                 <TD>:</TD>
-                <TD>コンポーネントの構成に必要な値を初期化メソッドで設定する</TD>
-              <TR></TR></TBODY></TABLE>　MethodInjectionはS2のオリジナルです。S2はすべてのタイプとそのハイブリッド型もサポートします。 
+                <TD>Use initialization method to set values necessary to construct a component</TD>
+              <TR></TR></TBODY></TABLE> MethodInjection is S2 original DependencyInjection type. All S2 types and their hybrid types are supported.
             <A name=ConstructorInjection><B>
             <H3>Constructor Injection</H3></B></A>
-            <P>コンストラクタ・インジェクションとは、任意のコンストラクタの引数値にDependency 
-            Injectionします。<BR>S2Containerの定義ファイルには、次の内容を記述します。</P>
+            <P>Constructor injection injects dependency through a constructor by using constructor arguments.<BR>It is written in a S2Container configuration file as follows:</P>
             <UL>
-              <LI><B>コンポーネントの指定</B><BR>コンポーネントは、componentタグで組み立てます。class属性でクラス名を指定します。<BR>name属性でコンポーネントに名前を付けることもできます。 
-
-              <LI><B>コンストラクタの引数の指定</B><BR>コンポーネントのコンストラクタの引数は、componentタグの子タグであるargタグを使って指定します。<BR>文字列の場合は、ダブルコーテーション(")で囲みます。 
+              <LI><B>Component specification</B><BR>Component is specified using <SPAN class="enter">component</SPAN> tag. Class name is set in <SPAN class="enter">class</SPAN> attribute and component name may be set in <SPAN class="enter">name</SPAN> attribute.
+              <LI><B>Constructor arguments</B><BR>Arguments to a constructor are set in <SPAN class="enter">arg</SPAN> elements that are child elements of a component tag.<BR>When the value of an argument is of type String, it is surrounded by double quotation (<SPAN class="enter">&quot;</SPAN>).
               </LI></UL><PRE>&lt;components&gt;
     &lt;component name="..." class="..."&gt;
           &lt;arg&gt;...&lt;/arg&gt;
@@ -188,44 +166,51 @@ $hoge = $container-&gt;getComponent('hoge');
 </PRE>Refer to example in <A href="#ConstructorInjectionEx">Constructor injection</A> for details.<BR><BR><A 
             name=SetterInjection><B>
             <H3>Setter Injection</H3></B></A>
-            <P>セッター･インジェクションとは、任意のプロパティにセッターメソッドを使用してDependency Injectionします。<BR>S2Containerの定義ファイルには、次の内容を記述します。</P>
+            <P>Setter injection injects dependencies (properties) by using setter methods.<BR>It is written in a S2Container configuration file as follows:</P>
             <UL>
-              <LI><B>コンポーネントの指定</B><BR>コンポーネントの指定は、コンストラクタ・インジェクションと同様です。<BR>name属性でコンポーネントに名前を付けることもできます。 
-
-              <LI><B>プロパティの指定</B><BR>コンポーネントのプロパティは、componentタグの子タグであるpropertyタグを使って指定します。<BR>name属性でプロパティ名を指定します。 
+              <LI><B>Component specification</B><BR>Component is specified using <SPAN class="enter">component</SPAN> tag. Class name is set in <SPAN class="enter">class</SPAN> attribute and component name may be set in <SPAN class="enter">name</SPAN> attribute.
+              <LI><B>Properties</B><BR>Component parameters are set in <SPAN class="enter">property</SPAN> elements that are child elements of a component tag.<BR />Name of a property is specified using <SPAN class="enter">name</SPAN> attribute.
               </LI></UL><PRE>&lt;components&gt;
     &lt;component name="..." class="..."&gt;
           &lt;property name="..."&gt;...&lt;/property&gt;
     &lt;/component&gt;
 &lt;/components&gt;
-</PRE>詳しい使用方法は、Exampleの<A href="#SetterInjectionEx">セッター･インジェクション</A>を参照してください。<BR><A name=MethodInjection><B>
-            <H3>メソッド・インジェクション</H3></B></A>
-            <P>メソッド・インジェクションとは、任意のメソッドを呼び出して、Dependency 
-            Injectionします。<BR>S2Containerの定義ファイルには、次の内容を記述します。</P>
+</PRE>
+Refer to <A href="#SetterInjectionEx">Setter Injection</A> example for an example.<BR><A name=MethodInjection><B>
+            <H3>Method Injection</H3></B></A>
+            <P>Method injection injects  by invoking an arbitrary method.<BR>It is defined in a S2Container configuration file as follows:<BR>It is written in a S2Container configuration file as follows:</P>
             <UL>
-              <LI><B>コンポーネントの指定</B><BR>コンポーネントの指定は、コンストラクタ・インジェクションと同様です。<BR>name属性でコンポーネントに名前を付けることもできます。 
-
-              <LI><B>初期化メソッドの指定</B><BR>initMethodタグを使って、コンポーネントの任意のメソッドを呼び出します。name属性で、メソッド名を指定します。引数は、argタグを子タグに使います。name属性を省略して、ボディで、PHP式を使うこともできます。その際、コンポーネント自身は$componentで表します。 
-              </LI></UL><PRE>&lt;componets&gt;
+              <LI><B>Component specification</B><BR>Component is specified using <SPAN class="enter">component</SPAN> tag. Class name is set in <SPAN class="enter">class</SPAN> attribute and component name may be set in <SPAN class="enter">name</SPAN> attribute.
+              <LI><B>Initialization method</B><BR>Name and argument of method to invoke is set in a <SPAN class="enter">initMethod</SPAN> elements that are child elements of a component tag.<BR />Name of a property is specified using <SPAN class="enter">name</SPAN> attribute to this initMethod element. Arguments to the method to invoke is specified as values to <SPAN class="enter">arg</SPAN> element which is a child of a initMethod element.
+              </LI></UL><PRE>&lt;components&gt;
+    &lt;component name="..." class="..."&gt;
+          &lt;initMethod name="..."&gt;
+             &lt;arg&gt;...&lt;/arg&gt;
+          &lt;/initMethod&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE>
+When there is no argument, name attribute may be omitted and the name of the method may be set by a PHP expression as the value of initMethod element. In this situation, component is represented by $component.
+<PRE>&lt;components&gt;
     &lt;component name="..." class="..."&gt;
           &lt;initMethod&gt;...&lt;/initMethod&gt;
     &lt;/component&gt;
 &lt;/components&gt;
-</PRE>詳しい使用方法は、Exampleの<A href="#MethodInjectionEx">メソッド・インジェクション</A>を参照してください。<BR><A name=Include>
-            <H3>S2Container定義の分割とインクルード</H3></A>
-            <P>すべてのコンポーネントを1つのファイルに記述すると、直ぐに肥大化してしまい管理が難しくなります。そのため、コンポーネントの定義を複数に分割する機能と分割された定義をインクルードして1つにまとめる機能がS2Containerにあります。S2Container定義ファイルのインクルードは次のようにして行います。</P><PRE>&lt;components&gt;
+</PRE>
+Refer to <A href="#MethodInjectionEx">Method Injection</A> example for an example.<BR><A name=Include>
+            <H3>Dividing and Including S2Container Definition</H3></A>
+            <P>If all configuration are written in a single file, the file soon becomes very large. S2Container allows developers to divide the configuration file into several files and supports include clause to logically construct one configuration file from these files. Following is an example of including content of bar.dicon file.</P><PRE>&lt;components&gt;
     &lt;include path="bar.dicon"/&gt;
 &lt;/components&gt;
 </PRE>
-            <P><A 
-            href="#includeTag">includeタグ</A>のpath属性で取り込みたいS2Container定義ファイルのパスを指定します。詳しくは、<A 
-            href="#includeTag">includeタグ</A>を参照してください。<BR>コンポーネントの検索順は、先ず自分自身に登録されているコンポーネントを探して、見つからない場合は、includeされている順に子供のS2Containerに登録されているコンポーネントを検索し、最初に見つかったコンポーネントが返されます。<BR>次のような場合は、Foo(自身のコンポーネント)→aaa(子供のS2Container)→bbb(子供のS2Container)の順に検索します。</P><PRE>&lt;components&gt;
+            <P>File to include is specified in the path attribute of a <A href="#includeTag">include tag</A>. Refer to <A href="#includeTag">include tag</A> for detailed information.<BR>Component are searched in the following order: (1) In the component where the component is registered (2) In child S2Container in order of the include statement.<BR>In the following components definition, "Foo" is searched first, followed by "aaa.dicon" and lastly by "bbb".</P><PRE>&lt;components&gt;
     &lt;include path="aaa.dicon"/&gt;
     &lt;include path="bbb.dicon"/&gt;
     &lt;component class="Foo" /&gt;
 &lt;/components&gt;
 </PRE>
-            <P>自動で<A href="#ConstructorInjection">コンストラクタ・インジェクション</A>や<A href="#SetterInjection">セッター・インジェクション</A>を行う場合、S2Containerはインクルード先のコンポーネントを自動インジェクションすることができます。自動でDependency  Injectionを行う場合の条件は<A href="#AutoBindingMode">自動バインディング</A>を参照してください。<BR>次のようにセッター･インジェクションでプロパティに指定するコンポーネントがインクルード先のaaa.diconとbbb.diconに登録されている場合、各HelloClientでは、どちらのコンポーネントが使用されるかをみてましょう。</P>
+            <P>When automatically using <A href="#ConstructorInjection">constructor injection</A> and <A href="#SetterInjection">setter injection</A>, it is possible to automatically inject components in configuration to be included. Refer to <A href="#AutoBindingMode">automatic binding</A> for conditions to automatically inject dependencies.<BR>
+Following is an example to show the order of component search. Property of a component  to set by setter injection (HelloImpl) is defined in both included configuration files aaa.dicon and bbb.dicon. Let's find out which component HelloClient will use.</P>
             <H5>root.dicon</H5><PRE>&lt;components&gt;
     &lt;include path="aaa.dicon"/&gt;
     &lt;include path="bbb.dicon"/&gt;
@@ -272,7 +257,7 @@ class RootHelloClient implements HelloClient {
 }
 ?&gt;
 </PRE>
-            <P>AaaHelloClientとBbbHelloClientはRootHelloClient同様の実装です。</P><PRE>&lt;?php
+            <P>Implementation of AaaHelloClient and BbbHelloClient is like those of RootHelloClient.</P><PRE>&lt;?php
 interface Hello {
     public function setMessage($helloMessage);
     public function getMessage();
@@ -292,20 +277,19 @@ class HelloImpl implements Hello {
 }
 ?&gt;
 </PRE>
-            <P>HelloImplはMessageプロパティを定義しているだけです。各HelloClientのshowMessage()を呼び出した場合の実行結果は次のようになります。</P>
+            <P>HelloImpl only defines Message property. Following are result of invoking showMessage() method in each HelloClient.</P>
             <H5>Result of RootHelloClient</H5><PRE>Hello Aaa!
 </PRE>
-            <P>まず、S2Containerはroot.diconにHelloImplが登録されているかを検索します。root.diconにはないので、次にインクルード先のaaa.diconを検索します。aaa.diconにはHelloImplが登録されているので、そのコンポーネントを使用します。</P>
+            <P>S2Container will first try to find HelloImpl in root.dicon. Since HelloImpl is not defined in root.dicon, S2Container will next try to find it in the first included file, aaa.dicon. Since HelloImpl is defined in aaa.dicon, this definition is used and "Hello Aaa!" is outputted.</P>
             <H5>Result of AaaHelloClient</H5><PRE>Hello Aaa!
 </PRE>
-            <P>AaaHelloClientは、aaa.diconに登録されているコンポーネントを使用します。自動でインジェクションを行う場合、子供のS2Containerは親のS2Containerのコンポーネントを使用することはできません。例えば、 
-            root.diconにHelloImplを登録していてもAaaHelloClientには自動インジェクションされないということです。</P>
+            <P>AaaHelloClient used HelloImpl defined in aaa.dicon. When injection is automatically done, child S2Container is unable to use component defined in the parent S2Container. For example, even if HelloImpl is defined in root.dicon, it will not be automatically injected into AaaHelloClient.</P>
             <H5>Result of BbbHelloClient</H5><PRE>Hello Bbb!
 </PRE>
-            <P>AaaHelloClientと同様にBbbHelloClientもbbb.diconに登録されているコンポーネントを使用します。このサンプルは、s2container.php5/src/examples/dicon/include以下に用意されています。</P><A name=Namespace>
+            <P>Similar to the case with AaaHelloClient, BbbHelloClient uses HelloImpl component defined in bbb.dicon.<BR />
+Files is this example are contained in the s2container.php5/src/examples/dicon/include folder.</P><A name=Namespace>
             <H3>Namespace</H3></A>
-            <P>コンポーネントの定義を分割した場合に、複数のコンポーネント定義間で名前が衝突しないように、<A 
-            href="#componentsTag">componentsタグ</A>のnamespace属性で名前空間を指定することができます。</P>
+            <P>Namespace is used to distinguish component definitions from several configuration file. Namespace is specified by namespace attribute of a <A href="#componentsTag">components tag</A>.</P>
             <H5>foo.dicon</H5><PRE>&lt;components namespace="foo"&gt;
     &lt;component name="aaa" .../&gt;
     &lt;component name="bbb" ...&gt;
@@ -328,49 +312,33 @@ class HelloImpl implements Hello {
     &lt;include path="bar.dicon"/&gt;
 &lt;/components&gt;
 </PRE>
-            <P>同一のコンポーネント定義内では、名前空間なしで参照できます。他のS2Container定義のコンポーネントを参照する場合は、名前空間.をコンポーネント名の頭につけます。foo.aaaとbar.aaaは同じ名前がついていますが、名前空間が異なっているので、違うコンポーネントとして認識されます。慣習として、定義ファイルの名前は、名前空間.diconにすることを推奨します。</P><A 
-            name=InstanceMode>
-            <H3>インスタンス管理</H3></A>
-            <P>S2Containerで、コンポーネントのインスタンスをどのように管理するのかを指定するのが、<A 
-            href="#componentTag">componentタグ</A>のinstance 
-            属性です。デフォルトはsingletonで、これは、S2Container#getComponent()によって返されるコンポーネントは常に同じだという意味です。S2Container#getComponent()を呼び出すたびに、新たに作成されたコンポーネントを返して欲しい場合は、 
-            instance属性にprototypeを指定します。リクエスト($_REQUEST)ごとにコンポーネントを管理したい場合は、 
-            instance属性にrequestを指定します。セッション($_SESSION)ごとにコンポーネントを管理したい場合は、instance属性にsessionを指定します。</P>
-            <P>プレゼンテーションのフレームワークと組み合わせるときに、プレゼンテーションフレームワークが作成したインスタンスに対して、S2Containerで管理されているコンポーネントをセットしたい場合があります。そのような 
-            S2Container外のコンポーネントに対して<A 
-            href="http://www.kakutani.com/trans/fowler/injection.html">Dependency 
-            Injection</A>したいときには、次のメソッドを使用します。<BR><BR>- 
-            S2Container#injectDependency($outerComponent, 
-            $componentKey)</P>第一引数には、外部のコンポーネントを指定します。第二引数には、外部コンポーネントのクラス、またはコンポーネント名を指定します。<BR>そのとき、S2Container定義では、instance属性にouterを指定します。<BR><BR>
+            <P>Namespace is not necessary to require to reference components in the same S2Container. To reference components in other S2Container, however, namespace prefix associated with the S2Container is prepended to the component name. For example, foo.aaa and bar.aaa have the same component name "aaa" but have different namespace prefix. Thus, they are treated as two different components.<BR />
+It is a convention to name the configuration file <SPAN class="enter">namespace</SPAN>.dicon.</P><A name=InstanceMode>
+            <H3>Instance Management</H3></A>
+            <P>instance attribute of a <A href="#componentTag">component tag</A> specifies how component instance is managed by a S2Container. Default is singleton which implies S2Container#getComponent() method always gets the same component. To get a new component each time S2Container#getComponent() method is invoked, set the instance attribute to <SPAN class="enter">prototype</SPAN>. To manage component based on request ($_REQUEST), set the instance attribute to <SPAN class="enter">request</SPAN>. To manage based on a session, set the instance attribute to <SPAN class="enter">session</SPAN>.</P>
+            <P>When using Seasar framework with a presentation framework, there may sometimes be a need to set an instance created by a presentation framework to a component managed by S2Container. In this kind of circumstances where <A href="http://www.martinfowler.com/articles/injection.html">Dependency Injection</A> to a component outside the S2Container is necessary, the following method are used.<BR><BR>- S2Container#injectDependency($outerComponent, $componentKey)</P>Specify external component in the first argument and external component class or component name in the second argument.<BR>Also, set instance attribute to <SPAN class="enter">outer</SPAN> in S2Container definition.<BR><BR>
             <TABLE width=744 border=1>
               <TBODY>
               <TR align=middle bgColor=#d1f3f4>
-                <TH scope=col width=104>instance属性</TH>
-                <TH scope=col width=624>説明</TH></TR>
+                <TH scope=col width=104>instance attribute</TH>
+                <TH scope=col width=624>Description</TH></TR>
               <TR>
-                <TD>singleton(default)</TD>
-                <TD>S2Container#getComponent()を何度呼び出しても同じインスタンスが返されます。</TD></TR>
+                <TD>singleton (default)</TD>
+                <TD>Same instance is returned on every invocation of S2Container#getComponent()</TD></TR>
               <TR>
                 <TD>prototype</TD>
-                <TD>S2Container#getComponent()を呼び出すたびに新たなインスタンスが返されます。</TD></TR>
+                <TD>New instance is returned on each invocation of S2Container#getComponent()</TD></TR>
               <TR>
                 <TD>request</TD>
-                <TD>リクエスト毎に1つのインスタンスが作成されます。name属性に指定した名前で、コンポーネントがリクエストに格納されます。</TD></TR>
+                <TD>One instance is created for each request. A component is saved to a request using the name set to the name attribute.</TD></TR>
               <TR>
                 <TD>session</TD>
-                <TD>セッション毎に1つのインスタンスが作成されます。name属性に指定した名前で、コンポーネントがセッションに格納されます。</TD></TR>
+                <TD>One instance is created for each session. A component is saved to a session using the name set to the name attribute.</TD></TR>
               <TR>
                 <TD>outer</TD>
-                <TD>コンポーネントのインスタンスは、S2Container外で作成し、Dependency 
-                  Injectionだけを行います。<A 
-                  href="#Aop">アスペクト</A>、<A 
-                  href="#ConstructorInjection">コンストラクタ・インジェクション</A>は適用できません。</TD></TR></TBODY></TABLE><A 
-            name=Lifecycle>
-            <H3>ライフサイクル</H3></A>
-            <P>initMethodやdestroyMethodでコンポーネントのライフサイクルもコンテナで管理することができます。S2Containerの開始時(S2Container#init())に<A 
-            href="#initMethodTag">initMethodタグ</A>で指定したメソッドが呼び出され、S2Containerの終了時(S2Container#destroy())に<A 
-            href="#destroyMethodTag">destroyMethodタグ</A>で指定したメソッドが呼び出されるようになります。initMethodはコンポーネントがコンテナに登録した順番に実行され、destroyMethod 
-            はその逆順に呼び出されることになります。instance属性がsingleton以外の場合、destroyMethodを指定しても無視されます。HashMap#put()メソッドに初期化(aaaに111を設定)・終了処理(aaaにnullを設定)を設定する場合は、次のようになります。</P><PRE>&lt;components namespace="bar"&gt;
+                <TD>Instance of a component is created outside of S2Container. Only dependency is injected. <A href="#Aop">Aspect</A> and <A href="#ConstructorInjection">Constructor injection</A> can not be applied.</TD></TR></TBODY></TABLE><A name=Lifecycle>
+            <H3>Lifecycle</H3></A>
+            <P>Using initMethod and destroyMethod, component lifecycle may also be managed by a container. Method specified by <A href="#initMethodTag">initMethod tag</A> is invoked when S2Container is initialized (S2Container#init()) and method specified by <A href="#destroyMethodTag">destroyMethod tag</A> is invoked when S2Container is destroyed (S2Container#destroy()). initMethod is executed in order as they are defined in the container configuration and destroyMethod is executed in reverse order as they are defined in the container configuration.<BR>When instance attribute is not "singleton", destroyMethod is ignored. Following is an example to set aaa to 111 on initialization and set aa to null termination to HashMap#put method.</P><PRE>&lt;components namespace="bar"&gt;
     &lt;component name="map" class="HashMap"&gt;
         &lt;initMethod name="put"&gt;
             &lt;arg&gt;"aaa"&lt;/arg&gt;
@@ -383,34 +351,28 @@ class HelloImpl implements Hello {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE><A name=AutoBindingMode>
-            <H3>自動バインディング</H3></A>
-            <P>コンポーネント間の依存関係は、型がインターフェースの場合、コンテナによって自動的に解決されます。これがS2Containerのデフォルトですが、<A 
-            href="#componentTag">componentタグ</A>のautoBinding属性を指定することで細かく制御することもできます。</P>
+            <H3>Automatic Binding</H3></A>
+            <P>By default, dependency between container is automatically resolved when type is an interface. It is also possible to specify autoBinding attribute in a <A href="#componentTag">component tag</A>.</P>
             <TABLE width=744 border=1>
               <TBODY>
               <TR align=middle bgColor=#d1f3f4>
                 <TH scope=col width=104>autoBinding</TH>
-                <TH scope=col width=624>説明</TH></TR>
+                <TH scope=col width=624>Description</TH></TR>
               <TR>
-                <TD>auto(default)</TD>
-                <TD>コンストラクタの引数が明示的に指定されている場合は、それに従います。<BR>指定されていない場合、型がインターフェースの場合は自動的にバインドします。<BR>型がインタフェースでない引数にはdefault値を使用します。default値が取得できない場合はnull値を使用します。<BR>プロパティが明示的に指定されている場合はそれに従います。<BR>明示的に指定されていないプロパティで、型がインターフェースの場合は自動的にバインドします。 
-                </TD></TR>
+                <TD>auto (default)</TD>
+                <TD>If an argument to a constructor is explicity specified, that argument is used.<BR />Is an argument is not specified and type is an interface,it is automatically bound.<BR />Default values are set to arguments whose type is not an interface. If default value is not available, an argument is set to null.<BR>If a property is explicitly specified, it is used.<BR />If property is not specified and property type is an interface, it is automatically bound.</TD></TR>
               <TR>
                 <TD>constructor</TD>
-                <TD>コンストラクタの引数が明示的に指定されている場合は、それに従います。<BR>指定されていない場合、型がインターフェースの場合は自動的にバインドします。<BR>型がインタフェースでない引数にはdefault値を使用します。default値が取得できない場合はnull値を使用します。<BR>プロパティが明示的に指定されている場合は、それに従います。</TD></TR>
+                <TD>If an argument to a constructor is explicitly specified, that argument is used.<BR>Is an argument is not specified and type is an interface,it is automatically bound.<BR>Default values are set to arguments whose type is not an interface. If default value is not available, an argument is set to null.<BR>If a property is explicitly specified, it is used.</TD></TR>
               <TR>
                 <TD>property</TD>
-                <TD>コンストラクタの引数が明示的に指定されている場合は、それに従います。<BR>型がインターフェースのプロパティを自動的にバインドします。</TD></TR>
+                <TD>If an argument to a constructor is explicitly specified, that argument is used.<BR>Type interface property is automatically bound</TD></TR>
               <TR>
                 <TD>none</TD>
-                <TD>コンストラクタの引数が明示的に指定されている場合は、それに従います。<BR>プロパティが明示的に指定されている場合はそれに従います。</TD></TR></TBODY></TABLE><BR>
-            <P>詳しくは、<A 
-            href="#AutoConstructorInjectionEx">自動バインディング(コンストラクタ・インジェクション)</A>と<A 
-            href="#AutoSetterInjectionEx">自動バインディング(セッター・インジェクション)</A>を参照してください。</P><A 
-            name=UseS2Container>
-            <H3>コンポーネントでS2Containerを利用する</H3></A>
-            <P>コンポーネントはS2Containerに依存しないことが望ましいのですが、コンポーネントによっては、S2Containerのメソッドを呼び出したい場合もあるでしょう。S2Container自身もcontainerという名前で、登録されているので、arg,propertyタグのボディで 
-            containerを指定することで、コンテナのインスタンスを取得できます。また、S2Container型のsetterメソッドを定義しておいて自動バインディングで設定することもできます。arg,propertyタグでcontainerを指定する場合は、次のようになります。</P><PRE>&lt;components&gt;
+                <TD>If an argument to a constructor is explicitly specified, that argument is used.<BR>If a property is explicitly specified, it is used.</TD></TR></TBODY></TABLE><BR>
+            <P>Refer to <A href="#AutoConstructorInjectionEx">Automatically binding (constructor injection)</A> and <A href="#AutoSetterInjectionEx">Automatically binding (setter injection)</A> for further details.</P><A name=UseS2Container>
+            <H3>Using S2Container from a component</H3></A>
+            <P>Component should not depend on a S2Container but there are some situations where a component may need to invoke S2Container method. S2Container is defined with a name "container" so is the value of arg or property tag is set to "container" it is possible to get an instance of a container. Furthermore, it is also possible to automatically bind by defining a S2Container type setter method. Following are examples of using arg and property tag to specify "container".</P><PRE>&lt;components&gt;
     &lt;component class="BarImpl"&gt;
         &lt;arg&gt;container&lt;/arg&gt;
     &lt;/component&gt;
@@ -420,10 +382,8 @@ class HelloImpl implements Hello {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE><A name=Aop>
-            <H3>AOPの適用</H3></A>
-            <P>コンポーネントに<A 
-            href="http://s2container.php5.sandbox.seasar.org/aop.html">AOP</A>を適用することもできます。例えば、Dateクラスに<A 
-            href="http://s2container.php5.sandbox.seasar.org/aop.html#TraceInterceptor">TraceInterceptor</A>を適用したい場合次のようにします。</P><PRE>&lt;?php
+            <H3>Applying AOP</H3></A>
+            <P><A href="aop.html">AOP</A> may be applied to a component. Following is an example of applying <A href="aop.html#TraceInterceptor">TraceInterceptor</A> to a Date class.</P><PRE>&lt;?php
 class Date {
     function Date() {}
     
@@ -440,31 +400,28 @@ class Date {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <P>aspectタグのボディで<A 
-            href="http://s2container.php5.sandbox.seasar.org/aop.html#AOPInterceptor">Interceptor</A>の名前を指定します。pointcut属性にカンマ区切りで対象となるメソッド名を指定することができます。pointcut属性を指定しない場合は、コンポーネントが実装しているインターフェースのすべてのメソッドが対象になります。メソッド名には正規表現も使えます。この定義を使うサンプルは次のようになります。</P><PRE>&lt;?php
+            <P>Specify <A href="aop.html#AOPInterceptor">Interceptor</A> name as the value of aspect tag. Method names separated by a comma may be specified in pointcut attribute. When pointcut attribute is not specified, all interfaces implemented by a component is used. Method names may be specified using a regular expression. Following is an example using the above component definition.</P><PRE>&lt;?php
 $PATH ="Aop.dicon";
 $container = S2ContainerFactory::create($PATH);
 $date = $container-&gt;getComponent('Date');
 $date-&gt;getTime();
 ?&gt;
 </PRE>
-            <P>実行結果は次のようになります。</P><PRE>BEGIN Date#getTime()
+            <P>Following is a sample output from executing the above script.</P><PRE>BEGIN Date#getTime()
 END   Date#getTime() : 12:00:30
 </PRE><A name=Meta>
-            <H3>メタデータ</H3></A>
-            <P>components、component、arg、propertyタグにメタデータ<A 
-            href="http://www.seasar.org/aop.html"></A>を指定することもできます。metaタグはメタデータを指定したいタグの子タグに指定します。例えば、componentsタグにメタデータを指定したい場合次のようにします。</P><PRE>&lt;components&gt;
+            <H3>MetaData</H3></A>
+            <P>meta data may be applied to components, component, arg, and property tags. meta tag is specified as a child element to the element which is to have a meta tag. Following is an example of specifying a meta tag to a components tag.</P><PRE>&lt;components&gt;
     &lt;meta name="aaa"&gt;111&lt;/meta&gt;
 &lt;/components&gt;
 </PRE>
-            <P>components、component、arg、propertyタグに指定したメタデータの情報は、S2Container、ComponentDef、ArgDef、PropertyDefで定義されている次のメソッドで取得することが出来ます。</P>
+            <P>Meta data information specified in components, component, arg, and property tags may be retrieved using the following methods defined in S2Container, ComponentDef, ArgDef, and PropertyDef.</P>
             <UL>
               <LI>public function getMetaDefSize() 
-              <LI>public function getMetaDef($name) </LI></UL><BR><A 
-            name=DefReference>
-            <H2>S2Container定義タグリファレンス</H2></A><A name=DOCTYPE>
+              <LI>public function getMetaDef($name) </LI></UL><BR><A name=DefReference>
+            <H2>S2Container Definition Reference</H2></A><A name=DOCTYPE>
             <H3>DOCTYPE</H3></A>
-            <P>DOCTYPEは、XML宣言の次に指定します。下記のように指定してください。</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+            <P>DOCTYPE is specified right after XML declaration. Following is an example of a component configuration with a DOCTYPE declaration:</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -473,24 +430,21 @@ END   Date#getTime() : 12:00:30
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE><A name=componentsTag>
-            <H3>componentsタグ(必須)</H3></A>
-            <P>ルートのタグになります。</P><A name=namespaceAttr>
-            <H4>namespace属性(任意)</H4></A>
-            <P><A 
-            href="#Namespace">名前空間</A>を指定することができます。PHPの識別子として使えるものにします。</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+            <H3>components tag (required)</H3></A>
+            <P>Root element</P><A name=namespaceAttr>
+            <H4>namespace attribute (optional)</H4></A>
+            <P><A href="#Namespace">Namespace</A> may be specified. Namespace may also be used to differentiate PHP elements.</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components namespace="hoge"&gt;
     ...
 &lt;/components&gt;
 </PRE><A name=includeTag>
-            <H3>includeタグ(任意)</H3></A>
-            <P>分割されたS2Containerの定義を<A 
-            href="#Include">取り込む</A>場合に使います。</P><A 
+            <H3>include tag (optional)</H3></A>
+            <P>Used to <A href="#Include">include</A> divided S2Container configuration definitions</P><A 
             name=pathAttr>
-            <H4>path属性(必須)</H4></A>
-            <P>定義ファイルのパスを指定することができます。componentタグの前に記述する必要があります。定義ファイルへのパスは絶対パスになります。パスの先頭に%・・・%で囲む事で 
-            PHP で定義した定数を指定できます。</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+            <H4>path attribute (required)</H4></A>
+            <P>Specify a path of the configuration file. Must be inserted before a component tag. Full path of a configuration file must be specified. Path may be represented by a constant defined in a PHP by surrounding the constant name with a <SPAN class="enter">%</SPAN>.</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -498,56 +452,31 @@ END   Date#getTime() : 12:00:30
     &lt;include path="%DICON_DIR%/ddd.dicon" /&gt;
 &lt;/components&gt;
 </PRE><A name=componentTag>
-            <H3>componentタグ(任意)</H3></A>
-            <P>コンポーネントを定義します。</P><A name=classAttr>
-            <H4>class属性(任意)</H4></A>
-            <P>クラス名を指定します。ボディで、PHP式を使ってコンポーネントを指定した場合は、class属性を省略することができます。PHP式を使った場合にclass属性を指定すると、型チェックを行います。</P><A 
-            name=componentTag.nameAttr>
-            <H4>name属性(任意)</H4></A>
-            <P>名前を指定することもできます。PHPの識別子として使えるものにします。詳しくは、<A 
-            href="#getComponent">コンポーネントの取得</A>を参照してください。</P><A 
-            name=instanceAttr>
-            <H4>instance属性(任意)</H4></A>
-            <P>S2Containerがどのようにコンポーネントのインスタンスを管理するのかを指定することができます。singleton(デフォルト)、prototype、outer、request、sessionを指定することができます。詳しくは、<A 
-            href="#InstanceMode">インスタンス管理</A>を参照してください。</P><A 
-            name=autoBindingAttr>
-            <H4>autoBinding属性(任意)</H4></A>
-            <P>S2Containerがコンポーネントの依存関係をどのように解決するのかを指定できます。auto(デフォルト)、constructor、property、noneを指定することができます。詳しくは、<A 
-            href="#AutoBindingMode">自動バインディング</A>を参照してください。</P><A 
-            name=argTag>
-            <H3>argタグ(任意)</H3></A>
-            <P><A 
-            href="#componentTag">componentタグ</A>の子タグとして使った場合は、コンストラクタの引数になります。記述した順番でコンストラクタに渡されます。 
-            <A 
-            href="#initMethodTag">initMethodタグ</A>、<A 
-            href="#destroyMethodTag">destroyMethodタグ</A>の子タグとして使った場合は、メソッドの引数になります。記述した順番でメソッドに渡されます。 
-            引数として渡される実際の値は、ボディでPHP式を使うか、子タグで、<A 
-            href="#componentTag">componentタグ</A>を使います。</P><A 
-            name=propertyTag>
-            <H3>propertyタグ(任意)</H3></A>
-            <P><A 
-            href="#componentTag">componentタグ</A>の子タグとして使います。プロパティとして設定される実際の値は、ボディでPHP式を使うか、子タグで、<A 
-            href="#componentTag">componentタグ</A>を使います。</P><A 
-            name=propertyTag.nameAttr>
-            <H4>name属性(必須)</H4></A>
-            <P>プロパティ名を指定します。</P><A name=metaTag>
-            <H3>metaタグ(任意)</H3></A>
-            <P><A 
-            href="#componentsTag">componentsタグ</A>、<A 
-            href="#componentTag">componentタグ</A>、<A 
-            href="#argTag">argタグ</A>、<A 
-            href="#propertyTag">propertyタグ</A>の子タグとして使います。メタデータの値は、ボディでPHPを使うか、子タグで、<A 
-            href="#componentTag">componentタグ</A>を使います。</P><A 
-            name=propertyTag.nameAttr>
-            <H4>name属性(任意)</H4></A>
-            <P>メタ名を指定します。</P><A name=initMethodTag>
-            <H3>initMethodタグ(任意)</H3></A>
-            <P><A 
-            href="#componentTag">componentタグ</A>の子タグとして使います。引数は、子タグで、<A 
-            href="#argTag">argタグ</A>を使います。name属性を書かずに、PHP式を使って、コンポーネントのメソッドを呼び出すこともできます。initMethodタグが定義されているコンポーネント自身を表す$componentがinitMethodタグ内だけで有効なオブジェクトとして使えます。</P><A 
-            name=initMethodTag.nameAttr>
-            <H4>name属性(任意)</H4></A>
-            <P>メソッド名を指定します。</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+            <H3>component tag (optional)</H3></A>
+            <P>Define a component</P><A name=classAttr>
+            <H4>class attribute (optional)</H4></A>
+            <P>Specify a class name. If a component is specified using a PHP expression as a value to an element, class attribute may be omitted. If class attribute is specified when PHP expression is used, it will be type checked.</P><A name=componentTag.nameAttr>
+            <H4>name attribute (optional)</H4></A>
+            <P>Name may be specified. The name should be choosen so it may be used as a PHP key. Refer to <A href="#getComponent">Getting a Component</A> for further details.</P><A name=instanceAttr>
+            <H4>instance attribute (optional)</H4></A>
+            <P>Specify how S2Container manages instance of a component. Possible values are singleton (default), prototype, outer, request, and session. Refer to <A href="#InstanceMode">instance management</A> for further details on these values.</P><A name=autoBindingAttr>
+            <H4>autoBinding attribute (optional)</H4></A>
+            <P>Specify how S2Container resolves dependencies between components. Possible values are auto (default), constructor, property, and none. Refer to <A href="#AutoBindingMode">automatic binding</A> for further details on these values.</P><A name=argTag>
+            <H3>arg tag (optional)</H3></A>
+            <P>Used to specify arguments to a constructor when added as an child element to a <A href="#componentTag">component</A> element. The order they are specified represents their position in the argument.<BR />
+When used as a child element to <A href="#initMethodTag">initMethod</A> element or a <A href="#destroyMethodTag">destroyMethod</A> element, value of an arg element is passes as an argument to the method. The order they are specified represents their position in the argument. A value to be passes as an argument may be written in PHP expression and set as a value of an element or set in a child <A href="#componentTag">component</A> element.</P><A name=propertyTag>
+            <H3>property tag (optional)</H3></A>
+            <P>Used as a child of <A href="#componentTag">component</A> element. Value of the property may be written in PHP expression and set to as a value of an element or set in a child <A href="#componentTag">component</A> element.</P><A name=propertyTag.nameAttr>
+            <H4>name attribute (optional)</H4></A>
+            <P>Specify property name.</P><A name=metaTag>
+            <H3>meta tag (optional)</H3></A>
+            <P>Used as a child element to <A href="#componentsTag">components</A> element, <A href="#componentTag">component</A> element, <A href="#argTag">arg</A> element, and <A href="#propertyTag">property</A> element. Value of the meta data may be written in PHP expression and set to as a value of an element or set in a child <A href="#componentTag">component</A> element.</P><A name=propertyTag.nameAttr>
+            <H4>name attribute (optional)</H4></A>
+            <P>Specify meta name.</P><A name=initMethodTag>
+            <H3>initMethod tag (optional)</H3></A>
+            <P>Used as a child element of a <A href="#componentTag">component element</A>. Arguments are specified in child <A href="#argTag">arg</A> elements. Method in a component may be invoked without specifying name attribute using PHP expression. $component represents the component defining the initMethod element. $component may be used as an object only within the initMethod element.</P><A name=initMethodTag.nameAttr>
+            <H4>name attribute (optional)</H4></A>
+            <P>Specify method name.</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -561,45 +490,38 @@ END   Date#getTime() : 12:00:30
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE><A name=destroyMethodTag>
-            <H3>destroyMethodタグ(任意)</H3></A>
-            <P>initMethodタグと同様です。</P><A name=aspectTag>
-            <H3>aspectタグ(任意)</H3></A>
-            <P>アスペクトをコンポーネントに組み込みます。詳しくは、<A 
-            href="http://s2container.php5.sandbox.seasar.org/aop.html#AOPExplanationFile">aspectタグ</A>の説明を参照してください。</P><A 
+            <H3>destroyMethod tag (optional)</H3></A>
+            <P>same as initMethod tag</P><A name=aspectTag>
+            <H3>aspect tag (optional)</H3></A>
+            <P>Weave aspect into a component. Refer to <A href="aop.html#AOPExplanationFile">aspect tag</A> for detailed explanation.</P><A 
             name=descriptionTag>
-            <H3>descriptionタグ(任意)</H3></A>
-            <P><A 
-            href="#componentsTag">componentsタグ</A>、<A 
-            href="#componentTag">componentタグ</A>、<A 
-            href="#argTag">argタグ</A>、<A 
-            href="#propertyTag">propertyタグ</A>の子タグとしてdescriptionタグを使うことができます。自由に説明を記述できます。</P><BR><A 
-            name=Example>
-            <H2>Example</H2></A>
-            <P>以下のサンプルを実行する場合は、<A 
-            href="http://s2container.php5.sandbox.seasar.org/setup.html">セットアップ</A>を行う必要があります。</P><A 
+            <H3>description tag (optional)</H3></A>
+            <P>Description element may be used as a child to <A href="#componentsTag">components</A> element, <A href="#componentTag">component</A> element, <A href="#argTag">arg</A> element, and <A href="#propertyTag">property</A> element to write a comment.</P><BR><A name=Example>
+            <H2>Examples</H2></A>
+            <P>S2Container.PHP must be <A href="setup.html">setup</A> before running the following examples.</P><A 
             name=ConstructorInjectionEx>
-            <H3>コンストラクタ・インジェクション</H3></A>
-            <P>コンストラクタ・インジェクションを使ってメッセージを表示しましょう。作成するファイルは以下のとおりです。</P>
+            <H3>Constructor Injection</H3></A>
+            <P>Use constructor injection to display a message. Following files are created in this example:</P>
             <UL>
-              <LI type=circle>インターフェース(Hello.class.php) 
-              <LI type=circle>実装クラス(HelloConstructorInjection.class.php) 
-              <LI type=circle>diconファイル(HelloConstructorInjection.dicon) 
-              <LI type=circle>実行スクリプト(HelloConstructorInjectionClient.php) 
+              <LI type=circle>Interface (Hello.class.php) 
+              <LI type=circle>Implementation class (HelloConstructorInjection.class.php) 
+              <LI type=circle>dicon file (HelloConstructorInjection.dicon) 
+              <LI type=circle>Execution script (HelloConstructorInjectionClient.php) 
             </LI></UL>
-            <H5>インターフェースの作成</H5>
+            <H5>Create interface</H5>
             <UL>
-              <LI type=circle>showMessage()を定義します。 </LI></UL>
-            <P>先ず最初はインターフェースを考えます。インターフェースと実装を分離することで、コンポーネントの利用者は、インターフェースを知っていれば実装のことは知らなくても済むようになります。また、テストの時には実装をモックに置き換えることで簡単にテストできるようになります。</P><PRE>&lt;?php
+              <LI type=circle>Define showMessage()</LI></UL>
+            <P>Let's start by defining interfaces. By separating interfaces with their implementation, components only have to be concerned about the interface and not their implementation. Additionally, implementation may be replaced with a mock to make unit testing easier.</P><PRE>&lt;?php
 interface Hello {
     public function showMessage();
 }
 ?&gt;
 </PRE>
-            <H5>実装クラスの作成</H5>
+            <H5>Create implementation class</H5>
             <UL>
-              <LI type=circle>引数が1つのンストラクタを定義します。 
-              <LI type=circle>showMessage()を実装します。 </LI></UL>
-            <P>次はいよいよ実装です。コンストラクタでメッセージを受け取り、showMessage()で受け取ったメッセージを出力します。</P><PRE>&lt;?php
+              <LI type=circle>Define a constructor with one argument
+              <LI type=circle>Implement showMessage()</LI></UL>
+            <P>Next, we'll do implement the interfaces. The constructor of the class will accept a message and output the message using the showMessage() method.</P><PRE>&lt;?php
 class HelloConstructorInjection implements Hello {
     private $message;
 
@@ -613,15 +535,12 @@ class HelloConstructorInjection implements Hello {
 }
 ?&gt;
 </PRE>
-            <H5>diconファイルの作成</H5>
+            <H5>Create dicon file</H5>
             <UL>
-              <LI type=circle><A 
-              href="#componentTag">componentタグ</A>でコンポーネントを定義します。 
-
-              <LI type=circle>componentタグの子タグの<A 
-              href="#argTag">argタグ</A>でコンストラクタの引数値を定義します。 
+              <LI type=circle>Define a component using <A href="#componentTag">component tag</A>
+              <LI type=circle>Set an argument by creating an <A href="#argTag">arg</A>element that is a child element to a component element.
               </LI></UL>
-            <P>メッセージをコンポーネントに設定するのは、S2Containerの仕事です。定義ファイルに基づいてコンポーネントを組み立てます。<BR><BR>s2container.php5/src/examples/dicon/HelloConstructorInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+            <P>S2Container is responsible for setting the message to a component. Components are created based on the configuration file.<BR><BR>s2container.php5/src/examples/dicon/HelloConstructorInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -630,15 +549,12 @@ class HelloConstructorInjection implements Hello {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <H5>実行スクリプトの作成</H5>
+            <H5>Create execution script</H5>
             <UL>
-              <LI type=circle><A 
-              href="#S2ContainerCreation">S2ContainerFactory#create($path)を呼び出してS2Containerを作成します</A>。 
+              <LI type=circle>Create a S2Container by invoking on <A href="#S2ContainerCreation">S2ContainerFactory#create($path)</A>.
 
-              <LI type=circle>getComponent()を使用して、<A 
-              href="#getComponent">S2Containerからコンポーネントを取り出します</A>。 
-
-              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL>
+              <LI type=circle>Get the component from S2Container by using <A href="#getComponent">getComponent()</A> method.
+              <LI type=circle>Invoke a method in component gotton from the S2Container.</LI></UL>
             <P>s2container.php5/src/examples/dicon/HelloConstructorInjectionClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/example.inc.php');
 $PATH =	EXAMPLE_DIR . "/dicon/HelloConstructorInjection.dicon";
@@ -652,35 +568,33 @@ $hello2-&gt;showMessage();
 ?&gt;
 </PRE>
             <H5>Result</H5>
-            <P>argタグで指定した文字列が正しく表示されていることが確認できます。</P><PRE>% php HelloConstructorInjectionClient.php
+            <P>String value in the arg tag should be displayed as below:</P><PRE>% php HelloConstructorInjectionClient.php
 Hello World!
 Hello World!
 %
 </PRE>
-            <P>この演習は、s2container.php5/src/examples/dicon以下に用意されています。</P><A 
-            name=SetterInjectionEx>
-            <H3>セッター・インジェクション</H3></A>
-            <P>セッター・インジェクションを使ってメッセージを表示しましょう。作成するファイルは以下のとおりです。</P>
+            <P>Files in this example are available in the s2container.php5/src/examples/dicon folder.</P><A name=SetterInjectionEx>
+            <H3>Setter Injection</H3></A>
+            <P>Display a message using setter injection. Following files are created in this example:</P>
             <UL>
-              <LI type=circle>インターフェース(Hello.class.php) 
-              <LI type=circle>実装クラス(HelloSetterInjection.class.php) 
-              <LI type=circle>diconファイル(HelloSetterInjection.dicon) 
-              <LI type=circle>実行スクリプト(HelloSetterInjectionClient.php) </LI></UL>
-            <H5>インターフェースの作成</H5>
+              <LI type=circle>Interface (Hello.class.php) 
+              <LI type=circle>Implementation class (HelloSetterInjection.class.php) 
+              <LI type=circle>dicon file (HelloSetterInjection.dicon) 
+              <LI type=circle>Execution script (HelloSetterInjectionClient.php) </LI></UL>
+            <H5>Create interface</H5>
             <UL>
-              <LI type=circle>showMessage()を定義します。 </LI></UL>
-            <P>インターフェースはコンストラクタ・インジェクションの場合と同じです。プロパティに対するゲッター・メソッド、セッター・メソッドを定義する必要はありません。なぜなら、Dependency 
-            Injectionするのにコンストラクタを使うのかセッター・メソッドを使うのかは実装の問題だからです。 </P><PRE>&lt;?php
+              <LI type=circle>Define showMessage()</LI></UL>
+            <P>Interface is the same as constructor injection. There is no need to define getter method and setter method to a property. This is because whether to use constructor or setter method to inject dependency should be decided by the implementation.</P><PRE>&lt;?php
 interface Hello {
     public void showMessage();
 }
 ?&gt;
 </PRE>
-            <H5>実装クラスの作成</H5>
+            <H5>Create an implementation class</H5>
             <UL>
-              <LI type=circle>セッター・メソッド(setMessage)を定義します。 
-              <LI type=circle>showMessage()を実装します。 </LI></UL>
-            <P>次は実装です。セッター・メソッドでメッセージを受け取り、showMessage()で受け取ったメッセージを出力します。</P><PRE>&lt;?php
+              <LI type=circle>Define setter method (setMessage)
+              <LI type=circle>Implement showMessage()</LI></UL>
+            <P>We'll tackle the implementation next. Message is received by the setter method and outputted by the showMessage() method.</P><PRE>&lt;?php
 class HelloSetterInjection implements Hello {
     private $message;
 
@@ -697,11 +611,10 @@ class HelloSetterInjection implements Hello {
 }
 ?&gt;
 </PRE>
-            <H5>diconファイルの作成</H5>
+            <H5>Create dicon file</H5>
             <UL>
-              <LI type=circle>componentタグでコンポーネントを定義します。 
-              <LI type=circle>componentタグの子タグの<A 
-              href="#propertyTag">propertyタグ</A>でコンポーネントのプロパティ値を定義します。 
+              <LI type=circle>Define component using <SPAN class="enter">component</SPAN> tag
+              <LI type=circle>Define component property in <A href="#propertyTag">property</A> element which is a child of a component element.
               </LI></UL>
             <P>s2container.php5/src/examples/dicon/HelloSetterInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
@@ -712,13 +625,11 @@ class HelloSetterInjection implements Hello {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <H5>実行スクリプトの作成</H5>
+            <H5>Create execution script</H5>
             <UL>
-              <LI 
-              type=circle>S2ContainerFactory#create($path)を呼び出してS2Containerを作成します。 
-
-              <LI type=circle>getComponent()を使用して、S2Containerからコンポーネントを取り出します。 
-              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL>
+              <LI type=circle>Invoke S2ContainerFactory#create($path) and create S2Container
+              <LI type=circle>Use getComponent() and get component from the S2Container
+              <LI type=circle>Invoke on the method in the component from S2Container</LI></UL>
             <P>s2container.php5/src/examples/dicon/HelloSetterInjectionClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/example.inc.php');
 $PATH = EXAMPLE_DIR . "/dicon/HelloSetterInjection.dicon";
@@ -729,36 +640,34 @@ $hello-&gt;showMessage();
 ?&gt;
 </PRE>
             <H5>Result</H5>
-            <P>propertyタグで指定した文字列が正しく表示されていることが確認できます。</P><PRE>% php HelloSetterInjectionClient.php
+            <P>String specified in the property tag is displayed as below:</P><PRE>% php HelloSetterInjectionClient.php
 Hello World!
 %
 </PRE>
-            <P>この演習は、s2container.php5/src/examples/dicon以下に用意されています。</P><A 
-            name=MethodInjectionEx>
-            <H3>メソッド・インジェクション</H3></A>
-            <P>メソッド・インジェクションを使ってメッセージを表示しましょう。作成するファイルは以下のとおりです。</P>
+            <P>Files in this example are available in the s2container.php5/src/examples/dicon folder.</P><A name=MethodInjectionEx>
+            <H3>Method Injection</H3></A>
+            <P>Display a message using method injection. Following files are created in this example:</P>
             <UL>
-              <LI type=circle>インターフェース(Hello.class.php) 
-              <LI type=circle>実装クラス(HelloMethodInjection.class.php) 
-              <LI type=circle>diconファイル(HelloMethodInjection.dicon) 
-              <LI type=circle>実行スクリプト(HelloMethodInjectionClient.php) </LI></UL>
-            <H5>インターフェースの作成</H5>
+              <LI type=circle>Interface (Hello.class.php) 
+              <LI type=circle>Implementation class (HelloMethodInjection.class.php) 
+              <LI type=circle>dicon file (HelloMethodInjection.dicon) 
+              <LI type=circle>Execution script (HelloMethodInjectionClient.php) </LI></UL>
+            <H5>Create interface</H5>
             <UL>
-              <LI type=circle>showMessage()を定義します。 </LI></UL>
-            <P>追加のメソッドを複数回呼び出すようなケースが代表的な使い方ですが、今回の演習では、インターフェースはコンストラクタ・インジェクションの場合と同じにしました。 
+              <LI type=circle>Define showMessage()</LI></UL>
+            <P>In most cases, injected method is called several but in this example, the same interface as the constructor injection example is used.
             </P><PRE>&lt;?php
 interface Hello {
     public function showMessage();
 }
 ?&gt;
 </PRE>
-            <H5>実装クラスの作成</H5>
+            <H5>Create implementation class</H5>
             <UL>
-              <LI type=circle>addMessage()を定義します。 
-              <LI type=circle>showMessage()を実装します。 </LI></UL>
-            <P>次は実装です。addMessage($message)でメッセージを複数回追加して、showMessage()で受け取ったメッセージを出力します。</P><PRE>&lt;?php
+              <LI type=circle>Define addMessage()
+              <LI type=circle>Implement showMessage()</LI></UL>
+            <P>Next, it's implementation. Use addMessage($message) to add messages several times, and display received messages by using showMethod().</P><PRE>&lt;?php
 class HelloMethodInjection implements Hello {
-
     private $buf = "";
 	
     public function HelloMethodInjection() {}
@@ -773,14 +682,12 @@ class HelloMethodInjection implements Hello {
 }
 ?&gt;
 </PRE>
-            <H5>diconファイルの作成</H5>
+            <H5>Create dicon file</H5>
             <UL>
-              <LI type=circle>componentタグでコンポーネントを定義します。 
-              <LI type=circle>componentタグの子タグの<A 
-              href="#initMethodTag">initMethodタグ</A>でコンポーネントのメソッドの引数値を定義します。 
+              <LI type=circle>Define component using <SPAN class="enter">component</SPAN> tag
+              <LI type=circle>Define arguments for a method in a component in <A href="#initMethodTag">initMethod</A> element which is a child element of a component element.
               </LI></UL>
-            <P>先ずは、argタグを使ってaddMessage($message)に"Hello 
-            "を指定します。<BR>次にPHP式を使ってaddMessage($message)に"World！"を指定します。<BR><BR>s2container.php5/src/examples/dicon/HelloMethodInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+            <P>First, use arg tag to set String "Hello" to ddMessage($message).<BR>Next, use PHP expression to set "World!" to addMessage($message).<BR><BR>s2container.php5/src/examples/dicon/HelloMethodInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -792,13 +699,11 @@ class HelloMethodInjection implements Hello {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <H5>実行スクリプトの作成</H5>
+            <H5>Create execution script</H5>
             <UL>
-              <LI 
-              type=circle>S2ContainerFactory#create($path)を呼び出してS2Containerを作成します。 
-
-              <LI type=circle>getComponent()を使用して、S2Containerからコンポーネントを取り出します。 
-              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL><PRE>&lt;?php
+              <LI type=circle>Invoke S2ContainerFactory#create($path) to create S2Container
+              <LI type=circle>Invoke getComponent() to get a component from the S2Container
+              <LI type=circle>Invoke the method in the component from S2Container</LI></UL><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/example.inc.php');
 $PATH = EXAMPLE_DIR . "/dicon/HelloMethodInjection.dicon";
 		
@@ -808,37 +713,34 @@ $hello-&gt;showMessage();
 ?&gt;
 </PRE>
             <H5>Result</H5>
-            <P>initMethodタグで指定した文字列が正しく表示されていることが確認できます。</P><PRE>% php HelloMethodInjectionClient.php
+            <P>String set as the value to initMethod element should display as below:</P><PRE>% php HelloMethodInjectionClient.php
 Hello World!
 %
 </PRE>
-            <P>この演習は、s2container.php5/src/examples/dicon以下に用意されています。</P><A 
-            name=AutoConstructorInjectionEx>
-            <H3>自動バインディング(コンストラクタ・インジェクション)</H3></A>
-            <P>自動バインディングでメッセージを表示してみましょう。作成するファイルは以下のとおりです。</P>
+            <P>Files in this example are available in the s2container.php5/src/examples/dicon folder.</P><A name=AutoConstructorInjectionEx>
+            <H3>Automatic binding (constructor injection)</H3></A>
+            <P>Let's display a message using automatic binding. Following files are created in this example:</P>
             <UL>
-              <LI type=circle>インターフェース(Hello.class.php) 
-              <LI 
-              type=circle>インターフェースの実装クラス(AutoHelloConstructorInjection.class.php) 
-
-              <LI type=circle>Mapインターフェース(Map.class.php) 
-              <LI type=circle>Mapインターフェースの実装クラス(HashMap.class.php) 
-              <LI type=circle>diconファイル(AutoHelloConstructorInjection.dicon) 
-              <LI type=circle>実行スクリプト(AutoHelloConstructorInjectionClient.php) 
+              <LI type=circle>Interface (Hello.class.php) 
+              <LI type=circle>Implementation class of an interface(AutoHelloConstructorInjection.class.php) 
+              <LI type=circle>Map interface (Map.class.php) 
+              <LI type=circle>Implementation class of a Map interface (HashMap.class.php)
+              <LI type=circle>dicon file (AutoHelloConstructorInjection.dicon) 
+              <LI type=circle>Execution script (AutoHelloConstructorInjectionClient.php) 
               </LI></UL>
-            <H5>インターフェースの作成</H5>
+            <H5>Create an interface</H5>
             <UL>
-              <LI type=circle>showMessage()を定義します。 </LI></UL><PRE>&lt;?php
+              <LI type=circle>Define showMessage()</LI></UL><PRE>&lt;?php
 interface Hello {
     public function showMessage();
 }
 ?&gt;
 </PRE>
-            <H5>実装クラスの作成</H5>
+            <H5>Create execution script</H5>
             <UL>
-              <LI type=circle>引数がMapのコンストラクタを定義します。 
-              <LI type=circle>showMessage()を実装します。 </LI></UL>
-            <P>コンストラクタでMapを受け取り、showMessage()でhelloをキーとしてMapから値を取得して出力します。</P><PRE>&lt;?php
+              <LI type=circle>Define construction with argument Map
+              <LI type=circle>Implement showMessage()</LI></UL>
+            <P>Receive Map from a constructor, use "hello" as a key to showMessage() method to retrieve message from a Map, and output the message.</P><PRE>&lt;?php
 class AutoHelloConstructorInjection implements Hello {
 
     private $messages;
@@ -853,20 +755,20 @@ class AutoHelloConstructorInjection implements Hello {
 }
 ?&gt;
 </PRE>
-            <H5>Mapインターフェースの作成</H5>
+            <H5>Create Map interface</H5>
             <UL>
-              <LI type=circle>put($key,$val)を定義します。 
-              <LI type=circle>get($key)を定義します。 </LI></UL><PRE>&lt;?php
+              <LI type=circle>Define put($key,$val)
+              <LI type=circle>Define get($key)</LI></UL><PRE>&lt;?php
 interface Map {
     function put($key,$val);
     function get($key);
 }
 ?&gt;
 </PRE>
-            <H5>Mapインターフェースの実装クラスの作成</H5>
+            <H5>Create implementation class of Map interface</H5>
             <UL>
-              <LI type=circle>引数がMapのコンストラクタを定義します。 
-              <LI type=circle>showMessage()を実装します。 </LI></UL><PRE>&lt;?php
+              <LI type=circle>Define constructor with argument Map
+              <LI type=circle>Implement showMessage()</LI></UL><PRE>&lt;?php
 class HashMap implements Map{
     private $pool = array();
     
@@ -882,20 +784,12 @@ class HashMap implements Map{
 }
 ?&gt;
 </PRE>
-            <H5>diconファイルの作成</H5>
+            <H5>Create dicon file</H5>
             <UL>
-              <LI type=circle><A 
-              href="#componentTag">componentタグ</A>でMapの実装クラスであるHashMapをコンポーネント定義します。 
-
-              <LI type=circle>componentタグの子タグである<A 
-              href="#initMethodTag">initMethodタグ</A>でHashMapにキーとして"hello"、値として"Hello 
-              World!"を定義します。 
-              <LI 
-              type=circle>componentタグでAutoHelloConstructorInjectionをコンポーネント定義します。autoBinding属性にautoを指定します。<BR>演習であるため 
-              auto を明示的に指定していますが、autoBinding属性のデフォルト値であるため本来は省略します。 </LI></UL>
-            <P>AutoHelloConstructorInjection 
-            には、argタグが定義されていないことに注目してください。コンストラクタ・インジェクションを行う場合、argタグを定義する必要がありますが、 
-            S2Container内にMapの実装クラスが登録されていれば、S2Containerがコンテナ内を検索して自動的に引数を設定します。ただし、引数の型がインターフェースでない場合、自動バインディングはできません。<BR><BR>s2container.php5/src/examples/dicon/autobinding/AutoHelloConstructorInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+              <LI type=circle>Define HashMap, which is a specified in a <A href="#componentTag">component</A> tag as a implementation class of Map, as a component
+              <LI type=circle>Define a HashMap with key "hello" and value "Hello World!" in a <A href="#initMethodTag">initMethod</A> element which is a child of component element.
+              <LI type=circle>Define a component AutoHelloConstructorInjection in a component tag. Set autoBinding attribute to "auto".<BR>We are explicitly setting "auto" to yes but since this is the default value of autoBinding attribute, it is not required.</LI></UL>
+            <P>Notice that the arg tag does not have a definition of AutoHelloConstructorInjection. arg tag definition is required in a constructor injection but if there is a implementation class of a Map in S2Container, S2Container will search the container and set the argument. However, if the argument type is not a interface, that argument is not automatically bound.<BR><BR>s2container.php5/src/examples/dicon/autobinding/AutoHelloConstructorInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -910,15 +804,11 @@ class HashMap implements Map{
                class="AutoHelloConstructorInjection"/&gt;
 &lt;/components&gt;
 </PRE>
-            <H5>実行スクリプトの作成</H5>
+            <H5>Create execution script</H5>
             <UL>
-              <LI type=circle><A 
-              href="#S2ContainerCreation">S2ContainerFactory#create($path)を呼び出してS2Containerを作成します</A>。 
-
-              <LI type=circle>getComponent()を使用して、<A 
-              href="#getComponent">S2Containerからコンポーネントを取り出します</A>。 
-
-              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL><PRE>&lt;?php
+              <LI type=circle>Invoke <A href="#S2ContainerCreation">S2ContainerFactory#create($path) and create S2Container</A>。 
+              <LI type=circle>Invoke <A href="#getComponent">getComponent()</a> to get a component from the S2Container</A>。 
+              <LI type=circle>Invoke the method in the component from S2Container</LI></UL><PRE>&lt;?php
 require_once(dirname(dirname(__FILE__)) . '/example.inc.php');
 $PATH =	EXAMPLE_DIR . "/dicon/autobinding/AutoHelloConstructorInjection.dicon";
 		
@@ -928,34 +818,31 @@ $hello-&gt;showMessage();
 ?&gt;
 </PRE>
             <H5>Result</H5>
-            <P>HashMapの値が表示されていることから、自動的にコンストラクタの引数を設定していることが確認できます。</P><PRE>% php AutoHelloConstructorInjection.php
+            <P>Value set in the HashMap is display as below showing constructor argument was automatically bound.</P><PRE>% php AutoHelloConstructorInjection.php
 Hello World!
 %
 </PRE>
-            <P>この演習は、s2container.php5/src/examples/dicon/autobinding以下に用意されています。</P><A 
-            name=AutoSetterInjectionEx>
-            <H3>自動バインディング(セッター・インジェクション)</H3></A>
-            <P>自動バインディングでメッセージを表示してみましょう。作成するファイルは以下のとおりです。</P>
+            <P>Files in this example are available in the s2container.php5/src/examples/dicon/autobinding folder.</P><A name=AutoSetterInjectionEx>
+            <H3>Automatic binding (setter injection)</H3></A>
+            <P>Display message using automatic binding. Following files are created in this example:</P>
             <UL>
-              <LI type=circle>インターフェース(Hello.class.php) 
-              <LI type=circle>インターフェースの実装クラス(AutoHelloSetterInjection.class.php) 
-
-              <LI type=circle>diconファイル(AutoHelloSetterInjection.dicon) 
-              <LI type=circle>実行スクリプト(AutoHelloSetterInjectionClient.php) 
+              <LI type=circle>Interface (Hello.class.php) 
+              <LI type=circle>Implementation class of an interface (AutoHelloSetterInjection.class.php) 
+              <LI type=circle>dicon file (AutoHelloSetterInjection.dicon) 
+              <LI type=circle>Execution script (AutoHelloSetterInjectionClient.php) 
             </LI></UL>
-            <H5>インターフェースの作成</H5>
+            <H5>Create an interface</H5>
             <UL>
-              <LI type=circle>showMessage()を定義します。 </LI></UL><PRE>&lt;?php
+              <LI type=circle>Define showMessage()</LI></UL><PRE>&lt;?php
 interface Hello {
     public function showMessage();
 }
 ?&gt;
 </PRE>
-            <H5>実装クラスの作成</H5>
+            <H5>Create execution script</H5>
             <UL>
-              <LI type=circle>引数がMapのshowMessage()を実装します。 </LI></UL>
-            <P>setMessage(Map 
-            map)でMapを受け取り、showMessage()でhelloをキーとしてMapから値を取得して出力します。</P><PRE>&lt;?php
+              <LI type=circle>Implement showMessage() with argument Map</LI></UL>
+            <P>Retrieve Map from setMessage(Map map) and output the value retrieve value from a Map with key "hello" using showMessage()</P><PRE>&lt;?php
 class AutoHelloSetterInjection implements Hello {
 
     private $messages;
@@ -972,19 +859,13 @@ class AutoHelloSetterInjection implements Hello {
 }
 ?&gt;
 </PRE>
-            <H5>diconファイルの作成</H5>
+            <H5>Create dicon file</H5>
             <UL>
-              <LI type=circle><A 
-              href="#componentTag">componentタグ</A>でMapの実装クラスであるHashMapをコンポーネント定義します。 
-
-              <LI type=circle>componentタグの子タグである<A 
-              href="#initMethodTag">initMethodタグ</A>でHashMapにキーとして"hello"、値として"Hello 
-              World!"を定義します。 
-              <LI 
-              type=circle>componentタグでAutoHelloSetterInjectionをコンポーネント定義します。autoBinding属性にautoを指定します。<BR>演習であるため 
-              auto を明示的に指定していますが、autoBinding属性のデフォルト値であるため本来は省略します。 </LI></UL>
-            <P>AutoHelloSetterInjection 
-            には、propertyタグが定義されていないことに注目してください。セッター・インジェクションを行う場合、propertyタグで任意のプロパティを定義する必要がありますが、S2Container内にMapの実装クラスが登録されていれば、S2Containerがコンテナ内を検索して自動的にプロパティを設定します。ただし、プロパティの型がインターフェースでない場合、自動バインディングはできません。<BR><BR>s2container.php5/src/examples/dicon/autobinding/AutoHelloSetterInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+              <LI type=circle>Define HashMap as a component in a <A href="#componentTag">component tag</A>.
+              <LI type=circle>Define a HashMap with key "hello" and value "Hello World!" in a <A href="#initMethodTag">initMethod</A> element which is a child of component element.
+              <LI type=circle>Define a component AutoHelloSetterInjection in a component tag. Set autoBinding attribute to "auto".<BR>We are explicitly setting "auto" to yes but since this is the default value of autoBinding attribute, it is not required.</LI></UL>
+            <P>Notice that the property tag does not have a definition of AutoHelloSetterInjection. 
+property tag definition may be required but if there is a implementation class of a Map in S2Container, S2Container will search the container and set the parameter. However, if the property type is not a interface, that property is not automatically bound.<BR><BR>s2container.php5/src/examples/dicon/autobinding/AutoHelloSetterInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -1001,13 +882,9 @@ class AutoHelloSetterInjection implements Hello {
 </PRE>
             <H5>Create execution script</H5>
             <UL>
-              <LI type=circle><A 
-              href="#S2ContainerCreation">S2ContainerFactory#create($path)を呼び出してS2Containerを作成します</A>。 
-
-              <LI type=circle>getComponent()を使用して、<A 
-              href="#getComponent">S2Containerからコンポーネントを取り出します</A>。 
-
-              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL><PRE>&lt;?php
+              <LI type=circle>Create S2Container by using <A href="#S2ContainerCreation">S2ContainerFactory#create($path)</A>。 
+              <LI type=circle>Use getComponent() method to <A href="#getComponent">get component from S2Container</A>
+              <LI type=circle>Invoke method in a component from the S2Container</LI></UL><PRE>&lt;?php
 require_once(dirname(dirname(__FILE__)) . '/example.inc.php');
 $PATH = EXAMPLE_DIR . "/dicon/autobinding/AutoHelloSetterInjection.dicon";
 		
@@ -1017,11 +894,11 @@ $hello-&gt;showMessage();
 ?&gt;
 </PRE>
             <H5>Result</H5>
-            <P>HashMapの値が表示されていることから、自動的にプロパティを設定していることが確認できます。</P><PRE>% php AutoHelloSetterInjection.php
+            <P>Value of HashMap is displayed showing the property was automatically set.</P><PRE>% php AutoHelloSetterInjection.php
 Hello World!
 %
 </PRE>
-            <P>この演習は、s2container.php5/src/examples/dicon/autobinding以下に用意されています。</P><BR><!-- document end --><!-- don't edit start --></TD>
+            <P>Files in this example are available in the s2container.php5/src/examples/dicon/autobinding folder.</P><BR><!-- document end --><!-- don't edit start --></TD>
           <TD width=14><IMG height=14 alt="" 
             src="../images/spacer.gif" width=14></TD></TR>
         <TR>

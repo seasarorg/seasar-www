@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- don't edit start -->
-<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link href="../seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
 </head>
@@ -23,11 +23,14 @@
           <TD colSpan=3><IMG height=117 alt="" 
             src="../images/spacer.gif" width=256></TD></TR>
 <tr><td rowspan="2"><img src="../images/top04.gif" alt="" height="49" width="235"></td>
-<td><a href="http://www.seasar.org/en/index.html"><img src="../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
-<td><a href="http://www.seasar.org/en/projects.html"><img src="../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
-<td><a href="http://www.seasar.org/en/products.html"><img src="../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
-<td><a href="http://www.seasar.org/en/resources.html"><img src="../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<td><a href="../index.html"><img src="../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="../projects.html"><img src="../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="../products.html"><img src="../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="../documents.html"><img src="../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="../resources.html"><img src="../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
 <td><img src="../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
 <td><img height="30" width="34" src="../images/menu06.gif" alt=""></td></tr><tr>
         <TR>
           <TD colSpan=6><IMG height=19 alt="" src="../images/spacer.gif" 
@@ -76,26 +79,26 @@
                 </LI></UL></LI></UL><BR><B>
             <H2>Extension</H2></B><A name=diconInclude>
             <H3>Setting include path to a dicon file</H3></A>
-            <P>diconƒtƒ@ƒCƒ‹‚Ìincludeƒ^ƒO‚Ìpath‘®«‚Å‚ÍAæ“ª‚É%...%‚ÅˆÍ‚Ş‚±‚Æ‚Å’è”‚ğ–„‚ß‚Ş‚±‚Æ‚ª‚Å‚«‚Ü‚·B<BR></P><PRE>define(DICON_DIR,'/path/to/dir');   //’è‹`Ï‚İ‚Æ‚·‚é
+            <P>diconãƒ•ã‚¡ã‚¤ãƒ«ã®includeã‚¿ã‚°ã®pathå±æ€§ã§ã¯ã€å…ˆé ­ã«%...%ã§å›²ã‚€ã“ã¨ã§å®šæ•°ã‚’åŸ‹ã‚è¾¼ã‚€ã“ã¨ãŒã§ãã¾ã™ã€‚<BR></P><PRE>define(DICON_DIR,'/path/to/dir');   //å®šç¾©æ¸ˆã¿ã¨ã™ã‚‹
 
 &lt;components&gt;
     &lt;include path="%DICON_DIR%/bar.dicon"/&gt;
 &lt;/components&gt;
-’) ƒpƒX‚Ìæ“ª‚Ì%...%‚Ì‚İ“WŠJ‚³‚ê‚Ü‚·B
+æ³¨) ãƒ‘ã‚¹ã®å…ˆé ­ã®%...%ã®ã¿å±•é–‹ã•ã‚Œã¾ã™ã€‚
 </PRE><BR><A name=uuset>
-            <H3>__set()‚Å‚ÌƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“</H3></A>
-            <P>PHP5‚©‚ç’Ç‰Á‚³‚ê‚½__set()‚ğg—p‚µ‚ÄAƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚ğs‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚·B</P>
+            <H3>__set()ã§ã®ã‚»ãƒƒã‚¿ãƒ¼ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</H3></A>
+            <P>PHP5ã‹ã‚‰è¿½åŠ ã•ã‚ŒãŸ__set()ã‚’ä½¿ç”¨ã—ã¦ã€ã‚»ãƒƒã‚¿ãƒ¼ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¡Œã†ã“ã¨ãŒã§ãã¾ã™ã€‚</P>
             <UL>
-              <LI>ƒvƒƒpƒeƒB‚ª–¾¦“I‚Éw’è‚³‚ê‚Ä‚¢‚é (diconƒtƒ@ƒCƒ‹‚Å propertyƒ^ƒO‚ª‹Lq‚³‚ê‚Ä‚¢‚é) 
-              <LI>ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‘ÎÛƒNƒ‰ƒX‚ªƒZƒbƒ^[ƒƒ\ƒbƒh‚ğÀ‘•‚µ‚Ä‚¢‚È‚¢ 
-              <LI>ƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‘ÎÛƒNƒ‰ƒX‚ª__set()‚ğÀ‘•‚µ‚Ä‚¢‚é 
-            </LI></UL>ã‹LğŒ‚Éˆê’v‚·‚éê‡‚ÉA__set()‚É‚æ‚èƒZƒbƒ^[EƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“‚ªÀs‚³‚ê‚Ü‚·B<BR><BR><B>À‘•ƒNƒ‰ƒX‚Ìì¬</B> 
+              <LI>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒæ˜ç¤ºçš„ã«æŒ‡å®šã•ã‚Œã¦ã„ã‚‹ (diconãƒ•ã‚¡ã‚¤ãƒ«ã§ propertyã‚¿ã‚°ãŒè¨˜è¿°ã•ã‚Œã¦ã„ã‚‹) 
+              <LI>ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³å¯¾è±¡ã‚¯ãƒ©ã‚¹ãŒã‚»ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè£…ã—ã¦ã„ãªã„ 
+              <LI>ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³å¯¾è±¡ã‚¯ãƒ©ã‚¹ãŒ__set()ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ 
+            </LI></UL>ä¸Šè¨˜æ¡ä»¶ã«ä¸€è‡´ã™ã‚‹å ´åˆã«ã€__set()ã«ã‚ˆã‚Šã‚»ãƒƒã‚¿ãƒ¼ãƒ»ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ãŒå®Ÿè¡Œã•ã‚Œã¾ã™ã€‚<BR><BR><B>å®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ä½œæˆ</B> 
 
             <UL>
-              <LI type=circle>ƒZƒbƒ^[Eƒƒ\ƒbƒh(setMessageA)‚ğ’è‹`‚µ‚Ü‚·B 
-              <LI type=circle>__set()‚ğÀ‘•‚µ‚Ü‚·B 
-              <LI type=circle>showMessage()‚ğÀ‘•‚µ‚Ü‚·B </LI></UL>
-            <P>$messageBƒvƒƒpƒeƒB‚ÌƒZƒbƒ^[ƒƒ\ƒbƒh‚Í’è‹`‚µ‚Ä‚¢‚Ü‚¹‚ñB</P><PRE>&lt;?php
+              <LI type=circle>ã‚»ãƒƒã‚¿ãƒ¼ãƒ»ãƒ¡ã‚½ãƒƒãƒ‰(setMessageA)ã‚’å®šç¾©ã—ã¾ã™ã€‚ 
+              <LI type=circle>__set()ã‚’å®Ÿè£…ã—ã¾ã™ã€‚ 
+              <LI type=circle>showMessage()ã‚’å®Ÿè£…ã—ã¾ã™ã€‚ </LI></UL>
+            <P>$messageBãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®ã‚»ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰ã¯å®šç¾©ã—ã¦ã„ã¾ã›ã‚“ã€‚</P><PRE>&lt;?php
 class HelloImpl {
 
     private $messageA = "";
@@ -116,10 +119,10 @@ class HelloImpl {
     }
 }
 ?&gt;
-</PRE><BR><B>diconƒtƒ@ƒCƒ‹‚Ìì¬</B> 
+</PRE><BR><B>diconãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ</B> 
             <UL>
-              <LI type=circle>componentƒ^ƒO‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’è‹`‚µ‚Ü‚·B 
-              <LI type=circle>componentƒ^ƒO‚Ìqƒ^ƒO‚Ìpropertyƒ^ƒO‚ÅƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌƒvƒƒpƒeƒB’l‚ğ’è‹`‚µ‚Ü‚·B 
+              <LI type=circle>componentã‚¿ã‚°ã§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å®šç¾©ã—ã¾ã™ã€‚ 
+              <LI type=circle>componentã‚¿ã‚°ã®å­ã‚¿ã‚°ã®propertyã‚¿ã‚°ã§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã‚’å®šç¾©ã—ã¾ã™ã€‚ 
               </LI></UL>
             <P>s2container.php5/src/examples/extension/uuset/uuset.dicon</P><PRE>&lt;components&gt;
     &lt;component class="HelloImpl"&gt;
@@ -127,13 +130,13 @@ class HelloImpl {
         &lt;property name="messageB"&gt;"World"&lt;/property&gt;
     &lt;/component&gt;
 &lt;/components&gt;
-</PRE><BR><B>ÀsƒXƒNƒŠƒvƒg‚Ìì¬</B> 
+</PRE><BR><B>å®Ÿè¡Œã‚¹ã‚¯ãƒªãƒ—ãƒˆã®ä½œæˆ</B> 
             <UL>
               <LI 
-              type=circle>S2ContainerFactory#create($path)‚ğŒÄ‚Ño‚µ‚ÄS2Container‚ğì¬‚µ‚Ü‚·B 
+              type=circle>S2ContainerFactory#create($path)ã‚’å‘¼ã³å‡ºã—ã¦S2Containerã‚’ä½œæˆã—ã¾ã™ã€‚ 
 
-              <LI type=circle>getComponent()‚ğg—p‚µ‚ÄAS2Container‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ‚èo‚µ‚Ü‚·B 
-              <LI type=circle>æ“¾‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B </LI></UL>
+              <LI type=circle>getComponent()ã‚’ä½¿ç”¨ã—ã¦ã€S2Containerã‹ã‚‰ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–ã‚Šå‡ºã—ã¾ã™ã€‚ 
+              <LI type=circle>å–å¾—ã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚ </LI></UL>
             <P>s2container.php5/src/examples/extension/uuset/uusetClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/uuset.inc.php');
 $PATH = EXAMPLE_DIR . "/extension/uuset/uuset.dicon";
@@ -141,109 +144,109 @@ $container = S2ContainerFactory::create($PATH);
 $hello = $container-&gt;getComponent('HelloImpl');
 $hello-&gt;showMessage();
 ?&gt;
-</PRE><BR><B>ÀsŒ‹‰Ê</B> 
-            <P>propertyƒ^ƒO‚Åw’è‚µ‚½•¶š—ñ‚ª³‚µ‚­•\¦‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ªŠm”F‚Å‚«‚Ü‚·B</P><PRE>% php uusetClient.php
+</PRE><BR><B>å®Ÿè¡Œçµæœ</B> 
+            <P>propertyã‚¿ã‚°ã§æŒ‡å®šã—ãŸæ–‡å­—åˆ—ãŒæ­£ã—ãè¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ã“ã¨ãŒç¢ºèªã§ãã¾ã™ã€‚</P><PRE>% php uusetClient.php
 Hello World
 %
-</PRE>‚±‚Ìexample‚ÍAs2container.php5/src/examples/extension/uuset/ˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B<BR><BR><A 
+</PRE>ã“ã®exampleã¯ã€s2container.php5/src/examples/extension/uuset/ä»¥ä¸‹ã«ç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚<BR><BR><A 
             name=ini-dicon>
-            <H3>PHPİ’èƒtƒ@ƒCƒ‹Œ`®‚Ìdiconƒtƒ@ƒCƒ‹</H3></A>
-            <P>PHP‚Ìİ’èƒtƒ@ƒCƒ‹(php.ini“™)‚Åg—p‚³‚ê‚éƒtƒH[ƒ}ƒbƒg‚ÅAdiconƒtƒ@ƒCƒ‹‚ğ‹Lq‚µ‚Ü‚·B<BR>ƒZƒNƒVƒ‡ƒ“‚Ìí—Ş‚ÍAcomponentsƒZƒNƒVƒ‡ƒ“‚ÆŠeƒRƒ“ƒ|[ƒlƒ“ƒgƒZƒNƒVƒ‡ƒ“‚Ì2‚Â‚É‚È‚è‚Ü‚·B</P><PRE>[components]
+            <H3>PHPè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«å½¢å¼ã®diconãƒ•ã‚¡ã‚¤ãƒ«</H3></A>
+            <P>PHPã®è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«(php.iniç­‰)ã§ä½¿ç”¨ã•ã‚Œã‚‹ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã§ã€diconãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨˜è¿°ã—ã¾ã™ã€‚<BR>ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã®ç¨®é¡ã¯ã€componentsã‚»ã‚¯ã‚·ãƒ§ãƒ³ã¨å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚»ã‚¯ã‚·ãƒ§ãƒ³ã®2ã¤ã«ãªã‚Šã¾ã™ã€‚</P><PRE>[components]
 namespace = "dao"
 .....
 .....
 .....
-[componentA]                {
-class = "A"                 b
-.....                       b
-.....                       b  ŠeƒRƒ“ƒ|[ƒlƒ“ƒgƒZƒNƒVƒ‡ƒ“
-[componentB]                b
-.....                       b
-.....                       b
-.....                       ¤
+[componentA]                ï¼‹
+class = "A"                 ï½œ
+.....                       ï½œ
+.....                       ï½œ  å„ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚»ã‚¯ã‚·ãƒ§ãƒ³
+[componentB]                ï½œ
+.....                       ï½œ
+.....                       ï½œ
+.....                       â–½
 
 </PRE><A name=ini-components>
-            <H3>components ƒZƒNƒVƒ‡ƒ“</H3></A>
-            <P>componentsƒZƒNƒVƒ‡ƒ“‚É‚ÍA3‚Â‚Ìİ’è€–Ú‚ª‚ ‚è‚Ü‚·BcomponentsƒZƒNƒVƒ‡ƒ“‚Íİ’è‚Ì•K—v‚ª‚È‚¯‚ê‚ÎÈ—ª‚Å‚«‚Ü‚·B 
+            <H3>components ã‚»ã‚¯ã‚·ãƒ§ãƒ³</H3></A>
+            <P>componentsã‚»ã‚¯ã‚·ãƒ§ãƒ³ã«ã¯ã€3ã¤ã®è¨­å®šé …ç›®ãŒã‚ã‚Šã¾ã™ã€‚componentsã‚»ã‚¯ã‚·ãƒ§ãƒ³ã¯è¨­å®šã®å¿…è¦ãŒãªã‘ã‚Œã°çœç•¥ã§ãã¾ã™ã€‚ 
             <TABLE cellSpacing=0 cellPadding=0 border=0 hspace="0" vspace="0">
               <TBODY>
               <TR>
-                <TD>@@@Enamespace</TD>
-                <TD>@F@</TD>
-                <TD>namespace‚ğİ’è‚µ‚Ü‚·B</TD></TR>
+                <TD>ã€€ã€€ã€€ãƒ»namespace</TD>
+                <TD>ã€€ï¼šã€€</TD>
+                <TD>namespaceã‚’è¨­å®šã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Einclude</TD>
-                <TD>@F@</TD>
-                <TD>include‚·‚édiconƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ğİ’è‚µ‚Ü‚·Binclude{index}‚Å•¡”İ’è‚µ‚Ü‚·B</TD></TR>
+                <TD>ã€€ã€€ã€€ãƒ»include</TD>
+                <TD>ã€€ï¼šã€€</TD>
+                <TD>includeã™ã‚‹diconãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’è¨­å®šã—ã¾ã™ã€‚include{index}ã§è¤‡æ•°è¨­å®šã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD vAlign=top>@@@Emeta</TD>
-                <TD vAlign=top>@F@</TD>
+                <TD vAlign=top>ã€€ã€€ã€€ãƒ»meta</TD>
+                <TD vAlign=top>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="#ini-meta">metaƒf[ƒ^‚ğİ’è</A>‚µ‚Ü‚·B 
+                  href="#ini-meta">metaãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®š</A>ã—ã¾ã™ã€‚ 
                 </TD></TR></TBODY></TABLE></P><PRE>[components]
 namespace = "dao"
 include{0} = "/path/to/aaa.dicon"
 include{1} = "/path/to/bbb.dicon"
 meta{0}{name} = "metaA"
 meta{0}{val}  = "meta data"
-EEE
-EEE
-EEE
+ãƒ»ãƒ»ãƒ»
+ãƒ»ãƒ»ãƒ»
+ãƒ»ãƒ»ãƒ»
 </PRE><A name=ini-component>
-            <H3>component ƒZƒNƒVƒ‡ƒ“</H3></A>
-            <P>componentƒZƒNƒVƒ‡ƒ“‚ÌƒZƒNƒVƒ‡ƒ“–¼‚É‚ÍAƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ğİ’è‚µ‚Ü‚·Bclass€–Ú‚ªÈ—ª‚³‚ê‚Ä‚¢‚éê‡AƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ªclass–¼‚Æ‚µ‚Äˆµ‚í‚ê‚Ü‚·BcomponentƒZƒNƒVƒ‡ƒ“‚É‚Í10ƒ–‚Ìİ’è€–Ú‚ª‚ ‚è‚Ü‚·B 
+            <H3>component ã‚»ã‚¯ã‚·ãƒ§ãƒ³</H3></A>
+            <P>componentã‚»ã‚¯ã‚·ãƒ§ãƒ³ã®ã‚»ã‚¯ã‚·ãƒ§ãƒ³åã«ã¯ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã‚’è¨­å®šã—ã¾ã™ã€‚classé …ç›®ãŒçœç•¥ã•ã‚Œã¦ã„ã‚‹å ´åˆã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåãŒclassåã¨ã—ã¦æ‰±ã‚ã‚Œã¾ã™ã€‚componentã‚»ã‚¯ã‚·ãƒ§ãƒ³ã«ã¯10ãƒ¶ã®è¨­å®šé …ç›®ãŒã‚ã‚Šã¾ã™ã€‚ 
 
             <TABLE cellSpacing=0 cellPadding=0 border=0 hspace="0" vspace="0">
               <TBODY>
               <TR>
-                <TD>@@@Eclass</TD>
-                <TD>@F@</TD>
-                <TD>class–¼‚ğİ’è‚µ‚Ü‚·BÈ—ª‚µ‚½ê‡‚ÍƒZƒNƒVƒ‡ƒ“–¼‚ğclass–¼‚Æ‚µ‚Ü‚·B</TD></TR>
+                <TD>ã€€ã€€ã€€-class</TD>
+                <TD>ã€€ï¼šã€€</TD>
+                <TD>classåã‚’è¨­å®šã—ã¾ã™ã€‚çœç•¥ã—ãŸå ´åˆã¯ã‚»ã‚¯ã‚·ãƒ§ãƒ³åã‚’classåã¨ã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Einstance</TD>
-                <TD>@F@</TD>
+                <TD>ã€€ã€€ã€€-instance</TD>
+                <TD>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="http://s2container.php5.sandbox.seasar.org/DIContainer.html#InstanceMode">instanceƒ‚[ƒh</A>‚ğİ’è‚µ‚Ü‚·B</TD></TR>
+                  href="http://s2container.php5.sandbox.seasar.org/DIContainer.html#InstanceMode">instanceãƒ¢ãƒ¼ãƒ‰</A>ã‚’è¨­å®šã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Eautobinding</TD>
-                <TD>@F@</TD>
+                <TD>ã€€ã€€ã€€-autobinding</TD>
+                <TD>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="http://s2container.php5.sandbox.seasar.org/DIContainer.html#AutoBindingMode">©“®ƒoƒCƒ“ƒfƒBƒ“ƒOƒ‚[ƒh</A>‚ğİ’è‚µ‚Ü‚·B</TD></TR>
+                  href="http://s2container.php5.sandbox.seasar.org/DIContainer.html#AutoBindingMode">è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ãƒ¢ãƒ¼ãƒ‰</A>ã‚’è¨­å®šã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Eexp</TD>
-                <TD>@F@</TD>
+                <TD>ã€€ã€€ã€€-exp</TD>
+                <TD>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="http://s2container.php5.sandbox.seasar.org/php.html">PHP®</A>‚ğ‹Lq‚µ‚Ü‚·B</TD></TR>
+                  href="http://s2container.php5.sandbox.seasar.org/php.html">PHPå¼</A>ã‚’è¨˜è¿°ã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Earg</TD>
-                <TD>@F@</TD>
+                <TD>ã€€ã€€ã€€-arg</TD>
+                <TD>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="#ini-arg">ƒRƒ“ƒXƒgƒ‰ƒNƒ^ˆø”‚ğİ’è</A>‚µ‚Ü‚·B</TD></TR>
+                  href="#ini-arg">ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿å¼•æ•°ã‚’è¨­å®š</A>ã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Eproperty</TD>
-                <TD>@F@</TD>
+                <TD>ã€€ã€€ã€€ãƒ»property</TD>
+                <TD>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="#ini-property">ƒvƒƒpƒeƒB‚ğİ’è</A>‚µ‚Ü‚·B</TD></TR>
+                  href="#ini-property">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¨­å®š</A>ã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Einit_method</TD>
-                <TD>@F@</TD>
+                <TD>ã€€ã€€ã€€ãƒ»init_method</TD>
+                <TD>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="#ini-init_method">initMethod‚ğİ’è</A>‚µ‚Ü‚·B</TD></TR>
+                  href="#ini-init_method">initMethodã‚’è¨­å®š</A>ã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Edestroy_method</TD>
-                <TD>@F@</TD>
+                <TD>ã€€ã€€ã€€ãƒ»destroy_method</TD>
+                <TD>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="#ini-destroy_method">destroyMethod‚ğİ’è</A>‚µ‚Ü‚·B</TD></TR>
+                  href="#ini-destroy_method">destroyMethodã‚’è¨­å®š</A>ã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Easpect</TD>
-                <TD>@F@</TD>
+                <TD>ã€€ã€€ã€€ãƒ»aspect</TD>
+                <TD>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="#ini-aspect">ƒAƒXƒyƒNƒg‚ğİ’è</A>‚µ‚Ü‚·B</TD></TR>
+                  href="#ini-aspect">ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚’è¨­å®š</A>ã—ã¾ã™ã€‚</TD></TR>
               <TR>
-                <TD>@@@Emeta</TD>
-                <TD>@F@</TD>
+                <TD>ã€€ã€€ã€€ãƒ»meta</TD>
+                <TD>ã€€ï¼šã€€</TD>
                 <TD><A 
-                  href="#ini-meta">metaƒf[ƒ^‚ğİ’è</A>‚µ‚Ü‚·B</TD></TR></TBODY></TABLE></P><PRE>[hello]
+                  href="#ini-meta">metaãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®š</A>ã—ã¾ã™ã€‚</TD></TR></TBODY></TABLE></P><PRE>[hello]
 class = "Hello"
 instance = "singleton"
 autobinding = "auto"
@@ -266,14 +269,14 @@ meta{0}{ref} = "bye"
 [bye]
 class = "Bye"
 
-EEE
-EEE
-EEE
+ãƒ»ãƒ»ãƒ»
+ãƒ»ãƒ»ãƒ»
+ãƒ»ãƒ»ãƒ»
 </PRE><A name=ini-arg>
-            <H3>argİ’è</H3></A>@@@Earg{index}{val} = ’l‚ğİ’è<BR>@@@Earg{index}{ref} 
-            = QÆƒRƒ“ƒ|[ƒlƒ“ƒg‚ğw’è<BR>@@@Earg{index}{exp} = 
-            PHP®‚ğ‹Lq<BR>@@@Earg{index}{meta{0}{val}} = <A 
-            href="#ini-meta">Metaƒf[ƒ^‚ğİ’è</A><BR><PRE>[hello]
+            <H3>argè¨­å®š</H3></A>ã€€ã€€ã€€ãƒ»arg{index}{val} = å€¤ã‚’è¨­å®š<BR>ã€€ã€€ã€€ãƒ»arg{index}{ref} 
+            = å‚ç…§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒ‡å®š<BR>ã€€ã€€ã€€ãƒ»arg{index}{exp} = 
+            PHPå¼ã‚’è¨˜è¿°<BR>ã€€ã€€ã€€ãƒ»arg{index}{meta{0}{val}} = <A 
+            href="#ini-meta">Metaãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®š</A><BR><PRE>[hello]
 class=Hello
 arg{0}{val} = "hello world"
 arg{1}{ref} = bye
@@ -282,27 +285,27 @@ arg{2}{exp} = "array('hello','world','!!')"
 [bye]
 class = Bye
 </PRE><A name=ini-property>
-            <H3>propertyİ’è</H3></A>@@@Eproperty{index}{name} = 
-            ƒvƒƒpƒeƒB–¼‚ğİ’è<BR>@@@Eproperty{index}{val} = 
-            ’l‚ğİ’è<BR>@@@Eproperty{index}{ref} = 
-            QÆƒRƒ“ƒ|[ƒlƒ“ƒg‚ğw’è<BR>@@@Eproperty{index}{exp} = 
-            PHP®‚ğ‹Lq<BR>@@@Eproperty{index}{meta{0}{val}} = <A 
-            href="#ini-meta">Metaƒf[ƒ^‚ğİ’è</A><BR><PRE>[hello]
+            <H3>propertyè¨­å®š</H3></A>ã€€ã€€ã€€ãƒ»property{index}{name} = 
+            ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã‚’è¨­å®š<BR>ã€€ã€€ã€€ãƒ»property{index}{val} = 
+            å€¤ã‚’è¨­å®š<BR>ã€€ã€€ã€€ãƒ»property{index}{ref} = 
+            å‚ç…§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒ‡å®š<BR>ã€€ã€€ã€€ãƒ»property{index}{exp} = 
+            PHPå¼ã‚’è¨˜è¿°<BR>ã€€ã€€ã€€ãƒ»property{index}{meta{0}{val}} = <A 
+            href="#ini-meta">Metaãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®š</A><BR><PRE>[hello]
 class=Hello
 
-property{0}{name} = "messageA"     --- messageAƒvƒƒpƒeƒB‚É’l Hello ‚ğİ’è
+property{0}{name} = "messageA"     --- messageAãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ Hello ã‚’è¨­å®š
 property{0}{val} = "Hello"
-property{1}{name} = "messageB"     --- messageBƒvƒƒpƒeƒB‚É’l World ‚ğİ’è
+property{1}{name} = "messageB"     --- messageBãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å€¤ World ã‚’è¨­å®š
 property{1}{val} = "World"
-property{2}{name} = "bye"          --- byeƒvƒƒpƒeƒB‚ÉƒRƒ“ƒ|[ƒlƒ“ƒg bye ‚ğİ’è
+property{2}{name} = "bye"          --- byeãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ bye ã‚’è¨­å®š
 property{2}{ref} = "bye"
 
 [bye]
 class = Bye
 </PRE><A name=ini-init_method>
-            <H3>init_methodİ’è</H3></A>@@@Einit_method{index}{name} = 
-            ƒƒ\ƒbƒh–¼‚ğİ’è<BR>@@@Einit_method{index}{arg{0}{val}} = 
-            ƒƒ\ƒbƒhˆø”‚ğİ’è<BR>@@@Einit_method{index}{exp} = PHP®‚ğ‹Lq<BR><PRE>[hello]
+            <H3>init_methodè¨­å®š</H3></A>ã€€ã€€ã€€ãƒ»init_method{index}{name} = 
+            ãƒ¡ã‚½ãƒƒãƒ‰åã‚’è¨­å®š<BR>ã€€ã€€ã€€ãƒ»init_method{index}{arg{0}{val}} = 
+            ãƒ¡ã‚½ãƒƒãƒ‰å¼•æ•°ã‚’è¨­å®š<BR>ã€€ã€€ã€€ãƒ»init_method{index}{exp} = PHPå¼ã‚’è¨˜è¿°<BR><PRE>[hello]
 class=Hello
 
 init_method{0}{name} = "showMessage"
@@ -312,11 +315,11 @@ init_method{0}{arg{1}{val}} = "World"
 init_method{1}{exp} = "$component-&gt;initialize()"
 
 </PRE><A name=ini-destroy_method>
-            <H3>destroy_methodİ’è</H3></A>
-            <P>init_methodİ’è‚Æ“¯—l‚Å‚·B</P><A name=ini-aspect>
-            <H3>aspectİ’è</H3></A>@@@Easpect{index}{pointcut} = 
-            pointcut‚ğİ’è<BR>@@@Easpect{index}{ref} = 
-            QÆƒRƒ“ƒ|[ƒlƒ“ƒg‚ğİ’è<BR>@@@Easpect{index}{exp} = PHP®‚ğ‹Lq<BR><PRE>[hello]
+            <H3>destroy_methodè¨­å®š</H3></A>
+            <P>init_methodè¨­å®šã¨åŒæ§˜ã§ã™ã€‚</P><A name=ini-aspect>
+            <H3>aspectè¨­å®š</H3></A>ã€€ã€€ã€€ãƒ»aspect{index}{pointcut} = 
+            pointcutã‚’è¨­å®š<BR>ã€€ã€€ã€€ãƒ»aspect{index}{ref} = 
+            å‚ç…§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¨­å®š<BR>ã€€ã€€ã€€ãƒ»aspect{index}{exp} = PHPå¼ã‚’è¨˜è¿°<BR><PRE>[hello]
 class=Hello
 
 aspect{0}{pointcut} = "showMessage"
@@ -326,10 +329,10 @@ aspect{0}{ref} = "trace"
 class = "TraceInterceptor"
 
 </PRE><A name=ini-meta>
-            <H3>metaİ’è</H3></A>
-            <P>meta{index}{name}‚Åmeta–¼Ameta{index}{val}‚Å’l‚ğİ’è‚µ‚Ü‚·B</P>@@@Emeta{index}{val} 
-            = ’l‚ğİ’è<BR>@@@Emeta{index}{ref} = 
-            QÆƒRƒ“ƒ|[ƒlƒ“ƒg‚ğw’è<BR>@@@Emeta{index}{exp} = PHP®‚ğ‹Lq<BR><PRE>[components]
+            <H3>metaè¨­å®š</H3></A>
+            <P>meta{index}{name}ã§metaåã€meta{index}{val}ã§å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚</P>ã€€ã€€ã€€ãƒ»meta{index}{val} 
+            = å€¤ã‚’è¨­å®š<BR>ã€€ã€€ã€€ãƒ»meta{index}{ref} = 
+            å‚ç…§ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒ‡å®š<BR>ã€€ã€€ã€€ãƒ»meta{index}{exp} = PHPå¼ã‚’è¨˜è¿°<BR><PRE>[components]
 meta{0}{name} = "metaA"
 meta{0}{val} = "5"
 meta{1}{name} = "metaB"
@@ -340,130 +343,130 @@ meta{2}{exp} = "array('a','b','c')"
 [hello]
 class = HelloImpl
 </PRE><A name=ini-etc>
-            <H3>‚»‚Ì‘¼</H3></A>
+            <H3>ãã®ä»–</H3></A>
             <UL>
-              <LI>€–Ú–¼‚ÉƒNƒH[ƒg‚Íg—p‚Å‚«‚Ü‚¹‚ñB ( arg{0}{'val'}Aarg{0}{"val"} ‚È‚Ç) 
-              <LI>İ’è’l‚ÍAƒ_ƒuƒ‹ƒNƒH[ƒg‚ÅˆÍ‚Ş‚±‚Æ‚Å‰üs‚ª—LŒø‚Æ‚È‚è‚Ü‚·B 
-              <LI>index‚Í0‚©‚ç‚Ì˜A”Ô‚É‚È‚è‚Ü‚·B 
-              <LI>s2container.php5/src/examples/ˆÈ‰º‚Ì‰‰K‚Åg—p‚·‚édiconƒtƒ@ƒCƒ‹‚ÍAXMLŒ`®‚ÆPHPİ’èƒtƒ@ƒCƒ‹Œ`®‚Ì2í—Ş‚ğ—pˆÓ‚µ‚Ä‚¢‚Ü‚·BQÆ‰º‚³‚¢B 
+              <LI>é …ç›®åã«ã‚¯ã‚©ãƒ¼ãƒˆã¯ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚ ( arg{0}{'val'}ã€arg{0}{"val"} ãªã©) 
+              <LI>è¨­å®šå€¤ã¯ã€ãƒ€ãƒ–ãƒ«ã‚¯ã‚©ãƒ¼ãƒˆã§å›²ã‚€ã“ã¨ã§æ”¹è¡ŒãŒæœ‰åŠ¹ã¨ãªã‚Šã¾ã™ã€‚ 
+              <LI>indexã¯0ã‹ã‚‰ã®é€£ç•ªã«ãªã‚Šã¾ã™ã€‚ 
+              <LI>s2container.php5/src/examples/ä»¥ä¸‹ã®æ¼”ç¿’ã§ä½¿ç”¨ã™ã‚‹diconãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€XMLå½¢å¼ã¨PHPè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«å½¢å¼ã®2ç¨®é¡ã‚’ç”¨æ„ã—ã¦ã„ã¾ã™ã€‚å‚ç…§ä¸‹ã•ã„ã€‚ 
               </LI></UL><BR><A name=dba>
-            <H3>ƒf[ƒ^ƒx[ƒXÚ‘±</H3></A>
-            <P>ƒf[ƒ^ƒx[ƒX‚Ö‚ÌÚ‘±ƒtƒŒ[ƒ€ƒ[ƒN‚ğextennsion‚Æ‚µ‚ÄŠÜ‚ß‚Ä‚¢‚Ü‚·B </P>
-            <P>ˆÈ~‚Ìà–¾‚Å‚ÍAˆÈ‰º‚ÌƒTƒ“ƒvƒ‹ƒe[ƒuƒ‹‚ğ—p‚¢‚Ü‚·BƒTƒ“ƒvƒ‹ƒe[ƒuƒ‹‚ğì¬‚·‚é demo.sql ‚Í 
+            <H3>ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¥ç¶š</H3></A>
+            <P>ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®æ¥ç¶šãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã‚’extennsionã¨ã—ã¦å«ã‚ã¦ã„ã¾ã™ã€‚ </P>
+            <P>ä»¥é™ã®èª¬æ˜ã§ã¯ã€ä»¥ä¸‹ã®ã‚µãƒ³ãƒ—ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ç”¨ã„ã¾ã™ã€‚ã‚µãƒ³ãƒ—ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œæˆã™ã‚‹ demo.sql ã¯ 
             s2container.php5/src/s2container.php5/org/seasar/extension/db/sql/ 
-            ‚É‚ ‚è‚Ü‚·B </P>ƒe[ƒuƒ‹FEMP 
+            ã«ã‚ã‚Šã¾ã™ã€‚ </P>Table: EMP 
             <TABLE class=main border=1>
               <TBODY>
               <TR align=middle bgColor=#d1f3f4>
-                <TH>ƒJƒ‰ƒ€–¼</TH>
-                <TH>˜_—–¼</TH>
-                <TH>Œ^</TH>
+                <TH>Column name</TH>
+                <TH>è«–ç†å</TH>
+                <TH>Type</TH>
                 <TH>NotNull</TH>
-                <TH>åƒL[</TH></TR>
+                <TH>Primary key</TH></TR>
               <TR>
                 <TD>EMPNO</TD>
-                <TD>]‹Æˆõ”Ô†</TD>
+                <TD>å¾“æ¥­å“¡ç•ªå·</TD>
                 <TD>NUMBER</TD>
-                <TD align=middle>Z</TD>
-                <TD align=middle>Z</TD></TR>
+                <TD align=middle>ã€‡</TD>
+                <TD align=middle>ã€‡</TD></TR>
               <TR>
                 <TD>ENAME</TD>
-                <TD>]‹Æˆõ–¼</TD>
+                <TD>å¾“æ¥­å“¡å</TD>
                 <TD>VARCHAR</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR>
               <TR>
                 <TD>JOB</TD>
-                <TD>d–</TD>
+                <TD>ä»•äº‹</TD>
                 <TD>VARCHAR</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR>
               <TR>
                 <TD>MGR</TD>
-                <TD>ãi</TD>
+                <TD>ä¸Šå¸</TD>
                 <TD>NUMBER</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR>
               <TR>
                 <TD>HIREDATE</TD>
-                <TD>ŒÙ—p“ú</TD>
+                <TD>é›‡ç”¨æ—¥</TD>
                 <TD>DATE</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR>
               <TR>
                 <TD>SAL</TD>
-                <TD>‹‹—¿</TD>
+                <TD>çµ¦æ–™</TD>
                 <TD>NUMBER</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR>
               <TR>
                 <TD>COMM</TD>
-                <TD>è”—¿</TD>
+                <TD>æ‰‹æ•°æ–™</TD>
                 <TD>NUMBER</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR>
               <TR>
                 <TD>DEPTNO</TD>
-                <TD>•””Ô†</TD>
+                <TD>éƒ¨ç½²ç•ªå·</TD>
                 <TD>NUMBER</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR>
               <TR>
                 <TD>TSTAMP</TD>
-                <TD>ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv</TD>
+                <TD>ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—</TD>
                 <TD>TIMESTAMP</TD>
                 <TD><BR></TD>
-                <TD><BR></TD></TR></TBODY></TABLE><BR>ƒe[ƒuƒ‹FDEPT 
+                <TD><BR></TD></TR></TBODY></TABLE><BR>ãƒ†ãƒ¼ãƒ–ãƒ«ï¼šDEPT 
             <TABLE class=main border=1>
               <TBODY>
               <TR align=middle bgColor=#d1f3f4>
-                <TH>ƒJƒ‰ƒ€–¼</TH>
-                <TH>˜_—–¼</TH>
-                <TH>Œ^</TH>
+                <TH>Column name</TH>
+                <TH>è«–ç†å</TH>
+                <TH>å‹</TH>
                 <TH>NotNull</TH>
-                <TH>åƒL[</TH></TR>
+                <TH>ä¸»ã‚­ãƒ¼</TH></TR>
               <TR>
                 <TD>DEPTNO</TD>
-                <TD>•””Ô†</TD>
+                <TD>éƒ¨ç½²ç•ªå·</TD>
                 <TD>NUMBER</TD>
-                <TD align=middle>Z</TD>
-                <TD align=middle>Z</TD></TR>
+                <TD align=middle>ã€‡</TD>
+                <TD align=middle>ã€‡</TD></TR>
               <TR>
                 <TD>DNAME</TD>
-                <TD>•”–¼</TD>
+                <TD>éƒ¨ç½²å</TD>
                 <TD>VARCHAR</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR>
               <TR>
                 <TD>LOC</TD>
-                <TD>ƒƒP[ƒVƒ‡ƒ“</TD>
+                <TD>ãƒ­ã‚±ãƒ¼ã‚·ãƒ§ãƒ³</TD>
                 <TD>VARCHAR</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR>
               <TR>
                 <TD>VERSIONNO</TD>
-                <TD>ƒo[ƒWƒ‡ƒ“”Ô†</TD>
+                <TD>ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç•ªå·</TD>
                 <TD>NUMBER</TD>
                 <TD><BR></TD>
                 <TD><BR></TD></TR></TBODY></TABLE><A name=dba-ds>
-            <H3>DataSource‚É‚Â‚¢‚Ä</H3></A>
-            <P>ƒlƒCƒeƒBƒu‚ÌMySQLŠÖ”‚ÆPostgreSQLŠÖ”APear 
-            DBAADOdb‚ğ—p‚¢‚éƒf[ƒ^ƒx[ƒXÚ‘±‚É‚Â‚¢‚ÄA‚»‚ê‚¼‚êDataSourceİ’èdiconƒtƒ@ƒCƒ‹‚Ìƒeƒ“ƒvƒŒ[ƒg‚ªAs2container.php5/src/s2container.php5/org/seasar/extension/db/ 
-            ‚É‚ ‚è‚Ü‚·B </P>
+            <H3>DataSourceã«ã¤ã„ã¦</H3></A>
+            <P>ãƒã‚¤ãƒ†ã‚£ãƒ–ã®MySQLé–¢æ•°ã¨PostgreSQLé–¢æ•°ã€Pear 
+            DBã€ADOdbã‚’ç”¨ã„ã‚‹ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¥ç¶šã«ã¤ã„ã¦ã€ãã‚Œãã‚ŒDataSourceè¨­å®šdiconãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãŒã€s2container.php5/src/s2container.php5/org/seasar/extension/db/ 
+            ã«ã‚ã‚Šã¾ã™ã€‚ </P>
             <TABLE cellSpacing=1 cellPadding=2 border=1 hspace="0" vspace="0">
               <TBODY>
               <TR align=middle bgColor=#d1f3f4>
                 <TH></TH>
-                <TH>XMLŒ`® diconƒtƒ@ƒCƒ‹</TH>
-                <TH>INIŒ`® diconƒtƒ@ƒCƒ‹</TH>
+                <TH>XMLå½¢å¼ diconãƒ•ã‚¡ã‚¤ãƒ«</TH>
+                <TH>INIå½¢å¼ diconãƒ•ã‚¡ã‚¤ãƒ«</TH>
               <TR>
               <TR>
-                <TD>ƒlƒCƒeƒBƒuMySQLŠÖ”</TD>
+                <TD>ãƒã‚¤ãƒ†ã‚£ãƒ–MySQLé–¢æ•°</TD>
                 <TD>mysql.dicon</TD>
                 <TD>mysql.ini</TD>
               <TR>
               <TR>
-                <TD>ƒlƒCƒeƒBƒuPostgreSQLŠÖ”</TD>
+                <TD>ãƒã‚¤ãƒ†ã‚£ãƒ–PostgreSQLé–¢æ•°</TD>
                 <TD>postgres.dicon</TD>
                 <TD>postgres.ini</TD>
               <TR>
@@ -478,14 +481,14 @@ class = HelloImpl
                   target=_blank>ADOdb</A></TD>
                 <TD>adodb.dicon</TD>
                 <TD>adodb.ini</TD>
-              <TR></TR></TBODY></TABLE>@EPear DB ‚ğg—p‚·‚éê‡‚ÍA—\‚ß DB.php 
-            ‚ğrequire‚µ‚Ä‰º‚³‚¢B<BR>@EADOdb ‚ğg—p‚·‚éê‡‚ÍA—\‚ß adodb-exceptions.inc.php ‚Æ 
-            adodb.inc.php ‚ğrequire‚µ‚Ä‰º‚³‚¢B<BR><A name=dba-ds-peardb>
-            <H3>peardb.dicon ƒeƒ“ƒvƒŒ[ƒg</H3></A>
-            <P>peardb.dicon‚Ìƒeƒ“ƒvƒŒ[ƒg‚ğˆÈ‰º‚É¦‚µ‚Ü‚·B 
-            dataSourceƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌŠeƒvƒƒpƒeƒBİ’è’l‚ğA‚²g—p‚Ìƒf[ƒ^ƒx[ƒX‚ÉÚ‘±‚Å‚«‚é’l‚Éİ’è‚µ‚Ä‰º‚³‚¢B 
-            dsnƒvƒƒpƒeƒB‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡‚ÍAdsnƒvƒƒpƒeƒB’l‚ª—Dæ‚³‚ê‚Ü‚·B</P>
-            <P>XMLŒ`® peardb.diconƒtƒ@ƒCƒ‹</P><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+              <TR></TR></TBODY></TABLE>ã€€ãƒ»Pear DB ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€äºˆã‚ DB.php 
+            ã‚’requireã—ã¦ä¸‹ã•ã„ã€‚<BR>ã€€ãƒ»ADOdb ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€äºˆã‚ adodb-exceptions.inc.php ã¨ 
+            adodb.inc.php ã‚’requireã—ã¦ä¸‹ã•ã„ã€‚<BR><A name=dba-ds-peardb>
+            <H3>peardb.dicon ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ</H3></A>
+            <P>peardb.diconã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’ä»¥ä¸‹ã«ç¤ºã—ã¾ã™ã€‚ 
+            dataSourceã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å„ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¨­å®šå€¤ã‚’ã€ã”ä½¿ç”¨ã®ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ¥ç¶šã§ãã‚‹å€¤ã«è¨­å®šã—ã¦ä¸‹ã•ã„ã€‚ 
+            dsnãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€dsnãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ãŒå„ªå…ˆã•ã‚Œã¾ã™ã€‚</P>
+            <P>XMLå½¢å¼ peardb.diconãƒ•ã‚¡ã‚¤ãƒ«</P><PRE>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "components21.dtd"&gt;
 &lt;components namespace="peardb"&gt;
@@ -502,7 +505,7 @@ class = HelloImpl
     &lt;component name="session" class="DBSessionImpl"/&gt;
 &lt;/components&gt;
 </PRE><BR>
-            <P>INIŒ`® peardb.iniƒtƒ@ƒCƒ‹</P><PRE>[components]
+            <P>INIå½¢å¼ peardb.iniãƒ•ã‚¡ã‚¤ãƒ«</P><PRE>[components]
 namespace="peardb"
 
 [dataSource]
@@ -524,24 +527,24 @@ class="SimpleDaoInterceptor"
 [session]
 class="DBSessionImpl"
 </PRE><A name=dba-ds-use>
-            <H3>g—p•û–@</H3></A>
-            <P>ƒTƒ“ƒvƒ‹‚Æ‚µ‚ÄAˆø”‚Åó‚¯æ‚Á‚½DEPTNO’l‚ÅDEPTƒe[ƒuƒ‹‚ğŒŸõ‚µA‚»‚ÌŒ‹‰Ê‚ğ•Ô‚·DAO‚ğÀ‘•‚µ‚Ä‚İ‚Ü‚·B<BR>‚±‚Ì‰‰K‚ÍAs2container.php5/src/examples/extension/db/ˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</P>
-            <P><B>ƒCƒ“ƒ^ƒtƒF[ƒX‚Ì’è‹`</B></P>
+            <H3>ä½¿ç”¨æ–¹æ³•</H3></A>
+            <P>ã‚µãƒ³ãƒ—ãƒ«ã¨ã—ã¦ã€å¼•æ•°ã§å—ã‘å–ã£ãŸDEPTNOå€¤ã§DEPTãƒ†ãƒ¼ãƒ–ãƒ«ã‚’æ¤œç´¢ã—ã€ãã®çµæœã‚’è¿”ã™DAOã‚’å®Ÿè£…ã—ã¦ã¿ã¾ã™ã€‚<BR>ã“ã®æ¼”ç¿’ã¯ã€s2container.php5/src/examples/extension/db/ä»¥ä¸‹ã«ç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚</P>
+            <P><B>ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®šç¾©</B></P>
             <UL>
-              <LI type=circle>DeptDaoƒCƒ“ƒ^ƒtƒF[ƒX‚ğ’è‹`‚µ‚Ü‚·B 
-              <LI type=circle>DEPTNO’l‚ÅŒŸõ‚ğs‚¤ findDeptByDeptnoƒƒ\ƒbƒh‚ğ’è‹`‚µ‚Ü‚·B </LI></UL><PRE>&lt;?php
+              <LI type=circle>DeptDaoã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚ 
+              <LI type=circle>DEPTNOå€¤ã§æ¤œç´¢ã‚’è¡Œã† findDeptByDeptnoãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚ </LI></UL><PRE>&lt;?php
 interface DeptDao {
     function findDeptByDeptno($deptno);
 }
 ?&gt;
 </PRE>
-            <P><B>À‘•ƒNƒ‰ƒX‚Ìì¬</B></P>
+            <P><B>å®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ä½œæˆ</B></P>
             <UL>
-              <LI type=circle>DeptDaoƒCƒ“ƒ^ƒtƒF[ƒX‚ğ implements ‚·‚é 
-              DeptDaoImplƒNƒ‰ƒX‚ğì¬‚µ‚Ü‚·B 
-              <LI type=circle>ƒRƒ“ƒXƒgƒ‰ƒNƒ^ˆø”‚Å DataSource ‚ğó‚¯æ‚é‚æ‚¤‚É‚µ‚Ü‚·B 
+              <LI type=circle>DeptDaoã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ implements ã™ã‚‹ 
+              DeptDaoImplã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã—ã¾ã™ã€‚ 
+              <LI type=circle>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿å¼•æ•°ã§ DataSource ã‚’å—ã‘å–ã‚‹ã‚ˆã†ã«ã—ã¾ã™ã€‚ 
               <LI type=circle>findDeptByDeptno 
-              ƒƒ\ƒbƒh‚ğÀ‘•‚µ‚Ü‚·Bƒf[ƒ^ƒx[ƒX‚Ö‚ÌƒRƒlƒNƒVƒ‡ƒ“‚ÍADataSource‚æ‚èæ“¾‚µ‚Ü‚·B </LI></UL><PRE>&lt;?php
+              ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè£…ã—ã¾ã™ã€‚ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã¯ã€DataSourceã‚ˆã‚Šå–å¾—ã—ã¾ã™ã€‚ </LI></UL><PRE>&lt;?php
 class DeptDaoImpl implements DeptDao {
 
     private $dataSource;
@@ -559,44 +562,44 @@ class DeptDaoImpl implements DeptDao {
     }
 }
 ?&gt;
-</PRE>DataSource-&gt;getConnection()‚Ì–ß‚è’l‚ÍA<BR>
+</PRE>DataSource-&gt;getConnection()ã®æˆ»ã‚Šå€¤ã¯ã€<BR>
             <TABLE cellSpacing=0 cellPadding=0 border=0 hspace="0" vspace="0">
               <TBODY>
               <TR>
-                <TD>@@EPear DB‚ğ—p‚¢‚éê‡</TD>
-                <TD>@:@</TD>
-                <TD>DB::connect()‚Ì–ß‚è’l</TD></TR>
+                <TD>ã€€ã€€ãƒ»Pear DBã‚’ç”¨ã„ã‚‹å ´åˆ</TD>
+                <TD>ã€€:ã€€</TD>
+                <TD>DB::connect()ã®æˆ»ã‚Šå€¤</TD></TR>
               <TR>
-                <TD>@@EADOdb‚ğ—p‚¢‚éê‡</TD>
-                <TD>@:@</TD>
-                <TD>NewADOConnection()‚Ì–ß‚è’l</TD></TR>
+                <TD>ã€€ã€€ãƒ»ADOdbã‚’ç”¨ã„ã‚‹å ´åˆ</TD>
+                <TD>ã€€:ã€€</TD>
+                <TD>NewADOConnection()ã®æˆ»ã‚Šå€¤</TD></TR>
               <TR>
-                <TD>@@EMySQLŠÖ”‚ğ—p‚¢‚éê‡</TD>
-                <TD>@:@</TD>
-                <TD>mysql_connect()‚Ì–ß‚è’l</TD></TR>
+                <TD>ã€€ã€€ãƒ»MySQLé–¢æ•°ã‚’ç”¨ã„ã‚‹å ´åˆ</TD>
+                <TD>ã€€:ã€€</TD>
+                <TD>mysql_connect()ã®æˆ»ã‚Šå€¤</TD></TR>
               <TR>
-                <TD>@@EPostgreSQLŠÖ”‚ğ—p‚¢‚éê‡</TD>
-                <TD>@:@</TD>
-                <TD>pg_connect()‚Ì–ß‚è’l</TD></TR></TBODY></TABLE>‚Æ‚È‚è‚Ü‚·B‚Ç‚Ìƒf[ƒ^ƒx[ƒXÚ‘±ƒ‚ƒWƒ…[ƒ‹‚ğg—p‚·‚é‚©‚ÍAˆÈ‰º‚Ìdiconƒtƒ@ƒCƒ‹‚Åw’è‚µ‚Ü‚·B<BR><BR>
-            <P><B>diconƒtƒ@ƒCƒ‹‚Ìì¬</B></P>
-            <P>Pear DB ‚ğ—p‚¢‚éê‡‚Ì diconƒtƒ@ƒCƒ‹‚ğì¬‚µ‚Ü‚·Bincludeƒ^ƒO‚Å 
-            peardb.dicon‚ğƒCƒ“ƒNƒ‹[ƒh‚µ‚Ü‚·B </P>
-            <P>XMLŒ`® deptDao.dicon</P><PRE>&lt;components&gt;
+                <TD>ã€€ã€€ãƒ»PostgreSQLé–¢æ•°ã‚’ç”¨ã„ã‚‹å ´åˆ</TD>
+                <TD>ã€€:ã€€</TD>
+                <TD>pg_connect()ã®æˆ»ã‚Šå€¤</TD></TR></TBODY></TABLE>ã¨ãªã‚Šã¾ã™ã€‚ã©ã®ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¥ç¶šãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã¯ã€ä»¥ä¸‹ã®diconãƒ•ã‚¡ã‚¤ãƒ«ã§æŒ‡å®šã—ã¾ã™ã€‚<BR><BR>
+            <P><B>diconãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ</B></P>
+            <P>Pear DB ã‚’ç”¨ã„ã‚‹å ´åˆã® diconãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ã¾ã™ã€‚includeã‚¿ã‚°ã§ 
+            peardb.diconã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¾ã™ã€‚ </P>
+            <P>XMLå½¢å¼ deptDao.dicon</P><PRE>&lt;components&gt;
     &lt;include path="%S2CONTAINER_PHP5%/org/seasar/extension/db/peardb.dicon"/&gt;
     &lt;component name ="deptDao" class="DeptDaoImpl"/&gt;
 &lt;/components&gt;
 </PRE>
-            <P>INIŒ`® deptDao.ini</P><PRE>[components]
+            <P>INIå½¢å¼ deptDao.ini</P><PRE>[components]
 include{0} = "%S2CONTAINER_PHP5%/org/seasar/extension/db/peardb.dicon"
 
 [deptDao]
 class="DeptDaoImpl"
 </PRE>
-            <P><B>ÀsƒXƒNƒŠƒvƒg‚Ìì¬</B></P>
+            <P><B>å®Ÿè¡Œã‚¹ã‚¯ãƒªãƒ—ãƒˆã®ä½œæˆ</B></P>
             <UL>
-              <LI type=circle>deptDao.dicon‚ğw’è‚µ‚ÄƒRƒ“ƒeƒi‚ğì¬‚µ‚Ü‚·B 
-              <LI type=circle>ƒRƒ“ƒeƒi‚æ‚èAdeptDaoƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚µ‚Ü‚·B 
-              <LI type=circle>DEPTNO(10) ‚Å findDeptByDeptno ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B 
+              <LI type=circle>deptDao.diconã‚’æŒ‡å®šã—ã¦ã‚³ãƒ³ãƒ†ãƒŠã‚’ä½œæˆã—ã¾ã™ã€‚ 
+              <LI type=circle>ã‚³ãƒ³ãƒ†ãƒŠã‚ˆã‚Šã€deptDaoã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚ 
+              <LI type=circle>DEPTNO(10) ã§ findDeptByDeptno ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚ 
 </LI></UL>
             <P>dataSourceClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/db.inc.php');
@@ -610,7 +613,7 @@ $result = $dao-&gt;findDeptByDeptno(10);
 print_r($result);
 ?&gt;
 </PRE>
-            <P><B>ÀsŒ‹‰Ê</B></P><PRE>% php dataSourceClient.php
+            <P><B>Result</B></P><PRE>% php dataSourceClient.php
 Array
 (
     [0] =&gt; 10
@@ -620,26 +623,26 @@ Array
 )
 %
 </PRE><A name=dba-tx>
-            <H3>TxIntereceptor‚ğg—p‚·‚é</H3></A>
-            <P>TxInterceptor‚ğg—p‚µ‚ÄAƒf[ƒ^ƒx[ƒX‚Ö‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğŠÇ—‚µ‚Ü‚·B<BR>‚±‚Ì‰‰K‚ÍAs2container.php5/src/examples/extension/db/ˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</P>
-            <P><B>ƒCƒ“ƒ^ƒtƒF[ƒX‚Ì’è‹`</B></P>
+            <H3>Use TxIntereceptor</H3></A>
+            <P>TxInterceptorã‚’ä½¿ç”¨ã—ã¦ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ç®¡ç†ã—ã¾ã™ã€‚<BR>ã“ã®æ¼”ç¿’ã¯ã€s2container.php5/src/examples/extension/db/ä»¥ä¸‹ã«ç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚</P>
+            <P><B>Interface Definition</B></P>
             <UL>
-              <LI type=circle>DeptDaoƒCƒ“ƒ^ƒtƒF[ƒX‚ğ’è‹`‚µ‚Ü‚·B 
-              <LI type=circle>DEPTNO’l‚ÅŒŸõ‚ğs‚¤ findDeptByDeptnoƒƒ\ƒbƒh‚ğ’è‹`‚µ‚Ü‚·B </LI></UL><PRE>&lt;?php
+              <LI type=circle>Define DeptDao interface
+              <LI type=circle>DEPTNOå€¤ã§æ¤œç´¢ã‚’è¡Œã† findDeptByDeptnoãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚ </LI></UL><PRE>&lt;?php
 interface DeptDao {
     function findDeptByDeptno($deptno);
 }
 ?&gt;
 </PRE>
-            <P><B>À‘•ƒNƒ‰ƒX‚Ìì¬</B></P>
+            <P><B>Create execution class</B></P>
             <UL>
-              <LI type=circle>DeptDaoƒCƒ“ƒ^ƒtƒF[ƒX‚ğ implements ‚·‚é 
-              TxDeptDaoImplƒNƒ‰ƒX‚ğì¬‚µ‚Ü‚·B 
-              <LI type=circle>ƒRƒ“ƒXƒgƒ‰ƒNƒ^ˆø”‚Å DBSession ‚ğó‚¯æ‚é‚æ‚¤‚É‚µ‚Ü‚·B 
+              <LI type=circle>DeptDaoã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ implements ã™ã‚‹ 
+              TxDeptDaoImplã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã—ã¾ã™ã€‚ 
+              <LI type=circle>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿å¼•æ•°ã§ DBSession ã‚’å—ã‘å–ã‚‹ã‚ˆã†ã«ã—ã¾ã™ã€‚ 
               <LI type=circle>findDeptByDeptno 
-              ƒƒ\ƒbƒh‚ğÀ‘•‚µ‚Ü‚·Bƒf[ƒ^ƒx[ƒX‚Ö‚ÌƒRƒlƒNƒVƒ‡ƒ“‚ÍADBSession‚æ‚èæ“¾‚µ‚Ü‚·B 
-            </LI></UL>ƒf[ƒ^ƒx[ƒX‚Ö‚ÌÚ‘±AØ’f‚âAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌŠJn(BEGIN)ACOMMIT‚ÍATxInterceptor‚ªs‚¢‚Ü‚·B‚Ü‚½ 
-            Exception ‚ª throw ‚³‚ê‚½ê‡‚ÍAROLLBACK‚ğÀ{‚µ‚Ü‚·B <PRE>&lt;?php
+              ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè£…ã—ã¾ã™ã€‚ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã¯ã€DBSessionã‚ˆã‚Šå–å¾—ã—ã¾ã™ã€‚ 
+            </LI></UL>ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®æ¥ç¶šã€åˆ‡æ–­ã‚„ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®é–‹å§‹(BEGIN)ã€COMMITã¯ã€TxInterceptorãŒè¡Œã„ã¾ã™ã€‚ã¾ãŸ 
+            Exception ãŒ throw ã•ã‚ŒãŸå ´åˆã¯ã€ROLLBACKã‚’å®Ÿæ–½ã—ã¾ã™ã€‚ <PRE>&lt;?php
 class TxDeptDaoImpl implements DeptDao {
 
     private $session;
@@ -657,30 +660,30 @@ class TxDeptDaoImpl implements DeptDao {
     }
 }
 ?&gt;
-</PRE>DBSession-&gt;getConnection()‚Ì–ß‚è’l‚ÍA<BR>
+</PRE>DBSession-&gt;getConnection()ã®æˆ»ã‚Šå€¤ã¯ã€<BR>
             <TABLE cellSpacing=0 cellPadding=0 border=0 hspace="0" vspace="0">
               <TBODY>
               <TR>
-                <TD>@@EPear DB‚ğ—p‚¢‚éê‡</TD>
-                <TD>@:@</TD>
-                <TD>DB::connect()‚Ì–ß‚è’l</TD></TR>
+                <TD>ã€€ã€€ãƒ»Pear DBã‚’ç”¨ã„ã‚‹å ´åˆ</TD>
+                <TD>ã€€:ã€€</TD>
+                <TD>DB::connect()ã®æˆ»ã‚Šå€¤</TD></TR>
               <TR>
-                <TD>@@EADOdb‚ğ—p‚¢‚éê‡</TD>
-                <TD>@:@</TD>
-                <TD>NewADOConnection()‚Ì–ß‚è’l</TD></TR>
+                <TD>ã€€ã€€ãƒ»ADOdbã‚’ç”¨ã„ã‚‹å ´åˆ</TD>
+                <TD>ã€€:ã€€</TD>
+                <TD>NewADOConnection()ã®æˆ»ã‚Šå€¤</TD></TR>
               <TR>
-                <TD>@@EMySQLŠÖ”‚ğ—p‚¢‚éê‡</TD>
-                <TD>@:@</TD>
-                <TD>mysql_connect()‚Ì–ß‚è’l</TD></TR>
+                <TD>ã€€ã€€ãƒ»MySQLé–¢æ•°ã‚’ç”¨ã„ã‚‹å ´åˆ</TD>
+                <TD>ã€€:ã€€</TD>
+                <TD>mysql_connect()ã®æˆ»ã‚Šå€¤</TD></TR>
               <TR>
-                <TD>@@EPostgreSQLŠÖ”‚ğ—p‚¢‚éê‡</TD>
-                <TD>@:@</TD>
-                <TD>pg_connect()‚Ì–ß‚è’l</TD></TR></TBODY></TABLE>‚Æ‚È‚è‚Ü‚·B<BR><BR>
-            <P><B>diconƒtƒ@ƒCƒ‹‚Ìì¬</B></P>
-            <P>Pear DB ‚ğ—p‚¢‚éê‡‚Ì diconƒtƒ@ƒCƒ‹‚ğì¬‚µ‚Ü‚·Bincludeƒ^ƒO‚Å 
-            peardb.dicon‚ğƒCƒ“ƒNƒ‹[ƒh‚µ‚Ü‚·B findDeptByDeptnoƒƒ\ƒbƒh‚ÉAdbtx 
-            (PearDBTxInterceptor) ‚ğƒAƒXƒyƒNƒg‚µ‚Ü‚·B </P>
-            <P>XMLŒ`® txDeptDao.dicon</P><PRE>&lt;components&gt;
+                <TD>ã€€ã€€ãƒ»PostgreSQLé–¢æ•°ã‚’ç”¨ã„ã‚‹å ´åˆ</TD>
+                <TD>ã€€:ã€€</TD>
+                <TD>pg_connect()ã®æˆ»ã‚Šå€¤</TD></TR></TBODY></TABLE>ã¨ãªã‚Šã¾ã™ã€‚<BR><BR>
+            <P><B>diconãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ</B></P>
+            <P>Pear DB ã‚’ç”¨ã„ã‚‹å ´åˆã® diconãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ã¾ã™ã€‚includeã‚¿ã‚°ã§ 
+            peardb.diconã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¾ã™ã€‚ findDeptByDeptnoãƒ¡ã‚½ãƒƒãƒ‰ã«ã€dbtx 
+            (PearDBTxInterceptor) ã‚’ã‚¢ã‚¹ãƒšã‚¯ãƒˆã—ã¾ã™ã€‚ </P>
+            <P>XMLå½¢å¼ txDeptDao.dicon</P><PRE>&lt;components&gt;
     &lt;include path="%S2CONTAINER_PHP5%/org/seasar/extension/db/peardb.dicon"/&gt;
     &lt;component name ="deptDao" class="TxDeptDaoImpl"&gt;
         &lt;aspect pointcut="findDeptByDeptno"&gt;
@@ -689,7 +692,7 @@ class TxDeptDaoImpl implements DeptDao {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <P>INIŒ`® txDeptDao.ini</P><PRE>[components]
+            <P>INIå½¢å¼ txDeptDao.ini</P><PRE>[components]
 include{0} = "%S2CONTAINER_PHP5%/org/seasar/extension/db/peardb.dicon"
 
 [deptDao]
@@ -697,11 +700,11 @@ class="TxDeptDaoImpl"
 aspect{0}{pointcut} = "findDeptByDeptno"
 aspect{0}{ref} = "dbtx"
 </PRE>
-            <P><B>ÀsƒXƒNƒŠƒvƒg‚Ìì¬</B></P>
+            <P><B>Create execution script</B></P>
             <UL>
-              <LI type=circle>txDeptDao.dicon‚ğw’è‚µ‚ÄƒRƒ“ƒeƒi‚ğì¬‚µ‚Ü‚·B 
-              <LI type=circle>ƒRƒ“ƒeƒi‚æ‚èAdeptDaoƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚µ‚Ü‚·B 
-              <LI type=circle>DEPTNO(10) ‚Å findDeptByDeptno ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B 
+              <LI type=circle>txDeptDao.diconã‚’æŒ‡å®šã—ã¦ã‚³ãƒ³ãƒ†ãƒŠã‚’ä½œæˆã—ã¾ã™ã€‚ 
+              <LI type=circle>ã‚³ãƒ³ãƒ†ãƒŠã‚ˆã‚Šã€deptDaoã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚ 
+              <LI type=circle>DEPTNO(10) ã§ findDeptByDeptno ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚ 
 </LI></UL>
             <P>txClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/db.inc.php');
@@ -715,7 +718,7 @@ $result = $dao-&gt;findDeptByDeptno(10);
 print_r($result);
 ?&gt;
 </PRE>
-            <P><B>ÀsŒ‹‰Ê</B></P><PRE>% php dataSourceClient.php
+            <P><B>å®Ÿè¡Œçµæœ</B></P><PRE>% php dataSourceClient.php
 Array
 (
     [0] =&gt; 10
@@ -725,35 +728,35 @@ Array
 )
 %
 </PRE><A name=dba-dao>
-            <H3>SimpleDaoInterceptor‚ğg—p‚·‚é<I> (‚±‚Ì‹@”\‚Í<A 
+            <H3>SimpleDaoInterceptorã‚’ä½¿ç”¨ã™ã‚‹<I> (ã“ã®æ©Ÿèƒ½ã¯<A 
             href="http://s2dao.php5.sandbox.seasar.org/">S2Dao.PHP5</A> 
-            ‚ÉˆÚ‚è‚Ü‚·)</I></H3></A>
-            <P>ƒCƒ“ƒ^ƒtƒF[ƒX’è‹`‚ÆSQL•¶‚Åƒf[ƒ^ƒx[ƒXÚ‘±‚ğs‚¢‚Ü‚·B<BR>‚±‚Ì‰‰K‚ÍAs2container.php5/src/examples/extension/db/ˆÈ‰º‚É—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B</P><A 
+            ã«ç§»ã‚Šã¾ã™)</I></H3></A>
+            <P>ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®šç¾©ã¨SQLæ–‡ã§ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¥ç¶šã‚’è¡Œã„ã¾ã™ã€‚<BR>ã“ã®æ¼”ç¿’ã¯ã€s2container.php5/src/examples/extension/db/ä»¥ä¸‹ã«ç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚</P><A 
             name=dba-dao-array>
-            <H3>–ß‚è’l‚ª”z—ñ‚Ìê‡</H3></A>
-            <P>ƒf[ƒ^ƒx[ƒXŒŸõŒ‹‰Ê‚ğ”z—ñ‚Åæ“¾‚µ‚Ü‚·B</P>
-            <P><B>ƒCƒ“ƒ^ƒtƒF[ƒX‚Ì’è‹`</B></P>
+            <H3>æˆ»ã‚Šå€¤ãŒé…åˆ—ã®å ´åˆ</H3></A>
+            <P>ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¤œç´¢çµæœã‚’é…åˆ—ã§å–å¾—ã—ã¾ã™ã€‚</P>
+            <P><B>ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®šç¾©</B></P>
             <UL>
-              <LI type=circle>DeptDaoƒCƒ“ƒ^ƒtƒF[ƒX‚ğ’è‹`‚µ‚Ü‚·B 
-              <LI type=circle>DEPTNO’l‚ÅŒŸõ‚ğs‚¤ findDeptByDeptnoƒƒ\ƒbƒh‚ğ’è‹`‚µ‚Ü‚·B 
-              <LI type=circle>’è”ƒAƒmƒe[ƒVƒ‡ƒ“(QUERY)‚ÅASQL•¶‚ğİ’è‚µ‚Ü‚·B </LI></UL><PRE>&lt;?php
+              <LI type=circle>DeptDaoã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚ 
+              <LI type=circle>DEPTNOå€¤ã§æ¤œç´¢ã‚’è¡Œã† findDeptByDeptnoãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚ 
+              <LI type=circle>å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³(QUERY)ã§ã€SQLæ–‡ã‚’è¨­å®šã—ã¾ã™ã€‚ </LI></UL><PRE>&lt;?php
 interface DeptDao {
     const findDeptByDeptno_QUERY = 'select * from dept where deptno = \'{$deptno}\'';
-    //const findDeptByDeptno_FILE = '%PATH_PREFIX%/path/to/sql/file';  // ŠO•”SQLƒtƒ@ƒCƒ‹‚ğw’è‚·‚éê‡
+    //const findDeptByDeptno_FILE = '%PATH_PREFIX%/path/to/sql/file';  // å¤–éƒ¨SQLãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã™ã‚‹å ´åˆ
     function findDeptByDeptno($deptno);
 }
 ?&gt;
 </PRE>
-            <P>Šeƒƒ\ƒbƒh‚ª”­s‚·‚éSQL•¶‚ğw’è‚·‚é•û–@‚Í3’Ê‚è‚ ‚è‚Ü‚·B<BR>@@@E’è”ƒAƒmƒe[ƒVƒ‡ƒ“F ƒƒ\ƒbƒh–¼_QUERY 
-            ‚É‹Lq‚·‚é (ã‹LƒTƒ“ƒvƒ‹)<BR>@@@E’è”ƒAƒmƒe[ƒVƒ‡ƒ“F ƒƒ\ƒbƒh–¼_FILE ‚ÅŠO•”ƒtƒ@ƒCƒ‹‚ğw’è‚·‚é 
-            (ƒpƒX‚Ìæ“ª‚É%...%‚Å’è”‚ğ–„‚ß‚ß‚Ü‚·)<BR>@@@EƒCƒ“ƒ^ƒtƒF[ƒX’è‹`ƒtƒ@ƒCƒ‹‚Æ“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚É 
-            ƒCƒ“ƒ^ƒtƒF[ƒX–¼_ƒƒ\ƒbƒh–¼.sql ƒtƒ@ƒCƒ‹‚ğì¬‚·‚é<BR></P>
-            <P><B>À‘•ƒNƒ‰ƒX‚Ìì¬</B></P>
-            <P>•K—v‚ÈÀ‘•ƒNƒ‰ƒX‚Í‚ ‚è‚Ü‚¹‚ñB</P>
-            <P><B>diconƒtƒ@ƒCƒ‹‚Ìì¬</B></P>
-            <P>ADOdb ‚ğ—p‚¢‚éê‡‚Ì diconƒtƒ@ƒCƒ‹‚ğì¬‚µ‚Ü‚·Bincludeƒ^ƒO‚Å adodb.dicon‚ğƒCƒ“ƒNƒ‹[ƒh‚µ‚Ü‚·B 
-            findDeptByDeptnoƒƒ\ƒbƒh‚ÉAdao(SimpleDaoInterceptor) ‚ğƒAƒXƒyƒNƒg‚µ‚Ü‚·B </P>
-            <P>XMLŒ`® simpleDeptDao.dicon</P><PRE>&lt;components&gt;
+            <P>å„ãƒ¡ã‚½ãƒƒãƒ‰ãŒç™ºè¡Œã™ã‚‹SQLæ–‡ã‚’æŒ‡å®šã™ã‚‹æ–¹æ³•ã¯3é€šã‚Šã‚ã‚Šã¾ã™ã€‚<BR>ã€€ã€€ã€€ãƒ»å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï¼š ãƒ¡ã‚½ãƒƒãƒ‰å_QUERY 
+            ã«è¨˜è¿°ã™ã‚‹ (ä¸Šè¨˜ã‚µãƒ³ãƒ—ãƒ«)<BR>ã€€ã€€ã€€ãƒ»å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï¼š ãƒ¡ã‚½ãƒƒãƒ‰å_FILE ã§å¤–éƒ¨ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã™ã‚‹ 
+            (ãƒ‘ã‚¹ã®å…ˆé ­ã«%...%ã§å®šæ•°ã‚’åŸ‹ã‚è¾¼ã‚ã¾ã™)<BR>ã€€ã€€ã€€ãƒ»ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¨åŒã˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã« 
+            ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å_ãƒ¡ã‚½ãƒƒãƒ‰å.sql ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹<BR></P>
+            <P><B>å®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ä½œæˆ</B></P>
+            <P>å¿…è¦ãªå®Ÿè£…ã‚¯ãƒ©ã‚¹ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚</P>
+            <P><B>diconãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ</B></P>
+            <P>ADOdb ã‚’ç”¨ã„ã‚‹å ´åˆã® diconãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ã¾ã™ã€‚includeã‚¿ã‚°ã§ adodb.diconã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¾ã™ã€‚ 
+            findDeptByDeptnoãƒ¡ã‚½ãƒƒãƒ‰ã«ã€dao(SimpleDaoInterceptor) ã‚’ã‚¢ã‚¹ãƒšã‚¯ãƒˆã—ã¾ã™ã€‚ </P>
+            <P>XMLå½¢å¼ simpleDeptDao.dicon</P><PRE>&lt;components&gt;
     &lt;include path="%S2CONTAINER_PHP5%/org/seasar/extension/db/adodb.dicon"/&gt;
     &lt;component name ="deptDao" class="DeptDao"&gt;
         &lt;aspect pointcut="findDeptByDeptno"&gt;
@@ -762,7 +765,7 @@ interface DeptDao {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <P>INIŒ`® simpleDeptDao.ini</P><PRE>[components]
+            <P>INIå½¢å¼ simpleDeptDao.ini</P><PRE>[components]
 include{0} = "%S2CONTAINER_PHP5%/org/seasar/extension/db/adodb.dicon"
 
 [deptDao]
@@ -770,11 +773,11 @@ class="DeptDao"
 aspect{0}{pointcut} = "findDeptByDeptno"
 aspect{0}{ref} = dao
 </PRE>
-            <P><B>ÀsƒXƒNƒŠƒvƒg‚Ìì¬</B></P>
+            <P><B>å®Ÿè¡Œã‚¹ã‚¯ãƒªãƒ—ãƒˆã®ä½œæˆ</B></P>
             <UL>
-              <LI type=circle>simpleDeptDao.dicon‚ğw’è‚µ‚ÄƒRƒ“ƒeƒi‚ğì¬‚µ‚Ü‚·B 
-              <LI type=circle>ƒRƒ“ƒeƒi‚æ‚èAdeptDaoƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚µ‚Ü‚·B 
-              <LI type=circle>DEPTNO(10) ‚Å findDeptByDeptno ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B 
+              <LI type=circle>simpleDeptDao.diconã‚’æŒ‡å®šã—ã¦ã‚³ãƒ³ãƒ†ãƒŠã‚’ä½œæˆã—ã¾ã™ã€‚ 
+              <LI type=circle>ã‚³ãƒ³ãƒ†ãƒŠã‚ˆã‚Šã€deptDaoã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚ 
+              <LI type=circle>DEPTNO(10) ã§ findDeptByDeptno ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚ 
 </LI></UL>
             <P>simpleClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/db.inc.php');
@@ -787,7 +790,7 @@ $result = $dao-&gt;findDeptByDeptno(10);
 print_r($result);
 ?&gt;
 </PRE>
-            <P><B>ÀsŒ‹‰Ê</B></P><PRE>% php simpleClient.php
+            <P><B>å®Ÿè¡Œçµæœ</B></P><PRE>% php simpleClient.php
 Array
 (
     [0] =&gt; Array
@@ -800,13 +803,13 @@ Array
 )
 %
 </PRE><A name=dba-dao-bean>
-            <H3>–ß‚è’l‚ªƒIƒuƒWƒFƒNƒg‚Ìê‡</H3></A>
-            <P>ƒf[ƒ^ƒx[ƒXŒŸõŒ‹‰Ê‚ğw’è‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB’l‚Æ‚µ‚Äæ“¾‚µ‚Ü‚·B</P>
-            <P><B>ƒCƒ“ƒ^ƒtƒF[ƒX‚Ì’è‹`</B></P>
+            <H3>æˆ»ã‚Šå€¤ãŒã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å ´åˆ</H3></A>
+            <P>ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¤œç´¢çµæœã‚’æŒ‡å®šã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å€¤ã¨ã—ã¦å–å¾—ã—ã¾ã™ã€‚</P>
+            <P><B>ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å®šç¾©</B></P>
             <UL>
-              <LI type=circle>BeanDeptDaoƒCƒ“ƒ^ƒtƒF[ƒX‚ğ’è‹`‚µ‚Ü‚·B 
-              <LI type=circle>DEPTNO’l‚ÅŒŸõ‚ğs‚¤ findDeptByDeptnoƒƒ\ƒbƒh‚ğ’è‹`‚µ‚Ü‚·B 
-              <LI type=circle>’è”ƒAƒmƒe[ƒVƒ‡ƒ“(BEAN)‚ÅADTO(Data Transfer Object)‚ğİ’è‚µ‚Ü‚·B 
+              <LI type=circle>BeanDeptDaoã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®šç¾©ã—ã¾ã™ã€‚ 
+              <LI type=circle>DEPTNOå€¤ã§æ¤œç´¢ã‚’è¡Œã† findDeptByDeptnoãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚ 
+              <LI type=circle>å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³(BEAN)ã§ã€DTO(Data Transfer Object)ã‚’è¨­å®šã—ã¾ã™ã€‚ 
               </LI></UL><PRE>&lt;?php
 interface BeanDeptDao {
     const BEAN = "DeptDto";
@@ -814,15 +817,15 @@ interface BeanDeptDao {
 }
 ?&gt;
 </PRE>
-            <P>Šeƒƒ\ƒbƒh‚ª”­s‚·‚éSQL•¶‚ğw’è‚·‚é•û–@‚Í3’Ê‚è‚ ‚è‚Ü‚·B<BR>@@@E’è”ƒAƒmƒe[ƒVƒ‡ƒ“F ƒƒ\ƒbƒh–¼_QUERY 
-            ‚É‹Lq‚·‚é<BR>@@@E’è”ƒAƒmƒe[ƒVƒ‡ƒ“F ƒƒ\ƒbƒh–¼_FILE ‚ÅŠO•”ƒtƒ@ƒCƒ‹‚ğw’è‚·‚é 
-            (ƒpƒX‚Ìæ“ª‚É%...%‚Å’è”‚ğ–„‚ß‚ß‚Ü‚·)<BR>@@@EƒCƒ“ƒ^ƒtƒF[ƒX’è‹`ƒtƒ@ƒCƒ‹‚Æ“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚É 
-            ƒCƒ“ƒ^ƒtƒF[ƒX–¼_ƒƒ\ƒbƒh–¼.sql ƒtƒ@ƒCƒ‹‚ğì¬‚·‚é<BR></P>
-            <P>3”Ô–Ú‚Ì•û–@‚ğ—p‚¢AfindDeptByDeptno‚ª”­s‚·‚éSQL•¶‚ğABeanDeptDaoƒCƒ“ƒ^ƒtƒF[ƒX’è‹`ƒtƒ@ƒCƒ‹‚Æ“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚ÉA 
-            BeanDeptDao_findDeptByDeptno.sql‚Åì¬‚µ‚Ü‚·B <PRE>select * from dept where deptno = '{$deptno}'
+            <P>å„ãƒ¡ã‚½ãƒƒãƒ‰ãŒç™ºè¡Œã™ã‚‹SQLæ–‡ã‚’æŒ‡å®šã™ã‚‹æ–¹æ³•ã¯3é€šã‚Šã‚ã‚Šã¾ã™ã€‚<BR>ã€€ã€€ã€€ãƒ»å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï¼š ãƒ¡ã‚½ãƒƒãƒ‰å_QUERY 
+            ã«è¨˜è¿°ã™ã‚‹<BR>ã€€ã€€ã€€ãƒ»å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ï¼š ãƒ¡ã‚½ãƒƒãƒ‰å_FILE ã§å¤–éƒ¨ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æŒ‡å®šã™ã‚‹ 
+            (ãƒ‘ã‚¹ã®å…ˆé ­ã«%...%ã§å®šæ•°ã‚’åŸ‹ã‚è¾¼ã‚ã¾ã™)<BR>ã€€ã€€ã€€ãƒ»ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¨åŒã˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã« 
+            ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å_ãƒ¡ã‚½ãƒƒãƒ‰å.sql ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹<BR></P>
+            <P>3ç•ªç›®ã®æ–¹æ³•ã‚’ç”¨ã„ã€findDeptByDeptnoãŒç™ºè¡Œã™ã‚‹SQLæ–‡ã‚’ã€BeanDeptDaoã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¨åŒã˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã€ 
+            BeanDeptDao_findDeptByDeptno.sqlã§ä½œæˆã—ã¾ã™ã€‚ <PRE>select * from dept where deptno = '{$deptno}'
 </PRE>
-            <P><B>À‘•ƒNƒ‰ƒX‚Ìì¬</B></P>
-            <P>’è”ƒAƒmƒe[ƒVƒ‡ƒ“(BEAN)‚Åw’è‚µ‚½DTO‚ğì¬‚µ‚Ü‚·B</P><PRE>&lt;?php
+            <P><B>å®Ÿè£…ã‚¯ãƒ©ã‚¹ã®ä½œæˆ</B></P>
+            <P>å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³(BEAN)ã§æŒ‡å®šã—ãŸDTOã‚’ä½œæˆã—ã¾ã™ã€‚</P><PRE>&lt;?php
 class DeptDto {
     private $deptno;
     private $dname;
@@ -850,14 +853,14 @@ class DeptDto {
 }
 ?&gt;
 </PRE>
-            <P>ƒf[ƒ^ƒx[ƒXŒŸõŒ‹‰Ê‚Ì‚¤‚¿AƒJƒ‰ƒ€–¼‚ÆDTO‚ÌƒvƒƒpƒeƒB‹y‚Ñ‚»‚ÌƒZƒbƒ^[ƒƒ\ƒbƒh–¼‚ª‘Î‰‚·‚é’l‚Ì‚İA’è”ƒAƒmƒe[ƒVƒ‡ƒ“(BEAN)‚Åw’è‚µ‚½ 
-            DTO ‚ÌƒvƒƒpƒeƒB‚Éİ’è‚³‚ê‚Ü‚·B</P>@ƒJƒ‰ƒ€–¼‚ÆƒvƒƒpƒeƒB‹y‚Ñ‚»‚ÌƒZƒbƒ^[ƒƒ\ƒbƒh–¼‚Ì‘Î‰ 
+            <P>ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¤œç´¢çµæœã®ã†ã¡ã€ã‚«ãƒ©ãƒ åã¨DTOã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åŠã³ãã®ã‚»ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰åãŒå¯¾å¿œã™ã‚‹å€¤ã®ã¿ã€å®šæ•°ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³(BEAN)ã§æŒ‡å®šã—ãŸ 
+            DTO ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«è¨­å®šã•ã‚Œã¾ã™ã€‚</P>ã€€ã‚«ãƒ©ãƒ åã¨ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åŠã³ãã®ã‚»ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰åã®å¯¾å¿œ 
             <TABLE cellSpacing=1 cellPadding=2 border=1 hspace="0" vspace="0">
               <TBODY>
               <TR align=middle bgColor=#d1f3f4>
-                <TH>ƒJƒ‰ƒ€–¼</TH>
-                <TH>ƒvƒƒpƒeƒB–¼</TH>
-                <TH>ƒZƒbƒ^[ƒƒ\ƒbƒh–¼</TH>
+                <TH>ã‚«ãƒ©ãƒ å</TH>
+                <TH>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å</TH>
+                <TH>ã‚»ãƒƒã‚¿ãƒ¼ãƒ¡ã‚½ãƒƒãƒ‰å</TH>
               <TR>
               <TR>
                 <TD>deptno</TD>
@@ -879,11 +882,11 @@ class DeptDto {
                 <TD>deptNo</TD>
                 <TD>setDeptNo</TD>
               <TR></TR></TBODY></TABLE><BR>
-            <P><B>diconƒtƒ@ƒCƒ‹‚Ìì¬</B></P>
-            <P>ADOdb ‚ğ—p‚¢‚éê‡‚Ì diconƒtƒ@ƒCƒ‹‚ğì¬‚µ‚Ü‚·Bincludeƒ^ƒO‚Å adodb.dicon‚ğƒCƒ“ƒNƒ‹[ƒh‚µ‚Ü‚·B 
-            findDeptByDeptnoƒƒ\ƒbƒh‚ÉAdao(SimpleDaoInterceptor) ‚ğƒAƒXƒyƒNƒg‚µ‚Ü‚·B(Pear 
-            DB‚ğg—p‚·‚éê‡‚ÍApeardb.dicon ‚ğƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‰º‚³‚¢B) </P>
-            <P>XMLŒ`® simpleDeptDao.dicon</P><PRE>&lt;components&gt;
+            <P><B>diconãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ</B></P>
+            <P>ADOdb ã‚’ç”¨ã„ã‚‹å ´åˆã® diconãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ã¾ã™ã€‚includeã‚¿ã‚°ã§ adodb.diconã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¾ã™ã€‚ 
+            findDeptByDeptnoãƒ¡ã‚½ãƒƒãƒ‰ã«ã€dao(SimpleDaoInterceptor) ã‚’ã‚¢ã‚¹ãƒšã‚¯ãƒˆã—ã¾ã™ã€‚(Pear 
+            DBã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€peardb.dicon ã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ä¸‹ã•ã„ã€‚) </P>
+            <P>XMLå½¢å¼ simpleDeptDao.dicon</P><PRE>&lt;components&gt;
     &lt;include path="%S2CONTAINER_PHP5%/org/seasar/extension/db/adodb.dicon"/&gt;
     &lt;component name ="beanDeptDao" class="BeanDeptDao"&gt;
         &lt;aspect pointcut="findDeptByDeptno"&gt;
@@ -892,7 +895,7 @@ class DeptDto {
     &lt;/component&gt;
 &lt;/components&gt;
 </PRE>
-            <P>INIŒ`® simpleDeptDao.ini</P><PRE>[components]
+            <P>INIå½¢å¼ simpleDeptDao.ini</P><PRE>[components]
 include{0} = "%S2CONTAINER_PHP5%/org/seasar/extension/db/adodb.dicon"
 
 [beanDeptDao]
@@ -900,11 +903,11 @@ class="BeanDeptDao"
 aspect{0}{pointcut} = "findDeptByDeptno"
 aspect{0}{ref} = dao
 </PRE>
-            <P><B>ÀsƒXƒNƒŠƒvƒg‚Ìì¬</B></P>
+            <P><B>å®Ÿè¡Œã‚¹ã‚¯ãƒªãƒ—ãƒˆã®ä½œæˆ</B></P>
             <UL>
-              <LI type=circle>simpleDeptDao.dicon‚ğw’è‚µ‚ÄƒRƒ“ƒeƒi‚ğì¬‚µ‚Ü‚·B 
-              <LI type=circle>ƒRƒ“ƒeƒi‚æ‚èAbeanDeptDaoƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚µ‚Ü‚·B 
-              <LI type=circle>DEPTNO(10) ‚Å findDeptByDeptno ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚µ‚Ü‚·B 
+              <LI type=circle>simpleDeptDao.diconã‚’æŒ‡å®šã—ã¦ã‚³ãƒ³ãƒ†ãƒŠã‚’ä½œæˆã—ã¾ã™ã€‚ 
+              <LI type=circle>ã‚³ãƒ³ãƒ†ãƒŠã‚ˆã‚Šã€beanDeptDaoã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—ã—ã¾ã™ã€‚ 
+              <LI type=circle>DEPTNO(10) ã§ findDeptByDeptno ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚ 
 </LI></UL>
             <P>simpleBeanClient.php</P><PRE>&lt;?php
 require_once(dirname(__FILE__) . '/db.inc.php');
@@ -917,7 +920,7 @@ $result = $dao-&gt;findDeptByDeptno(10);
 print_r($result);
 ?&gt;
 </PRE>
-            <P><B>ÀsŒ‹‰Ê</B></P><PRE>% php simpleBeanClient.php
+            <P><B>å®Ÿè¡Œçµæœ</B></P><PRE>% php simpleBeanClient.php
 Array
 (
     [0] =&gt; DeptDto Object
@@ -929,24 +932,24 @@ Array
 )
 %
 </PRE>
-            <P>DeptDtoƒNƒ‰ƒX‚ÌƒvƒƒpƒeƒB deptno ‚Æ dname 
-            ‚É’l‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚·Bƒf[ƒ^ƒx[ƒXŒŸõŒ‹‰Ê‚ÌLOCƒJƒ‰ƒ€‚âVERSIONNOƒJƒ‰ƒ€‚Ìƒf[ƒ^‚Í”jŠü‚³‚ê‚Ü‚·B</P><BR><A 
+            <P>DeptDtoã‚¯ãƒ©ã‚¹ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ deptno ã¨ dname 
+            ã«å€¤ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã™ã€‚ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¤œç´¢çµæœã®LOCã‚«ãƒ©ãƒ ã‚„VERSIONNOã‚«ãƒ©ãƒ ã®ãƒ‡ãƒ¼ã‚¿ã¯ç ´æ£„ã•ã‚Œã¾ã™ã€‚</P><BR><A 
             name=unit>
             <H3>S2Unit</H3></A>
-            <P>S2‚Å‚ÍAƒRƒ“ƒeƒi‚ğg‚Á‚½ŠJ”­‚ÌƒeƒXƒg‚ğŠy‚µ‚­‚¨‚±‚È‚¦‚é‚æ‚¤‚ÉƒeƒXƒeƒBƒ“ƒOƒtƒŒ[ƒ€ƒ[ƒN‚ª‘g‚İ‚Ü‚ê‚Ä‚¢‚Ü‚·BPHPUnitAPHPUnit2ASimpleTest‚ğŠg’£‚µ‚Ä‚¢‚Ü‚·Bå‚È‹@”\‚ÍˆÈ‰º‚Ì‚Æ‚¨‚è‚Å‚·B</P>
+            <P>S2ã§ã¯ã€ã‚³ãƒ³ãƒ†ãƒŠã‚’ä½¿ã£ãŸé–‹ç™ºã®ãƒ†ã‚¹ãƒˆã‚’æ¥½ã—ããŠã“ãªãˆã‚‹ã‚ˆã†ã«ãƒ†ã‚¹ãƒ†ã‚£ãƒ³ã‚°ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ãŒçµ„ã¿è¾¼ã¾ã‚Œã¦ã„ã¾ã™ã€‚PHPUnitã€PHPUnit2ã€SimpleTestã‚’æ‹¡å¼µã—ã¦ã„ã¾ã™ã€‚ä¸»ãªæ©Ÿèƒ½ã¯ä»¥ä¸‹ã®ã¨ãŠã‚Šã§ã™ã€‚</P>
             <UL>
-              <LI>ƒeƒXƒgƒƒ\ƒbƒh(testXxx)‚²‚Æ‚É©“®“I‚ÉS2Container‚ğì¬‚µ‚Ü‚·B 
-              <LI>S2Container‚É‘Î‚·‚éregister()AgetComponent()Ainclude() ‚ª—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B 
-              <LI>TestCase‚É public 
-              ‚ÈƒtƒB[ƒ‹ƒh‚ª‚ ‚é‚ÆAƒtƒB[ƒ‹ƒh–¼‚Æ“¯‚¶–¼‘O‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒRƒ“ƒeƒi‚É‘¶İ‚·‚ê‚Î©“®“I‚ÉƒZƒbƒg‚³‚ê‚Ü‚·B 
-              <LI>ƒeƒXƒgƒƒ\ƒbƒh‚ªI‚í‚é‚Æ©“®ƒZƒbƒg‚³‚ê‚½’l‚Í©“®“I‚ÉƒNƒŠƒA( null ‚ğƒZƒbƒg)‚³‚ê‚Ü‚·B 
-              <LI>ƒeƒXƒgƒƒ\ƒbƒh( testXxx )‚É‘Î‰‚·‚é setUpXxx()AtearDownXxx() 
-              ‚ğ’è‹`‚µ‚Ä‚¨‚­‚ÆAsetUp()‚ÌŒãAtearDown()‚Ì‘O‚É©“®“I‚ÉŒÄ‚Ño‚³‚ê‚Ü‚·BŒÂ•Ê‚ÌƒeƒXƒgƒƒ\ƒbƒh‚²‚Æ‚Ì‰Šú‰»EI—¹ˆ—‚ğŠÈ’P‚És‚¦‚é‚æ‚¤‚É‚È‚è‚Ü‚·B 
+              <LI>ãƒ†ã‚¹ãƒˆãƒ¡ã‚½ãƒƒãƒ‰(testXxx)ã”ã¨ã«è‡ªå‹•çš„ã«S2Containerã‚’ä½œæˆã—ã¾ã™ã€‚ 
+              <LI>S2Containerã«å¯¾ã™ã‚‹register()ã€getComponent()ã€include() ãŒç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚ 
+              <LI>TestCaseã« public 
+              ãªãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ãŒã‚ã‚‹ã¨ã€ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰åã¨åŒã˜åå‰ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚³ãƒ³ãƒ†ãƒŠã«å­˜åœ¨ã™ã‚Œã°è‡ªå‹•çš„ã«ã‚»ãƒƒãƒˆã•ã‚Œã¾ã™ã€‚ 
+              <LI>ãƒ†ã‚¹ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ãŒçµ‚ã‚ã‚‹ã¨è‡ªå‹•ã‚»ãƒƒãƒˆã•ã‚ŒãŸå€¤ã¯è‡ªå‹•çš„ã«ã‚¯ãƒªã‚¢( null ã‚’ã‚»ãƒƒãƒˆ)ã•ã‚Œã¾ã™ã€‚ 
+              <LI>ãƒ†ã‚¹ãƒˆãƒ¡ã‚½ãƒƒãƒ‰( testXxx )ã«å¯¾å¿œã™ã‚‹ setUpXxx()ã€tearDownXxx() 
+              ã‚’å®šç¾©ã—ã¦ãŠãã¨ã€setUp()ã®å¾Œã€tearDown()ã®å‰ã«è‡ªå‹•çš„ã«å‘¼ã³å‡ºã•ã‚Œã¾ã™ã€‚å€‹åˆ¥ã®ãƒ†ã‚¹ãƒˆãƒ¡ã‚½ãƒƒãƒ‰ã”ã¨ã®åˆæœŸåŒ–ãƒ»çµ‚äº†å‡¦ç†ã‚’ç°¡å˜ã«è¡Œãˆã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚ 
               </LI></UL>
             <H3><A name=unit-example>Example</A></H3>
-            <P>Pear PHPUnit2 ‚ğŠg’£‚µ‚½ S2PHPUnit2TestCase 
-            ‚ğ—p‚¢‚Ü‚·B<BR>‚±‚ÌƒTƒ“ƒvƒ‹‚ÍAs2container.php5/src/examples/extension/unit/ˆÈ‰º‚É‚ ‚è‚Ü‚·B</P>
-            <P><B>ƒeƒXƒg‘ÎÛ</B></P>
+            <P>Pear PHPUnit2 ã‚’æ‹¡å¼µã—ãŸ S2PHPUnit2TestCase 
+            ã‚’ç”¨ã„ã¾ã™ã€‚<BR>ã“ã®ã‚µãƒ³ãƒ—ãƒ«ã¯ã€s2container.php5/src/examples/extension/unit/ä»¥ä¸‹ã«ã‚ã‚Šã¾ã™ã€‚</P>
+            <P><B>ãƒ†ã‚¹ãƒˆå¯¾è±¡</B></P>
             <P>s2container.php5/src/examples/extension/unit/src/foo/FooLogic.class.php</P><PRE>&lt;?php
 class FooLogic {
 
@@ -959,22 +962,22 @@ class FooLogic {
 }
 ?&gt;
 </PRE>
-            <P><B>diconƒtƒ@ƒCƒ‹</B></P>
+            <P><B>diconãƒ•ã‚¡ã‚¤ãƒ«</B></P>
             <P>s2container.php5/src/examples/extension/unit/src/foo/foo.ini</P><PRE>[logic]
 class = FooLogic
 </PRE>
-            <P><B>ƒeƒXƒgƒNƒ‰ƒX</B></P>
+            <P><B>ãƒ†ã‚¹ãƒˆã‚¯ãƒ©ã‚¹</B></P>
             <P>s2container.php5/src/examples/extension/unit/test/phpunit2/foo/FooLogicTest.class.php</P><PRE>&lt;?php
 class FooLogicTest extends S2PHPUnit2TestCase {
 
-    public $logic;   //--- dicon ƒtƒ@ƒCƒ‹‚É logic ‚Æ‚¢‚¤–¼‘O‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ª‘¶İ‚·‚ê‚Îİ’è‚³‚ê‚Ü‚·
+    public $logic;   //--- dicon ãƒ•ã‚¡ã‚¤ãƒ«ã« logic ã¨ã„ã†åå‰ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒå­˜åœ¨ã™ã‚Œã°è¨­å®šã•ã‚Œã¾ã™
     
     function __construct($name) {
     	parent::__construct($name);
     }
 
     function setUp(){
-        $this-&gt;includeDicon(UNIT_EXAMPLE . "/src/foo/foo.ini");   //--- dicon ƒtƒ@ƒCƒ‹‚ğ include ‚µ‚Ü‚·
+        $this-&gt;includeDicon(UNIT_EXAMPLE . "/src/foo/foo.ini");   //--- dicon ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ include ã—ã¾ã™
     }
 
     function testShowYear(){
@@ -999,7 +1002,7 @@ class FooAllTest {
 }
 ?&gt;
 </PRE>
-            <P><B>ÀsƒXƒNƒŠƒvƒg</B></P>
+            <P><B>å®Ÿè¡Œã‚¹ã‚¯ãƒªãƒ—ãƒˆ</B></P>
             <P>s2container.php5/src/examples/extension/unit/test/phpunit2/foo/fooTests.php</P><PRE>&lt;?php
 define('PHPUnit2_MAIN_METHOD', 'FooAllTest::main()');
 require_once 'PHPUnit2/Framework/TestSuite.php';
@@ -1008,7 +1011,7 @@ require_once 'PHPUnit2/TextUI/TestRunner.php';
 FooAllTest::main();
 ?&gt;
 </PRE>
-            <P><B>ÀsŒ‹‰Ê</B></P><PRE>% php allTests.php
+            <P><B>å®Ÿè¡Œçµæœ</B></P><PRE>% php allTests.php
 
 TEST : FooLogicTest::testShowYear
 ------------------------------------
@@ -1020,8 +1023,8 @@ Time: 0.368033
 OK (1 test)
 %
 </PRE>
-            <P>Pear PHPUnit ‚Æ SimpleTest ‚ğ—p‚¢‚½“¯—l‚ÌƒTƒ“ƒvƒ‹‚ª 
-            s2container.php5/src/examples/extension/unit/test/ˆÈ‰º‚É‚ ‚è‚Ü‚·B</P><!-- document end --><!-- don't edit start --></TD>
+            <P>Pear PHPUnit ã¨ SimpleTest ã‚’ç”¨ã„ãŸåŒæ§˜ã®ã‚µãƒ³ãƒ—ãƒ«ãŒ 
+            s2container.php5/src/examples/extension/unit/test/ä»¥ä¸‹ã«ã‚ã‚Šã¾ã™ã€‚</P><!-- document end --><!-- don't edit start --></TD>
           <TD width=14><IMG height=14 alt="" src="../images/spacer.gif" 
             width=14></TD></TR>
         <TR>

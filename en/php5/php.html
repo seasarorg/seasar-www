@@ -23,11 +23,14 @@
           <TD colSpan=3><IMG height=117 alt="" src="../images/spacer.gif" 
             width=256></TD></TR>
 <tr><td rowspan="2"><img src="../images/top04.gif" alt="" height="49" width="235"></td>
-<td><a href="http://www.seasar.org/en/index.html"><img src="../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
-<td><a href="http://www.seasar.org/en/projects.html"><img src="../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
-<td><a href="http://www.seasar.org/en/products.html"><img src="../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
-<td><a href="http://www.seasar.org/en/resources.html"><img src="../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<td><a href="../index.html"><img src="../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="../projects.html"><img src="../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="../products.html"><img src="../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="../documents.html"><img src="../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="../resources.html"><img src="../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
 <td><img src="../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
 <td><img height="30" width="34" src="../images/menu06.gif" alt=""></td></tr><tr>
         <TR>
           <TD colSpan=6><IMG height=19 alt="" src="../images/spacer.gif" 
@@ -39,8 +42,7 @@
             width=18></TD>
           <TD class=main width=744><!-- don't edit end --><!-- document start -->
             <UL>
-              <LI><A 
-              href="#php">PHP Statements</A> 
+              <LI><A href="#php">PHP Expression</A> 
 
               <UL>
                 <LI><A href="#arg">arg, property, aspect, meta Tag</A> 
@@ -49,10 +51,10 @@
 
                 <LI><A href="#method">initMethod, destroyMethod Tag</A> 
                 </LI></UL></LI></UL><BR><A name=php><B>
-            <H2>PHP Statements</H2></B></A>
-            <P>PHP Statements implies PHP source code written in Seasar2 dicon file. Besides &lt;property&gt; element in a dicon file, PHP statements may be written in &lt;component&gt; element, &lt;initMethod&gt; element, &lt;destroyMethod&gt; element, &lt;arg&gt; element, &lt;meta&gt; element, and &lt;aspect&gt; element.<BR>dicon file used in this sample is included in s2container.php5/src/examples/expression.</P><A name=arg><B>
+            <H2>PHP Expression</H2></B></A>
+            <P>PHP expression implies PHP source code written in Seasar2 dicon file. Besides &lt;property&gt; element in a dicon file, PHP expression may be written in &lt;component&gt; element, &lt;initMethod&gt; element, &lt;destroyMethod&gt; element, &lt;arg&gt; element, &lt;meta&gt; element, and &lt;aspect&gt; element.<BR>dicon file used in this sample is included in s2container.php5/src/examples/expression.</P><A name=arg><B>
             <H3>arg, property, aspect, meta Tag</H3></B></A>
-            <P>Return to PHP statement arguments to Constructor and value assigned to a property.</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+            <P>Return to PHP expression arguments to Constructor and value assigned to a property.</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -71,12 +73,12 @@
         &lt;/property&gt;
     &lt;/component&gt;
 &lt;/components&gt;
-</PRE>When PHP statement does not include a return, return is automatically inserted. In component sample1,<BR>
+</PRE>When PHP expression does not include a return, return is automatically inserted. In component sample1,<BR>
 arugment to a constructor <PRE> return 10; </PRE> and message property <PRE> return file_get_contents(EXAMPLE_DIR . '/dicon/expression/ArgSample.txt');</PRE>are processed by a eval function.<BR>
-<BR>PHP statement may also be included in aspect tags and meta tags.
+<BR>PHP expression may also be included in aspect tags and meta tags.
             <A name=compoonent><B>
             <H3>component tag</H3></B></A>
-            <P>PHP statement returning an object.</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+            <P>PHP expression returning an object.</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;
@@ -89,9 +91,9 @@ arugment to a constructor <PRE> return 10; </PRE> and message property <PRE> ret
     &lt;/component&gt;
     &lt;component name="hello3" class="ComponentExp"/&gt;
 &lt;/components&gt;
-</PRE>When there is a class attribute to a component tag, object returned by PHP statement and ReflectionClass#isSubclassOf are compared.<A name=method><B>
+</PRE>When there is a class attribute to a component tag, object returned by PHP expression and ReflectionClass#isSubclassOf are compared.<A name=method><B>
             <H3>initMethod, destroyMethod tags</H3></B></A>
-            <P>Component initialization and exiting processes written in PHP statements. $component variable is used to reference itself.</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+            <P>Component initialization and exiting processes written in PHP expression. $component variable is used to reference itself.</P><PRE>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components21.dtd"&gt;
 &lt;components&gt;

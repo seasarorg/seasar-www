@@ -1,4 +1,4 @@
-﻿//  Corrent answer array (there is no order in the array)
+﻿//  array of correct answers(order in the array is unimportant)
     ans = new Array("Table3", "Column3", "ColumnNothing4", "N1Mapping2", "Bean1", 
                     "Args2", "ManyArgs2","Interceptor4", "DefDicon4", "SQLFileName2", "Relno2", 
                     "Relkeys4", "Query3", "QuerySQLComment3", "DefInsert1", "DefUpdate4",
@@ -9,7 +9,7 @@
 function check(linkName,linkNextName){
     count = 0;
     message = "";
-    //x variable initialization
+    //x initialize variables
     x = 0;
     for(i = 0; i<4; i++){
         if(document.myForm.elements["" + linkName][i].checked){
@@ -41,7 +41,7 @@ function check(linkName,linkNextName){
     }
     
     if(count == 4){
-        alert("Please select an answer and select the 'Check' button.");  
+        alert("Please select an answer and select the 'Check' button.");
     }
 }
 
