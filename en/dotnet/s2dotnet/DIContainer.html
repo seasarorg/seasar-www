@@ -1,0 +1,1265 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end --><!-- document start -->
+            <UL>
+              <LI><A href="http://www.seasar.org/en/DIContainer.html#S2Container">Introduction to S2Container (link to Java version document)</A> 
+              <UL>
+                <LI><A href="#DifferentPoint">What's Different?</A> 
+                <LI><A href="#S2Merit">What's the Merit?</A> 
+                </LI></UL>
+              <LI><A href="#S2ContainerReference">S2Container.NET Reference</A> 
+              <UL>
+                <LI><A href="#CreateFile">Files that Needs to be Created</A> 
+                <LI><A href="#S2ContainerDefinition">Defining a S2Container</A> 
+                <LI><A href="#S2ContainerCreation">Creating a S2Container</A> 
+                <LI><A href="#getComponent">Getting a Component</A> 
+                <LI><A href="#AppConfig">Application Configuration File</A> 
+                <LI><A href="#DIType">Dependency Injection Types</A> 
+                <UL>
+                  <LI type=circle><A href="#ConstructorInjection">Constructor Injection</A> 
+                  <LI type=circle><A href="#PropertyInjection">Property Injection</A> 
+                  <LI type=circle><A href="#MethodInjection">Method Injection</A> 
+                  </LI></UL>
+                <LI><A href="#Include">Dividing and Including S2Container Configuration Files</A> 
+                <LI><A href="#Namespace">Namespace</A> 
+                <LI><A href="#InstanceMode">Instance Management</A> 
+                <LI><A href="#Lifecycle">Lifecycle</A> 
+                <LI><A href="#AutoBindingMode">Automatic Binding</A> 
+                <LI><A  href="#UseS2Container">Using S2Container from a Component</A>
+                <LI><A href="#S2HttpModule">S2HttpModule</A>
+                <LI><A  href="#app.dicon">Role of app.dicon</A> 
+                <LI><A href="#Aop">Applying AOP</A> 
+                <LI><A href="#Meta">Meta data</A> 
+                <LI><A href="#Request">Automatic Binding of Request</A> 
+                </LI></UL>
+              <LI><A href="#DefReference">S2Container Definition Reference</A> 
+              <UL>
+                <LI><A href="#DOCTYPE">DOCTYPE</A> 
+                <LI><A href="#componentsTag">components tag</A> 
+                <LI><A href="#includeTag">include tag</A> 
+                <LI><A href="#componentTag">component tag</A> 
+                <LI><A href="#argTag">arg tag</A> 
+                <LI><A href="#propertyTag">property tag</A> 
+                <LI><A href="#metaTag">meta tag</A> 
+                <LI><A href="#initMethodTag">initMethod tag</A> 
+                <LI><A href="#destroyMethodTag">destroyMethod tag</A> 
+                <LI><A href="#aspectTag">aspect tag</A> 
+                <LI><A href="#descriptionTag">description tag</A> 
+                <LI><A href="#Jscript">JScript.NET expression</A> 
+                </LI></UL>
+              <LI><A href="#Example">Examples</A> 
+              <UL>
+                <LI><A href="#ConstructorInjectionEx">Constructor Injection</A> 
+                <LI><A href="#PropertyInjectionEx">Property Injection</A> 
+                <LI><A href="#MethodInjectionEx">Method Injection</A> 
+                <LI><A href="#AutoConstructorInjectionEx">Automatic Binding (Constructor Injection)</A> 
+                <LI><A href="#AutoPropertyInjectionEx">Automatic Binding (Property Injection)</A> 
+                </LI></UL></LI></UL><A name=S2ContainerReference>
+            <H2>S2Container.NET Reference</H2></A><A name=CreateFile><B>
+            <H3>Files that Needs to be Created</H3></B></A>
+            <P>S2Containerを使用するためには、定義ファイルを作成する必要があります。<BR>定義ファイルは、コンポーネントを組み立てるための設計書のようなものです。<BR>形式はXMLで、拡張子は、diconです。（xmlでも特に問題はありません）diconは、ダイコンと読みます。</P><A name=S2ContainerDefinition><B>
+            <H3>Defining S2Container</H3></B></A>
+            <P>S2Containerの定義は、次のようになります。</P><PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+&lt;components&gt;
+    &lt;component name="..." class="..."&gt;
+
+            ...
+    &lt;/component&gt;
+    &lt;component name="..." class="..."&gt;
+            ...
+    &lt;/component&gt;
+&lt;/components&gt;
+
+</PRE>
+            <P>DOCTYPEは省略できません。diconファイルを作成する場合は、上記のサンプルをコピー＆ペーストしてください。ルートは<A href="#componentsTag">componentsタグ</A>です。コンポーネントごとに、<A href="#componentTag">componentタグ</A>を定義していきます。componentタグのclass属性でコンポーネントのクラスの完全限定名を指定します。name属性には、コンポーネント名を指定します。詳細は、<A 
+            href="#DefReference">S2Container定義タグリファレンス</A>を参照してください。</P><PRE>&lt;components&gt;
+    &lt;component name="hoge" class="S2.NET.Examples.Dicon.HogeImpl"/&gt;
+
+&lt;/components&gt;
+</PRE><A name=S2ContainerCreation>
+            <H3>Creating a S2Container</H3></A>
+            <P>S2Containerを作成する場合は、次のメソッドを使用します。</P>
+            <P>-  S2.NET.Framework.Container.Factory.S2ContainerFactory#Create(string path)</P>
+            <P>定義ファイルは、埋め込まれたリソースもしくはファイルシステムで指定することができます。</P>
+            <P>埋め込まれたリソースを使用する場合は、引数pathは定義ファイルの名前空間を含む完全限定名です。 セパレータは、/です。 
+            定義ファイルのビルドアクションプロパティは、埋め込まれたりソースに設定します。</P>
+            <P>C#プロジェクトの場合は、フォルダを作成すると名前空間が作成されます。 
+            VB.NETプロジェクトの場合は、フォルダを作成しても名前空間は作成されません。 
+            例えば、プロジェクトフォルダ/Sample/Logic/aaa.diconとすると、C#プロジェクトの場合は、 
+            既定の名前空間/Sample/Logic/aaa.diconになります。 
+            VB.NETの場合は、既定の名前空間/aaa.diconになります。</P>
+            <P>ファイルシステムを使用する場合は、一般的なファイルパスを指定します。 絶対パス、相対パスを指定できます。</P>
+            <P>埋め込まれたリソース、ファイルシステムの定義ファイルを混在させることもできます。 
+            同じパスで埋め込まれたリソース、ファイルシステムの両方でヒットする場合は、 ファイルシステムの定義ファイルが優先されます。</P><PRE>
+private const string PATH = "aaa/bbb/ccc.dicon";
+...
+IS2Container container = S2ContainerFactory.Create(PATH);
+</PRE><A name=getComponent>
+            <H3>Getting a Component</H3></A>
+            <P>S2Containerからコンポーネントを取り出すには、次のメソッドを使用します。</P>
+            <P>- S2.NET.Framework.Container.IS2Container#GetComponent(object 
+            componentKey)</P>引数には、コンポーネントの型宣言を表すSystem.Typeもしくはコンポーネント名を指定できます。 
+            詳しくは、<A href="#componentTag">componentタグ</A>を参照してください。コンポーネントのクラスを指定する場合、コンポーネント is クラスがtrueを返すクラスなら指定することができます。しかし、S2Containerの中に指定したクラスを実装しているコンポーネントが複数ある場合、S2Containerは、どのコンポーネントを返せばよいのか判断できないため、TooManyRegistrationRuntimeExceptionが発生します。実装コンポーネントがユニークに決まるクラスを指定してください。コンポーネント名で取得することもできます。その場合も、同一の名前をもつコンポーネントが複数登録されている場合、TooManyRegistrationRuntimeExceptionが発生します。コンポーネント名指定の場合、スペルミスをする可能性もあるので、できるだけクラス指定のほうが良いでしょう。<BR><BR>
+            <P>Example: クラスを指定してコンポーネントを取得する場合</P><PRE>IS2Container container = S2ContainerFactory.Create(PATH);
+Hoge hoge = (Hoge) container.GetComponent(typeof(Hoge));
+</PRE>
+            <P>Example: コンポーネント名を指定してコンポーネントを取得する場合</P><PRE>IS2Container container = S2ContainerFactory.Create(PATH);
+Hoge hoge = (Hoge) container.GetComponent("hoge");
+</PRE><A name=AppConfig>
+            <H3>Application Configuration File</H3></A>
+            <P>アプリケーション構成ファイル（※diconファイルではありません）に&lt;s2.net&gt;構成セクションを追加することができます。 &lt;s2.net&gt;構成セクションでは、ルートとなる定義ファイル(diconファイル）、S2Container作成時にロードするアセンブリを指定することができます。 </P>
+            <P>指定された定義ファイルは、S2.NET.Framework.Container.Factory.SingletonS2ContainerFactory#Initが呼び出されたときに、ルートの定義ファイルとしてセットされます。 </P>
+            <P>指定されたアセンブリは、S2.NET.Framework.Container.Factory.S2ContainerFactory#Createが呼び出されたときに、アプリケーションドメインに読み込まれます。 </P><PRE>&lt;configuration&gt;
+   &lt;configSections&gt;
+      &lt;section name="s2.net"
+         type="S2.NET.Framework.Xml.S2SectionHandler, s2dotnet" /&gt;
+   &lt;/configSections&gt;
+
+   &lt;s2.net&gt;
+      &lt;!-- SingletonS2ContainerFactory#Initで下記で指定されたdiconファイルを
+           ルートのdiconファイルの初期値としてセットします。 --&gt;
+      &lt;configPath&gt;App.dicon&lt;/configPath&gt;
+      
+      &lt;!-- Set assemblies specified when creating an S2Container
+           into AppDomain (S2ContainerFactory#Create) --&gt;
+      &lt;assemblys&gt;
+         &lt;assembly&gt;Assembly name1&lt;/assembly&gt;
+         &lt;assembly&gt;Assembly name2&lt;/assembly&gt;
+      &lt;/assemblys&gt;
+   &lt;/s2.net&gt;
+
+&lt;/configuration&gt;
+</PRE><A name=DIType>
+            <H3>Dependency Injection Type</H3></A>
+            <P>Dependency Injectionには、コンポーネントの構成に必要な値をコンストラクタで設定する (Constructor Injection)のか、プロパティのsetアクセサで設定する(Property Injection)のか、初期化メソッドで設定する(Method Injection)のかで、タイプが分かれます。 Method InjectionはS2のオリジナルです。(s2dotnetでもサポート）s2dotnetはすべてのタイプとそのハイブリッド型もサポートします。</P><A name=ConstructorInjection><B>
+            <H3>Constructor Injection</H3></B></A>
+            <P>コンストラクタ・インジェクションとは、任意のコンストラクタの引数値にDependency Injectionします。 
+            <BR>Following items are entered in the S2Container configuration file:</P>
+            <UL>
+              <LI><B>Component specification</B><BR>コンポーネントは、componentタグで組み立てます。class属性でクラス名を指定します。<BR>name属性でコンポーネントに名前を付けることもできます。 
+              <LI><B>コンストラクタの引数の指定</B><BR>コンポーネントのコンストラクタの引数は、componentタグの子タグであるargタグを使って指定します。<BR>文字列の場合は、 ダブルコーテーション(")で囲みます。 
+              </LI></UL><PRE>&lt;components&gt;
+    &lt;component name="..." class="..."&gt;
+
+          &lt;arg&gt;...&lt;/arg&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE>Refer to <A href="#ConstructorInjectionEx">Construtor Injection</A> for an example.<BR><BR><A name=PropertyInjection><B>
+            <H3>Property Injection</H3></B></A>
+            <P>プロパティ･インジェクションとは、任意のプロパティにsetアクセサを使用してProperty 
+            Injectionします。<BR>S2Containerの定義ファイルには、次の内容を記述します。</P>
+            <UL>
+              <LI><B>Component Specification</B><BR>コンポーネントの指定は、コンストラクタ・インジェクションと同様です。<BR>name属性でコンポーネントに名前を付けることもできます。 
+
+              <LI><B>Setting a property</B><BR>コンポーネントのプロパティは、componentタグの子タグであるpropertyタグを使って指定します。<BR>name属性でプロパティ名を指定します。 
+              </LI></UL><PRE>&lt;components&gt;
+    &lt;component name="..." class="..."&gt;
+          &lt;property name="..."&gt;...&lt;/property&gt;
+
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE>Refer to <A href="#PropertyInjectionEx">Property Injection</A> for detailed information.<BR><A name=MethodInjection><B>
+            <H3>Method Injection</H3></B></A>
+            <P>メソッド・インジェクションとは、任意のメソッドを呼び出して、Dependency Injectionします。 
+            <BR>S2Containerの定義ファイルには、次の内容を記述します。</P>
+            <UL>
+              <LI><B>Component specification</B><BR>コンポーネントの指定は、コンストラクタ・インジェクションと同様です。 
+              <BR>name属性でコンポーネントに名前を付けることもできます。 
+              <LI><B>初期化メソッドの指定</B><BR>initMethodタグを使って、コンポーネントの任意のメソッドを呼び出します。name属性で、メソッド名を指定します。引数は、argタグを子タグに使います。name属性を省略して、 ボディで、<A href="#JScript">JScript.NET</A>を使うこともできます。その際、コンポーネント自身はselfで表します。 </LI></UL><PRE>&lt;components&gt;
+    &lt;component name="..." class="..."&gt;
+          &lt;initMethod&gt;...&lt;/initMethod&gt;
+
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE>Refer to <A href="#MethodInjectionEx">Method Injection</A> for an example.<BR><A name=Include>
+            <H3>Dividing and Including S2Container Configuration Files</H3></A>
+            <P>すべてのコンポーネントを1つのファイルに記述すると、直ぐに肥大化してしまい管理が難しくなります。そのため、コンポーネントの定義を複数に分割する機能と分割された定義をインクルードして1つにまとめる機能がS2Containerにあります。S2Container定義ファイルのインクルードは次のようにして行います。</P><PRE>&lt;components&gt;
+    &lt;include path="bar.dicon"/&gt;
+&lt;/components&gt;
+</PRE>
+            <P><A href="#includeTag">include tag</A>のpath属性で取り込みたいS2Container定義ファイルのパスを指定します。詳しくは、<A href="#includeTag">include tag</A>を参照してください。<BR>コンポーネントの検索順は、先ず自分自身に登録されているコンポーネントを探して、見つからない場合は、includeされている順に子供のS2Containerに登録されているコンポーネントを検索し、最初に見つかったコンポーネントが返されます。<BR>次のような場合は、Foo(自身のコンポーネント)→aaa(子供のS2Container)→bbb(子供のS2Container)の順に検索します。</P><PRE>&lt;components&gt;
+    &lt;include path="aaa.dicon"/&gt;
+    &lt;include path="bbb.dicon"/&gt;
+    &lt;component class="Examples.Container.Foo" /&gt;
+
+&lt;/components&gt;
+</PRE>
+            <P>自動で<A href="#ConstructorInjection">construction injection</A>や<A href="#PropertyInjection">property injection</A>を行う場合、S2Containerはインクルード先のコンポーネントを自動インジェクションすることができます。自動でDependency Injectionを行う場合の条件は<A href="#AutoBindingMode">自動バインディング</A>を参照してください。<BR>次のようにセッター･インジェクションでプロパティに指定するコンポーネントがインクルード先のaaa.diconとbbb.diconに登録されている場合、各HelloClientでは、どちらのコンポーネントが使用されるかをみてましょう。</P>
+            <H5>root.dicon</H5><PRE>&lt;components&gt;
+    &lt;include path="S2/NET/Examples/Reference/Includes/aaa.dicon"/&gt;
+    &lt;include path="S2/NET/Examples/Reference/Includes/bbb.dicon"/&gt;
+    
+    &lt;component name="root" class="S2.NET.Examples.Reference.Includes.Impl.HelloClientImpl"/&gt;
+
+&lt;/components&gt;
+</PRE>
+            <H5>aaa.dicon</H5><PRE>&lt;components&gt;
+    &lt;component class="S2.NET.Examples.Reference.Includes.Impl.HelloImpl"&gt;
+        &lt;property name="Message"&gt;"Hello Aaa!"&lt;/property&gt;
+
+    &lt;/component&gt;
+
+    &lt;component name="aaa" class="S2.NET.Examples.Reference.Includes.Impl.HelloClientImpl"/&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>bbb.dicon</H5><PRE>&lt;components&gt;
+    &lt;component class="S2.NET.Examples.Reference.Includes.Impl.HelloImpl"&gt;
+        &lt;property name="Message"&gt;"Hello Bbb!"&lt;/property&gt;
+    &lt;/component&gt;
+
+    &lt;component name="bbb" class="S2.NET.Examples.Reference.Includes.HelloClientImpl"/&gt;
+&lt;/components&gt;
+</PRE>
+            <P>各コンポーネントの内容は、次のようになります。</P><PRE>
+namespace S2.NET.Examples.Reference.Includes
+{
+    public interface IHelloClient
+    {
+        void ShowMessage();
+    }
+}
+</PRE><PRE>namespace S2.NET.Examples.Reference.Includes.Impl
+{
+    public class HelloClientImpl : IHelloClient
+    {
+        private IHello hello;
+
+        public HelloClientImpl() {}
+        
+        public IHello Hello
+        {
+            get { return this.hello; }
+            set { this.hello = value; }
+        }
+
+        public void ShowMessage()
+        {
+            Console.WriteLine(this.Hello.Message);
+        }
+    }
+}
+</PRE><PRE>namespace S2.NET.Examples.Reference.Includes
+{
+    public interface IHello
+    {
+        string Message
+        {
+            set;
+            get;
+        }
+    }
+}
+</PRE><PRE>namespace S2.NET.Examples.Reference.Includes.Impl
+{
+    public class HelloImpl : IHello
+    {
+        private string helloMessage;
+        
+        public HelloImpl() {}
+
+        public string Message
+        {
+            get { return this.helloMessage; }
+            set { this.helloMessage = value; }
+        }
+    }
+}
+
+</PRE>
+            <P>HelloImplはMessageプロパティを定義しているだけです。HelloClientのShowMessage()を呼び出した場合の実行結果は次のようになります。</P>
+            <H5>rootの実行結果</H5><PRE>Hello Aaa!
+</PRE>
+            <P>まず、S2Containerはroot.diconにHelloImplが登録されているかを検索します。root.diconにはないので、次にインクルード先のaaa.diconを検索します。 
+            aaa.diconにはHelloImplが登録されているので、そのコンポーネントを使用します。</P>
+            <H5>aaaの実行結果</H5><PRE>Hello Aaa!
+</PRE>
+            <P>aaaは、aaa.diconに登録されているコンポーネントを使用します。自動でインジェクションを行う場合、 
+            子供のS2Containerは親のS2Containerのコンポーネントを使用することはできません。 
+            例えば、root.diconにHelloImplを登録していてもaaaには自動インジェクションされないということです。</P>
+            <H5>bbbの実行結果</H5><PRE>Hello Bbb!
+</PRE>
+            <P>aaaと同様にbbbもbbb.diconに登録されているコンポーネントを使用します。 
+            <BR>このサンプルは、S2.NET.ExamplesプロジェクトのS2/NET/Examples/Reference/Includes以下に用意されています。</P><A 
+            name=Namespace>
+            <H3>名前空間</H3></A>
+            <P>コンポーネントの定義を分割した場合に、複数のコンポーネント定義間で名前が衝突しないように、 <A href="#componentsTag">components tag</A>のnamespace属性で名前空間を指定することができます。</P>
+            <H5>foo.dicon</H5><PRE>&lt;components namespace="Foo"&gt;
+    &lt;component name="aaa" .../&gt;
+
+    &lt;component name="bbb" ...&gt;
+        &lt;arg&gt;aaa&lt;/arg&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>bar.dicon</H5><PRE>&lt;components namespace="Bar"&gt;
+    &lt;include path="foo.dicon"/&gt;
+    &lt;component name="aaa" .../&gt;
+
+    &lt;component name="bbb" ...&gt;
+        &lt;arg&gt;aaa&lt;/arg&gt;
+    &lt;/component&gt;
+    &lt;component name="ccc" ...&gt;
+
+        &lt;arg&gt;foo.aaa&lt;/arg&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>app.dicon</H5><PRE>
+&lt;components&gt;
+    &lt;include path="bar.dicon"/&gt;
+&lt;/components&gt;
+</PRE>
+            <P>同一のコンポーネント定義内では、名前空間なしで参照できます。他のS2Container定義のコンポーネントを参照する場合は、名前空間.をコンポーネント名の頭につけます。foo.aaaとbar.aaaは同じ名前がついていますが、名前空間が異なっているので、違うコンポーネントとして認識されます。慣習として、定義ファイルの名前は、名前空間.diconにすることを推奨します。</P><A name=InstanceMode>
+            <H3>Instance Management</H3></A>
+            <P>S2Containerで、コンポーネントのインスタンスをどのように管理するのかを指定するのが、 <A href="#componentTag">component tag</A>のinstance属性です。デフォルトはsingletonで、これは、IS2Container.GetComponent()によって返されるコンポーネントは常に同じだという意味です。IS2Container.GetComponent()を呼び出すたびに、新たに作成されたコンポーネントを返して欲しい場合は、instance属性にprototypeを指定します。リクエスト(System.Web.HttpRequest)ごとにコンポーネントを管理したい場合は、instance属性にrequestを指定します。セッション(System.Web.SessionState.HttpSessionState)ごとにコンポーネントを管理したい場合は、instance属性にsessionを指定します。</P>
+            <P>プレゼンテーションのフレームワークと組み合わせるときに、プレゼンテーションフレームワークが作成したインスタンスに対して、S2Containerで管理されているコンポーネントをセットしたい場合があります。そのようなS2Container外のコンポーネントに対して <A href="http://www.kakutani.com/trans/fowler/injection.html">Dependency Injection</A>したいときには、次のメソッドを使用します。 <BR><BR>- 
+S2.NET.Framework.Container.IS2Container#InjectDependency(Object  outerComponent) <BR>- S2.NET.Framework.Container.IS2Container#InjectDependency(Object outerComponent, Type componentType) <BR>- S2.NET.Framework.Container.IS2Container#InjectDependency(Object outerComponent, string componentName)</P>第一引数には、外部のコンポーネントを指定します。第二引数には、外部コンポーネントのクラス、またはコンポーネント名を指定します。 
+            <BR>そのとき、S2Container定義では、instance属性にouterを指定します。 
+            <TABLE width=744 border=1>
+              <TBODY>
+              <TR align=middle bgColor=#d1f3f4>
+                <TH scope=col width=104>instance attribute</TH>
+                <TH scope=col width=624>Description</TH></TR>
+              <TR>
+                <TD>singleton (default)</TD>
+                <TD>IS2Container.GetComponent()を何度呼び出しても同じインスタンスが返されます。</TD></TR>
+              <TR>
+                <TD>prototype</TD>
+                <TD>IS2Container.GetComponent()を呼び出すたびに新たなインスタンスが返されます。</TD></TR>
+              <TR>
+                <TD>request</TD>
+                <TD>リクエスト毎に1つのインスタンスが作成されます。name属性に指定した名前で、コンポーネントがリクエストに格納されます。requestを使う場合は、<A href="#request">S2HttpModule</A>を設定する必要があります。</TD></TR>
+              <TR>
+                <TD>session</TD>
+                <TD>セッション毎に1つのインスタンスが作成されます。name属性に指定した名前で、コンポーネントがセッションに格納されます。sessionを使う場合は、<A href="#request">S2HttpModule</A>を設定する必要があります。</TD></TR>
+              <TR>
+                <TD>outer</TD>
+                <TD>コンポーネントのインスタンスは、S2Container外で作成し、Dependency Injectionだけを行います。<A 
+                  href="#Aop">アスペクト</A>、<A href="#ConstructorInjection">コンストラクタ・インジェクション</A>は適用できません。</TD></TR></TBODY></TABLE><A name=Lifecycle>
+            <H3>Lifecycleル</H3></A>
+            <P>initMethodやdestroyMethodでコンポーネントのライフサイクルもコンテナで管理することができます。 S2Containerの開始時(S2Container.Init())に<A href="#initMethodTag">initMethodタグ</A>で指定したメソッドが呼び出され、S2Containerの終了時(S2Container.Destroy())に<A href="#destroyMethodTag">destroyMethod tag</A> 
+            で指定したメソッドが呼び出されるようになります。initMethodはコンポーネントがコンテナに登録した順番に実行され、destroyMethodはその逆順に呼び出されることになります。instance属性がsingleton以外の場合、destroyMethodを指定しても無視されます。System.Collections.Hashtable#Add()メソッドに初期化(aaaに111を設定)・終了処理(aaaにnullを設定)を設定する場合は、次のようになります。</P><PRE>&lt;components namespace="bar"&gt;
+
+    &lt;component name="table" class="System.Collections.Hashtable"&gt;
+        &lt;initMethod name="Add"&gt;
+            &lt;arg&gt;"aaa"&lt;/arg&gt;
+            &lt;arg&gt;111&lt;/arg&gt;
+        &lt;/initMethod&gt;
+        &lt;destroyMethod name="Add"&gt;
+            &lt;arg&gt;"aaa"&lt;/arg&gt;
+            &lt;arg&gt;null&lt;/arg&gt;
+        &lt;/destroyMethod&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE><A name=AutoBindingMode>
+            <H3>Automatic Binding</H3></A>
+            <P>コンポーネント間の依存関係は、型がインターフェースの場合、コンテナによって自動的に解決されます。これがS2Containerのデフォルトですが、<A 
+            href="#componentTag">component tag</A>のautoBinding属性を指定することで細かく制御することもできます。</P>
+            <TABLE width=744 border=1>
+              <TBODY>
+              <TR align=middle bgColor=#d1f3f4>
+                <TH scope=col width=104>autoBinding</TH>
+                <TH scope=col width=624>Description</TH></TR>
+              <TR>
+                <TD>auto(default)</TD>
+                <TD>
+                  <P>コンストラクタの引数が明示的に指定されている場合は、それに従います。<BR>指定されていない場合、引数のないデフォルトコンストラクタが定義されている場合はそのコンストラクタを使います。<BR>デフォルトのコンストラクタがない場合、コンストラクタの引数の数が1以上で、引数の型がすべてインターフェースのコンストラクタで最も引数の数が多いものを使います。<BR>プロパティが明示的に指定されている場合はそれに従います。<BR>明示的に指定されていないプロパティで、型がインターフェースの場合は自動的にバインドします。</P></TD></TR>
+              <TR>
+                <TD>constructor</TD>
+                <TD>コンストラクタの引数が明示的に指定されている場合は、それに従います。<BR>指定されていない場合、引数のないデフォルトコンストラクタが定義されている場合はそのコンストラクタを使います。<BR>デフォルトのコンストラクタがない場合、コンストラクタの引数の数が1以上で、引数の型がすべてインターフェースのコンストラクタで最も引数の数が多いものを使います。<BR>プロパティが明示的に指定されている場合は、それに従います。</TD></TR>
+              <TR>
+                <TD>property</TD>
+                <TD>コンストラクタの引数が明示的に指定されている場合は、それに従います。<BR>指定されていない場合は、デフォルトのコンストラクタを使います。<BR>型がインターフェースのプロパティを自動的にバインドします。</TD></TR>
+              <TR>
+                <TD>none</TD>
+                <TD>コンストラクタの引数が明示的に指定されている場合は、それに従います。<BR>プロパティが明示的に指定されている場合はそれに従います。</TD></TR></TBODY></TABLE><BR>
+            <P>Refer to <A href="#AutoConstructorInjectionEx">automatic binding (constructor injection)</A> and <A href="#AutoPropertyInjectionEx">automatic binding (property injection)</A> for examples.</P><A name=UseS2Container>
+            <H3>コンポーネントでS2Containerを利用する</H3></A>
+            <P>コンポーネントはS2Containerに依存しないことが望ましいのですが、コンポーネントによっては、 
+            S2Containerのメソッドを呼び出したい場合もあるでしょう。S2Container自身もcontainerという名前で、 
+            登録されているので、arg,propertyタグのボディでcontainerを指定することで、コンテナのインスタンスを取得できます。 
+            また、S2Container型のプロパティを定義しておいて自動バインディングで設定することもできます。 
+            arg,propertyタグでcontainerを指定する場合は、次のようになります。</P><PRE>&lt;components&gt;
+    &lt;component class="Examples.Dicon.BarImpl"&gt;
+        &lt;arg&gt;container&lt;/arg&gt;
+    &lt;/component&gt;
+
+    &lt;component class="Examples.Dicon.FooImpl"&gt;
+        &lt;property name="Foo"&gt;container&lt;/property&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE><A name=S2HttpModule>
+            <H3>S2HttpModule</H3></A>
+            <P>これまでは、.NET Frameworkアプリケーションで、明示的にS2Containerを作成していましたが、 
+            Webアプリケーションの場合、誰がS2Containerを作成するのでしょうか。その目的のために次のクラスが用意されています。</P>
+            <P>- 
+            S2.NET.Framework.Container.Web.S2HttpModule</P>S2HttpModuleを使うためには、Web.configに次の項目を記述します。<BR>S2.NET/Framework/Container/Web/Web.configに記述例もあります。 
+<PRE>    &lt;httpModules&gt;
+	 &lt;add name="S2HttpModule"
+	     type="S2.NET.Framework.Container.Web.S2HttpModule, s2dotnet" /&gt;
+    &lt;/httpModules&gt;
+</PRE>
+            <P><A 
+            href="#AppConfig">アプリケーション構成ファイル</A>に定義するs2.netセクションのconfigPath要素でメインとなるS2Container定義のパスを指定します。S2HttpModuleが起動した後は、次のメソッドでS2Containerのインスタンスを取得することができます。</P>
+            <P>- 
+            S2.NET.Framework.Container.Factory.SingletonS2ContainerFactory#GetContainer()</P>
+            <P>S2HttpModuleを使っている場合、HttpApplicationをhttpApplicationという名前のコンポーネントとしてアクセスできるようになります。</P><A 
+            name=app.dicon>
+            <H3>app.diconの役割</H3></A>
+            <P>すべてのS2Container定義のルートになる定義ファイルは、慣例でapp.diconという名前にします。app.diconにはコンポーネントの定義はしないようにしてください。通常は名前空間の付かない場所に埋め込まれたリソースとして配置しておくと良いでしょう。</P><PRE>&lt;components&gt;
+
+    &lt;include path="Examples/foo.dicon"/&gt;
+    &lt;include path="Examples/bar.dicon"/&gt;
+         &lt;!-- 定義ファイルの数分記述します --&gt;
+&lt;/components&gt;
+</PRE><A name=Aop>
+            <H3>AOPの適用</H3></A>
+            <P>コンポーネントに<A 
+            href="http://s2dotnet.oscj.net/nonav/source/browse/*checkout*/s2dotnet/www/aop.html">AOP</A>を適用することもできます。ただし現在のs2dotnetではAOPを適用するには、System.MarshalByRefObjectの派生クラスであるか、インターフェース型でコンポーネントを受け取る必要があります。例えば、ArrayListに<A 
+            href="http://s2dotnet.oscj.net/nonav/source/browse/*checkout*/s2dotnet/www/aop.html#TraceInterceptor">TraceInterceptor</A>を適用したい場合次のようにします。</P><PRE>&lt;components&gt;
+    &lt;component name="traceInterceptor"
+               class="S2.NET.Framework.Aop.Interceptors.TraceInterceptor"/&gt;
+               
+    &lt;component class="System.Collections.ArrayList"&gt;
+        &lt;aspect&gt;traceInterceptor&lt;/aspect&gt;
+    &lt;/component&gt;
+
+    &lt;component class="TestS2.NET.Framework.Container.Factory.AspectTagHandlerTest+FooImpl"&gt;
+        &lt;aspect pointcut="Time, GetHashCode"&gt;traceInterceptor&lt;/aspect&gt;
+    &lt;/component&gt;
+
+&lt;/components&gt;
+</PRE>
+            <P>aspectタグのボディで<A 
+            href="http://s2dotnet.oscj.net/nonav/source/browse/*checkout*/s2dotnet/www/aop.html#Advice">Interceptor</A>の名前を指定します。 
+            pointcut属性にカンマ区切りで対象となるメソッド名・プロパティ名を指定することができます。 
+            pointcut属性を指定しない場合は、コンポーネントが実装しているインターフェースのすべてのメソッドが対象になります。メソッド名には正規表現(System.Text.RegularExpressions.Regex)も使えます。この定義を使うサンプルは次のようになります。</P><PRE>private const string PATH = "Framework/Container/Factory/AspectTagHandlerTest.dicon";
+
+[Test]
+public void TestAspect()
+{
+    IS2Container container = S2ContainerFactory.Create(PATH);
+			
+    IList list = (IList) container.GetComponent(typeof(IList));
+    int count = list.Count;
+
+    IFoo foo = (IFoo) container.GetComponent(typeof(IFoo));
+    int time = foo.Time;
+    foo.ToString();
+    int hashCode = foo.GetHashCode();
+}
+
+public interface IFoo
+{
+    int Time { get; }
+    int GetHashCode();
+    string ToString();
+}
+
+public class FooImpl : IFoo
+{
+    private int time_ = 3;
+
+    public FooImpl()
+    {
+    }
+
+    #region IFoo メンバ
+
+    public int Time
+        {
+            get
+            {
+                return time_;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return time_.ToString();
+        }
+
+        #endregion
+    }
+
+</PRE>
+            <P>実行結果は次のようになります。</P><PRE>BEGIN System.Collections.ICollection#get_Count()
+END System.Collections.ICollection#get_Count() : 0
+BEGIN TestS2.NET.Framework.Container.Factory.AspectTagHandlerTest+IFoo#get_Time()
+END TestS2.NET.Framework.Container.Factory.AspectTagHandlerTest+IFoo#get_Time() : 3
+BEGIN TestS2.NET.Framework.Container.Factory.AspectTagHandlerTest+IFoo#GetHashCode()
+END TestS2.NET.Framework.Container.Factory.AspectTagHandlerTest+IFoo#GetHashCode() : 1168
+</PRE><A name=Meta>
+            <H3>メタデータ</H3></A>
+            <P>components、component、arg、propertyタグにメタデータ<A 
+            href="http://s2dotnet.oscj.net/nonav/source/browse/*checkout*/s2dotnet/www/aop.html"></A>を指定することもできます。 
+            metaタグはメタデータを指定したいタグの子タグに指定します。例えば、componentsタグにメタデータを指定したい場合次のようにします。</P><PRE>&lt;components&gt;
+    &lt;meta name="aaa"&gt;111&lt;/meta&gt;
+&lt;/components&gt;	
+</PRE>
+            <P>components、component、arg、propertyタグに指定したメタデータの情報は、IS2Container、IComponentDef、IArgDef、 
+            IPropertyDefで定義されている次のメソッドで取得することが出来ます。</P>
+            <UL>
+              <LI>public int MetaDefSize 
+              <LI>public IMetaDef GetMetaDef(int index) 
+              <LI>public IMetaDef GetMetaDef(string name) 
+              <LI>public IMetaDef[] GetMetaDefs(string name) </LI></UL><A 
+            name=request>
+            <H3>リクエストの自動バインディング</H3></A>
+            <P>コンポーネントに対して、HttpRequestを自動的にバインディングすることが出来ます。そのためには、コンポーネントに、HttpRequest 
+            Request { set; }のプロパティを定義します。そうすると、S2Containerが自動的にリクエストを設定します。また、<A 
+            href="#S2HttpModule">S2HttpModule</A>をWeb.configに定義する必要があります。</P>
+            <P>同様にHttpServletResponse、HttpSessionもプロパティ（setアクセサ）を定義するだけで、自動バインディングすることが出来ます。また、S2HttpModuleを使うと、HttpRequest、HttpResponse、HttpSessionState、HttpApplicationをそれぞれrequest、 
+            response、session、httpApplicationという名前のコンポーネントとしてアクセスできるようになります。</P><A 
+            name=DefReference>
+            <H2>S2Container定義タグリファレンス</H2></A><A name=DOCTYPE>
+            <H3>DOCTYPE</H3></A>
+            <P>DOCTYPEは、XML宣言の次に指定します。下記のように指定してください。</P><PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+&lt;components&gt;
+    &lt;component name="hello"
+            class="S2.NET.Examples.Reference.Injection.HelloConstructorInjection"&gt;
+        &lt;arg&gt;"Hello World!"&lt;/arg&gt;
+    &lt;/component&gt;
+    
+    &lt;component name="ConstructorInjection"
+            class="S2.NET.Examples.Reference.Injection.HelloConstructorInjectionClient" /&gt;
+&lt;/components&gt;
+</PRE><A name=componentsTag>
+            <H3>componentsタグ(必須)</H3></A>
+            <P>ルートのタグになります。</P><A name=namespaceAttr>
+            <H4>namespace属性(任意)</H4></A>
+            <P><A 
+            href="#Namespace">名前空間</A>を指定することができます。</P><PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+&lt;components namespace="hoge"&gt;
+
+    ...
+&lt;/components&gt;
+</PRE><A name=includeTag>
+            <H3>includeタグ(任意)</H3></A>
+            <P>分割されたS2Containerの定義を<A 
+            href="#Include">取り込む</A>場合に使います。</P><A 
+            name=pathAttr>
+            <H4>path属性(必須)</H4></A>
+            <P>定義ファイルのパスを指定することができます。 
+            定義ファイルのパスには、埋め込まれたリソースもしくはファイルシステムで指定することができます。埋め込まれたリソースを使用する場合は、定義ファイルの名前空間を含む完全限定名です。 
+            セパレータは、/です。 定義ファイルのビルドアクションプロパティは、埋め込まれたりソースに設定します。 
+            C#プロジェクトの場合は、フォルダを作成すると名前空間が作成されます。 
+            VB.NETプロジェクトの場合は、フォルダを作成しても名前空間は作成されません。 
+            例えば、プロジェクトフォルダ/Sample/Logic/aaa.diconとすると、C#プロジェクトの場合は、 
+            既定の名前空間/Sample/Logic/aaa.diconになります。 
+            VB.NETの場合は、既定の名前空間/aaa.diconになります。ファイルシステムを使用する場合は、一般的なファイルパスを指定します。 
+            絶対パス、相対パスを指定できます。埋め込まれたリソース、ファイルシステムの定義ファイルを混在させることもできます。 
+            同じパスで埋め込まれたリソース、ファイルシステムの両方でヒットする場合は、 ファイルシステムの定義ファイルが優先されます。 
+            componentタグの前に記述する必要があります。</P><PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+
+&lt;components&gt;
+    &lt;include path="aaa/bbb/ccc.dicon" /&gt;
+&lt;/components&gt;
+</PRE><A name=componentTag>
+            <H3>componentタグ(任意)</H3></A>
+            <P>コンポーネントを定義します。</P><A name=classAttr>
+            <H4>class属性(任意)</H4></A>
+            <P>クラスの完全限定名を指定します。ボディで、<A 
+            href="#Jscript">JScript.NET式</A>を使って 
+            コンポーネントを指定した場合は、class属性を省略することができます。 
+            JScript.NET式を使った場合にclass属性を指定すると、型チェックを行います。</P><A 
+            name=componentTag.nameAttr>
+            <H4>name属性(任意)</H4></A>
+            <P>名前を指定することもできます。.NETの識別子として使えるものにします。詳しくは、 <A 
+            href="#getComponent">コンポーネントの取得</A>を参照してください。</P><A 
+            name=instanceAttr>
+            <H4>instance属性(任意)</H4></A>
+            <P>S2Containerがどのようにコンポーネントのインスタンスを管理するのかを指定することができます。singleton(デフォルト)、prototype、outer、request、sessionを指定することができます。詳しくは、<A 
+            href="#InstanceMode">インスタンス管理</A>を参照してください。</P><A 
+            name=autoBindingAttr>
+            <H4>autoBinding属性(任意)</H4></A>
+            <P>S2Containerがコンポーネントの依存関係をどのように解決するのかを指定できます。auto(デフォルト)、constructor、property、noneを指定することができます。詳しくは、<A 
+            href="#AutoBindingMode">自動バインディング</A>を参照してください。</P><A 
+            name=argTag>
+            <H3>argタグ(任意)</H3></A>
+            <P><A 
+            href="#componentTag">componentタグ</A>の子タグとして使った場合は、コンストラクタの引数になります。 
+            記述した順番でコンストラクタに渡されます。 <A 
+            href="#initMethodTag">initMethodタグ</A>、 
+            <A 
+            href="#destroyMethodTag">destroyMethodタグ</A>の子タグとして使った場合は、メソッドの引数になります。 
+            記述した順番でメソッドに渡されます。 引数として渡される実際の値は、ボディで、<A 
+            href="#Jscript">JScript.NET式</A>を使うか、子タグで、 
+            <A 
+            href="#componentTag">componentタグ</A>を使います。</P><A 
+            name=propertyTag>
+            <H3>propertyタグ(任意)</H3></A>
+            <P><A 
+            href="#componentTag">componentタグ</A>の子タグとして使います。プロパティとして設定される実際の値は、 
+            ボディで、<A 
+            href="#Jscript">JScript.NET式</A>を使うか、子タグで、<A 
+            href="#componentTag">componentタグ</A>を使います。</P><A 
+            name=propertyTag.nameAttr>
+            <H4>name属性(必須)</H4></A>
+            <P>プロパティ名を指定します。</P><A name=metaTag>
+            <H3>metaタグ(任意)</H3></A>
+            <P><A 
+            href="#componentsTag">componentsタグ</A>、<A 
+            href="#componentTag">componentタグ</A>、<A 
+            href="#argTag">argタグ</A>、<A 
+            href="#propertyTag">propertyタグ</A>の子タグとして使います。メタデータの値は、ボディで、<A 
+            href="#Jscript">OGNL式</A>を使うか、子タグで、<A 
+            href="#componentTag">componentタグ</A>を使います。</P><A 
+            name=propertyTag.nameAttr>
+            <H4>name属性(任意)</H4></A>
+            <P>メタ名を指定します。</P><A name=initMethodTag>
+            <H3>initMethodタグ(任意)</H3></A>
+            <P><A 
+            href="#componentTag">componentタグ</A>の子タグとして使います。 
+            引数は、子タグで、<A 
+            href="#argTag">argタグ</A>を使います。name属性を書かずに、 
+            <A 
+            href="#Jscript">JScript.NET式</A>を使って、コンポーネントのメソッドを呼び出すこともできます。 
+            initMethodタグが定義されているコンポーネント自身を表すself、Console.Outを表すout、 
+            Console.Errorを表すerrがinitMethodタグ内だけで有効なオブジェクトとして使えます。</P><A 
+            name=initMethodTag.nameAttr>
+            <H4>name属性(任意)</H4></A>
+            <P>メソッド名を指定します。</P><PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+&lt;components&gt;
+    &lt;component class="System.Collections.Hashtable"&gt;
+        &lt;initMethod name="Add"&gt;
+            &lt;arg&gt;"aaa"&lt;/arg&gt;
+            &lt;arg&gt;111&lt;/arg&gt;
+        &lt;/initMethod&gt;
+        
+        &lt;initMethod&gt;self.Add("aaa", 111)&lt;/initMethod&gt;
+        &lt;initMethod&gt;out.WriteLine("Hello")&lt;/initMethod&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</PRE><A name=destroyMethodTag>
+            <H3>destroyMethodタグ(任意)</H3></A>
+            <P>initMethodタグと同様です。</P><A name=aspectTag>
+            <H3>aspectタグ(任意)</H3></A>
+            <P>アスペクトをコンポーネントに組み込みます。詳しくは、S2AOPの<A 
+            href="http://s2dotnet.oscj.net/nonav/source/browse/*checkout*/s2dotnet/www/aop.html#aspectTag">aspectタグ</A>の説明を参照してください。</P><A 
+            name=descriptionTag>
+            <H3>descriptionタグ(任意)</H3></A>
+            <P><A 
+            href="#componentsTag">componentsタグ</A>、<A 
+            href="#componentTag">componentタグ</A>、<A 
+            href="#argTag">argタグ</A>、<A 
+            href="#propertyTag">propertyタグ</A>の子タグとしてdescriptionタグを使うことができます。自由に説明を記述できます。</P><A 
+            name=Jscript>
+            <H3>JScript.NET式</H3></A>
+            <P>S2Container.NETでは、式言語として<A 
+            href="http://www.gotdotnet.com/japan/team/jscript/">JScript.NET</A>を利用しています。 
+            定義ファイルの中で、文字列で記述した内容(式)を.NETのオブジェクトに変換することが出来ます。</P>
+            <UL>
+              <LI>文字列は、"hoge"のように"で囲みます。 
+              <LI>charは、'a'のように'で囲みます。 
+              <LI>数値は、123のようにそのまま記述します。 
+              <LI>論理値は、true,falseのようにそのまま記述します。 
+              <LI>new 
+              DateTime()のように標準ライブラリ(mscorlib.dll)のクラスや構造体のコンストラクタを呼び出すことができます。(名前空間のSystemは省略して呼び出します） 
+              </LI></UL>詳しくは、<A 
+            href="http://www.microsoft.com/japan/msdn/library/default.asp?url=/japan/msdn/library/ja/jscript7/html/jslrfJScriptLanguageReference.asp">JScript.NETのマニュアル</A>を参照してください。<BR><BR><A 
+            name=Example>
+            <H2>Example</H2></A>
+            <P>以下のサンプルを実行する場合は、<A 
+            href="http://s2dotnet.oscj.net/nonav/source/browse/*checkout*/s2dotnet/www/setup.html">セットアップ</A>を行う必要があります。 
+            S2.NET.ExamplesプロジェクトはWindowsアプリケーションとして作成されています。 
+            S2.NET.Examplesプロジェクトをスタートアッププロジェクトに設定しF5キーを押して開始すると、 
+            ExamplesExplorerが起動しExampleのソースコードと実行結果を確認することができます。</P><A 
+            name=ConstructorInjectionEx>
+            <H3>コンストラクタ・インジェクション</H3></A>
+            <P>コンストラクタ・インジェクションを使ってメッセージを表示しましょう。作成するファイルは以下のとおりです。</P>
+            <UL>
+              <LI type=circle>インターフェース(IHello.cs) 
+              <LI type=circle>実装クラス(HelloConstructorInjection.cs) 
+              <LI type=circle>diconファイル(HelloConstructorInjection.dicon) 
+              <LI 
+              type=circle>実行クラス(HelloConstructorInjection.cs中のHelloconstructorInjectionClientクラス) 
+              </LI></UL>
+            <H5>インターフェースの作成</H5>
+            <UL>
+              <LI type=circle>ShowMessage()を定義します。 </LI></UL>
+            <P>先ず最初はインターフェースを考えます。インターフェースと実装を分離することで、 
+            コンポーネントの利用者は、インターフェースを知っていれば実装のことは知らなくても済むようになります。 
+            また、テストの時には実装をモックに置き換えることで簡単にテストできるようになります。</P><PRE>namespace S2.NET.Examples.Reference.Injection
+{
+    public interface IHello
+    {
+        void ShowMessage();
+    }
+}
+</PRE>
+            <H5>実装クラスの作成</H5>
+            <UL>
+              <LI type=circle>引数がstring型のコンストラクタを定義します。 
+              <LI type=circle>ShowMessage()を実装します。 </LI></UL>
+            <P>次はいよいよ実装です。コンストラクタでメッセージを受け取り、 
+ShowMessage()で受け取ったメッセージを出力します。</P><PRE>using System;
+namespace S2.NET.Examples.Reference.Injection
+{
+    public class HelloConstructorInjection : IHello
+    {
+        private string message;
+
+        public HelloConstructorInjection(string message)
+        {
+            this.message = message;
+        }
+
+        public void ShowMessage()
+        {
+            Console.WriteLine(this.message);
+        }
+    }
+}
+</PRE>
+            <H5>diconファイルの作成</H5>
+            <UL>
+              <LI type=circle><A 
+              href="#componentTag">componentタグ</A>でコンポーネントを定義します。 
+
+              <LI type=circle>componentタグの子タグの<A 
+              href="#argTag">argタグ</A>でコンストラクタの引数値を定義します。 
+              </LI></UL>
+            <P>メッセージをコンポーネントに設定するのは、S2Containerの仕事です。 
+            定義ファイルに基づいてコンポーネントを組み立てます。<BR><BR>S2/NET/Examples/Reference/Injection/HelloConstructorInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="utf-8" ?&gt; 
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+&lt;components&gt;
+    &lt;component name="hello"
+            class="S2.NET.Examples.Reference.Injection.HelloConstructorInjection"&gt;
+        &lt;arg&gt;"Hello World!"&lt;/arg&gt;
+    &lt;/component&gt;
+
+    &lt;component name="ConstructorInjection"
+        class="S2.NET.Examples.Reference.Injection.HelloConstructorInjectionClient" /&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>実行クラスの作成</H5>
+            <UL>
+              <LI type=circle><A 
+              href="#S2ContainerCreation">S2ContainerFactory.Create(String 
+              path)を呼び出してS2Containerを作成します</A>。 
+              <LI type=circle>GetComponent()を使用して、 <A 
+              href="#getComponent">S2Containerからコンポーネントを取り出します</A>。 
+
+              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL><PRE>using System;
+
+using S2.NET.Framework.Container;
+using S2.NET.Framework.Container.Factory;
+
+namespace S2.NET.Examples.Reference.Injection
+{
+    public class HelloConstructorInjectionClient
+    {
+        private static readonly String PATH = 
+            "S2/NET/Examples/Reference/Injection/HelloConstructorInjection.dicon";
+
+        public void Main() 
+        {
+            // 型を指定してコンポーネントを取得する場合
+            IS2Container container = S2ContainerFactory.Create(PATH);
+            IHello hello = (IHello) container.GetComponent(typeof(IHello));
+            hello.ShowMessage();
+
+            // 名前を指定してコンポーネントを取得する場合
+            IHello hello2 = (IHello) container.GetComponent("hello");
+            hello2.ShowMessage();
+        }
+    }
+}
+</PRE>
+            <H5>実行結果</H5>
+            <P>argタグで指定した文字列が正しく表示されていることが確認できます。</P><PRE>Hello World!
+Hello World!
+</PRE>
+            <P>この演習は、S2.NET.ExamplesプロジェクトのS2/NET/Examples/Reference/Injection以下に用意されています。</P><A 
+            name=PropertyInjectionEx>
+            <H3>プロパティ・インジェクション</H3></A>
+            <P>プロパティ・インジェクションを使ってメッセージを表示しましょう。作成するファイルは以下のとおりです。</P>
+            <UL>
+              <LI type=circle>インターフェース(IHello.cs)（コンストラクタ・インジェクションと同じもの） 
+              <LI type=circle>実装クラス(HelloPropertyInjection.cs) 
+              <LI type=circle>diconファイル(HelloPropertyInjection.dicon) 
+              <LI 
+              type=circle>実行クラス(HelloPropertyInjection.cs中のHelloPropertyInjectionClientクラス) 
+              </LI></UL>
+            <H5>インターフェースの作成</H5>
+            <UL>
+              <LI type=circle>ShowMessage()を定義します。 </LI></UL>
+            <P>インターフェースはコンストラクタ・インジェクションの場合と同じです。 
+            プロパティに対するgetアクセサ、setアクセサを定義する必要はありません。 なぜなら、Dependency 
+            Injectionするのにコンストラクタを使うのかsetアクセサを使うのかは実装の問題だからです。 </P><PRE>namespace S2.NET.Examples.Reference.Injection
+{
+    public interface IHello
+    {
+        void ShowMessage();
+    }
+}
+</PRE>
+            <H5>実装クラスの作成</H5>
+            <UL>
+              <LI type=circle>プロパティを定義します。 
+              <LI type=circle>ShowMessage()を実装します。 </LI></UL>
+            <P>次は実装です。プロパティ・メソッドでメッセージを受け取り、ShowMessage()で受け取ったメッセージを出力します。</P><PRE>using System;
+
+namespace S2.NET.Examples.Reference.Injection
+{
+    public class HelloPropertyInjection : IHello
+    {
+        private string message;
+
+        public HelloPropertyInjection() {}
+		
+        public string Message
+        {
+            get { return this.message; }
+            set { this.message = value; }
+        }
+
+        public void ShowMessage()
+        {
+            Console.WriteLine(this.message);
+        }
+    }
+}
+</PRE>
+            <H5>diconファイルの作成</H5>
+            <UL>
+              <LI type=circle>componentタグでコンポーネントを定義します。 
+              <LI type=circle>componentタグの子タグの<A 
+              href="#propertyTag">propertyタグ</A>でコンポーネントのプロパティ値を定義します。 
+              </LI></UL>
+            <P>S2/NET/Examples/Reference/Injection/HelloPropertyInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+&lt;components&gt;
+    &lt;component class="S2.NET.Examples.Reference.Injection.HelloPropertyInjection"&gt;
+        &lt;property name="Message"&gt;"Hello World!"&lt;/property&gt;
+    &lt;/component&gt;
+    
+    &lt;component name="PropertyInjection" 
+        class="S2.NET.Examples.Reference.Injection.HelloPropertyInjectionClient" /&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>実行クラスの作成</H5>
+            <UL>
+              <LI type=circle>S2ContainerFactory.Create(string 
+              path)を呼び出してS2Containerを作成します。 
+              <LI type=circle>GetComponent()を使用して、S2Containerからコンポーネントを取り出します。 
+              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL><PRE>using System;
+
+using S2.NET.Framework.Container;
+using S2.NET.Framework.Container.Factory;
+
+namespace S2.NET.Examples.Reference.Injection
+{
+    public class HelloPropertyInjectionClient
+    {
+        private static readonly String PATH =
+            "S2/NET/Examples/Reference/Injection/HelloPropertyInjection.dicon";
+
+        public void Main() 
+        {
+            IS2Container container = S2ContainerFactory.Create(PATH);
+            IHello hello = (IHello) container.GetComponent(typeof(IHello));
+            hello.ShowMessage();
+        }
+    }
+}
+</PRE>
+            <H5>実行結果</H5>
+            <P>propertyタグで指定した文字列が正しく表示されていることが確認できます。</P><PRE>Hello World!
+</PRE>
+            <P>この演習は、S2.NET.ExamplesプロジェクトのS2/NET/Examples/Reference/Injection以下に用意されています。</P><A 
+            name=MethodInjectionEx>
+            <H3>メソッド・インジェクション</H3></A>
+            <P>メソッド・インジェクションを使ってメッセージを表示しましょう。作成するファイルは以下のとおりです。</P>
+            <UL>
+              <LI type=circle>インターフェース(IHello.cs) 
+              <LI type=circle>実装クラス(HelloMethodInjection.cs) 
+              <LI type=circle>diconファイル(HelloMethodInjection.dicon) 
+              <LI 
+              type=circle>実行クラス(HelloMethodInjection.cs中のHelloMethodInjectionClientクラス) 
+              </LI></UL>
+            <H5>インターフェースの作成</H5>
+            <UL>
+              <LI type=circle>ShowMessage()を定義します。 </LI></UL>
+            <P>追加のメソッドを複数回呼び出すようなケースが代表的な使い方ですが、 
+            今回の演習では、インターフェースはコンストラクタ・インジェクションの場合と同じにしました。 </P><PRE>namespace S2.NET.Examples.Reference.Injection
+{
+    public interface IHello
+    {
+        void ShowMessage();
+    }
+}
+</PRE>
+            <H5>実装クラスの作成</H5>
+            <UL>
+              <LI type=circle>AddMessage()を定義します。 
+              <LI type=circle>ShowMessage()を実装します。 </LI></UL>
+            <P>次は実装です。AddMessage(string message)でメッセージを複数回追加して、 
+            ShowMessage()で受け取ったメッセージを出力します。</P><PRE>using System;
+using System.Text;
+
+namespace S2.NET.Examples.Reference.Injection
+{
+    public class HelloMethodInjection : IHello
+    {
+        private StringBuilder builder = new StringBuilder();
+
+        public HelloMethodInjection() {}
+		
+        public void AddMessage(string message)
+        {
+            this.builder.Append(message);
+        }
+
+        public void ShowMessage()
+        {
+            Console.WriteLine(this.builder.ToString());
+        }
+    }
+}
+</PRE>
+            <H5>diconファイルの作成</H5>
+            <UL>
+              <LI type=circle>componentタグでコンポーネントを定義します。 
+              <LI type=circle>componentタグの子タグの<A 
+              href="#initMethodTag">initMethodタグ</A>でコンポーネントのメソッドの引数値を定義します。 
+              </LI></UL>
+            <P>先ずは、argタグを使ってAddMessage(string message)に"Hello "を指定します。 
+            <BR>次にJScript.NET式を使ってAddMessage(string message)に"World！"を指定します。 
+            <BR><BR>S2/NET/Examples/Reference/Injection/HelloMethodInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+&lt;components&gt;
+    &lt;component class="S2.NET.Examples.Reference.Injection.HelloMethodInjection"&gt;
+        &lt;initMethod name="AddMessage"&gt;
+            &lt;arg&gt;"Hello "&lt;/arg&gt;
+        &lt;/initMethod&gt;
+        &lt;initMethod&gt;self.AddMessage("World!")&lt;/initMethod&gt;
+    &lt;/component&gt;
+    
+    &lt;component name="MethodInjection" 
+        class="S2.NET.Examples.Reference.Injection.HelloMethodInjectionClient" /&gt;
+&lt;/components&gt;
+</PRE>
+            <H5>実行クラスの作成</H5>
+            <UL>
+              <LI type=circle>S2ContainerFactory.Create(string 
+              path)を呼び出してS2Containerを作成します。 
+              <LI type=circle>GetComponent()を使用して、S2Containerからコンポーネントを取り出します。 
+              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL><PRE>using System;
+
+using S2.NET.Framework.Container;
+using S2.NET.Framework.Container.Factory;
+
+namespace S2.NET.Examples.Reference.Injection
+{
+    public class HelloMethodInjectionClient
+    {
+        private static readonly String PATH = 
+            "S2/NET/Examples/Reference/Injection/HelloMethodInjection.dicon";
+
+        public void Main() 
+        {
+            IS2Container container = S2ContainerFactory.Create(PATH);
+            IHello hello = (IHello) container.GetComponent(typeof(IHello));
+            hello.ShowMessage();
+        }
+    }
+}
+</PRE>
+            <H5>実行結果</H5>
+            <P>initMethodタグで指定した文字列が正しく表示されていることが確認できます。</P><PRE>Hello World!
+</PRE>
+            <P>この演習は、S2.NET.ExamplesプロジェクトのS2/NET/Examples/Reference/Injection以下に用意されています。</P><A 
+            name=AutoConstructorInjectionEx>
+            <H3>自動バインディング(コンストラクタ・インジェクション)</H3></A>
+            <P>自動バインディングでメッセージを表示してみましょう。作成するファイルは以下のとおりです。</P>
+            <UL>
+              <LI type=circle>インターフェース(IHello.cs) 
+              <LI type=circle>インターフェースの実装クラス(AutoHelloConstructorInjection.cs) 
+              <LI type=circle>diconファイル(AutoHelloConstructorInjection.dicon) 
+              <LI 
+              type=circle>実行クラス(AutoHelloConstructorInjection.cs中のAutoHelloConstructorInjectionClientクラス) 
+              </LI></UL>
+            <H5>インターフェースの作成</H5>
+            <UL>
+              <LI type=circle>ShowMessage()を定義します。 </LI></UL><PRE>namespace S2.NET.Examples.Reference.AutoBinding
+{
+    public interface IHello
+    {
+        void ShowMessage();
+    }
+}
+</PRE>
+            <H5>実装クラスの作成</H5>
+            <UL>
+              <LI type=circle>引数がIDictionaryのコンストラクタを定義します。 
+              <LI type=circle>ShowMessage()を実装します。 </LI></UL>
+            <P>コンストラクタでIDictionaryを受け取り、 
+            ShowMessage()でhelloをキーとしてIDictionaryから値を取得して出力します。</P><PRE>using System;
+using System.Collections;
+
+namespace S2.NET.Examples.Reference.AutoBinding
+{
+    public class AutoHelloConstructorInjection : IHello
+    {
+        private IDictionary dictionary;
+
+        public AutoHelloConstructorInjection(IDictionary dictionary)
+        {
+            this.dictionary = dictionary;
+        }
+
+        public void ShowMessage()
+        {
+            Console.WriteLine(dictionary["hello"]);
+        }
+    }
+}
+</PRE>
+            <H5>diconファイルの作成</H5>
+            <UL>
+              <LI type=circle><A 
+              href="#componentTag">componentタグ</A>でSystem.Collections.IDictionaryの実装クラスである 
+              System.Collections.Hashtableをコンポーネント定義します。 
+              <LI type=circle>componentタグの子タグである<A 
+              href="#initMethodTag">initMethodタグ</A>で 
+              Hashtableにキーとして"hello"、値として"Hello World!"を定義します。 
+              <LI 
+              type=circle>componentタグでAutoHelloConstructorInjectionをコンポーネント定義します。 
+              autoBinding属性にautoを指定します。<BR>演習であるため auto を明示的に指定していますが、 
+              autoBinding属性のデフォルト値であるため本来は省略します。 </LI></UL>
+            <P>AutoHelloConstructorInjectionには、argタグが定義されていないことに注目してください。 
+            コンストラクタ・インジェクションを行う場合、argタグを定義する必要がありますが、 
+            S2Container内にIDictionaryの実装クラスが登録されていれば、 
+            S2Containerがコンテナ内を検索して自動的に引数を設定します。 
+            ただし、引数の型がインターフェースでない場合、自動バインディングはできません。 
+            <BR><BR>S2/NET/Examples/Reference/AutoBinding/AutoHelloConstructorInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+&lt;components&gt;
+
+    &lt;component class="System.Collections.Hashtable"&gt;
+        &lt;initMethod name="Add"&gt;
+            &lt;arg&gt;"hello"&lt;/arg&gt;
+            &lt;arg&gt;"Hello World!"&lt;/arg&gt;
+        &lt;/initMethod&gt;
+    &lt;/component&gt;
+
+    &lt;component name="hello" autoBinding="auto"
+      class="S2.NET.Examples.Reference.AutoBinding.AutoHelloConstructorInjection" /&gt;
+	
+    &lt;component name="AutoConstructorInjection" 
+      class="S2.NET.Examples.Reference.AutoBinding.AutoHelloConstructorInjectionClient" /&gt;
+
+&lt;/components&gt;
+</PRE>
+            <H5>実行クラスの作成</H5>
+            <UL>
+              <LI type=circle><A 
+              href="#S2ContainerCreation">S2ContainerFactory.Create(string 
+              path) を呼び出してS2Containerを作成します</A>。 
+              <LI type=circle>GetComponent()を使用して、 <A 
+              href="#getComponent">S2Containerからコンポーネントを取り出します</A>。 
+
+              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL><PRE>using System;
+using S2.NET.Framework.Container;
+using S2.NET.Framework.Container.Factory;
+namespace S2.NET.Examples.Reference.AutoBinding
+{
+    public class AutoHelloConstructorInjectionClient
+    {
+        private static readonly String PATH =
+            "S2/NET/Examples/Reference/AutoBinding/AutoHelloConstructorInjection.dicon";
+
+        public void Main() 
+        {
+            IS2Container container = S2ContainerFactory.Create(PATH);
+            IHello hello = (IHello) container.GetComponent(typeof(IHello));
+            hello.ShowMessage();
+        }
+    }
+}
+</PRE>
+            <H5>実行結果</H5>
+            <P>Hashtableの値が表示されていることから、自動的にコンストラクタの引数を設定していることが確認できます。</P><PRE>Hello World!
+</PRE>
+            <P>この演習は、S2.NET.ExamplesプロジェクトのS2/NET/Examples/Reference/AutoBinding以下に用意されています。</P><A 
+            name=AutoPropertyInjectionEx>
+            <H3>自動バインディング(プロパティ・インジェクション)</H3></A>
+            <P>自動バインディングでメッセージを表示してみましょう。作成するファイルは以下のとおりです。</P>
+            <UL>
+              <LI type=circle>インターフェース(IHello.cs) 
+              <LI type=circle>インターフェースの実装クラス(AutoHelloPropertyInjection.cs) 
+              <LI type=circle>diconファイル(AutoHelloPropertyInjection.dicon) 
+              <LI 
+              type=circle>実行クラス(AutoHelloPropertyInjection.cs中のAutoHelloPropertyInjectionClientクラス) 
+              </LI></UL>
+            <H5>インターフェースの作成</H5>
+            <UL>
+              <LI type=circle>ShowMessage()を定義します。 </LI></UL><PRE>namespace S2.NET.Examples.Reference.AutoBinding
+{
+    public interface IHello
+    {
+        void ShowMessage();
+    }
+}
+</PRE>
+            <H5>実装クラスの作成</H5>
+            <UL>
+              <LI type=circle>IDictionary型のプロパティを定義します。 
+              <LI type=circle>ShowMessage()を実装します。 </LI></UL>
+            <P>IDictionary MessageのsetアクセサでIDictionaryを受け取り、 
+            ShowMessage()でhelloをキーとしてIDictionaryから値を取得して出力します。</P><PRE>using System;
+using System.Collections;
+
+namespace S2.NET.Examples.Reference.AutoBinding
+{
+    public class AutoHelloPropertyInjection : IHello
+    {
+        private IDictionary dictionary;
+
+        public AutoHelloPropertyInjection()
+        {
+        }
+        
+        public IDictionary Message
+        {
+            set { dictionary = value; }
+        }
+
+        public void ShowMessage()
+        {
+            Console.WriteLine(dictionary["hello"]);
+        }
+    }
+}
+</PRE>
+            <H5>diconファイルの作成</H5>
+            <UL>
+              <LI type=circle><A 
+              href="#componentTag">componentタグ</A>でSystem.Collections.IDictionaryの実装クラスであるSystem.Collections.Hashtableをコンポーネント定義します。 
+
+              <LI type=circle>componentタグの子タグである<A 
+              href="#initMethodTag">initMethodタグ</A>でHashtableにキーとして"hello"、値として"Hello 
+              World!"を定義します。 
+              <LI 
+              type=circle>componentタグでAutoHelloPropertyInjectionをコンポーネント定義します。 
+              autoBinding属性にautoを指定します。<BR>演習であるため auto を明示的に指定していますが、 
+              autoBinding属性のデフォルト値であるため本来は省略します。 </LI></UL>
+            <P>AutoHelloPropertyInjectionには、propertyタグが定義されていないことに注目してください。 
+            プロパティ・インジェクションを行う場合、propertyタグで任意のプロパティを定義する必要がありますが、 
+            S2Container内にIDictionaryの実装クラスが登録されていれば、 
+            S2Containerがコンテナ内を検索して自動的にプロパティを設定します。ただし、 
+            プロパティの型がインターフェースでない場合、自動バインディングはできません。 
+            <BR><BR>S2/NET/Examples/Reference/AutoBinding/AutoHelloPropertyInjection.dicon</P><PRE>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR2.1//DTD S2Container//EN"
+"http://www.seasar.org/dtd/components21.dtd"&gt;
+&lt;components&gt;
+
+    &lt;component class="System.Collections.Hashtable"&gt;
+        &lt;initMethod name="Add"&gt;
+            &lt;arg&gt;"hello"&lt;/arg&gt;
+            &lt;arg&gt;"Hello World!"&lt;/arg&gt;
+        &lt;/initMethod&gt;
+    &lt;/component&gt;
+
+    &lt;component name="hello" autoBinding="auto"
+      class="S2.NET.Examples.Reference.AutoBinding.AutoHelloPropertyInjection" /&gt;
+	
+    &lt;component name="AutoPropertyInjection" 
+      class="S2.NET.Examples.Reference.AutoBinding.AutoHelloPropertyInjectionClient" /&gt;
+
+&lt;/components&gt;
+</PRE>
+            <H5>実行クラスの作成</H5>
+            <UL>
+              <LI type=circle><A href="#S2ContainerCreation">S2ContainerFactory.Create(string path)を呼び出してS2Containerを作成します</A>。 
+              <LI type=circle>GetComponent()を使用して、<A href="#getComponent">S2Containerからコンポーネントを取り出します</A>。 
+
+              <LI type=circle>取得したコンポーネントのメソッドを呼び出します。 </LI></UL><PRE>using System;
+using S2.NET.Framework.Container;
+using S2.NET.Framework.Container.Factory;
+namespace S2.NET.Examples.Reference.AutoBinding
+{
+    public class AutoHelloPropertyInjectionClient
+    {
+        private static readonly String PATH =
+            "S2/NET/Examples/Reference/AutoBinding/AutoHelloPropertyInjection.dicon";
+
+        public void Main() 
+        {
+            IS2Container container = S2ContainerFactory.Create(PATH);
+            IHello hello = (IHello) container.GetComponent(typeof(IHello));
+            hello.ShowMessage();
+        }
+    }
+}
+</PRE>
+            <H5>実行結果</H5>
+            <P>Hashtableの値が表示されていることから、自動的にプロパティを設定していることが確認できます。</P><PRE>Hello World!
+</PRE>
+            <P>この演習は、S2.NET.ExamplesプロジェクトのS2/NET/Examples/Reference/AutoBinding以下に用意されています。</P><BR><BR><!-- document end --><!-- don't edit start --></TD>
+          <TD width=14><IMG height=14 alt="" 
+            src="images/spacer.gif" width=14></TD></TR>
+        <TR>
+          <TD width=14><IMG height=30 alt="" 
+            src="images/spacer.gif" width=14></TD>
+          <TD width=766><IMG height=30 alt="" 
+            src="images/spacer.gif" width=592></TD></TR>
+        <TR>
+          <TD width=14><IMG height=14 alt="" src="images/spacer.gif" width=14></TD>
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=736><TR><TD align="left">Trans. by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and the others. All rights reserved.</TD></TR></TABLE></TD>
+</TR></TABLE>
+    <TD class=backright vAlign=top align=left>&nbsp;</TD></TR>
+  <TR>
+    <TD class=backunder vAlign=top align=left width=780 height=16>&nbsp;</TD>
+    <TD class=backcorner vAlign=top align=left 
+height=16>&nbsp;</TD></TR></TBODY></TABLE><!-- don't edit end --></BODY></HTML>

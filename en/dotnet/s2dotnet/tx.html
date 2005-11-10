@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end --><!-- document start -->
+            <UL>
+              <LI><A href="#Tx">Automatic Transaction Control</A> 
+
+              <UL>
+                <LI><A href="#TransAttribute">Transaction Control</A> 
+
+                <LI><A href="#Example">Example</A> 
+                </LI></UL>
+              <LI><A href="#Exception">Exception Handling</A> 
+<!--
+<ul>
+<li><a href="#ExExample">Example</a>
+<li><a href="#EJBTx">EJB互換のAdvice</a>
+</ul>
+--></LI></UL>
+            <H2><A name=Tx>Automatic Transaction Control</A></H2>
+            <P>Using S2Tx.NET, it is possible to apply an <A href="aop.html">Aspect</A> to manage transaction to a .NET object. Before applying an aspect, refer to <A href="aop.html#Warning">Warnings</A>. Currently, s2dotnet uses MS DTC (Microsoft Distributed Transaction Coordinator) to manage transactions. Local transaction management is planned in future s2dotnet version. Following are transaction attributes available on S2Tx.NET:</P>
+            <H3><A name=TransAttribute>Transaction Attributes</A></H3>
+            <P>Followings <A href="aop.html#Advice">Advices</A> are defined in the Ex.dicon. Component name is the <A href="aop.html#Advice">Advice</A> name.</P>
+            <TABLE border=1>
+              <TBODY>
+              <TR align=middle bgColor=#d1f3f4>
+                <TH width=72>Attribute</TH>
+                <TH width=123>Component Name</TH>
+                <TH width=534>Description</TH></TR>
+              <TR>
+                <TD>Required</TD>
+                <TD><CODE>Tx.RequiredTx</CODE></TD>
+                <TD>If a transaction already exists then share it. Create a new transaction when necessary.</TD></TR>
+              <TR>
+                <TD>RequiresNew</TD>
+                <TD><CODE>Tx.RequiresNewTx</CODE></TD>
+                <TD>Regardless of the current status of a context, create a component by a new transaction.</TD></TR>
+              <TR>
+                <TD>Supported</TD>
+                <TD><CODE>Tx.SupportedTx</CODE></TD>
+                <TD>If a transaction exists, then share it.</TD></TR>
+              <TR>
+                <TD>NotSupported</TD>
+                <TD><CODE>Tx.NotSupportedTx</CODE></TD>
+                <TD>Create a component using transaction without a control context.</TD></TR></TBODY></TABLE>
+            <H3><A name=Example>Example</A></H3>
+            <H4>IHoge.cs</H4><PRE>namespace Examples.Tx
+{
+    public interface IHoge
+    {
+        void Foo();
+    }
+}
+</PRE>
+            <H4>HogeImpl.cs</H4><PRE>namespace Examples.Tx
+{
+    public class HogeImpl : IHoge
+    {
+        public void Foo()
+        {
+            Console.WriteLine("Foo");
+        }
+    
+}
+</PRE>
+            <H4>HogeClient.dicon</H4><PRE>&lt;components&gt;
+    &lt;include path="Tx.dicon"/&gt;
+    &lt;component class="Examples.Tx.HogeImpl"&gt;
+        &lt;aspect&gt;Tx.RequiredTx&lt;/aspect&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+
+</PRE>
+            <H4>HogeClient.cs</H4><PRE>using S2.NET.Framework.Container;
+using S2.NET.Framework.Container.Factory;
+
+namespace Examples.Tx
+{
+    public class HogeClient
+    {
+        private const string PATH =
+            "Examples/Tx/HogeClient.dicon";
+
+        [STAThread]
+        static void Main(string[] args)
+        {
+            IS2Container container = S2ContainerFactory.Create(PATH);
+            IHoge hoge = (IHoge) container.GetComponent(typeof(IHoge));
+            hoge.Foo();
+        }
+    }
+}</PRE>
+            <H4>Result</H4><PRE>DEBUG S2.NET.Extension.Tx.RequiredInterceptor - Transaction started
+Foo
+DEBUG S2.NET.Extension.Tx.RequiredInterceptor - Transaction committed
+</PRE>
+            <P>Tx.dicon is included in s2dotnet (under S2.NET project). Advice component name only needs to be specified as a value of an <SPAN class="enter">aspect</SPAN> tag.</P>
+            <H2><A name=Exception>Exception Handling</A></H2>
+            <P>Advices defined in Tx.dicon will rollback a transaction when a component throws an exception.<BR><!-- document end --><!-- don't edit start --></P></TD>
+          <TD width=14><IMG height=14 alt="" 
+            src="images/spacer.gif" width=14></TD></TR>
+        <TR>
+          <TD width=14><IMG height=30 alt="" 
+            src="images/spacer.gif" width=14></TD>
+          <TD width=766><IMG height=30 alt="" 
+            src="images/spacer.gif" width=592></TD></TR>
+        <TR>
+          <TD width=14><IMG height=14 alt="" 
+            src="images/spacer.gif" width=14></TD>
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=736><TR><TD align="left">Trans. by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and 
+            the others. All rights reserved.</TD></TR></TABLE></TD>
+    <TD class=backright vAlign=top align=left>&nbsp;</TD></TR>
+  <TR>
+    <TD class=backunder vAlign=top align=left width=780 height=16>&nbsp;</TD>
+    <TD class=backcorner vAlign=top align=left 
+height=16>&nbsp;</TD></TR></TBODY></TABLE><!-- don't edit end --></BODY></HTML>
