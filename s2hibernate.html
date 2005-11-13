@@ -21,15 +21,389 @@
 <tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="752" class="main">
 <!-- don't edit end -->
 <!-- document start -->
-<p>S2Hibernateを使うと、S2のJTAやConnectionPoolと<a href="http://www.hibernate.org/">Hibernate</a>が簡単に連動するようになります。これまでHibernateで開発するときの悩みの種だったSession管理をS2Hibernateが自動的に行ってくれるので、開発者はSessionのオープン・クローズ、Transaction処理から開放されます。SessionはJTAのトランザクション中は維持され、トランザクションの終了時に自動的にクローズ(flushも)されます。</p>
-<h2><a name="Setup">セットアップ</a></h2>
-<p>S2と同様にJDK1.4以上が必要です。S2HibernateVx.x.x.jarを解凍してできたs2hibernateディレクトリをEclipseのJavaプロジェクトとして丸ごとインポートしてください。.classpathを上書きするか聞かれるので、すべてはいのボタンをクリックして、すべてを取り込みます。 これで、私と全く同じ環境になります。src/examples配下にサンプルもあります。</p>
-<p> S2Hibernateとして必要なjarファイルは、s2hibernate/libにそろってます。Hibernateはコネクションプールやキャッシュの実装をいろいろ選べるようになっているので、S2Hibernateで用意していない実装が必要な場合は、<a href="http://www.hibernate.org/">Hibernateのサイト</a>よりダウンロードしてください。簡単に機能を試すことができるように、RDBMSとしてHSQLDBを用意しています。機能を試す前にあらかじめHSQLDBを実行しておいてください。HSQLDBを実行するには、bin/runHsqldb.batをダブルクリック(Windowsの場合)します。lib/hsqldb.jarはHSQLDBを実行する上では必要ですが、本番では必要ありません。libのjarファイル(hsqldb.jar以外)とsrcのhibernate.cfg.xml、ehcache.xml、j2ee.dicon、log4j.propertiesをCLASSPATHにとおせば、S2Hibernateを実行できます。Eclipseにインポートして使う場合は設定は不要です。</p>
+<p>
+このドキュメントはS2Hibernateのバージョン1.1.1のものです。<br>
+S2Hibernate1.1.1はSeasar2のバージョン2.2.7以降に対応しています。動作確認はSeasar2.2.11で行っています。
+</p>
 
-<h2><a name="Usage">使い方</a></h2>
-<p>Hibernateを使いたいクラスは、S2SessionFactory型のフィールドを定義してコンストラクタあるいはプロパティ経由で実装クラス(S2SessionFactoryImpl)を受け取ります。あとは、S2SessionFactory.getSession()を呼び出してHibernateの機能を自由に使うことができます。Sessionのオープン・クローズ、トランザクション制御は一切必要ありません。S2SessionFactory.getSession()が返すオブジェクトは、HibernateのSessionのラッパーであるS2Sessionです。実行できるメソッドはHibernateのSessionと同じで、検査例外(HibernateException)を実行時例外(HibernateRuntimeException)に変換してくれます。そのため、HibernateExceptionをcatchしたくないクラスは特に何もする必要はありません。catchする必要がある場合は、HibernateRuntimeExceptionでcatchしてgetCause()でHibernateExceptionを取り出します。</p>
-<h3><a name="Example">Example</a></h3>
-<h3>Employee.java</h3>
+<ul>	
+<!-- 	2	3	4	5-->
+	<li><a href="#S2Hibernate">S2Hibernateの概要</a></li>
+	<li><a href="#リファレンス">S2Hibernateリファレンス</a></li>
+	<ul>
+
+		<li><a href="#Setup">セットアップ</a></li>
+		<li><a href="#HibernateVersion">Hibernateのバージョン</a></li>
+		<li><a href="#Usage">基本的な使い方</a></li>
+		<ul>
+			<li><a href="#JavaBeans">JavaBeans</a></li>
+			<li><a href="#dao">Dao(Data Access Object)</a></li>
+			<li><a href="#diconファイル">diconファイル</a></li>
+		</ul>
+
+
+
+		<li><a href="#daoUsage">S2hibernate.daoの使い方</a></li>
+		<ul>
+			<li><a href="#autoDaoJavaBeans">JavaBeans</a></li>
+			<li><a href="#autoDao">Dao(Data Access Object)</a></li>
+			<ul>
+				<li><a href="#autoDaoBean">BEANアノテーション </a></li>
+				<li><a href="#autoDaoHql">HQLアノテーション</a></li>
+				<li><a href="#autoDaoNamedQuery">NamedQueryを使う場合</a></li>
+				<li><a href="#autoDaoArgs">ARGSアノテーション</a></li>
+				<li><a href="#autoDaoAutoQuery1">ARGSアノテーションを使っての検索の自動処理Ⅰ</a></li>
+				<li><a href="#autoDaoAutoQuery2">ARGSアノテーションを使っての検索の自動処理Ⅱ</a></li>
+				<li><a href="#HqlDto">DTO（Data Transter Object）を使う場合</a></li>
+
+				<li><a href="#autoDto1">DTO（Data Transter Object）を使って自動処理する場合Ⅰ</a></li>
+				<li><a href="#autoDto2">DTO（Data Transter Object）を使って自動処理する場合Ⅱ</a></li>
+				<li><a href="#autoDaoProperty">PROPERTYアノテーション</a></li>
+
+				<li><a href="#autoDaoMethod">メソッドの定義</a></li>
+
+			</ul>
+			<li><a href="#autoDaodicon">diconファイル</a></li>
+		</ul>
+	</ul>
+	<li><a href="#Example">Example</a></li>
+		
+	<ul>
+		<li><a href="#basicExample">基本的な使い方の例</a></li>
+		<li><a href="#DaoExample">S2hibernate.daoの使い方の例</a></li>
+	</ul>
+	
+	
+
+</ul>
+
+<h2><a name="S2Hibernate">S2Hibernateの概要</a></h2>
+<p>S2Hibernateは以下の特徴を持っています。</p>
+		<ul>
+			<li>S2のJTAやConnectionPoolと<a href="http://www.hibernate.org/">Hibernate</a>が簡単に連動するようになります。</li>
+			<p>これまでHibernateで開発するときの悩みの種だったSession管理をS2Hibernateが自動的に行ってくれるので、
+開発者はSessionのオープン・クローズ、Transaction処理から開放されます。
+SessionはJTAのトランザクション中は維持され、トランザクションの終了時に自動的にクローズ(flushも)されます。
+</p>
+		</ul>
+		<ul>
+			<li>HibernateのSessionを意識しないで記述できる</li>
+			<p><a href="#daoUsage">S2Hibernate.dao</a>を使うことで、HibernateのSessionを意識せずにDaoを記述できるようになります。<br>
+				S2hibernate.daoでは定数アノテーションという技術を使い、ソースコードにメタデータを記述するだけで動作するようになります。<br>
+				定数アノテーションとHQL文だけを書けば、動作するようになるので開発効率が向上します。</p>
+		</ul>
+<h2><a name="リファレンス">S2Hibernateリファレンス</a></h2>
+<h3><a name="Setup">セットアップ</a></h3>
+<ul>
+	<li>ソースのインポート</li>
+	<p>S2と同様にJDK1.4以上が必要です。S2Hibernate-Vx.x.x.zipを解凍してできたs2hibernateディレクトリをEclipseのJavaプロジェクトとして丸ごとインポートしてください。.classpathを上書きするか聞かれるので、すべてはいのボタンをクリックして、すべてを取り込みます。 これで、私と全く同じ環境になります。src/examples配下にサンプルもあります。</p>
+
+	<li>必要なjarファイル</li>
+	<p> S2Hibernateとして必要なjarファイルは、s2hibernate/libにそろってます。Hibernateはコネクションプールやキャッシュの実装をいろいろ選べるようになっているので、S2Hibernateで用意していない実装が必要な場合は、<a href="http://www.hibernate.org/">Hibernateのサイト</a>よりダウンロードしてください。</p>
+
+	<li>クラスパス</li>
+	<p>libのjarファイル(hsqldb.jar以外)とsrcのhibernate.cfg.xml、ehcache.xml、j2ee.dicon、log4j.propertiesをCLASSPATHにとおせば、S2Hibernateを実行できます。Eclipseにインポートして使う場合は設定は不要です。</p>
+
+	<li>データベース</li>
+	<p>簡単に機能を試すことができるように、RDBMSとしてHSQLDBを用意しています。機能を試す前にあらかじめHSQLDBを実行しておいてください。HSQLDBを実行するには、bin/runHsqldb.batをダブルクリック(Windowsの場合)します。lib/hsqldb.jarはHSQLDBを実行する上では必要ですが、本番では必要ありません。</p>
+</ul>
+
+<h3><a name="HibernateVersion">Hibernateのバージョン</a></h3>
+s2hibernateV1.1.0からHibernate3に対応しました。<br>
+しかし、現在のドキュメントは、Hibernate2を対象に記述していますので、
+Hibernate3を利用する場合は、次のように読み替えてください。
+<table border=1 width=700>
+	<tr>
+		<td>　</td><td>Hibernate2</td><td>Hibernate3</td>
+	</tr>
+	<tr>
+		<td>S2SessionFactoryImpl</td><td>org.seasar.hibernate.S2SessionFactory</td><td>org.seasar.hibernate3.S2SessionFactory</td>
+	</tr>
+	<tr>
+		<td>S2Session</td><td>org.seasar.hibernate.S2Session</td><td>org.hibernate.Session</td>
+	</tr>
+	<tr>
+		<td>設定ファイル</td><td>hibernate.cfg.xml</td><td>hibernate3.cfg.xml</td>
+	</tr>
+	<tr>
+		<td>マッピングファイル</td><td>Employee.hbm.xml<br>Department.hbm.xml</td><td>Employee3.hbm.xml<br>Department3.hbm.xml</td>
+	</tr>
+	<tr>
+		<td>diconファイル</td><td>s2hibernate.dicon</td><td>s2hibernate3.dicon</td>
+	</tr>
+
+<table>
+<br/>
+
+
+<h3><a name="Usage">基本的な使い方</a></h3>
+<!--<h4><a name="作成すべきファイル">作成すべきファイル</a></h4>-->
+<p>S2Hibernateの機能を使用するにあたり、JavaBeans、Dao(.java)、diconファイルの作成が必要になります。</p>
+<h4><a name="JavaBeans">JavaBeans</a></h4>
+<p>通常のJavaBeanを作成します。S2Hibernateを意識する必要はありませが、Hibernateで利用できるように記述してください。 </p>
+<h5><a name="dao">Dao(Data Access Object)</a></h5>
+
+		<p>例）<a href="#EmployeeDaoImpl_java">Dao実装(EmployeeDaoImpl.java)</a></p>
+		
+		<ol>
+			<li>S2SessionFactory型のフィールドを定義。
+			<pre>private S2SessionFactory sessionFactory_;</pre></li>
+		
+			<li>コンストラクタあるいはプロパティ経由で実装クラス(S2SessionFactoryImpl)を受け取るように記述。
+<pre>
+public EmployeeDaoImpl(S2SessionFactory sessionFactory) { 
+	sessionFactory_ = sessionFactory;
+}</pre>
+			</li>
+			<li>各メソッドでS2SessionFactoryからS2Sessionを取得し、処理を記述する。</li>
+			<pre>
+public Employee getEmployee(int empno) {
+    List result = sessionFactory_.getSession().find(
+        HQL, new Integer(empno), Hibernate.INTEGER);
+    if (result.size() > 0) {
+        return (Employee) result.get(0);
+    } else {
+        return null;
+    }
+}</pre>
+
+		<ul>
+			<li>
+			Sessionのオープン・クローズ、トランザクション制御は必要ありません。
+			</li>
+			<li>S2SessionFactory.getSession()が返すオブジェクトは、HibernateのSessionのラッパーであるS2Sessionです。<br>
+			実行できるメソッドはHibernateのSessionと同じで、検査例外(HibernateException)を実行時例外(HibernateRuntimeException)に変換してくれます。<br>
+			そのため、HibernateExceptionをcatchしたくないクラスは特に何もする必要はありません。
+			catchする必要がある場合は、HibernateRuntimeExceptionでcatchしてgetCause()でHibernateExceptionを取り出します。
+			</li>
+		</ul>
+	</ol>
+	</li>
+<br>
+
+
+		
+
+
+
+<h4><a name="diconファイル">diconファイル</a></h4>
+<p>作成したDaoクラスとorg.seasar.hibernate.impl.S2SessionFactoryImplを追加します。<br>
+例）<a href="#Employee_dicon">Employee.dicon</a>
+</p>
+<hr>
+<h3><a name="daoUsage">S2Hibernate.daoの使い方</a></h3>
+<!--<h4><a name="作成すべきファイル">作成すべきファイル</a></h4>-->
+<p>S2hibernate.daoを使うと、Sessionを意識せずにDaoを記述することができます。<br/>
+S2hibernate.daoでは定数アノテーションという技術を使い、ソースコードにメタデータを記述するだけで動作するようになります。<br/>
+定数アノテーションとHQL文だけを書けば、動作するようになるので開発効率が向上します。<br><br>
+
+S2Hibernate.daoの機能を使用するにあたり、JavaBeans、Dao(.java)、diconファイルの作成が必要になります。</p>
+<h4><a name="AutoDaoJavaBeans">JavaBeans</a></h5>
+<p>通常のJavaBeanを作成します。S2Hibernateを意識する必要はありませが、Hibernateで利用できるように記述してください。 </p>
+<h4><a name="autoDao">Dao(Data Access Object)</a></h5>
+
+
+	
+<p>S2hibernate.daoでは定数アノテーションという技術を使い、ソースコードにメタデータを記述するだけで動作するようになります。</p>
+
+		<h5><a name="autoDaoBean">BEANアノテーション</a></h5>
+		<p>Dao(Data Access Object)がどのJavaBeans(エンティティ)に関連付けられているのかはBEANアノテーションで指定します。
+		例えば、EmployeeDaoクラスがEmployeeエンティティに関連付けられる場合は次のように定義します。</p>
+		<pre>public static final Class BEAN = Employee.class;</pre>
+
+
+		<h5><a name="autoDaoHql">HQLアノテーション</a></h5>
+		<p>HQLアノテーションを使って、HQL文を指定して実行することができます。</p>
+		<pre>
+public String getEmployeeByEname_ARGS = "employeeName";
+public String getEmployeeByEname_HQL = "from Employee emp where emp.ename = :employeeName";
+public List getEmployeeByEname(String employeeName);</pre>
+		<p>ARGSアノテーションに合わせて、HQLに値を渡していきます。</p>
+
+		<h5><a name="autoDaoNamedQuery">NamedQueryを使う場合</a></h5>
+
+Hibernateのマッピングファイルに記述したNamedQueryのname属性を次の様に指定します。<br/>
+　　[Daoインターフェース名]+"_"+[メソッド名]<br/>
+例）examples.hibernate.dao.EmployeeAutoDaoクラスのgetSQLEmployeeNameByIdメソッドで使うNamedQueryを指定する場合
+<pre>
+&lt;query name="examples.hibernate.dao.EmployeeAutoDao_getSQLEmployeeNameById"&gt;&lt;![CDATA[
+    select emp.ename from Employee emp where emp.empno = :employeeId
+]]&gt;&lt;/query&gt;
+</pre>
+
+		<h5><a name="autoDaoArgs">ARGSアノテーション</a></h5>
+		<p>メソッドの引数名をARGSアノテーションを使って指定します。メソッドの引数名は、リフレクションで取得できないためです。</p>
+<pre>public static final String getEmployee_ARGS = "empno";
+public Employee getEmployee(int empno)</pre>
+		<p>引数が複数ある場合には、カンマで区切ります。</p>
+
+		<p>※予約語<br>
+		　　HQLアノテーション又は、NamedQueryを利用した検索を行う場合、ARGSアノテーションで次の２つが予約語なります。<br>
+		　　　　"firstResult"：検索結果の何レコード目から取得するか。<br>
+		　　　　"maxResults"：検索結果から、何件取得するか。</p>		
+<pre>
+public String getEmployeeList_ARGS = "MaxResults";
+public String getEmployeeList_HQL = "from Employee emp order by emp.empno";
+public List getEmployeeList(int MaxResults);</pre>
+
+		<h5><a name="autoDaoAutoQuery1">ARGSアノテーションを使っての検索の自動処理Ⅰ</a></h5>
+		S2hibernate.daoに自動的に検索処理を生成させることもできます。HQLアノテーションを指定せず、ARGSアノテーションを指定することで自動的に処理されます。
+		必要なのは次の定義だけです。</p>
+		<pre>
+public static final String getEmployeeByJobDeptno_ARGS = "job, deptno";
+public List getEmployeeByJobDeptno(String job, Integer deptno);	</pre>
+		上の例の場合、次のHQL文として扱い":job",":empno"の部分に引数の値を渡します。<br/>
+		<pre>from Employee emp where emp.job = :job and emp.deptno = :deptno</pre>
+		<p>S2hibernate.daoでは、引数がNullの場合、検索条件に含めません。この例で、deptnoがNullの場合の次の様なHQLに相当する処理を生成します</p>
+		<pre>from Employee emp where emp.job = :job</pre>
+
+
+
+		<h5><a name="autoDaoAutoQuery2">ARGSアノテーションを使っての検索の自動処理Ⅱ</a></h5>
+		「ARGSアノテーションを使っての検索の自動処理Ⅰ」の自動処理がイコール("=")限定だったのに対して、
+		ARGSアノテーションの引数名の後ろに比較演算子を追加することで、指定した比較演算子を使っての比較が出来ます。<br/><br/>
+
+		※利用できる演算子 ： = ,> ,>= ,< ,<= ,like ,in
+
+		</p>
+		<pre>
+//ARGSアノテーションに比較オペレーター（>）を指定した場合
+public String getEmployeeByGtSal_ARGS = "sal >";
+public List   getEmployeeByGtSal( BigDecimal sal );</pre>
+		上の例の場合、次のHQL文として扱い":sal"に引数の値を渡します。<br/>
+		<pre>from Employee emp where emp.sal > :sal </pre>
+		「ARGSアノテーションを使っての検索の自動処理Ⅰ」と同様、引数がNullの場合、検索条件に含めません。
+
+
+
+     		<h5><a name="HqlDto">DTO（Data Transter Object）を使う場合</a></h5>
+メソッドの引数にDTO（Data Transter Object）を使う場合、ARGSアノテーションせず、メソッドの引数をDTO１つにします。
+
+HQL（HQLアノテーションまたは、NamedQuery）にDTOの値を渡す場合、
+HQLの中の名前付き引数（変数名に":"つける）とDTOのプロパティ名をあわせることで、
+メソッドの実行時に、HQLにDTOの値が渡されて実行されます。
+
+
+     		<h5><a name="autoDto1">DTO（Data Transter Object）を使って自動処理する場合Ⅰ</a></h5>
+HQL（HQLアノテーションまたは、NamedQuery）が指定されていないメソッドに対して、DTO利用した場合、DTOのプロパティ名から自動的に検索処理を行います。
+イメージとしては、HibernteのExampleの様な機能になります。<br/>
+
+渡されてたDTOのNullでないプロパティを検索条件にして、オブジェクトを検索します。<br/>
+（nullでないもを検索条件にするので、プリミティブ型は想定していません。）
+
+
+
+     		<h5><a name="autoDto2">DTO（Data Transter Object）を使って自動処理する場合Ⅱ</a></h5>
+「DTO（Data Transter Object）を使って自動処理する場合Ⅰ」の自動処理がイコール("=")限定だったのに対して、 
+PROPERTYアノテーションを指定することで、比較演算子を使っての比較が出来ます。
+
+		<h5><a name="autoDaoProperty">PROPERTYアノテーション</a></h5>
+PROPERTYアノテーションは、DTOを使う場合のみに指定します。
+記述する内容はARGSアノテーションにDTOのプロパティ名を追加した形式になります。<br/>
+形式：[エンティティのプロパティ名]+" "+[演算子]+" "+[DTOのプロパティ名]
+<pre>
+	//ARGSアノテーションに比較オペレーター（>=,<=）を指定した場合（EmployeeSearchDto）
+	//指定したフィールドが指定した範囲の値のオブジェクトを取得したいとき
+	public String getEmployeeByDto_PROPERTY = "empno,ename,job,mgr,deptno," +
+		"hiredate >= fromHiredate,hiredate <= toHiredate,sal >= fromSal,sal <= toSal";
+	public List   getEmployeeByDto( EmployeeSearchDto dto );
+
+</pre>
+この例の場合、<br/>
+"empno,ename,job,mgr,deptno"の部分に関しては、エンティティとDTOのプロパティ名が一致しているため、DTOのプロパティ名の記述が省略されています。また、演算子も=(イコール)を使うので省略されています。
+次の３つはどれを記述しても同じ意味になります。<br/>
+　"empno,ename,job,mgr,deptno"<br/>
+　"empno =,ename =,job =,mgr =,deptno ="<br/>
+　"empno = empno,ename = ename,job = job,mgr = mgr,deptno = deptno"<br/>
+<br/>
+"hiredate >= fromHiredate,hiredate <= toHiredate,sal >= fromSal,sal <= toSal"の部分に関しては、<br/>
+BEANアノテーションに記述されているEmployeeクラスのhiredateプロパティが<br/>
+DTOのfromHiredateプロパティの値以下であるという様な条件が4パターン記述されていることになります。
+
+
+		<h5><a name="autoDaoMethod">メソッドの定義</a></h5>
+		<p>S2Hibernate.daoではメソッドのsignatureより処理を自動的に決定しています。
+			そのためメソッドのsignatureはS2hibetnate.daoの想定にあわせてもらう必要があります。
+		</p>
+	<table border=1 width=700>
+		<tr>
+			<td width=80>処理</td>
+			<td width=160>メソッド名</td>
+			<td width=460>備考</td>
+		</tr>
+		<tr>
+			<td>save</td>
+			<td>reate,insert,add<br>ではじまる</td>
+			<td>戻り値はvoidです。<br>
+			引数の型はエンティティの型と一致させます。</td>
+		</tr>
+		<tr>
+			<td>update</td>
+			<td>update,modify,store<br>ではじまる</td>
+			<td>戻り値はvoidです。<br>
+		引数の型はエンティティの型と一致させます。</td>
+		</tr>
+		<tr>
+			<td>saveOrUpdate</td>
+			<td>saveOrUpdateではじまる</td>
+			<td>戻り値はvoidです。<br>
+		引数の型はエンティティの型と一致させます。</td>
+		</tr>
+		<tr>
+			<td>load</td>
+			<td>loadではじまる</td>
+			<td>戻り値はObjectです。<br>
+		引数の型は主キーカラム（id）の型と一致させます。</td>
+		</tr>
+		<tr>
+			<td>delete</td>
+			<td>delete,removeではじまる</td>
+			<td>戻り値はvoidです。<br>
+		引数の型はエンティティの型と一致させます。</td>
+		</tr>
+		<tr>
+			<td>select</td>
+			<td>上記に該当しない場合</td>
+			<td>・戻り値の型がjava.util.Listを実装している場合、検索結果のエンティティのリストを返します。<br>
+		・戻り値の型がエンティティの型の場合、エンティティを返します。<br>
+		・それ以外の場合、select count(emp) from Employee empのように1行で1のカラムの値を返すというようにS2Hibernate.daoは想定します。</td>
+		</tr>
+
+	</table>
+<br><p>※select時に実行するHQL文の優先順位</p>
+<ol>
+	<li>HQLアノテーションを指定している場合、HQLアノテーションに記述したHQL文を実行します。</li>
+	<li>Hibernateのマッピングファイルに[ Daoインターフェース名 + "_" +メソッド名 ] でNamedQueryが指定されていた場合、その指定されているクエリーを実行します。</li>
+	<li>Hibernateのマッピングファイルに[ メソッド名 ] でNamedQueryが指定されていた場合、その指定されているクエリーを実行します。</li>
+	<li>上記に当てはまらない場合、ARGSアノテーションまたは、PROPERTYアノテーションを使って自動処理を行います。</li>
+	<li>ARGSアノテーション、PROPERTYアノテーションの指定がない場合、BEANアノテーションで指定したエンティティすべてを含んだListを返します。</li>
+</ol>
+
+<h4><a name="autoDaodicon">diconファイル</a></h4>
+<p>
+作成したDaoクラスを追加します。<br>
+s2hinernate.diconを追加します。
+<br>
+例）<a href="#EmployeeAutoDao_Dicon">EmployeeAutoDao.dicon</a><br>
+　　<a href="#s2hibernate_Dicon">s2hibernate.dicon</a>
+<hr>
+
+<h2><a name="Example">Example</a></h2>
+<p>
+<h3><a name="BasicExample">基本的な使い方の例</a></h3>
+    	<p>作成するファイは以下のとおりです。</p>
+		<ul>
+		<li type="circle"><a href="#Employee_java">JavaBean(Employee.java)</a></li>
+		<li type="circle"><a href="#Employee_hbm_xml">Hibernateのマッピングファイル(Employee.hbm.xml)</a></li>
+		<li type="circle"><a href="#EmployeeDao_java">Daoインターフェース(EmployeeDao.java)</a></li>
+		<li type="circle"><a href="#EmployeeDaoImpl_java">Dao実装(EmployeeDaoImpl.java)</a></li>
+		<li type="circle"><a href="#Employee_dicon">diconファイル(Employee.dicon)</a></li>
+		<li type="circle"><a href="#EmployeeClient_java">実行クラス(EmployeeClient.java)</a></li>
+		<li type="circle"><a href="#result">実行結果</a></li>
+		</ul>
+</p>
+<h4><a name="Employee_java">Employee.java</a></h4>
+通常のJavaBeanを作成します。S2Hibernateを意識する必要はありませがHibernateで利用できるように記述してください。
 <pre>
 package examples.hibernate.entity;
 
@@ -38,103 +412,40 @@ import java.io.Serializable;
 public class Employee implements Serializable {
 
     private long empno;
-
     private String ename;
-
     private String job;
-
     private Short mgr;
-
     private java.util.Date hiredate;
-
     private Float sal;
-
     private Float comm;
-
     private short deptno;
 
-    public Employee(long empno, java.lang.String ename, java.lang.String job, Short mgr,
-	  java.util.Date hiredate, Float sal, Float comm, short deptno) {
-        this.empno = empno;
-        this.ename = ename;
-        this.job = job;
-        this.mgr = mgr;
-        this.hiredate = hiredate;
-        this.sal = sal;
-        this.comm = comm;
-        this.deptno = deptno;
-    }
+    public Employee() {}
+    public Employee(long empno) { this.empno = empno; }
 
-    public Employee() {
-    }
+    public long getEmpno() { return this.empno; }
+    public void setEmpno(long empno) { this.empno = empno; }
 
-    public Employee(long empno) {
-        this.empno = empno;
-    }
+    public java.lang.String getEname() { return this.ename; }
+    public void setEname(java.lang.String ename) { this.ename = ename; }
 
-    public long getEmpno() {
-        return this.empno;
-    }
+    public java.lang.String getJob() { return this.job; }
+    public void setJob(java.lang.String job) { this.job = job; }
 
-    public void setEmpno(long empno) {
-        this.empno = empno;
-    }
+    public Short getMgr() { return this.mgr; }
+    public void setMgr(Short mgr) { this.mgr = mgr; }
 
-    public java.lang.String getEname() {
-        return this.ename;
-    }
+    public java.util.Date getHiredate() { return this.hiredate; }
+    public void setHiredate(java.util.Date hiredate) { this.hiredate = hiredate; }
 
-    public void setEname(java.lang.String ename) {
-        this.ename = ename;
-    }
+    public Float getSal() { return this.sal; }
+    public void setSal(Float sal) { this.sal = sal; }
 
-    public java.lang.String getJob() {
-        return this.job;
-    }
+    public Float getComm() { return this.comm; }
+    public void setComm(Float comm) { this.comm = comm;}
 
-    public void setJob(java.lang.String job) {
-        this.job = job;
-    }
-
-    public Short getMgr() {
-        return this.mgr;
-    }
-
-    public void setMgr(Short mgr) {
-        this.mgr = mgr;
-    }
-
-    public java.util.Date getHiredate() {
-        return this.hiredate;
-    }
-
-    public void setHiredate(java.util.Date hiredate) {
-        this.hiredate = hiredate;
-    }
-
-    public Float getSal() {
-        return this.sal;
-    }
-
-    public void setSal(Float sal) {
-        this.sal = sal;
-    }
-
-    public Float getComm() {
-        return this.comm;
-    }
-
-    public void setComm(Float comm) {
-        this.comm = comm;
-    }
-
-    public short getDeptno() {
-        return this.deptno;
-    }
-
-    public void setDeptno(short deptno) {
-        this.deptno = deptno;
-    }
+    public short getDeptno() { return this.deptno; }
+    public void setDeptno(short deptno) { this.deptno = deptno; }
 
     public boolean equals(Object other) {
         if ( !(other instanceof Employee) ) return false;
@@ -146,9 +457,11 @@ public class Employee implements Serializable {
         return (int) this.getEmpno();
     }
 }</pre>
-<h3>Employee.hbm.xml</h3>
+<h4><a name="Employee_hbm_xml">Employee.hbm.xml</a></h4>
+通常のHibernateのマッピングファイルを作成します。S2Hibernateを意識する必要はありません。
 <pre>&lt;hibernate-mapping&gt;<br />    &lt;class name=&quot;examples.hibernate.entity.Employee&quot; table=&quot;EMP&quot;&gt;<br />        &lt;id name=&quot;empno&quot; column=&quot;EMPNO&quot; type=&quot;long&quot;&gt;<br />            &lt;generator class=&quot;assigned&quot;/&gt;<br />        &lt;/id&gt;<br />        &lt;property name=&quot;ename&quot; column=&quot;ENAME&quot; type=&quot;string&quot; length=&quot;10&quot;/&gt;<br />        &lt;property name=&quot;job&quot; column=&quot;JOB&quot; type=&quot;string&quot; length=&quot;9&quot;/&gt;<br />        &lt;property name=&quot;mgr&quot; column=&quot;MGR&quot; type=&quot;short&quot; length=&quot;4&quot;/&gt;<br />        &lt;property name=&quot;hiredate&quot; column=&quot;HIREDATE&quot; type=&quot;timestamp&quot;/&gt;<br />        &lt;property name=&quot;sal&quot; column=&quot;SAL&quot; type=&quot;float&quot; length=&quot;7&quot;/&gt;<br />        &lt;property name=&quot;comm&quot; column=&quot;COMM&quot; type=&quot;float&quot; length=&quot;7&quot;/&gt;<br />        &lt;property name=&quot;deptno&quot; column=&quot;DEPTNO&quot; type=&quot;short&quot; length=&quot;2&quot;/&gt;<br />    &lt;/class&gt;<br />&lt;/hibernate-mapping&gt;</pre>
-<h3>EmployeeDao.java</h3>
+<h4><a name="EmployeeDao_java">EmployeeDao.java</a></h4>
+Dao用のインターフェースを宣言します。S2Hibernateを意識する必要はありません。
 <pre>package examples.hibernate.dao;
 
 import examples.hibernate.entity.Employee;
@@ -157,16 +470,20 @@ public interface EmployeeDao {
 
     public Employee getEmployee(int empno);
 }</pre>
-<h4>EmployeeDaoImpl.java</h4>
+<h4><a name="EmployeeDaoImpl_java">EmployeeDaoImpl.java</h4>
+<p>Dao用の実装を記述します。<br>
+	<ol>
+	<li>S2SessionFactory型のフィールドを定義</li>
+	<li>コンストラクタで、S2SessionFactoryを取得するように記述</li>
+	<li>各メソッドでS2SessionFactoryからS2Sessionを取得し、処理を記述する</li>
+	</ol>
+
 <pre>
 package examples.hibernate.dao;
 
 import java.util.List;
-
 import net.sf.hibernate.Hibernate;
-
 import org.seasar.hibernate.S2SessionFactory;
-
 import examples.hibernate.entity.Employee;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -188,39 +505,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }
     }
 }</pre>
-<h3>EmployeeService.java</h3>
-<pre>
-package examples.hibernate.service;
 
-import examples.hibernate.entity.Employee;
-
-public interface EmployeeService {
-
-    public Employee getEmployee(int empno);
-}</pre>
-<h3>EmployeeServiceImpl.java</h3>
-<pre>
-package examples.hibernate.service;
-
-import examples.hibernate.dao.EmployeeDao;
-import examples.hibernate.entity.Employee;
-
-public class EmployeeServiceImpl implements EmployeeService {
-
-    private EmployeeDao employeeDao_;
-
-    public EmployeeServiceImpl(EmployeeDao employeeDao) {
-        employeeDao_ = employeeDao;
-    }
-
-    public Employee getEmployee(int empno) {
-        return employeeDao_.getEmployee(empno);
-    }
-}</pre>
-<h3>Employee.dicon</h3>
-<pre>&lt;components&gt;<br />    &lt;include path=&quot;j2ee.dicon&quot;/&gt;<br />    &lt;component class=&quot;org.seasar.hibernate.impl.S2SessionFactoryImpl&quot;/&gt;<br />    &lt;component class=&quot;examples.hibernate.dao.EmployeeDaoImpl&quot;/&gt;<br />    &lt;component class=&quot;examples.hibernate.service.EmployeeServiceImpl&quot;&gt;<br />        &lt;aspect&gt;j2ee.requiredTx&lt;/aspect&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
+<h4><a name="Employee_dicon">Employee.dicon</a></h4>
+<p>作成したDaoクラスとorg.seasar.hibernate.impl.S2SessionFactoryImplを追加します。</p>
+<pre>&lt;components&gt;<br />    &lt;include path=&quot;j2ee.dicon&quot;/&gt;<br />    &lt;component class=&quot;org.seasar.hibernate.impl.S2SessionFactoryImpl&quot;/&gt;<br />    &lt;component class=&quot;examples.hibernate.dao.EmployeeDaoImpl&quot;&gt;<br />        &lt;aspect&gt;j2ee.requiredTx&lt;/aspect&gt;<br />    &lt;/component&gt;<br />&lt;/components&gt;
 </pre>
-<h3>EmployeeClient.java</h3>
+<h4><a name="EmployeeClient_java">EmployeeClient.java</a></h4>
+    <p>Daoを実行する基本的な方法は以下のようになります。</p>
+	<ol>
+	<li>作成したdiconファイルのパスを引数にS2Containerを生成</li>
+	<li>生成したS2ContainerからgetComponentを呼び出し、登録したDaoを取得する	</li>
+	<li>取得したDaoのメソッドを実行する</li>
+	</ol>
+	<p>S2Hibernateではトランザクション制御は行なっていません、トランザクションについては<a href="tx.html">トランザクションの自動制御</a>を参照して下さい。</p>
+    実行クラスサンプル
 <pre>
 package examples.hibernate.client;
 
@@ -235,24 +533,179 @@ public class EmployeeClient {
         "examples/hibernate/client/Employee.dicon";
 
     public static void main(String[] args) {
-        S2Container container = S2ContainerFactory.create(PATH);
+        S2Container container = S2ContainerFactory.create(PATH);/* 手順1 */
         container.init();
         try {
             EmployeeService service =
-                (EmployeeService) container.getComponent(EmployeeService.class);
-            System.out.println(service.getEmployee(7788).getEname());
+                (EmployeeService) container.getComponent(EmployeeService.class);/* 手順2 */
+            System.out.println(service.getEmployee(7788).getEname());/* 手順3 */
         } finally {
             container.destroy();
         }
 
     }
 }</pre>
-<h3>実行結果</h3>
+<h4><a name="result">実行結果</a></h4>
 <pre>DEBUG 2004-04-07 18:53:52,511 [main] トランザクションを開始しました<br />2004/04/07 18:53:52 net.sf.hibernate.cfg.Environment &lt;clinit&gt;<br />情報: Hibernate 2.1.2<br />省略
 DEBUG 2004-04-07 18:53:54,654 [main] 物理的なコネクションを取得しました<br />DEBUG 2004-04-07 18:53:54,744 [main] 論理的なコネクションを取得しました<br />Hibernate: select employee0_.EMPNO as EMPNO, employee0_.ENAME as ENAME, employee0_.JOB as JOB,
   employee0_.MGR as MGR, employee0_.HIREDATE as HIREDATE, employee0_.SAL as SAL,
-  employee0_.COMM as COMM, employee0_.DEPTNO as DEPTNO from EMP employee0_ where (empno=? )<br />DEBUG 2004-04-07 18:53:55,605 [main] 論理的なコネクションを閉じました<br />DEBUG 2004-04-07 18:53:55,625 [main] トランザクションをコミットしました<br />SCOTT<br />DEBUG 2004-04-07 18:53:55,625 [main] 物理的なコネクションを閉じました</pre>
-S2Hibernateを使えば、Hibernateのおいしいところだけを簡単に利用できるということが分かっていただけたと思います。
+  employee0_.COMM as COMM, employee0_.DEPTNO as DEPTNO from EMP employee0_ where (empno=? )<br />DEBUG 2004-04-07 18:53:55,605 [main] 論理的なコネクションを閉じました<br />DEBUG 2004-04-07 18:53:55,625 [main] トランザクションをコミットしました<br />SCOTT<br />DEBUG 2004-04-07 18:53:55,625 [main] 物理的なコネクションを閉じました</pre> 
+
+
+<h3><a name="DaoExample">S2hibernate.daoの使い方の例</a></h3>
+<p>
+			<ul>
+			<li><a href="#EmployeeAutoDao_java">EmployeeAutoDao</a></li>
+			<li><a href="#EmployeeAutoDaoClient_java">EmployeeAutoClient.java</a></li>
+			<li><a href="#EmployeeDao_dicon">dao.dicon</a></li>
+			<li><a href="#result_dao">実行結果</a></li>
+			</ul>
+</p>
+
+<h4><a name="EmployeeAutoDao_java">EmployeeAutoDao</a></h4>
+<pre>
+package examples.hibernate.dao;
+
+import java.util.List;
+import examples.hibernate.entity.Employee;
+
+public interface EmployeeAutoDao {
+
+	public Class BEAN = Employee.class;
+
+	//追加、削除、更新、保存or更新をする場合
+	public void save(Employee employee);
+	public void delete(Employee employee);
+	public void update(Employee employee);
+	public void saveOrUpdate(Employee employee);
+	
+	//HQLを指定しないで実行する場合
+	public String getEmployeeByEmpNo_ARGS = "empno";
+	public Employee getEmployeeByEmpNo(long empNo);
+
+	public String getEmployeeByJobDeptno_ARGS = "job, deptno";
+	public List getEmployeeByJobDeptno(String job, short deptno);
+	
+	//HQLを指定して実行する場合
+	public String getHQLAllEmployee_HQL = "from Employee emp order by emp.empno";
+	public List getHQLAllEmployee();
+
+	//何も指定していない場合
+	public List getAllEmployee();
+
+	//firstResult,maxResultsを指定する場合
+	public String getEmployeeList_ARGS = "firstResult,maxResults";
+	public String getEmployeeList_HQL = "from Employee emp order by emp.empno";
+	public List getEmployeeList(int firstResult ,int MaxResults );
+
+	//戻り値がintの場合
+	public String getEmployeeCount_HQL = "select count(emp) from Employee emp";
+	public int getEmployeeCount();
+
+	//戻り値がStringの場合
+	public String getEmployeeNameById_HQL 
+				= "select emp.ename from Employee emp where empno = :employeeId ";
+	public String getEmployeeNameById_ARGS = "employeeId";
+	public String getEmployeeNameById(Long employeeId);
+
+	//NamedQuery呼び出しを使う場合
+	//(Employee.hbm.xmlの"examples.hibernate.dao.EmployeeAutoDao_getEmployeeByJob"に対応)
+	public String getEmployeeByJob_ARGS = "job";
+	public List getEmployeeByJob(String job);
+
+	//NamedQueryで戻り値がStringになるようなSQL文を使う場合
+	//(Employee.hbm.xmlの"examples.hibernate.dao.EmployeeAutoDao_getSQLEmployeeNameById"に対応)
+	public String getSQLEmployeeNameById_ARGS = "employeeId";
+	public String getSQLEmployeeNameById(Long employeeId);	
+	
+	//NamedQueryで戻り値がLongになるようなSQL文を使う場合
+	//(Employee.hbm.xmlの"getSQLEmployeeIdByName"NamedQueryを実行)
+	public String getSQLEmployeeIdByName_ARGS = "employeeName";
+	public Long getSQLEmployeeIdByName(String employeeName);
+}
+
+
+</pre>
+
+<h4><a name="EmployeeAutoDao_Dicon">EmployeeAutoDao.dicon</a></h4>
+S2Hibernate.daoを使うのに必要な設定をまとめた"s2hibernate.dicon"をインクルードします。
+<pre>
+&lt;components&gt;
+    &lt;include path="s2hibernate.dicon"/&gt;
+    &lt;component class=&quot;examples.hibernate.dao.EmployeeAutoDao&quot;&gt;
+        &lt;aspect&gt;j2ee.requiredTx&lt;/aspect&gt;
+        &lt;aspect&gt;s2hibernate.interceptor&lt;/aspect&gt;
+    &lt;/component&gt;
+&lt;/components&gt;
+</pre>
+<h4><a name="s2hibernate_Dicon">s2hibernate.dicon</a></h4>
+S2Hibernate.daoを使うのに必要な設定をまとめたdiconファイル
+<pre>
+&lt;components namespace="s2hibernate"&gt;
+    &lt;include path="j2ee.dicon"/&gt;
+    &lt;component class=&quot;org.seasar.hibernate.impl.S2SessionFactoryImpl&quot;/&gt;
+    &lt;component name="interceptor" 
+		class="org.seasar.hibernate.dao.interceptors.S2HibernateDaoInterceptor"/&gt;
+&lt;/components&gt;
+</pre>
+
+<h4><a name="EmployeeAutoDaoClient_java">EmployeeAutoDaoClient.java</a></h4>
+<p>diconファイル名以外は、S2Hibernateの基本的な使い方と同じ流れになります。</p>
+	<ol>
+	<li>作成したdiconファイルのパスを引数にS2Containerを生成</li>
+	<li>生成したS2ContainerからgetComponentを呼び出し、登録したDaoを取得する	</li>
+	<li>取得したDaoのメソッドを実行する</li>
+	</ol>
+<pre>
+package examples.hibernate.client;
+
+import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+
+import examples.hibernate.dao.EmployeeAutoDao;
+import examples.hibernate.entity.Employee;
+
+public class EmployeeAutoDaoClient {
+
+	private static final String PATH = 
+				"examples/hibernate/client/EmployeeAutoDao.dicon";
+
+	public static void main(String[] args) {
+		S2Container container = S2ContainerFactory.create(PATH);/* 手順1 */
+		container.init();
+		try {
+			EmployeeAutoDao dao = (EmployeeAutoDao) container
+					.getComponent(EmployeeAutoDao.class);/* 手順2 */
+			Employee emp = new Employee();
+			emp.setEmpno( 7788);
+			emp.setEname("SCOTT");
+			emp.setDeptno((short)10);
+
+			dao.save( emp );	/* 手順3 */
+
+		} finally {
+			container.destroy();
+		}
+
+	}
+}
+</pre>
+<h4>実行結果</h4>
+<pre>
+DEBUG 2004-11-11 19:01:50,163 [main] トランザクションを開始しました
+INFO  2004-11-11 19:01:50,323 [main] Hibernate 2.1.6
+省略
+DEBUG 2004-11-11 19:01:51,545 [main] 物理的なコネクションを取得しました
+DEBUG 2004-11-11 19:01:51,645 [main] 論理的なコネクションを取得しました
+省略
+Hibernate: insert into EMP (ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO, EMPNO)
+		values (?, ?, ?, ?, ?, ?, ?, ?)
+省略
+DEBUG 2004-11-11 19:01:52,025 [main] 論理的なコネクションを閉じました
+DEBUG 2004-11-11 19:01:52,025 [main] トランザクションをコミットしました
+DEBUG 2004-11-11 19:01:52,045 [main] 物理的なコネクションを閉じました
+</pre>
+
 <!-- document end -->
 <!-- don't edit start -->
 </td>
@@ -262,7 +715,7 @@ S2Hibernateを使えば、Hibernateのおいしいところだけを簡単に利用できるということが
 <td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
 </tr><tr>
 <td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
-<td width="766" class="copyright">&copy; Copyright The Seasar Foundation and the others 2004-2005, all rights reserved.</td>
+<td width="766" class="copyright">&copy; Copyright The Seasar Project and the others 2004-2005, all rights reserved.</td>
 </tr></table>
 <td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
 <td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
