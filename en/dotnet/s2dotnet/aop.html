@@ -87,10 +87,7 @@
               <LI>プログラマが、処理を追加するべき場所に追加し忘れる可能性があります。 
               <LI>プログラマが、処理として誤ったコードを追加してしまう可能性があります。 
               <LI>プログラマが、作業中に誤って本来のプログラムを壊してしまう可能性があります。 </LI></UL>
-            <P>このロギングの例のように、複数のクラスにまたがった非機能要求の処理を「Crosscutting 
-            Concern」と呼びます。「Crosscuting 
-            Concern」を分散させないために、モジュール化して取り除き、実行時またはコンパイル時にバイトコードで組み込む仕組みが必要になります。先程のロギングの例をS2AOP.NETを使うと以下のようにXMLの設定をするだけです。ロギングを行う処理をプログラムの複数箇所に追加する必要がなくなります。 
-            </P><PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+            <P>このロギングの例のように、複数のクラスにまたがった非機能要求の処理を「Crosscutting Concern」と呼びます。「Crosscuting Concern」を分散させないために、モジュール化して取り除き、実行時またはコンパイル時にバイトコードで組み込む仕組みが必要になります。先程のロギングの例をS2AOP.NETを使うと以下のようにXMLの設定をするだけです。ロギングを行う処理をプログラムの複数箇所に追加する必要がなくなります。</P><PRE>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components.dtd"&gt;
 &lt;components&gt;
@@ -123,20 +120,18 @@
 </PRE>
             <H3><A name=AOPKey>Main Idea Behind AOP</A></H3><BR>
             <H4>Advice(MethodInterceptor)</H4>
-            <P>プログラム中に挿入されるコードを表します。Interceptorと呼ばれることもあります。</P>
+            <P>Represents source code inserted into a program. Usually called "Interceptor".</P>
             <H4>Joinpoint(MethodInvocation)</H4>
-            <P>対象となるクラスとAdviceを結合するポイントを表します。AdviceはJoinpointから引数やメソッドの情報を取得することができます。</P>
+            <P>Represents joint point between a class and an advice. Advice get arguments and method information from a Joinpoint.</P>
             <H4>Pointcut</H4>
-            <P>どこにJoinpointを設定するのかを定義します。</P>
+            <P>Define where to set a Joinpoint.</P>
             <H4>Aspect</H4>
-            <P>AdviceとPointcutを関連付けます。</P>
+            <P>Associate Advice to a Pointcut.</P>
             <H3><A name=AOPMerit>Merits of AOP</A></H3>
             <UL>
               <LI>「Core Concern」と「Crosscutting Concern」を分離することでメンテナンス性が向上します。 
-              <LI>業務ロジックからシステム的機能を「Crosscutting Concern」に排出した「Core 
-              Concern」は、シンプルなソースになります。本来のやりたかったことだけが記述されます。 
-              <LI>トランザクションの自動化など、従来エンタープライズアプリケーションの知識が必要であった処理が、 
-              普通の.NETのオブジェクトで可能になります。 </LI></UL>
+              <LI>業務ロジックからシステム的機能を「Crosscutting Concern」に排出した「Core Concern」は、シンプルなソースになります。本来のやりたかったことだけが記述されます。 
+              <LI>トランザクションの自動化など、従来エンタープライズアプリケーションの知識が必要であった処理が、普通の.NETのオブジェクトで可能になります。 </LI></UL>
             <H3><A name=S2AOPMerit>Merits of S2AOP.NET</A></H3>
             <UL>
               <LI>Configuration is simple
@@ -146,26 +141,20 @@
               </LI></UL>
             <H3><A name=Warning>Warnings</A></H3>
             <UL>
-              <LI>アスペクトを適用するためにはコンポーネントをインターフェース型で受け取ります。 
-              <LI>S2Containerから直接受け取るコンポーネントにアスペクトを適用するには、 
-              コンポーネントがSystem.MarshalByRefObjectの派生クラスである必要があります。 
+              <LI>To use an aspect, component is received as an interface.
+              <LI>S2Containerから直接受け取るコンポーネントにアスペクトを適用するには、コンポーネントがSystem.MarshalByRefObjectの派生クラスである必要があります。 
               <LI>pointcut属性を指定しない場合、pointcut属性に".*"と指定した場合は、 実装しているインターフェースのすべてのメソッドが対象になります。 
               <LI>thisポインタ経由の場合（インターフェース経由で呼ばれない場合）はアスペクトは適用されません。 </LI></UL>
             <H2><A name=S2AOPReference>S2AOP.NET Reference</A></H2>
             <H3><A name=AOPMakeFile>Files Required to be Created</A></H3>
-            <P>S2AOP.NET を使用するにはS2Container 
-            の設定ファイル(diconファイル)で行います。設定ファイルの配置場所は、とくに指定がありませんが、通常「Crosscutting 
-            Concern」と同じ場所に配置するか、設定を行うコンポーネントと同じ場所に配置します。</P>
+            <P>S2AOP.NET を使用するにはS2Container の設定ファイル(diconファイル)で行います。設定ファイルの配置場所は、とくに指定がありませんが、通常「Crosscutting Concern」と同じ場所に配置するか、設定を行うコンポーネントと同じ場所に配置します。</P>
             <H3><A name=AOPExplanationFile>Configuration Files</A></H3>
             <H4><A name=aspecTtag>aspect tag (AOPを使用する場合は必須）</A></H4>
             <P>アスペクトをコンポーネントに組み込みます。Interceptorの指定は、ボディでJScript.NET式を使うか、子タグでcomponentタグを使います。<BR>
-            <H5>注意点</H5>
-            <P>aspectタグで指定されたコンポーネントは、コンテナの初期化時にコンテナから取得されます。そのため、aspectタグで指定されたコンポーネントのinstance属性がprototypeだったとしても、Interceptor 
-            のメソッドが呼び出される度に新しいインスタンスが作成されるわけではありません。</P>
+            <H5>Warnings:</H5>
+            <P>aspectタグで指定されたコンポーネントは、コンテナの初期化時にコンテナから取得されます。そのため、aspectタグで指定されたコンポーネントのinstance属性がprototypeだったとしても、Interceptorのメソッドが呼び出される度に新しいインスタンスが作成されるわけではありません。</P>
             <H5>pointcut attribute (optional)</H5>
-            <P>カンマ区切りで対象となるメソッド名を指定することができます。pointcutを指定しない場合は、 
-            コンポーネントが実装しているインターフェースのすべてのメソッドが対象になります。 
-            メソッド名には正規表現(System.Text.RegularExpressions.Regex)も使えます。</P>
+            <P>カンマ区切りで対象となるメソッド名を指定することができます。pointcutを指定しない場合は、コンポーネントが実装しているインターフェースのすべてのメソッドが対象になります。メソッド名には正規表現(System.Text.RegularExpressions.Regex)も使えます。</P>
             <H5>Example</H5>
             <P>pointcut属性を指定してSystem.Collections.HashtableのAddメソッドとClearメソッドを対象とする場合以下のようになります。pointcut属性を指定しない場合はSystem.Collections.Hashtableが実装しているインターフェース 
             (ここではSystem.Collections.IDictionary)のメソッドが対象になります。</P><PRE>&lt;component class="System.Collections.Hashtable"&gt;
@@ -180,7 +169,7 @@
 &lt;/component&gt;
 </PRE>
             <H3><A name=AOPInterceptor>Interceptor Made Available by S2AOP.NET</A></H3>
-            <P>S2AOP.NETでは、以下のInterceptorを用意しています。また独自のInterceptorを簡単に作成できるようになっています。</P>
+            <P>S2AOP.NET has the following Interceptors. Custom Interceptors may also be created easily.</P>
             <H4><A name=TraceInterceptor>(1) TraceInterceptor</A></H4>
             <H5>Class name</H5>
             <P>S2.NET.Framework.Aop.Interceptors.TraceInterceptor</P>
@@ -196,33 +185,29 @@
             <H5>Class name</H5>
             <P>S2.NET.Framework.Aop.Interceptors.MockInterceptor</P>
             <H5>Description</H5>
-            <P>Mockを使ったテストを簡単に行うためのInterceptorです。 <!--詳しい説明はテスト技法の<a href="http://homepage3.nifty.com/seasar/testtech.html#MockMake">モックを作成するための設定</a>を参照してください。</p>-->
-            <H4><A name=OriginalInterceptor>(3) 独自実装によるInterceptor</A></H4>
+            <P>Interceptor to allow test using Mock. <!--詳しい説明はテスト技法の<a href="http://homepage3.nifty.com/seasar/testtech.html#MockMake">モックを作成するための設定</a>を参照してください。</p>-->
+            <H4><A name=OriginalInterceptor>(3) Custom implemented Interceptor</A></H4>
             <H5>Description</H5>
-            <P>独自にInterceptorを作成する場合は、次のインターフェースまたは、抽象クラスを実装します。</P>
+            <P>To create a custom Interceptor, following interface or abstract class must be implemented.</P>
             <DL>
               <DT 
               style="TEXT-INDENT: 1em">S2.NET.Framework.Aop.IMethodInterceptor 
               <DT 
               style="TEXT-INDENT: 1em">S2.NET.Framework.Aop.Interceptors.AbstractInterceptor 
               </DT></DL>
-            <P>インターフェースを実装する場合は、以下のInvokeメソッドを実装します。</P>
+            <P>To implement an interface, following Invoke method is implemented.</P>
             <DL>
               <DT style="TEXT-INDENT: 1em">public object Invoke(IMethodInvocation invocation) </DT></DL>
-            <P>抽象クラスを継承する場合は、以下のInvokeメソッドをオーバーライドします。</P>
+            <P>To extend an abstract class, over the following Invoke method.</P>
             <DL>
               <DT style="TEXT-INDENT: 1em">public override object 
               Invoke(IMethodInvocation invocation) </DT></DL>
-            <P>AbstractInterceptor 
-            は、IMethodInterceptorを実装した抽象クラスです。AbstractInterceptorには、 
-            Proxyオブジェクトを取得するCreateProxyメソッドとアスペクトを適用するコンポーネント定義を取得するGetComponentDefメソッドがあります。アスペクトを適用したクラス名を必要とするInterceptor(例えば、ログ出力を行うInterceptor)を作成する場合は、 
-            AbstractInterceptorを使用することで簡単にクラス名を取得することができます。</P>
+            <P>AbstractInterceptorは、IMethodInterceptorを実装した抽象クラスです。AbstractInterceptorには、Proxyオブジェクトを取得するCreateProxyメソッドとアスペクトを適用するコンポーネント定義を取得するGetComponentDefメソッドがあります。アスペクトを適用したクラス名を必要とするInterceptor(例えば、ログ出力を行うInterceptor)を作成する場合は、AbstractInterceptorを使用することで簡単にクラス名を取得することができます。</P>
             <DL>
               <DT style="TEXT-INDENT: 1em">public object CreateProxy(Type proxyType)
               <DT style="TEXT-INDENT: 1em">protected IComponentDef GetComponentDef(IMethodInvocation invocation) </DT></DL>
-            <P>IMethodInvocationのプロパティTarget、Method、Argumentsで対象となるオブジェクト、メソッド、引数を取得できます。 
-            proceed()を呼び出すと実際のメソッドが呼び出され実行結果を取得することができます。以下のような独自のInterceptorを作成したとします。</P>
-            <H5>作成例</H5><PRE>public class TestInterceptor : IMethodInterceptor
+            <P>IMethodInvocationのプロパティTarget、Method、Argumentsで対象となるオブジェクト、メソッド、引数を取得できます。proceed()を呼び出すと実際のメソッドが呼び出され実行結果を取得することができます。以下のような独自のInterceptorを作成したとします。</P>
+            <H5>Example:</H5><PRE>public class TestInterceptor : IMethodInterceptor
 {
     public object Invoke(IMethodInvocation invocation)
     {
@@ -236,15 +221,13 @@
     }
 }
 </PRE>
-            <P>IMethodInvocation#Proceed()を呼ぶ前と後で2分され、呼ぶ前は 
-            Beforeの個所を実行し、呼んだ後はAfterの個所を実行します。 
-            1つのコンポーネントに複数のアスペクトが定義されている場合は、以下のよう実行されます。</P>
+            <P>IMethodInvocation#Proceed()を呼ぶ前と後で2分され、呼ぶ前は Beforeの個所を実行し、呼んだ後はAfterの個所を実行します。1つのコンポーネントに複数のアスペクトが定義されている場合は、以下のよう実行されます。</P>
             <OL>
               <LI>Aspectの登録順にIMethodInterceptorのBefore部分が実行されます。 
               <LI>最後のIMethodInterceptorのBefore部分を実行した後にコンポーネント自身のメソッドが呼び出されます。 
               <LI>Aspectの登録の逆順にIMethodInterceptorのAfter部分が実行されます。 </LI></OL>
             <P>詳しい使用方法は<A  href="#OriginalInterceptorSample">独自実装によるInterceptor</A>を参照してください。</P>
-            <H3><A name=nodicon>diconファイルを使用しないでアスペクトを組み込む方法</A></H3>
+            <H3><A name=nodicon>Way to weave an aspect without using a dicon file</A></H3>
             <P>diconファイルの設定を行わずプログラム上でアスペクトを組み込むこともできます。作成方法は次のようになります。</P>
             <UL>
               <LI>S2.NET.Framework.Aop.Impl.PointcutImplのコンストラクタの引数で対象となるメソッド名を指定(複数可)します。System.Collections.Hashtableのようにインターフェースを実装しているなら、new PointcutImpl(typeof(Hashtable))のようにTypeクラスを指定することで、そのクラスが実装しているインターフェースのメソッドをすべて自動的に適用させることもできます。 
@@ -262,14 +245,12 @@ IDictionary proxy = (IDictionary) aopProxy.Create();
 proxy.Add("aaa", "bbb");
 </PRE>
             <H2><A name=Example>Example</A></H2>
-            <P>以下のサンプルを実行する場合は、<A 
-            href="http://s2dotnet.oscj.net/nonav/source/browse/*checkout*/s2dotnet/www/setup.html">セットアップ</A>を行う必要があります。</P>
+            <P><A href="setup.html">Setup</A> is necessary before executing the following example.</P>
             <H3><A name=TraceInterceptorSample>TraceInterceptor</A></H3>
-            <P>TraceInterceptor を使用してSystem.Collections.ArrayListクラスと 
-            System.Collections.HashtableクラスのAddメソッドとClearメソッドが呼ばれた場合にトレースを出力させましょう。作成するファイルは以下のとおりです。</P>
+            <P>TraceInterceptor を使用してSystem.Collections.ArrayListクラスとSystem.Collections.HashtableクラスのAddメソッドとClearメソッドが呼ばれた場合にトレースを出力させましょう。作成するファイルは以下のとおりです。</P>
             <UL>
               <LI type=circle>dicon file defining components (Trace.dicon)
-              <LI type=circle>設定が正しく行われているか確認する実行ファイル(AopTraceClient.cs) 
+              <LI type=circle>dicon file to verify is the settings are correct (AopTraceClient.cs)
 </LI></UL>
             <P><B>Create dicon file</B></P>
             <UL>
@@ -489,7 +470,7 @@ namespace S2.NET.Examples.Reference.Aop
             <P><B>Execution Result</B></P>
             <P>クラス名、メソッド名、引数とメソッドの処理時間がトレースされているのが確認できます。</P><PRE>S2.NET.Examples.Reference.Aop.HeavyProcess#Heavy() : 5007
 </PRE>
-            <P>このサンプルは、S2.NET.ExamplesプロジェクトのS2/NET/Examples/Reference/Aop以下に用意されています。</P><!-- document end --><!-- don't edit start --></TD>
+            <P>Files in this example are available in S2/NET/Examples/Reference/Aop folder in S2.NET.Examples project.</P><!-- document end --><!-- don't edit start --></TD>
           <TD width=14><IMG height=14 alt="" src="images/spacer.gif" 
             width=14></TD></TR>
         <TR>

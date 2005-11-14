@@ -199,7 +199,7 @@ When there is no argument, name attribute may be omitted and the name of the met
 </PRE>
 Refer to <A href="#MethodInjectionEx">Method Injection</A> example for an example.<BR><A name=Include>
             <H3>Dividing and Including S2Container Definition</H3></A>
-            <P>If all configuration are written in a single file, the file soon becomes very large. S2Container allows developers to divide the configuration file into several files and supports include clause to logically construct one configuration file from these files. Following is an example of including content of bar.dicon file.</P><PRE>&lt;components&gt;
+            <P>If all configuration are written in a single file, the file soon becomes very large. S2Container allows developers to divide the configuration file into several files and supports include clause to logically construct one configuration file from these files. Following is an example of including content of bar.dicon file:</P><PRE>&lt;components&gt;
     &lt;include path="bar.dicon"/&gt;
 &lt;/components&gt;
 </PRE>
@@ -287,7 +287,7 @@ class HelloImpl implements Hello {
             <H5>Result of BbbHelloClient</H5><PRE>Hello Bbb!
 </PRE>
             <P>Similar to the case with AaaHelloClient, BbbHelloClient uses HelloImpl component defined in bbb.dicon.<BR />
-Files is this example are contained in the s2container.php5/src/examples/dicon/include folder.</P><A name=Namespace>
+Files is this example are available in the s2container.php5/src/examples/dicon/include folder.</P><A name=Namespace>
             <H3>Namespace</H3></A>
             <P>Namespace is used to distinguish component definitions from several configuration file. Namespace is specified by namespace attribute of a <A href="#componentsTag">components tag</A>.</P>
             <H5>foo.dicon</H5><PRE>&lt;components namespace="foo"&gt;
@@ -366,7 +366,7 @@ It is a convention to name the configuration file <SPAN class="enter">namespace<
                 <TD>If an argument to a constructor is explicitly specified, that argument is used.<BR>Is an argument is not specified and type is an interface,it is automatically bound.<BR>Default values are set to arguments whose type is not an interface. If default value is not available, an argument is set to null.<BR>If a property is explicitly specified, it is used.</TD></TR>
               <TR>
                 <TD>property</TD>
-                <TD>If an argument to a constructor is explicitly specified, that argument is used.<BR>Type interface property is automatically bound</TD></TR>
+                <TD>If an argument to a constructor is explicitly specified, that argument is used.<BR>Type interface property is automatically bound.</TD></TR>
               <TR>
                 <TD>none</TD>
                 <TD>If an argument to a constructor is explicitly specified, that argument is used.<BR>If a property is explicitly specified, it is used.</TD></TR></TBODY></TABLE><BR>
