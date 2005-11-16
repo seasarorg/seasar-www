@@ -154,13 +154,12 @@ Following is an example of logging using S2AOP.NET. Logging is specified in XML 
             <H5>pointcut attribute (optional)</H5>
             <P>Method names may be specified delimited by a comma. If pointcut is not specified, all methods in an interface implemented by a component is assumed. Method name may be specified by a regular expression (System.Text.RegularExpressions.Regex).</P>
             <H5>Example</H5>
-            <P>pointcut属性を指定してSystem.Collections.HashtableのAddメソッドとClearメソッドを対象とする場合以下のようになります。pointcut属性を指定しない場合はSystem.Collections.Hashtableが実装しているインターフェース 
-            (ここではSystem.Collections.IDictionary)のメソッドが対象になります。</P><PRE>&lt;component class="System.Collections.Hashtable"&gt;
+            <P>Following is an example to apply an aspect specified in a pointcut attribute to Add method and Clear method in System.Collections.Hashtable. If pointcut attribute is not specified, an aspect will be applied to method in an interface implemented by System.Collections.Hashtable (System.Collections.IDictionary in this example).</P><PRE>&lt;component class="System.Collections.Hashtable"&gt;
     &lt;aspect pointcut="Add,Clear"&gt;
         &lt;component class="S2.NET.Framework.Aop.Interceptors.TraceInterceptor"/&gt;
     &lt;/aspect&gt;
 &lt;/component&gt;
-</PRE>正規表現を使ってSystem.Collections.Hashtableが実装しているインターフェース（ここではSystem.Collections.IDictionary）のメソッドすべてを対象としたい場合は、以下のように設定します。 <PRE>&lt;component class="System.Collections.Hashtable"&gt;
+</PRE>Following is an example of using regular expression to specify all methods in interfaces implemented by System.Collections.Hashtable (System.Collections.IDictionary in this example).<PRE>&lt;component class="System.Collections.Hashtable"&gt;
     &lt;aspect pointcut=".*"&gt;
         &lt;component class="S2.NET.Framework.Aop.Interceptors.TraceInterceptor"/&gt;
     &lt;/aspect&gt;
@@ -218,22 +217,21 @@ Following is an example of logging using S2AOP.NET. Logging is specified in XML 
     }
 }
 </PRE>
-            <P>IMethodInvocation#Proceed()を呼ぶ前と後で2分され、呼ぶ前は Beforeの個所を実行し、呼んだ後はAfterの個所を実行します。1つのコンポーネントに複数のアスペクトが定義されている場合は、以下のよう実行されます。</P>
+            <P>TraceInterceptor is invoked before and after IMethodInvocation#Proceed() is invoked. If several aspectes are defined in a component, they are applied as follows:</P>
             <OL>
-              <LI>Aspectの登録順にIMethodInterceptorのBefore部分が実行されます。 
-              <LI>最後のIMethodInterceptorのBefore部分を実行した後にコンポーネント自身のメソッドが呼び出されます。 
-              <LI>Aspectの登録の逆順にIMethodInterceptorのAfter部分が実行されます。 </LI></OL>
+              <LI>Aspect before IMethodInterceptor is invoked are called in order Aspect are defined
+              <LI>After the last aspect before IMethodInterceptor is called, method in the IMethodInterceptor itself is invoked.
+              <LI>After the method in the component is called, aspects are called in the reverse order they are defined</LI></OL>
             <P>Refer to <A  href="#OriginalInterceptorSample">Custom implementatin of an Interceptor</A> for further information.</P>
             <H3><A name=nodicon>Way to weave an aspect without using a dicon file</A></H3>
             <P>An aspect may be weaved into a program without configuring a dicon file as follows:</P>
             <UL>
-              <LI>S2.NET.Framework.Aop.Impl.PointcutImplのコンストラクタの引数で対象となるメソッド名を指定(複数可)します。System.Collections.Hashtableのようにインターフェースを実装しているなら、new PointcutImpl(typeof(Hashtable))のようにTypeクラスを指定することで、そのクラスが実装しているインターフェースのメソッドをすべて自動的に適用させることもできます。 
-              <LI>S2.NET.Framework.Aop.Impl.AspectImplのコンストラクタの第1引数にInterceptorを指定して、第2引数にPointcutImplで作成したPointcutを指定します。 
-              <LI>S2.NET.Framework.Aop.Proxy.AopProxyのコンストラクタで、 
-              対象となるクラス（この場合はSystem.MarshalByRefObjectの派生クラスである必要があります）、もしくは対象となるクラスが実装しているインターフェースとAspectImplで作成したAspectの配列を指定します。 
-              <LI>S2.NET.Framework.Aop.Proxy.AopProxy#Create()でAspectが適用されたオブジェクトを取得できます。 
+              <LI>Method names are specified in arguments of constructor to S2.NET.Framework.Aop.Impl.PointcutImpl. If interface is implemented as in System.Collections.Hashtable, specify Type class as in new PointcutImpl(typeof(Hashtable)) to automatically apply to all methods in an implemented interface of that class.
+              <LI>Specify an Interceptor in the the first argument of a constructor for S2.NET.Framework.Aop.Impl.AspectImpl, and specify pointcut created by PointcutImpl in the second argument
+              <LI>As the arguments to the constructor of S2.NET.Framework.Aop.Proxy.AopProxy, specify target class (classes extending System.MarshalByRefObject in this example) or interfaces implemented by the target class and array of aspect created from AspectImpl.
+              <LI>Get object that has an aspect applied by invoking S2.NET.Framework.Aop.Proxy.AopProxy#Create()
               </LI></UL>
-            <P>System.Collections.HashtableクラスにTraceInterceptorをプログラム上で適用する場合は、次のようになります。対象となるメソッドはgetTime()とします。</P><PRE>IPointcut pointcut = new PointcutImpl(new string[]{"Add"});
+            <P>Following is an example to applying TraceInterceptor to the System.Collections.Hashtable class.</P><PRE>IPointcut pointcut = new PointcutImpl(new string[]{"Add"});
 IAspect aspect = new AspectImpl(new TraceInterceptor(), pointcut);
 AopProxy aopProxy = new AopProxy(typeof(IDictionary),
      new IAspect[]{aspect}, null, new Hashtable());
