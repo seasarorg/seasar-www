@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3" align="right"></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<font size=6><b>Why Use Interfaces?</b></font> <font size=3>by H.Ozawa</font><br />
+<hr /><br />
+Let's start with a simple "HelloWorld!" program and see how using interfaces can make the program more flexible.<br/>
+<ol>
+	<li>A simple program most programmers have seen. It just prints "HelloWorld!" to a console.<br />
+
+		<ul>
+			<li><span class="normal">
+				<pre>
+public class HelloWorld0 {
+  public static void main(String[] args) {
+    System.out.println("0 Hello World!");  // output message
+  }
+}</pre>
+			</li>
+			<li><a href="src/example0.zip">Source code (example0.zip)</a></li>
+			<li>Execution result:<br />
+To run the example, execute the "examples0.bat" file that is included with the source code.
+				<img src="img/examples0.jpg">
+			</span>
+			</li>
+		</ul>
+	</li>
+	<li>For a simple program, the above program may be OK but as the application becomes more complex, it may be necessary to change the message.<br />
+If the message changes often, it may become benefitial to create an interface and have the client program choose which implementation of the interface to use. That is, which message to output.<br />
+		<ul>
+			<li><span class="normal"><br />
+Greeting interface just contains a greet() method which will be invoked from the application.<br />
+(Greeting.java)
+<pre>public interface Greeting {
+	public void greet();                    // method to output message
+}</pre>
+GreetingImpl is one implementation of Greeting. To differentiate it from other implementation of Greeting, we'll output "1 Hello World!".<br />
+(GreetingImpl.java)
+<pre>public class GreetingImpl implements Greeting {
+  public String greet() {
+    return "2 Hello World!";
+  }
+}}</pre>
+Greeting2Impl is other implementation of Greeting. In this implementation, we'll output "1b Hello World!" to distinguish it.<br />
+(Greeting2Impl.java)
+<pre>public class Greeting2Impl implements Greeting {
+	public void greet() {
+		System.out.println("1b Hello World!");  // output message
+	}
+}</pre>
+Finally, an application to call the implementations. We'll create both implementation. Note that both greeting and greeting2 are of type Greeting even though their implementation differ. Using the Greeting interface allows us to use variable "greeting" for both GreetingImpl and Greeting2Impl.<br />
+(HelloWorld1.java)
+<pre>public class HelloWorld1 {
+  public static void main(String[] args) {
+    Greeting greeting = new GreetingImpl();  // use GreetingImpl
+    greeting.greet();                        // output message
+
+    greeting = new Greeting2Impl();          // use Greeting2Impl
+    greeting.greet();                        // output message
+  }
+}</pre>
+			</span>
+			</li>
+			<li><a href="src/example1.zip">Source code (example1.zip)</a></li>
+			<li><span class="normal">Execution result:<br />
+To run the example, execute the "examples1.bat" file that is included with the source code. Note that "greeting" was first set to "GreetingImpl" to output "1 Hello World!" and then changed to "Greeting2Impl" to output "1b Hello World!".
+				<img src="img/examples1.jpg">
+			</span>
+			</li>
+		</ul>
+	</li>
+	<li>We were able to change the message but what if we also want to change where the message is outputted? Let's try to change the above example so we'll also be able to change the output to System.err as well as System.out.<br />
+
+		<ul>
+			<li><span class="normal">
+We'll make the output routine into an interface - GreetingClient.<br />
+(GreetingClient.java)
+				<pre>public interface GreetingClient {
+  void setGreeting(Greeting greeting);  // set message to output
+  void execute();                       // output message
+}</pre>
+First, an implementation to output to System.out:<br />
+(GreetingClientImpl.java)
+<pre>public class GreetingClientImpl implements GreetingClient {
+    private Greeting greeting;
+
+    public void setGreeting(Greeting greeting) {  // set message to output
+        this.greeting = greeting;
+    }
+    
+    public void execute() {                   // output message to System.out
+        System.out.println(greeting.greet());
+    }
+}</pre>
+And an implementation to output to System.err.<br />
+(GreetingClient2Impl.java)
+<pre>public class GreetingClient2Impl implements GreetingClient {
+
+    private Greeting greeting;
+
+    public void setGreeting(Greeting greeting) {  // set message to output
+        this.greeting = greeting;
+    }
+    
+    public void execute() {                    // output message to System.err
+        System.err.println(greeting.greet());
+    }
+}</pre>
+(HelloWorld2.java)
+<pre>public class HelloWorld2 {
+	public static void main(String[] args) {
+		Greeting greeting = new GreetingImpl();  // set message to output
+                                             // set how to output message
+		GreetingClient greetingClient = new GreetingClientImpl();
+		greetingClient.setGreeting(greeting);    // set message to output
+		greetingClient.execute();                // output message
+
+		greeting = new Greeting2Impl();          // set message to output
+                                             // set how to output message
+		greetingClient = new GreetingClient2Impl();
+		greetingClient.setGreeting(greeting);    // set message to output
+		greetingClient.execute();                // output message
+	}
+}</pre>
+			</span>
+			</li>
+			<li><a href="src/example2.zip">Source code (example2.zip)</a></li>
+			<li><span class="normal">Execution result:<br />
+To run the example, execute the "examples2.bat" file that is included with the source code. When the program is executed from the console, there doesn't seem to be any difference between the two implementations to output the messages, but when it is executed from Eclipse, they will be displayed in different color.<br />
+				<img src="img/examples2.jpg">
+			</span>
+			</li>
+		</ul>
+	</li>
+</ul>
+</ol>
+<hr /><br/>
+Move to <a href="seasar0.html">Moving on to Seasar</a> to find how we could further make the "Hello World!" program better.<br />
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright"> Copyright&copy;2005, H.Ozawa and the Seasar Foundation. All rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>

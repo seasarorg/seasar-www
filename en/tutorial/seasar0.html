@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3" align="right"></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<font size=6><b>Moving on to Seasar</b></font> <font size=3>by H.Ozawa</font><br />
+<hr /><br />
+In our earlier examples, we've seen how using interfaces can make the "Hello World" program flexible. In this page, we'll see how using Seasar can make the program more maintainable.<br/>
+
+<ol>
+	<li>We'll be using the same Greeting.java, GreetingClient.java, and GreetingClientImpl.java as in <a href="interfaces.html">Why Use Interfaces?</a> page.<br />
+
+		<ul>
+			<li><span class="normal">
+We'll just change GreetingImpl.java to output "3 Hello World" this time.<br />
+(GreetingImpl.java)
+				<pre>public class GreetingImpl implements Greeting {
+  public String greet() {
+    return "3 Hello World!";  // output message
+  }
+}</pre>
+Seasar is a DI container with AOP. What this means is that we can define variables types in an external configuration file. This external configuration file is most often a xml like the Greeting.dicon file below. It is a convention to use file extension "dicon" for Seasar extension file. Abiding by convention make our program more manageable as we'll see later on.<br />
+Line <font color="blue">&lt;component name="greeting" class="examples3.GreetingImpl"&gt;</font> tells Seasar that variable "greeting" is of class "examples3.GreetingImpl". In the same manner, line <font color="blue">&lt;component name="greetingClient" class="examples3.GreetingClientImpl"&gt;</font> tells Seasar "greetingClient" is of class "examples3.GreetingClientImpl".<br />
+Line <font color="green">&lt;property name="greeting"&gt;greeting&lt;/property&gt;</font> tells "greetingClient" has a property "greeting".<br />
+(Greeting.dicon)
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.3//EN"
+    "http://www.seasar.org/dtd/components23.dtd"&gt;
+&lt;components&gt;
+	<font color="blue">&lt;component name="greeting" class="examples3.GreetingImpl"/&gt;</font>
+	<font color="blue">&lt;component name="greetingClient" class="examples3.GreetingClientImpl"&gt;</font>
+		<font color="green">&lt;property name="greeting"&gt;greeting&lt;/property&gt;</font>
+	&lt;/component&gt;
+&lt;/components&gt;</pre>
+What the application program now have to do is to read in the configuration file , get an instance of an implementation of an interface, and invoke a method in the instance. In this example, configuration file is "Greeting.dicon", the interface we want to use is "GreetingClient", an implementation of this interface is "GreetingClientImpl", an instance of this implementation is "greetingClient" (as we defined in the configuration file), and the method to invoke in this interface is "execute()".<br/>
+(HelloWorld3.java)
+<pre>import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+import org.seasar.framework.util.ResourceNotFoundRuntimeException;
+
+public class HelloWorld3 {
+                // relative path of the configuration file
+    private static final String CONFIGURE_PATH = "Greeting.dicon";
+ 
+    public static void main(String[] args) {
+      try {
+                // create an Seasar container using the configuration file
+        S2Container container = S2ContainerFactory.create(CONFIGURE_PATH);
+
+                // get instance of "greetingClient" from the container
+        GreetingClient greetingClient
+          = (GreetingClient) container.getComponent("greetingClient");
+        greetingClient.execute();  // output the message
+      } catch (ResourceNotFoundRuntimeException e){
+        System.out.println("Configuration file \"" + CONFIGURE_PATH + "\" not found.");
+    }
+  }
+}
+</pre>
+			<span class="normal">
+			</li>
+			<li><a href="src/example3.zip">Source code (example3.zip)</a></li>
+			<li>Execution result:<br />
+To run the example, first open the examples3.bat with a text editor and set the path of S_LIB to the <font color="blue">lib folder</font> of seasar2.<br />
+Remember, to use Seasar, following jar files are required in the classpath.
+<pre>
+javaassist.jar
+commons-logging.jar
+lig4j-1.2.8.jar
+ognl-2.6.5.jar
+aopalliance.jar
+servlet-api.jar
+s2-framework-2.3.0.jar
+</pre>
+Additionally, following properties file is also required.
+<pre>
+log4j.properties
+</pre>
+We could add these jar files in the operating system environmental variable or specify them when invoking javac and java.<br />
+(examples3.bat)
+<pre>@echo off
+
+REM change the path below to where Seasar2 was extracted
+SET S_LIB=<font color="blue">C:\seasar2\lib</font>
+
+SET SCLASSPATH=%S_LIB%\javassist.jar;%S_LIB%\commons-logging.jar;
+%S_LIB%\log4j-1.2.8.jar;%S_LIB%\ognl-2.6.5.jar;%S_LIB%\aopalliance.jar;
+%S_LIB%\servlet-api.jar;%S_LIB%\s2-framework-2.3.0.jar;%S_LIB%\log4j.properties
+
+javac -cp .;%CLASSPATH%;%SCLASSPATH% -d examples3 examples3\*.java
+
+cd examples3
+java -cp .;%CLASSPATH%;%SCLASSPATH% examples3.HelloWorld3
+cd ..
+</pre>
+Execute the "examples3.bat" file that is included with the source code. Trace with the message "3 Hello World!" is outputted to the console.<br />
+				<img src="img/examples3.jpg">
+			</li>
+			<li>
+Now, we only have to change the configuration file to change the implementation. That is, we won't have to recompile the Java codes! Let's change the implementation of Greeting to Greeting2Impl.<br />
+(Greeting.dicon)
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.3//EN"
+    "http://www.seasar.org/dtd/components23.dtd"&gt;
+&lt;components&gt;
+	&lt;component name="greeting" class="examples3.<font color="red">Greeting2Impl</font>/"&gt;
+	&lt;component name="greetingClient" class="examples3.GreetingClientImpl"&gt;
+		&lt;property name="greeting"&gt;greeting&lt;/property&gt;
+	&lt;/component&gt;
+&lt;/components&gt;</pre>
+			</li>
+			<li>Execution result after the change:<br />
+To run the example, execute the "examples3.bat" file that is included with the source code. Trace with the message "3b Hello World!" is outputted to the console.<br />
+				<img src="img/examples3b.jpg">
+			</li>
+		</ul>
+	</li>
+	<li>In this example, we'll apply an aspect to output a trace the process. Only the Greeting.dicon file needs to be modified. All other files are the same as the last example above.
+		<ul>
+			<li><span class="normal">
+Lines to trace is in <font color="maroon">maroon</font>. Line <font color="maroon">&lt;include path="aop.dicon"/&gt;</font> reads in aop.traceInterceptor that will output the trace. Line <font color="maroon">&lt;aspect&gt;aop.traceInterceptor&lt;/aspect&gt;</font> applies the aop.traceInterceptor to the component (variable) it is included in.<br />
+(Greeting.dicon)
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.3//EN"
+    "http://www.seasar.org/dtd/components23.dtd"&gt;
+&lt;components&gt;
+	<font color="maroon">&lt;include path="aop.dicon"/&gt;</font>
+	<font color="blue">&lt;component name="greeting" class="examples4.GreetingImpl"&gt;</font>
+		<font color="maroon">&lt;aspect&gt;aop.traceInterceptor&lt;/aspect&gt;</font>
+	&lt;/component&gt;
+	<font color="blue">&lt;component name="greetingClient" class="examples4.GreetingClientImpl"&gt;</font>
+		<font color="green">&lt;property name="greeting"&gt;greeting&lt;/property&gt;</font>
+		<font color="maroon">&lt;aspect&gt;aop.traceInterceptor&lt;/aspect&gt;</font>
+	&lt;/component&gt;
+&lt;/components&gt;</pre>
+			</span>
+			</li>
+			<li><a href="src/example4.zip">Source code (example4.zip)</a></li>
+			<li>
+			<span class="normal">Execution result:<br />
+To run the example, we need to add file aop.dicon file which we specified in the Greeting.dicon file. In the source code file available above, it's in the root folder.<br />
+Execute the "examples4.bat" file that is included with the source code.
+				<img src="img/examples4.jpg">
+			</span>
+			</li>
+		</ul>
+	</li>
+
+	<li>This seems to be convenient but in the production application system, there are many classes. This means we'll have to write and write xml configuration files. This is not fun. This is where convention comes in. If we stick to a convention, we could just tell Seasar to define all instances of all Java classes in a folder with a specific file name.<br />
+First, we'll create folders "dicon", "impl", and "main" for dicon files, implementation files, and applications files respectively and move the respective files into the folders as below:
+<pre>examples5
+   aop.dicon
+   Greeting.java
+   GreetingClient.java
+   log4j.properties
+   --- dicon
+        --- Greeting.dicon
+   --- impl
+        --- GreetingClientImpl.java
+        --- GreetingImpl.java
+   --- main
+        --- HelloWorld5.java
+</pre>
+		<ul>
+			<li><span class="normal">All except the Greeting.dicon is the same as the above example.<br />
+Configuration Greeting.dicon is changed as below to make Seasar automatically associate variables with object types.<br />
+Lines <font color="blue">&lt;component class="org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister"&gt;</font> and <font color="blue">&lt;component class="org.seasar.framework.container.autoregister.AspectAutoRegister"&gt;</font> tells to associate classes and aspects respectively.<br />
+Line <font color="green">&lt;initMethod name="addClassPattern"&gt;</font> is used to specify which files to use to generate associations.<br />
+Lines <font color="maroon">&lt;arg&gt;"examples4.impl"&lt;/arg&gt;</font> and <font color="maroon">&lt;arg&gt;".*Impl"&lt;/arg&gt;</font> tells to use all files with file name ending with "Impl" in folder "examples4.impl".<br />
+Line <font color="#990099">&lt;initMethod name="registAll"/&gt;</font> tells to 
+<br /> actually tell Seasar to generate associations for these files.<br />
+Aspect is specified in the same manner as the example above.<br />
+(Greeting.dicon)
+				<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE components PUBLIC
+    "-//SEASAR//DTD S2Container 2.3//EN"
+    "http://www.seasar.org/dtd/components23.dtd"&gt;
+ &lt;components&gt;
+    &lt;include path="aop.dicon"/&gt;
+
+    <font color="blue">&lt;component
+      class="org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister"&gt;</font>
+        <font color="green">&lt;initMethod name="addClassPattern"&gt;</font>
+            <font color="maroon">&lt;arg&gt;"examples4.impl"&lt;/arg&gt;</font>
+            <font color="maroon">&lt;arg&gt;".*Impl"&lt;/arg&gt;</font>
+        &lt;/initMethod&gt;
+        <font color="#990099">&lt;initMethod name="registAll"/&gt;</font>
+    &lt;/component&gt;
+
+    <font color="blue">&lt;component
+      class="org.seasar.framework.container.autoregister.AspectAutoRegister"&gt;</font>
+        &lt;property name="interceptor"&gt;aop.traceInterceptor&lt;/property&gt;
+        <font color="green">&lt;initMethod name="addClassPattern"&gt;</font>
+            <font color="maroon">&lt;arg&gt;"examples4.impl"&lt;/arg&gt;</font>
+            <font color="maroon">&lt;arg&gt;".*Impl"&lt;/arg&gt;</font>
+        &lt;/initMethod&gt;
+        <font color="#990099">&lt;initMethod name="registAll"/&gt;</font>
+    &lt;/component&gt;
+&lt;/components&gt;</pre>
+There isn't a major change in HelloWorld program except a <font color="blue">try {</font> - <font color="blue">} finally {</font> block was inserted to explictly clean up the container. When using automatic generation, line <font color="green">container.destroy();</font> is necessary in the try - finally block so the .destroy() method will be executed even when there is an exception.<br />
+(HelloWorld5.java)<br />
+<pre>import org.seasar.framework.container.S2Container;
+import org.seasar.framework.container.factory.S2ContainerFactory;
+import org.seasar.framework.util.ResourceNotFoundRuntimeException;
+
+import examples5.GreetingClient;
+
+public class HelloWorld5 {
+    private static final String CONFIGURE_PATH = "dicon/Greeting.dicon";
+
+    public static void main(String[] args) {
+      try {
+        S2Container container = S2ContainerFactory.create(CONFIGURE_PATH);
+            container.init();	// add to initialize components
+          <font color="blue">try {</font>
+              GreetingClient greetingClient 
+               = (GreetingClient)container.getComponent("greetingClient");
+              greetingClient.execute();
+          <font color="blue">} finally {</font>
+            <font color="green">container.destroy();</font>
+          }
+      } catch (ResourceNotFoundRuntimeException e){
+        System.out.println("Configuration file \"" + CONFIGURE_PATH + "\" not found.");
+    }
+  }
+}</pre>
+			</span>
+			</li>
+			<li><span class="normal"><a href="src/example5.zip">Source code (example5.zip)</a></li>
+			<li>Execution result:<br />
+To run the example, first open the examples5.bat with a text editor and set the path of S_LIB to the <font color="blue">lib folder</font> of seasar2.<br />
+(examples5.bat)
+<pre>@echo off
+REM change the path below to where Seasar2 was extracted
+SET S_LIB=<font color="blue">C:\seasar2\lib</font>
+
+SET SCLASSPATH=%S_LIB%\javassist.jar;%S_LIB%\commons-logging.jar;
+%S_LIB%\log4j-1.2.8.jar;%S_LIB%\ognl-2.6.5.jar;%S_LIB%\aopalliance.jar;
+%S_LIB%\servlet-api.jar;%S_LIB%\s2-framework-2.3.0.jar;%S_LIB%\log4j.properties
+
+javac -cp .;%CLASSPATH%;%SCLASSPATH% -d examples5 examples5\*.java
+javac -cp .;%CLASSPATH%;%SCLASSPATH% -d examples5 examples5\main\*.java
+javac -cp .;%CLASSPATH%;%SCLASSPATH% -d examples5 examples5\impl\*.java
+
+cd examples5
+java -cp .;dicon;%CLASSPATH%;%SCLASSPATH% examples5.main.HelloWorld5
+cd ..
+
+</pre>
+Execute the "examples5.bat" file that is included with the source code.
+				<img src="img/examples5.jpg">
+			</span>
+			</li>
+		</ul>
+	</li>
+Seasar has more features to make application system development easier. Additionally, Seasar has many family software like S2Struts and S2Hibernate to enable us to use many deFacto software.
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright"> Copyright&copy;2005, H.Ozawa and the Seasar Foundation. All rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>
