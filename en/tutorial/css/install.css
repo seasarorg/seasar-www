@@ -1,0 +1,19 @@
+.button {color:blue;font-weight:bold;}
+.check {color:orange;font-weight:bold;}
+.menu2 {color:green;font-weight:bold;}
+.text {color:teal;font-weight:bold;}
+.entry {color:purple;font-weight:bold;}
+.code {background:lightgrey;}
+.key {color:#006600;font-weight:bold;}
+.warning {color:red;font-weight:bold;}
+.content {
+	padding: 5pt 5pt 5pt 5pt;
+	background-color: #eaeaea;
+	color: #333333;
+	border: 3px double #7e7e7e;
+	font-family: Courier New;
+	font-size: 9pt;
+}
+.header {
+	border-bottom:1px solid;
+}
