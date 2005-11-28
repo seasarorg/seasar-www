@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>UML Hello World 1</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link media="screen" href="../../css/install.css" "type=text/css" rel="stylesheet">
+<link href="../../seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="../../images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="../../images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="../../images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3" align="right"></td>
+</tr><tr><td rowspan="2"><img src="../../images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="../../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="../../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="../../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="../../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="../../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="../../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="../../images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="../../images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+
+<font size=6><b>Example - UML Hello World 1</b></font> <font size=3>by H.Ozawa</font><br />
+<hr /><br />
+
+<ol start="21">
+<li>"impl.GreetingClientImpl" should appear in the diagram.</li><br />
+<img src="uml21.jpg"/><br/>
+<li>We'll next begin defining methods.<br/>
+Right click on the <span class="enter">Greeting</span> and select <span class="menu2">New</span> - <span class="menu2">Method</span>.</li><br />
+<img src="uml22.jpg"/><br/>
+<li>Enter <span class="enter">greet</span> as the name and to select <span class="menu2">String</span> as the Return type, select the <img src="pulldown.jpg"> pull-down button.</li><br />
+<img src="uml23.jpg"/><br/>
+<li>Confirm that "String" is selected as the "Return type". Select the <span class="button">OK</span>.</li><br />
+<img src="uml24.jpg"/><br/>
+<li>"greet()" should appear under the "Greeting".</li><br />
+<img src="uml25.jpg"/><br/>
+<li>In a similar manner, we'll add method "execute" to the "GreetingClient" interface.<br />
+Right click on the "GreetingClient" interface and select <span class="menu2">Newe</span> - <span class="menu2">Method</span> from the context menu.</li><br />
+<img src="uml26.jpg"/><br/>
+<li>Enter <span class="enter">execute</span> as the "Name" and select <span class="enter">void</span> as the "Return type". Select the <span class="button">OK</span> button.</li><br />
+<img src="uml27.jpg"/><br/>
+<li>"execute()" should appear under the "GreetingClient".<br />
+Note that there will be some error messages because implementations of the interfaces do not definitions of methods we just defined. We will correct these errors next.<br />
+I personally prefer to define all interfaces and classes before defining methods and attributes, but if we defined methods of interfaces before creating classes, methods defined in an interfaces will automatically be added to the class when it is defined.</li><br />
+<img src="uml28.jpg"/><br/>
+<li>Right click on the <span class="enter">impl.GreetingImpl</span> class and select on <span class="menu2">New</span> - <span class="menu2">Method</span> in the context menu.</li><br />
+<img src="uml29.jpg"/><br/>
+<li>Enter <span class="enter">greet</span> as the "Name" and select <span class="enter">String</span> as the "Return type". These have to match what we defined in the "Greeting" interface.<br />
+Select the <span class="button">OK</span> button.</li><br />
+<img src="uml30.jpg"/><br/>
+<li>In a similar manner, defined method "execute" for the "impl.GreetingClientImpl" class.<br />
+Right click on <span class="enter">impl.GreetingClientImpl</span> and select <span class="menu2">New</span> - <span class="menu2">Method</span> in the context menu.</li><br />
+<img src="uml31.jpg"/><br/>
+<li>Enter <span class="enter">execute</span> in the "Name" and select <span class="enter">void</span> as the "Return type". Select the <span class="button">OK</span> button.</li><br />
+<img src="uml32.jpg"/><br/>
+<li>We'll next define attribute "greeting" which will hold the greeting string to output.<br />
+Right click again on <span class="enter">impl.GreetingClientImpl</span> and select <span class="enter">New</span> - <span class="enter">Attribute</span> in the context menu.</li><br />
+<img src="uml33.jpg"/><br/>
+<li>Enter <span class="enter">greeting</span> as the "Name". Verify that <span class="check">Use accessors</span> is checked. Select the <span class="button">Browse...</span> to select the "Type".</li><br />
+<img src="uml34.jpg"/><br/>
+<li>Select <span class="enter">Greeting - examples1</span> from the list. If it is not in the list, enter <span class="enter">Greeting</span> in the "Select the type of this attribute" and select it when the list appears.</br />
+Select the <span class="button">OK</span> button.</li><br />
+<img src="uml35.jpg"/><br/>
+<li>Confirm that "Type" is "examples1.Greeting" and select the <span class="button">OK</span> button.</li><br />
+<img src="uml36.jpg"/><br/>
+<li>"greeting: Greeting" should now appear.</li><br />
+<img src="uml37.jpg"/><br/>
+<li>We'll now begin adding codes to the classes.<br />
+Double click on the "impl.GreetingImpl" class.<br />
+Make sure "GreetingImpl.java" tab is selected. Generated codes for the "impl.GretingImpl" class should show. Move down to the "public String greet()" method and enter <span class="enter">return "UML Hello World1";</span> as below. Save the change by selecting the save icon <img src="save.jpg" /> in the Eclipse icon menu.</li><br />
+<img src="uml38.jpg"/><br/>
+<li>We'll next add code to the "execute()" method.<br />
+Double click on the "impl.GreetingClientImpl" box. Find the "public void execute()" method. Enter <span class="enter">System.out.println(greeting.greet());</span>.</li><br />
+<img src="uml39.jpg"/><br/>
+<li>We'll now create the final class - the class that contains "main()".<br />
+Select the <img src="class.jpg"/> and drag the mouse to create a rectangle.</li><br />
+<img src="uml40.jpg"/><br/>
+</ol>
+<HR><BR>
+<H3>Content</H3>
+<TABLE class="content" width="400">
+<TR><TH class="header"><A href="../../index.html">Seasar UML Tutorial Page</A></TH></TR>
+<TR><TD><A href="index.html">UML Hello World 1 - 1/3</A></TD></TR>
+<TR><TD>UML Hello World 1 - 2/3</TD></TR>
+<TR><TD><A href="index3.html">UML Hello World 1 - 3/3</A></TD></TR>
+</TABLE>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="../../images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766" class="copyright"> Copyright&copy;2005, H.Ozawa. All rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->

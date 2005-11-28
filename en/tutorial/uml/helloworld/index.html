@@ -31,125 +31,67 @@
 
 <font size=6><b>Example - UML Hello World 1</b></font> <font size=3>by H.Ozawa</font><br />
 <hr /><br />
-
+We'll create a package "examples1". We'll also be using the same example as in the <a href="../../seasar0.html">Moving on to Seasar</a> and focus on using UML plugin.
 <ol>
-
-<li></li><br />
+<li>To create a new package under "Examples", right click on the <span class="button">src</span> package and select <span class="menu2">New</span> - <span class="menu2">Package</span> from the context menu.</li><br />
 <img src="uml1.jpg"/><br/>
-<li></li><br />
+<li>Enter <span class="enter">examples1</span> as the Name and select the <span class="button">Finish</span> button.</li><br />
 <img src="uml2.jpg"/><br/>
-<li></li><br />
+<li>A new package named "examples1" should appear under "src".</li><br />
 <img src="uml3.jpg"/><br/>
-<li></li><br />
+<li>It's time to create an UML class diagram. We'll create it in the package we just created.<br />
+Right click on <span class="button">examples1</span> - <span class="menu2">New</span> - <span class="menu2">Other...</span> in the context menu.</li><br />
 <img src="uml4.jpg"/><br/>
-<li></li><br />
+<li>Expand the <span class="menu2">UML Diagrams</span> by clicking on the <font color="red"><b>+</b></font> the right of it. Since we want to create a new class diagram, select <span class="menu2">UML Class Diagram</span> and select the <span class="button">Next ></span> button.</li><br />
 <img src="uml5.jpg"/><br/>
-<li></li><br />
+<li>Enter <span class="enter">examples1.ucd</span> as the File name and select the <span class="button">Finish</span> button.</li><br />
+Note that UML Class diagram files have file extension "ucd".<br />
 <img src="uml6.jpg"/><br/>
-<li></li><br />
+<li>An empty class diagram should appear and file "examples1.ucd" should appear under "examples1".</li><br />
 <img src="uml7.jpg"/><br/>
-<li></li><br />
+<li>Time to start writing the UML class diagram.<br />
+As my preference, we'll first create Interfaces than Classes and add methods and attributes afterwards. Actually, we could save some steps by defining interface methods and attributes and then creating classes - methods are attributes defined in the supported interface is automatically added to the class.<br />
+Nevertheless in this example, we'll create interfaces and classes before defining methods and attributes because I prefer to work that way. :)<br />
+Select the interface icon <img src="interface.jpg" />. Press left mouse button in the diagram area and drag the mouse to create a rectangle. Release the mouse button when the rectangle is the size you want it to be.</li><br />
 <img src="uml8.jpg"/><br/>
-<li></li><br />
+<li>Java Interface dialog box should appear. Check that Source folder is "Examples/src" and Package is "examples1". Enter <span class="enter">Greeting</span> as the Name and select the <span class="button">Finish</span> button.</li><br />
 <img src="uml9.jpg"/><br/>
-<li></li><br />
+<li>The rectangle should be filled with &lt;interface&gt; and Greeting as in the diagram below.</li><br />
 <img src="uml10.jpg"/><br/>
-<li></li><br />
+<li>Repeat the above step to create interface <span class="enter">GreetingClient</span>.<br />The diagram should be like the one below.</li><br />
 <img src="uml11.jpg"/><br/>
-<li></li><br />
+<li>We'll now create implementations of interfaces we just created.<br />
+Click on the class icon <img src="class.jpg" />. Press left mouse button in the diagram area and drag the mouse to create a rectangle. Release the mouse button when the rectangle is the size you want it to be.</li><br />
 <img src="uml12.jpg"/><br/>
-<li></li><br />
+<li>We will create this class in folder "impl". Change the Package from "examples1" to <span class="enter">examples1.impl"</span> to tell Eclipse to create a new folder "impl" under "examples1".<br />
+Enter <span class="enter">GreetingImpl"</span> as the Name and make sure <span class="check">public static void main(String[] args)</span> is not checked.<br />
+To specify which interface this class implements, select the <span class="button">Add...</span> button next the the Interfaces: list area.
+</li><br />
 <img src="uml13.jpg"/><br/>
-<li></li><br />
+<li>In the "Choose interfaces:" begin entering <span class="enter">Greeting</span>, list of all matching interfaces will be displayed. Select <span class="enter">Greeting - examples1 - Examples/src</span> from the list and select the <span class="button">OK</span> button.</li><br />
 <img src="uml14.jpg"/><br/>
-<li></li><br />
+<li>Confirm <span class="enter">examples1.Greeting</span> is displayed in the Interfaces: list box and select the <span class="button">Finish</span> button.</li><br />
 <img src="uml15.jpg"/><br/>
-<li></li><br />
+<li>a "impl.GreetingImpl" box will be displayed with an arrow pointing to "Greeting" as in the following diagram.</li><br />
 <img src="uml16.jpg"/><br/>
-<li></li><br />
+<li>Selecth the <img src="class.jpg" /> icon and drag a rectangular area again to define an implementation of "GreetingClient".</li><br />
 <img src="uml17.jpg"/><br/>
-<li></li><br />
+<li>Enter <span class="enter">examples1.impl</span> as a "Package" and <span calss="enter">GreetingClientImpl</span> as the Name and verify that <span class="check">public static void main(String[] args)</span> is unchecked.<br />
+Select the <span class="button">Add...</span> button to specify an interface.</li><br />
 <img src="uml18.jpg"/><br/>
-<li></li><br />
+<li>Select <span class="enter">GreetingClient - examples1 - Examples/src</span> from the list. If it is not displayed, enter <span class="enter">GreetingClient</span> in the "Choose interfaces".</li><br />
 <img src="uml19.jpg"/><br/>
-<li></li><br />
+<li>Make sure "examples1.GreetingClient" is displayed in the "Interfaces" list box and select the <span class="button">Finish</span> button.</li><br />
 <img src="uml20.jpg"/><br/>
-<li></li><br />
-<img src="uml21.jpg"/><br/>
-<li></li><br />
-<img src="uml22.jpg"/><br/>
-<li></li><br />
-<img src="uml23.jpg"/><br/>
-<li></li><br />
-<img src="uml24.jpg"/><br/>
-<li></li><br />
-<img src="uml25.jpg"/><br/>
-<li></li><br />
-<img src="uml26.jpg"/><br/>
-<li></li><br />
-<img src="uml27.jpg"/><br/>
-<li></li><br />
-<img src="uml28.jpg"/><br/>
-<li></li><br />
-<img src="uml29.jpg"/><br/>
-<li></li><br />
-<img src="uml30.jpg"/><br/>
-<li></li><br />
-<img src="uml31.jpg"/><br/>
-<li></li><br />
-<img src="uml32.jpg"/><br/>
-<li></li><br />
-<img src="uml33.jpg"/><br/>
-<li></li><br />
-<img src="uml34.jpg"/><br/>
-<li></li><br />
-<img src="uml35.jpg"/><br/>
-<li></li><br />
-<img src="uml36.jpg"/><br/>
-<li></li><br />
-<img src="uml37.jpg"/><br/>
-<li></li><br />
-<img src="uml38.jpg"/><br/>
-<li></li><br />
-<img src="uml39.jpg"/><br/>
-<li></li><br />
-<img src="uml40.jpg"/><br/>
-<li></li><br />
-<img src="uml41.jpg"/><br/>
-<li></li><br />
-<img src="uml42.jpg"/><br/>
-<li></li><br />
-<img src="uml43.jpg"/><br/>
-<li></li><br />
-<img src="uml44.jpg"/><br/>
-<li></li><br />
-<img src="uml45.jpg"/><br/>
-<li></li><br />
-<img src="uml46.jpg"/><br/>
-<li></li><br />
-<img src="uml47.jpg"/><br/>
-<li></li><br />
-<img src="uml48.jpg"/><br/>
-<li></li><br />
-<img src="uml49.jpg"/><br/>
-<li></li><br />
-<img src="uml50.jpg"/><br/>
-<li></li><br />
-<img src="uml51.jpg"/><br/>
-<li></li><br />
-<img src="uml52.jpg"/><br/>
-<li></li><br />
-<img src="uml53.jpg"/><br/>
-<li></li><br />
-<img src="uml54.jpg"/><br/>
-<li></li><br />
-<img src="uml55.jpg"/><br/>
 </ol>
+Progress to <A href="index2.html">next page</a>.
 <HR><BR>
 <H3>Content</H3>
 <TABLE class="content" width="400">
 <TR><TH class="header"><A href="../../index.html">Seasar UML Tutorial Page</A></TH></TR>
-<TR><TD>UML Hello World 1</TD></TR>
+<TR><TD>UML Hello World 1 - 1/3</TD></TR>
+<TR><TD><A href="index2.html">UML Hello World 1 - 2/3</A></TD></TR>
+<TR><TD><A href="index3.html">UML Hello World 1 - 3/3</A></TD></TR>
 </TABLE>
 <!-- document end -->
 <!-- don't edit start -->
