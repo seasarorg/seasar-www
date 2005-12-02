@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Debug Setup</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link media="screen" href="../../css/install.css" "type=text/css" rel="stylesheet">
+<link href="../../seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="../../images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="../../images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="../../images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3" align="right"></td>
+</tr><tr><td rowspan="2"><img src="../../images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="../../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="../../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="../../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="../../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="../../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="../../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="../../images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="../../images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+
+<font size=6><b>Debug Setup</b></font> <font size=3>by H.Ozawa</font><br />
+<hr /><br />
+To debug Seasar, we will first setup Eclipse preference.
+<ol>
+<li>Select <span class="menu2">Window</span> - <span class="menu2">Preferences...</span>.</li><br />
+<img src="setup1.jpg"/><br/>
+<li>Select <span class="menu2">UML</span>. This is a preference, but it bothers me to see the splash screen each time so I usually uncheck <span class="check">Show splash screen</span>.<br />
+I usually work with the "Eclipse" presentation style, but for now let's set to to <span class="check">Omondo</span>.<br />
+Select the <span class="button">Apply</span> button.
+</li><br />
+<img src="setup2.jpg"/><br/>
+<li>Error messages usually display which line number has the error. To track the error, we'll display the line number.<br />
+Select <span class="menu2">General</span> - <span class="menu2">Editors</span> - <span class="menu2">Text Editors</span>. Set "Displayed tab width" to <span class="enter">2</span> and check the <span class="check">Show line numbers</span>.<br />
+Select the <span class="button">OK</span> button.</li><br />
+<img src="setup3.jpg"/><br/>
+<li>Class diagram should now be in UML notation.</li><br />
+<img src="setup4.jpg"/><br/>
+<li>We'll now activate Kijimuna to find any dicon errors.<br />
+Right click on the package - in this example, right click on <span class="menu2">examples1</span> and select <span class="menu2">Properties</span> in the context menu.</li><br />
+<img src="setup5.jpg"/><br/>
+<li>Select <span class="menu2">Kijimuna</span> and check on <span class="check">Seasar2 project</span>. Select the <span class="button">OK</span> button.</li><br />
+<img src="setup6.jpg"/><br/>
+</ol>
+We are now ready to start debugging!<br />
+<HR><BR>
+<H3>Content</H3>
+<TABLE class="content" width="400">
+<TR><TH class="header"><A href="../../index.html">Seasar UML Tutorial Page</A></TH></TR>
+<TR><TD>Debug Setup</TD></TR>
+<TR><TD>Debugging UML HelloWorld1</TD></TR>
+</TABLE>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="../../images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766" class="copyright"> Copyright&copy;2005, H.Ozawa. All rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
