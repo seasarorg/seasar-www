@@ -1,0 +1,263 @@
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title>
+<meta http-equiv="Content-Type" content="text/html; charset=MS932">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3" align="right"><a href="en/index.html"><img src="en/images/english.jpg" border="0" alt="English"></a></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="index.html"><img src="images/menu01_b_ja.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="projects.html"><img src="images/menu02_b_ja.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="products.html"><img src="images/menu03_b_ja.gif" height="30" width="110" border="0" alt="" id="menu03" onmouseover="swap(3)" onmouseout="restore(3)"></a></td>
+<td><a href="resources.html"><img src="images/menu04_b_ja.gif" height="30" width="113" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><img src="images/menu05_b_ja.gif" height="30" width="109" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></td>
+<td><img height="30" width="34" src="images/menu06.gif" alt=""></td></tr><tr>
+<td colspan="6"><img height="19" width="545" src="images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<font size="+1"><b>『Seasar入門　～はじめてのDI&AOP～』</b></font>
+<font size="+1"><b>目次</b></font> 
+<hr width="60%">
+<br>
+<ul>
+<li>第1章　Seasar2とはなにか　～DIコンテナとSeasar2について～ </li>
+<ul>
+<li>1-1 DIコンテナってなに？</li>
+<ul>
+<li>1-1-1　DI以前　～オブジェクトと依存性の問題～</li>
+<li>1-1-2　DIとはなにか</li>
+<li>1-1-3　コンポーネントで考える</li>
+<li>1-1-4　DIコンテナの役割</li>
+<li>1-1-5　DIコンテナの持つメリットとデメリット</li>
+</ul>
+<li> 1-2 簡単なDIコンテナを作ってみよう</li>
+<ul>
+<li>1-2-1　DI以前の方法</li>
+<li>1-2-2　簡易DIコンテナを作る</li>
+</ul>
+<li>1-3 Seasar2について</li>
+<ul>
+<li>1-3-1　Seasar2の特徴　～易しく優しいJ2EE～</li>
+<li>1-3-2　AOP機能（S2AOP）</li>
+<li>1-3-3　DI＋AOPのメリット</li>
+<li>1-3-4　その他の機能の概要</li>
+<li>1-3-5　Seasar2の使用例</li>
+</ul>
+</ul>
+<li>第2章　Seasar2を導入しよう</li>
+<ul>
+<li>2-1 Seasar2の導入</li>
+<ul>
+<li>2-1-1　前準備</li>
+<li>2-1-2　Seasar2の入手</li>
+<li>2-1-3　展開してEclipseにインポート</li>
+<li>2-1-4　付属サンプルを動かそう</li>
+<li>2-1-5　S2クイズ</li>
+</ul>
+<li>2-2 S2Daoの導入</li>
+<ul>
+<li>2-2-1　S2Daoとは</li>
+<li>2-2-2　S2Daoの入手</li>
+<li>2-2-3　展開してEclipseにインポート</li>
+<li>2-2-4　付属サンプルを動かそう</li>
+<li>2-2-5　S2クイズ</li>
+</ul>
+<li>2-3 S2JSFの導入</li>
+<ul>
+<li>2-3-1　S2JSFとは</li>
+<li>2-3-2　S2JSFの入手</li>
+<li>2-3-3　展開してEclipseにインポート</li>
+<li>2-3-4　サンプルを動かそう</li>
+</ul>
+<li>2-4 Eclipseプラグインの導入</li>
+<ul>
+<li>2-4-1　Kijimunaとは</li>
+<li>2-4-2　Kijimunaのインストール</li>
+<li>2-4-3　S2JSFプラグインとは</li>
+<li>2-4-4　S2JSFプラグインのインストール</li>
+</ul>
+</ul>
+<li>第3章　S2を使いやすくするEclipseプラグイン</li>
+<ul>
+<li>3-1 Kijimuna</li>
+<ul>
+<li>3-1-1　Kijimunaの機能概要</li>
+<li>3-1-2　Kijimunaの設定</li>
+<li>3-1-3　diconファイル生成ウィザード</li>
+<li>3-1-4　diconエディタの補完機能</li>
+<li>3-1-5　diconツリービュー</li>
+</ul>
+<li>3-2 S2JSFプラグイン</li>
+<ul>
+<li>3-2-1　S2JSFプラグインの機能概要</li>
+<li>3-2-2　S2JSFプラグインの設定方法</li>
+<li>3-2-3　HTMLファイル生成ウィザード</li>
+<li>3-2-4　エラーを検出する</li>
+<li>3-2-5　エディタの補完機能</li>
+<li>3-2-6　ファイル間ジャンプ</li>
+</ul>
+</ul>
+<li>第4章　Seasar2を深く知ろう</li>
+<ul>
+<li>4-1 S2Container</li>
+<ul>
+<li>4-1-1　仕組み</li>
+<li>4-1-2　内部構造と設定方法</li>
+<li>4-1-3　S2Containerを利用したプログラムを作ってみる</li>
+<li>4-1-4　3つのインジェクション</li>
+<li>4-1-5　自動バインディング</li>
+<li>4-1-6　インスタンスの管理方法を指定できるinstance属性</li>
+<li>4-1-7　diconファイルの分割とinclude</li>
+<li>4-1-8　diconファイルのタグ一覧</li>
+<li>4-1-9　コンポーネントの自動登録</li>
+<li>4-1-10　 S2クイズ</li>
+</ul>
+<li>4-2 S2AOP</li>
+<ul>
+<li>4-2-1　オブジェクト指向プログラミングの問題点</li>
+<li>4-2-2　解決策としてのAOP</li>
+<li>4-2-3　AOPのメリット</li>
+<li>4-2-4　AOPの概念</li>
+<li>4-2-5　AOPの適用範囲</li>
+<li>4-2-6　S2AOP</li>
+<li>4-2-7　S2AOPの使用方法</li>
+<li>4-2-8　S2AOPで用意されているインターセプタと作成例</li>
+<li>4-2-9　独自にインターセプタを作成する場合</li>
+<li>4-2-10　 S2クイズ</li>
+</ul>
+<li>4-3 トランザクション制御</li>
+<ul>
+<li>4-3-1　トランザクション制御の基礎</li>
+<li>4-3-2　Seasar2のトランザクション制御</li>
+<li>4-3-3　利用方法</li>
+<li>4-3-4　Seasar2でトランザクション処理を実装する</li>
+<li>4-3-5　S2クイズ</li>
+</ul>
+<li>4-4 コネクションプーリング</li>
+<ul>
+<li>4-4-1　コネクションプーリングの概要</li>
+<li>4-4-2　S2DBCPのコネクションプーリング機能について</li>
+<li>4-4-3　S2DBCPの利用方法</li>
+<li>4-4-4　S2クイズ</li>
+</ul>
+<li>4-5 S2Unit</li>
+<ul>
+<li>4-5-1　S2Unitと自動テストについて</li>
+<li>4-5-2　設定方法</li>
+<li>4-5-3　モック利用について</li>
+<li>4-5-4　S2クイズ</li>
+</ul>
+</ul>
+<li>第5章　S2JSF</li>
+<ul>
+<li>5-1 S2JSFとは</li>
+<ul>
+<li>5-1-1　JSFについて</li>
+<li>5-1-2　JSFのメリット</li>
+<li>5-1-3　S2JSFの内部構造　～どの部分がJSFか？～</li>
+</ul>
+<li>5-2 S2JSFの導入</li>
+<ul>
+<li>5-2-1　入手と導入</li>
+</ul>
+<li>5-3 S2JSFの使い方</li>
+<ul>
+<li>5-3-1　はじめに</li>
+<li>5-3-2　HTMLとS2JSFだけで動的画面を作ろう　～サンプル1～</li>
+<li>5-3-3　ValueBindingを使って文字列を出力する方法</li>
+<li>5-3-4　レイアウト機能　～サンプル2～</li>
+<li>5-3-5　aタグでページ遷移する方法　～サンプル2～</li>
+<li>5-3-6　navigation-ruleの記述方法　～サンプル2～</li>
+<li>5-3-7　ページ遷移時にパラメータを渡す方法　～サンプル2～</li>
+<li>5-3-8　モデルやロジックと組み合わせる　～サンプル3～</li>
+<li>5-3-9　ボタンをクリックしたときにJavaBeansのメソッドを呼び出す方法</li>
+<li>5-3-10　 入力値をJavaBeansのプロパティと連動させる方法　～サンプル3～</li>
+<li>5-3-11　 Actionにゲッターメソッドを定義してリクエスト、セッション、S2Containerのオブジェクトをプロパティに自動設定する方法</li>
+<li>5-3-12　 Actionにゲッターメソッドを定義して、リクエストやセッションにプロパティ値を自動設定する方法　～サンプル3～</li>
+<li>5-3-13　 forEachタグによる繰り返し　～サンプル4～</li>
+<li>5-3-14　 画面の初期化処理　～サンプル4～</li>
+<li>5-3-15　 checkboxの使い方　～サンプル4～</li>
+<li>5-3-16　 converter属性の使い方　～サンプル5～</li>
+<li>5-3-17　 コンバータークラスを利用したサンプル　～サンプル5～</li>
+<li>5-3-18　 validatorタグの使い方　～サンプル6～</li>
+<li>5-3-19　 messageタグの使い方　～サンプル6～</li>
+<li>5-3-20　 selectタグの使用方法　～サンプル7～</li>
+<li>5-3-21　 selectManyListboxタグの使用方法　～サンプル7～</li>
+<li>5-3-22　 selectManyCheckboxタグの使用方法　～サンプル7～</li>
+</ul>
+<li>5-4 S2クイズ</li>
+</ul>
+<li>第6章　S2Dao</li>
+<ul>
+<li>6-1 S2Daoとは</li>
+<ul>
+<li>6-1-1　DAOパターンについて　～デザインパターン～</li>
+<li>6-1-2　S2Daoの特徴</li>
+<li>6-1-3　2WaySQL</li>
+<li>6-1-4　アノテーション</li>
+</ul>
+<li>6-2 S2Daoの導入方法</li>
+<ul>
+<li>6-2-1　Eclipseを利用した開発方法</li>
+<li>6-2-2　HSQLDBの利用方法</li>
+</ul>
+<li>6-3 S2Daoの使い方</li>
+<ul>
+<li>6-3-1　サンプルで使うテーブル　～Drinkテーブル～</li>
+<li>6-3-2　DAOパターンの実装例</li>
+<li>6-3-3　S2Daoを利用したDrinkのサンプル</li>
+<li>6-3-4　実際的な例</li>
+</ul>
+<li>6-4 S2Daoの詳細</li>
+<ul>
+<li>6-4-1　S2DaoにおけるSQL自動生成</li>
+<li>6-4-2　アノテーション</li>
+<li>6-4-3　SQLファイル</li>
+<li>6-4-4　S2Daoにおける排他制御</li>
+</ul>
+<li>6-5 S2Daoにおける単体テスト</li>
+<ul>
+<li>6-5-1　DBとExcelの連携</li>
+</ul>
+<li>6-6 S2クイズ</li>
+</ul>
+<li>■第7章　次世代DIコンテナSeasar2.3</li>
+<ul>
+<li>7-1 Seasar2.3はさらなる省力化へ</li>
+<ul>
+<li>7-1-1　コンポーネントの定義は「設定」か</li>
+<li>7-1-2　自動化の鍵</li>
+<li>7-1-3　規約重視で省力化</li>
+<li>7-1-4　自動登録＋個別設定</li>
+<li>7-1-5　次世代DIコンテナ</li>
+</ul>
+</ul>
+<li>■S2クイズの解答</li>
+</ul>
+<hr width="60%">
+<b><a href="book_info.htm">S2本の紹介に戻る</a></b>
+　
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright">&copy; Copyright The Seasar Foundation and the others 2004-2005, all rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>
