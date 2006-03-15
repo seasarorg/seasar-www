@@ -1,0 +1,679 @@
+slide1
+
+みなさん、こんにちは。私は Yasuo Higa で、Seasar Foundationという日本のオープンソースプロジェクトのチーフコミッタをしています。
+
+Good afternoon everybody. I'm Yasuo Higa, and I'm the chief committer of the Japan open source project, called the Seasar Foundation.
+
+Seasar Foundationには、Javaだけでなく.NETやPHPのプロダクトもあります。Seasar Foundationのメインとなるプロダクトは､Seasar2と呼ばれるDIContainerです。Seasarというのは、ここの絵にあるようなライオンに似た想像上の生き物です。
+
+The Seasar Foundation has not only Java products but also .NET, and PHP products. The main product of the Seasar Foundation is a DIContainer called Seasar2. A seasar is an imaginary creation like a lion in this picture.
+
+今日は､「設定ファイル死すべし」というテーマでお話したいと思います。
+
+The theme I would like to introduce to you today, is "Configuration files must DIe".
+
+slide2
+
+私は､いつも世界中の開発者にこう聞いてみたいと思っていました、「あなたは、設定ファイルを書くのが本当に好きですか」と。
+
+I have always wanted to ask every developer in the world this question:
+Do you really like writing configuration files?
+
+設定ファイルを書くのが本当に好きな方は､挙手してください。もちろん、そんなことが好きな人は、ほとんどいませんよね。
+
+Those of you who really like writing configuration files, please raise your hands. Of course, I hope such people are very few.
+
+slide3
+
+私も設定ファイルを書くのは嫌いです。なぜなら、書くのが面倒だからです。恐らく､世界中の開発者も、同じ思いでしょう。
+
+I hate it too! That's because writing them is a real headache! I hope every developer in the world feels the same.
+
+slide4
+
+しかし､私たちの思いにかかわらず､Javaの世界は､設定ファイルであふれています。その悲惨な状況は､XML地獄といわれています。
+
+Still, despite our feelings, the Java world is full of configuration files. We can call this tragic situation "XML HELL".
+
+slide5
+
+WebやDIの代表的なフレームワークを思い出してください。それらは設定ファイルであふれています。設定ファイルの肥大化は､私たちを悩ませている深刻な問題なのです。
+
+Please try to remember the frameworks which represent Web and DI. They are full of configuration files. The issue that causes us such serious problems is the enlargement of configuration files.
+
+slide6
+
+設定ファイルの肥大化に対する解決策の1つが､Java5から登場した技術がアノテーションです。
+
+One of the solutions against the enlargement of configuration files is annotation which appeared in Java 5.
+
+slide7
+
+アノテーションを使うと､設定ファイルがほとんど不要になります。なぜなら、ソースコードに設定情報を埋め込むことができるからです。
+
+If we use annotation, we rarely need to write configuration files. That's because we can embed the configuration data into the source code.
+
+slide8
+
+それでは、アノテーションが私たちを本当に救ってくれるのでしょうか。違いは､設定情報を記述する場所が、設定ファイルからソースコードに移っただけです。
+
+Then, is this annotation really helping us? The only difference is that the place where we write the configuration data has moved from the configuration file to the source code.
+
+slide9
+
+設定情報を記述しなければならないという事実は､依然として変わっていません。
+
+The fact that we are to write the configuration data has not changed.
+
+slide10
+
+私たちが心から望んでいること､そして、本当に実現しなければいけないことは、設定ファイルだけでなく､ソースコードに対しても設定情報を記述することを必要最小限にすることです。
+
+The thing we really hope for and must realize is to minimize the amount of the configuration data we have to write not only in the configuration file but also in the source code.
+
+slide11
+
+このコンセプトを私は､「Less Configuration」と呼んでいます。これこそ、フレームワークのあるべき姿ではないでしょうか。
+
+I call this concept "Less Configuration". I think this is what the framework should be.
+
+slide12
+
+今日のアジェンダですが､最初に､今日のDIが抱えている問題点についてお話します。次に､その問題点を本質的に解決する「Less Configuration」について説明します。最後にSeasar2のEJB3対応について説明します。
+
+Today's agenda is as follows:
+First, I would like to talk about the problem of DI.
+Second, I would like to introduce the "Less Configuration" concept which essentially solves the problem.
+Last, I would like to explain response to EJB3 in Seasar2.
+
+slide13
+
+DIの重要な原則の1つに、「設定を利用から分離する」というものがあります。
+
+One of the important principles of DI is "separating configuration
+from use". 
+
+slide14
+
+この原則を適用した場合､誰かが機能の利用者に対して実装オブジェクトを設定しなければいけません。DIContainerがその役割を果たします。
+
+When this principle is applied, someone is to set the implementation object to the function user. A DIContainer plays this role.
+
+slide15
+
+実装オブジェクトを設定するためには､どのように設定するのかをDIContainerに対して指示しなければいけません。この指示のために、最も良く使われているのが､設定ファイルです。
+
+We need to give instructions to the DIContainer about the way to set the implementation object. According to these instructions, configuration files are the most popular.
+
+slide16
+
+それでは、DIを理解するためのサンプルを見てみましょう。Greetingは、あいさつをする機能を提供するためのインターフェースになります。
+
+Therefore, let's take a look at these samples to understand DI. "Greeting" is the interface which gives us the greeting function.
+
+slide17
+
+GreetingImplは、あいさつをする機能を提供するための実装クラスです。greetメソッドは､単純に"Hello World!"の文字列を返します。
+
+"GreetingImpl" is the implementation class which gives us the greeting function. The "greet" method replies with the words "Hello World!".
+
+slide18
+
+GreetingClientは、あいさつをする機能を利用する側のインターフェースです。機能を利用する側は､必ずしもインターフェースを使わなくても良いのですが､インターフェースを使うことは､オブジェクト指向開発で重要なことなので､できる限りインターフェースを使ったほうが良いでしょう。
+
+The "GreetingClient" is the interface which uses the greeting function. The function user doesn't always use the interface, however I think it's better to use the interface whenever we can. That's because it's important to use it regarding OO development.
+
+slide19
+
+GreetingClientImplは、あいさつをする機能を利用する側の実装クラスです。注目して欲しいポイントは2つあります。
+
+"GreetingClientImpl" is the implementation class which uses the greeting function. There are 2 points I would like to draw your attention to.
+
+1つ目は､greetingプロパティです。型が実装クラスではなく､インターフェースで定義されています。
+
+The first one is the greeting property. Its type is defined not as the implementation class but as the interface .
+
+2つ目は､setGreetingメソッドです。setterメソッドによって実装オブジェクトが外部から設定されています。これにより、「設定を利用から分離する」ことが実現されているのです。
+
+The second one is the setGreeting method. Using the setter method, an implementation object is set by the third party. As a result, the "separating configuration from use" principle is realized.
+
+slide20
+
+beans.xmlは、オブジェクトの設定方法をDIContainerに指示するための設定ファイルです。これらのサンプルは､Springのものです。beanタグでオブジェクトを定義し､refタグでどのオブジェクトを利用するのかを定義します。
+
+"beans.xml" is the configuration file by which we give instructions to the DIContainer about the way to set the implementation object. These samples are for Spring. We define an object by a bean tag, and define an object which we want to use by a ref tag.
+
+slide21
+
+GreetingMainクラスは、DIContainerからGreetingClientの実装オブジェクトを取り出して実行します。
+
+The "GreetingMain" class takes the greeting client implementation object from the DIContainer, and executes it.
+
+slide22
+
+サンプルを見ると､DIContainerは「設定を利用から分離する」という原則を忠実に実現していることが分かるでしょう。
+
+When we take a look at these samples, the DIContainer faithfully realizes the "separating configuration from use" principle.
+
+slide23
+
+このサンプルを見る限り､どこにも問題は見当たりません。一体どこに問題があるのでしょうか。
+
+When we check these samples, we don't find any problem. Where is the probrem?
+
+slide24
+
+現在のDIContainerの問題点は､規模が大きくなってくると表面化します。規模に応じて直ぐにファイルが肥大化してしまうのです。
+
+When the developement scale is larger, the problem of the DIContainer as we know it today comes to the surface. The configuration file becomes enlarged proportionally to the development scale.
+
+slide25
+
+設定ファイルが肥大化すると､ファイルの中からクラスの設定情報を探すことが困難になり､設定ミスがあったときに､その原因を特定することも難しくなります。
+
+As the configuration file becomes enlarged, it is difficult to find class configuration data in the file, and it is also difficult to locate the cause when we make a mistake in the configuration file.
+
+slide26
+
+設定ファイルに肥大化に対する解決策の1つが､XDocletやアノテーションで、ソースコードに設定情報を埋め込む方法です。
+
+One of the solutions against the enlargement of configuration files is a way to embed the configuration data into the source code using XDoclet or annotation. 
+
+slide27
+
+それでは、XDocletのサンプルを見てみましょう。上が設定ファイルのサンプル、下がXDocletのサンプルです。基本的に記述されている情報は同じです。記述する場所が、ファイルからソースコードに移動しているだけです。それでは、XDocletのメリットは何なのでしょうか。
+
+Therefore let's take a look at this XDoclet sample. The above represents a sample of configuration files. Below is a sample of XDoclet. Basically the written information is the same. The only difference is that the place where we write configuration data has moved from the configuration file to the source code, so what's the advantage of XDoclet?
+
+slide28
+
+XDocletを使った場合､ソースコードに設定情報が書かれているので､ソースコードを見るだけで必要な情報が手に入ります。これは、大きなメリットです。ただし、デメリットもあります。
+
+When we use XDoclet, we can get the necessary information only looking at the source code, because the configuration data is written in the source code. This is a big advantage. Still there is one disadvantage as well.
+
+slide29
+
+XDocletのデメリットは､設定情報を変更する場合､ソースコードを書き換えなければいけないことです。設定ファイルを使っていれば､設定情報を変更する場合でも、ソースコードの書き換えは必要ありませんでした。これは、頭の痛い問題です。
+
+The disadvantage of XDoclet is that in case we change the configuration data we'll have to rewrite the source code.
+
+slide30
+
+設定ファイルを使っていれば､設定情報を変更する場合でも、ソースコードの書き換えは必要ありませんでした。これは、頭の痛い問題です。
+
+If we use the configuration files, even if we change the configuration data we don't need to rewrite the source code. This is a real headache.
+
+slide31
+
+XDocletは万能薬ではありません。
+
+XDoclet is not an all-powerful solution.
+
+slide32
+
+ほとんど設定ファイルを記述する必要がないというメリットと同時に､設定情報を変更する場合に､ソースコードを修正しなければならないというデメリットも発生します。
+
+On the one hand, we have the advantage that we rarely need to write configuration files. On the other hand, we have the disadvantage that if we change the configuration data we have to rewrite the source code.
+
+slide33
+
+アノテーションのメリット・デメリットもXDocletの場合と同じです。決して万能薬ではありません。それでは一体どうすればよいのでしょうか。
+
+The advantages and disadvantages of annotation are the same as those of XDoclet. Annotation is also not an all-powerful solution. So, what are we supposed to do?
+
+slide34
+
+設定ファイルを使う場合でも､XDocletやアノテーションを使う場合でも､問題は､設定情報を書き込むことで発生しています。それなら、最初から設定情報を書き込まないようにすれば､問題は発生しないでしょう。
+
+If we use configuration files or if we use XDoclet or annotation, in both cases, the problem occurs when we write the configuration data. So if we decide from the beginning not to write the configuration data, the problem will not occur.
+
+slide35
+
+この「できるだけ設定情報の書き込みをなくす」というコンセプトを私は､「Less Configuration」と呼んでいます。それでは、このコンセプトは､どうやれば実現できるのでしょうか。
+
+I call this concept of reducing the writing of configuration data as much as possible "Less Configuration". So how can we realize it?
+
+slide36
+
+「Less Configuration」を実現するためには､次の2つの考え方が重要です。最初は「Convention over Configuration」、次が「Configuration by Exception」です。
+
+To realize the "Less Configuration" concept, it's important to take into consideration the following 2 ideas:
+The first is "Convention over Configuration".
+The second is "Configuration by Exception".
+
+slide37
+
+「Convention over Configuration」は､「適切な規約を守っていれば、設定を特にしなくてもフレームワークが適切な設定をしてくれる」という考えです。
+
+"Convention over Configuration" is the idea that if we apply the proper convention, even if we don't do any special configuration, the framework will do the proper configuration for us.
+
+slide38
+
+それでは、Seasar2で実現されている「Convention over Configuration」の例をご紹介しましょう。最初の規約は､「プロパティの型をインターフェースで定義する」というものです。それでは、この規約を守ると何が得られるのでしょうか。
+
+Therefore , let's introduce the example of "Convention over Configuration" realized in Seasar2. The first convention is that the type of property is defined as the interface. So what do we get if we apply this convention?
+
+slide39
+
+プロパティの型がインターフェースの場合､Seasar2は、そのインターフェースを実装したオブジェクトをプロパティに自動的に設定します。この機能は､SpringのautowiringのbyTypeに相当します。
+
+If the type of property is interface, Seasar2 can automatically set the object implementing the interface to the property. This function corresponds to the autowiring byType in "Spring".
+
+slide40
+
+複数のオブジェクトが同じインターフェースを実装していて、Seasar2が実装オブジェクトを1つに特定できない場合の問題については､後で説明します。
+
+I'll explain later about the situation when Seasar2 can't specify one object because several objects implement the same interface.
+
+slide41
+
+また、プロパティ名とオブジェクト名が一致し､そのオブジェクトがプロパティに代入可能な場合に､Seasar2は、そのオブジェクトをプロパティに自動的に設定します。この機能は､SpringのautowiringのbyNameに相当します。
+
+Also if the property name and the object name are the same and the object is settable to the property, Seasar2 can automatically set the object to the property. That function corresponds to the autowiring byName in "Spring".
+
+slide42
+
+Seasar2は、デフォルトでプロパティの自動バインディングを行います。
+
+Seasar2 can perform the automatic binding of property in default.
+
+slide43
+
+自動的に適切なオブジェクトを設定できなかった場合に､例外を発生させたり､警告したり、無視したりすることができます。デフォルトは、警告です。
+
+When Seasar2 can't automatically set a proper object, we have the following choices: give an exception, give a warning or ignore it. The default gives a warning.
+
+slide44
+
+次の規約は､「実装クラス名に規則性を持たせる」というものです。例えば､実装クラス名は"Impl"で終わるというようにです。それでは、この規約を守ると何が得られるのでしょうか。
+
+The next convention is that we name the implemention class according to the rule. For example, it seems that the implementation class name ends in "Impl". So, what do we get if we apply this convention?
+
+slide45
+
+Seasar2は、名前が特定の規則に一致しているクラスを自動的にコンテナに登録することができます。対象となるクラスは､クラスパスに含まれていれば良く､jarファイルになっていてもいなくてもどちらでも構いません。
+
+Seasar2 can automatically register classes whose names obey specified rules into the container. If the target classes are included in the classpath, it doesn't matter if they are in the jar file or not.
+
+slide46
+
+Seasar2の自動化のおかげで､Seasar2では、開発の規模が大きくなっても､設定情報をほとんど書く必要がありません。
+
+Due to Seasar2 automation, we rarely need to write the configuration data, even if the development scale is larger.
+
+slide47
+
+それでは、前に出てきたbeans.xmlをSeasar2用に変換してみましょう。componentタグは、Springのbeanタグに相当します。FileSystemComponentAutoRegisterを設定ファイルに登録しておけば､クラスが自動的にコンテナに登録されます。
+
+Therefore, let's transform the previous "beans.xml" into Seasar2. The "component" tag corresponds to the "bean" tag in "Spring". If we register "FileSystemComponentAutoRegister" in the configuration file, classes will be automatically registered into the container.
+
+initMethodタグは、オブジェクトの初期化を行うためのものです。name属性で､メソッド名を指定できます。argタグを使い､引数を設定します。任意のメソッドを任意の引数で呼び出せるので､何の制限も無くオブジェクトを初期化できます。
+
+We can initialize an object using the initMethod tag. The method name is specifed by the name property. We can set an argugment using the arg tag. We can initialize an object without restriction, because we can invoke any method with any argument.
+
+addClassPetternメソッドを使って、自動登録するクラスを指定しています。
+
+We can specify classes to automatically register using the "addClassPattern" method.
+
+最初の引数は、パッケージ名です。子供のパッケージも再帰的に検索します。2番目の引数は､クラス名のパターンです。正規表現を使うことができます。
+
+The first argument is a package name. Child packages are searched recursively too. The second argument is a pattern of class name. We can use a regular expression.
+
+slide48
+
+今回のサンプルでは､クラスが2つしかありませんでしたが、クラスの数が増えれば増えるほど､Seasar2の自動化は威力を発揮します。
+
+We only had two classes in this sample, but the more the number of classes increases, the more powerful Seasar2 automation becomes.
+
+slide49
+
+最初にクラス名のパターンを指定しておけば､後でクラスが増えても設定ファイルに情報を追加する必要が無いのです。
+
+If we set the class name patterns from the beginning, it's not necessary to add any information to the configuration file, even if the number of classes increases.
+
+slide50
+
+XDocletやアノテーションと違って、ソースコードに設定情報を埋め込むことも無いので､設定情報の変更にも自動的に対応することができます。
+
+Unlike XDoclet and annotation, we can automatically adapt the configuration data changes, because the configuration data is not embedded in the source code.
+slide51
+
+規約という言葉からは､守らなければいけない面倒なものというイメージを受けるかもしれません。
+
+If you hear the word convention, you might get the troublesome impression that you have to obey it.
+
+しかし、Seasar2における規約は､どれも守ることが望ましいものばかりです。しかも、規約を守れば､Seasar2の自動処理によって､私たちは楽をすることができるのです。
+
+But all conventions in Seasar2 are desirable. And if we obey the conventions, Seasar2 automation will make our work much easier.
+
+slide52
+
+楽をするための規約なら､誰でも規約を守りたいと思うでしょう。これが、Seasar2における規約なのです。
+
+If the conventions make our work easier, I hope everybody would want to obey them. These are the conventions in Seasar2.
+
+slide53
+
+ほとんどの場合に､Seasar2の自動化は威力を発揮しますが､複数のオブジェクトが1つのインターフェースを実装している場合には､自動的に処理できません。そこで、必要になってくる考えが、「Configuration by Exception」です。
+
+In most cases, Seasar2 automation is more and more powerful, but if several objects implement one interface, Seasar2 automation doesn't work well. Then the necessary solution is "Configuration by Exception".
+
+slide54
+
+「Configuration by Exception」とは、「例外的な状況でのみ､明示的に設定を行う」という考え方です。「Convention over Configuration」が機能しない場合が例外的な状況です。
+
+"Configuration by Exception" is the idea that we explicitly configure the objects only in exceptional situations. When the defaults of "Convention over Configuration" don't work well, we have an exceptional situation.
+
+slide55
+
+明示的な設定には､設定ファイルやアノテーションを使います。どちらを使うのが良いのかは、後で詳しく説明します。
+
+We can explicitly configure them using either the configuration file or annotation. I would like to explain later in detail about which one we should use.
+
+slide56
+
+それでは、Seasar2におけるアノテーションを使ったサンプルをお見せしましょう。上のサンプルでは､@Bindingアノテーションを使って､オブジェクトを明示的に指定しています。@Bindingアノテーションは、Springのrefタグに相当します。
+
+Therefore, let's take a look at a sample of annotation in Seasar2. In the above sample we can explicitly specify the object using the "Binding" annotation. The "Binding" annotation corresponds to the ref tag in "Spring".
+
+下のサンプルでは､bindingType属性を使って、自動バインディングを行わないことを指定しています。
+
+In the below sample we can specify the non automatic binding using the "bindingType" property.
+
+slide57
+
+ほとんどの場合､プロパティの自動バインディングでうまくいくので、@Bindingアノテーションを使う必要はありません。例外的な場合にのみ､@Bindingアノテーションを使うようにしてください。
+
+We rarely need to use the "Binding" annotation, because the automatic binding of property works in most cases. Please use the "Binding" annotation only in exceptional cases.
+
+slide58
+
+アノテーションは､Java5から登場した技術です。それでは、Java1.4を使わなければいけない場合､アノテーションをあきらめるしかないと考えることでしょう。しかし、アノテーションをあきらめる必要はありません。
+
+Annotation is a technology which appeared in Java5. In case we have to use Java1.4, you would think we have to give up annotation. However we don't.
+
+slide59
+
+backport175というプロジェクトがあります。backport175は、Java5のアノテーションの仕様を実装していて､アノテーションをJava1.3 or 1.4でも利用可能にしています。
+
+There is a project called backport175. backport175 implements the Java 5 annotation specifications, and it makes annotation available for Java 1.3 or 1.4 platforms.
+
+Seasar2では、このbackport175を使って、Java1.3/1.4でも、アノテーションが使えるようにしています。
+
+Seasar2 makes annotation available for Java 1.4 platforms using this backport175.
+
+slide60
+
+backport175のEclipseプラグインを使って､構文チェックをおこなうことができます。
+
+If we use the eclipse backport175 plugin, we can check the syntax.
+
+slide61
+
+また、プラグインを使えば､XDoclet等を使う場合と違い、コンパイル後に何か処理を実行する必要もありません。なぜなら、コンパイル後に自動的にクラスファイルの中にアノテーションの情報を埋め込むことができるからです。
+
+Also if we use the plugin, unlike the XDoclet, we don't need to do anything after the compilation. That's because the annotation information is automatically embedded in the class file after the compilation.
+
+slide62
+
+先程のJava5のアノテーションのサンプルを、backport175バージョンに書き換えてみましょう。Javadocのコメントを使っていること以外は､ほとんど、Java5のアノテーションと同じです。
+
+Therefore, let's transform the previous sample of Java5 into backport175. Except for using the Javadoc comment, it is similar to the annotation of Java5.
+
+Java1.4のユーザもアノテーションのメリットを受けることができるのです。
+
+In this way, users of Java1.4 can accept the advantage of annotation.
+
+slide63
+
+「Convention over Configuration」を使えば､ほとんど設定情報を記述しなくてもよくなります。これはすばらしいことです。しかし、どのような設定がされているのかを知ることができないことに、不安を感じるかたもいることでしょう。
+
+When we use "Convention over Configuration", we rarely need to write configuration data. Isn't that wonderful? However you might feel a little worried, because you don't know how to configure it.
+
+slide64
+
+将来のバージョンでは､自動的に設定された情報をファイルに書き出す機能が検討されています。
+
+In the future, the function which writes the information to be set automatically in the configuraton file is considered.
+
+slide65
+
+「Convention over Configuration」による自動設定が使えない場合に､設定ファイルとアノテーションのどちらを使ったらよいのでしょうか。
+
+When we can't use automatic binding by "Convention over Configuration", which do you think it's better to use - the configuration files or annotation?
+
+slide66
+
+設定情報を書き換える可能性が高いと考えるなら、設定ファイルを使い､そうでないものはアノテーションを使いましょう。
+
+If you think that the possibility to change the configuration data is high, please use the configuration file! If this is not the case, please use annotation.
+
+slide67
+
+しかし、設定情報を書き換える可能性が高いか低いかを正しく予想することは極めて困難です。そこで、環境に依存する情報は､設定ファイルを使い､それ以外は､アノテーションを使うのが良いでしょう。
+
+It's very difficult to predict the possibility of changes to the configration data. In case of information depending on the environment you should use the configuration file, and in other cases you should use annotation.
+
+slide68
+
+環境に依存する情報の例に、データベースへの接続情報があります。これらの情報は､後から書き換える確率が高いので､設定ファイルに書くのは､適切な選択でしょう。
+
+An example of information depending on the environment is information to connect to a database. Since the probability of changing this information later is rather high, it's a wise choice to write it in the configuration file.
+
+slide69
+
+それ以外の情報は､後から書き換える確立が予想できないので､書き換えられないと仮定して､アノテーションを使います。
+
+Since we cannot predict the probability of changing other information later, we assume it should not be changed, and we use annotation.
+
+slide70
+
+頻繁に設定情報を書き換える必要が出てきたら､アノテーションからファイルに切り替えるということで十分でしょう。
+
+If you need to change the configuration data frequently, it's reason enough to change from annotation to the configuration file.
+
+slide71
+
+DIと一緒に良く用いられる技術に､AOPがあります。Seasar2では、AOPに対しても､「Convention over Configuration」を適用できます。
+
+The technology often used together with DI is AOP. In Seasar2, we also can adapt the "Convention over Configuration" for AOP.
+
+slide72
+
+AOPにおける規約は､ビジネスインターフェースを使うというものです。それでは、この規約を守ると何が得られるのでしょうか。
+
+The convention in AOP is that we use the business interface. So, what do we get if we apply this convention?
+
+slide73
+
+AOPでは、crosscutting-concernを実現するモジュールを"Advice"と呼びます。
+
+In AOP, we call a module which realizes the crosscutting-concern "Advice".
+
+slide74
+
+Seasar2ではメソッドが指定されていない場合に､あるクラスが実装しているすべてのインターフェースのメソッドが､自動的にAdviceの対象になります。
+
+In Seasar2, if we don't specify any method, all the methods of the interfaces which a class implements automatically become the targets of "Advice".
+
+slide75
+
+多くの場合において､これは、うまく機能します。もちろん、メソッド名を正規表現で指定することもできます。
+
+In most cases, this solution works well. Of cource we can also specify the method name in a regular expression.
+
+slide76
+
+それでは、AOPのサンプルを見てみましょう。最初に､includeタグを使って､aop.diconを取り込んでいます。aop.diconには、良く使われるAdviceがあらかじめ定義されています。例えば､aop.traceInterceptorはログを書き出すAdviceです。
+
+Therefore, let's take a look at an AOP sample. First, we can include "aop.dicon" using the "include" tag. In "aop.dicon", we define from the beginning the "Advice"s which we often use. For example, "aop.traceInterceptor" is the "Advice" which writes the trace log.
+
+このサンプルのように､Seasar2では、定義を複数に分割し、分割された定義を1つにまとめることができます。アスペクトを自動登録するためのクラスとして､AspectAutoRegisterクラスを登録しています。
+
+In Seasar2 as you can see in this sample, we can split the definitions into several pieces and recombine those pieces. We register the "AspectAutoRegister" class in order to automatically register the "aspect".
+
+interceptorプロパティで、Adviceを指定します。addClassPatternメソッドの使い方は､以前に出てきたComponentAutoRegisterの場合と同じです。たったこれだけの設定で､パターンに一致するすべてのクラスにAdviceを適用できます。
+
+We specify the "Advice" using the interceptor property.  We can use the addClassPattern method, the same way we use the previous "FileSystemComponentAutoRegister". With only this much configuration, we can adapt the "Advice" to all the classes that match this pattern.
+
+slide77
+
+次は、宣言的トランザクションを使うサンプルをみてみましょう。
+
+Next, let's take a look at a sample that uses declarative transactions.
+
+最初に､includeタグを使って､j2ee.diconを取り込んでいます。j2ee.diconには、トランザクション用のアドバイスがあらかじめ定義されています。例えば､j2ee.requiredは、トランザクション属性をrequiredとして処理するアドバイスです。
+
+First, we can include the "j2ee.dicon" using the "include" tag. In "j2ee.dicon", we define from the beginning the "Advice"s for transactions. For example, "j2ee.required" is the "Advice" which processes the transaction attribute as "required"
+
+slide78
+
+次は､複数のAdviceを扱うサンプルです。InterceptorChainを使って､複数のAdviceを1つにまとめることができます。
+
+The following is a sample that use several "Advice"s. If we use "InterceptorChain", we can gather together several "Advice"s into one.
+
+slide79 
+
+Seasar2のAOPは、AOP allianceに準拠しています。
+
+AOP in Seasar2 is based on the AOP alliance.
+
+slide80
+
+「Less Configuration」によって、DIはさらに進化しました。しかし、EJB3も重要です
+
+According to "Less Configuration", DI has progressed even more. Still, EJB3 is important, too.
+
+slide81
+
+EJB3の大きな特徴は次の3つだと私は考えています。
+・POJO(plain old java object)
+・アノテーションによる設定ファイルの削減
+・標準の仕様
+
+In my opinion, the three important characteristics of EJB3 are as follows:
+First, POJO(plain old java object)
+Second, the reduction of configuration files due to annotation.
+Last, Standard specification.
+
+slide82
+
+DIの良さを取り込んで､標準化されたEJB3を無視してよいはずがありません。
+
+You can't ignore the standardized EJB3 which includes the advantages of DI.
+
+slide83
+
+EoDの視点でEJB3とSeasar2を比較すると、確かにEJB3は見劣りします。なぜなら、Seasar2はアノテーションすらほとんど必要としないからです。
+
+If we compare EJB3 with Seasar2 from the viewpoint of EoD, Seasar2 certainly overshadows EJB3. That's because we rarely even need annotations in Seasar2.
+
+slide84
+
+しかし、仕様が標準化されているというのは､魅力的です。
+
+Still, the charm of EJB3 is that it's a standard specification.
+
+slide85
+
+標準の仕様にはできる限り従ったほうが良いというのが、私の方針です。それが、ユーザの資産を守るからです。そこで私は次のように考えます。
+
+It's my principle that it's better to obey the standard specifications as much as possible. That's because it protects the user's assets. Regarding this idea, I have the following thoughts.
+
+slide86
+
+EJB3という標準仕様があるJava5では、EJB3の仕様に従ったほうが良いでしょう。
+
+In Java5 which has a standard specification called EJB3, it's better to obey the EJB3 specification. Seasar2 also implements the EJB3 specification.
+
+slide87
+
+標準仕様の無いJava1.4では、「Less Configuration」による進化したDIを使ったほうが良いでしょう。
+
+In Java1.4 which doesn't have the standard specification, it's better to use DI which has progressed due to "Less Configuration".
+
+slide88
+
+EJB3のAOPは、アスペクトの自動登録機能を提供していません。それで、EJB3とSeasar2のAOPを組み合わせることもできます。
+
+AOP in EJB3 doesn't supply the automatic registration of aspect, so we can combine EJB3 and AOP in Seasar2.
+
+slide89
+
+標準だからといって劣った機能を無理に使う必要はありません。Seasar2を使って開発したアプリケーションを、Seasar2以外の環境で使うことは、ほとんどないでしょう。実際の利益を重視しましょう。
+
+We don't need to use the weak functions just because they are standard. I don't think there are too many opportunities to use the application we developed using Seasar2 outside the Seasar2 environment. Let's focus on the real advantages.
+
+slide90
+
+Seasar2のEJB3は、アプリケーションサーバ無しでも動作します。JTAやコネクションプールの実装も提供されています。スタンドアロンで動作するということはさまざななメリットがあります。
+
+EJB3 in Seasar2 can work even without the application server. JTA and connection pool implementation are supplied. There are some merits for the fact that EJB3 can stand alone.
+
+slide91
+
+Seasar2のEJB3を使えば、TomcatなどのEJB3の実装が提供されていないアプリケーションサーバでも、EJB3が利用できます。
+
+If we use EJB3 in Seasar2, we can use EJB3 even in application servers that don't have EJB3 implementation, such as Tomcat.
+
+slide92
+
+Tomcat上でEJB3を動かしたいと思っている開発者は､たくさんいるのではないかと思います。Seasar2は、その願いをかなえます。
+
+I think there are a lot of developers who want to use EJB3 in Tomcat. Seasar2 fulfils that dream.
+
+slide93
+
+WebLogicなどのJTAやコネクションプールの実装が提供されているアプリケーションサーバ上で動作させる場合は､その提供されている実装を、Seasar2で、利用することもできます。
+
+In case we use application servers which supply JTA and connection pool implementation, such as Weblogic, we can use the supplied implementation in Seasar2.
+
+slide94
+
+信頼性の高いアプリケーションを開発するためには､できる限り､自動テストできる範囲を広げることが重要です。EJB3では、Mockオブジェクトを使って、簡単に自動テストができるようになりました。
+
+In order to develop a very reliable application, it's important to enlarge the range in which we can perform the automatic tests as much as possible. In EJB3, the automatic tests have become much easier using mock objects.
+
+slide95
+
+できれば、本当のオブジェクトを使ったテストも自動化したいところです。EJB3でこれをやろうとすると、アプリケーションサーバ上で自動テストを行う必要があります。これは、Cactusのようなツールを使ったとしても、かなり面倒な作業になります。
+
+If possible, we would like to perform the automatic tests using the real object. If we try to do this in EJB3, we need to perform the automatic tests in the application server. Even if we use the tools like "Cactus", it is quite troublesome work.
+
+slide96
+
+Seasar2のEJB3はアプリケーションサーバ無しで使えるので､本当のオブジェクトを使った自動テストを簡単に行うことができます。
+
+EJB3 in Seasar2 can work even without the application server, so we can easily perform the automatic tests using the real object.
+
+slide97
+
+ほとんどのEJB3の実装では､開発したモジュールをパッケージングして､アプリケーションサーバにデプロイする必要があります。これも面倒な作業です。
+
+In most EJB3 implementations, we need to package the developed module and then deploy it in the application server. This too is troublesome work. 
+
+slide98
+
+特に､開発中は､何度もデプロイする必要があります。これは、かなり面倒な作業になります。
+
+Especially, while developing, we need to deploy many times. This is also quite troublesome work.
+
+slide99
+
+Seasar2のEJB3では、デプロイをする必要がありません。そのため、生産性が向上します。
+
+If we use EJB3 in Seasar2, we don't need to deploy, so the productivity is higher.
+
+
+slide100,101
+
+今回のセッションで一番いいたかったのは次のことです。
+これからは、"without EJB"ではなく、"with EJB3"だ。
+
+What I wanted to transmit most by this presentation is the following: From now, it's not "without EJB", it's "with EJB3".
+
+slide102
+
+Seasar FoundationのURLと私のメールアドレスは、次のとおりです。何か質問があれば､遠慮無しに連絡してください。みなさん、今日はどうもありがとうございました。
+
+You may find the Seasar Foundation URL and my e-mail address here. Please do not hesitate to contact me if you hava any questions. Thank you very much for attending this session!
