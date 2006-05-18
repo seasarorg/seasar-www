@@ -1,0 +1,595 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<!-- don't edit start -->
+<head>
+<title>Seasar - DI Container with AOP - </title>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen">
+<style type="text/css">
+<!--
+TH{
+font-size : 10pt;
+text-align : center;
+background-color : #d1f3f4;
+}
+TD{
+font-size : 10pt;
+}
+-->
+</style>
+<script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3" align="right"><a href="en/index.html"><img src="en/images/english.jpg" border="0" alt="English"></a></td>
+</tr><tr><td rowspan="2"><img src="images/top04.gif" alt="" height="49" width="235"></td>
+<td><img src="images/spacer.gif" height="30" width="78" border="0" alt="" id="menu01"></td>
+<td><img src="images/spacer.gif" height="30" width="101" border="0" alt="" id="menu02"></td>
+<td><img src="images/spacer.gif" height="30" width="110" border="0" alt="" id="menu03"></td>
+<td><img src="images/spacer.gif" height="30" width="113" border="0" alt="" id="menu04"></td>
+<td><img src="images/spacer.gif" height="30" width="109" border="0" alt="" id="menu05"></td>
+<td><img src="images/spacer.gif" height="30" width="34" border="0" alt=""></td>
+</tr><tr>
+<td colspan="6" height="19" width="545" src="images/spacer.gif" alt="" align="right">
+</td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
+<form id="search" name="search" action="http://search.seasar.org/" style="text-align: right;"><a href="http://search.seasar.org/">サイト内検索</a> <input id="search_phrase" type="text" name="phrase" />
+<input id="search_go" type="submit" value="検索">&nbsp;
+<input type="hidden" name="perpage" value="30" />
+<input type="hidden" name="enc" value="MS932" />
+</form>
+<!-- don't edit end -->
+<!-- document start -->
+<div id="welcome">
+<h2>Seasarファウンデーションにようこそ！</h2>
+<p>
+私たちSeasarファウンデーションはオープンソースという仕組みの元、開発者の
+ゆとりを実現できるプロダクトの開発と提供を通じて、ユーザと開発者とが共に
+喜びを分かち合える環境実現をお手伝いすることを目指し活動しています。
+</p>
+<p style="text-align: right; padding-right:">
+<a href="http://foundation.seasar.org/" target="_blank">特定非営利活動法人Seasarファウンデーション</a>
+</p>
+</div>
+
+<div id="news">
+<h2>ニュース</h2>
+<ul>
+<li><a href="http://www.seasar.org/wiki/">最新情報 (Seasar Wiki)</a>
+<ul>
+<li><a href="http://itpro.nikkeibp.co.jp/article/NEWS/20060514/237789/">2006/05/15 IT Pro 「これからはPHPと.NETもプッシュする」---Seasarファウンデーションが初のイベント</a>
+<li>2006/05/14 Seasar Conference 2006 Spring 終了時アンケートにご協力をお願いします
+<li>2006/05/14 Seasar Conference 2006 Spring TrackBackにご協力お願いします
+<li><a href="http://event.seasar.org/sc2006spring/">2006/04/20 Seasar Conference 2006 Spring 開催</a>
+<li><a href="http://www.seasar.org/book_info.htm">2006/02/25 「Ｓｅａｓａｒ入門　はじめてのＤＩ＆ＡＯＰ」発売</a>
+</ul>
+</ul>
+</div>
+
+<div id="products">
+<h2>プロダクト一覧</h2>
+<dl>
+<dt>カテゴリへのショートカット
+<dd><a href="#java">for Java</a> [<a href="#s2container.java">S2Container.Java</a>] [<a href="#presentaion.java">Presentation.Java</a>] [<a href="#persistence.java">Persistence.Java</a>] [<a href="#communication.java">Communication.Java</a>] [<a href="#tools.java">Tools.Java</a>] [<a href="#sandbox.java">Sandbox.Java</a>]<br>
+<a href="#dotnet">for .NET</a> [<a href="#seasar.net">Seasar.NET</a>] [<a href="#sandbox.net">Sandbox.NET</a>]<br>
+<a href="#php">for PHP</a> [<a href="#sandbox.php">Sandbox.PHP</a>]
+
+</dl>
+<h3><a name="java">for Java</a></h3>
+<ul>
+<li><a name="s2container.java">S2Container.Java</a>
+</ul>
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="1" width="200" valign="top" align="left">
+<col span="1" width="*" valign="top" align="left">
+<col span="2" width="80" valign="top" align="center">
+<tbody>
+<tr>
+<th>プロダクト</th>
+<th>説明</th>
+<th>document</th>
+<th>download</th>
+</tr>
+<tr>
+<td><a href="http://s2container.seasar.org/ja/">S2Container</a></td>
+<td>DI (Dependency Injection) とAOP (Aspect Oriented Programming) をサポートした軽量コンテナ</td>
+<td><a href="http://s2container.seasar.org/ja/">document</a></td>
+<td><a href="http://s2container.seasar.org/ja/#download">download</a></td>
+</tr>
+</tbody>
+</table>
+<!--<p><a href="versions.html">※ S2とS2DaoおよびS2JSFとのバージョンの関連について</a></p>-->
+
+<ul>
+<li><a name="presentaion.java">Presentation.Java</a>
+</ul>
+WebアプリケーションのプレゼンテーションをサポートするJavaプロダクト
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="1" width="200" valign="top" align="left">
+<col span="1" width="*" valign="top" align="left">
+<col span="2" width="80" valign="top" align="center">
+<tbody>
+<tr>
+<th>プロダクト</th>
+<th>説明</th>
+<th>document&nbsp;</th>
+<th>download&nbsp;</th>
+</tr>
+<tr>
+<td><a href="http://mayaa.seasar.org/">Mayaa</a></td>
+<td>HTMLをベースとしたテンプレートによるWEBフロントサービスエンジン</td>
+<td><a href="http://mayaa.seasar.org/documentation/index.html">document</a></td>
+<td><a href="http://mayaa.seasar.org/downloads/index.html">download</a></td>
+</tr>
+<tr>
+<td><a href="s2flex.html">S2Flex</a></td>
+<td>FlashプレーヤーからFlexを用いてS2Containerのコンポーネントを呼び出すライブラリ</td>
+<td><a href="s2flex.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=12489#12489">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2jsf.seasar.org/ja/">S2JSF</a></td>
+<td>HTMLをベースとしたテンプレートエンジンを提供するJSFベースのフレームワーク</td>
+<td><a href="http://s2jsf.seasar.org/ja/">document</a></td>
+<td><a href="http://s2jsf.seasar.org/ja/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="S2OpenAMF.html">S2OpenAMF</a></td>
+<td>FlashプレーヤーからFlash Remotingを用いてS2Containerのコンポーネントを呼び出すライブラリ</td>
+<td><a href="S2OpenAMF.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=14580#14580">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2struts.seasar.org/ja/">S2Struts</a></td>
+<td>StrutsからS2Containerのコンポーネントを呼び出すライブラリ</td>
+<td><a href="http://s2struts.seasar.org/ja/">document</a></td>
+<td><a href="http://s2struts.seasar.org/ja/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="s2tapestry.html">S2Tapestry</a></td>
+<td>TapestryからS2Containerのコンポーネントを呼び出すライブラリ</td>
+<td><a href="s2tapestry.html">document</a></td>
+<td><a href="http://sourceforge.jp/projects/seasar/files/?release_id=15348#15348">download</a></td>
+</tr>
+<tr>
+<td><a href="http://teeda.seasar.org/ja/">Teeda</a></td>
+<td>JSFの実装とDIとAOPの機能をベースとした拡張機能を提供するフレームワーク</td>
+<td><a href="http://teeda.seasar.org/ja/">document</a></td>
+<td><a href="http://teeda.seasar.org/ja/#download">download</a></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><a name="persistence.java">Persistence.Java</a>
+</ul>
+永続化をサポートするJavaプロダクト
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="1" width="200" valign="top" align="left">
+<col span="1" width="*" valign="top" align="left">
+<col span="2" width="80" valign="top" align="center">
+<tbody>
+<tr>
+<th>プロダクト</th>
+<th>説明</th>
+<th>document&nbsp;&nbsp;</th>
+<th>download&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<td><a href="http://kuina.seasar.org/">Kuina</a></td>
+<td>JPA (Java Persistence API) フレームワーク</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2dao.seasar.org/ja/index.html">S2Dao</a></td>
+<td>XMLによるマッピング定義や実装コードを必要としないO/R Mapping フレームワーク</td>
+<td><a href="http://s2dao.seasar.org/ja/">document</a></td>
+<td><a href="http://s2dao.seasar.org/ja/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2dxo.seasar.org/">S2Dxo</a></td>
+<td>プレゼンテーションモデルとドメインモデルを相互変換するライブラリ</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2hibernate.seasar.org/ja/index.html">S2Hibernate</a></td>
+<td>HibernateをS2Containerのトランザクション制御と組み合わせて使うためのライブラリ</td>
+<td><a href="http://s2hibernate.seasar.org/ja/">document</a></td>
+<td><a href="http://s2hibernate.seasar.org/ja/#download">download</a></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><a name="communication.java">Communication.Java</a>
+</ul>
+分散処理をサポートするJavaプロダクト
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="1" width="200" valign="top" align="left">
+<col span="1" width="*" valign="top" align="left">
+<col span="2" width="80" valign="top" align="center">
+<tbody>
+<tr>
+<th>プロダクト</th>
+<th>説明</th>
+<th>document&nbsp;&nbsp;</th>
+<th>&nbsp;download&nbsp;</th>
+</tr>
+<tr>
+<td><a href="http://s2axis.seasar.org/ja/">S2Axis</a></td>
+<td>Axisを用いてS2Containerのコンポーネントをリモート呼び出しするためのライブラリ</td>
+<td><a href="http://s2axis.seasar.org/ja/">document</a></td>
+<td><a href="http://s2axis.seasar.org/ja/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2remoting.seasar.org/ja/">S2Remoting</a></td>
+<td>S2Containerでリモート呼び出しを行うための共通基盤ライブラリ</td>
+<td><a href="http://s2remoting.seasar.org/ja/">document</a></td>
+<td><a href="http://s2remoting.seasar.org/ja/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2rmi.seasar.org/ja/">S2RMI</a></td>
+<td>RMIを用いてS2Containerのコンポーネントをリモート呼び出しするためのライブラリ</td>
+<td><a href="http://s2rmi.seasar.org/ja/">document</a></td>
+<td><a href="http://s2rmi.seasar.org/ja/#download">download</a></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><a name="tools.java">Tools.Java</a> (<a href="http://www.seasar.org/updates.html">Eclipse update site はこちら</a>)
+</ul>
+Javaプロダクト用の開発ツール
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="1" width="200" valign="top" align="left">
+<col span="1" width="*" valign="top" align="left">
+<col span="2" width="80" valign="top" align="center">
+<tbody>
+<tr>
+<th>プロダクト</th>
+<th>説明</th>
+<th>document&nbsp;&nbsp;</th>
+<th>&nbsp;download&nbsp;</th>
+</tr>
+<tr>
+<td><a href="http://kijimuna.seasar.org/">Kijimuna</a></td>
+<td>S2Containerのコンポーネント定義ファイル(diconファイル)を編集・検証するためのEclipseプラグイン</td>
+<td><a href="http://kijimuna.seasar.org/">document</a></td>
+<td><a href="http://kijimuna.seasar.org/#download">download</a><br>
+<a href="http://www.seasar.org/updates.html">update site</a></td>
+</tr>
+<tr>
+<td><a href="s2jsfplugin.html">S2JSFプラグイン</a></td>
+<td>S2JSFのページテンプレート(HTML)を編集・検証するためのEclipseプラグイン</td>
+<td><a href="s2jsfplugin.html">document</a></td>
+<td><a href="http://www.seasar.org/updates.html">update site</a></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><a name="sandbox.java">Sandbox.Java</a>
+</ul>
+開発中のJavaプロダクト
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="1" width="200" valign="top" align="left">
+<col span="1" width="*" valign="top" align="left">
+<col span="2" width="80" valign="top" align="center">
+<tbody>
+<tr>
+<th>プロダクト</th>
+<th>説明</th>
+<th>document&nbsp;&nbsp;</th>
+<th>download&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<td><a href="http://akabana.sandbox.seasar.org/">Akabana</a></td>
+<td>Seasarのプロダクトを組み合わせてスタックとしてテストし、提供するプロジェクト</td>
+<td>document</td>
+<td>donwload</td>
+</tr>
+<tr>
+<td><a href="http://kvasir.sandbox.seasar.org/">Kvasir</a></td>
+<td>プラガブル(pluggable)なアプリケーションプラットフォーム</td>
+<td><a href="http://kvasir.sandbox.seasar.org/">document</a></td>
+<td><a href="http://kvasir.sandbox.seasar.org/index.html#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://maihime.sandbox.seasar.org/ja/">舞姫</a></td>
+<td>Tomcatの起動を早くする為のEclipseプラグイン</td>
+<td><a href="http://maihime.sandbox.seasar.org/ja/">document</a></td>
+<td><a href="http://eclipse.seasar.org/updates/3.1/">update site</a>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="http://maven-backport175.sandbox.seasar.org/">maven-backport175-plugin</a></td>
+<td>Backport175を使用するためのMaven2プラグイン</td>
+<td><a href="http://maven-backport175.sandbox.seasar.org/">document</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="http://s2ana.sandbox.seasar.org/ja/index.html">S2AnA</a></td>
+<td>S2Containerで認証 (Authentication) と承認 (Authorization) を利用するためのライブラリ</td>
+<td><a href="http://s2ana.sandbox.seasar.org/ja/index.html">document</a></td>
+<td><a href="http://s2ana.sandbox.seasar.org/ja/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2buri.sandbox.seasar.org/">S2Buri</a></td>
+<td>ワークステート管理をするソフトウェア</td>
+<td><a href="http://s2buri.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2buri.sandbox.seasar.org/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2coffee.sandbox.seasar.org/">S2Coffee</a></td>
+<td>TuigwaaとS2Buriの共通ライブラリ</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2continuations.sandbox.seasar.org/">S2Continuations</a></td>
+<td>S2Containerのコンポーネントで「継続」を実現するためのライブラリ</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2daoplugin.sandbox.seasar.org/">S2DaoPlugin</a></td>
+<td>S2Daoでの開発を支援するEclipseプラグイン</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2directory.sandbox.seasar.org/">S2Directory</a></td>
+<td>ディレクトリサーバとの接続を容易にするためのコネクション管理機能と、ディレクトリサーバのエントリ・属性とオブジェクトを結びつけるO/D
+Mapping (Object / Directory Mapping) フレームワーク</td>
+<td><a href="http://s2directory.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2directory.sandbox.seasar.org/downloads/">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2ebi.sandbox.seasar.org/">S2Ebi</a></td>
+<td>Easy(容易な) Business(商売) Imperative(規則) なルール処理ライブラリ</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2flex2.sandbox.seasar.org/ja/">S2Flex2</a></td>
+<td>Flex2とS2Containerを連携させるためのライブラリ</td>
+<td><a href="http://s2flex2.sandbox.seasar.org/ja/">document</a></td>
+<td><a href="http://s2flex2.sandbox.seasar.org/ja/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2hessian.sandbox.seasar.org/">S2Hessian</a></td>
+<td>Hessian/Burlapを用いてS2Containerのコンポーネントをリモート呼び出しするためのライブラリ</td>
+<td><a href="http://s2hessian.sandbox.seasar.org/">document</a></td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2javelin.sandbox.seasar.org/s2javelin.html">S2Javelin</a></td>
+<td>S2ContainerのAOP機構を利用し、S2Container上のアプリケーションの動作ログを出力するツール</td>
+<td><a href="http://s2javelin.sandbox.seasar.org/s2javelin.html">document</a></td>
+<td><a href="http://s2javelin.sandbox.seasar.org/s2javelin.html#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2jca.sandbox.seasar.org/ja/">S2JCA</a></td>
+<td>JCA (J2EE Connector Architecture) 準拠のリソースアダプタを使用するための
+JCA Application Server Facilities 実装</td>
+<td><a href="http://s2jca.sandbox.seasar.org/ja/">document</a></td>
+<td><a href="http://s2jca.sandbox.seasar.org/ja/#download">&nbsp;download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2jcr.sandbox.seasar.org/ja/index.html">S2JCR</a></td>
+<td>JSR 170 (Java Content Repository) を Seasar で取得・利用するためのライブラリ</td>
+<td><a href="http://s2jcr.sandbox.seasar.org/ja/index.html">document</a></td>
+<td><a href="http://s2jcr.sandbox.seasar.org/ja/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2jface.sandbox.seasar.org/">S2JFace</a></td>
+<td>Eclipseで利用されているSWT・JFaceによる画面をXMLで記述できるようにし、GUIからSeasarコンポーネントの呼び出しを簡単に行えるようにするライブラリ</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2jms.sandbox.seasar.org/ja/">S2JMS</a></td>
+<td>非同期メッセージングを容易に送受信するためのライブラリと、受信メッセージをS2Containerのコンポーネントにバインディングするフレームワーク</td>
+<td><a href="http://s2jms.sandbox.seasar.org/ja/">document</a></td>
+<td><a href="http://s2jms.sandbox.seasar.org/ja/#download">&nbsp;download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2javelin.sandbox.seasar.org/s2jmxjavelin.html">S2JmxJavelin</a></td>
+<td>S2ContainerのAOP機構を利用し、S2Container上のアプリケーションの動作をJMX経由で公開するツール</td>
+<td><a href="http://s2javelin.sandbox.seasar.org/s2jmxjavelin.html">document</a></td>
+<td><a href="http://s2javelin.sandbox.seasar.org/s2jmxjavelin.html#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2kestrel.sandbox.seasar.org/">S2Kestrel</a></td>
+<td>S2ContainerのJ2SE1.3対応版</td>
+<td><a href="http://s2kestrel.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2kestrel.sandbox.seasar.org/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2laszlo.sandbox.seasar.org/">S2Laszlo</a></td>
+<td>FlashプレーヤーからLaszloを用いてS2Containerのコンポーネントを呼び出すライブラリ</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2portlet.sandbox.seasar.org/ja/index.html">S2Portlet</a></td>
+<td>S2Container を JSR 168 準拠のポートレット上で利用するためのライブラリ</td>
+<td><a href="http://s2portlet.sandbox.seasar.org/ja/index.html">document</a></td>
+<td><a href="http://s2portlet.sandbox.seasar.org/ja/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2sao.sandbox.seasar.org/">S2Sao</a></td>
+<td>アスペクトを使用してJavaScriptのロジックを実行するためのライブラリ</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://s2sqlmap.sandbox.seasar.org/">S2SqlMap</a></td>
+<td>iBATIS SQL Maps対応ライブラリ</td>
+<td><a href="http://s2sqlmap.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2sqlmap.sandbox.seasar.org/downloads.html">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2velocity.sandbox.seasar.org/">S2Velocity</a></td>
+<td>VelocityをSeasarと連携させるためのコンポーネント</td>
+<td><a href="http://s2velocity.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2velocity.sandbox.seasar.org/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2xwork.sandbox.seasar.org/">S2XWork</a></td>
+<td>汎用コマンドパターンフレームワークXWorkをS2Containerと連携させるためのライブラリ</td>
+<td><a href="http://s2xwork.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2xwork.sandbox.seasar.org/#doc1_32">download</a></td>
+</tr>
+<tr>
+<td><a href="http://seasar-genapp.sandbox.seasar.org/">Seasar-genapp</a></td>
+<td>S2Containerを利用する開発プロジェクトの雛形を生成するMavenプラグイン</td>
+<td>document</td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://tuigwaa.sandbox.seasar.org/">Tuigwaa</a></td>
+<td>HTML タグを知らない人が、専門知識や特別な環境なしに ブラウザだけでデータベースと連動する
+Web　アプリケーションを作るツール</td>
+<td><a href="http://tuigwaa.sandbox.seasar.org/">document</a></td>
+<td><a href="http://tuigwaa.sandbox.seasar.org/start/download.html">download</a></td>
+</tr>
+</tbody>
+</table>
+<h3><a name="dotnet">for .NET</a></h3>
+<ul>
+<li><a name="seasar.net">Seasar.NET</a>
+</ul>
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="1" width="200" valign="top" align="left">
+<col span="1" width="*" valign="top" align="left">
+<col span="2" width="80" valign="top" align="center">
+<tbody>
+<tr>
+<th>プロダクト</th>
+<th>説明</th>
+<th>document&nbsp;&nbsp;</th>
+<th>download&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<td><a href="http://s2container.net.seasar.org/">S2Container.NET</a></td>
+<td>.NET Frameworkで動作するDIとAOPをサポートした軽量コンテナ</td>
+<td><a href="http://s2container.net.seasar.org/">document</a></td>
+<td><a href="http://s2container.net.seasar.org/#download">download</a></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><a name="sandbox.net">Sandbox.NET</a>
+</ul>
+開発中の.NETプロダクト
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="1" width="200" valign="top" align="left">
+<col span="1" width="*" valign="top" align="left">
+<col span="2" width="80" valign="top" align="center">
+<tbody>
+<tr>
+<th>プロダクト</th>
+<th>説明</th>
+<th>document&nbsp;&nbsp;</th>
+<th>&nbsp;download&nbsp;</th>
+</tr>
+<tr>
+<td><a href="http://henshimosql.net.sandbox.seasar.org/">Henshimosql.NET</a></td>
+<td>.NET Framework Data Provider経由でSQLを実行、結果を確認できるWindowsアプリケーション</td>
+<td><a href="http://henshimosql.net.sandbox.seasar.org/">document</a></td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://kurohoppy.net.sandbox.seasar.org/">Kurohoppy.NET</a></td>
+<td>Webサービスから取得したデータをDataSetへマッピングするコンポーネント</td>
+<td><a href="http://kurohoppy.net.sandbox.seasar.org/">document</a></td>
+<td>download</td>
+</tr>
+<tr>
+<td><a href="http://controls.net.sandbox.seasar.org/">Seasar.Controls.NET</a></td>
+<td>.NET Frameworkで動作する便利なコントロールを含むライブラリ</td>
+<td><a href="http://controls.net.sandbox.seasar.org/">document</a></td>
+<td><a href="http://controls.net.sandbox.seasar.org/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2dao.net.sandbox.seasar.org/">S2Dao.NET</a></td>
+<td>マッピング情報をXMLに記述しないO/Rマッピングフレームワーク</td>
+<td><a href="http://s2dao.net.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2dao.net.sandbox.seasar.org/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2remoting.net.sandbox.seasar.org/">S2Remoting.NET</a></td>
+<td>分散コンポーネントを実現するライブラリ</td>
+<td><a href="http://s2remoting.net.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2remoting.net.sandbox.seasar.org/#download">download</a></td>
+</tr>
+</tbody>
+</table>
+<h3><a name="php">for PHP</a></h3>
+<ul>
+<li><a name="sandbox.php">Sandbox.PHP</a>
+</ul>
+開発中のPHPプロダクト
+<table border="1" class="table" width="740" cellspacing="0">
+<col span="1" width="200" valign="top" align="left">
+<col span="1" width="*" valign="top" align="left">
+<col span="2" width="80" valign="top" align="center">
+<tbody>
+<tr>
+<th>プロダクト</th>
+<th>説明</th>
+<th>document&nbsp;&nbsp;</th>
+<th>download&nbsp;&nbsp;</th>
+</tr>
+<tr>
+<td><a href="http://s2container.php5.sandbox.seasar.org/">S2Container.PHP5</a></td>
+<td>DI (Dependency Injection) とAOP (Aspect Oriented Programming) をサポートした S2 の PHP5 版コンテナ</td>
+<td><a href="http://s2container.php5.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2container.php5.sandbox.seasar.org/#download">download</a>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="http://kunit.jp/maple/">Maple.PHP</a></td>
+<td>PHPを使ってより効率よくWebアプリケーションを作るためのフレームワーク</td>
+<td><a href="http://kunit.jp/maple/about.html">document</a></td>
+<td><a href="http://kunit.jp/maple/download.html">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2base.php5.sandbox.seasar.org/">S2Base.PHP5</a></td>
+<td>S2Container.PHP5 と S2Dao.PHP5 を用いた開発を支援するコマンドツール</td>
+<td><a href="http://s2base.php5.sandbox.seasar.org/">document</a></td>
+<td><a href="http://s2base.php5.sandbox.seasar.org/#download">download</a></td>
+</tr>
+<tr>
+<td><a href="http://s2dao.php5.sandbox.seasar.org/">S2Dao.PHP5</a></td>
+<td>マッピング情報をXMLに記述しないO/Rマッピングフレームワーク</td>
+<td><a href="http://s2dao.php5.sandbox.seasar.org/">document</a></td>
+<td><a href="http://www.seasar.org/products.html#download">download</a></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
+<td width="766" class="copyright">&copy; Copyright The Seasar Foundation and the others 2004-2005, all rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>
