@@ -19,6 +19,20 @@ font-size : 10pt;
 -->
 </style>
 <script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+<script language="JavaScript">
+<!--
+function change_display(button, id) {
+  element = document.getElementById(id);
+  if(element.style.display == 'none'){
+    element.style.display = "block";
+    button.value = '一覧を非表示';
+  } else {
+    element.style.display = "none";
+    button.value = '一覧を表示';
+  }
+}
+//-->
+</script>
 </head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
 <td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
 <tr><td colspan="7"><img height="5" width="780" src="images/top01_b.gif" alt=""></td></tr>
@@ -276,18 +290,23 @@ Javaプロダクト用の開発ツール
 <ul>
 <li><a name="sandbox.java">Sandbox.Java</a>
 </ul>
-開発中のJavaプロダクト
-<table border="1" class="table" width="740" cellspacing="0">
+<form name="aaa">
+開発中のJavaプロダクト <input name="bbb" type="button" onclick="change_display(this, 'sandbox_java')" value="一覧を表示">
+</form>
+<div id="sandbox_java" style="display: none;">
+<table id="sandbox_java_table" border="1" class="table" width="740" cellspacing="0"">
 <col span="1" width="200" valign="top" align="left">
 <col span="1" width="*" valign="top" align="left">
 <col span="2" width="80" valign="top" align="center">
-<tbody>
+<thead>
 <tr>
 <th>プロダクト</th>
 <th>説明</th>
-<th>document&nbsp;&nbsp;</th>
-<th>download&nbsp;&nbsp;</th>
+<th>document</th>
+<th>download</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td><a href="http://akabana.sandbox.seasar.org/">Akabana</a></td>
 <td>Seasarのプロダクトを組み合わせてスタックとしてテストし、提供するプロジェクト</td>
@@ -461,6 +480,8 @@ Web　アプリケーションを作るツール</td>
 </tr>
 </tbody>
 </table>
+</div>
+
 <h3><a name="dotnet">for .NET</a></h3>
 <ul>
 <li><a name="seasar.net">Seasar.NET</a>
