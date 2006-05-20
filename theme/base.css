@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+body {
+	background-color: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	font-family: "ＭＳ Ｐゴシック", Osaka, Verdana, Arial, ヒラギノ角ゴ Pro W3, sans-serif;
+	font-size: small;
+	text-align: left;
+}
+
+a {
+	text-decoration: none;
+	color: #006699;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #FF3300;
+}
+
+img {
+	border: none;
+}
+
+img.border {
+	border: 0px solid #888;
+}
+
+h1 {
+	font-size: 120%;
+	color: #FFFFFF;
+	padding: 3px 0px 0px 10px;
+	border-bottom: 3px solid #30AFCA;
+}
+
+h2 {
+	color: #FFFFFF;
+	font-size: 110%;
+	margin: 0px;
+	padding: 3px 0px 0px 8px;
+	background-color: #308FAA;
+	border-bottom: 2px solid #000000;
+}
+
+h3 {
+	padding: 5px 2px 5px 25px;
+	font-size: 90%;
+	border-bottom: 1px solid #000000;
+	background-image: url(../images/item_large_b.gif);
+	background-repeat: no-repeat;
+}
+
+h4 {
+	margin-left: 5px;
+	padding: 5px 2px 5px 25px;
+	font-size: 90%;
+	border-bottom: 1px solid #000000;
+	background-image: url(../images/item_large_g.gif);
+	background-repeat: no-repeat;
+}
+
+h1 a, h2 a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+h1 a:hover, h2 a:hover {
+	text-decoration: underline;
+	color: #FFFFFF;
+}
+
+ul {
+	list-style-image	: url(../images/item_little.gif);
+	margin-left: 2em;
+	padding-left: 0;
+}
+
+li {
+	margin: 3px;
+}
+
+.clear {
+	clear: both;
+}
+
+.hide {
+	display: none;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	position: absolute; /* for the benefit of IE5 Mac */
+}
+
+
+/*********************************************
+ * table
+ */
+
+table {
+}
+
+td.item {
+	width: 120px;
+	background-color: #dedede;
+}
+
+table.list {
+	border: 1px solid;
+	margin: 1% 1em 1em 1%;
+}
+
+table.list th {
+	background-color: #ccc;
+	font-weight: bold;
+	border: 0px;
+	margin: 0px;
+}
+
+table.list tr.a {
+	background-color: #eee;
+	border: 0px;
+	margin: 0px;
+}
+
+table.list tr.b {
+	background-color: #fff;
+	border: 0px;
+	margin: 0px;
+}
+
+/*********************************************
+ * other
+ */
+
+.line {
+	height: 5px;
+	background: #000000 url(../images/line_blue.gif) repeat-y 0 0;
+}

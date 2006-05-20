@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+@import url("menu.css");
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 10mm;
+	font-size: 10pt;
+	text-align: left;
+}
+
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl {
+	margin-bottom: 5mm;
+	line-height: 16pt;
+}
+a {
+	color: #000000;
+	text-decoration: none;
+}
+a[href]:after {
+	content: " (" attr(href)") ";
+}
+
+h2 {
+	border: 1px dotted #30AFCA;
+	border-left: 2mm solid #30AFCA;
+	padding: 2mm 0;
+	padding-left: 2mm;
+}
+
+h3 {
+	padding-left: 2mm;
+	border-left: 1mm solid #30AFCA;
+	border-bottom: 0.2mm solid #30AFCA;
+}
+
+ul,
+ol {
+	padding-left: 5mm;
+}
+
+li {
+	margin-left: 5mm;
+}
+
+dl {
+	margin-left: 5mm;
+}
+
+dd {
+	margin-bottom: 2mm;
+}
+
+img {
+	border: none;
+}
+
+#logo {
+	text-align: center;
+	border-bottom: 1mm solid #30AFCA;
+}
+
+#tool,
+#menu,
+#navi,
+#contents_left,
+#contents_right {
+	display: none;
+}
+
+#article img.top {
+	float: left;
+	margin-right: 4mm;
+	padding: 6mm;
+}
+
+address {
+	width: 100%;
+	height: 25px;
+	bottom: 0px;
+	left: 0px;
+	font-style: normal;
+	border-top: 1mm solid #30AFCA;
+}
+
+.clear {
+	clear: both;
+}
+
+.hide {
+	display:none;
+	width: 0mm;
+	height: 0mm;
+	overflow: hidden;
+	position: absolute; /* for the benefit of IE5 Mac */
+}
