@@ -80,6 +80,13 @@ li {
 	margin: 3px;
 }
 
+pre {
+	margin: 15px;
+	padding: 5px;
+	font-size: 100%;
+	border: 1px solid #000000;
+}
+
 .clear {
 	clear: both;
 }
