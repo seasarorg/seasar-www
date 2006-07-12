@@ -143,4 +143,12 @@ a:hover {
 	color: #FF3300;
 }
 
+h2 {
+	color: #FFFFFF;
+	font-size: 110%;
+	margin: 0px;
+	padding: 3px 0px 0px 8px;
+	background-color: #308FAA;
+	border-bottom: 2px solid #000000;
+}
 

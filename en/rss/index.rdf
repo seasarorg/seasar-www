@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rdf:RDF
+  xmlns="http://purl.org/rss/1.0/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:admin="http://webns.net/mvcb/"
+  xml:lang="ja">
+  <channel rdf:about="http://www.seasar.org/en/rss/index.rdf/index.rdf">
+    <title>Seasar2</title>
+    <link>http://www.seasar.org/en/</link>
+    <dc:date>2006-07-12T17:47:50+09:00</dc:date>
+    <description>Seasar2 English page updates</description>
+    <admin:generatorAgent rdf:resource="http://www.infomaker.jp/editorlite/?v=0.92b" />
+    <image rdf:resource="http://www.seasar.org/en/images/seasar_banner.gif"/>
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="http://www.seasar.org/en/resources.html#he20060712"/>
+        <rdf:li rdf:resource="http://www.seasar.org/en/php5/index.html#he20060712"/>
+        <rdf:li rdf:resource="http://www.seasar.org/en/dotnet/index.html#he20060712"/>
+      </rdf:Seq>
+    </items>
+  </channel>
+  <image rdf:about="http://www.seasar.org/en/images/seasar_banner.gif">
+    <title>Seasar2</title>
+    <link>http://www.seasar.org/en/</link>
+    <url>http://www.seasar.org/en/images/seasar_banner.gif</url>
+  </image>
+  <item rdf:about="http://www.seasar.org/en/resources.html#he20060712">
+    <title>Add Tracking and SVN Repository pages</title>
+    <link>http://www.seasar.org/en/resources.html</link>
+    <dc:date>2006-07-12</dc:date>
+    <description></description>
+  </item>
+
+  <item rdf:about="http://www.seasar.org/en/php5/index.html#he20060712">
+    <title>S2Container.PHP5 1.1.1 released</title>
+    <link>http://www.seasar.org/en/php5/index.html</link>
+    <dc:date>2006-07-12</dc:date>
+    <description></description>
+  </item>
+
+  <item rdf:about="http://www.seasar.org/en/dotnet/index.html#he20060712">
+    <title>S2Container.NET 1.2.1 (.NET 2.0 and .NET1.1) and S2Dao.NET 0.4.4 released</title>
+    <link>http://www.seasar.org/en/dotnet/index.html</link>
+    <dc:date>2006-07-12</dc:date>
+    <description></description>
+  </item>
+
+</rdf:RDF>
