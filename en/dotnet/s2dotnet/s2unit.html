@@ -31,12 +31,12 @@
 
 <h1>Easy Testing with S2Unit.NET</h1>
 
-<p>S2Container.NET(バージョン1.1以降)では、コンテナを使った開発のテストを楽しくおこなえるようにテスティングフレームワークが組み込まれています。
-MbUnitを拡張しています。主な機能は以下のとおりです。</p>
+<p>S2Container.NET version 1.1 and higher includes testing framework to make testing much easier.
+The framework extends MbUnit and has the following features:</p>
 
 <ul>
 	<li>
-		<a href="#autoS2">S2Containerの自動作成</a>
+		<a href="#autoS2">Generation of S2Container</a>
 		<ul>
 			<li>テストメソッド(TestXxx)ごとに自動的にS2Containerを作成します。</li>
 			<li>S2Containerに対するRegister(),GetComponent(),Include()が用意されています。</li>
@@ -44,7 +44,7 @@ MbUnitを拡張しています。主な機能は以下のとおりです。</p>
 		</ul>
 	</li>
 	<li>
-		<a href="#fieldBinding">フィールドへの自動バインディング</a>
+		<a href="#fieldBinding">Binding of fields</a>
 		<ul>
 			<li>Testクラスにstatic,readonly,finalのいずれでもないフィールドがあり、
 			その名前からアンダースコア(_)を(先頭もしくは後尾から)除いた名前のコンポーネントがコンテナに存在すれば自動的にセットされます。</li>
@@ -53,7 +53,7 @@ MbUnitを拡張しています。主な機能は以下のとおりです。</p>
 		</ul>	
 	</li>
 	<li>
-		<a href="#init">テストメソッド毎の初期化・終了処理</a>
+		<a href="#init">Initial and final processes per each test method</a>
 		<ul>
 			<li>テストメソッド(TestXxx)に対応するSetUpXxx(),TearDownXxx()を定義しておくと、
 			SetUp()の後、TearDown()の前に自動的に呼び出されます。
@@ -61,7 +61,7 @@ MbUnitを拡張しています。主な機能は以下のとおりです。</p>
 		</ul>
 	</li>
 	<li>
-		<a href="#trans">トランザクションの自動制御</a>
+		<a href="#trans">Transaction control</a>
 		<ul>
 			<li>テストメソッドのS2属性にTx列挙型(Seasar.Extension.Unit.Tx)のRollback(列挙子)を指定すると、
 			テストメソッドの直前にトランザクションを開始し、テストメソッドの直後にトランザクションをロールバックするので、
@@ -69,7 +69,7 @@ MbUnitを拡張しています。主な機能は以下のとおりです。</p>
 		</ul>
 	</li>
 	<li>
-		<a href="#DBTest">データベースに対するテスト</a>
+		<a href="#DBTest">Testing with a database</a>
 		<ul>
 			<li>Reload(DataSet)を使って、データの中身をプライマリーキーでリロードして新しいDataSetを取得できます。
 			更新後の予想される結果をExcelで定義しておき、
@@ -82,10 +82,10 @@ MbUnitを拡張しています。主な機能は以下のとおりです。</p>
 	</li>
 </ul>
 
-<h2><a name="setup">S2Unit.NETのインストール</a></h2>
+<h2><a name="setup">S2Unit.NET Installation</a></h2>
 <p><a href="setup.html#S2Unit">S2Unit.NETのインストールについてはこちらを参照して下さい</a></p>
 
-<h2><a name="autoS2">S2Containerの自動作成</a></h2>
+<h2><a name="autoS2">S2Container Generation</a></h2>
 <p>
 テストクラスはSeasar.Extension.Unit.S2TestCaseを継承して作成します。
 クラスにはもちろんTestFixture属性(MbUnit.Framework.TestFixtureAttribute)も定義します。
@@ -102,7 +102,7 @@ C#
     [Test, S2]
     <span class="kwrd">public</span> <span class="kwrd">void</span> TestHogeHoge()
     {
-        <span class="rem">// テストコードを書きます</span>
+        <span class="rem">// test codes</span>
     }
 }</pre>
 VB.NET
@@ -114,7 +114,7 @@ VB.NET
    
     &lt;Test(), S2()&gt; _
     <span class="kwrd">Public</span> <span class="kwrd">sub</span> TestHogeHoge()
-        <span class="rem">' テストコードを書きます</span>
+        <span class="rem">' test codes</span>
     <span class="kwrd">End</span> <span class="kwrd">Sub</span>
     
 <span class="kwrd">End</span> Class</pre>
@@ -128,13 +128,13 @@ C#
 <pre class="csharpcode">
 <span class="kwrd">public</span> <span class="kwrd">void</span> TestHogeHoge()
 {
-    <span class="rem">// diconファイルを取り込みます</span>
+    <span class="rem">// read dicon file</span>
     Include(<span class="str">"Hoge.dicon"</span>);
     
-    <span class="rem">// S2Containerにコンポーネントを登録します</span>
+    <span class="rem">// Register components into a S2Container</span>
     Register(<span class="kwrd">typeof</span>(Hashtable));
     
-    <span class="rem">// S2Containerからコンポーネントを取得します</span>
+    <span class="rem">// Retrieve components from a S2Container</span>
     Hashtable table = (Hashtable) GetComponent(<span class="kwrd">typeof</span>(Hashtable));
 }</pre>
 VB.NET
@@ -143,13 +143,13 @@ VB.NET
 &lt;Test(), S2()&gt; _
 <span class="kwrd">Public</span> <span class="kwrd">sub</span> TestHogeHoge()
 
-    <span class="rem">' diconファイルを取り込みます</span>
+    <span class="rem">' read dicon file</span>
     Include(<span class="str">"Hoge.dicon"</span>)
     
-    <span class="rem">' S2Containerにコンポーネントを登録します</span>
+    <span class="rem">' Register components into a S2Container</span>
     Register(<span class="kwrd">typeof</span>(Hashtable))
     
-    <span class="rem">' S2Containerからコンポーネントを取得します</span>
+    <span class="rem">' Retrieve components from a S2Container</span>
     <span class="kwrd">Dim</span> table <span class="kwrd">As</span> Hashtable = <span class="kwrd">CType</span>(GetComponent(<span class="kwrd">GetType</span>(Hashtable)), Hashtable)
     
     <span class="rem">' 明示的にキャストしない場合は以下でも可</span>
@@ -197,7 +197,7 @@ VB.NET
    <span class="kwrd">End</span> <span class="kwrd">Class</span>
 <span class="kwrd">End</span> Namespace</pre>
 
-<h2><a name="fieldBinding">フィールドへの自動バインディング</a></h2>
+<h2><a name="fieldBinding">Binding of Fields</a></h2>
 <p>
 Testクラスにstatic,readonly,finalのいずれでもないフィールドがあり、 
 その名前からアンダースコア(_)を(先頭もしくは後尾から)除いた名前のコンポーネントがコンテナに存在すれば自動的にセットされます。

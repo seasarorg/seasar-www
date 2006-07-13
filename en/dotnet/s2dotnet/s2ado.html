@@ -30,54 +30,54 @@
 <a href="../index.html">S2Container.NET TOP page</a><p /><p />
 <h2>S2Container.NET S2ADO</h2>
 
-<p>SQLは自由に発行したい。でもADO.NETを使うのはめんどくさい。そんなあなたのために用意されているのが、S2ADOです。</p>
+<p>S2ADO was created to enable developers to freely execute SQL commands without the complexity of using ADO.NET.</p>
 
 <ul>
-<li><a href="#DML">データ操作</a></li>
+<li><a href="#DML">Data Manipulation</a></li>
 <ul>
-<li><a href="#BeanListDataReaderHandler">検索処理(BeanList)</a></li>
-<li><a href="#BeanDataReaderHandler">検索処理(Bean)</a></li>
-<li><a href="#DictionaryListDataReaderHandler">検索処理(DictionaryList)</a></li>
-<li><a href="#DictionaryDataReaderHandler">検索処理(Dictionary)</a></li>
-<li><a href="#BasicUpdateHandler">更新処理</a></li>
+<li><a href="#BeanListDataReaderHandler">Query(BeanList)</a></li>
+<li><a href="#BeanDataReaderHandler">Query(Bean)</a></li>
+<li><a href="#DictionaryListDataReaderHandler">Query(DictionaryList)</a></li>
+<li><a href="#DictionaryDataReaderHandler">Query(Dictionary)</a></li>
+<li><a href="#BasicUpdateHandler">Update</a></li>
 </ul>
 
-<li><a href="#NullValue">NULL値の扱い</a>
+<li><a href="#NullValue">NULL Handling</a>
 <ul>
-<li><a href="#NullValueNHibernate">NHibernateContribのNullables</a></li>
-<li><a href="#NullValueSqlTypes">System.Data.SqlTypesのNull</a></li>
-<li><a href="#NullValueNullable">System.Nullable(.NET 2.0以降)</a></li>
+<li><a href="#NullValueNHibernate">Nullables in NHibernateContrib</a></li>
+<li><a href="#NullValueSqlTypes">Null in System.Data.SqlTypes</a></li>
+<li><a href="#NullValueNullable">System.Nullable(.NET 2.0 or higher)</a></li>
 </ul>
 
-<li><a href="#ParameterMark">パラメータマーカー(@, :, ?)の扱い</a>
+<li><a href="#ParameterMark">Parameter Marker(@, :, ?)</a>
 </ul>
 
-<h2><a name="DML">データ操作</a></h2>
+<h2><a name="DML">Data Manipulation</a></h2>
 
-<h3><a name="BeanListDataReaderHandler">検索処理(BeanList)</a></h3>
-<p>さっそく複数件のobjectを検索してみましょう。検索するためにはBasicSelectHandlerを使います。次のようなプロパティが用意されています。</p>
+<h3><a name="BeanListDataReaderHandler">Query(BeanList)</a></h3>
+<p>Let's try querying several objects. To query, BasicSelectHandler is used. It has the following properties:</p>
 
 <h4>Seasar.Extension.ADO.Impl.BasicSelectHandler</h4>
 <table border="1">
 <tr bgcolor="#d1f3f4" align="center">
-<th width="96">プロパティ</th>
-<th width="156">説明</th>
-<th width="478" >S2Containerでの設定例</th>
+<th width="96">Property</th>
+<th width="156">Description</th>
+<th width="478" >S2Container Example</th>
 </tr>
 <tr>
 <td>DataSource</td>
 <td>DataSource</td>
-<td>通常自動的に設定されます。</td>
+<td>Set normally by default</td>
 </tr>
 <tr>
 <td>Sql</td>
-<td>実行したいSQL文</td>
+<td>SQL command to execute</td>
 <td>&quot;SELECT * FROM emp&quot;</td>
 </tr>
 <tr>
 <td>DataReaderHandler</td>
-<td>System.Data.IDataReaderを処理するHandlerのクラス</td>
-<td>複数件のobjectを返すためにはBeanListDataReaderHandlerを使います。
+<td>Handler class to process System.Data.IDataReader</td>
+<td>To return several objects, BeanListDataReaderHandler is used.
 <pre>&lt;component
   class=&quot;Seasar.Extension.ADO.Impl.BeanListDataReaderHandler&quot;&gt;
   &lt;arg&gt;Seasar.Examples.Reference.ADO.Employee&lt;/arg&gt;
@@ -87,7 +87,7 @@
 </tr>
 <tr>
 <td>CommandTimeout</td>
-<td>コマンドが実行されるまでの待機時間(秒)。-1の場合は特に設定は行われない。</td>
+<td>Time in seconds before command is executed. Set to -1 to disable.</td>
 <td>&nbsp;</td>
 </tr>
 </table>
@@ -148,10 +148,10 @@ namespace Seasar.Examples.Reference.ADO
 }
 </pre>
 
-<h4>実行結果</h4>
+<h4>Result:</h4>
 <pre>
-DEBUG 2006-06-19 23:26:59,890 [9] 論理的なコネクションを取得しました
-DEBUG 2006-06-19 23:26:59,984 [9] 論理的なコネクションを閉じました
+DEBUG 2006-06-19 23:26:59,890 [9] Logical connection opened
+DEBUG 2006-06-19 23:26:59,984 [9] Logical connection closed
 7369, SMITH, CLERK, 7902, 1980/12/17 0:00:00, 800, , 20, 
 7499, ALLEN, SALESMAN, 7698, 1981/02/20 0:00:00, 1600, 300, 30, 
 7521, WARD, SALESMAN, 7698, 1981/02/22 0:00:00, 1250, 500, 30, 
@@ -167,12 +167,13 @@ DEBUG 2006-06-19 23:26:59,984 [9] 論理的なコネクションを閉じました
 7902, FORD, ANALYST, 7566, 1981/12/03 0:00:00, 3000, , 20, 
 7934, MILLER, CLERK, 7782, 1982/01/23 0:00:00, 1300, , 10, 
 </pre>
-<p>
-バインド変数がある場合には、Execute(object[])の引数に指定します。今回の例はバインド変数がないので、nullを設定しています。S2Containerにコンポーネントを組み立ててもらい、後はExecute()を呼び出すだけなので楽チンです。カラム名にアンダースコア(_)が含まれている場合は、アンダースコアを除いてプロパティにマッピングされます。
+<p>If there is a bind variable, it is specified as the parameter to the Execute(object[]). Since there isn't any bind variable in this example, parameter is set to null.
+S2Container will construct the components so it is only necessary to invoke the Execute() method.
+If there is an underscore (_) included in the column name, it is mapped to a property whose name is the column name without the underscore character.
 </p>
 
-<h3><a name="BeanDataReaderHandler">検索処理(Bean)</a></h3>
-<p>1件のobjectを検索するためには上記と同様にBasicSelectHandlerを使います。BeanDataReaderHandlerを使うこと以外は上記と同様です。結果はリストではなくobjectとしてかえってきます。</p>
+<h3><a name="BeanDataReaderHandler">Query(Bean)</a></h3>
+<p>To just query 1 object, BasicSelectHandler is used in a similar manner as in the <a name="BeanListDataReaderHandler">Query(BeanList)</a> except BeanDataReaderHandler is used and an object is returned instead of a list.</p>
 
 <h4>Seasar.Examples.Reference.ADO.SelectBean.dicon</h4>
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -225,15 +226,15 @@ C#
 }
 </pre>
 
-<h4>実行結果</h4>
+<h4>Result:</h4>
 <pre>
-DEBUG 2006-06-19 23:34:54,234 [9] 論理的なコネクションを取得しました
-DEBUG 2006-06-19 23:34:54,249 [9] 論理的なコネクションを閉じました
+DEBUG 2006-06-19 23:34:54,234 [9] Logical connection opened
+DEBUG 2006-06-19 23:34:54,249 [9] Logical connection closed
 7788, SCOTT, ANALYST, 7566, 1982/12/09 0:00:00, 3000, , 20, 
 </pre>
 
-<h3><a name="DictionaryListDataReaderHandler">検索処理(DictionaryList)</a></h3>
-<p>複数件のDictionaryを取得することもできます。DataReaderHandlerにはDictionaryListDataReaderHandlerを使います。</p>
+<h3><a name="DictionaryListDataReaderHandler">Query(DictionaryList)</a></h3>
+<p>Several Dictinary may be retrieved. DictionaryListDataReaderHandler is used as a DataReaderHandler.</p>
 
 <h4>Seasar.Examples.Reference.ADO.SelectDictionaryList.dicon</h4>
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -289,10 +290,10 @@ C#
 }
 </pre>
 
-<h4>実行結果</h4>
+<h4>Result:</h4>
 <pre>
-DEBUG 2006-06-19 23:43:24,749 [9] 論理的なコネクションを取得しました
-DEBUG 2006-06-19 23:43:24,765 [9] 論理的なコネクションを閉じました
+DEBUG 2006-06-19 23:43:24,749 [9] Logical connection opened
+DEBUG 2006-06-19 23:43:24,765 [9] Logical connection closed
 ename=SMITH, hiredate=1980/12/17 0:00:00, comm=null, deptno=20, job=CLERK, empno=7369,
  sal=800.00, mgr=7902
 ename=ALLEN, hiredate=1981/02/20 0:00:00, comm=300.00, deptno=30, job=SALESMAN, empno=7499,
@@ -323,8 +324,8 @@ ename=MILLER, hiredate=1982/01/23 0:00:00, comm=null, deptno=10, job=CLERK, empn
  sal=1300.00, mgr=7782
 </pre>
 
-<h3><a name="DictionaryDataReaderHandler">検索処理(Dictionary)</a></h3>
-<p>1件のDictionaryを取得することもできます。DataReaderHandlerにはDictionaryDataReaderHandlerを使います。</p>
+<h3><a name="DictionaryDataReaderHandler">Query(Dictionary)</a></h3>
+<p>Used to retrieve 1 Dictionary. DictionaryDataReaderHandler is used as a DataReaderHandler.</p>
 
 <h4>Seasar.Examples.Reference.ADO.SelectDictionary.dicon</h4>
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -377,32 +378,32 @@ C#
 }
 </pre>
 
-<h4>実行結果</h4>
+<h4>Result:</h4>
 <pre>
-DEBUG 2006-06-19 23:46:25,640 [9] 論理的なコネクションを取得しました
-DEBUG 2006-06-19 23:46:25,656 [9] 論理的なコネクションを閉じました
+DEBUG 2006-06-19 23:46:25,640 [9] Logical connection opened
+DEBUG 2006-06-19 23:46:25,656 [9] Logical connection closed
 ename=SCOTT, hiredate=1982/12/09 0:00:00, comm=null, deptno=20, job=ANALYST, empno=7788,
  sal=3000.00, mgr=7566
 </pre>
 
-<h3><a name="BasicUpdateHandler">更新処理</a></h3>
-<p>更新するためにはBasicUpdateHandlerを使います。次のようなプロパティが用意されています。</p>
+<h3><a name="BasicUpdateHandler">Update</a></h3>
+<p>BasicUpdateHandler is used in an update. It has the following properties:</p>
 
 <h4>Seasar.Extension.ADO.Impl.BasicUpdateHandler</h4>
 <table border="1">
 <tr bgcolor="#d1f3f4" align="center">
-<th width="96">プロパティ</th>
-<th width="167">説明</th>
-<th width="461">S2Containerでの設定例</th>
+<th width="96">Property</th>
+<th width="167">Description</th>
+<th width="461">S2Container Example</th>
 </tr>
 <tr>
 <td>DataSource</td>
 <td>DataSource</td>
-<td>通常自動的に設定されます。</td>
+<td>Set normally by default</td>
 </tr>
 <tr>
 <td>Sqｌ</td>
-<td>実行したいSQL文</td>
+<td>SQL command to execute</td>
 <td>&quot;UPDATE emp SET ename = @ename WHERE empno = @empno &quot;</td>
 </tr>
 </table>
@@ -452,28 +453,27 @@ C#
     }
 }
 </pre>
-<h4>実行結果</h4>
+<h4>Result:</h4>
 <pre>
-DEBUG 2006-06-19 23:55:46,999 [9] 論理的なコネクションを取得しました
-DEBUG 2006-06-19 23:55:47,031 [9] 論理的なコネクションを閉じました
+DEBUG 2006-06-19 23:55:46,999 [9] Logical connection opened
+DEBUG 2006-06-19 23:55:47,031 [9] Logical connection closed
 1
 </pre>
 
-<h2><a name="NullValue">NULL値の扱いについて</a></h2>
-<p>NET Framework型とデータベースの列を対応させる場合、列にNULL値が格納されていると例外が発生する場合があります。
-.NET Framework型がSystem.Int32等の構造体の場合、NULLを表現できないからです。
+<h2><a name="NullValue">NULL Handling</a></h2>
+<p>When mapping NET Framework type to a database column, if there is a column with a value NULL, exception will be thrown because when .NET Framework type is of a System.Int32 construct, NULL is not possible.
 </p>
-<p>列にNULL値が格納される場合、
+<p>To use NULL in a column, refer to the following sections:
 <ul>
-<li><a href="#NullValueNHibernate">NHibernateContribのNullables</a></li>
-<li><a href="#NullValueSqlTypes">System.Data.SqlTypesのNull</a></li>
-<li><a href="#NullValueNullable">System.Nullable(.NET 2.0以降)</a></li>
+<li><a href="#NullValueNHibernate">Nullable in NHibernateContrib</a></li>
+<li><a href="#NullValueSqlTypes">Null in System.Data.SqlTypes</a></li>
+<li><a href="#NullValueNullable">System.Nullable(.NET 2.0 or higher)</a></li>
 </ul>
-の方法を使用します。データベースのデータ型と各方法の対応を次の表に示します。
+Following table shows the relationship with the above methods with the database datatypes.
 </p>
 <table border="1">
 <tr bgcolor="#d1f3f4" align="center">
-<th>System.Data.DbType</th><th>.NET Framework型</th><th>Nullables</th><th>System.Data.SqlTypes</th><th>System.Nullable</th></tr>
+<th>System.Data.DbType</th><th>.NET Framework type</th><th>Nullables</th><th>System.Data.SqlTypes</th><th>System.Nullable</th></tr>
 <tr>
 <td>Boolean</td><td>Boolean</td><td>NullableBoolean</td><td>SqlBoolean</td><td>Nullable&lt;Boolean&gt;</td></tr>
 <td>Byte</td><td>Byte</td><td>NullableByte</td><td>SqlByte</td><td>Nullable&lt;Byte&gt;</td></tr>
@@ -491,17 +491,17 @@ DEBUG 2006-06-19 23:55:47,031 [9] 論理的なコネクションを閉じました
 <td>SByte</td><td>SByte</td><td>NullableSByte</td><td>-</td><td>Nullable&lt;SByte&gt;</td></tr>
 </table>
 
-<h3><a name="NullValueNHibernate">NHibernateContribのNullables</a></h3>
-<p>NHibernateContribのNullablesを利用する場合、以下のファイル(アセンブリ)への参照を追加する必要があります。
+<h3><a name="NullValueNHibernate">Nullable in NHibernateContrib</a></h3>
+<p>To use Nullables in NHibernateContrib, add the following file (assemby) references.
 <ul>
 <li>s2container.net/lib/Nullables.dll</li>
 </ul>
 </p>
-<p>ソースファイルからは、次のように使用します。
+<p>Example usage in a source file:
 <ul>
-<li>Nullables名前空間をインポートする必要があります。</li>
-<li>NULLであるか確認する場合、HasValueプロパティを使用します。</li>
-<li>値を取り出す場合、Valueプロパティを使用します。</li>
+<li>Import namespace Nullables</li>
+<li>To check if it is a NULL, use the HasValue property</li>
+<li>To retrieve a value, use the Value property</li>
 </ul>
 </p>
 
@@ -542,12 +542,12 @@ C#
 }
 </pre>
 
-<h3><a name="NullValueSqlTypes">System.Data.SqlTypesのNull</a></h3>
-<p>ソースファイルからは、次のように使用します。
+<h3><a name="NullValueSqlTypes">Null in System.Data.SqlTypes</a></h3>
+<p>Example usage in a source file:
 <ul>
-<li>System.Data.SqlTypes名前空間をインポートする必要があります。</li>
-<li>NULLであるか確認する場合、IsNullプロパティを使用します。</li>
-<li>値を取り出す場合、Valueプロパティを使用します。</li>
+<li>Import namespace System.Data.SqlTypes</li>
+<li>To check if it is a NULL, use the IsNull property</li>
+<li>To retrieve a value, use the Value property</li>
 </ul>
 </p>
 
@@ -588,13 +588,13 @@ C#
 }
 </pre>
 
-<h3><a name="NullValueNullable">System.Nullable(.NET 2.0以降)</a></h3>
-<p>.NET Framework 2.0以降を使用している場合、Nullable型を使用することが可能です。</p>
-<p>ソースファイルからは、次のように使用します。
+<h3><a name="NullValueNullable">System.Nullable(.NET 2.0 or higher)</a></h3>
+<p>.NET Framework 2.0 or higher supports Nullable datatype.</p>
+<p>Example usage in a source file:
 <ul>
-<li>System名前空間をインポートする必要があります。</li>
-<li>NULLであるか確認する場合、HasValueプロパティを使用します。</li>
-<li>値を取り出す場合、Valueプロパティを使用します。</li>
+<li>Import namespace System</li>
+<li>To check if the value is a NULL, use the HasValue property</li>
+<li>To retrieve a value, use the Value property</li>
 </ul>
 </p>
 
@@ -635,19 +635,18 @@ C#
 }
 </pre>
 
-<h2><a name="ParameterMark">パラメータマーカー(@, :, ?)の扱い</a></h2>
-<p>SQL文に埋め込むパラメータマーカーは、ADO.NETのデータプロパイダによって異なります。
-(SqlClientは"@parmname"、OracleClientは":parmname"、OleDbは、"?"、Odbcは、"?")</p>
-<p>S2ADOではデータプロパイダごとにパラメータマーカーを自動的に切り替えるため、データプロパイダに依存しないSQL文の作成を可能にしています。
+<h2><a name="ParameterMark">Parameter Marker(@, :, ?)</a></h2>
+<p>Parameter markers that may be used in a SQL command depends on the ADO.NET data provider. As an example, SqlClient uses "@parmname", OracleClient uses ":parmname", OleDb uses "?", and Odbc uses "?".</p>
+<p>S2ADO allows SQL commands to be independent of data provider by changing parameter markers depending on a data provider used.
 </p>
-<p>例えば、次のようになります。
+<p>Following is an example:
 <table border="1">
 <tr bgcolor="#d1f3f4" align="center">
-<th>データプロバイダ</th>
-<th>SQL文</th>
+<th>Data Provider</th>
+<th>SQL command</th>
 </tr>
 <tr>
-<td>(ユーザが記述したSQL文)</td>
+<td>(User's SQL command)</td>
 <td>SELECT * FROM emp WHERE empno = @empno OR empno = :empno OR empno = ?</td>
 </tr>
 <tr>
@@ -668,7 +667,7 @@ C#
 </tr>
 </table>
 </p>
-<p>※SQL文に複数のパラメータマーカーを混在することは可能ですが､可読性の点から単一のパラメータマーカーを使用してください。</p>
+<p>Note: Several types of parameter markers may be used in a SQL command but for readability, it is recommended to use one type.</p>
 
 
 <!-- document end --><!-- don't edit start --></TD>
