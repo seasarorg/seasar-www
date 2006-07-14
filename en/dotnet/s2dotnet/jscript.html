@@ -29,133 +29,111 @@
 
 <a href="../index.html">S2Container.NET TOP page</a>
 
-<h2>JScript.NET式</h2>
+<h2>JScript.NET Script</h2>
 <ul>
-	<li><a href="#overview">概要</a></li>
-	<li><a href="#object">定義済みのオブジェクト</a></li>
-	<li><a href="#veriable">定義済みの変数</a></li>
+	<li><a href="#overview">Introduction</a></li>
+	<li><a href="#object">Defined Object</a></li>
+	<li><a href="#veriable">Defined Variable</a></li>
 	<li><a href="#example">Example</a></li>
 </ul>
 
-<h3><a name="overview">概要</a></h3>
+<h3><a name="overview">Introduction</a></h3>
 <p>
-	S2Container.NETでは、定義ファイル中に式言語として
-	<a href="http://www.gotdotnet.com/japan/team/jscript/">JScript.NET</a>
-	を利用しています。
-	定義ファイルの中で、文字列で記述した内容(式)を.NETのオブジェクトに変換することが出来ます。
-</p>
+	S2Container.NET uses <a href="http://www.gotdotnet.com/team/jscript/">JScript.NET</a>. Script used in a configuration file may be converted into a .NET object.</p>
 
 <ul>
-	<li>文字列は、&quot;hoge&quot;のように&quot;で囲みます。</li>
-	<li>charは、'a'のように'で囲みます。</li>
-	<li>数値は、123のようにそのまま記述します。</li>
-	<li>論理値(System.Boolean)は、true,falseのようにそのまま記述します。</li>
-	<li>列挙体(System.Enum)は、System.Data.DbType.Decimalのように列挙体の完全修飾名とメンバ名で記述します。(厳密には、JScript.NETの記法ではありません)</li>
-	<li>型宣言(System.Type)は、Foo.BarのようにTypeの完全修飾名を記述します。(厳密には、JScript.NETの記法ではありません)</li>
-	<li>new DateTime()のように標準ライブラリ(mscorlib.dll)のクラスや構造体のコンストラクタを呼び出すことができます。(名前空間のSystemは省略して呼び出します）</li>
+	<li>String are surrounded by &quot;'s. Example: &quot;hoge&quot;</li>
+	<li>char are surrounded by '. Example: 'a'</li>
+	<li>Integer are written as they are. Example: 123</li>
+	<li>System.Boolean have values true and false</li>
+	<li>System.Enum are written with a fully qualified name and member name. (This is noot in strictly accordance with JScript.NET convention.) Example: System.Data.DbType.Decimal</li>
+	<li>System.Type is written as fully qualified name. (This is noot in strictly accordance with JScript.NET convention.) Example: Foo.Bar</li>
+	<li>Standard library (mscorlib.dll), class, and constructors may be called. (System in the namespace is omitted.) Example: new DateTime()</li>
 </ul>
 <p>
-	詳しくは、<a href="http://msdn2.microsoft.com/ja-jp/library/x85xxsf4.aspx">
-	JScript.NETのマニュアル</a>を参照してください。
+	Refer to <a href="http://msdn2.microsoft.com/en-us/library/x85xxsf4.aspx">
+	JScript.NET Reference</a> for further details.
 </p>
 
-<h3><a name="object">定義済みのオブジェクト</a></h3>
-<p>
-	定義ファイルで指定するJScript.NET式では、あらかじめ以下のオブジェクトが使用できるようになっています。
+<h3><a name="object">Defined Object</a></h3>
+<p>Following JScript.NET script may be used in the configuration file:
 </p>
 <table border="1">
   <tr bgcolor="#d1f3f4" align="center">
-    <th>名前</th>
-    <th>型</th>
-    <th>説明</th>
+    <th>Name</th>
+    <th>Datatype/th>
+    <th>Description</th>
   </tr>
   <tr>
   	<td>container</td>
   	<td>Seasar.Framework.Container.Impl.S2ContainerImpl</td>
-  	<td>現在のdiconファイルを処理しているS2コンテナです</td>
+  	<td>S2Container currently processing the dicon file</td>
   </tr>
   <tr>
   	<td>appSettings</td>
   	<td>System.Collections.Specialized.NameValueCollection</td>
-  	<td>
-  		アプリケーション構成ファイルのappSettingsセクションの設定がセットされています
-  		(バージョン1.2.1以降)<br />
-  		.NET 2.0ではSystem.Configuration.ConfigurationManager.AppSettings
-  		の結果がセットされています<br />
-  		.NET 1.1ではSystem.Configuration.ConfigurationSettings.AppSettings
-  		の結果がセットされています
-  	</td>
+  	<td>Set in appSettings section in application configuration file (version 1.2.1 or higher).<br />
+  		In .NET 2.0, result of System.Configuration.ConfigurationManager.AppSettings is set.<br />
+  		In .NET 1.1, result of ではSystem.Configuration.ConfigurationSettings.AppSettings is set.</td>
   </tr>
   <tr>
   	<td>out</td>
   	<td>System.Console.Out</td>
-  	<td>
-  		&lt;initMethod&gt;または&lt;destroyMethod&gt;
-  		のボディの中でのみ定義されています
+  	<td>Only defined in body of 
+  		&lt;initMethod&gt; or &lt;destroyMethod&gt;
   	</td>
   </tr>
   <tr>
   	<td>err</td>
   	<td>System.Console.Error</td>
-  	<td>
-  		&lt;initMethod&gt;または&lt;destroyMethod&gt;
-  		のボディの中でのみ定義されています
+  	<td>Only defined in body of 
+  		&lt;initMethod&gt; or &lt;destroyMethod&gt;
   	</td>
   </tr>
 </table>
 
-<h3><a name="veriable">定義済みの変数</a></h3>
-<p>
-	定義ファイルで指定するJScript.NET式では、あらかじめ以下の変数が使用できるようになっています。
-</p>
+<h3><a name="veriable">Defined Variables</a></h3>
+<p>Following JScript.NET variables may be used in the configuration file:</p>
 <table border="1">
   <tr bgcolor="#d1f3f4" align="center">
-    <th width="70">名前</th>
-    <th>説明</th>
+    <th width="70">Name</th>
+    <th>Description</th>
   </tr>
   <tr>
   	<td>self</td>
-  	<td>
-		&lt;initMethod&gt;または&lt;destroyMethod&gt;
-		のボディの中でのみ定義されている変数です。
-		この変数は，現在のコンポーネント (&lt;initMethod&gt;または
-		&lt;destroyMethod&gt;を囲む&lt;component&gt;
-		要素で表されているオブジェクト) を参照します
+  	<td>Variable defined only in body of 
+		&lt;initMethod&gt; or &lt;destroyMethod&gt;.
+    This variable references the current component (object within &lt;component&gt; elements in &lt;initMethod&gt; or &lt;destroyMethod&gt;).
   	</td>
   </tr>
   </tr>
 </table>
 
 <h3><a name="example">Example</a></h3>
-<p>例としてpropertyタグのボディでJScript.NETを使用してみます。</p>
+<p>This example uses JScript.NET in the body of the property tag.</p>
 
-<h4>文字列</h4>
+<h4>String</h4>
 <!-- code formatted by http://manoli.net/csharpformat/ -->
 <pre class="csharpcode">
-<span class="kwrd">&lt;</span><span class="html">property</span> <span class="attr">name</span><span class="kwrd">="Message"</span><span class="kwrd">&gt;</span>"こんにちは"<span class="kwrd">&lt;/</span><span class="html">property</span><span class="kwrd">&gt;</span>
+<span class="kwrd">&lt;</span><span class="html">property</span> <span class="attr">name</span><span class="kwrd">="Message"</span><span class="kwrd">&gt;</span>"Hello"<span class="kwrd">&lt;/</span><span class="html">property</span><span class="kwrd">&gt;</span>
 </pre>
 
-<h4>数値</h4>
+<h4>Value</h4>
 <!-- code formatted by http://manoli.net/csharpformat/ -->
 <pre class="csharpcode">
 <span class="kwrd">&lt;</span><span class="html">property</span> <span class="attr">name</span><span class="kwrd">="Pi"</span><span class="kwrd">&gt;</span>3.14<span class="kwrd">&lt;/</span><span class="html">property</span><span class="kwrd">&gt;</span>
 </pre>
 
-<h4>S2コンテナ</h4>
-<p>
-	S2コンテナにMessageと名前が付けられたHashtableが登録されており、
-	"Hello"というキーでセットされている値を取り出す例です。
+<h4>S2Container</h4>
+<p>This example retrieves value assigned to the key "Hello" from the Hashtable named "Message" in the S2Container.
 </p>
 <!-- code formatted by http://manoli.net/csharpformat/ -->
 <pre class="csharpcode">
 <span class="kwrd">&lt;</span><span class="html">property</span> <span class="attr">name</span><span class="kwrd">="Message"</span><span class="kwrd">&gt;</span>container.GetComponent("Message")["Hello"]<span class="kwrd">&lt;/</span><span class="html">property</span><span class="kwrd">&gt;</span>
 </pre>
 
-<h4>アプリケーション構成ファイル</h4>
-<p>
-	アプリケーション構成ファイルに以下の設定がされており、
-	"message"というキーでセットされている値を取り出す例です。
-</p>
+<h4>Application Configuration File</h4>
+<p>This example retrieves value assigned to the key "message" when application configuratin file is defined as below:</p>
 
 <!-- code formatted by http://manoli.net/csharpformat/ -->
 <pre class="csharpcode">

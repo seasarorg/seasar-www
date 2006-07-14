@@ -33,39 +33,30 @@
 <p>
 This page explain on S2Windows.NET WindowsForm Page Flow Control.
 </p>
-<p>
-一般に、WindowsFormの画面遷移を制御するには、それぞれのWindowsFormのメソッドの中で呼び出すWindowsFormのオブジェクトを生成し、表示してきました。
+<p>Usually to control page flow, object is created within a WindowsForm method.
 </p>
-<p>
-そこを、WindowsFormや画面遷移をDIするためには次のようにします。
-</p>
+<p>Following are steps necessary to use WindowsForm and page flow with DI:</p>
 
 <ul>
-<li><a href="#interface">画面遷移用インターフェイスを用意する</a></li>
-<li><a href="#startup">起動用クラスを用意する</a></li>
-<li><a href="#dicon">diconファイルの修正</a></li>
+<li><a href="#interface">Setting up Page Flow Control Interface</a></li>
+<li><a href="#startup">Readying executable class</a></li>
+<li><a href="#dicon">Editing a dicon file</a></li>
 </ul>
 
 <p>
 <span style="color:red;font-weight:bold;">
-S2Windows.NETを使用するときには、アプリケーション構成ファイルの&lt;assemblys&gt;にアセンブリ(Seasar.Windows)を指定します。
+To use S2Windows.NET, set assembly (Seasar.Windows) at &lt;assemblys&gt; in the application configuration file.
 </span>
 </p>
 <h2><a name="interface">Setting up Page Flow Control Interface</a></h2>
 
-<p>
-実行用ファイルを作成するプロジェクトにインターフェイスを追加します。
-</p>
-<p>
-そして、WindowsFormを呼び出すメソッドを追加します。このメソッドを取り決めた命名規則に従って命名しておくと、
-下記のdiconファイルを設定するときに楽になります。
-</p>
-<p>
-Seasar.Windows.Attr.TargetForm属性を使ってメソッドに表示するフォームを設定します。
-</p>
-<p>
-IDは引数の例で、フォームのIDプロパティに引数の値がセットされます。つまり、引数と同名のプロパティをフォームに用意していると引数の値をセットします。メソッドからの戻り値はvoidかDialogResultに対応しています。
-</p>
+<p>Add an interface to the project which contains the executable file.</p>
+
+<p>Add method that calls WindowsForm. Naming this method based on the convention will make dicon file setting easier.</p>
+
+<p>Use Seasar.Windows.Attr.TargetForm attribute to set form to a method.</p>
+
+<p>ID is just an example of a argument. Value of the argument is set to the form ID property. In other words, define a property on the form with the same name as the argument so the value will be set. Datatype of the return value will be either void or DialogResult.</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -83,15 +74,12 @@ VB.NET
     &lt;TargetForm(<span class="kwrd">GetType</span>(FrmHoge), ModalType.Modal)&gt; <span class="kwrd">Sub</span> ShowHoge(<span class="kwrd">ByVal</span> ID <span class="kwrd">As</span> Integer)
 <span class="kwrd">End</span> <span class="kwrd">Interface</span>
 </pre>
-<p>
-TargetForm属性の最初の引数は遷移先WindowsFormのtypeを指定します。二番目の引数はWindowsFormのモーダルタイプを指定します。
+<p>The first argument to the TargetForm attribute is the type of WindowsForm to move to. The second argument is the modal type of the WindowsForm.
 </p>
 
-<h2><a name="startup">起動用クラスを用意する</a></h2>
-<p>
-実行ファイルのプロジェクトにアプリケーション起動用クラスを用意します。通常、プロジェクトの生成時に作られる最初のフォームからMain文を
-移してくればいいでしょう。もちろん、プロジェクトのスタートアップオブジェクトもこの起動用クラスに変更します。
-</p>
+<h2><a name="startup">Readying executable class</a></h2>
+<p>Set the project of the executable file to the application execution class.
+This can be done by moving the Main statement from the default form created when the project is created. Project startup object should, also, be changed to this executable class.</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -131,43 +119,33 @@ C#
 
 <h2><a name="dicon">Editing dicon File</a></h2>
 
+<p>Set WindowsForm, ApplicationContext setting, and page flow control in the dicon file.</p>
 <p>
-diconファイルにWindowsForm、ApplicationContextの設定、AOPによる画面遷移コントロールを設定します。
-</p>
-<p>
-WindowsFormの設定は次のように行います。
+WindowsForm is set as follows:
 </p>
 <pre>
     &lt;component name="frmHoge" class="Seasar.Windows.Examples.FrmHoge" /&gt;
 </pre>
-<p>
-WindowsFormをModalessで表示するときには、該当するWindowsFormのinstance属性にはprototypeを指定します。そうしないと、
-WindowsFormを閉じて、再度表示されなくなります。
-</p>
-<p>
-起動用クラスで使うApplicationContextの設定は次のように行います。
-</p>
+<p>To set WindowsForm to be Modaless, set instance attribute of the WindowsForm to "prototype". Otherwise, the window can not be reopened once the WindowsForm is closed.</p>
+<p>ApplicationContext setting in executable class is set as follows:</p>
 <pre>
     &lt;component name="AppContext" class="Seasar.Windows.S2ApplicationContext" &gt;
        &lt;arg&gt;container&lt;/arg&gt;
-       <span style="color:green;font-weight:bold;">&lt;!-- MainFormを初期起動フォームに変更する --&gt;</span>
+       <span style="color:green;font-weight:bold;">&lt;!-- change MainForm to initial startup form --&gt;</span>
        &lt;property name="MainForm"&gt;frmHoge&lt;/property&gt;
     &lt;/component&gt;
 </pre>
-<p>
-AOPによる画面遷移の設定は次のように行います。画面遷移用インターフェイスのメソッドに対し、Seasar.Windows.AOP.Interceptors.FormInterceptorでpointcutを設定します。
+<p>Page flow control is set using AOP as follows. Set pointcut to Seasar.Windows.AOP.Interceptors.FormInterceptor of the page flow interface method.
 </p>
 <pre>
     &lt;component name="Dispatcher" class="Seasar.Windows.Examples.IFormDispatcher"&gt;
-        <span style="color:green;font-weight:bold;">&lt;!-- pointcutは命名規則に従ってつけたメソッド名を正規表現で表示する --&gt;</span>
+        <span style="color:green;font-weight:bold;">&lt;!-- display regular expression method name conforming to pointcut naming convention --&gt;</span>
         &lt;aspect pointcut="Show.*"&gt;
             &lt;component class="Seasar.Windows.AOP.Interceptors.FormInterceptor" /&gt;
         &lt;/aspect&gt;
     &lt;/component&gt;
 </pre>
-<p>
-上記のWindowsFormを設定したdiconファイルとDao等を設定したS2Unit.NETで使うdiconファイルで分けておいた方が、S2Unit.NETを使用する場合、テストに不要なWindowsFormのオブジェクトをS2Container.NETが生成しないで済みます。
-</p>
+<p>Separate the WindowsForm dicon file from the Dao S2Unit.NET dicon file so WindowsForm objects will not be created during tests with S2Unit.NET.</p>
 
 <h2><a name="utility">WindowsForm Utility Class</a></h3>
 
