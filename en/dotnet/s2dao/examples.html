@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="../../seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="../../seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="../../images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="../../images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="../../images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="../../images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="../../images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="../../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="../../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="../../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="../../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="../../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="../../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="../../images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="../../images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+<a href="index.html">S2Dao.NET TOP page</a>
+            <h1>S2Dao.NET - Examples (S2Dao.NET-0.10)</h1>
+            <H2>Introduction</H2>
+            <P>Let's try out S2Dao.NET by running a sample program included with S2Dao.NET.</P>
+            <H2>Requirements:</H2>
+Following software are required to run the sample program:
+<UL>
+<LI>SQL Server 2000 or <A href="http://www.microsoft.com/downloads/details.aspx?FamilyID=a0dac778-60a6-4b11-8aa8-bf12261a303a&DisplayLang=en">MSDE 2000</A>
+<LI>Microsoft Visual Studio .NET 2003
+<LI><A href="http://www.seasar.org/en/dotnet/index.html">s2dotnet</A>
+</UL>
+            <H2>Preparing the database</H2>
+            <P>The sample program requires SQL Server 2000 or <A href="http://www.microsoft.com/downloads/details.aspx?FamilyID=a0dac778-60a6-4b11-8aa8-bf12261a303a&DisplayLang=en">MSDE 2000</A>.</P>
+            <P>First, create database "s2dotnetdemo" in the SQL Server. The sample program will use this database.</P>
+            <P>To create the "s2dotnetdemo" database, execute the setUpDemo.bat script file in the source/S2Dao.NET.Examples/data/ folder. This script file will execute the Demo.sql sql script file included in the same folder. If the script completes without an error, "s2dotnetdemo" database should be created.</P>
+            <P>The samples uses Windows authentication to login to the SQL Server. Before running the sample program, grant Windows user that will execute the sample program read privilege (db_datareader role) and write privilege (db_datawriter role).</P>
+            <H2>Setup</H2>
+            <P>Following are steps to use the sample with Microsoft Visual Studio .NET 2003.</P>
+            <P>Start Visual Studio and open source/S2Dao.NET.sln.</P>
+            <H3>Setting Startup Project</H3>
+            <P>Set the sample program as a startup project.</P>
+            <P>Set S2Dao.NET.Examples project as a startup project.
+            (To set S2Dao.NET.Examples as a startup project, right click on S2Dao.NET.Examples project from the Solution Explorer and select "Set as StartUp Project".)</P>
+            <H3>SQL Server Setup</H3>
+            <P>Edit easar.Dao.Examples/Ex.dicon file in the S2Dao.NET.Examples project project.</P>
+            <P>Set [ConnectionString] property in [SqlDataSource] component to SQL Server database connection string. Change the "Server" in the database connection to the SQL Server instance name or to the network address of the SQL Server.<PRE>&lt;component name="SqlDataSource" class="Seasar.Extension.Tx.Impl.TxDataSource"&gt;
+    &lt;property name="DataProvider"&gt;Ex.SqlClient&lt;/property&gt;
+    &lt;property name="ConnectionString"&gt;
+        "Server=<SPAN style="FONT-WEIGHT: bold; COLOR: red">SQLServer instance name</SPAN>;database=s2dotnetdemo;Integrated Security=SSPI"
+    &lt;/property&gt;
+&lt;/component&gt;
+</PRE>
+            <P></P>
+            <H2>Running the Sample</H2>
+            <P>After completing the above setup setup, sample program may be execute.</P>
+            <P>Either build the project and execute the S2Dao.NET.Examples.exe or run the program in debug mode from Visual Studio. ExamplesExplorer will be executed to try out S2Dao.NET.</P>
+            <P>Operations supported by the installed S2Dao.NET are listed in the left side. When an operation is selected and executed from the left pane, result of the operation is displayed in the right pane.</P>
+            <P>The right pane has 3 tabs to display result log (ResultConsole), content of dicon file used to execute the operation (DiconConsole), and the source code (CodeConsole). Select on the tab to display the corresponding information.</P><IMG 
+            src="../images/examples01.png"> <!-- document end --><!-- don't edit start --></TD>
+          <TD width=14><IMG height=14 alt="" 
+            src="../../images/spacer.gif" width=14></TD></TR>
+        <TR>
+          <TD width=14><IMG height=30 alt="" 
+            src="../../images/spacer.gif" width=14></TD>
+          <TD width=766><IMG height=30 alt="" 
+            src="../../images/spacer.gif" width=592></TD></TR>
+        <TR>
+          <TD width=14><IMG height=14 alt="" 
+            src="../../images/spacer.gif" width=14></TD>
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=736><TR><TD align="left">Trans. by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2006, The Seasar Foundation and 
+            the others. All rights reserved.</TD></TR></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD class=backright vAlign=top align=left>&nbsp;</TD></TR>
+  <TR>
+    <TD class=backunder vAlign=top align=left width=780 height=16>&nbsp;</TD>
+    <TD class=backcorner vAlign=top align=left 
+height=16>&nbsp;</TD></TR></TBODY></TABLE><!-- don't edit end --></BODY></HTML>

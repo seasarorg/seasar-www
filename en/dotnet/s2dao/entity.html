@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- don't edit start -->
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="../../seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="../../images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="../../images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="../../images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3"><img height="117" width="256" src="../../images/spacer.gif" alt=""></td>
+</tr><tr><td rowspan="2"><img src="../../images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="../../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="../../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="../../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="../../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="../../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="../../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="../../images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="../../images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end --><!-- document start -->
+
+<a href="index.html">S2Dao.NET TOP page</a>
+
+<h1>S2Dao.NET - Entity Class</h1>
+
+<p>
+	Entityクラスはテーブルとの関連付けに使用します。
+	Entityクラスにはテーブルのカラムとマッピングするためのプロパティを実装します。
+</p>
+
+<ul>
+	<li><a href="#property">プロパティの実装</a></li>
+</ul>
+
+<p>
+	場合によってはEntityクラスに以下の属性の指定が必要になります。S2Dao.NETで使用する属性は Seasar.Dao.Attrs名前空間にあります。
+</p>
+
+<ul>
+	<li><a href="#table">テーブルとの関連付けを行うTable属性</a></li>
+	<li><a href="#column">カラムとの関連付けを行うColumn属性</a></li>
+	<li><a href="#n1">別テーブルとの結合を指定するRelno属性, Relkeys属性(N:1マッピング)</a></li>
+	<li><a href="#id">IDの自動生成を指定するID属性</a></li>
+	<li><a href="#noPersistent">永続化されないカラムを指定するNoPersistentProps属性</a></li>
+	<li><a href="#versionNo">VersionNoによる排他制御とVersionNoProperty属性</a></li>
+	<li><a href="#timestamp">Timestampによる排他制御とTimestampProperty属性</a></li>
+</ul>
+
+<h2><a name="property">プロパティの実装</a></h2>
+
+<p>Entityクラスにはテーブルのカラムに対応したフィールドとプロパティを宣言・実装します。クラス名（名前空間名を除く）は可能であればテーブル名と同じに、
+プロパティ名は可能であればテーブルのカラム名と同じにすると良いでしょう。</p>
+<p>カラムがNull可の場合、プリミティブ型（System.Int32等）を指定するとNullの際、0（ゼロ）が返されます。
+Nullを扱うためにはSystem.Data.SqlTypes名前空間のデータ型、もしくは
+<a href="http://nhibernate.sourceforge.net/nh-docs/html/Nullables.html">NHibernateのNullables</a>
+のデータ型を指定して下さい。Nullables.dllは配布物に含まれています。
+.NET Framework 2.0からのnull許容型（System.Nullable構造体）には現在対応しておりません。</p>
+<p>例えば、EMPテーブルに関連付くEntityクラスは次のようになります。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+<span class="kwrd">using</span> System;
+<span class="kwrd">using</span> Seasar.Dao.Attrs;
+
+<span class="kwrd">namespace</span> MyNamespace
+{
+    [Table(<span class="str">"EMP"</span>)]
+    <span class="kwrd">public</span> <span class="kwrd">class</span> Employee
+    {
+        <span class="kwrd">private</span> <span class="kwrd">int</span> empno;
+        <span class="kwrd">private</span> <span class="kwrd">string</span> ename;
+        <span class="kwrd">private</span> <span class="kwrd">short</span> deptnum;
+
+        <span class="kwrd">public</span> Employee()
+        {
+        }
+        <span class="kwrd">public</span> <span class="kwrd">int</span> Empno
+        {
+            set { empno = <span class="kwrd">value</span>; }
+            get { <span class="kwrd">return</span> empno; }
+        }
+
+        <span class="kwrd">public</span> <span class="kwrd">string</span> Ename
+        {
+            set { ename = <span class="kwrd">value</span>; }
+            get { <span class="kwrd">return</span> ename; }
+        }
+
+        <span class="kwrd">public</span> <span class="kwrd">short</span> Deptnum
+        {
+            set { deptnum = <span class="kwrd">value</span>; }
+            get { <span class="kwrd">return</span> deptnum; }
+        }
+    }
+}</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+<span class="kwrd">Imports</span> System
+<span class="kwrd">Imports</span> Seasar.Dao.Attrs
+
+<span class="kwrd">Namespace</span> MyNamespace
+   &lt;Table(<span class="str">"EMP"</span>)&gt; _
+   <span class="kwrd">Public</span> <span class="kwrd">Class</span> Employee
+      <span class="kwrd">Private</span> empno <span class="kwrd">As</span> <span class="kwrd">Integer</span>
+      <span class="kwrd">Private</span> ename <span class="kwrd">As</span> <span class="kwrd">String</span>
+      <span class="kwrd">Private</span> deptnum <span class="kwrd">As</span> <span class="kwrd">Short</span>
+      
+      
+      <span class="kwrd">Public</span> <span class="kwrd">Sub</span> <span class="kwrd">New</span>()
+      <span class="kwrd">End</span> <span class="kwrd">Sub</span> <span class="rem">'New</span>
+      
+      <span class="kwrd">Public</span> <span class="kwrd">Property</span> Empno() <span class="kwrd">As</span> <span class="kwrd">Integer</span>
+         <span class="kwrd">Get</span>
+            <span class="kwrd">Return</span> empno
+         <span class="kwrd">End</span> <span class="kwrd">Get</span>
+         <span class="kwrd">Set</span>
+            empno = value
+         <span class="kwrd">End</span> <span class="kwrd">Set</span>
+      <span class="kwrd">End</span> <span class="kwrd">Property</span>
+      
+      
+      <span class="kwrd">Public</span> <span class="kwrd">Property</span> Ename() <span class="kwrd">As</span> <span class="kwrd">String</span>
+         <span class="kwrd">Get</span>
+            <span class="kwrd">Return</span> ename
+         <span class="kwrd">End</span> <span class="kwrd">Get</span>
+         <span class="kwrd">Set</span>
+            ename = value
+         <span class="kwrd">End</span> <span class="kwrd">Set</span>
+      <span class="kwrd">End</span> <span class="kwrd">Property</span>
+      
+      
+      <span class="kwrd">Public</span> <span class="kwrd">Property</span> Deptnum() <span class="kwrd">As</span> <span class="kwrd">Short</span>
+         <span class="kwrd">Get</span>
+            <span class="kwrd">Return</span> deptnum
+         <span class="kwrd">End</span> <span class="kwrd">Get</span>
+         <span class="kwrd">Set</span>
+            deptnum = value
+         <span class="kwrd">End</span> <span class="kwrd">Set</span>
+      <span class="kwrd">End</span> <span class="kwrd">Property</span>
+
+   <span class="kwrd">End</span> <span class="kwrd">Class</span>
+<span class="kwrd">End</span> Namespace</pre>
+
+<h2><a name="table">テーブルとの関連付けを行うTable属性</a></h2>
+
+<p>テーブルとの関連付けはTable属性を使用します。Table属性はクラスに指定します。
+Table属性にはテーブル名を指定します。スキーマ名も指定する場合は"<span class="italic">スキーマ名.テーブル名</span>"と指定します。</p>
+<p>※ クラス名（名前空間名は除く）とテーブル名が一致（大文字小文字は区別しない）する場合は、Table属性を省略することが出来ます。</p>
+<p>EMPテーブルの場合は以下のようになります。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[Table(<span class="str">"EMP"</span>)]
+<span class="kwrd">public</span> <span class="kwrd">class</span> Employee</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;Table(<span class="str">"EMP"</span>)&gt; _
+<span class="kwrd">Public</span> <span class="kwrd">Class</span> Employee</pre>
+
+<h2><a name="column">カラムとの関連付けを行うColumn属性</a></h2>
+
+<p>テーブルのカラムとの関連付けはColumn属性を使用します。Column属性はプロパティに指定します。Column属性にはカラム名を指定します。</p>
+<p>※ プロパティ名とカラム名が一致（大文字小文字は区別しない）する場合は、Column属性を省略することが出来ます。
+テーブルに存在しないプロパティは自動的に無視されます。</p>
+<p>EmployeeNoというプロパティにEMPNOカラムを関連付ける場合は以下のようになります。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[Column(<span class="str">"EMPNO"</span>)]
+<span class="kwrd">public</span> <span class="kwrd">int</span> EmployeeNo
+{
+   set { _employeeNo = <span class="kwrd">value</span>; }
+   get { <span class="kwrd">return</span> _employeeNo; }
+}</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;Column(<span class="str">"EMPNO"</span>)&gt; _
+<span class="kwrd">Public</span> <span class="kwrd">Property</span> EmployeeNo() <span class="kwrd">As</span> <span class="kwrd">Integer</span>
+   <span class="kwrd">Get</span>
+      <span class="kwrd">Return</span> _employeeNo
+   <span class="kwrd">End</span> <span class="kwrd">Get</span>
+   <span class="kwrd">Set</span>
+      _employeeNo = value
+   <span class="kwrd">End</span> <span class="kwrd">Set</span>
+<span class="kwrd">End</span> Property</pre>
+
+<h2><a name="n1">別テーブルとの結合を指定するRelno属性, Relkeys属性(N:1マッピング)</a></h2>
+
+<p>N:1マッピングとは、複数の従業員の行に1つの部署の行が関連付けられるような場合のマッピングです。
+N:1マッピングを利用するには、Relno属性とRelkeys属性をそれぞれ指定する必要があります。</p>
+<p>Relno属性とRelkeys属性は結合先となるEntityクラス型で作成したプロパティに指定します。</p>
+<p>Relno属性はN:1マッピングの0(ゼロ)から始まる連番を指定します。</p>
+<p>例えば、AAAのテーブルにBBB, CCCのテーブルがN:1マッピングされるとするとBBBのRelno属性には0を、
+CCCのRelno属性には1を指定します。</p>
+<p>また、Relno属性は結果セットに含まれているカラムが、どのテーブルに属しているのかを判定することにも使われます。</p>
+<p>例えば、SELECT ..., BBB.HOGE AS HOGE_0, ... FROM AAA, BBB ...のようなSELECT文があった場合、
+HOGE_0はBBBテーブルに含まれているHOGEカラムであると認識され、結果が結合先のEntityクラスの対応するプロパティにセットされます。</p>
+<p>N:1マッピングのキーはRelkeys属性で指定します。キーが複数ある場合には、カンマ(,)で区切ります。
+例えば "mykey1:yourkey1,myke2:yourkey2"のようにします。</p>
+<p>EMPテーブルのDEPTNUMカラムとDEPTテーブルのDEPTNOを関連付ける場合は以下のようになります。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[Relno(0), Relkeys(<span class="str">"DEPTNUM:DEPTNO"</span>)]
+<span class="kwrd">public</span> Department Department
+{
+   set { _department = <span class="kwrd">value</span>; }
+   get { <span class="kwrd">return</span> _department; }
+}</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;Relno(0), Relkeys(<span class="str">"DEPTNUM:DEPTNO"</span>)&gt; _
+<span class="kwrd">Public</span> <span class="kwrd">Property</span> Department() <span class="kwrd">As</span> Department
+   <span class="kwrd">Get</span>
+      <span class="kwrd">Return</span> _department
+   <span class="kwrd">End</span> <span class="kwrd">Get</span>
+   <span class="kwrd">Set</span>
+      _department = value
+   <span class="kwrd">End</span> <span class="kwrd">Set</span>
+<span class="kwrd">End</span> Property</pre>
+
+<p>1側のテーブルのカラム名がN側のテーブルのカラム名に等しい場合は、1側のテーブルのカラム名を省略することが出来ます。
+その場合は以下のように定義します。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[Relno(0), Relkeys(<span class="str">"DEPTNO"</span>)]
+</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;Relno(0), Relkeys(<span class="str">"DEPTNO"</span>)&gt;
+</pre>
+
+<p>また1側のテーブルのカラム名とN側のテーブルのカラム名が等しく、1側のテーブルのカラム名がプライマリキーの場合、
+Relkeys属性を省略することが出来ます。</p>
+
+<h2><a name="id">IDの自動生成を指定するID属性</a></h2>
+<p>ID（プライマリキー）をRDBMSに自動生成させて、自動生成させた値をEntityに自動的に設定することが出来ます。
+そのために使うのが、ID属性です。ID属性を指定してS2Dao.NETにInsert文を作成させた場合、
+引数で渡したEntityのID属性が指定されたプロパティに、RDBMSによって自動生成された値がセットされます。
+<span style="color:red;">ただしID属性を指定した場合は<a href="http://s2container.net.seasar.org/tx.html#LocalTx">
+ローカルトランザクション</a>を使用する必要があります。</a></p>
+<p>ID属性はプロパティに指定します。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[ID(<span class="str">"identity"</span>)]
+<span class="kwrd">public</span> <span class="kwrd">int</span> ID
+{
+   set { _id = <span class="kwrd">value</span>; }
+   get { <span class="kwrd">return</span> _id; }
+}
+</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;ID(<span class="str">"identity"</span>)&gt; _
+<span class="kwrd">Public</span> <span class="kwrd">Property</span> ID() <span class="kwrd">As</span> <span class="kwrd">Integer</span>
+   <span class="kwrd">Get</span>
+      <span class="kwrd">Return</span> _id
+   <span class="kwrd">End</span> <span class="kwrd">Get</span>
+   <span class="kwrd">Set</span>
+      _id = value
+   <span class="kwrd">End</span> <span class="kwrd">Set</span>
+<span class="kwrd">End</span> Property</pre>
+
+<p>SEQUENCEを使うことも出来ます。myseqの部分は、実際のSEQUENCEに置き換えて下さい。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[ID(<span class="str">"sequence"</span>, <span class="str">"myseq"</span>)]</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;ID(<span class="str">"sequence"</span>, <span class="str">"myseq"</span>)&gt;</pre>
+
+<p>手動でIDを設定する場合は、何も指定する必要はありません。テーブルのプライマリキーの情報はテーブル定義より自動的に取得されます。
+また、明示的に"assigned"を指定することも出来ます。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[ID(<span class="str">"assigned"</span>)]</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;ID(<span class="str">"assigned"</span>)&gt;</pre>
+
+<h2><a name="noPersistent">永続化されないカラムを指定するNoPersistentProps属性</a></h2>
+
+<p>Entityクラスのプロパティが永続化(テーブルとマッピング)の対象かどうかという情報は、
+テーブルの定義より自動的に取得されます。また、明示的にNoPersistentProps属性を使って永続化したくないプロパティを指定することもできます。</p>
+<p>NoPersistentProps属性はクラスに指定します。引数に永続化しないプロパティ名を指定します。
+引数は可変個引数となっており、複数のプロパティ名を指定することが出来ます。（C#でいうparamsキーワード指定, VBでいうParamArrayキーワード指定）</p>
+<p>Property１とProperty2というプロパティを永続化したくない場合は以下のようになります。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[NoPersistentProps(<span class="str">"Property1"</span>, <span class="str">"Property2"</span>)]
+<span class="kwrd">public</span> <span class="kwrd">class</span> Employee</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;NoPersistentProps(<span class="str">"Property1"</span>, <span class="str">"Property2"</span>)&gt; _
+<span class="kwrd">Public</span> <span class="kwrd">Class</span> Employee</pre>
+
+<h2><a name="#versionNo">VersionNoによる排他制御とVersionNoProperty属性</a></h2>
+
+<p>S2Dao.NETはEntityクラスにSystem.Int32型でVersionNoという名前のプロパティを定義するだけで、
+VersionNoによる排他制御を自動的に行ってくれます。</p>
+<p>VersionNoによる排他制御は、S2Dao.NETに自動で更新(UPDATE, DELETE)SQL文を作成させた場合に行われます。
+またDaoインターフェースの更新メソッドに渡すEntityには、VersionNoプロパティに値がセットされている必要があります。</p>
+<p>例えば、2人のユーザがVersionNoの値が0である同一データを取得して更新しようとした場合、先に更新したユーザは正常に登録することが出来ます。
+そのとき自動でVersionNoの値はインクリメント（+1)され、データベースのVersionNoの値は1となります。
+次にもう1人のユーザが更新しようとすると、ユーザが保持しているVersionNoの値(0)と、実際にデータベースに格納されているVersionNoの値(1)が異なることになり、
+Seasar.Dao.NotSingleRowUpdatedRuntimeExceptionが発生し更新に失敗することになります。</p>
+<p>VersionNoによる排他制御用のプロパティ名をデフォルトのVersionNoから変えるときには、VersionNoProperty属性を使用します。
+VersionNoProperty属性はクラスに指定します。"MyVersionNo"という名前のプロパティを排他制御用のプロパティに指定する場合は以下のようになります。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[VersionNoProperty(<span class="str">"MyVersionNo"</span>)]
+<span class="kwrd">public</span> <span class="kwrd">class</span> Employee</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;VersionNoProperty(<span class="str">"MyVersionNo"</span>)&gt; _
+<span class="kwrd">Public</span> <span class="kwrd">Class</span> Employee</pre>
+
+<h2><a name="timestamp">Timestampによる排他制御とTimestampProperty属性</a></h2>
+
+<p>S2Dao.NETはVersionNoの他にもTimestampによる排他制御も自動的に行うことができます。
+System.DateTime型でTimestampという名前のプロパティを定義するだけで、Timestampによる排他制御を自動的に行ってくれます。</p>
+<p>Timestampによる排他制御は、S2Dao.NETに自動で更新(UPDATE, DELETE)SQL文を作成させた場合に行われます。
+またDaoインターフェースの更新メソッドに渡すEntityには、Timestampプロパティに値がセットされている必要があります。</p>
+<p>S2Dao.NETに自動で追加(INSERT)SQL文を作成させた場合、現在日時がTimestampプロパティにセットされ、
+Insert文が発行されます。</p>
+<p>更新(Update, Delete)時にEntityのTimestampプロパティとデータベースのTimestampカラムの値を比較し、
+異なっている場合にはVersionNoと同様にSeasar.Dao.NotSingleRowUpdatedRuntimeExceptionが発生します。</p>
+<p>Timestampによる排他制御用のプロパティ名をデフォルトのTimestampから変えるときには、TimestampProperty属性を使用します。
+TimestampProperty属性はクラスに指定します。"MyTimestamp"という名前のプロパティを排他制御用のプロパティに指定する場合は以下のようになります。</p>
+
+C#
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode">
+[TimestampProperty(<span class="str">"MyTimestamp"</span>)]
+<span class="kwrd">public</span> <span class="kwrd">class</span> Employee</pre>
+
+VB.NET
+<!-- code formatted by http://manoli.net/csharpformat/ -->
+<pre class="csharpcode vb">
+&lt;TimestampProperty(<span class="str">"MyTimestamp"</span>)&gt; _
+<span class="kwrd">Public</span> <span class="kwrd">Class</span> Employee</pre>
+
+<!-- document end --><!-- don't edit start --></td>
+          <td width=14><img height=14 alt="" src="../../images/spacer.gif" 
+            width=14></td></tr>
+        <tr>
+          <td width=14><img height=30 alt="" src="../../images/spacer.gif" 
+            width=14></td>
+          <td width=766><img height=30 alt="" src="../../images/spacer.gif" 
+            width=592></td></tr>
+        <tr>
+          <td width=14><img height=14 alt="" src="../../images/spacer.gif" 
+            width=14></td>
+<td class=copyright><table cellSpacing=0 cellPadding=0 width=736><tr><td align="left">Trans. by H.Ozawa</td><td align="right">Copyright&copy; 2004-2006, The Seasar Foundation and the others. All rights reserved.</td></tr></table></td>
+</tr></table>
+    <td class=backright vAlign=top align=left>&nbsp;</td></tr>
+  <tr>
+    <td class=backunder vAlign=top align=left width=780 height=16>&nbsp;</td>
+    <td class=backcorner vAlign=top align=left 
+height=16>&nbsp;</td></tr></tbody></table><!-- don't edit end --></body></html>
