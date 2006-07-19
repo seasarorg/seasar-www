@@ -32,38 +32,33 @@
 <h1>S2Dao.NET - Entity Class</h1>
 
 <p>
-	Entityクラスはテーブルとの関連付けに使用します。
-	Entityクラスにはテーブルのカラムとマッピングするためのプロパティを実装します。
+	Entity class is used to define relationship to a table.
+	Entity class implements property to map to a table column.
 </p>
 
 <ul>
-	<li><a href="#property">プロパティの実装</a></li>
+	<li><a href="#property">Implementing Properties</a></li>
 </ul>
 
-<p>
-	場合によってはEntityクラスに以下の属性の指定が必要になります。S2Dao.NETで使用する属性は Seasar.Dao.Attrs名前空間にあります。
+<p>In some cases, Entity class requires the following attributes. Attributes in S2Dao.NET are defined to be in Seasar.Dao.Attrs namespace.
 </p>
 
 <ul>
-	<li><a href="#table">テーブルとの関連付けを行うTable属性</a></li>
-	<li><a href="#column">カラムとの関連付けを行うColumn属性</a></li>
-	<li><a href="#n1">別テーブルとの結合を指定するRelno属性, Relkeys属性(N:1マッピング)</a></li>
-	<li><a href="#id">IDの自動生成を指定するID属性</a></li>
-	<li><a href="#noPersistent">永続化されないカラムを指定するNoPersistentProps属性</a></li>
-	<li><a href="#versionNo">VersionNoによる排他制御とVersionNoProperty属性</a></li>
-	<li><a href="#timestamp">Timestampによる排他制御とTimestampProperty属性</a></li>
+	<li><a href="#table">Table attribute to define a relation to a table</a></li>
+	<li><a href="#column">Column attribute to define a relation to a column.</a></li>
+	<li><a href="#n1">RelNo attribute and Relkeys attribute (N to 1 mapping) to specify concatenation with a different table.</a></li>
+	<li><a href="#id">ID attribute to specify auto-generation of ID's.</a></li>
+	<li><a href="#noPersistent">NoPersistentProps attribute to specify non-persistent columns.</a></li>
+	<li><a href="#versionNo">VersionNoProperty attribute to specify locks using VersionNo.</a></li>
+	<li><a href="#timestamp">TimestampProperty attribute to specify locks using Timestamp.</a></li>
 </ul>
 
-<h2><a name="property">プロパティの実装</a></h2>
+<h2><a name="property">Implementing Properties</a></h2>
 
-<p>Entityクラスにはテーブルのカラムに対応したフィールドとプロパティを宣言・実装します。クラス名（名前空間名を除く）は可能であればテーブル名と同じに、
-プロパティ名は可能であればテーブルのカラム名と同じにすると良いでしょう。</p>
-<p>カラムがNull可の場合、プリミティブ型（System.Int32等）を指定するとNullの際、0（ゼロ）が返されます。
-Nullを扱うためにはSystem.Data.SqlTypes名前空間のデータ型、もしくは
-<a href="http://nhibernate.sourceforge.net/nh-docs/html/Nullables.html">NHibernateのNullables</a>
-のデータ型を指定して下さい。Nullables.dllは配布物に含まれています。
-.NET Framework 2.0からのnull許容型（System.Nullable構造体）には現在対応しておりません。</p>
-<p>例えば、EMPテーブルに関連付くEntityクラスは次のようになります。</p>
+<p>Entity class declare and implement fields and properties that shows relations to tables and columns.
+It is recommended to name classes (without the namespace) the same as the name of the table they correspond to, and to name properties to be the same as the name of the column they correspond to.。</p>
+<p>If a column is Null, specifying primitive datatype (e.g. System.Init32) returns 0. To use Null, specify either datatype in the System.Data.SqlTypes namespace or <a href="http://nhibernate.sourceforge.net/nh-docs/html/Nullables.html">NHibernate Nullables</a> datatype. Nullables.dll is included in the distributed S2Dao archive file. System.Nullable introduced in .NET Framework 2.0 is not yet supported.</p>
+<p>Following is an example of an Entity class to represent EMP table.</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -152,12 +147,11 @@ VB.NET
    <span class="kwrd">End</span> <span class="kwrd">Class</span>
 <span class="kwrd">End</span> Namespace</pre>
 
-<h2><a name="table">テーブルとの関連付けを行うTable属性</a></h2>
+<h2><a name="table">Table attribute to relate to a table</a></h2>
 
-<p>テーブルとの関連付けはTable属性を使用します。Table属性はクラスに指定します。
-Table属性にはテーブル名を指定します。スキーマ名も指定する場合は"<span class="italic">スキーマ名.テーブル名</span>"と指定します。</p>
-<p>※ クラス名（名前空間名は除く）とテーブル名が一致（大文字小文字は区別しない）する場合は、Table属性を省略することが出来ます。</p>
-<p>EMPテーブルの場合は以下のようになります。</p>
+<p>To relate an Entity class to a table, table name is specified in the Table attribute in an Entity class. Syntax to specify a schema name is <span class="italic">schema name.table name</span>.</p>
+<p>Note: If the class name (without the namespace) is the same as the table name, Table attribute may be omitted.</p>
+<p>Following is an example of specifying an EMP table.</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -171,12 +165,11 @@ VB.NET
 &lt;Table(<span class="str">"EMP"</span>)&gt; _
 <span class="kwrd">Public</span> <span class="kwrd">Class</span> Employee</pre>
 
-<h2><a name="column">カラムとの関連付けを行うColumn属性</a></h2>
+<h2><a name="column">Column attribute to define a relation to a column</a></h2>
 
-<p>テーブルのカラムとの関連付けはColumn属性を使用します。Column属性はプロパティに指定します。Column属性にはカラム名を指定します。</p>
-<p>※ プロパティ名とカラム名が一致（大文字小文字は区別しない）する場合は、Column属性を省略することが出来ます。
-テーブルに存在しないプロパティは自動的に無視されます。</p>
-<p>EmployeeNoというプロパティにEMPNOカラムを関連付ける場合は以下のようになります。</p>
+<p>To relate an property to a column, column name is specified in the Column attribute.</p>
+<p>Note: If the property name is the same as the column name, Column attribute may be omitted. Properties that do not exist in a table are disregarded.</p>
+<p>Following is an example to relate EmployeeNo property to EMPNO column.</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -201,20 +194,17 @@ VB.NET
    <span class="kwrd">End</span> <span class="kwrd">Set</span>
 <span class="kwrd">End</span> Property</pre>
 
-<h2><a name="n1">別テーブルとの結合を指定するRelno属性, Relkeys属性(N:1マッピング)</a></h2>
+<h2><a name="n1">RelNo attribute and Relkeys attribute (N to 1 mapping) to specify concatenation with a different table</a></h2>
 
-<p>N:1マッピングとは、複数の従業員の行に1つの部署の行が関連付けられるような場合のマッピングです。
-N:1マッピングを利用するには、Relno属性とRelkeys属性をそれぞれ指定する必要があります。</p>
-<p>Relno属性とRelkeys属性は結合先となるEntityクラス型で作成したプロパティに指定します。</p>
-<p>Relno属性はN:1マッピングの0(ゼロ)から始まる連番を指定します。</p>
-<p>例えば、AAAのテーブルにBBB, CCCのテーブルがN:1マッピングされるとするとBBBのRelno属性には0を、
-CCCのRelno属性には1を指定します。</p>
-<p>また、Relno属性は結果セットに含まれているカラムが、どのテーブルに属しているのかを判定することにも使われます。</p>
-<p>例えば、SELECT ..., BBB.HOGE AS HOGE_0, ... FROM AAA, BBB ...のようなSELECT文があった場合、
-HOGE_0はBBBテーブルに含まれているHOGEカラムであると認識され、結果が結合先のEntityクラスの対応するプロパティにセットされます。</p>
-<p>N:1マッピングのキーはRelkeys属性で指定します。キーが複数ある場合には、カンマ(,)で区切ります。
-例えば "mykey1:yourkey1,myke2:yourkey2"のようにします。</p>
-<p>EMPテーブルのDEPTNUMカラムとDEPTテーブルのDEPTNOを関連付ける場合は以下のようになります。</p>
+<p>N:1 mapping is used to map several elements to a single element. Relating several employees to a department is an example of N:1 mapping. RelNo attribute and Relkeys attribute must be specify to establish a N:1 mapping.</p>
+<p>
+Relno attribute and Relkeys attribute are specified in a property of an Entity class that holds a concatenated data.</p>
+<p>Relno attribute is set to consecutive number starting with 0.</p>
+<p>For example, to N:1 map table AAA to table BBB and table CCC, Relno attribute of BBB is set to 0, Relno attribute of CCC is set to 1.</p>
+<p>Relno attribute may also be used to determine which table a column in a result set relates to.</p>
+<p>For example, in SQL statement SELECT ..., BBB.HOGE AS HOGE_0, ... FROM AAA, BBB ..., HOGE_0 relates to column HOGE in table BBB. Result of the query is set to corresponding properties in the Entity class.</p>
+<p>Relkeys attribute specifies keys. Composite key is specified by separating key names with a comma (,). For example, composite key composed from mykey1:yourkey1 and mykey2:yourkey2 is specified by "mykey1:yourkey1,mykey2:yourkey2".</p>
+<p>Following is an example that relates column DEPTNUM in table EMP with column DEPTNO in table DEPT.</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -239,8 +229,7 @@ VB.NET
    <span class="kwrd">End</span> <span class="kwrd">Set</span>
 <span class="kwrd">End</span> Property</pre>
 
-<p>1側のテーブルのカラム名がN側のテーブルのカラム名に等しい場合は、1側のテーブルのカラム名を省略することが出来ます。
-その場合は以下のように定義します。</p>
+<p>If the name of column with a single row is the same as the name of the column with multiple rows, name of column in a single row may be omitted. Following is an example of such an case:。</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -254,16 +243,15 @@ VB.NET
 &lt;Relno(0), Relkeys(<span class="str">"DEPTNO"</span>)&gt;
 </pre>
 
-<p>また1側のテーブルのカラム名とN側のテーブルのカラム名が等しく、1側のテーブルのカラム名がプライマリキーの場合、
-Relkeys属性を省略することが出来ます。</p>
+<p>If the name of column with a single row is the same as the name of the column with multiple rows and the column with a single row is a primary key, Relkeys attribute may be omitted.</p>
 
-<h2><a name="id">IDの自動生成を指定するID属性</a></h2>
-<p>ID（プライマリキー）をRDBMSに自動生成させて、自動生成させた値をEntityに自動的に設定することが出来ます。
-そのために使うのが、ID属性です。ID属性を指定してS2Dao.NETにInsert文を作成させた場合、
-引数で渡したEntityのID属性が指定されたプロパティに、RDBMSによって自動生成された値がセットされます。
-<span style="color:red;">ただしID属性を指定した場合は<a href="http://s2container.net.seasar.org/tx.html#LocalTx">
-ローカルトランザクション</a>を使用する必要があります。</a></p>
-<p>ID属性はプロパティに指定します。</p>
+<h2><a name="id">ID attribute to specify auto-generation of ID's</a></h2>
+<p>ID attribute is used to make RDBMS (relational database management system) generate IDs (primary key) and set the generated value to an Entity.
+If 
+ID attribute is specified and an INSERT sql command is generated by S2Dao.NET, property, which is specified by Entity ID attribute that is passed as an argument, is set to the value generated by a RDBMS.
+
+<span style="color:red;">However, if ID attribute is specified, <a href="http://www.seasar.org/en/dotnet/s2dotnet/tx.html#LocalTx">local transaction</a> must be used.</a></span></p>
+<p>ID attribute is specified in a property.</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -289,7 +277,7 @@ VB.NET
    <span class="kwrd">End</span> <span class="kwrd">Set</span>
 <span class="kwrd">End</span> Property</pre>
 
-<p>SEQUENCEを使うことも出来ます。myseqの部分は、実際のSEQUENCEに置き換えて下さい。</p>
+<p>SEQUENCE may also be used. In actual usage, replace "myseq" with SEQUENCE in the following examples:</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -301,8 +289,7 @@ VB.NET
 <pre class="csharpcode vb">
 &lt;ID(<span class="str">"sequence"</span>, <span class="str">"myseq"</span>)&gt;</pre>
 
-<p>手動でIDを設定する場合は、何も指定する必要はありません。テーブルのプライマリキーの情報はテーブル定義より自動的に取得されます。
-また、明示的に"assigned"を指定することも出来ます。</p>
+<p>If ID is specified manually, no other specification is necessary. Primary key information is retrieved from the table definition. "assigned" may explicitly be assigned.</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -314,13 +301,11 @@ VB.NET
 <pre class="csharpcode vb">
 &lt;ID(<span class="str">"assigned"</span>)&gt;</pre>
 
-<h2><a name="noPersistent">永続化されないカラムを指定するNoPersistentProps属性</a></h2>
+<h2><a name="noPersistent">NoPersistentProps attribute to specify non-persistent columns</a></h2>
 
-<p>Entityクラスのプロパティが永続化(テーブルとマッピング)の対象かどうかという情報は、
-テーブルの定義より自動的に取得されます。また、明示的にNoPersistentProps属性を使って永続化したくないプロパティを指定することもできます。</p>
-<p>NoPersistentProps属性はクラスに指定します。引数に永続化しないプロパティ名を指定します。
-引数は可変個引数となっており、複数のプロパティ名を指定することが出来ます。（C#でいうparamsキーワード指定, VBでいうParamArrayキーワード指定）</p>
-<p>Property１とProperty2というプロパティを永続化したくない場合は以下のようになります。</p>
+<p>Whether a property in an Entity class should be persistent (table and mapping) or not is retrieved from the table definition. Property may also be explicitly specified not to be persistent by setting NoPersistentProps attribute.</p>
+<p>NoPersistentProps attribute is specified in a class. Names of properties that are non-persistent are specified in a variable length argument (params in C#, ParamArray in VB).</p>
+<p>Following is an example to specify Property1 and Property2 to be non-persistent.</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -334,18 +319,13 @@ VB.NET
 &lt;NoPersistentProps(<span class="str">"Property1"</span>, <span class="str">"Property2"</span>)&gt; _
 <span class="kwrd">Public</span> <span class="kwrd">Class</span> Employee</pre>
 
-<h2><a name="#versionNo">VersionNoによる排他制御とVersionNoProperty属性</a></h2>
+<h2><a name="#versionNo">VersionNoProperty attribute to specify locks using VersionNo</a></h2>
 
-<p>S2Dao.NETはEntityクラスにSystem.Int32型でVersionNoという名前のプロパティを定義するだけで、
-VersionNoによる排他制御を自動的に行ってくれます。</p>
-<p>VersionNoによる排他制御は、S2Dao.NETに自動で更新(UPDATE, DELETE)SQL文を作成させた場合に行われます。
-またDaoインターフェースの更新メソッドに渡すEntityには、VersionNoプロパティに値がセットされている必要があります。</p>
-<p>例えば、2人のユーザがVersionNoの値が0である同一データを取得して更新しようとした場合、先に更新したユーザは正常に登録することが出来ます。
-そのとき自動でVersionNoの値はインクリメント（+1)され、データベースのVersionNoの値は1となります。
-次にもう1人のユーザが更新しようとすると、ユーザが保持しているVersionNoの値(0)と、実際にデータベースに格納されているVersionNoの値(1)が異なることになり、
-Seasar.Dao.NotSingleRowUpdatedRuntimeExceptionが発生し更新に失敗することになります。</p>
-<p>VersionNoによる排他制御用のプロパティ名をデフォルトのVersionNoから変えるときには、VersionNoProperty属性を使用します。
-VersionNoProperty属性はクラスに指定します。"MyVersionNo"という名前のプロパティを排他制御用のプロパティに指定する場合は以下のようになります。</p>
+<p>Locking using VersionNo is activated by specifying in an Entity class a property named VersionNo of datatype System.Int32.</p>
+<p>VersionNo locking is effective on UPDATE and DELETE sql commands generated by S2Dao.NET.
+Entity that is to be passed to an update method in Dao interface, must have a value set to the VersionNo property.</p>
+<p>If two users retrieved a data while VersionNo was 0, only the first user who issued either a UPDATE or a DELETE sql command is able to update the data. When the data is updated, VersionNo property and VersionNo column in the database is incremented to 1. If the other user tries to update the data, S2Dao.NET compares the VersionNo the user has (which is 0) with the current VersionNo (which is now 1), and throws Seasar.Dao.NotSingleRowUpdatedRuntimeException because they are different.</p>
+<p>To use a property name other than the default VersionNo, set the property name to the VersionNoProperty attribute in a class. Following is an example to set the lock property name to "MyVersionNo".</p>
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -359,18 +339,14 @@ VB.NET
 &lt;VersionNoProperty(<span class="str">"MyVersionNo"</span>)&gt; _
 <span class="kwrd">Public</span> <span class="kwrd">Class</span> Employee</pre>
 
-<h2><a name="timestamp">Timestampによる排他制御とTimestampProperty属性</a></h2>
+<h2><a name="timestamp">TimestampProperty attribute to specify locks using Timestamp</a></h2>
 
-<p>S2Dao.NETはVersionNoの他にもTimestampによる排他制御も自動的に行うことができます。
-System.DateTime型でTimestampという名前のプロパティを定義するだけで、Timestampによる排他制御を自動的に行ってくれます。</p>
-<p>Timestampによる排他制御は、S2Dao.NETに自動で更新(UPDATE, DELETE)SQL文を作成させた場合に行われます。
-またDaoインターフェースの更新メソッドに渡すEntityには、Timestampプロパティに値がセットされている必要があります。</p>
-<p>S2Dao.NETに自動で追加(INSERT)SQL文を作成させた場合、現在日時がTimestampプロパティにセットされ、
-Insert文が発行されます。</p>
-<p>更新(Update, Delete)時にEntityのTimestampプロパティとデータベースのTimestampカラムの値を比較し、
-異なっている場合にはVersionNoと同様にSeasar.Dao.NotSingleRowUpdatedRuntimeExceptionが発生します。</p>
-<p>Timestampによる排他制御用のプロパティ名をデフォルトのTimestampから変えるときには、TimestampProperty属性を使用します。
-TimestampProperty属性はクラスに指定します。"MyTimestamp"という名前のプロパティを排他制御用のプロパティに指定する場合は以下のようになります。</p>
+<p>Locking using Timestamp is activated by specifying in an Entity class a property named VersionNo of datatype System.DateTime.</p>
+<p>VersionNo locking is effective on UPDATE and DELETE sql commands generated by S2Dao.NET.
+Entity that is to be passed to an update method in Dao interface, must have a value set to the Timestamp property.</p>
+<p>If an INSERT sql command is generated by S2Dao.NET, current time is set to the Timestamp property before executing the Insert command.</p>
+<p>When either UPDATE or a DELETE sql command is issued, S2Dao.NET compares the Timestamp property of an Entity with the Timestamp column in the database. If the two values differ, Seasar.Dao.NotSingleRowUpdatedRuntimeException is thrown.</p>
+<p>To use a property name other than the default Timestamp, set the property name to the TimestampProperty attribute in a class. Following is an example to set the lock property name to "MyTimestamp".
 
 C#
 <!-- code formatted by http://manoli.net/csharpformat/ -->

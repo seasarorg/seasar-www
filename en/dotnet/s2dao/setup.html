@@ -70,28 +70,22 @@
 </table>
 
 <h2><a name="S2Dao">S2Dao.NET Setup</a></h2>
-<p>To use S2Dao.NET, reference to the following files (assemblies) should be set.
-	S2Dao.NETを利用する場合には以下のファイル(アセンブリ)への参照を追加する必要があります。
-	なお、buildディレクトリにあるSeasar.Dao.dllとja-JPディレクトリは同じディレクトリに配置してください。
+<p>To use S2Dao.NET, reference to the following files (assemblies) should be set. Make Seasar.Dao.Dll in build folder and ja-JP folder to be the same.
 	<ul>
 		<li>s2dao.net/build/Seasar.Dao.dll</li>
 	</ul>
 </p>
-<p>
-	S2Dao.NETはS2Container.NET(Seasar.dll)に依存しています。
-	また、S2Dao.NETではlog4netを利用してログの吐き出しも行っています。
-	S2Container.NET, log4netのセットアップについては以下のドキュメントを参照して下さい。
+<p>	S2Dao.NET requires S2Container.NET(Seasar.dll) and log4net. Refer to the following pages for setup instructions on these software.
 	<ul>
 		<li>
-			<a href="http://s2container.net.seasar.org/setup.html#S2Container">S2Container.NETのセットアップ</a>
+			<a href="http://s2container.net.seasar.org/setup.html#S2Container">S2Container.NET Setup</a>
 		</li>
 		<li>
-			<a href="http://s2container.net.seasar.org/setup.html#log4net">log4netのセットアップ</a>
+			<a href="http://s2container.net.seasar.org/setup.html#log4net">log4net Setup</a>
 		</li>
 	</ul>
 </p>
-<p>
-	次にアプリケーション構成ファイル(app.config)にS2Dao.NETのアセンブリ(Seasar.Dao)を登録します。
+<p>Specify S2Dao.NET assembly(Seasar.Dao) in application configuration file (app.config).
 </p>
 
 <!-- code formatted by http://manoli.net/csharpformat/ -->
@@ -103,12 +97,12 @@
    <span class="kwrd">&lt;/</span><span class="html">configSections</span><span class="kwrd">&gt;</span>
 
    <span class="kwrd">&lt;</span><span class="html">seasar</span><span class="kwrd">&gt;</span>
-      <span class="rem">&lt;!-- SingletonS2ContainerFactory#Initで下記で指定されたdiconファイルを</span>
-<span class="rem">           ルートのdiconファイルの初期値としてセットします。 --&gt;</span>
+      <span class="rem">&lt;!-- set in  SingletonS2ContainerFactory#Init the path of dicon file</span>
+<span class="rem">below as the initial value of the root dicon file. --&gt;</span>
       <span class="kwrd">&lt;</span><span class="html">configPath</span><span class="kwrd">&gt;</span>App.dicon<span class="kwrd">&lt;/</span><span class="html">configPath</span><span class="kwrd">&gt;</span>
       
-      <span class="rem">&lt;!-- S2コンテナ作成時に以下で指定されたアセンブリをAppDomainに</span>
-<span class="rem">           読み込みます。（S2ContainerFactory#Create） --&gt;</span>
+      <span class="rem">&lt;!-- During creation of S2Container, read in assembly below into AppDomain</span>
+<span class="rem">(S2ContainerFactory#Create) --&gt;</span>
       <span class="kwrd">&lt;</span><span class="html">assemblys</span><span class="kwrd">&gt;</span>
          <span class="kwrd">&lt;</span><span class="html">assembly</span><span class="kwrd">&gt;</span>assembly name 1<span class="kwrd">&lt;/</span><span class="html">assembly</span><span class="kwrd">&gt;</span>
          <span class="kwrd">&lt;</span><span class="html">assembly</span><span class="kwrd">&gt;</span>assembly name 2<span class="kwrd">&lt;/</span><span class="html">assembly</span><span class="kwrd">&gt;</span>
@@ -120,7 +114,7 @@
 </pre>
 
 </p>
-	Refer to the <a href="dicontainer.html#AppConfig">S2Container.NET reference - application configuration file</a> for further details.
+	Refer to the <a href="../s2dotnet/DIContainer.html#AppConfig">S2Container.NET reference - application configuration file</a> for further details.
 </p>
 
 <!-- document end --><!-- don't edit start --></td>
