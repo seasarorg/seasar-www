@@ -36,13 +36,16 @@ This tutorial uses Java version of Seasar. Follow <a href="java/jdk5.0/index.htm
 Seasar download package comes with Seasar source files. In most most cases including in these tutorial they are not necessary. To setup Seasar to just use it in your application developement, follow the steps below:<br>
 <ol>
 <li>Download Seasar from <a href="http://s2container.seasar.org/en/index.html#download">here</a>. To just get started, only file "S2Container xxx", where "xxx" is the current available version number, is necessary</li>
-<li>To just use Seasar, only the following files are necessary. Just extract these files. Examples in this tutorial extracts these files to <span class="enter">C:\seasar2\lib</span> folder. If you extracts to a different folder, you'll need to change some files.
+<li>To just use Seasar, only the following files are necessary. Just extract these files. Examples in this tutorial assume these files were extracted to <span class="enter">C:\seasar2\lib</span> folder. If they were extracted to a different folder, you'll need to change some codes in the example.
+Caution: Version number included in the file may differ depending of version of
+Seasar you're using.
 <pre>
-javassist.jar
-commons-logging.jar
+javassist-3.0.jar
+commons-logging-1.0.4.jar
+genonimo-j2ee_1.4_spec-1.0.jar
 log4j-1.2.8.jar
 ognl-2.6.5.jar
-aopalliance.jar
+aopalliance-1.0.jar
 servlet-api.jar
 s2-framework-2.3.0.jar
 </pre>
@@ -52,13 +55,17 @@ log4j.properties
 </pre>
 Additionally, extract the following files because they are required to use default Seasar aspect like logging. Extract the files with the jar files in the same folder as where the required "jar" files were extracted and extract files with extension "dicon" to the folder where "log4j.properties" where extracted.
 <pre>
-jta.jar
 junit-3.8.1.jar
 poi-2.5-final-20040804.jar
 s2-extension-2.x.x.jar
 aop.dicon
-j2ee.dicon
 </pre>
+Also, extract the file below to some directory such as <span class="enter">C:\seasar2\resources</span>.
+<pre>
+jdbc.dicon
+</pre>
+Set CLASSPATH to these files in your environment or in your execution script file (e.g. .bat or .sh file).
+<hr />
 We are all set to start the tutorial. Let's <a href="interfaces.html">start</a>.
 </ol>
 <HR><BR>

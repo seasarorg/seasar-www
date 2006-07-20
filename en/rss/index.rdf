@@ -8,7 +8,7 @@
   <channel rdf:about="http://www.seasar.org/en/rss/index.rdf/index.rdf">
     <title>Seasar2</title>
     <link>http://www.seasar.org/en/</link>
-    <dc:date>2006-07-19T23:39:24+09:00</dc:date>
+    <dc:date>2006-07-20T19:16:57+09:00</dc:date>
     <description>Seasar2 English page updates</description>
     <admin:generatorAgent rdf:resource="http://www.infomaker.jp/editorlite/?v=0.92b" />
     <image rdf:resource="http://www.seasar.org/en/images/seasar_banner.gif"/>
@@ -19,6 +19,8 @@
         <rdf:li rdf:resource="http://www.seasar.org/en/dotnet/index.html#he20060712"/>
         <rdf:li rdf:resource="https://www.seasar.org/en/dotnet/index.html#he20060713"/>
         <rdf:li rdf:resource="http://www.seasar.org/en/dotnet/s2dao/index.html#he20060719"/>
+        <rdf:li rdf:resource="http://s2jsf.seasar.org/en/#he20060720"/>
+        <rdf:li rdf:resource="http://www.seasar.org/en/#he20060720"/>
       </rdf:Seq>
     </items>
   </channel>
@@ -59,6 +61,20 @@
     <title>Finish S2Dao.NET documentations</title>
     <link>http://www.seasar.org/en/dotnet/s2dao/index.html</link>
     <dc:date>2006-07-19</dc:date>
+    <description></description>
+  </item>
+
+  <item rdf:about="http://s2jsf.seasar.org/en/#he20060720">
+    <title>S2JSF 1.0.15 released</title>
+    <link>http://s2jsf.seasar.org/en/</link>
+    <dc:date>2006-07-20</dc:date>
+    <description></description>
+  </item>
+
+  <item rdf:about="http://www.seasar.org/en/#he20060720">
+    <title>Mitsubishi Tokyo UFJ bank announced plan to use Seasar2.</title>
+    <link>http://www.seasar.org/en/</link>
+    <dc:date>2006-07-20</dc:date>
     <description></description>
   </item>
 

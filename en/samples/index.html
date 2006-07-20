@@ -28,66 +28,72 @@
 <!-- don't edit end -->
 <!-- document start -->
 
-<h1>S2Container.NET</h1>
-<p>.NET Seasar2 Container</p>
-            <ul>
-              <li><a href="#news">News</a>
-              <li><a href="#introduction">Introduction</a>
-              <li><a href="#software">Related Software</a>
-              <li><a href="s2dotnet/setup.html">Setup</a>
-              <li><a href="#requirements">Requirements</a>
-              <li><a href="#download">Download</a>
-              <li><a href="#documents">Documents</a>
-              <li><a href="https://www.seasar.org/issues/browse/CONTAINERNET">Tracking</a>
-              <li><a href="s2dotnet/faq.html">FAQ</a>
-              <li><a href="s2dotnet/releases.html">Releases</a>
-            </ul>
-            <h1><a name="news">News</a></h1>
-              <dl>
-                <dt>July 13, 2007 Update and create new pages.(Some pages are still in Japanese)</dt>
-                <dt>July 5, 2007 S2.NET 1.2.1 releases</dt>
-              </dl>
-            <h1><a name="introduction">Introduction</a></h1>
-            <p>S2Container.NET is a lightweight DI container supporting AOP. It is a port of <a href="http://s2container.seasar.org/en/index.html"">Java version Seasar2</a> to .NET framework.</p>
-            <h1><a name="software">Related Software</a></h1>
-              <dl>
-                <dt><a href="s2dao/index.html">S2Dao.NET</a></dt>
-                <dd>O/R mapping framework used to connect S2.NET to a database.</dd>
-                <dt><a href="s2remoting/index.html">S2Remoting.NET</a></dt>
-                <dd>Library to add distributed component support.</dd>
-              </dl>
-            <h1><a name=requirements>Requirements</a></h1>
-						<p>s2dotnet requires the followings:</p>
-<table border="1">
-<colgroup><col span="3" align="center" width="150"></colgroup><tbody>
-<tr>
-<th>.NET Framework</th>
-</tr>
-<tr>
-<td>2.1.11 or later</td>
-</tr>
-</tbody>
-</table>
-S2Container.NET has been tested on Windows2000, Windows XP Home, Windows XP Professional, and Windows Server 2003.
-            <h1><a name="download">Download</a></h1>
-              <a href="http://s2container.net.seasar.org/s2container.net-1.2.1-.net2.0.zip">S2Container.NET 1.2.1(.NET 2.0)</a>.<br />
-              <a href="http://s2container.net.seasar.org/s2container.net-1.2.1-.net1.1.zip">S2Container.NET 1.2.1(.NET 1.1)</a>.<br />
-              <a href="s2dotnet/download/index.html">Previous releases</a>.<p />
-            <h1><a name="documents">Documents</a></h1>
-         <ul>
-           <li><a href="s2dotnet/setup.html">Setup</a></li>
-           <li><a href="s2dotnet/DIContainer.html">DIContainer</a></li>
-           <li><a href="s2dotnet/aop.html">AOP</a></li>
-           <li><a href="s2dotnet/tx.html">Transaction control</a></li>
-           <li><a href="s2dotnet/db.html">Connecting to a database</a></li>
-           <li><a href="s2dotnet/asp.html">Using in ASP.NET</a></li>
-           <li><a href="s2dotnet/s2ado.html">S2ADO</a></li>
-           <li><a href="s2dotnet/s2unit.html">Easy testing with S2Unit.NET</a></li>
-           <li><a href="s2dotnet/s2windows.html">WindowsForm Control</a></li>
-           <li><a href="s2dotnet/jscript.html">JScript.NET</a></li>
-         </ul>
-<p/>
+<a href="../index.html">Seasar2 TOP page</a>
+<h1>Seasar2 Samples</h1>
+<p>Sample files to learn Seasar2</p>
 
+<ul>
+<li>Introductory
+ <dl>
+  <dt><a href="ssp_suga_20040902.lzh">ssp_suga_20040902.lzh</a></dt>
+  <dd>DI and AOP sample.</dd>
+ </dl>
+ <dl>
+  <dt><a href="ssp_maruo_3.zip">ssp_maruo_3.zip</a></dt>
+  <dd>DI samples: 1) console password authentication 2) connect to HSQLDB using S2JDBC 3) S2JDBC and S2DAO</dd>
+ </dl>
+ <dl>
+  <dt><a href="ssp_suga_20040813.lzh">ssp_suga_20040813.lzh</a></dt>
+  <dd>S2DAO transaction with rollback example</dd>
+ </dl>
+</li>
+<li>Intermediate
+ <dl>
+  <dt><a href="s2daoNM1.zip">s2daoNM1.zip</a></dt>
+  <dd>S2DAO sample concatenating 3 tables</dd>
+ </dl>
+ <dl>
+  <dt><a href="ssp_taedium.zip">ssp_taedium.zip</a></dt>
+  <dd>Set ID value assigned by HSQLDB to a Bean by using AOP</dd>
+ </dl>
+ <dl>
+  <dt><a href="ssp_kazuya_20040831.zip">ssp_suga_20040909.lzh</a></dt>
+  <dd>FactoryBean sample. Includes simple sample code which can be used instead of FactoryBean</dd>
+ </dl>
+ <dl>
+  <dt><a href="strategy.zip">strategy.zip</a></dt>
+  <dd>Strategy pattern sample</dd>
+ </dl>
+</li>
+<li>Advanced
+ <dl>
+  <dt><a href="ssp_kazuya_20040831.zip">ssp_kazuya_20040831.zip</a></dt>
+  <dd>S2Container, S2Struts, S2DAO samples. Uses AOP in authentication</dd>
+ </dl>
+</li>
+<li>Miscellaneous
+ <dl>
+  <dt><a href="S2DelFlagV1.0.0.zip">S2DelFlagV1.0.0.zip</a></dt>
+  <dd>Add logical delete to S2Dao delete</dd>
+ </dl>
+ <dl>
+  <dt><a href="PrivateAccessInterceptor.zip">PrivateAccessInterceptor.zip</a></dt>
+  <dd>Interceptor to test private in JUnit</dd>
+ </dl>
+ <dl>
+  <dt><a href="S2Hibernate3-V1.0.6b4.zip">S2Hibernate3-V1.0.6b4.zip</a></dt>
+  <dd>Hibernate support for S2Hibernate</dd>
+ </dl>
+ <dl>
+  <dt><a href="S2Joo.zip">S2Joo.zip</a></dt>
+  <dd>Connect S2Container with JooConverter</dd>
+ </dl>
+ <dl>
+  <dt><a href="S2DaoArgs.jar">S2DaoArgs.jar</a></dt>
+  <dd>Do away with ARGS annotation</dd>
+ </dl>
+</li>
+</ul>
 <!-- document end -->
 <!-- don't edit start -->
 </td>
