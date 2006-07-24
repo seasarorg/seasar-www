@@ -1,0 +1,79 @@
+<html>
+<!-- don't edit start -->
+<head><title>Using SQLTool</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="../../css/install.css" type="text/css" rel="stylesheet" media="screen">
+<link href="../../seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="../../seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="../../images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="../../images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="../../images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3" align="right"></td>
+</tr><tr><td rowspan="2"><img src="../../images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="../../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="../../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="../../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="../../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="../../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="../../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="../../images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="../../images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+
+<h1>Using SQLTool</h1>
+SQLTool is a command line tool to execute sql commands. It may be used to import/export
+files into a database.<br/>
+<ol>
+<li>Copy <span class="text">sqltool.rc</span> file in the <span class="text">sample</span> folder into the <span class="text">data</span> folder.<br/>
+<img src="1.jpg"/><br/>
+<li>Open the <span class="text">data</span> and edit the <span class="text">runUtil.bat</span> file.<br/>
+Right click on the <span class="text">runUtil.bat</span> file and select <span class="text">Edit</span>.<br/>
+<img src="2.jpg"/><br/>
+<li>Insert <span class="text">-jar</span> argument and <span class="text">--rcfile sqltool.rc localhost-sa</span> argument.<br>
+<img src="3.jpg"/><br/>
+<li>Save the changes.<br/>
+Select <span class="menu2">File</span> - <span class="menu2">Save As...</span> from the menu.<br/>
+<img src="4.jpg"/><br/>
+<li>Save the script file as <span class="text">runSqltool.bat</span> in the <span class="text">data</span> folder.<br/>
+In the Save in:, select the <span class="text">data</span> folder.<br/>
+In the File name:, enter <span class="text">runSqltool.bat</span>.<br/>[
+Select the <span class="button">Save</span> button to save the changes.<br/>
+<img src="5.jpg"/><br/>
+<li>Let's execute the script file we just created.<br/>
+From the File Explorer, double click on the <span class="text">runSqltool.bat</span> file.<br/>
+<img src="6.jpg"/><br/>
+<li>A MS DOS command prompt window will open and SQLTool should start.<br/>
+If all goes well, there should be a <span class="text">sql</span> prompt.<br/>
+<img src="7.jpg"/><br/>
+<li>Let's shutdown the HSQL server from SQLTool.<br/>
+Enter <span class="text">shutdown;</span> and press on the <span class="key">Enter</span> key.<br/>
+<img src="8.jpg"/><br/>
+<li>To exit SQLTool, enter <span class="text">\q</span> and press on the <span class="key">Enter</span> key.<br/>
+<img src="9.jpg"/><br/>
+</ol>
+<hr><br>
+<A href="../sqltool/index.html">Using HsqlTool</A>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="../../images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766" class="copyright"> Copyright&copy;2005-2006, H.Ozawa and the Seasar Foundation. All rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>

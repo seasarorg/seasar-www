@@ -1,4 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- don't edit start -->
 <head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -42,7 +41,7 @@ Seasar you're using.
 <pre>
 javassist-3.0.jar
 commons-logging-1.0.4.jar
-genonimo-j2ee_1.4_spec-1.0.jar
+geronimo-j2ee_1.4_spec-1.0.jar
 log4j-1.2.8.jar
 ognl-2.6.5.jar
 aopalliance-1.0.jar
@@ -52,13 +51,15 @@ s2-framework-2.3.0.jar
 Also, extract the file below to some directory such as <span class="enter">C:\seasar2\resources</span>.
 <pre>
 log4j.properties
+aop.dicon
 </pre>
 Additionally, extract the following files because they are required to use default Seasar aspect like logging. Extract the files with the jar files in the same folder as where the required "jar" files were extracted and extract files with extension "dicon" to the folder where "log4j.properties" where extracted.
 <pre>
 junit-3.8.1.jar
 poi-2.5-final-20040804.jar
 s2-extension-2.x.x.jar
-aop.dicon
+geronimo-jta_1.0.1B_spec-1.0.jar
+geronimo-ejb_2.1_spec-1.0.jar
 </pre>
 Also, extract the file below to some directory such as <span class="enter">C:\seasar2\resources</span>.
 <pre>
@@ -68,14 +69,14 @@ Set CLASSPATH to these files in your environment or in your execution script fil
 <hr />
 We are all set to start the tutorial. Let's <a href="interfaces.html">start</a>.
 </ol>
-<HR><BR>
-<H3>Content</H3>
-<TABLE class="content" width="400">
-<TR><TH class="header"><A href="index.html">Seasar Tutorial Page</A></TH></TR>
-<TR><TD>Getting Started</TD></TR>
-<TR><TD><A href="interfaces.html">Why Use Interfaces?</A></TD></TR>
-<TR><TD><A href="seasar0.html">Moving on to Seasar</A></TD></TR>
-</TABLE>
+<hr><br>
+<h3>Content</h3>
+<table class="content" width="400">
+<tr><th class="header"><a href="index.html">Seasar Tutorial Page</a></th></tr>
+<tr><td>Getting Started</td></tr>
+<tr><td><a href="interfaces.html">Why Use Interfaces?</a></td></tr>
+<tr><td><a href="seasar0.html">Moving on to Seasar</a></td></tr>
+</table>
 <!-- document end -->
 <!-- don't edit start -->
 </td>
@@ -84,7 +85,7 @@ We are all set to start the tutorial. Let's <a href="interfaces.html">start</a>.
 <td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
 <td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
 <td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
-<td width="766" class="copyright"> Copyright&copy;2005, H.Ozawa and the Seasar Foundation. All rights reserved.</td>
+<td width="766" class="copyright"> Copyright&copy;2005-2006, H.Ozawa and the Seasar Foundation. All rights reserved.</td>
 </tr></table>
 <td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
 <td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>

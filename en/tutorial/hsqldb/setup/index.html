@@ -1,0 +1,91 @@
+<html>
+<!-- don't edit start -->
+<head><title>Hsqldb Installation</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="../../css/install.css" type="text/css" rel="stylesheet" media="screen">
+<link href="../../seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="../../seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="../../images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="../../images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="../../images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3" align="right"></td>
+</tr><tr><td rowspan="2"><img src="../../images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="../../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="../../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="../../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="../../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="../../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="../../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="../../images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="../../images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+
+<h1>Hsqldb Installation</h1>
+Hsqldb installation is very easy. Just extract the file in the archive. That's it!<br>
+Following shows steps to startup the database server.<br>
+<ol>
+<li>Let's create new folder to hold database files.<br>
+Select <span class="menu">File</span> - <span class="menu">New</span> - <span class="menu">Folder</span>.
+<img src="1.jpg"/><br/>
+<li>Let's name the folder <span class="entry">data</span>. It seems Hsqldb script files use <i>data</i>.<br>
+<img src="2.jpg"/><br/>
+<li>Create server.properties file in folder <i>data</i> with the following script.<br>
+The script tells Hsqldb to name the database file <i>demo</i> and use port 9001 for management access (this this the default port number).<br>
+<A href="server.properties">server.properties</a>
+<pre class="code">server.database=demo
+server.port=9001
+</pre><br/>
+<img src="3.jpg"/><br/>
+<li>It is possible to start and maintain Hsqldb by typing Java commands but since
+that's tiresome, let's just copy them from the <i>demo</i> folder.<br>
+Files to copy are:<br>
+<ol>
+<li>runManager.bat - GUI utility to execute SQL commands
+<li>runManagerSwing.bat - Same as runManager.bat but with Swing
+<li>runServer.bat - Script to start Hsqldb database server
+<li>runUtil.bat - Script to use Hsqldb utilities
+<li>runWebServer.bat - Script to start Hsqldb web server
+</ol>
+Select these file with your mouse. Press the <span class="key">Ctrl</span>
+key while clicking the left mouse button to select multiple files at once.<br>
+<img src="4.jpg"/><br/>
+<li>Keep pressing the <span class="key">Ctrl</span> and the left mouse button while
+dragging the mouse pointer to the <i>data</i> folder. Release the mouse to copy the files.<br>
+<img src="5.jpg"/><br/>
+<li>Move to the <i>data</i> folder and check that the files were copied.<br>
+<img src="6.jpg"/><br/>
+<li>It's finally time to start up the Hsqldb server!<br>
+Select the <span class="key">runServer.bat</span> file.<br>
+<img src="7.jpg"/><br/>
+<li>A console window should open and display database server start up process.<br>
+<span class="warning">Do not close this window!</span> Proceed to the next page to
+properly shutdown the server.<br>
+If the console window closes, it means there is something wrong. Recheck of each step.<br>
+<img src="8.jpg"/><br/>
+</ol>
+<hr><br>
+<A href="../shutdown/index.html">Shutting down Hsqldb</a>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="../../images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766" class="copyright"> Copyright&copy;2005-2006, H.Ozawa and the Seasar Foundation. All rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>

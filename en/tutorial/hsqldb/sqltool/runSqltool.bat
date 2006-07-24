@@ -1,0 +1,1 @@
+@java -jar ..\lib\hsqldb.jar --rcfile sqltool.rc localhost-sa

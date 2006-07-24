@@ -1,0 +1,76 @@
+<html>
+<!-- don't edit start -->
+<head><title>Starting up Seasar Web Pages</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link href="../../css/install.css" type="text/css" rel="stylesheet" media="screen">
+<link href="../../seasar_b.css" type="text/css" rel="stylesheet" media="screen"><script src="../../seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
+</head><body onload="preload('en')">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="left"><tr>
+<td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
+<tr><td colspan="7"><img height="5" width="780" src="../../images/top01_b.gif" alt=""></td></tr>
+<tr><td><img height="117" width="235" src="../../images/top02_b.gif" alt="Seasar"></td>
+<td colspan="3"><img height="117" width="289" src="../../images/top03.gif" alt="DI Container with AOP"></td>
+<td colspan="3" align="right"></td>
+</tr><tr><td rowspan="2"><img src="../../images/top04.gif" alt="" height="49" width="235"></td>
+<td><a href="http://www.seasar.org/en/index.html"><img src="../../images/menu01_b_en.gif" height="30" width="78" border="0" alt="" id="menu01" onmouseover="swap(1)" onmouseout="restore(1)"></a></td>
+<td><a href="http://www.seasar.org/en/projects.html"><img src="../../images/menu02_b_en.gif" height="30" width="101" border="0" alt="" id="menu02" onmouseover="swap(2)" onmouseout="restore(2)"></a></td>
+<td><a href="http://www.seasar.org/en/products.html"><img src="../../images/menu06_b_en.gif" height="30" width="110" border="0" alt="" id="menu06" onmouseover="swap(6)" onmouseout="restore(6)"></a></td>
+<td><a href="http://www.seasar.org/en/documents.html"><img src="../../images/menu04_b_en.gif" height="30" width="109" border="0" alt="" id="menu04" onmouseover="swap(4)" onmouseout="restore(4)"></a></td>
+<td><a href="http://www.seasar.org/en/resources.html"><img src="../../images/menu05_b_en.gif" height="30" width="113" border="0" alt="" id="menu05" onmouseover="swap(5)" onmouseout="restore(5)"></a></td>
+<!--
+<td><img src="../../images/menu07_b_en.gif" height="30" width="109" border="0" alt=""  id="menu07" onmouseover="swap(7)" onmouseout="restore(7)"></td>
+//-->
+<td><img height="30" width="34" src="../../images/menu06.gif" alt=""></td></tr><tr>
+
+<td colspan="6"><img height="19" width="545" src="../../images/spacer.gif" alt=""></td></tr></table>
+<table  width="780" border="0" cellspacing="0" cellpadding="0" class="menu">
+<tr align="left" valign="top"><td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td><td width="740" class="main">
+<!-- don't edit end -->
+<!-- document start -->
+
+<h1>Starting up Seasar Web Pages</h1>
+Now, let's make seasar documents viewable from a web browser. This is not absolutely necessary because we can just open the html files directly, it I just want to show how to setup a web page contained in a Eclipse workspace.<br>
+<ol>
+<li>From the Eclipse window, select <span class="text">seasar-www</span> in the Package Explorer. This is where all Seasar2 document files are kept.<br>
+Select <span class="menu">Window</span>- <span class="menu">Preferences...</span> from the menu.<br>
+<img src="1.jpg"/><br/>
+<li>Select <span class="text">Tomcat</span> and select the version of Tomcat you've installed. (In this installation steps, we've installed Tomcat version 5.5.9 so we've selected <span class="check">Version 5.x</span>.)<br>
+Select the <span class="button">Browse...</span> button next to the Tomcat home to tell the plugin where Tomcat was installed.<br>
+<img src="2.jpg"/><br/>
+<li>Move to where Tomcat was installed (in this installation steps, we've installed it in <I>D:\Apache Software Foundation\Tomcat 5.5</I>) and select the <span class="text">Tomcat</span> folder.<br>
+Select the <span class="button">OK</span> button.<br>
+<img src="3.jpg"/><br/>
+<li>On the left hand side, select the "+" sign next to <span class="text">Tomcat</span> to open the view. Select <span class="text">Tomcat Manager App</span>.<br>
+Enter the name and password of the Administrator in their respective fields.<br>
+Select the <span class="button">OK</span> button.<br>
+<img src="4.jpg"/><br/>
+<li>Let's test if we setup the Tomcat plugin correctly.<br>
+Select <span class="menu">Tomcat</span> - <span class="menu">Start Tomcat</span> from the menu.<br>
+<img src="5.jpg"/><br/>
+<li>Check the <span class="text">Console</span> view at the bottom. If Tomcat was able to startup correctly, a <span class="text">INFO: Server startup in xxxxx ms</span> message should appear.<br>
+<a href="6.jpg" target="_blank"><img src="6.jpg" width="700"/></a><br/>
+<li>Open a web browser and open the following URI:<br>
+<span class="entry">http://localhost:8080/seasar/seasar-www/</span><br>
+If all went well, a page like those below should appear.<br>
+To view English documents, open the following URI:<br>
+<span class="entry">http://localhost:8080/seasar/seasar-www/en/</span><br>
+<img src="7.jpg" width="700"/><br/>
+</ol>
+<hr><br>
+<A href="../sqlserver/jdbc/index.html">MS SQL Server JDBC Driver Installation</A>
+<!-- document end -->
+<!-- don't edit start -->
+</td>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+</tr><tr>
+<td width="14"><img height="30" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766"><img height="30" width="592" src="../../images/spacer.gif" alt=""></td></tr><tr>
+<td width="14"><img height="14" width="14" src="../../images/spacer.gif" alt=""></td>
+<td width="766" class="copyright"> Copyright&copy;2005-2006, H.Ozawa and the Seasar Foundation. All rights reserved.</td>
+</tr></table>
+<td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>
+<td class="backunder" align="left"  valign="top" width="780" height="16">&nbsp;</td>
+<td class="backcorner" align="left" valign="top" height="16">&nbsp;</td>
+</tr></table></body>
+<!-- don't edit end -->
+</html>
