@@ -8,7 +8,7 @@
   <channel rdf:about="http://www.seasar.org/en/rss/index.rdf/index.rdf">
     <title>Seasar2</title>
     <link>http://www.seasar.org/en/</link>
-    <dc:date>2006-07-24T15:58:47+09:00</dc:date>
+    <dc:date>2006-07-24T22:54:04+09:00</dc:date>
     <description>Seasar2 English page updates</description>
     <admin:generatorAgent rdf:resource="http://www.infomaker.jp/editorlite/?v=0.92b" />
     <image rdf:resource="http://www.seasar.org/en/images/seasar_banner.gif"/>
@@ -22,6 +22,7 @@
         <rdf:li rdf:resource="http://s2jsf.seasar.org/en/#he20060720"/>
         <rdf:li rdf:resource="http://www.seasar.org/en/#he20060720"/>
         <rdf:li rdf:resource="http://www.seasar.org/en/php5/index.html#he20060724"/>
+        <rdf:li rdf:resource="http://www.seasar.org/en/samples/index.html#he20060724"/>
       </rdf:Seq>
     </items>
   </channel>
@@ -82,6 +83,13 @@
   <item rdf:about="http://www.seasar.org/en/php5/index.html#he20060724">
     <title>S2Container.PHP moved from Sandbox project to full project</title>
     <link>http://www.seasar.org/en/php5/index.html</link>
+    <dc:date>2006-07-24</dc:date>
+    <description></description>
+  </item>
+
+  <item rdf:about="http://www.seasar.org/en/samples/index.html#he20060724">
+    <title>Add Samples page</title>
+    <link>http://www.seasar.org/en/samples/index.html</link>
     <dc:date>2006-07-24</dc:date>
     <description></description>
   </item>
