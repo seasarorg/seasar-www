@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<meta http-equiv="Content-Language" content="ja" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>SolarisでSeasar2を動かしてみる</title>
+<link rel="stylesheet" type="text/css" href="../theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="../theme/print.css" media="print" />
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h1 id="h01" class="hide">The Seasar Foundation Software License</h1><img src="../images/seasar_logo_blue.gif" alt="The Seasar Foundation" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" name="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="Shift-JIS" />
+	<input id="search_go" type="submit" value="検索" />
+</div>
+</form>
+
+<h2>Seasar Banner</h2>
+
+<p><a href="../images/seasar_banner.gif"><img src="../images/seasar_banner.gif" alt="Seasar Banner" title="Seasar Banner" width="146" height="33" /></a></p>
+
+</div>
+
+<div id="navi">
+<p>English | Japanese</p>
+</div>
+
+</div><!-- header -->
+
+<div id="contents_left">
+
+<h2>メニュー</h2>
+
+<ul>
+	<li><a href="../wiki/">ニュース &amp; Wiki</a></li>
+	<li><a href="https://www.seasar.org/mailman/listinfo/">メーリングリスト</a></li>
+	<li><a href="https://www.seasar.org/svn/">SVN リポジトリ</a></li>
+	<li><a href="../websvn/">SVN リポジトリブラウザ</a></li>
+	<li><a href="https://www.seasar.org/members/">メンバー用ページ</a></li>
+</ul>
+
+<ul>
+	<li><a href="http://event.seasar.org/">イベント</a></li>
+	<li><a href="http://foundation.seasar.org/">ファウンデーション</a></li>
+	<li><a href="http://server.seasar.org/">サーバチーム</a></li>
+</ul>
+
+<ul>
+	<li><a href="../">プロジェクト</a></li>
+</ul>
+
+</div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+
+<div class="section">
+<h2 id="h02">SolarisでSeasar2を動かしてみる</h2>
+
+<p>x86マシンを対象にSolarisを入れて、Seasar2を動かしてみる。</p>
+
+<ul>
+	<li>コンテンツ
+	<ul><li><a href="#download">インストール用DVDイメージのダウンロードと作成</a></li>
+		<li><a href="#install">VMWareのゲストOS環境へのインストール</a></li>
+		<li><a href="#seasar2">Seasar2を動かしてみる</a></li>
+	</ul>
+	</li>
+</ul>
+
+<h2 id="download">インストール用DVDイメージのダウンロードと作成</h2>
+
+<!-- Sun Affiliate start -->
+<div class="affiliate">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="300" height="300" id="dev_solaris_300x300_japanese" align="middle"><param name="allowScriptAccess" value="sameDomain" /><param name="FlashVars" value="clickTAG=http://sdc.sun.co.jp/solaris/%3Futm_source%3Dbanner%26utm_medium%3Dbanner%26utm_term%3DSolaris%26utm_content%3DSeaSar%26utm_campaign%3DSolaris%2BSDC%2BCampaign" /><param name="movie" value="../affiliate/dev_solaris_300x300_japanese.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" /><embed src="../affiliate/dev_solaris_300x300_japanese.swf" FlashVars="clickTAG=http://sdc.sun.co.jp/solaris/%3Futm_source%3Dbanner%26utm_medium%3Dbanner%26utm_term%3DSolaris%26utm_content%3DSeaSar%26utm_campaign%3DSolaris%2BSDC%2BCampaign" quality="high" bgcolor="#ffffff" width="300" height="300" name="dev_solaris_300x300_japanese" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" /></object>
+</div>
+<!-- Sun Affiliate end -->
+
+<p>まず、Sunのサイトからイメージをダウンロード(SDCへの登録が必要)。SDCへの登録と英語のサイトでの入力項目が少しあるので、慣れてないとダウンロードまでたどり着けないかも。でも<a href="http://jp.sun.com/download/howto/">日本語の説明がある</a>ので、その通り進んでいけば、OK。ただ、Seasarのリンクから飛ぶとSTEP1とSTEP2のページはちょっと違うので注意。STEP3からはそのまま。</p>
+
+<p><a href="http://jp.sun.com/download/faq.html">FAQもある</a>ので、適宜参照のこと。</p>
+
+<p>今回ダウンロードしたのは、以下のファイル。</p>
+
+<ul><li>sol-10-u2-ga-x86-dvd.exe</li>
+	<li>sol-10-u2-ga-x86-dvd_001.nos</li>
+	<li>sol-10-u2-ga-x86-dvd_002.nos</li>
+	<li>sol-10-u2-ga-x86-dvd_003.nos</li>
+</ul>
+
+<p><a href="http://www.sun.com/software/solaris/download_instruction.xml">前はコマンドラインで結合しないとDVDのイメージは作れなかった</a>のに、Windowsユーザの利便性を考慮してか、exeファイルになってる。ただ圧縮率が高いのかやたら時間がかかる。「90 minutes on a P4-3GHz system」とか書いてあるし。ネットワークが早い環境なら、いままで通りZIPファイルを落として解凍したあと結合する方がはやい。</p>
+
+<p>できたファイルはMD5でチェックすることをお薦めします。</p>
+
+<h2 id="install">VMWareのゲストOS環境へのインストール</h2>
+
+<p>インストール手順の参考に、docs.sun.comから「Solaris 10 6/06 インストールガイド (基本編)」をダウンロード。<a href="http://docs.sun.com/app/docs/prod/solaris.10">日本語マニュアルが充実しててよい。</a></p>
+
+<p>今回はVMWareのゲストOSとしてインストールすることにした。パーティションの確保とかしないといけないし、ちょっと試したいという場合には手軽でいい。ISOイメージそのままマウントできて、メディアに焼く必要がないし。それじゃ遅いし、<a href="http://jp.sun.com/communities/users/0606/feature01.html">デュアルブートしたいという方向きはここを参照</a>。あと、自分のマシンで動くか心配な人は、<a href="http://www.sun.com/bigadmin/hcl/data/sol/">HCL for Solaris OS</a>を参照。動いたよという報告がのってる。</p>
+
+<p>とりあえず、マウントしてブート。GRUBが立ち上がった。以下の図1のブートメニューが表示された。</p>
+
+<div class="figure">
+<img src="images/sol10-01.png" alt="ブートメニュー" title="ブートメニュー" />
+<p>図1. ブートメニュー</p>
+</div>
+
+<pre class="hide">
+--------------------------------------------------------------------------------
+Solaris
+Solaris Serial Console ttya
+Solaris Serial Console ttyb (for lx50, v60x and v65x)
+--------------------------------------------------------------------------------
+</pre>
+
+<p>今回はコンソールを使うわけじゃないので、「<strong>Solaris</strong>」を選択。で、インストールの種類を以下から選択。</p>
+
+<pre>
+1 Solaris Interactive
+2 Custom JumpStart
+3 Solaris Interactive Text (Desktop session)
+4 Solaris Interactive Text (Console session)
+5 Apply driver updates
+6 Single user shell
+</pre>
+
+<p>対話式の「<strong>1</strong>」を選択。しばらくするとGUIの画面になって言語の選択(図2)。</p>
+
+<div class="figure">
+<img src="images/sol10-02.png" alt="言語の選択" title="言語の選択" />
+<p>図2. 言語の選択</p>
+</div>
+
+<p>「<strong>4</strong>」のJapaneseを選択。あとは、質問に答えてネットワークとか時間とかを設定。インストール形式はデフォルトを選択した(図3)。文字コードを変えたいときなんかはここでカスタムインストールを選択すること。インストールするパーティションをいじりたい場合もここでカスタムインストールを選択する。</p>
+
+<div class="figure">
+<img src="images/sol10-03.png" alt="インストール形式の選択" title="インストール形式の選択" />
+<p>図3. インストール形式の選択</p>
+</div>
+
+<h3 id="h03-1">インストール開始</h3>
+
+<p>インストールする項目のサマリーが表示されるので確認して「<strong>インストール開始</strong>」を押す(図4)。</p>
+
+<div class="figure">
+<img src="images/sol10-04.png" alt="インストール項目の確認" title="インストール項目の確認" />
+<p>図4. インストール項目の確認</p>
+</div>
+
+<p>しばらくしてインストールが終わると再起動。やっとSolarisが起動。初回起動時は、NFSに関する質問があるけど、まぁ使わないしデフォルトのままでOK(図5)。</p>
+
+<div class="figure">
+<img src="images/sol10-05.png" alt="NFSに関する質問" title="NFSに関する質問" />
+<p>図5. NFSに関する質問</p>
+</div>
+
+<p>以上の手順は、Web上にスクリーンショット付でたくさん公開されてる(*)。VMWareならマシン一台でも調べながら作業できるので、その点でもお薦め。</p>
+
+<ul>
+<li>* <a href="http://www15.big.or.jp/~yamamori/sun/sol10/">Solaris 10(x86)をインストールしてみよう</a> など</li>
+</ul>
+
+<p>ということでとりあえずインストールは完了(図6)。</p>
+
+<div class="figure">
+<img src="images/sol10-06.png" alt="インストール後のようこそ！画面" title="インストール後のようこそ！画面" />
+<p>図6. インストール後のようこそ！画面</p>
+</div>
+
+<h2 id="seasar2">Seasar2を動かしてみる</h2>
+
+<p>で、後はSeasar2を動かしてみる。これは、WindowsやLinuxと大差ないので、簡単に。</p>
+
+<p>まず、Javaはさすがに既にインストール済み(1.5.0_06)なので、ちょっと古いけどそのまま使う。Seasar2(今回は2.3.12を使う)をダウンロードしてサンプルを実行してみる。</p>
+
+<pre>
+> unzip S2.3.12.zip
+Archive:  S2.3.12.zip
+
+～～～～～～～～～～
+中略
+～～～～～～～～～～
+
+> cd seasar2
+</pre>
+
+<p>面倒なのでサンプルを実行するだけのスクリプトを書いた。</p>
+
+<pre>
+> cat execute_example.csh
+#!/usr/bin/csh
+
+setenv CLASSPATH lib/aopalliance-1.0.jar
+setenv CLASSPATH ${CLASSPATH}:lib/commons-logging-1.0.4.jar
+setenv CLASSPATH ${CLASSPATH}:lib/geronimo-j2ee_1.4_spec-1.0.jar
+setenv CLASSPATH ${CLASSPATH}:lib/geronimo-jta_1.0.1B_spec-1.0.jar
+setenv CLASSPATH ${CLASSPATH}:lib/javassist-3.0.jar
+setenv CLASSPATH ${CLASSPATH}:lib/junit-3.8.1.jar
+setenv CLASSPATH ${CLASSPATH}:lib/log4j-1.2.8.jar
+setenv CLASSPATH ${CLASSPATH}:lib/ognl-2.6.5.jar
+setenv CLASSPATH ${CLASSPATH}:lib/poi-2.5.1-final-20040804.jar
+setenv CLASSPATH ${CLASSPATH}:lib/s2-extension-2.3.12.jar
+setenv CLASSPATH ${CLASSPATH}:lib/s2-framework-2.3.12.jar
+setenv CLASSPATH ${CLASSPATH}:build/classes
+
+echo "=================================================="
+echo "サンプル GreetingMain を実行。"
+echo "--------------------------------------------------"
+java examples.di.main.GreetingMain
+echo "--------------------------------------------------"
+
+echo "サンプル GreetingMain2 を実行。"
+echo "--------------------------------------------------"
+java examples.di.main.GreetingMain2
+echo "--------------------------------------------------"
+
+echo "サンプル GreetingMain3 を実行。"
+echo "--------------------------------------------------"
+java examples.di.main.GreetingMain3
+echo "--------------------------------------------------"
+
+echo "サンプル GreetingMain4 を実行。"
+echo "--------------------------------------------------"
+java examples.di.main.GreetingMain4
+echo "=================================================="
+</pre>
+
+<p>で、実行。</p>
+
+<pre>
+> ./execute_example.csh
+==================================================
+サンプル GreetingMain を実行。
+--------------------------------------------------
+Hello World!
+--------------------------------------------------
+サンプル GreetingMain2 を実行。
+--------------------------------------------------
+Hello World!
+--------------------------------------------------
+サンプル GreetingMain3 を実行。
+--------------------------------------------------
+DEBUG 2006-10-12 21:28:22,291 [main] BEGIN examples.di.impl.GreetingClientImpl#execute()
+DEBUG 2006-10-12 21:28:22,307 [main] BEGIN examples.di.impl.GreetingImpl#greet()
+DEBUG 2006-10-12 21:28:22,323 [main] END examples.di.impl.GreetingImpl#greet() : Hello World!
+Hello World!
+DEBUG 2006-10-12 21:28:22,338 [main] END examples.di.impl.GreetingClientImpl#execute() : null
+--------------------------------------------------
+サンプル GreetingMain4 を実行。
+--------------------------------------------------
+DEBUG 2006-10-12 21:28:25,304 [main] BEGIN examples.di.impl.GreetingClientImpl#execute()
+DEBUG 2006-10-12 21:28:25,320 [main] BEGIN examples.di.impl.GreetingImpl#greet()
+DEBUG 2006-10-12 21:28:25,332 [main] END examples.di.impl.GreetingImpl#greet() : Hello World!
+Hello World!
+DEBUG 2006-10-12 21:28:25,349 [main] END examples.di.impl.GreetingClientImpl#execute() : null
+==================================================
+</pre>
+
+<p>普通にいけました。</p>
+
+<h3 id="h03-2">Seasar2を動かしてみる (CDE版)</h3>
+
+<p>SolarisらしくCDEでのSeasar2実行画面も(図7)。</p>
+
+<div class="figure">
+<img src="images/sol10-07.png" alt="CDEでのSeasar2実行画面" title="CDEでのSeasar2実行画面" />
+<p>図7. CDEでのSeasar2実行画面</p>
+</div>
+
+</div>
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>&copy; Copyright The Seasar Foundation and the others 2004-2006, all rights reserved.</address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>

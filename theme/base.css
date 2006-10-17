@@ -1,10 +1,7 @@
-@charset "utf-8";
-
 body {
 	background-color: #FFFFFF;
 	margin: 0px;
 	padding: 0px;
-	font-family: "ＭＳ Ｐゴシック", Osaka, Verdana, Arial, ヒラギノ角ゴ Pro W3, sans-serif;
 	font-size: small;
 	text-align: left;
 }

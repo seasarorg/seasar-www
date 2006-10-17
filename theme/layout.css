@@ -72,6 +72,18 @@
 	padding: 2px;
 }
 
+#article .section .figure {
+	margin: 5px;
+	padding: 10px;
+	text-align: center;
+	border: 1px solid #333;
+}
+
+#article .section .figure p {
+	margin: 0;
+	text-align: center;
+}
+
 #article p {
 	color: #333333;
 	line-height: 140%;
@@ -91,6 +103,11 @@
 	padding-left: 20px;
 	margin-top: 0;
 	margin-bottom: 10px;
+}
+
+.affiliate {
+	float: right;
+	margin: 15px 0 15px 10px;
 }
 
 #footer {
