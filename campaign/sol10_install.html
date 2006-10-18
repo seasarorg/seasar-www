@@ -52,8 +52,11 @@
 <ul>
 	<li><a href="../wiki/">ニュース &amp; Wiki</a></li>
 	<li><a href="https://www.seasar.org/mailman/listinfo/">メーリングリスト</a></li>
+	<li><a href="https://www.seasar.org/issues/">トラッキング</a></li>
 	<li><a href="https://www.seasar.org/svn/">SVN リポジトリ</a></li>
-	<li><a href="../websvn/">SVN リポジトリブラウザ</a></li>
+	<li><a href="http://svn.seasar.org/browse/">SVN リポジトリブラウザ</a></li>
+	<li><a href="../feed/">RSSフィード</a></li>
+	<li><a href="../license/">ライセンス</a></li>
 	<li><a href="https://www.seasar.org/members/">メンバー用ページ</a></li>
 </ul>
 
@@ -76,13 +79,16 @@
 <div class="section">
 <h2 id="h02">SolarisでSeasar2を動かしてみる</h2>
 
-<p>x86マシンを対象にSolarisを入れて、Seasar2を動かしてみる。</p>
+	<p>Seasar2の開発・運用環境には、何をお使いでしょうか？「開発にWindowsで運用にはLinux」とか、「どちらもWindows」等、いろいろだと思います。動作環境の選定の条件は様々ですが、Javaの本家本元SunのOS、Solarisも協力な選択肢の一つです。Solarisに馴染みが無い人も多いかも知れませんが、Solarisには、Sparcだけでなくx86版もありますのでLinux同様普通のPCで動作します。</p>
+
+	<p>ただ、OSからとなると多くの方は気軽に試してみるというわけには行かないでしょう。このページでは、出来るだけ簡単に試せるようにVMWareを使ってSolarisでSeasar2を動かしてみます。</p>
 
 <ul>
 	<li>コンテンツ
 	<ul><li><a href="#download">インストール用DVDイメージのダウンロードと作成</a></li>
 		<li><a href="#install">VMWareのゲストOS環境へのインストール</a></li>
 		<li><a href="#seasar2">Seasar2を動かしてみる</a></li>
+		<li><a href="#end">おわりに</a></li>
 	</ul>
 	</li>
 </ul>
@@ -91,15 +97,20 @@
 
 <!-- Sun Affiliate start -->
 <div class="affiliate">
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="300" height="300" id="dev_solaris_300x300_japanese" align="middle"><param name="allowScriptAccess" value="sameDomain" /><param name="FlashVars" value="clickTAG=http://sdc.sun.co.jp/solaris/%3Futm_source%3Dbanner%26utm_medium%3Dbanner%26utm_term%3DSolaris%26utm_content%3DSeaSar%26utm_campaign%3DSolaris%2BSDC%2BCampaign" /><param name="movie" value="../affiliate/dev_solaris_300x300_japanese.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#ffffff" /><embed src="../affiliate/dev_solaris_300x300_japanese.swf" FlashVars="clickTAG=http://sdc.sun.co.jp/solaris/%3Futm_source%3Dbanner%26utm_medium%3Dbanner%26utm_term%3DSolaris%26utm_content%3DSeaSar%26utm_campaign%3DSolaris%2BSDC%2BCampaign" quality="high" bgcolor="#ffffff" width="300" height="300" name="dev_solaris_300x300_japanese" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" /></object>
+<script type="text/javascript" src="../affiliate/dev_solaris.js"></script>
+<script type="text/javascript">
+write_sun_affiliate('../');
+</script>
+<noscript><a href="http://sdc.sun.co.jp/solaris/?utm_source=banner&amp;utm_medium=banner&amp;utm_term=Solaris&amp;utm_content=SeaSar&amp;utm_campaign=Solaris%2BSDC%2BCampaign" rel="nofollow"><img src="http://www.seasar.org/wiki/index.php?plugin=ref&amp;page=SeasarWiki&amp;src=300x300sunDeveloper.gif" alt="Solaris 10を今すぐもっと！" title="Solaris 10を今すぐもっと！" width="300" height="300" /></a>
+</noscript>
 </div>
 <!-- Sun Affiliate end -->
 
-<p>まず、Sunのサイトからイメージをダウンロード(SDCへの登録が必要)。SDCへの登録と英語のサイトでの入力項目が少しあるので、慣れてないとダウンロードまでたどり着けないかも。でも<a href="http://jp.sun.com/download/howto/">日本語の説明がある</a>ので、その通り進んでいけば、OK。ただ、Seasarのリンクから飛ぶとSTEP1とSTEP2のページはちょっと違うので注意。STEP3からはそのまま。</p>
+<p>まず、Sunのサイトからイメージをダウンロード(SDCへの登録が必要)します。SDCへの登録と英語のサイトでの入力項目が少しありますので、慣れてないとダウンロードまでたどり着けないかもしれません。でも<a href="http://jp.sun.com/download/howto/">日本語の説明</a>がありますので、その通り進んでいけば、大丈夫です。ただ、バナーのリンクから飛ぶとSTEP1とSTEP2のページはちょっと違うので注意してください。STEP3からはそのままでOKです。</p>
 
-<p><a href="http://jp.sun.com/download/faq.html">FAQもある</a>ので、適宜参照のこと。</p>
+<p>また、<a href="http://jp.sun.com/download/faq.html">FAQ</a>もありますので、適宜参照してください。</p>
 
-<p>今回ダウンロードしたのは、以下のファイル。</p>
+<p>今回ダウンロードしたのは、以下のファイルです。</p>
 
 <ul><li>sol-10-u2-ga-x86-dvd.exe</li>
 	<li>sol-10-u2-ga-x86-dvd_001.nos</li>
@@ -107,17 +118,17 @@
 	<li>sol-10-u2-ga-x86-dvd_003.nos</li>
 </ul>
 
-<p><a href="http://www.sun.com/software/solaris/download_instruction.xml">前はコマンドラインで結合しないとDVDのイメージは作れなかった</a>のに、Windowsユーザの利便性を考慮してか、exeファイルになってる。ただ圧縮率が高いのかやたら時間がかかる。「90 minutes on a P4-3GHz system」とか書いてあるし。ネットワークが早い環境なら、いままで通りZIPファイルを落として解凍したあと結合する方がはやい。</p>
+<p><a href="http://www.sun.com/software/solaris/download_instruction.xml">前はコマンドラインで結合しないとDVDのイメージは作れなかった</a>のに、Windowsユーザの利便性を考慮してか、exeファイルになっています。ただ圧縮率が高いのかやたら時間がかかります。「90 minutes on a P4-3GHz system」と書いてあります... ネットワークが速い環境なら、いままで通りZIPファイルを落として解凍したあと結合する方がはやいです。</p>
 
 <p>できたファイルはMD5でチェックすることをお薦めします。</p>
 
 <h2 id="install">VMWareのゲストOS環境へのインストール</h2>
 
-<p>インストール手順の参考に、docs.sun.comから「Solaris 10 6/06 インストールガイド (基本編)」をダウンロード。<a href="http://docs.sun.com/app/docs/prod/solaris.10">日本語マニュアルが充実しててよい。</a></p>
+<p>インストール手順の参考に、docs.sun.comから「Solaris 10 6/06 インストールガイド (基本編)」を<a href="http://docs.sun.com/app/docs/prod/solaris.10">ダウンロード</a>しておきます。インストールマニュアル以外にも日本語マニュアルが充実してます。</p>
 
-<p>今回はVMWareのゲストOSとしてインストールすることにした。パーティションの確保とかしないといけないし、ちょっと試したいという場合には手軽でいい。ISOイメージそのままマウントできて、メディアに焼く必要がないし。それじゃ遅いし、<a href="http://jp.sun.com/communities/users/0606/feature01.html">デュアルブートしたいという方向きはここを参照</a>。あと、自分のマシンで動くか心配な人は、<a href="http://www.sun.com/bigadmin/hcl/data/sol/">HCL for Solaris OS</a>を参照。動いたよという報告がのってる。</p>
+<p>前述したように、今回はVMWareのゲストOSとしてインストールすることにしました。ちょっと試したいという場合には手軽でいいです。ISOイメージをそのままマウントできて、メディアに焼く必要がないですし。でも、それじゃ遅いし、デュアルブートしたいという方は<a href="http://jp.sun.com/communities/users/0606/feature01.html">ここ</a>を参照してください。また、自分のマシンで動くか心配な人は、<a href="http://www.sun.com/bigadmin/hcl/data/sol/">HCL for Solaris OS</a>を参照してください。動いたよという報告がいっぱいのってます。</p>
 
-<p>とりあえず、マウントしてブート。GRUBが立ち上がった。以下の図1のブートメニューが表示された。</p>
+<p>では、とりあえずインストールDVDのイメージをマウントしてブートします。GRUBが立ち上がり、以下の図1のブートメニューが表示されました。</p>
 
 <div class="figure">
 <img src="images/sol10-01.png" alt="ブートメニュー" title="ブートメニュー" />
@@ -150,7 +161,7 @@ Solaris Serial Console ttyb (for lx50, v60x and v65x)
 <p>図2. 言語の選択</p>
 </div>
 
-<p>「<strong>4</strong>」のJapaneseを選択。あとは、質問に答えてネットワークとか時間とかを設定。インストール形式はデフォルトを選択した(図3)。文字コードを変えたいときなんかはここでカスタムインストールを選択すること。インストールするパーティションをいじりたい場合もここでカスタムインストールを選択する。</p>
+<p>「<strong>4</strong>」のJapaneseを選択。あとは、質問に答えてネットワークとか時間とかを設定します。インストール形式はデフォルトを選択しました(図3)。文字コードを変えた場合やインストールするパッケージを選択する場合はここでカスタムインストールを選択してください。インストールするパーティションをいじりたい場合もここでカスタムインストールです。</p>
 
 <div class="figure">
 <img src="images/sol10-03.png" alt="インストール形式の選択" title="インストール形式の選択" />
@@ -159,27 +170,27 @@ Solaris Serial Console ttyb (for lx50, v60x and v65x)
 
 <h3 id="h03-1">インストール開始</h3>
 
-<p>インストールする項目のサマリーが表示されるので確認して「<strong>インストール開始</strong>」を押す(図4)。</p>
+<p>インストールする項目のサマリーが表示されるので、内容を確認して「<strong>インストール開始</strong>」を押します(図4)。</p>
 
 <div class="figure">
 <img src="images/sol10-04.png" alt="インストール項目の確認" title="インストール項目の確認" />
 <p>図4. インストール項目の確認</p>
 </div>
 
-<p>しばらくしてインストールが終わると再起動。やっとSolarisが起動。初回起動時は、NFSに関する質問があるけど、まぁ使わないしデフォルトのままでOK(図5)。</p>
+<p>しばらくしてインストールが終わると再起動。やっとSolarisが起動しました。初回起動時は、NFSに関する質問がありますが、まぁ使わないし試すだけなのでデフォルトのままでOK(図5)です。</p>
 
 <div class="figure">
 <img src="images/sol10-05.png" alt="NFSに関する質問" title="NFSに関する質問" />
 <p>図5. NFSに関する質問</p>
 </div>
 
-<p>以上の手順は、Web上にスクリーンショット付でたくさん公開されてる(*)。VMWareならマシン一台でも調べながら作業できるので、その点でもお薦め。</p>
+<p>以上の手順は、Web上にスクリーンショット付でたくさん公開されています(*)。VMWareならマシン一台でもこういったサイトを調べながら作業できるので、その点でもお薦めです。</p>
 
 <ul>
 <li>* <a href="http://www15.big.or.jp/~yamamori/sun/sol10/">Solaris 10(x86)をインストールしてみよう</a> など</li>
 </ul>
 
-<p>ということでとりあえずインストールは完了(図6)。</p>
+<p>ということでとりあえずインストールは完了です(図6)。</p>
 
 <div class="figure">
 <img src="images/sol10-06.png" alt="インストール後のようこそ！画面" title="インストール後のようこそ！画面" />
@@ -188,22 +199,22 @@ Solaris Serial Console ttyb (for lx50, v60x and v65x)
 
 <h2 id="seasar2">Seasar2を動かしてみる</h2>
 
-<p>で、後はSeasar2を動かしてみる。これは、WindowsやLinuxと大差ないので、簡単に。</p>
+<p>後はSeasar2を動かしてみます。これは、WindowsやLinuxと大差ないので、簡単に。</p>
 
-<p>まず、Javaはさすがに既にインストール済み(1.5.0_06)なので、ちょっと古いけどそのまま使う。Seasar2(今回は2.3.12を使う)をダウンロードしてサンプルを実行してみる。</p>
+<p>まず、Javaはさすがに既にインストール済み(1.5.0_06)なので、ちょっと古いですがそのまま使います。Seasar2(今回は2.3.12)をダウンロードしてサンプルを実行してみます。</p>
 
 <pre>
 > unzip S2.3.12.zip
 Archive:  S2.3.12.zip
 
 ～～～～～～～～～～
-中略
+　　　中略
 ～～～～～～～～～～
 
 > cd seasar2
 </pre>
 
-<p>面倒なのでサンプルを実行するだけのスクリプトを書いた。</p>
+<p>面倒なのでサンプルを実行するだけのスクリプトを書きました。</p>
 
 <pre>
 > cat execute_example.csh
@@ -244,7 +255,7 @@ java examples.di.main.GreetingMain4
 echo "=================================================="
 </pre>
 
-<p>で、実行。</p>
+<p>で、実行です。</p>
 
 <pre>
 > ./execute_example.csh
@@ -277,13 +288,19 @@ DEBUG 2006-10-12 21:28:25,349 [main] END examples.di.impl.GreetingClientImpl#exe
 
 <p>普通にいけました。</p>
 
-<h3 id="h03-2">Seasar2を動かしてみる (CDE版)</h3>
+<h3 id="h03-2">[おまけ]Seasar2を動かしてみる (CDE版)</h3>
 
 <p>SolarisらしくCDEでのSeasar2実行画面も(図7)。</p>
 
 <div class="figure">
 <img src="images/sol10-07.png" alt="CDEでのSeasar2実行画面" title="CDEでのSeasar2実行画面" />
 <p>図7. CDEでのSeasar2実行画面</p>
+</div>
+
+<h2 id="end">おわりに</h2>
+
+<p>今回はSolarisをインストールして、Seasar2を動かしてみました。WindowsやLinux同様に何の問題も無く動作しました。Solarisは、Linuxに比べて敷居が高く感じるかも知れませんが、インストーラは使いやすいですし、日本語のドキュメントも充実しているので、気軽に試すことができると思います。動作環境選定の選択肢としてぜひ試してみてください。</p>
+
 </div>
 
 </div>

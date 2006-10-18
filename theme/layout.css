@@ -110,6 +110,16 @@
 	margin: 15px 0 15px 10px;
 }
 
+.affiliate p {
+	margin: 0;
+	width: 295px;
+	padding-left: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #fff;
+	border-bottom: 1px solid #000;
+}
+
 #footer {
 	clear: both;
 	width: 100%;
