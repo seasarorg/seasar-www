@@ -3,6 +3,7 @@
 <!-- don't edit start -->
 <head>
 <title>Seasar - DI Container with AOP - </title>
+<meta http-equiv="refresh"  content="5; url=http://s2remoting.seasar.org/ja/index.html">
 <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <link href="seasar_b.css" type="text/css" rel="stylesheet" media="screen"><link href="seasar_p.css" type="text/css" rel="stylesheet" media="print"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
@@ -24,81 +25,11 @@
 <tr align="left" valign="top"><td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td><td width="740" class="main">
 <!-- don't edit end -->
 <!-- document start -->
-<ul>
-<li><a href="#abstraction">概要</a>
-<li><a href="#setup">セットアップ</a>
-<ul>
-<li><a href="#requirement">前提条件</a>
-<li><a href="#downlod">ダウンロード</a>
-<li><a href="#install">インストール</a>
-</ul>
-<li><a href="#architecture">アーキテクチャ</a>
-<li><a href="#interceptor">インターセプタ</a>
-</ul>
-<h1><a name="abstraction">概要</a></h1>
-<p>S2Remotingを使うと，diconに記述したコンポーネントをリモートオブジェクトとして公開したり，リモートオブジェクトをコンポーネントとして簡単に利用できるようにするための共通基盤を提供します．</p>
-<p>S2Remotingは単独で使うものではなく，S2RMIやS2AxisなどのS2Remotingファミリープロダクトと組み合わせて使うことが意図されています．</p>
-<h1><a name="setup">セットアップ</a></h1>
-<h2><a name="requirement">前提条件</a></h2>
-<table border="1">
-<col span="2" width="150">
-<tbody>
-<tr>
-<th>S2Remoting</th>
-<th>S2</th>
-</tr>
-<tr>
-<td>1.0.0</td>
-<td>2.1.11～</td>
-</tr>
-</tbody>
-</table>
-<h3>実行環境</h3>
-<p>S2Remotingを実行するには，以下のものが必要です．</p>
-<ul>
-<li>JDK (J2SE SDK) 1.4以降が必要です．S2Remoting-V1.0.0の開発とテストはJDK
-1.4.2_07で行っています．ダウンロードは<a href="http://java.sun.com/j2se/1.4.2/ja/download.html">こちら</a>．
-<li>S2の2.1以降が必要です．S2Remoting-V1.0.0の開発とテストはS2.2.2で行っています．ダウンロードは<a href="http://sourceforge.jp/projects/seasar/files/?release_id=12552#12552">こちら</a>．
-</ul>
-<h3>開発環境</h3>
-<p>S2Remotingのディストリビューションは，他のS2関連プロダクトの多くと同様，Eclipse
-Javaプロジェクトをアーカイブしたものとなっています．</p>
-<ul>
-<li>Eclipse3.0以降が必要です．S2Remoting-V1.0.0の開発とテストは，Eclipse3.0.1で行っています．ダウンロードは<a href="http://www.eclipse.org/downloads/index.php">こちら</a>．
-<li>S2の2.1以降が必要です．S2Remoting-V1.0.0の開発とテストはS2.2.2で行っています．ダウンロードは<a href="http://sourceforge.jp/projects/seasar/files/?release_id=12552#12552">こちら</a>．
-</ul>
-<h2><a name="downlod">ダウンロード</a></h2>
-<p>S2Remotingは<a href="http://sourceforge.jp/projects/seasar/files/">こちら</a>からダウンロードすることが出来ます．</p>
-<h2><a name="install">インストール</a></h2>
-あらかじめS2がEclipseワークスペースにインポートされている必要があります．
-<ul>
-<li>ダウンロードした<code>S2Remoting-V<var>x.y.z</var>.zip</code>ファイルを適当なディレクトリに解凍してください (ワークスペースディレクトリに解凍した場合は作成された<code>s2-remoting-<var>x.y.z</var></code>ディレクトリを<code>s2-remoting</code>ディレクトリにリネームしてください)．
-<li>Eclipseを起動し，「ファイル」－「インポート」メニューを選択してください．
-<li>「インポート」ウィザードで「既存プロジェクトをワークスペースへ」を選択し，「次へ」をクリックしてください．
-<li>「参照」ボタンをクリックし，先に解凍したディレクトリに出来ている<code>s2-remoting-<var>x.y.z</var></code>ディレクトリを選択し，「OK」ボタンをクリックします．
-<li>「終了」ボタンをクリックします．
-</ul>
-<h1><a name="architecture">アーキテクチャ</a></h1>
-<p>S2Remotingは，アプリケーションがRMIやWebサービス (JAX-RPC) などのAPIを意識することなく，リモート呼び出しを行えるような共通基盤を提供します．<br>
-リモート呼び出しを使わない場合，クライアントアプリケーション(またはコンポーネント)とS2により管理されるコンポーネントは次のような関係になります
-(クライアントもS2コンテナで管理される場合があります)．</p>
-<img src="images/s2-remoting1.jpg" width="340" height="240" border="0">
-<p>S2Remotingを使用すると，次のように分散環境にあるコンポーネントを呼び出すことができるようになります．<br>
-クライアントもコンポーネントも何も変更する必要はありません．</p>
-<img src="images/s2-remoting2.jpg" width="560" height="240" border="0">
-<p>S2Remotingはこの図の中のインターセプタを提供します．<br>
-また，コネクタのインタフェースおよび抽象クラスを提供しますが，実装クラスは提供しません．コネクタやアダプタの実装クラスは，S2RMIやS2Axisなど，プロトコルごとに個別のプロダクトとして提供されます．</p>
-<h1><a name="interceptor">インターセプタの使い方</a></h1>
-<p>コンポーネントをリモート呼び出しするには，S2Remotingの提供する<code>RemotingInterceptor</code>を使用します．</p>
-<pre>    &lt;!-- リモート呼び出しのインターセプタ --&gt;
-    &lt;component name=&quot;remoting&quot; class=&quot;org.seasar.remoting.common.interceptor.RemotingInterceptor&quot;/&gt;
 
-    &lt;!-- コンポーネントのプロキシ (インタフェース) --&gt;
-    &lt;component name=&quot;<var>名前</var>&quot; class=&quot;<var>コンポーネントのインタフェース</var>&quot;&gt;
-        &lt;aspect&gt;remoting&lt;/aspect&gt;
-    &lt;/component&gt;</pre>
-<p>&lt;component&gt;要素のclass属性には，コンポーネントのインタフェースを指定します．name属性に指定する名前は，プロトコルによってはリモートオブジェクトのロケーションとして使用されます．詳細は実際に使用するプロダクトのドキュメントを参照してください．<br>
-インターセプタにはコネクタを設定する必要があります．通常はインターセプタと同じdiconファイルにコネクタを定義することで，S2により自動インジェクションで設定されます．</p>
+このページは移動しました．5 秒後に自動的にジャンプします．<br>
+<a href="http://s2remoting.seasar.org/ja/index.html">http://s2remoting.seasar.org/ja/index.html</a><br>
+ジャンプしない場合は上記URLをクリックしてください．
+
 <!-- document end -->
 <!-- don't edit start -->
 </td>
