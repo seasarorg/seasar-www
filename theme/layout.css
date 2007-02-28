@@ -136,3 +136,17 @@
 	padding: 4px;
 	color: #FFFFFF;
 }
+
+#footer div {
+	font-style: normal;
+	text-align: left;
+	margin-left: 16px;
+	padding: 4px;
+	color: #FFFFFF;
+}
+
+#footer a {
+	font-style: normal;
+	text-decoration: underline;
+	color: #FFFFFF;
+}
