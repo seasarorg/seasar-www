@@ -50,6 +50,10 @@
 	color: #444444;
 }
 
+#contents_left p.aligned {
+	margin-left: 2em;
+}
+
 #contents_center {
 	margin: 0;
 }
@@ -90,6 +94,10 @@
 	text-align: left;
 }
 
+#article p.aligned {
+    margin-left: 1%;
+}
+  
 #article img.top {
 	float: left;
 	margin-top: 8px;
