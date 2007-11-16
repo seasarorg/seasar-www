@@ -68,13 +68,29 @@ h1 a:hover, h2 a:hover {
 }
 
 ul {
-	list-style-image	: url(../images/item_little.gif);
+	list-style-image: url(../images/item_little.gif);
+	margin-left: 2em;
+	padding-left: 0;
+}
+
+ol {
+	list-style-image: none;
 	margin-left: 2em;
 	padding-left: 0;
 }
 
 li {
 	margin: 3px;
+}
+
+dt {
+	margin-left: 1em;
+	margin-bottom: 3px;
+	padding-left: 0;
+}
+
+dd {
+	margin-bottom: 6px;
 }
 
 pre {
