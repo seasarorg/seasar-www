@@ -32,10 +32,18 @@
 }
 
 #header #navi p {
-	color: #333333;
-	background-color: #FFFFFF;
 	margin: 0 0 0 20px;
 	line-height: 20px;
+}
+
+#header #navi p#navi_left {
+	float: left;
+	width: 65%;
+}
+
+#header #navi p#navi_right {
+	margin: 0 20px 0 0;
+	text-align: right;
 }
 
 #contents_left {
@@ -97,7 +105,7 @@
 #article p.aligned {
     margin-left: 1%;
 }
-  
+
 #article img.top {
 	float: left;
 	margin-top: 8px;
