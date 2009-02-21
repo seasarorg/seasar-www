@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta http-equiv="Content-Language" content="ja" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
-<meta name="keywords" content="Seasar2, S2Container, DI, AOP, Dependency Injection, Aspect Oriented Programming, The Seasar Foundation, OSS, ƒI[ƒvƒ“ƒ\[ƒXƒ\ƒtƒgƒEƒFƒA, Java, ƒtƒŒ[ƒ€ƒ[ƒN" />
-<meta name="description" content="Ž„‚½‚¿SeasarƒvƒƒWƒFƒNƒg‚ÍƒI[ƒvƒ“ƒ\[ƒX‚Æ‚¢‚¤Žd‘g‚Ý‚ÌŒ³AŠJ”­ŽÒ‚Ì‚ä‚Æ‚è‚ðŽÀŒ»‚Å‚«‚éƒvƒƒ_ƒNƒg‚ÌŠJ”­‚Æ’ñ‹Ÿ‚ð’Ê‚¶‚ÄAƒ†[ƒU‚ÆŠJ”­ŽÒ‚Æ‚ª‹¤‚ÉŠì‚Ñ‚ð•ª‚©‚¿‡‚¦‚éŠÂ‹«ŽÀŒ»‚ð‚¨Žè“`‚¢‚·‚é‚±‚Æ‚ð–ÚŽw‚µŠˆ“®‚µ‚Ä‚¢‚Ü‚·B " />
+<meta name="keywords" content="Seasar2, S2Container, DI, AOP, Dependency Injection, Aspect Oriented Programming, The Seasar Foundation, OSS, ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢, Java, ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯" />
+<meta name="description" content="ç§ãŸã¡Seasarãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹ã¨ã„ã†ä»•çµ„ã¿ã®å…ƒã€é–‹ç™ºè€…ã®ã‚†ã¨ã‚Šã‚’å®Ÿç¾ã§ãã‚‹ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆã®é–‹ç™ºã¨æä¾›ã‚’é€šã˜ã¦ã€ãƒ¦ãƒ¼ã‚¶ã¨é–‹ç™ºè€…ã¨ãŒå…±ã«å–œã³ã‚’åˆ†ã‹ã¡åˆãˆã‚‹ç’°å¢ƒå®Ÿç¾ã‚’ãŠæ‰‹ä¼ã„ã™ã‚‹ã“ã¨ã‚’ç›®æŒ‡ã—æ´»å‹•ã—ã¦ã„ã¾ã™ã€‚ " />
 <title>The Seasar Sandbox Project</title>
 <link rel="stylesheet" type="text/css" href="theme/main.css" media="screen,projection" />
 <link rel="stylesheet" type="text/css" href="theme/print.css" media="print" />
@@ -25,17 +25,34 @@
 
 <div id="tool">
 
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" name="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="æ¤œç´¢" />
 </div>
+</form>
+
+<h2>Seasar Banner</h2>
+
+<p><a href="http://www.seasar.org/"><img src="images/seasar_banner.gif" alt="Seasar Banner" title="Seasar Banner" width="146" height="33" /></a></p>
+
+</div><!-- tool -->
 
 <div id="navi">
-<p>English | Japanese</p>
+	<p id="navi_left"><a href="./">Seasar</a> &gt; Sandbox.Java</p>
+
+	<p id="navi_right"><a href="./en/index.html">English</a> | Japanese</p>
 </div>
 
 </div><!-- header -->
 
 <div id="contents_left">
 
-<h2>ƒƒjƒ…[</h2>
+<h2>ãƒ¡ãƒ‹ãƒ¥ãƒ¼</h2>
 
 <ul>
   <li><a href="./index.html">The Seasar Project</a></li>
@@ -53,14 +70,14 @@
 	<li><a href="http://golf.sandbox.seasar.org/">Golf</a></li>
 	<li><a href="http://gusuku.sandbox.seasar.org/">Gusuku</a></li>
 	<li>Seasar Eclipse Common</li>
-	<li><a href="http://kikainekomocker.sandbox.seasar.org/">‹@ŠB”Lƒ‚ƒbƒJ[</a></li>
+	<li><a href="http://kikainekomocker.sandbox.seasar.org/">æ©Ÿæ¢°çŒ«ãƒ¢ãƒƒã‚«ãƒ¼</a></li>
 	<li><a href="http://karrta.sandbox.seasar.org/">Karrta</a></li>
 	<li><a href="http://kvasir.sandbox.seasar.org/">Kvasir/Sora</a></li>
 	<li>Learnings</li>
-	<li><a href="http://maihime.sandbox.seasar.org/ja/">•‘•P</a></li>
+	<li><a href="http://maihime.sandbox.seasar.org/ja/">èˆžå§«</a></li>
 	<li><a href="http://maven-backport175.sandbox.seasar.org/">maven-backport175-plugin</a></li>
 	<li>mistral</li>
-	<li>‚È‚Å‚¶‚á‚±</li>
+	<li>ãªã§ã˜ã‚ƒã“</li>
 	<li><a href="http://resourcesynchronizer.sandbox.seasar.org/ja/">ResourceSynchronizer</a></li>
 	<li><a href="http://s2ana.sandbox.seasar.org/ja/index.html">S2AnA</a></li>
 	<li><a href="http://s2buri.sandbox.seasar.org/">S2Buri</a></li>
@@ -106,7 +123,7 @@
 	<li><a href="http://struts2-seasar-plugin.sandbox.seasar.org/">Struts2 Seasar Plugin</a></li>
 	<li><a href="http://tugboat-gtd.sandbox.seasar.org/">Tugboat.GTD</a></li>
 	<li><a href="http://tuigwaa.sandbox.seasar.org/">Tuigwaa</a></li>
-	<li><a href="http://uruma.sandbox.seasar.org/ja/index.html">Uruma (‹Œ S2JFace)</a></li>
+	<li><a href="http://uruma.sandbox.seasar.org/ja/index.html">Uruma (æ—§ S2JFace)</a></li>
 	<li>WebLauncher</li>
 </ul>
 
@@ -135,22 +152,22 @@
 <div id="article">
 
 <div class="section">
-<h2 id="h02">Seasar SandboxƒvƒƒWƒFƒNƒg‚Ö‚æ‚¤‚±‚»I</h2>
-<p>SandboxƒvƒƒWƒFƒNƒg‚ÍASeasarƒvƒƒWƒFƒNƒg‚É‚¨‚¢‚ÄV‚µ‚¢ŠJ”­ƒvƒƒWƒFƒNƒg‚ðŠJŽn‚·‚é‚½‚ß‚Ìê‚Å‚·B‚ ‚é’ö“xƒvƒƒ_ƒNƒg‚Æ‚µ‚Ä¬n‚·‚é‚Ü‚Å‚ÍSandbox‚ÅŠJ”­‚ªs‚È‚í‚ê‚Ü‚·B</p>
+<h2 id="h02">Seasar Sandboxãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¸ã‚ˆã†ã“ãï¼</h2>
+<p>Sandboxãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ã€Seasarãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«ãŠã„ã¦æ–°ã—ã„é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’é–‹å§‹ã™ã‚‹ãŸã‚ã®å ´ã§ã™ã€‚ã‚ã‚‹ç¨‹åº¦ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆã¨ã—ã¦æˆç†Ÿã™ã‚‹ã¾ã§ã¯Sandboxã§é–‹ç™ºãŒè¡Œãªã‚ã‚Œã¾ã™ã€‚</p>
 </div>
 
 
 <div class="section">
-<h2 id="h06"><a name="products"></a>ƒvƒƒ_ƒNƒgˆê——</h2>
+<h2 id="h06"><a name="products"></a>ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆä¸€è¦§</h2>
 
-<p>ƒJƒeƒSƒŠ‚Ö‚ÌƒVƒ‡[ƒgƒJƒbƒg</p>
+<p>ã‚«ãƒ†ã‚´ãƒªã¸ã®ã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆ</p>
 <ul>
-	<li><a href="#java">Sandbox.Java ƒvƒƒWƒFƒNƒg</a></li>
-	<li><a href="#dotnet">Sandbox.NET ƒvƒƒWƒFƒNƒg</a></li>
-	<li><a href="#php">Sandbox.PHP ƒvƒƒWƒFƒNƒg</a></li>
+	<li><a href="#java">Sandbox.Java ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ</a></li>
+	<li><a href="#dotnet">Sandbox.NET ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ</a></li>
+	<li><a href="#php">Sandbox.PHP ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ</a></li>
 </ul>
 
-<h3><a name="java"></a>Sandbox.Java ƒvƒƒWƒFƒNƒg</h3>
+<h3><a name="java"></a>Sandbox.Java ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ</h3>
 
 <table class="list">
 <colgroup>
@@ -160,374 +177,374 @@
 </colgroup>
 <tbody>
 <tr>
-	<th>ƒvƒƒ_ƒNƒg</th>
-	<th>à–¾</th>
-	<th>ƒŠƒ\[ƒX</th>
+	<th>ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆ</th>
+	<th>èª¬æ˜Ž</th>
+	<th>ãƒªã‚½ãƒ¼ã‚¹</th>
 </tr>
 <tr class="a">
 	<td><a href="http://akabana.sandbox.seasar.org/ja/">Akabana</a></td>
-	<td>S2 2.4, S2Flex2‚ð’†S‚Æ‚µ‚ÄARIAŠÖ˜A‚Ìƒ‰ƒCƒuƒ‰ƒŠ‚È‚Ç‚ðW‚ß‚½ƒvƒƒWƒFƒNƒg</td>
+	<td>S2 2.4, S2Flex2ã‚’ä¸­å¿ƒã¨ã—ã¦ã€RIAé–¢é€£ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãªã©ã‚’é›†ã‚ãŸãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ</td>
 	<td><a href="http://akabana.sandbox.seasar.org/ja/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://akabana.sandbox.seasar.org/ja/downloads.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td>Cadhelin</td>
-	<td>ControllerƒNƒ‰ƒX‚É•¡”‚ÌActionƒƒ\ƒbƒh‚ð’è‹`‚Å‚«APRGƒpƒ^[ƒ“‚ðƒTƒ|[ƒg‚µ‚½ƒvƒŒƒ[ƒ“ƒe[ƒVƒ‡ƒ“ƒtƒŒ[ƒ€ƒ[ƒN</td>
-	<td>(€”õ’†)</td>
+	<td>Controllerã‚¯ãƒ©ã‚¹ã«è¤‡æ•°ã®Actionãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã§ãã€PRGãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’ã‚µãƒãƒ¼ãƒˆã—ãŸãƒ—ãƒ¬ã‚¼ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="a">
 	<td><a href="http://dbflute.sandbox.seasar.org/ja/">DBFlute</a></td>
-	<td>gDaoh‚âgEntityh‚ÌŽ©“®¶¬‚É‚æ‚ègS2Daoh‚Ì—˜—p‚ðƒTƒ|[ƒg‚·‚éƒc[ƒ‹</td>
+	<td>â€œDaoâ€ã‚„â€œEntityâ€ã®è‡ªå‹•ç”Ÿæˆã«ã‚ˆã‚Šâ€œS2Daoâ€ã®åˆ©ç”¨ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ãƒ„ãƒ¼ãƒ«</td>
 	<td><a href="http://dbflute.sandbox.seasar.org/ja/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://dbflute.sandbox.seasar.org/ja/"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td>DbLauncher</td>
-	<td>Eclipse 3.1 ˆÈã‚ÅAH2‚È‚Ç‚ÌDB‚ð‹N“®‚·‚éˆ×‚ÌEclipseƒvƒ‰ƒOƒCƒ“</td>
+	<td>Eclipse 3.1 ä»¥ä¸Šã§ã€H2ãªã©ã®DBã‚’èµ·å‹•ã™ã‚‹ç‚ºã®Eclipseãƒ—ãƒ©ã‚°ã‚¤ãƒ³</td>
 	<td><a href="updates.html"><img src="images/icon_update.gif" width="20" height="24" alt="eclipse plugin update site" title="eclipse plugin update site" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://dolteng.sandbox.seasar.org/">Dolteng</a></td>
-	<td>Eclipse‚É‚æ‚éseasarŠÖ˜Aƒvƒƒ_ƒNƒg‚ÌŠJ”­Œø—¦‚ðŒüã‚³‚¹‚éˆ×‚Ìƒvƒ‰ƒOƒCƒ“</td>
+	<td>Eclipseã«ã‚ˆã‚‹seasaré–¢é€£ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆã®é–‹ç™ºåŠ¹çŽ‡ã‚’å‘ä¸Šã•ã›ã‚‹ç‚ºã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³</td>
 	<td><a href="updates.html"><img src="images/icon_update.gif" width="20" height="24" alt="eclipse plugin update site" title="eclipse plugin update site" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://fisshplate.sandbox.seasar.org/ja/">Fisshplate</a></td>
-	<td>ƒeƒ“ƒvƒŒ[ƒg‚ð—p‚¢‚½Excelo—Íƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’ç”¨ã„ãŸExcelå‡ºåŠ›ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://fisshplate.sandbox.seasar.org/ja/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://fisshplate.sandbox.seasar.org/ja/downloads.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://golf.sandbox.seasar.org/">Golf</a></td>
-	<td>S2Container‚Æ JGoodies‚ÌBindingAValidation‚ð‘g‚Ý‡‚í‚¹‚½ RCPŠÂ‹«‚Ìì¬Bƒuƒ‰ƒEƒU“I‚Èƒ†[ƒU[ƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌŽÀŒ»iƒRƒ“ƒeƒi[‰æ–Ê‚Ì’†‚ÉA‹Æ–±‰æ–Ê‚ðØ‚è‘Ö‚¦•\Ž¦“™j</td>
+	<td>S2Containerã¨ JGoodiesã®Bindingã€Validationã‚’çµ„ã¿åˆã‚ã›ãŸ RCPç’°å¢ƒã®ä½œæˆã€‚ãƒ–ãƒ©ã‚¦ã‚¶çš„ãªãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿç¾ï¼ˆã‚³ãƒ³ãƒ†ãƒŠãƒ¼ç”»é¢ã®ä¸­ã«ã€æ¥­å‹™ç”»é¢ã‚’åˆ‡ã‚Šæ›¿ãˆè¡¨ç¤ºç­‰ï¼‰</td>
 	<td><a href="http://golf.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://golf.sandbox.seasar.org/download/golf-v0.1.zip"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://gusuku.sandbox.seasar.org/">Gusuku</a></td>
-	<td>Webƒx[ƒX‚ÌDB•s—v‚ÈBTS</td>
+	<td>Webãƒ™ãƒ¼ã‚¹ã®DBä¸è¦ãªBTS</td>
 	<td><a href="http://gusuku.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://gusuku.sandbox.seasar.org/download/Gusuku.war"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td>Seasar Eclipse Common</td>
-	<td>Eclipse ƒvƒ‰ƒOƒCƒ“‚ðŠJ”­‚·‚éÛ‚É—˜—po—ˆ‚éƒ†[ƒeƒBƒŠƒeƒBƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>Eclipse ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’é–‹ç™ºã™ã‚‹éš›ã«åˆ©ç”¨å‡ºæ¥ã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="updates.html"><img src="images/icon_update.gif" width="20" height="24" alt="eclipse plugin update site" title="eclipse plugin update site" /></a></td>
 </tr>
 <tr class="b">
-	<td><a href="http://kikainekomocker.sandbox.seasar.org/">‹@ŠB”Lƒ‚ƒbƒJ[</a></td>
-	<td>ƒeƒXƒgƒR[ƒh‚©‚ç‹[Ž—ƒNƒ‰ƒX‚ð¶¬‚·‚éƒc[ƒ‹</td>
+	<td><a href="http://kikainekomocker.sandbox.seasar.org/">æ©Ÿæ¢°çŒ«ãƒ¢ãƒƒã‚«ãƒ¼</a></td>
+	<td>ãƒ†ã‚¹ãƒˆã‚³ãƒ¼ãƒ‰ã‹ã‚‰æ“¬ä¼¼ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ãƒ„ãƒ¼ãƒ«</td>
 	<td><!-- a><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" />
 		<img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a --></td>
 </tr>
 <tr class="a">
 	<td><a href="http://karrta.sandbox.seasar.org/">Karrta</a></td>
-	<td>WEB ƒRƒ‰ƒ{ƒŒ[ƒVƒ‡ƒ“ ƒ}ƒCƒ“ƒhƒ}ƒbƒv ƒAƒvƒŠƒP[ƒVƒ‡ƒ“</td>
+	<td>WEB ã‚³ãƒ©ãƒœãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ ãƒžã‚¤ãƒ³ãƒ‰ãƒžãƒƒãƒ— ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³</td>
 	<td><a href="http://karrta.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://kvasir.sandbox.seasar.org/">Kvasir/Sora</a></td>
-	<td>ƒvƒ‰ƒKƒuƒ‹(pluggable)‚ÈƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒvƒ‰ƒbƒgƒtƒH[ƒ€</td>
+	<td>ãƒ—ãƒ©ã‚¬ãƒ–ãƒ«(pluggable)ãªã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ </td>
 	<td><a href="http://kvasir.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://kvasir.sandbox.seasar.org/index.html#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td>Learnings</td>
-	<td>•×‹­‰ï‚âˆÓŒ©ŒðŠ·‚È‚Ç‚Ì‘£iEì¬‚³‚ê‚½Ž‘—¿‚ÌƒA[ƒJƒCƒu</td>
-	<td>(€”õ’†)</td>
+	<td>å‹‰å¼·ä¼šã‚„æ„è¦‹äº¤æ›ãªã©ã®ä¿ƒé€²ãƒ»ä½œæˆã•ã‚ŒãŸè³‡æ–™ã®ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
-	<td><a href="http://maihime.sandbox.seasar.org/ja/">•‘•P</a></td>
-	<td>Tomcat‚Ì‹N“®‚ð‘‚­‚·‚éˆ×‚ÌEclipseƒvƒ‰ƒOƒCƒ“</td>
+	<td><a href="http://maihime.sandbox.seasar.org/ja/">èˆžå§«</a></td>
+	<td>Tomcatã®èµ·å‹•ã‚’æ—©ãã™ã‚‹ç‚ºã®Eclipseãƒ—ãƒ©ã‚°ã‚¤ãƒ³</td>
 	<td><a href="http://maihime.sandbox.seasar.org/ja/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="updates.html"><img src="images/icon_update.gif" width="20" height="24" alt="eclipse plugin update site" title="eclipse plugin update site" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://maven-backport175.sandbox.seasar.org/">maven-backport175-plugin</a></td>
-	<td>Backport175‚ðŽg—p‚·‚é‚½‚ß‚ÌMaven2ƒvƒ‰ƒOƒCƒ“</td>
+	<td>Backport175ã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã®Maven2ãƒ—ãƒ©ã‚°ã‚¤ãƒ³</td>
 	<td><a href="http://maven-backport175.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 	<!-- a><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a --></td>
 </tr>
 <tr class="b">
 	<td>mistral</td>
-	<td>WebƒAƒvƒŠƒx[ƒX‚ÌƒVƒ“ƒvƒ‹‚ÈBTS</td>
+	<td>Webã‚¢ãƒ—ãƒªãƒ™ãƒ¼ã‚¹ã®ã‚·ãƒ³ãƒ—ãƒ«ãªBTS</td>
 	<td><!-- a><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" />
 		<img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a --></td>
 </tr>
 <tr class="a">
-	<td>‚È‚Å‚¶‚á‚±</td>
-	<td>“ú–{ŒêƒvƒƒOƒ‰ƒ€Œ¾Œêu‚È‚Å‚µ‚±v‚ðŽQl‚É‚µ‚Äì‚ç‚ê‚½ƒXƒNƒŠƒvƒgŒ¾Œê</td>
-	<td>(€”õ’†)</td>
+	<td>ãªã§ã˜ã‚ƒã“</td>
+	<td>æ—¥æœ¬èªžãƒ—ãƒ­ã‚°ãƒ©ãƒ è¨€èªžã€Œãªã§ã—ã“ã€ã‚’å‚è€ƒã«ã—ã¦ä½œã‚‰ã‚ŒãŸã‚¹ã‚¯ãƒªãƒ—ãƒˆè¨€èªž</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://resourcesynchronizer.sandbox.seasar.org/ja/">ResourceSynchronizer</a></td>
-	<td>Eclipse“à‚ÉAŠO•”¶¬ƒŠƒ\[ƒX‚ð”FŽ¯‚³‚¹‚éˆ×‚Ìƒvƒ‰ƒOƒCƒ“</td>
+	<td>Eclipseå†…ã«ã€å¤–éƒ¨ç”Ÿæˆãƒªã‚½ãƒ¼ã‚¹ã‚’èªè­˜ã•ã›ã‚‹ç‚ºã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³</td>
 	<td><a href="http://resourcesynchronizer.sandbox.seasar.org/ja/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="./updates.html"><img src="images/icon_update.gif" width="20" height="24" alt="eclipse plugin update site" title="eclipse plugin update site" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2ana.sandbox.seasar.org/ja/index.html">S2AnA</a></td>
-	<td>S2Container‚Å”FØ (Authentication) ‚Æ³”F (Authorization) ‚ð—˜—p‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>S2Containerã§èªè¨¼ (Authentication) ã¨æ‰¿èª (Authorization) ã‚’åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2ana.sandbox.seasar.org/ja/index.html"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2ana.sandbox.seasar.org/ja/#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2buri.sandbox.seasar.org/">S2Buri</a></td>
-	<td>ƒ[ƒNƒXƒe[ƒgŠÇ—‚ð‚·‚éƒ\ƒtƒgƒEƒFƒA</td>
+	<td>ãƒ¯ãƒ¼ã‚¯ã‚¹ãƒ†ãƒ¼ãƒˆç®¡ç†ã‚’ã™ã‚‹ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢</td>
 	<td><a href="http://s2buri.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2buri.sandbox.seasar.org/#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2caching.sandbox.seasar.org/">S2Caching</a></td>
-	<td>AOP‚É‚æ‚ééŒ¾“IƒLƒƒƒbƒVƒ…‚ð’ñ‹Ÿ‚·‚éƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>AOPã«ã‚ˆã‚‹å®£è¨€çš„ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’æä¾›ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2caching.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2caching.sandbox.seasar.org/download.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td>S2Cayenne</td>
-	<td>Cayenne‚ðS2Container‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚Æ‘g‚Ý‡‚í‚¹‚ÄŽg‚¤‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>Cayenneã‚’S2Containerã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã¨çµ„ã¿åˆã‚ã›ã¦ä½¿ã†ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2chronos.sandbox.seasar.org/">S2Chronos</a></td>
-	<td>JavaƒIƒuƒWƒFƒNƒgƒXƒPƒWƒ…[ƒŠƒ“ƒOƒtƒŒ[ƒ€ƒ[ƒN</td>
+	<td>Javaã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒªãƒ³ã‚°ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
 	<td><a href="http://s2chronos.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
     <a href="http://s2chronos.sandbox.seasar.org/ja/download.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2click.sandbox.seasar.org/">S2Click</a></td>
-	<td>Seasar Container‚ÆClick‚Ì˜AŒg‚¨‚æ‚Ñ“ú–{ŒêŠÂ‹«‚É‚¨‚¯‚éŠg’£‚ð‚µ‚½ƒtƒŒ[ƒ€ƒ[ƒN</td>
+	<td>Seasar Containerã¨Clickã®é€£æºãŠã‚ˆã³æ—¥æœ¬èªžç’°å¢ƒã«ãŠã‘ã‚‹æ‹¡å¼µã‚’ã—ãŸãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
 	<td><a href="http://s2click.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2coffee.sandbox.seasar.org/">S2Coffee</a></td>
-	<td>Tuigwaa‚ÆS2Buri‚Ì‹¤’Êƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>Tuigwaaã¨S2Buriã®å…±é€šãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2config.sandbox.seasar.org/">S2Config</a></td>
-	<td>ŠO•”Ý’èƒtƒ@ƒCƒ‹‚ÌƒvƒƒpƒeƒB‚ðƒRƒ“ƒ|[ƒlƒ“ƒg‚ÉDI‚·‚é‚½‚ß‚ÌƒtƒŒ[ƒ€ƒ[ƒN</td>
+	<td>å¤–éƒ¨è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã«DIã™ã‚‹ãŸã‚ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
 	<td><a href="http://s2config.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></td>
 </tr>
 <tr class="a">
 	<td>S2Continuations</td>
-	<td>S2Container‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ÅuŒp‘±v‚ðŽÀŒ»‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>S2Containerã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã§ã€Œç¶™ç¶šã€ã‚’å®Ÿç¾ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2csv.sandbox.seasar.org/">S2Csv</a></td>
-	<td>CSVŒ`Ž®‚Ìƒf[ƒ^‚ðƒoƒŠƒf[ƒVƒ‡ƒ“‚âObject•ÏŠ·“™‚ðŽèŒy‚Éˆµ‚¤‚½‚ß‚ÌƒtƒŒ[ƒ€ƒ[ƒN</td>
+	<td>CSVå½¢å¼ã®ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã‚„Objectå¤‰æ›ç­‰ã‚’æ‰‹è»½ã«æ‰±ã†ãŸã‚ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
 	<td><a href="http://s2csv.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2dao-codegen.sandbox.seasar.org/">S2Dao-CodeGen</a></td>
-	<td>ƒe[ƒuƒ‹‚É‡‚í‚¹‚½DTOADAOAdicon‚ÌŽ©“®ì¬ƒc[ƒ‹</td>
+	<td>ãƒ†ãƒ¼ãƒ–ãƒ«ã«åˆã‚ã›ãŸDTOã€DAOã€diconã®è‡ªå‹•ä½œæˆãƒ„ãƒ¼ãƒ«</td>
 	<td><a href="http://s2dao-codegen.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2dao-codegen.sandbox.seasar.org/download/?C=M;O=D"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2daoplugin.sandbox.seasar.org/">S2DaoPlugin</a></td>
-	<td>S2Dao‚Å‚ÌŠJ”­‚ðŽx‰‡‚·‚éEclipseƒvƒ‰ƒOƒCƒ“</td>
+	<td>S2Daoã§ã®é–‹ç™ºã‚’æ”¯æ´ã™ã‚‹Eclipseãƒ—ãƒ©ã‚°ã‚¤ãƒ³</td>
 	<td><a href="http://s2daoplugin.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="updates.html"><img src="images/icon_update.gif" width="20" height="24" alt="eclipse plugin update site" title="eclipse plugin update site" /></a></td>
 </tr>
 <tr class="a">
   <td>S2Dao Spring</td>
-  <td>SpringFrameworkã‚ÅS2Dao‚ð—˜—p‚·‚é‚½‚ß‚Ì˜AŒgƒ‰ƒCƒuƒ‰ƒŠ</td>
-  <td>(€”õ’†)</td>
+  <td>SpringFrameworkä¸Šã§S2Daoã‚’åˆ©ç”¨ã™ã‚‹ãŸã‚ã®é€£æºãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+  <td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2directory.sandbox.seasar.org/">S2Directory</a></td>
-	<td>ƒfƒBƒŒƒNƒgƒŠƒT[ƒo‚Æ‚ÌÚ‘±‚ð—eˆÕ‚É‚·‚é‚½‚ß‚ÌƒRƒlƒNƒVƒ‡ƒ“ŠÇ—‹@”\‚ÆAƒfƒBƒŒƒNƒgƒŠƒT[ƒo‚ÌƒGƒ“ƒgƒŠE‘®«‚ÆƒIƒuƒWƒFƒNƒg‚ðŒ‹‚Ñ‚Â‚¯‚éO/D
-Mapping (Object / Directory Mapping) ƒtƒŒ[ƒ€ƒ[ƒN</td>
+	<td>ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒã¨ã®æŽ¥ç¶šã‚’å®¹æ˜“ã«ã™ã‚‹ãŸã‚ã®ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ç®¡ç†æ©Ÿèƒ½ã¨ã€ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚µãƒ¼ãƒã®ã‚¨ãƒ³ãƒˆãƒªãƒ»å±žæ€§ã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’çµã³ã¤ã‘ã‚‹O/D
+Mapping (Object / Directory Mapping) ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
 	<td><a href="http://s2directory.sandbox.seasar.org/ja/documentation/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2directory.sandbox.seasar.org/ja/downloads.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2domainmodel.sandbox.seasar.org/">S2DomainModel</a></td>
-	<td>Seasar2ã‚ÅDomainModelƒpƒ^[ƒ“‚âDDDiƒhƒƒCƒ“‹ì“®ÝŒvj‚ÌŽÀ‘•‚ðƒTƒ|[ƒg‚·‚é‚½‚ß‚ÌƒtƒŒ[ƒ€ƒ[ƒN^ƒ‰ƒCƒuƒ‰ƒŠŒQB</td>
+	<td>Seasar2ä¸Šã§DomainModelãƒ‘ã‚¿ãƒ¼ãƒ³ã‚„DDDï¼ˆãƒ‰ãƒ¡ã‚¤ãƒ³é§†å‹•è¨­è¨ˆï¼‰ã®å®Ÿè£…ã‚’ã‚µãƒãƒ¼ãƒˆã™ã‚‹ãŸã‚ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ï¼ãƒ©ã‚¤ãƒ–ãƒ©ãƒªç¾¤ã€‚</td>
 	<td><a href="http://s2domainmodel.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></td>
 </tr>
 <tr class="b">
 	<td>S2DWR</td>
-	<td>DWR‚©‚çS2Containerã‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ðŠÈ’P‚ÉŒÄ‚Ño‚¹‚é‚æ‚¤‚É‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>DWRã‹ã‚‰S2Containerä¸Šã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ç°¡å˜ã«å‘¼ã³å‡ºã›ã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="a">
 	<td>S2Ebi</td>
-	<td>Easy(—eˆÕ‚È) Business(¤”„) Imperative(‹K‘¥) ‚Èƒ‹[ƒ‹ˆ—ƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>Easy(å®¹æ˜“ãª) Business(å•†å£²) Imperative(è¦å‰‡) ãªãƒ«ãƒ¼ãƒ«å‡¦ç†ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2eclipselink.sandbox.seasar.org/">S2EclipseLink</a></td>
-	<td>EclipseLink‚ðS2Container‚Æ‘g‚Ý‡‚í‚¹‚ÄŽg‚¤‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>EclipseLinkã‚’S2Containerã¨çµ„ã¿åˆã‚ã›ã¦ä½¿ã†ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2eclipselink.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2eclipselink.sandbox.seasar.org/ja/downloads.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2flex2.sandbox.seasar.org/ja/">S2Flex2</a></td>
-	<td>Flex2‚ÆS2Container‚ð˜AŒg‚³‚¹‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>Flex2ã¨S2Containerã‚’é€£æºã•ã›ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2flex2.sandbox.seasar.org/ja/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2flex2.sandbox.seasar.org/ja/#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2hessian.sandbox.seasar.org/">S2Hessian</a></td>
-	<td>Hessian/Burlap‚ð—p‚¢‚ÄS2Container‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ðƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>Hessian/Burlapã‚’ç”¨ã„ã¦S2Containerã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2hessian.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<!-- a><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a --></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2javelin.sandbox.seasar.org/s2javelin.html">S2Javelin</a></td>
-	<td>S2Container‚ÌAOP‹@\‚ð—˜—p‚µAS2Containerã‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ì“®ìƒƒO‚ðo—Í‚·‚éƒc[ƒ‹</td>
+	<td>S2Containerã®AOPæ©Ÿæ§‹ã‚’åˆ©ç”¨ã—ã€S2Containerä¸Šã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®å‹•ä½œãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹ãƒ„ãƒ¼ãƒ«</td>
 	<td><a href="http://s2javelin.sandbox.seasar.org/s2javelin.html"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2javelin.sandbox.seasar.org/s2javelin.html#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td>S2jBPM</td>
-	<td>JBoss jBPM ‚ð S2Container ‚Ìƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“§Œä‚Æ‘g‚Ý‡‚í‚¹‚ÄŽg‚¤‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>JBoss jBPM ã‚’ S2Container ã®ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³åˆ¶å¾¡ã¨çµ„ã¿åˆã‚ã›ã¦ä½¿ã†ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2jcr.sandbox.seasar.org/ja/index.html">S2JCR</a></td>
-	<td>JSR 170 (Java Content Repository) ‚ð Seasar ‚ÅŽæ“¾E—˜—p‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>JSR 170 (Java Content Repository) ã‚’ Seasar ã§å–å¾—ãƒ»åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2jcr.sandbox.seasar.org/ja/index.html"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2jcr.sandbox.seasar.org/ja/#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2javelin.sandbox.seasar.org/s2jmxjavelin.html">S2JmxJavelin</a></td>
-	<td>S2Container‚ÌAOP‹@\‚ð—˜—p‚µAS2Containerã‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ì“®ì‚ðJMXŒo—R‚ÅŒöŠJ‚·‚éƒc[ƒ‹</td>
+	<td>S2Containerã®AOPæ©Ÿæ§‹ã‚’åˆ©ç”¨ã—ã€S2Containerä¸Šã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®å‹•ä½œã‚’JMXçµŒç”±ã§å…¬é–‹ã™ã‚‹ãƒ„ãƒ¼ãƒ«</td>
 	<td><a href="http://s2javelin.sandbox.seasar.org/s2jmxjavelin.html"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2javelin.sandbox.seasar.org/s2jmxjavelin.html#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2junit4plugin.sandbox.seasar.org/">S2JUnit4Plugin</a></td>
-	<td>S2JUnit4‚Å‚ÌƒeƒXƒg‚ðŽx‰‡‚·‚éEclipseƒvƒ‰ƒOƒCƒ“</td>
+	<td>S2JUnit4ã§ã®ãƒ†ã‚¹ãƒˆã‚’æ”¯æ´ã™ã‚‹Eclipseãƒ—ãƒ©ã‚°ã‚¤ãƒ³</td>
 	<td><a href="http://s2junit4plugin.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="updates.html"><img src="images/icon_update.gif" width="20" height="24" alt="eclipse plugin update site" title="eclipse plugin update site" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2laszlo.sandbox.seasar.org/ja/">S2Laszlo</a></td>
-	<td>FlashƒvƒŒ[ƒ„[‚©‚çLaszlo‚ð—p‚¢‚ÄS2Container‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ðŒÄ‚Ño‚·ƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>Flashãƒ—ãƒ¬ãƒ¼ãƒ¤ãƒ¼ã‹ã‚‰Laszloã‚’ç”¨ã„ã¦S2Containerã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‘¼ã³å‡ºã™ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><!-- a><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" />
 		<img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a --></td>
 </tr>
 <tr class="a">
 	<td>S2Lucene</td>
-	<td>Lucene‚ðS2Container‚Æ‘g‚Ý‡‚í‚¹‚Ä—˜—p‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>Luceneã‚’S2Containerã¨çµ„ã¿åˆã‚ã›ã¦åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2mai.sandbox.seasar.org/ja/">S2Mai</a></td>
-	<td>ƒAƒXƒyƒNƒg‚ðŽg—p‚µ‚Äƒ[ƒ‹‘—M‚·‚éƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚’ä½¿ç”¨ã—ã¦ãƒ¡ãƒ¼ãƒ«é€ä¿¡ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2mai.sandbox.seasar.org/ja/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2mai.sandbox.seasar.org/ja/"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td>S2RecordComparator</td>
-	<td>ƒr[ƒ“ƒƒ^î•ñ‚Æ”äŠr€–Ú‚ð“n‚µAComparator‚ðŽ©“®¶¬‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>ãƒ“ãƒ¼ãƒ³ãƒ¡ã‚¿æƒ…å ±ã¨æ¯”è¼ƒé …ç›®ã‚’æ¸¡ã—ã€Comparatorã‚’è‡ªå‹•ç”Ÿæˆã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td>S2REST</td>
-	<td>Seasar2‚ÅŠÈ’P‚ÉRESTfulƒT[ƒrƒX‚ðì¬‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>Seasar2ã§ç°¡å˜ã«RESTfulã‚µãƒ¼ãƒ“ã‚¹ã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="a">
 	<td>S2Sao</td>
-	<td>ƒAƒXƒyƒNƒg‚ðŽg—p‚µ‚ÄJavaScript‚ÌƒƒWƒbƒN‚ðŽÀs‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚’ä½¿ç”¨ã—ã¦JavaScriptã®ãƒ­ã‚¸ãƒƒã‚¯ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td>S2Silverlight</td>
-	<td>Silverlight‚©‚çS2Container‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ðƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
-	<td>(€”õ’†)</td>
+	<td>Silverlightã‹ã‚‰S2Containerã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2sqlmap.sandbox.seasar.org/">S2SqlMap</a></td>
-	<td>iBATIS SQL Maps‘Î‰žƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>iBATIS SQL Mapså¯¾å¿œãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2sqlmap.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2sqlmap.sandbox.seasar.org/downloads.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2swing.sandbox.seasar.org/">S2Swing</a></td>
-	<td>Swing Application Framework‚ÆBeans Binding‚ðƒx[ƒX‚Æ‚µ‚½GUIƒtƒŒ[ƒ€ƒ[ƒN</td>
+	<td>Swing Application Frameworkã¨Beans Bindingã‚’ãƒ™ãƒ¼ã‚¹ã¨ã—ãŸGUIãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
 	<td><a href="http://s2swing.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2swing.sandbox.seasar.org/download/"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2velocity.sandbox.seasar.org/">S2Velocity</a></td>
-	<td>Velocity‚ðƒrƒ…[‚É—p‚¢‚½S2Containerƒx[ƒX‚ÌWebƒAƒvƒŠƒP[ƒVƒ‡ƒ“ŠJ”­‚ðŽx‰‡‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒg</td>
+	<td>Velocityã‚’ãƒ“ãƒ¥ãƒ¼ã«ç”¨ã„ãŸS2Containerãƒ™ãƒ¼ã‚¹ã®Webã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³é–‹ç™ºã‚’æ”¯æ´ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</td>
 	<td><a href="http://s2velocity.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2velocity.sandbox.seasar.org/ja/download.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2wicket.sandbox.seasar.org/">S2Wicket</a></td>
-	<td>Wicket‚ÆSeasar2 Container‚ð“‡‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>Wicketã¨Seasar2 Containerã‚’çµ±åˆã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2wicket.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2wicket.sandbox.seasar.org/download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2xmlrpc.sandbox.seasar.org/ja/index.html">S2XML-RPC</a></td>
-	<td>XML-RPC‚ð—p‚¢‚ÄS2Container‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ðƒŠƒ‚[ƒgŒÄ‚Ño‚µ‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ	</td>
+	<td>XML-RPCã‚’ç”¨ã„ã¦S2Containerã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ãƒªãƒ¢ãƒ¼ãƒˆå‘¼ã³å‡ºã—ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª	</td>
 	<td><a href="http://s2xmlrpc.sandbox.seasar.org/ja/index.html"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2xmlrpc.sandbox.seasar.org/ja/index.html#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2xwork.sandbox.seasar.org/">S2XWork</a></td>
-	<td>”Ä—pƒRƒ}ƒ“ƒhƒpƒ^[ƒ“ƒtƒŒ[ƒ€ƒ[ƒNXWork‚ðS2Container‚Æ˜AŒg‚³‚¹‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>æ±Žç”¨ã‚³ãƒžãƒ³ãƒ‰ãƒ‘ã‚¿ãƒ¼ãƒ³ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯XWorkã‚’S2Containerã¨é€£æºã•ã›ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2xwork.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2xwork.sandbox.seasar.org/ja/download.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td>Seasar-genapp</td>
-	<td>S2Container‚ð—˜—p‚·‚éŠJ”­ƒvƒƒWƒFƒNƒg‚Ì—Œ`‚ð¶¬‚·‚éMavenƒvƒ‰ƒOƒCƒ“</td>
-	<td>(€”õ’†)</td>
+	<td>S2Containerã‚’åˆ©ç”¨ã™ã‚‹é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®é››å½¢ã‚’ç”Ÿæˆã™ã‚‹Mavenãƒ—ãƒ©ã‚°ã‚¤ãƒ³</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://maven-archetypes.sandbox.seasar.org/">Seasar Maven Archetypes</a></td>
-	<td>Maven2‚ð—˜—p‚µ‚ÄŠeŽíƒvƒƒWƒFƒNƒg‚Ì‚Ð‚ÈŒ`‚ð¶¬</td>
+	<td>Maven2ã‚’åˆ©ç”¨ã—ã¦å„ç¨®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ã²ãªå½¢ã‚’ç”Ÿæˆ</td>
 	<td><a href="http://maven-archetypes.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://maven-archetypes.sandbox.seasar.org/ja/download.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td>Slim</td>
-	<td>"Less Is More"‚ðƒRƒ“ƒZƒvƒg‚ÉŽ‚ÂAƒtƒ‹ƒXƒ^ƒbƒNƒtƒŒ[ƒ€ƒ[ƒN</td>
-	<td>(€”õ’†)</td>
+	<td>"Less Is More"ã‚’ã‚³ãƒ³ã‚»ãƒ—ãƒˆã«æŒã¤ã€ãƒ•ãƒ«ã‚¹ã‚¿ãƒƒã‚¯ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://struts2-seasar-plugin.sandbox.seasar.org/">Struts2 Seasar Plugin</a></td>
-	<td>Struts2‚©‚çS2Container‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ðŒÄ‚Ño‚·ƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>Struts2ã‹ã‚‰S2Containerã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‘¼ã³å‡ºã™ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://struts2-seasar-plugin.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://struts2-seasar-plugin.sandbox.seasar.org/ja/download.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://tugboat-gtd.sandbox.seasar.org/">Tugboat.GTD</a></td>
-	<td>ƒ`[ƒ€‚ÅGTD‚ðŽÀ‘H‚·‚éWEBƒAƒvƒŠƒP[ƒVƒ‡ƒ“</td>
+	<td>ãƒãƒ¼ãƒ ã§GTDã‚’å®Ÿè·µã™ã‚‹WEBã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³</td>
 	<td><a href="http://tugboat-gtd.sandbox.seasar.org/docs_task.html"><img src="images/icon_doc.gif"  width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://tugboat-gtd.sandbox.seasar.org/downloads.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://tuigwaa.sandbox.seasar.org/">Tuigwaa</a></td>
-	<td>HTML ƒ^ƒO‚ð’m‚ç‚È‚¢l‚ªAê–å’mŽ¯‚â“Á•Ê‚ÈŠÂ‹«‚È‚µ‚É ƒuƒ‰ƒEƒU‚¾‚¯‚Åƒf[ƒ^ƒx[ƒX‚Æ˜A“®‚·‚é
-Web@ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðì‚éƒc[ƒ‹</td>
+	<td>HTML ã‚¿ã‚°ã‚’çŸ¥ã‚‰ãªã„äººãŒã€å°‚é–€çŸ¥è­˜ã‚„ç‰¹åˆ¥ãªç’°å¢ƒãªã—ã« ãƒ–ãƒ©ã‚¦ã‚¶ã ã‘ã§ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¨é€£å‹•ã™ã‚‹
+Webã€€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½œã‚‹ãƒ„ãƒ¼ãƒ«</td>
 	<td><a href="http://tuigwaa.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://tuigwaa.sandbox.seasar.org/start/download.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
-	<td><a href="http://uruma.sandbox.seasar.org/ja/">Uruma (‹Œ:S2JFace)</a></td>
-	<td>Eclipse‚Å—˜—p‚³‚ê‚Ä‚¢‚éSWTEJFace‚É‚æ‚é‰æ–Ê‚ðXML‚Å‹Lq‚Å‚«‚é‚æ‚¤‚É‚µAGUI‚©‚çSeasarƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌŒÄ‚Ño‚µ‚ðŠÈ’P‚És‚¦‚é‚æ‚¤‚É‚·‚éƒtƒŒ[ƒ€ƒ[ƒN</td>
+	<td><a href="http://uruma.sandbox.seasar.org/ja/">Uruma (æ—§:S2JFace)</a></td>
+	<td>Eclipseã§åˆ©ç”¨ã•ã‚Œã¦ã„ã‚‹SWTãƒ»JFaceã«ã‚ˆã‚‹ç”»é¢ã‚’XMLã§è¨˜è¿°ã§ãã‚‹ã‚ˆã†ã«ã—ã€GUIã‹ã‚‰Seasarã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å‘¼ã³å‡ºã—ã‚’ç°¡å˜ã«è¡Œãˆã‚‹ã‚ˆã†ã«ã™ã‚‹ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
 	<td><a href="http://uruma.sandbox.seasar.org/ja/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://uruma.sandbox.seasar.org/ja/download.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td>WebLauncher</td>
-	<td>Eclipse 3.2ˆÈã‚ÅAWinstone‚ð‹N“®‚·‚éˆ×‚ÌEclipseƒvƒ‰ƒOƒCƒ“</td>
+	<td>Eclipse 3.2ä»¥ä¸Šã§ã€Winstoneã‚’èµ·å‹•ã™ã‚‹ç‚ºã®Eclipseãƒ—ãƒ©ã‚°ã‚¤ãƒ³</td>
 	<td><a href="updates.html"><img src="images/icon_update.gif" width="20" height="24" alt="eclipse plugin update site" title="eclipse plugin update site" /></a></td>
 </tr>
 </tbody>
 </table>
 
-<h3><a name="dotnet"></a>Sandbox.NET ƒvƒƒWƒFƒNƒg</h3>
+<h3><a name="dotnet"></a>Sandbox.NET ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ</h3>
 
 <table class="list">
 <colgroup>
@@ -537,42 +554,42 @@ Web@ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðì‚éƒc[ƒ‹</td>
 </colgroup>
 <tbody>
 <tr>
-	<th>ƒvƒƒ_ƒNƒg</th>
-	<th>à–¾</th>
-	<th>ƒŠƒ\[ƒX</th>
+	<th>ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆ</th>
+	<th>èª¬æ˜Ž</th>
+	<th>ãƒªã‚½ãƒ¼ã‚¹</th>
 </tr>
 <tr class="a">
 	<td>Henshimosql.NET</td>
-	<td>.NET Framework Data ProviderŒo—R‚ÅSQL‚ðŽÀsAŒ‹‰Ê‚ðŠm”F‚Å‚«‚éWindowsƒAƒvƒŠƒP[ƒVƒ‡ƒ“</td>
-	<td>(€”õ’†)</td>
+	<td>.NET Framework Data ProviderçµŒç”±ã§SQLã‚’å®Ÿè¡Œã€çµæžœã‚’ç¢ºèªã§ãã‚‹Windowsã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://koropokkur.net.sandbox.seasar.org/">Koropokkur.NET</a></td>
-	<td>VisualStudio‚Å‚ÌŠJ”­‚ð‚³‚³‚â‚©‚ÉŽx‰‡‚·‚éƒAƒhƒCƒ“W</td>
+	<td>VisualStudioã§ã®é–‹ç™ºã‚’ã•ã•ã‚„ã‹ã«æ”¯æ´ã™ã‚‹ã‚¢ãƒ‰ã‚¤ãƒ³é›†</td>
 	<td><a href="http://koropokkur.net.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://koropokkur.net.sandbox.seasar.org/#Download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td>Kurohoppy.NET</td>
-	<td>WebƒT[ƒrƒX‚©‚çŽæ“¾‚µ‚½ƒf[ƒ^‚ðDataSet‚Öƒ}ƒbƒsƒ“ƒO‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒg</td>
-	<td>(€”õ’†)</td>
+	<td>Webã‚µãƒ¼ãƒ“ã‚¹ã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’DataSetã¸ãƒžãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 <tr class="b">
 	<td><a href="http://controls.net.sandbox.seasar.org/">Seasar.Controls.NET</a></td>
-	<td>.NET Framework‚Å“®ì‚·‚é•Ö—˜‚ÈƒRƒ“ƒgƒ[ƒ‹‚ðŠÜ‚Þƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>.NET Frameworkã§å‹•ä½œã™ã‚‹ä¾¿åˆ©ãªã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚’å«ã‚€ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://controls.net.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://controls.net.sandbox.seasar.org/#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2remoting.net.sandbox.seasar.org/">S2Remoting.NET</a></td>
-	<td>•ªŽUƒRƒ“ƒ|[ƒlƒ“ƒg‚ðŽÀŒ»‚·‚éƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>åˆ†æ•£ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å®Ÿç¾ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2remoting.net.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2remoting.net.sandbox.seasar.org/#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 </tbody>
 </table>
 
-<h3><a name="php"></a>Sandbox.PHP ƒvƒƒWƒFƒNƒg</h3>
+<h3><a name="php"></a>Sandbox.PHP ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ</h3>
 
 <table class="list">
 <colgroup>
@@ -582,32 +599,32 @@ Web@ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðì‚éƒc[ƒ‹</td>
 </colgroup>
 <tbody>
 <tr>
-	<th>ƒvƒƒ_ƒNƒg</th>
-	<th>à–¾</th>
-	<th>ƒŠƒ\[ƒX</th>
+	<th>ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆ</th>
+	<th>èª¬æ˜Ž</th>
+	<th>ãƒªã‚½ãƒ¼ã‚¹</th>
 </tr>
 <tr class="a">
 	<td><a href="http://kunit.jp/maple/">Maple.PHP</a></td>
-	<td>PHP‚ðŽg‚Á‚Ä‚æ‚èŒø—¦‚æ‚­WebƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðì‚é‚½‚ß‚ÌƒtƒŒ[ƒ€ƒ[ƒN</td>
+	<td>PHPã‚’ä½¿ã£ã¦ã‚ˆã‚ŠåŠ¹çŽ‡ã‚ˆãWebã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½œã‚‹ãŸã‚ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯</td>
 	<td><a href="http://kunit.jp/maple/about.html"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://kunit.jp/maple/download.html"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="b">
 	<td><a href="http://s2ana.php5.sandbox.seasar.org/">S2AnA.PHP5</a></td>
-	<td>S2Container‚Å”FØ (Authentication) ‚Æ³”F (Authorization) ‚ð—˜—p‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ</td>
+	<td>S2Containerã§èªè¨¼ (Authentication) ã¨æ‰¿èª (Authorization) ã‚’åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</td>
 	<td><a href="http://s2ana.php5.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2ana.php5.sandbox.seasar.org/#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://s2base.php5.sandbox.seasar.org/">S2Base.PHP5</a></td>
-	<td>S2Container.PHP5 ‚Æ S2Dao.PHP5 ‚ð—p‚¢‚½ŠJ”­‚ðŽx‰‡‚·‚éƒRƒ}ƒ“ƒhƒc[ƒ‹</td>
+	<td>S2Container.PHP5 ã¨ S2Dao.PHP5 ã‚’ç”¨ã„ãŸé–‹ç™ºã‚’æ”¯æ´ã™ã‚‹ã‚³ãƒžãƒ³ãƒ‰ãƒ„ãƒ¼ãƒ«</td>
 	<td><a href="http://s2base.php5.sandbox.seasar.org/"><img src="images/icon_doc.gif" width="20" height="24" alt="documents" title="documents" /></a>
 		<a href="http://s2base.php5.sandbox.seasar.org/#download"><img src="images/icon_down.gif" width="20" height="24" alt="downloads" title="downloads" /></a></td>
 </tr>
 <tr class="a">
 	<td><a href="http://prado.php5.sandbox.seasar.org/">PRADO</a></td>
-	<td>S2Container.PHP5‚Æ˜AŒg‚·‚éPRADOƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌŠJ”­‚ðŽx‰‡‚µ‚Ü‚·B</td>
-	<td>(€”õ’†)</td>
+	<td>S2Container.PHP5ã¨é€£æºã™ã‚‹PRADOã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®é–‹ç™ºã‚’æ”¯æ´ã—ã¾ã™ã€‚</td>
+	<td>(æº–å‚™ä¸­)</td>
 </tr>
 </tbody>
 </table>
@@ -621,7 +638,7 @@ Web@ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ðì‚éƒc[ƒ‹</td>
 <div id="footer">
 <address>&copy; Copyright <a href="http://www.seasarfoundation.org/">The Seasar Foundation</a> and the others 2004-2009, all rights reserved.
 <a href="http://www.seasar.org/">The Seasar Project</a>.</address>
-<address>“–ƒTƒCƒg‚Ì‰^—p‚É‚Í <a href="http://cis.k.hosei.ac.jp/" target="_blank">–@­‘åŠwî•ñ‰ÈŠw•”</a> ‚¨‚æ‚Ñ <a href="http://www.sios.com/" target="_blank">ƒTƒCƒIƒXƒeƒNƒmƒƒW[Š”Ž®‰ïŽÐ</a> ‚Ì‚²‹¦—Í‚ð‚¢‚½‚¾‚¢‚Ä‚¨‚è‚Ü‚·B</address>
+<address>å½“ã‚µã‚¤ãƒˆã®é‹ç”¨ã«ã¯ <a href="http://cis.k.hosei.ac.jp/" target="_blank">æ³•æ”¿å¤§å­¦æƒ…å ±ç§‘å­¦éƒ¨</a> ãŠã‚ˆã³ <a href="http://www.sios.com/" target="_blank">ã‚µã‚¤ã‚ªã‚¹ãƒ†ã‚¯ãƒŽãƒ­ã‚¸ãƒ¼æ ªå¼ä¼šç¤¾</a> ã®ã”å”åŠ›ã‚’ã„ãŸã ã„ã¦ãŠã‚Šã¾ã™ã€‚</address>
 <div class="line"><span class="hide">spacer</span></div>
 </div><!-- footer -->
 

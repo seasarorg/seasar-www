@@ -1,27 +1,27 @@
-//  ³‰ğ‚Ì”z—ñ(”z—ñ‚Ì‡”Ô‚Í“K“–‚ÅOK)
-    ans = new Array("Table3", "Column3", "ColumnNothing4", "N1Mapping2", "Bean1", 
-                    "Args2", "ManyArgs2","Interceptor4", "DefDicon4", "SQLFileName2", "Relno2", 
+//  æ­£è§£ã®é…åˆ—(é…åˆ—ã®é †ç•ªã¯é©å½“ã§OK)
+    ans = new Array("Table3", "Column3", "ColumnNothing4", "N1Mapping2", "Bean1",
+                    "Args2", "ManyArgs2","Interceptor4", "DefDicon4", "SQLFileName2", "Relno2",
                     "Relkeys4", "Query3", "QuerySQLComment3", "DefInsert1", "DefUpdate4",
                     "DefDelete2","SQLComment3", "SQLIf4", "SQLBegin3", "EntityManagerClass2",
                     "EntityManagerArgs3", "EntityManagerFind3", "EntityManagerFindArray1","EntityManagerFindBean4", "EntityManagerFindObject2",
                      "AutoDef3", "BatchUpdate1", "AutoSelect3", "AutoSelect2_4", "AutoSelect3_4");
-                    
+
 function check(linkName,linkNextName){
     count = 0;
     message = "";
-    //x•Ï”‚Ì‰Šú‰»
+    //xå¤‰æ•°ã®åˆæœŸåŒ–
     x = 0;
     for(i = 0; i<4; i++){
         if(document.myForm.elements["" + linkName][i].checked){
             if(answerCheck(document.myForm.elements["" + linkName][i].value)){
-                message = "³‰ğ‚Å‚·!\n‰ğà‚ğ•\¦‚µ‚Ü‚·‚©H";
+                message = "æ­£è§£ã§ã™!\nè§£èª¬ã‚’è¡¨ç¤ºã—ã¾ã™ã‹ï¼Ÿ";
                 flag=confirm(message);
                 if(flag){
                     location.href="s2DaoAns.html#" + linkName
                 }
                 else{
                     if(linkNextName != ""){
-                        flag=confirm("Ÿ‚Ì–â‘è‚ÉˆÚ‚è‚Ü‚·‚©H");
+                        flag=confirm("æ¬¡ã®å•é¡Œã«ç§»ã‚Šã¾ã™ã‹ï¼Ÿ");
                         if(flag){
                             location.href = "#" + linkNextName
                         }
@@ -29,7 +29,7 @@ function check(linkName,linkNextName){
                 }
             }
             else{
-                message = "•s³‰ğ‚Å‚·B\n‰ğà‚ğ•\¦‚µ‚Ü‚·‚©H";
+                message = "ä¸æ­£è§£ã§ã™ã€‚\nè§£èª¬ã‚’è¡¨ç¤ºã—ã¾ã™ã‹ï¼Ÿ";
                 flag=confirm(message);
                 if(flag){
                     location.href="s2DaoAns.html#" + linkName
@@ -39,14 +39,14 @@ function check(linkName,linkNextName){
         }
         count = count + 1;
     }
-    
+
     if(count == 4){
-        alert("‚¢‚¸‚ê‚©‚Éƒ`ƒFƒbƒN‚ğ“ü‚ê‚Ä‚©‚çu‰ğ“š‚ÖGOvƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢");  
+        alert("ã„ãšã‚Œã‹ã«ãƒã‚§ãƒƒã‚¯ã‚’å…¥ã‚Œã¦ã‹ã‚‰ã€Œè§£ç­”ã¸GOã€ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„");
     }
 }
 
 function answerCheck(answer){
-     
+
     for(i = 0 ; i<ans.length; i++){
         if(ans[i] == answer){
             return true;

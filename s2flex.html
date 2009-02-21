@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- don't edit start -->
-<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="seasar_b.css" type="text/css" rel="stylesheet"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
 </head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" height="100%"><tr>
 <td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
@@ -22,30 +22,30 @@
 <!-- don't edit end -->
 <!-- document start -->
 <ul>
-<li><a href="#S2Flex">S2Flex‚Æ‚Í</a></li>
-<li><a href="#Setup">ƒZƒbƒgƒAƒbƒv</a></li>
-<li><a href="#JavaBeans">JavaBeans‚ÆActionScript‚ÌƒNƒ‰ƒX‚Æ‚Ìƒ}ƒbƒsƒ“ƒO</a></li>
-<li><a href="#Message">ƒƒbƒZ[ƒW‚Ì‘½Œ¾Œê‘Î‰</a></li>
+<li><a href="#S2Flex">S2Flexã¨ã¯</a></li>
+<li><a href="#Setup">ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—</a></li>
+<li><a href="#JavaBeans">JavaBeansã¨ActionScriptã®ã‚¯ãƒ©ã‚¹ã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°</a></li>
+<li><a href="#Message">ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å¤šè¨€èªå¯¾å¿œ</a></li>
 <li><a href="#Example">Example</a></li>
 </ul>
 
-<h2><a name="S2Flex">S2Flex‚Æ‚Í</a></h2>
-<p>S2Flex‚ğg‚¤‚ÆAS2Containerã‚É“o˜^‚³‚ê‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğFlex‚©‚çŠÈ’P‚ÉŒÄ‚Ño‚¹‚é‚æ‚¤‚É‚È‚è‚Ü‚·B</p>
-<h2><a name="Setup">ƒZƒbƒgƒAƒbƒv</a></h2>
-<p>Seasar2‚Æ“¯—l‚ÉJDK1.4ˆÈã‚ª•K—v‚Å‚·BS2FlexVx.x.x.zip‚ğ‰ğ“€‚µ‚Ä‚Å‚«‚½s2flexƒfƒBƒŒƒNƒgƒŠ‚ğEclipse‚ÅA¢ƒtƒ@ƒCƒ‹¨ƒCƒ“ƒ|[ƒg¨Šù‘¶‚ÌƒvƒƒWƒFƒNƒg‚ğƒ[ƒNƒXƒy[ƒX‚Ö£‚ÅƒCƒ“ƒ|[ƒg‚µ‚Ä‚­‚¾‚³‚¢B S2Flex‚Ìƒ\[ƒX‚ğŠm”F‚Å‚«‚Ü‚·Bflashgateway.jar‚ª‚È‚¢‚Ì‚ÅAƒGƒ‰[‚É‚È‚è‚Ü‚·‚ªA‚±‚ê‚ÍAFlex‚Ìjarƒtƒ@ƒCƒ‹‚ğŸè‚É”z•z‚Å‚«‚È‚¢‚½‚ß‚Å‚·BƒRƒ“ƒpƒCƒ‹‚·‚é‚½‚ß‚É‚ÍAFlex‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚éflashgateway.jar‚ğs2flex/lib‚ÉƒCƒ“ƒ|[ƒg‚µ‚Ä‚­‚¾‚³‚¢B</p>
-<p> Flex1.5‚ª‘ÎÛ‚Å‚·B<a href="http://www.macromedia.com/jp/software/flex/trial/">‚±‚±</a>‚©‚ç—p”Å‚ğƒ_ƒEƒ“ƒ[ƒh‚Å‚«‚Ü‚·BƒTƒ“ƒvƒ‹‚ÍA<a href="http://jakarta.apache.org/tomcat/">Tomcat</a>A<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>‚ğg‚¤‚±‚Æ‚ğ‘O’ñ‚É‚µ‚Ä‚¢‚é‚Ì‚ÅAFlex‚ÍAJRun“‡ƒ‚[ƒh‚Å‚Í‚È‚­AMacromedia Flexƒ‚[ƒh‚ÅƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‚­‚¾‚³‚¢B‚±‚ÌƒhƒLƒ…ƒƒ“ƒg‚Å‚ÍAFlex‚ğƒCƒ“ƒXƒg[ƒ‹‚µ‚½ƒfƒBƒŒƒNƒgƒŠ‚ğ$FLEX_HOME‚ÆŒÄ‚Ô‚±‚Æ‚É‚µ‚Ü‚·B </p>
-<p>ƒTƒ“ƒvƒ‹‚ÍS2FlexExamleVx.x.x.jar‚Æ‚µ‚Ä•Ê“r—pˆÓ‚³‚ê‚Ä‚¢‚é‚Ì‚ÅAƒ_ƒEƒ“ƒ[ƒh‚µ‚Ä‰ğ“€‚µ‚Ä‚­‚¾‚³‚¢Bæ’ö‚Æ“¯—l‚ÉAEclipse‚ÅA¢ƒtƒ@ƒCƒ‹¨ƒCƒ“ƒ|[ƒg¨Šù‘¶‚ÌƒvƒƒWƒFƒNƒg‚ğƒ[ƒNƒXƒy[ƒX‚Ö£‚ÅƒCƒ“ƒ|[ƒg‚µ‚Ü‚·BŸ‚ÉAFlex‚ÌŠÂ‹«‚ğ®‚¦‚Ü‚·B$FLEX_HOME/flex.war‚ğ“K“–‚ÈƒfƒBƒŒƒNƒgƒŠ‚Å‰ğ“€(jar xf flex.war)‚µ‚Ä‚­‚¾‚³‚¢B‰ğ“€‚µ‚Ä‚Å‚«‚½WEB-INFƒfƒBƒŒƒNƒgƒŠ‚ğs2flex-example/WEB-INF‚É‚Ü‚é‚²‚ÆAƒCƒ“ƒ|[ƒg‚µ‚Ü‚·BS2Container‚ğ‹N“®‚·‚é‚½‚ß‚ÉAweb.xml‚ÉŸ‚Ì“à—e‚ğ‘‚«‚İ‚Ü‚·B</p>
+<h2><a name="S2Flex">S2Flexã¨ã¯</a></h2>
+<p>S2Flexã‚’ä½¿ã†ã¨ã€S2Containerä¸Šã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’Flexã‹ã‚‰ç°¡å˜ã«å‘¼ã³å‡ºã›ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚</p>
+<h2><a name="Setup">ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—</a></h2>
+<p>Seasar2ã¨åŒæ§˜ã«JDK1.4ä»¥ä¸ŠãŒå¿…è¦ã§ã™ã€‚S2FlexVx.x.x.zipã‚’è§£å‡ã—ã¦ã§ããŸs2flexãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’Eclipseã§ã€ï½¢ãƒ•ã‚¡ã‚¤ãƒ«â†’ã‚¤ãƒ³ãƒãƒ¼ãƒˆâ†’æ—¢å­˜ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ¯ãƒ¼ã‚¯ã‚¹ãƒšãƒ¼ã‚¹ã¸ï½£ã§ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¦ãã ã•ã„ã€‚ S2Flexã®ã‚½ãƒ¼ã‚¹ã‚’ç¢ºèªã§ãã¾ã™ã€‚flashgateway.jarãŒãªã„ã®ã§ã€ã‚¨ãƒ©ãƒ¼ã«ãªã‚Šã¾ã™ãŒã€ã“ã‚Œã¯ã€Flexã®jarãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‹æ‰‹ã«é…å¸ƒã§ããªã„ãŸã‚ã§ã™ã€‚ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ãŸã‚ã«ã¯ã€Flexã«å«ã¾ã‚Œã¦ã„ã‚‹flashgateway.jarã‚’s2flex/libã«ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¦ãã ã•ã„ã€‚</p>
+<p> Flex1.5ãŒå¯¾è±¡ã§ã™ã€‚<a href="http://www.macromedia.com/jp/software/flex/trial/">ã“ã“</a>ã‹ã‚‰è©¦ç”¨ç‰ˆã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã§ãã¾ã™ã€‚ã‚µãƒ³ãƒ—ãƒ«ã¯ã€<a href="http://jakarta.apache.org/tomcat/">Tomcat</a>ã€<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>ã‚’ä½¿ã†ã“ã¨ã‚’å‰æã«ã—ã¦ã„ã‚‹ã®ã§ã€Flexã¯ã€JRunçµ±åˆãƒ¢ãƒ¼ãƒ‰ã§ã¯ãªãã€Macromedia Flexãƒ¢ãƒ¼ãƒ‰ã§ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ãã ã•ã„ã€‚ã“ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã§ã¯ã€Flexã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’$FLEX_HOMEã¨å‘¼ã¶ã“ã¨ã«ã—ã¾ã™ã€‚ </p>
+<p>ã‚µãƒ³ãƒ—ãƒ«ã¯S2FlexExamleVx.x.x.jarã¨ã—ã¦åˆ¥é€”ç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã®ã§ã€ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦è§£å‡ã—ã¦ãã ã•ã„ã€‚å…ˆç¨‹ã¨åŒæ§˜ã«ã€Eclipseã§ã€ï½¢ãƒ•ã‚¡ã‚¤ãƒ«â†’ã‚¤ãƒ³ãƒãƒ¼ãƒˆâ†’æ—¢å­˜ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ¯ãƒ¼ã‚¯ã‚¹ãƒšãƒ¼ã‚¹ã¸ï½£ã§ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚æ¬¡ã«ã€Flexã®ç’°å¢ƒã‚’æ•´ãˆã¾ã™ã€‚$FLEX_HOME/flex.warã‚’é©å½“ãªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã§è§£å‡(jar xf flex.war)ã—ã¦ãã ã•ã„ã€‚è§£å‡ã—ã¦ã§ããŸWEB-INFãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’s2flex-example/WEB-INFã«ã¾ã‚‹ã”ã¨ã€ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚S2Containerã‚’èµ·å‹•ã™ã‚‹ãŸã‚ã«ã€web.xmlã«æ¬¡ã®å†…å®¹ã‚’æ›¸ãè¾¼ã¿ã¾ã™ã€‚</p>
 <pre>&lt;servlet&gt;<br>    &lt;servlet-name&gt;s2servlet&lt;/servlet-name&gt;<br>    &lt;display-name&gt;Seasar2 Servlet&lt;/display-name&gt;<br>    &lt;servlet-class&gt;org.seasar.framework.container.servlet.S2ContainerServlet&lt;/servlet-class&gt;<br>    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;<br>&lt;/servlet&gt;
 
 &lt;servlet-mapping&gt;<br>    &lt;servlet-name&gt;s2servlet&lt;/servlet-name&gt;<br>    &lt;url-pattern&gt;/s2servlet&lt;/url-pattern&gt;<br>&lt;/servlet-mapping&gt;
 </pre>
-<p>Flex‚ÌAMFGateway‚ªS2Containerã‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Ìƒƒ\ƒbƒh‚ğŒÄ‚Ño‚¹‚é‚æ‚¤‚É‚·‚é‚½‚ß‚ÉAs2flex-example/WEB-INF/flex/gateway-config.xml‚ÉSeasar2—p‚ÌƒAƒ_ƒuƒ^‚ğ’Ç‰Á‚µ‚Ü‚·B</p>
+<p>Flexã®AMFGatewayãŒS2Containerä¸Šã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã›ã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã«ã€s2flex-example/WEB-INF/flex/gateway-config.xmlã«Seasar2ç”¨ã®ã‚¢ãƒ€ãƒ–ã‚¿ã‚’è¿½åŠ ã—ã¾ã™ã€‚</p>
 <pre>&lt;service-adapters&gt;<br>    &lt;adapter type=&quot;stateless-class&quot;&gt;org.seasar.flex.S2Adapter&lt;/adapter&gt;
     ...<br>&lt;/service-adapters&gt;</pre>
-<p>ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ålog4j‚É‚æ‚éƒƒMƒ“ƒO‚ğ‰Â”\‚É‚·‚é‚½‚ß‚ÉAWEB-INF/flex/jars‚É‚ ‚écommons-loging.jar‚ğWEB-INF/lib‚ÉˆÚ“®‚µ‚Ü‚·B</p>
+<p>ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§log4jã«ã‚ˆã‚‹ãƒ­ã‚®ãƒ³ã‚°ã‚’å¯èƒ½ã«ã™ã‚‹ãŸã‚ã«ã€WEB-INF/flex/jarsã«ã‚ã‚‹commons-loging.jarã‚’WEB-INF/libã«ç§»å‹•ã—ã¾ã™ã€‚</p>
 
-<h2><a name="JavaBeans">JavaBeans‚ÆActionScript‚ÌƒNƒ‰ƒX‚Æ‚Ìƒ}ƒbƒsƒ“ƒO</a></h2>
-<p>JavaBeans‚ÆActionScript‚ÌƒNƒ‰ƒX‚ğƒ}ƒbƒsƒ“ƒO‚µ‚ÄJava‚ÆFlex‚Å‘ŠŒİ‚Éƒf[ƒ^‚ğ‚â‚èæ‚è‚Å‚«‚Ü‚·B—á‚Æ‚µ‚ÄŸ‚Ì‚æ‚¤‚È‘«‚µZ‚Ìƒf[ƒ^‚ğ‚â‚èæ‚è‚·‚é‚æ‚¤‚ÈJavaBeans‚ğ’è‹`‚µ‚Ü‚·B</p>
+<h2><a name="JavaBeans">JavaBeansã¨ActionScriptã®ã‚¯ãƒ©ã‚¹ã¨ã®ãƒãƒƒãƒ”ãƒ³ã‚°</a></h2>
+<p>JavaBeansã¨ActionScriptã®ã‚¯ãƒ©ã‚¹ã‚’ãƒãƒƒãƒ”ãƒ³ã‚°ã—ã¦Javaã¨Flexã§ç›¸äº’ã«ãƒ‡ãƒ¼ã‚¿ã‚’ã‚„ã‚Šå–ã‚Šã§ãã¾ã™ã€‚ä¾‹ã¨ã—ã¦æ¬¡ã®ã‚ˆã†ãªè¶³ã—ç®—ã®ãƒ‡ãƒ¼ã‚¿ã‚’ã‚„ã‚Šå–ã‚Šã™ã‚‹ã‚ˆã†ãªJavaBeansã‚’å®šç¾©ã—ã¾ã™ã€‚</p>
 <pre>
 package examples.flex;
 
@@ -82,7 +82,7 @@ public class AddDto implements Serializable {
     }
 }
 </pre>
-<p>‚±‚ê‚É‘Î‰‚·‚éActionScript‚ÌƒNƒ‰ƒX‚ğì¬‚µ‚Ü‚·B</p>
+<p>ã“ã‚Œã«å¯¾å¿œã™ã‚‹ActionScriptã®ã‚¯ãƒ©ã‚¹ã‚’ä½œæˆã—ã¾ã™ã€‚</p>
 <pre>
 class examples.flex.AddDto {
     var _remoteClass:String;
@@ -95,45 +95,45 @@ class examples.flex.AddDto {
     }
 }
 </pre>
-<p>ƒ|ƒCƒ“ƒg‚ÍAŸ‚Ì’Ê‚è‚Å‚·B</p>
+<p>ãƒã‚¤ãƒ³ãƒˆã¯ã€æ¬¡ã®é€šã‚Šã§ã™ã€‚</p>
 <ul>
-<li>ActionScript‚ÌƒNƒ‰ƒX–¼‚ÆJava‚ÌŠ®‘SƒNƒ‰ƒXŒÀ’è–¼‚ğ‚ ‚í‚¹‚é‚±‚Æ</li>
-<li>_remoteClass‚Æ‚¢‚¤ƒvƒƒpƒeƒB‚ğ’è‹`‚·‚é‚±‚Æ</li>
-<li>ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Å_remoteClass‚ÉƒNƒ‰ƒX–¼‚ğ‘ã“ü‚·‚é‚±‚Æ</li>
-<li>ƒvƒƒpƒeƒB‚Ívar‚Å’¼ÚéŒ¾‚·‚é‚±‚Æ</li>
-<li>MXMLƒtƒ@ƒCƒ‹‚ğƒ‹[ƒg‚É‚µ‚ÄAƒpƒbƒP[ƒW‚²‚Æ‚ÉƒfƒBƒŒƒNƒgƒŠ‚ğØ‚é‚±‚ÆB—á‚¦‚ÎAexamples.flex.AddDto‚Æ‚¢‚¤ƒNƒ‰ƒX‚ÍAexamples/flex/AddDto.as‚É’u‚­‚±‚Æ‚É‚È‚è‚Ü‚·B‚ ‚é‚¢‚ÍAWEB-INF/flex/user_classes‚ğƒ‹[ƒg‚É‚µ‚ÄAƒpƒbƒP[ƒW‚²‚Æ‚ÉƒfƒBƒŒƒNƒgƒŠ‚ğ‚«‚é‚±‚Æ‚ào—ˆ‚Ü‚·B’Êí‚ÍAuser_classes‚ğg‚Á‚½•û‚ª‚¢‚¢‚Å‚µ‚å‚¤BMXMLƒtƒ@ƒCƒ‹‚ÌˆÊ’u‚É¶‰E‚³‚ê‚¸‚É—˜—p‚Å‚«‚é‚½‚ß‚Å‚·B</li>
+<li>ActionScriptã®ã‚¯ãƒ©ã‚¹åã¨Javaã®å®Œå…¨ã‚¯ãƒ©ã‚¹é™å®šåã‚’ã‚ã‚ã›ã‚‹ã“ã¨</li>
+<li>_remoteClassã¨ã„ã†ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å®šç¾©ã™ã‚‹ã“ã¨</li>
+<li>ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã§_remoteClassã«ã‚¯ãƒ©ã‚¹åã‚’ä»£å…¥ã™ã‚‹ã“ã¨</li>
+<li>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯varã§ç›´æ¥å®£è¨€ã™ã‚‹ã“ã¨</li>
+<li>MXMLãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ«ãƒ¼ãƒˆã«ã—ã¦ã€ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã”ã¨ã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’åˆ‡ã‚‹ã“ã¨ã€‚ä¾‹ãˆã°ã€examples.flex.AddDtoã¨ã„ã†ã‚¯ãƒ©ã‚¹ã¯ã€examples/flex/AddDto.asã«ç½®ãã“ã¨ã«ãªã‚Šã¾ã™ã€‚ã‚ã‚‹ã„ã¯ã€WEB-INF/flex/user_classesã‚’ãƒ«ãƒ¼ãƒˆã«ã—ã¦ã€ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã”ã¨ã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ãã‚‹ã“ã¨ã‚‚å‡ºæ¥ã¾ã™ã€‚é€šå¸¸ã¯ã€user_classesã‚’ä½¿ã£ãŸæ–¹ãŒã„ã„ã§ã—ã‚‡ã†ã€‚MXMLãƒ•ã‚¡ã‚¤ãƒ«ã®ä½ç½®ã«å·¦å³ã•ã‚Œãšã«åˆ©ç”¨ã§ãã‚‹ãŸã‚ã§ã™ã€‚</li>
 </ul>
-<p>Œã‚ÍAFlex‘¤‚Åvar‚ÅƒNƒ‰ƒX–¼w’è‚Å•Ï”‚ğéŒ¾‚·‚é‚©AŸ‚Ì‚æ‚¤‚ÉƒNƒ‰ƒX–¼‚ğƒ^ƒO–¼‚Æ‚µ‚ÄéŒ¾‚µ‚Ü‚·Bxmlns‘®«‚ÅƒpƒbƒP[ƒW–¼‚ğw’è‚µ‚Ü‚·B</p>
+<p>å¾Œã¯ã€Flexå´ã§varã§ã‚¯ãƒ©ã‚¹åæŒ‡å®šã§å¤‰æ•°ã‚’å®£è¨€ã™ã‚‹ã‹ã€æ¬¡ã®ã‚ˆã†ã«ã‚¯ãƒ©ã‚¹åã‚’ã‚¿ã‚°åã¨ã—ã¦å®£è¨€ã—ã¾ã™ã€‚xmlnså±æ€§ã§ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã‚’æŒ‡å®šã—ã¾ã™ã€‚</p>
 <pre>&lt;AddDto id=&quot;addDto2&quot; xmlns=&quot;examples.flex.*&quot;/&gt;
 
 </pre>
 
-<h2><a name="Message">ƒƒbƒZ[ƒW‚Ì‘½Œ¾Œê‘Î‰</a></h2>
-<p>Java‚Å‚ÍAƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚ÉƒƒP[ƒ‹‚²‚Æ‚ÉƒƒbƒZ[ƒW‚ğ—pˆÓ‚µ‚ÄŠÈ’P‚É‘½Œ¾Œê‚É‘Î‰‚·‚é‚±‚Æ‚ªo—ˆ‚Ü‚·‚ªA‚»‚ÌƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚ğFlex‚©‚ç—˜—p‚·‚é‹@”\‚ªS2Flex‚É‚Í—pˆÓ‚³‚ê‚Ä‚¢‚Ü‚·B—á‚¦‚ÎAŸ‚Ì‚æ‚¤‚ÈƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚ğWEB-INF/classes’¼‰º‚É—pˆÓ‚µ‚½‚Æ‚µ‚Ü‚·B</p>
+<h2><a name="Message">ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®å¤šè¨€èªå¯¾å¿œ</a></h2>
+<p>Javaã§ã¯ã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã«ãƒ­ã‚±ãƒ¼ãƒ«ã”ã¨ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’ç”¨æ„ã—ã¦ç°¡å˜ã«å¤šè¨€èªã«å¯¾å¿œã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ãŒã€ãã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã‚’Flexã‹ã‚‰åˆ©ç”¨ã™ã‚‹æ©Ÿèƒ½ãŒS2Flexã«ã¯ç”¨æ„ã•ã‚Œã¦ã„ã¾ã™ã€‚ä¾‹ãˆã°ã€æ¬¡ã®ã‚ˆã†ãªãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã‚’WEB-INF/classesç›´ä¸‹ã«ç”¨æ„ã—ãŸã¨ã—ã¾ã™ã€‚</p>
 <h4>FLXMessages_ja.properties</h4>
-<pre>EFLX0001=({0})‚Í“ü—Í•K{‚Å‚·<br>EFLX0002=ƒoƒŠƒf[ƒVƒ‡ƒ“ƒGƒ‰[‚Å‚·BƒGƒ‰[‚ğC³‚µ‚Ä‚à‚¤ˆê“x“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B</pre>
+<pre>EFLX0001=({0})ã¯å…¥åŠ›å¿…é ˆã§ã™<br>EFLX0002=ãƒãƒªãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³ã‚¨ãƒ©ãƒ¼ã§ã™ã€‚ã‚¨ãƒ©ãƒ¼ã‚’ä¿®æ­£ã—ã¦ã‚‚ã†ä¸€åº¦å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚</pre>
 <h4>FLXMessages.properties</h4>
 <pre>EFLX0001=({0}) is mandatory<br>EFLX0002=Please enter valid data in the fields with errors and try again.</pre>
 
-<p>Eclipse‚Å“ú–{Œê‚ÅƒvƒƒpƒeƒB‚ğˆµ‚¤‚½‚ß‚É‚ÍA<a href="http://propedit.sourceforge.jp/">ƒvƒƒpƒeƒBƒGƒfƒBƒ^</a>‚ğg‚¤‚Æ•Ö—˜‚Å‚·BŸ‚É‚±‚ÌƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚ğFlex‘¤‚©‚ç—˜—p‚·‚é‚½‚ß‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğdiconƒtƒ@ƒCƒ‹‚É“o˜^‚µ‚Ü‚·B</p>
+<p>Eclipseã§æ—¥æœ¬èªã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æ‰±ã†ãŸã‚ã«ã¯ã€<a href="http://propedit.sourceforge.jp/">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚¨ãƒ‡ã‚£ã‚¿</a>ã‚’ä½¿ã†ã¨ä¾¿åˆ©ã§ã™ã€‚æ¬¡ã«ã“ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã‚’Flexå´ã‹ã‚‰åˆ©ç”¨ã™ã‚‹ãŸã‚ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’diconãƒ•ã‚¡ã‚¤ãƒ«ã«ç™»éŒ²ã—ã¾ã™ã€‚</p>
 <pre>&lt;component name=&quot;messageLogic&quot; class=&quot;org.seasar.flex.message.MessageLogicImpl&quot;/&gt;
 </pre>
-<p>‚Ü‚½A‚±‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğFlex‚©‚ç—˜—p‚·‚é‚½‚ß‚É‚ÍAWEB-INF/flex/flex-config.xml‚Ö‚Ì“o˜^‚à•K—v‚Å‚·B</p>
+<p>ã¾ãŸã€ã“ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’Flexã‹ã‚‰åˆ©ç”¨ã™ã‚‹ãŸã‚ã«ã¯ã€WEB-INF/flex/flex-config.xmlã¸ã®ç™»éŒ²ã‚‚å¿…è¦ã§ã™ã€‚</p>
 <pre>&lt;object name=&quot;messageLogic&quot;&gt;<br>    &lt;use-custom-authentication&gt;false&lt;/use-custom-authentication&gt;<br>    &lt;source&gt;messageLogic&lt;/source&gt;<br>    &lt;type&gt;stateless-class&lt;/type&gt;<br>    &lt;encoding&gt;AMF&lt;/encoding&gt;<br>    &lt;allow-unnamed-access&gt;false&lt;/allow-unnamed-access&gt;
 &lt;/object&gt;
 </pre>
-<p>Java‘¤‚Ì€”õ‚ª‚Å‚«‚Ü‚µ‚½BŸ‚ÍAFlex‘¤‚ğ€”õ‚µ‚Ü‚·BÅ‰‚ÉAs2flex/as2/orgƒfƒBƒŒƒNƒgƒŠ‚ğWEB-INF/flex/user_classes‚ÉŠÛ‚²‚ÆƒRƒs[‚µ‚Ü‚·BŸ‚ÉAmessageLogic‚ğŒÄ‚Ño‚·‚½‚ß‚ÉRemoteObjectƒ^ƒO‚ğ’è‹`‚µ‚Ü‚·BƒT[ƒoƒTƒCƒh‚©‚ç–ß‚è’l‚ª–ß‚Á‚Ä‚«‚½‚Æ‚«‚Ìˆ—‚Æ‚µ‚ÄAprocessMessageManager()‚ğŒÄ‚Ño‚µ‚Ü‚·Bevent.result‚É‚ÍAMessageManagerƒIƒuƒWƒFƒNƒg‚ª“ü‚Á‚Ä‚«‚Ü‚·B</p>
+<p>Javaå´ã®æº–å‚™ãŒã§ãã¾ã—ãŸã€‚æ¬¡ã¯ã€Flexå´ã‚’æº–å‚™ã—ã¾ã™ã€‚æœ€åˆã«ã€s2flex/as2/orgãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’WEB-INF/flex/user_classesã«ä¸¸ã”ã¨ã‚³ãƒ”ãƒ¼ã—ã¾ã™ã€‚æ¬¡ã«ã€messageLogicã‚’å‘¼ã³å‡ºã™ãŸã‚ã«RemoteObjectã‚¿ã‚°ã‚’å®šç¾©ã—ã¾ã™ã€‚ã‚µãƒ¼ãƒã‚µã‚¤ãƒ‰ã‹ã‚‰æˆ»ã‚Šå€¤ãŒæˆ»ã£ã¦ããŸã¨ãã®å‡¦ç†ã¨ã—ã¦ã€processMessageManager()ã‚’å‘¼ã³å‡ºã—ã¾ã™ã€‚event.resultã«ã¯ã€MessageManagerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå…¥ã£ã¦ãã¾ã™ã€‚</p>
 <pre>&lt;mx:RemoteObject id=&quot;messageLogic&quot; named=&quot;messageLogic&quot;<br>    fault=&quot;alert(event.fault.faultstring, 'Error')&quot;
     result=&quot;processMessageManager(event.result)&quot;&gt;<br>&lt;/mx:RemoteObject&gt;
 </pre>
-<p>messageLogic‚ÍAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ì‹N“®‚ÉŒÄ‚Ño‚µ‚Ü‚·B</p>
+<p>messageLogicã¯ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®èµ·å‹•æ™‚ã«å‘¼ã³å‡ºã—ã¾ã™ã€‚</p>
 <pre>&lt;mx:Application xmlns:mx=&quot;http://www.macromedia.com/2003/mxml&quot; initialize=&quot;initApp()&quot;&gt;
 </pre>
 <pre>import org.seasar.flex.message.*;
 function initApp() {
     messageLogic.getMessageManager(&quot;FLXMessages&quot;, &quot;ja&quot;);
 }</pre>
-<p>processMessageManager()‚Å‚ÍAæ“¾‚µ‚½MessageManagerƒIƒuƒWƒFƒNƒg‚ğMessageManagerƒNƒ‰ƒX‚Ìstatic•Ï”(instance)‚ÉŠi”[‚µ‚Ä‚¢‚Ü‚·B</p>
+<p>processMessageManager()ã§ã¯ã€å–å¾—ã—ãŸMessageManagerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’MessageManagerã‚¯ãƒ©ã‚¹ã®staticå¤‰æ•°(instance)ã«æ ¼ç´ã—ã¦ã„ã¾ã™ã€‚</p>
 <pre>
 import org.seasar.flex.message.*;
 
@@ -143,7 +143,7 @@ class org.seasar.flex.message.MessageManager {
 }</pre>
 <pre>function processMessageManager(messageManager:MessageManager) {<br>	MessageManager.instance = messageManager;<br>}
 </pre>
-<p>‚¢‚æ‚¢‚æAValidator‚ğì‚è‚Ü‚·B¡‰ñì‚é‚Ì‚ÍA•K{ƒ`ƒFƒbƒN‚ğs‚¤Validator‚Å‚·BValidator‚ÍAmx.validators.Validator‚ğŒp³‚µ‚ÄAdoValidation(value)‚ğÀ‘•‚µ‚Ü‚·Bvalue‚É‚Í“ü—Í‚³‚ê‚½’l‚ª“ü‚Á‚Ä‚¢‚Ü‚·BƒGƒ‰[‚ª‹N‚«‚½ê‡‚ÍAValidator#validationError()‚ÅƒGƒ‰[ƒƒbƒZ[ƒW‚ğo—Í‚µ‚Ü‚·BMessageManagerƒIƒuƒWƒFƒNƒg‚ÍAMessageManager.instance‚ÅQÆ‚·‚é‚±‚Æ‚ªo—ˆ‚Ü‚·BŒã‚ÍAgetMessage(ƒƒbƒZ[ƒWƒR[ƒh, ˆø”‚Ì”z—ñ)‚ğŒÄ‚Ño‚·‚¾‚¯‚Å‚·B</p>
+<p>ã„ã‚ˆã„ã‚ˆã€Validatorã‚’ä½œã‚Šã¾ã™ã€‚ä»Šå›ä½œã‚‹ã®ã¯ã€å¿…é ˆãƒã‚§ãƒƒã‚¯ã‚’è¡Œã†Validatorã§ã™ã€‚Validatorã¯ã€mx.validators.Validatorã‚’ç¶™æ‰¿ã—ã¦ã€doValidation(value)ã‚’å®Ÿè£…ã—ã¾ã™ã€‚valueã«ã¯å…¥åŠ›ã•ã‚ŒãŸå€¤ãŒå…¥ã£ã¦ã„ã¾ã™ã€‚ã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸå ´åˆã¯ã€Validator#validationError()ã§ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã—ã¾ã™ã€‚MessageManagerã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¯ã€MessageManager.instanceã§å‚ç…§ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚å¾Œã¯ã€getMessage(ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚³ãƒ¼ãƒ‰, å¼•æ•°ã®é…åˆ—)ã‚’å‘¼ã³å‡ºã™ã ã‘ã§ã™ã€‚</p>
 <pre>import org.seasar.flex.message.*;
 class RequiredFieldValidator extends mx.validators.Validator {
     var fieldName:String;
@@ -158,9 +158,9 @@ class RequiredFieldValidator extends mx.validators.Validator {
     }
 }
 </pre>
-<p>‚±‚ÌƒTƒ“ƒvƒ‹‚ÍAs2flex-example/validation‚ÉŠi”[‚³‚ê‚Ä‚¢‚Ü‚·Bƒuƒ‰ƒEƒU‚©‚çAhttp://localhost:8080/s2flex-example/validation/ValidationApp.mxml‚ÉƒAƒNƒZƒX‚µ‚Ä‚­‚¾‚³‚¢B‰½‚à“ü—Í‚¹‚¸‚Évalidateƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚·‚é‚ÆƒGƒ‰[‚ÌƒƒbƒZ[ƒW‚ª•\¦‚³‚êAŸ‚Ì‚æ‚¤‚ÉTextInput‚Éƒoƒ‹[ƒ“‚ÅƒƒbƒZ[ƒW‚ª•\¦‚³‚ê‚Ü‚·B<img src="images/s2flex-picture1.gif"/></p>
+<p>ã“ã®ã‚µãƒ³ãƒ—ãƒ«ã¯ã€s2flex-example/validationã«æ ¼ç´ã•ã‚Œã¦ã„ã¾ã™ã€‚ãƒ–ãƒ©ã‚¦ã‚¶ã‹ã‚‰ã€http://localhost:8080/s2flex-example/validation/ValidationApp.mxmlã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦ãã ã•ã„ã€‚ä½•ã‚‚å…¥åŠ›ã›ãšã«validateãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã¨ã‚¨ãƒ©ãƒ¼ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¡¨ç¤ºã•ã‚Œã€æ¬¡ã®ã‚ˆã†ã«TextInputã«ãƒãƒ«ãƒ¼ãƒ³ã§ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚<img src="images/s2flex-picture1.gif"/></p>
 <h2><a name="Example">Example</a></h2>
-<p>‚»‚ê‚Å‚ÍA‚³‚Á‚»‚­‘«‚µZ‚·‚éƒTƒ“ƒvƒ‹‚ğì‚Á‚Ä‚İ‚Ü‚µ‚å‚¤BJava‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ÆÀ‘•‚ğ—pˆÓ‚µ‚Ü‚·B</p>
+<p>ãã‚Œã§ã¯ã€ã•ã£ããè¶³ã—ç®—ã™ã‚‹ã‚µãƒ³ãƒ—ãƒ«ã‚’ä½œã£ã¦ã¿ã¾ã—ã‚‡ã†ã€‚Javaã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã¨å®Ÿè£…ã‚’ç”¨æ„ã—ã¾ã™ã€‚</p>
 <h3>examples.flex.AddLogic</h3>
 <pre>
 package examples.flex;
@@ -187,21 +187,21 @@ public class AddLogicImpl implements AddLogic {
     }
 }
 </pre>
-<p>ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğdiconƒtƒ@ƒCƒ‹‚É“o˜^‚µ‚Ü‚·B</p>
+<p>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’diconãƒ•ã‚¡ã‚¤ãƒ«ã«ç™»éŒ²ã—ã¾ã™ã€‚</p>
 <h3>examples/flex/flex.dicon</h3>
-<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;<br>&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container//EN&quot;<br>&quot;http://www.seasar.org/dtd/components.dtd&quot;&gt;<br>&lt;components&gt;
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container//EN&quot;<br>&quot;http://www.seasar.org/dtd/components.dtd&quot;&gt;<br>&lt;components&gt;
     &lt;component name=&quot;addLogic&quot; class=&quot;examples.flex.AddLogicImpl&quot;/&gt;<br>&lt;/components&gt;
 </pre>
 <h3>app.dicon</h3>
-<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;Shift_JIS&quot;?&gt;<br>&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container//EN&quot;<br>&quot;http://www.seasar.org/dtd/components.dtd&quot;&gt;<br>&lt;components&gt;
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>&lt;!DOCTYPE components PUBLIC &quot;-//SEASAR//DTD S2Container//EN&quot;<br>&quot;http://www.seasar.org/dtd/components.dtd&quot;&gt;<br>&lt;components&gt;
     &lt;include path=&quot;examples/flex/flex.dicon&quot;/&gt;<br>&lt;/components&gt;
 </pre>
-<p>“o˜^‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğFlex‚©‚çŒÄ‚Ño‚¹‚é‚æ‚¤‚És2flex-example/WEB-INF/flex/flex-config.xml‚Ìflex-config/remote-objects/whitelist‚ÉŸ‚ÌƒGƒ“ƒgƒŠ‚ğ’Ç‰Á‚µ‚Ü‚·B</p>
+<p>ç™»éŒ²ã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’Flexã‹ã‚‰å‘¼ã³å‡ºã›ã‚‹ã‚ˆã†ã«s2flex-example/WEB-INF/flex/flex-config.xmlã®flex-config/remote-objects/whitelistã«æ¬¡ã®ã‚¨ãƒ³ãƒˆãƒªã‚’è¿½åŠ ã—ã¾ã™ã€‚</p>
 <pre>&lt;named&gt;<br>    &lt;object name=&quot;addLogic&quot;&gt;<br>        &lt;use-custom-authentication&gt;false&lt;/use-custom-authentication&gt;<br>        &lt;source&gt;addLogic&lt;/source&gt;<br>        &lt;type&gt;stateless-class&lt;/type&gt;<br>        &lt;encoding&gt;AMF&lt;/encoding&gt;<br>        &lt;allow-unnamed-access&gt;false&lt;/allow-unnamed-access&gt;<br>    &lt;/object&gt;
 &lt;/named&gt;
 </pre>
-<p>objectƒ^ƒO‚ÅAƒRƒ“ƒ|[ƒlƒ“ƒg‚ğw’è‚µ‚Ü‚·Bsourceƒ^ƒO‚Åw’è‚·‚é‚Ì‚ªAS2Container‚Å’è‹`‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚Å‚·Bname‘®«‚ÍAsource‘®«‚Æ‚ ‚í‚¹‚½‚Ù‚¤‚ª•ª‚©‚è‚â‚·‚¢‚Å‚µ‚å‚¤BƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ’Ç‰Á‚·‚éê‡‚ÍAobjectƒ^ƒO‚ğ’Ç‰Á‚µ‚Ü‚·BFlex1.0‚ğg‚¤ê‡Aã‹L‚Ì“à—e‚ğ‘‚«‚ñ‚¾ƒtƒ@ƒCƒ‹‚ªAs2flex-example/WEB-INF/flex/flex-config-s2flex.xml‚É‚ ‚ç‚©‚¶‚ß—pˆÓ‚³‚ê‚Ä‚¢‚é‚Ì‚ÅAflex-config.xml‚Éã‘‚«ƒRƒs[‚µ‚Ü‚·BFlex1.5‚ğg‚¤ê‡A“¯—l‚Éflex-config-s2flex15.xml‚ğƒRƒs[‚µ‚Ü‚·B</p>
-<p>ÅŒã‚ÍAFlex‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ìƒ\[ƒX‚Å‚·BAdd.mxml,Add2.xmlƒtƒ@ƒCƒ‹‚ğƒvƒƒWƒFƒNƒg‚Ìƒ‹[ƒg‚É‚¨‚«‚Ü‚·B</p>
+<p>objectã‚¿ã‚°ã§ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒ‡å®šã—ã¾ã™ã€‚sourceã‚¿ã‚°ã§æŒ‡å®šã™ã‚‹ã®ãŒã€S2Containerã§å®šç¾©ã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã§ã™ã€‚nameå±æ€§ã¯ã€sourceå±æ€§ã¨ã‚ã‚ã›ãŸã»ã†ãŒåˆ†ã‹ã‚Šã‚„ã™ã„ã§ã—ã‚‡ã†ã€‚ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹å ´åˆã¯ã€objectã‚¿ã‚°ã‚’è¿½åŠ ã—ã¾ã™ã€‚Flex1.0ã‚’ä½¿ã†å ´åˆã€ä¸Šè¨˜ã®å†…å®¹ã‚’æ›¸ãè¾¼ã‚“ã ãƒ•ã‚¡ã‚¤ãƒ«ãŒã€s2flex-example/WEB-INF/flex/flex-config-s2flex.xmlã«ã‚ã‚‰ã‹ã˜ã‚ç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã®ã§ã€flex-config.xmlã«ä¸Šæ›¸ãã‚³ãƒ”ãƒ¼ã—ã¾ã™ã€‚Flex1.5ã‚’ä½¿ã†å ´åˆã€åŒæ§˜ã«flex-config-s2flex15.xmlã‚’ã‚³ãƒ”ãƒ¼ã—ã¾ã™ã€‚</p>
+<p>æœ€å¾Œã¯ã€Flexã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚½ãƒ¼ã‚¹ã§ã™ã€‚Add.mxml,Add2.xmlãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ«ãƒ¼ãƒˆã«ãŠãã¾ã™ã€‚</p>
 <h3>Add.mxml</h3>
 <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
@@ -220,9 +220,9 @@ public class AddLogicImpl implements AddLogic {
     &lt;/mx:HBox&gt;
 &lt;/mx:Application&gt;
 </pre>
-<p>RemoteObjectƒ^ƒO‚ÅAJava‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğw’è‚µ‚Ü‚·Bnamed‘®«‚Éflex-config.xml‚Ìobjectƒ^ƒO‚Ìname‘®«‚Åw’è‚µ‚½’l‚ğ‹Lq‚µ‚Ü‚·Bid‘®«‚ÍAnamed‘®«‚Æ‚ ‚í‚¹‚½‚Ù‚¤‚ª•ª‚©‚è‚â‚·‚¢‚Å‚µ‚å‚¤BŒã‚ÍAActionScript‚Ì’†‚©‚çAƒRƒ“ƒ|[ƒlƒ“ƒg–¼.ƒƒ\ƒbƒh–¼(...)‚ÅŒÄ‚Ño‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·B{addLogic.calculate.result}‚Ì‚æ‚¤‚É‚µ‚ÄAcalculateƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µŒ‹‰Ê‚ğLabel‚Ìvalue‚É©“®“I‚Éİ’è‚Å‚«‚Ü‚·B</p>
-<p>‚±‚ê‚ÅAŠ®¬‚Å‚·BTomcat‚ğÄ‹N“®‚µ‚ÄAƒuƒ‰ƒEƒU‚©‚çAhttp://localhost:8080/s2flex-example/Add.mxml‚ÉƒAƒNƒZƒX‚µ‚Ä‚­‚¾‚³‚¢B</p>
-<p>Ÿ‚ÍJavaBeans‚ğg‚¤‚Æ‚«‚Ì—á‚Å‚·B</p>
+<p>RemoteObjectã‚¿ã‚°ã§ã€Javaã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æŒ‡å®šã—ã¾ã™ã€‚namedå±æ€§ã«flex-config.xmlã®objectã‚¿ã‚°ã®nameå±æ€§ã§æŒ‡å®šã—ãŸå€¤ã‚’è¨˜è¿°ã—ã¾ã™ã€‚idå±æ€§ã¯ã€namedå±æ€§ã¨ã‚ã‚ã›ãŸã»ã†ãŒåˆ†ã‹ã‚Šã‚„ã™ã„ã§ã—ã‚‡ã†ã€‚å¾Œã¯ã€ActionScriptã®ä¸­ã‹ã‚‰ã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå.ãƒ¡ã‚½ãƒƒãƒ‰å(...)ã§å‘¼ã³å‡ºã™ã“ã¨ãŒã§ãã¾ã™ã€‚{addLogic.calculate.result}ã®ã‚ˆã†ã«ã—ã¦ã€calculateãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—çµæœã‚’Labelã®valueã«è‡ªå‹•çš„ã«è¨­å®šã§ãã¾ã™ã€‚</p>
+<p>ã“ã‚Œã§ã€å®Œæˆã§ã™ã€‚Tomcatã‚’å†èµ·å‹•ã—ã¦ã€ãƒ–ãƒ©ã‚¦ã‚¶ã‹ã‚‰ã€http://localhost:8080/s2flex-example/Add.mxmlã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦ãã ã•ã„ã€‚</p>
+<p>æ¬¡ã¯JavaBeansã‚’ä½¿ã†ã¨ãã®ä¾‹ã§ã™ã€‚</p>
 <h3>Add2.mxml</h3>
 <pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 
@@ -244,7 +244,7 @@ public class AddLogicImpl implements AddLogic {
     &lt;/mx:HBox&gt;
 &lt;/mx:Application&gt;
 </pre>
-<p>ƒuƒ‰ƒEƒU‚©‚çAhttp://localhost:8080/s2flex-example/Add2.mxml‚ÉƒAƒNƒZƒX‚µ‚Ä‚­‚¾‚³‚¢B</p>
+<p>ãƒ–ãƒ©ã‚¦ã‚¶ã‹ã‚‰ã€http://localhost:8080/s2flex-example/Add2.mxmlã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦ãã ã•ã„ã€‚</p>
 <!-- document end -->
 <!-- don't edit start -->
 </td>

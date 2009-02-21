@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html><head>
 <!-- don't edit start -->
 <head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -84,7 +84,7 @@ To output a value dynamically, value attribute in a span element is used as in l
 <pre><strong>listing 2: layout.html</strong>
 01:&lt;html xmlns:m="http://www.seasar.org/maya"&gt;
 02:&lt;head&gt;
-03:&lt;meta http-equiv="Content-Type" content="text/html; charset=Windows-31j" /&gt;
+03:&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
 04:&lt;link m:inject="s:link" rel="stylesheet" type="text/css" href="/css/global.css"/&gt;
 05:&lt;title m:value="#{layoutTitle}"/&gt;<a name="layoutTitle">
 06:&lt;/head&gt;
@@ -166,7 +166,7 @@ Furthermore, parameter may be passed to the redirected page by specifying a <spa
 04:&lt;title&gt;Add&lt;/title&gt;
 05:&lt;/head&gt;
 06:&lt;body&gt;
-07:  &lt;span m:inject="f:param" m:name="layoutTitle" m:value="Add"/&gt;<br>08:  &lt;span m:inject="s:insert" m:name="body"&gt;<br>09:    &lt;form&gt;<br>10:      &lt;span m:inject="h:messages" m:globalOnly="false" m:showDetail="true"/&gt;<br>11:      &lt;input type="text" m:value="#{addDto.arg1}"/&gt; + <br>12:      &lt;input type="text" m:value="#{addDto.arg2}"/&gt; = <br>13:      &lt;span m:value="#{addDto.result}"/&gt; 
+07:  &lt;span m:inject="f:param" m:name="layoutTitle" m:value="Add"/&gt;<br>08:  &lt;span m:inject="s:insert" m:name="body"&gt;<br>09:    &lt;form&gt;<br>10:      &lt;span m:inject="h:messages" m:globalOnly="false" m:showDetail="true"/&gt;<br>11:      &lt;input type="text" m:value="#{addDto.arg1}"/&gt; + <br>12:      &lt;input type="text" m:value="#{addDto.arg2}"/&gt; = <br>13:      &lt;span m:value="#{addDto.result}"/&gt;
 14:      &lt;input type="submit" value="calculate" m:action="#{<a href="#addAction">addAction</a>.calculate}"/&gt;
 15:    &lt;/form&gt;<br>16:  &lt;/span&gt;<br>17:&lt;/body&gt;<br>18:&lt;/html&gt;
 </pre>
@@ -207,11 +207,11 @@ public class AddActionImpl implements AddAction {
 
     private AddDto addDto;
     private AddLogic addLogic;
-    
+
     public void setAddDto(AddDto addDto) {
         this.addDto = addDto;
     }
-    
+
     public void setAddLogic(AddLogic addLogic) {
         this.addLogic = addLogic;
     }
@@ -279,7 +279,7 @@ Line 20 is used to pass parameter to the transferred page when the button is pre
 <li>Setting getter method in Action to request property and automatically set session.</li>
 </ul>
 <p>Following is a part of the sample HTML document:</p>
-<pre>01:&lt;html xmlns:m="http://www.seasar.org/maya"<br>02:    m:action="#{forEachResultInitAction.initialize}"<br>03:    m:extends="/WEB-INF/layout/layout.html"&gt;<br>04:&lt;head&gt;<br>05:&lt;meta http-equiv="Content-Type" content="text/html; charset=Windows-31j" /&gt;<br>06:&lt;title&gt;ForEach&lt;/title&gt;<br>07:&lt;/head&gt;<br>08:&lt;body&gt;<br>09:&lt;span m:inject="f:param" m:name="layoutTitle" m:value="ForEach"/&gt;<br>10:&lt;span m:inject="s:insert" m:name="body"&gt;
+<pre>01:&lt;html xmlns:m="http://www.seasar.org/maya"<br>02:    m:action="#{forEachResultInitAction.initialize}"<br>03:    m:extends="/WEB-INF/layout/layout.html"&gt;<br>04:&lt;head&gt;<br>05:&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;<br>06:&lt;title&gt;ForEach&lt;/title&gt;<br>07:&lt;/head&gt;<br>08:&lt;body&gt;<br>09:&lt;span m:inject="f:param" m:name="layoutTitle" m:value="ForEach"/&gt;<br>10:&lt;span m:inject="s:insert" m:name="body"&gt;
 11:     Key:&lt;span m:value="#{forEachDto.key}"&gt;111&lt;/span&gt;
 12:     Name:&lt;span m:value="#{forEachDto.name}"&gt;aaa&lt;/span&gt;&lt;br /&gt;
 13:     &lt;a href="forEachList.html"&gt;previous&lt;/a&gt;
@@ -303,11 +303,11 @@ public class ForEachResultInitActionImpl implements ForEachResultInitAction {
     public void setIndex(int index) {
         this.index = index;
     }
-    
+
     public void setForEachDtoList(List forEachDtoList) {
         this.forEachDtoList = forEachDtoList;
     }
-    
+
     public ForEachDto getForEachDto() {
         return forEachDto;
     }
@@ -315,7 +315,7 @@ public class ForEachResultInitActionImpl implements ForEachResultInitAction {
     public String initialize() {
         forEachDto = (ForEachDto) forEachDtoList.get(index);
         return null;
-    }    
+    }
 }
 </pre>
 <p>Remember that the page that linked to this page had child to a anchor tag and button tag that had an param attribute which passes index. So, by defining <span class="enter">setIndex()</span> method, S2JSF will automatically set the parameter value. Furthermore, by defining <span class="enter">setForEachDtoList()</span> method, it is possible to refer to forEachDtoList defined in examples/jsf/dicon/foreach.dicon.<br />
@@ -334,7 +334,7 @@ public static final String <span class="enter">property name</span>_EXPORT =
 <td width="744"><img src="images/spacer.gif" alt="" height="30" width="744"></td>
 <td width="18"><img src="images/spacer.gif" alt="" height="16" width="18"></td></tr><tr>
 <td width="18"><img src="images/spacer.gif" alt="" height="14" width="18"></td>
-<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=736><TR><TD align="left">Edited and partially translated by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and 
+<TD class=copyright><TABLE cellSpacing=0 cellPadding=0 width=736><TR><TD align="left">Edited and partially translated by H.Ozawa</TD><TD align="right">Copyright&copy; 2004-2005, The Seasar Foundation and
             the others. All rights reserved.</TD></TR></TABLE></TD>
 </tr></table>
 </td><td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>

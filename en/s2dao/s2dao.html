@@ -32,105 +32,105 @@
 <h2><a name="setup">S2Dao.Java Documentation</a></h2>
 
             <ul>
-              <li><a 
-              href="#S2DaoReference">S2Dao Reference</a> 
+              <li><a
+              href="#S2DaoReference">S2Dao Reference</a>
 
               <ul>
-                <li><a href="#SetUp">Setup</a> 
-                <li><a 
-                href="#DaoMakeFile">Files Needed to be Created</a> 
+                <li><a href="#SetUp">Setup</a>
+                <li><a
+                href="#DaoMakeFile">Files Needed to be Created</a>
 
                 <ul>
-                  <li type=circle><a 
-                  href="#JavaBeans">JavaBeans</a> 
+                  <li type=circle><a
+                  href="#JavaBeans">JavaBeans</a>
 
                   <ul>
-                    <li><a 
-                    href="#TableAnnotation">TABLE Annotation</a> 
+                    <li><a
+                    href="#TableAnnotation">TABLE Annotation</a>
 
-                    <li><a 
-                    href="#ColumnAnnotation">COLUMN Annotation</a> 
+                    <li><a
+                    href="#ColumnAnnotation">COLUMN Annotation</a>
 
-                    <li><a 
-                    href="#N1Mapping">N:1 Mapping</a> 
+                    <li><a
+                    href="#N1Mapping">N:1 Mapping</a>
 
-                    <li><a 
-                    href="#IDAutoGenerate">Automatic Generation of IDs</a> 
+                    <li><a
+                    href="#IDAutoGenerate">Automatic Generation of IDs</a>
 
-                    <li><a 
-                    href="#NoPersistentColumns">Non-persistent Columns</a> 
+                    <li><a
+                    href="#NoPersistentColumns">Non-persistent Columns</a>
 
-                    <li><a 
-                    href="#VersionNoPropertyAnnotation">VERSION_NO_PROPERTY Annotation</a> 
+                    <li><a
+                    href="#VersionNoPropertyAnnotation">VERSION_NO_PROPERTY Annotation</a>
 
-                    <li><a 
-                    href="#TimestampPropertyAnnotation">TIMESTAMP_PROPERTY Annotation</a> 
+                    <li><a
+                    href="#TimestampPropertyAnnotation">TIMESTAMP_PROPERTY Annotation</a>
 
-                    <li><a 
-                    href="#property">Column Property Declaration</a> 
+                    <li><a
+                    href="#property">Column Property Declaration</a>
 
-                    <li><a 
-                    href="#GetterSetterMethod">getter/setter Method Implementation</a> 
+                    <li><a
+                    href="#GetterSetterMethod">getter/setter Method Implementation</a>
                     </li></ul>
-                  <li type=circle><a 
-                  href="#Dao">Dao(Data Access 
-                  Object)</a> 
+                  <li type=circle><a
+                  href="#Dao">Dao(Data Access
+                  Object)</a>
                   <ul>
-                    <li><a 
-                    href="#BeanAnnotation">BEAN Annotation</a> 
+                    <li><a
+                    href="#BeanAnnotation">BEAN Annotation</a>
 
-                    <li><a 
-                    href="#ArgsAnnotation">ARGS Annotation</a> 
+                    <li><a
+                    href="#ArgsAnnotation">ARGS Annotation</a>
 
-                    <li><a 
-                    href="#QueryAnnotation">QUERY Annotation</a> 
+                    <li><a
+                    href="#QueryAnnotation">QUERY Annotation</a>
 
-                    <li><a 
-                    href="#DefMethod">Method Definition</a> 
+                    <li><a
+                    href="#DefMethod">Method Definition</a>
 
-                    <li><a 
-                    href="#NoPersistentPropsAnnotation">NO_PERSISTENT_PROPS Annotation</a> 
+                    <li><a
+                    href="#NoPersistentPropsAnnotation">NO_PERSISTENT_PROPS Annotation</a>
 
-                    <li><a 
-                    href="#PersistentPropsAnnotation">PERSISTENT_PROPS Annotation</a> 
+                    <li><a
+                    href="#PersistentPropsAnnotation">PERSISTENT_PROPS Annotation</a>
 
-                    <li><a 
-                    href="#SqlAnnotation">SQL Annotation</a> 
+                    <li><a
+                    href="#SqlAnnotation">SQL Annotation</a>
                     </li></ul>
-                  <li type=circle><a href="#diconfile">dicon File</a> 
+                  <li type=circle><a href="#diconfile">dicon File</a>
 
-                  <li type=circle><a href="#SQLfile">SQL File</a> 
+                  <li type=circle><a href="#SQLfile">SQL File</a>
                   </li></ul>
-                <li><a href="#SQLBind">SQL Comment</a> 
-                <li><a 
-                href="#EntityManager">Executing a Query Using EntityManager</a> 
+                <li><a href="#SQLBind">SQL Comment</a>
+                <li><a
+                href="#EntityManager">Executing a Query Using EntityManager</a>
                 <li><a href="#AutoUpdate">Automatic Generation of Update SQL</a>
                 <li><a href="#VersionNo">Locking by VersionNo</a>
                 <li><a href="#Timestamp">Locking by Timestamp</a>
-                <li><a href="#Batch">Batch Update</a> 
+                <li><a href="#Batch">Batch Update</a>
                 <li><a href="#AutoSelect">Automatic Generation of Query SQL</a>
                 <li><a href="#IDAutoGenerate">Automatic Generation of IDs</a>
-                <li><a href="#HowToRun">Executing S2Dao</a> 
-                <li><a href="http://www.seasar.org/testtech.html#S2DaoTestCase">S2DaoTestCase</a> 
+                <li><a href="#HowToRun">Executing S2Dao</a>
+                <li><a href="http://www.seasar.org/testtech.html#S2DaoTestCase">S2DaoTestCase</a>
 
-                <li><a href="http://www.seasar.org/s2jdbc.html#OracleUnicode">Unicode Problem with Oracle</a> 
+                <li><a href="http://www.seasar.org/s2jdbc.html#OracleUnicode">Unicode Problem with Oracle</a>
 
-                <li><a href="http://www.seasar.org/s2jdbc.html#BooleanToInt">Handling Boolean</a> 
+                <li><a href="http://www.seasar.org/s2jdbc.html#BooleanToInt">Handling Boolean</a>
                 </li></ul>
-              <li><a href="#Example">Example</a> 
+              <li><a href="#Example">Example</a>
 
               <ul>
-                <li><a href="#SelectExample">Example using SQL command</a> 
+                <li><a href="#SelectExample">Example using SQL command</a>
 
-                <li><a href="#AutoUpdateExample">Example of Generating SQL Update Command</a> 
+                <li><a href="#AutoUpdateExample">Example of Generating SQL Update Command</a>
 
-                <li><a href="#AutoSelectExample">Example of Generating SQL Query Command</a> 
+                <li><a href="#AutoSelectExample">Example of Generating SQL Query Command</a>
 
-                <li><a href="#EntityManagerExample">Example of Using EntityManager</a> 
+                <li><a href="#EntityManagerExample">Example of Using EntityManager</a>
 
-                <li><a href="http://www.seasar.org/testtech.html#S2DaoTestCaseExample">Example of S2DaoTestCase</a> 
+                <li><a href="http://www.seasar.org/testtech.html#S2DaoTestCaseExample">Example of S2DaoTestCase</a>
                 </li></ul>
-              <li><a href="http://www.seasar.org/s2DaoExercise.html">S2Dao Exercises</a> 
+              <li><a href="http://www.seasar.org/s2DaoExercise.html">S2Dao Exercises</a>
               </li></ul>
             <h2><a name="S2Dao Reference">S2Dao Reference</a></h2>
             <h3><a name=SetUp>Setup</a></h3>
@@ -138,26 +138,26 @@
             <p>Files necessary to use S2Dao are included in the s2dao/lib directory. HSQLDB RDBMS is included to allow easier testing with a database. To use HSQLDB, it is necessary that it is started. To start HSQLDB, execute /bin/runHsqldb.bat file (for Windows users). lib/hsqldb.jar is required to use HSQLDB, but it is unnecessary in a production environment which does not use HSQLDB. To use S2Dao, add to the CLASSPATH *.jar files under the lib directory (excep hsqldb.jar) and j2ee.dicon, dao.diocon, log4j.properties under the src directory. If S2Dao files are imported to an Eclipse workspace, it is not necessary to add these files to the CLASSPATH.</p>
             <h3><a name=DaoMakeFile>Files Needed to be Created</a></h3>
             <p>To use S2Dao, it is necessary to create JavaBeans, Dao(.java), dicon file, and SQL file (.sql).
-            <br>Files are associated as in the following diagram:</p><IMG src="images/dao_relation_image.gif"> 
+            <br>Files are associated as in the following diagram:</p><IMG src="images/dao_relation_image.gif">
             <p>JavaBeans is associated with a table, Dao to JavaBeans, dicon file to Dao, SQL file to Dao.<br>Files are implemented and set as follows:</p>
             <h4><a name=JavaBeans>JavaBeans</a></h4>
             <p>JavaBeans is used to associate with a table.
             To associate a JavaBeans to a table, following constants declaration and method implementation are necessary:</p>
             <ul>
-              <li>Table association (<a href="#TableAnnotation">TABLE Annotation</a>) 
+              <li>Table association (<a href="#TableAnnotation">TABLE Annotation</a>)
 
-              <li>Column association (<a href="#ColumnAnnotation">COLUMN Annotation</a>) 
+              <li>Column association (<a href="#ColumnAnnotation">COLUMN Annotation</a>)
 
-              <li>Key to join tables (<a href="#N1Mapping">N:1 Mapping</a>) 
-              <li><a 
-              href="#IDAutoGenerate">Automatic Generation of IDs</a> 
+              <li>Key to join tables (<a href="#N1Mapping">N:1 Mapping</a>)
+              <li><a
+              href="#IDAutoGenerate">Automatic Generation of IDs</a>
 
-              <li><a 
-              href="#NoPersistentColumns">Non-persistent columns</a> 
+              <li><a
+              href="#NoPersistentColumns">Non-persistent columns</a>
 
-              <li><a href="#property">Column correspondence property declaration</a><IL> 
+              <li><a href="#property">Column correspondence property declaration</a><IL>
 
-              <li><a href="#GetterSetterMethod">getter/setter method implementation</a> 
+              <li><a href="#GetterSetterMethod">getter/setter method implementation</a>
               </li></ul>
             <p>JavaBeans composition and tables to use in description are as follows</>Table: EMP<br>
             <table class=main border=1>
@@ -207,19 +207,19 @@
             <p>It is also possible to define schema. Schema for "SCOTT" is defined as follows:</p><pre>public static final String TABLE = "SCOTT.EMP";</pre>Note: If the table name is the same as the class name without the package name, it is not necessary to define TABLE annotation.
             <h5><a name=ColumnAnnotation>COLUMN Annotation</a></h5>
             <p>Table columns are associated using COLUMN annotation.<br>COLUMN annotation constant is declared as follows:</p>
-            <p>- public static final String <span 
-            class=italic>Property name</span>_COLUMN = "<span 
+            <p>- public static final String <span
+            class=italic>Property name</span>_COLUMN = "<span
             class=italic>column name</span>";</p>EMPNO column is associated to property employeeNo as follows:<pre>public static final String employeeNo_COLUMN = "EMPNO";</pre>Note: If the property name is the same as the column name, it is not necessary to define COLUMN annotation. Properties not in the table are ignored - statement to avoid these properties are not necessary.
             <h5><a name=N1Mapping>N:1 Mapping</a></h5>
             <p>N:1 mapping is when several rows are associated with one row. For example, several employees are mapped to one department.<br>To use N:1 mapping, it is required to declare constants RELNO and RELKEYS.<br>Constant RELNO is declared as follows:</p>
-            <p>- public static final int <span class=italic>Property name</span>_RELNO 
+            <p>- public static final int <span class=italic>Property name</span>_RELNO
             = <span class=italic>value</span>;</p>
             <p>Constant RELNO is consecutive number in N:1 mapping.<br>For example, if AAA table has N:1 mapping to tables BBB and CCC, RELNO are 0 and 1 for tables BBB and CCC respectively.
-            <br>RELNO is used to identify columns in result set with the associated table.<br>For example, if there is a SELECT command like follows: SELECT 
-            ..., BBB.HOGE AS HOGE_0, ... FROM AAA, BBB ... 
+            <br>RELNO is used to identify columns in result set with the associated table.<br>For example, if there is a SELECT command like follows: SELECT
+            ..., BBB.HOGE AS HOGE_0, ... FROM AAA, BBB ...
             HOGE_0 implies it is associated with column HOGE in table BBB.<br>RELKEYS constant is as follows:</p>
-            <p>- public static final String <span 
-            class=italic>Property name</span>_RELKEYS = "<span 
+            <p>- public static final String <span
+            class=italic>Property name</span>_RELKEYS = "<span
             class=italic>column name of the table with N rows: column name the table with 1 row</span>";</p>
             <p>N:1 mapping key is specified by RELKEYS constant. When there are several keys, keys are separaed by commas ( , ). For example, mykey1:yourkey1,  mykey2:yourkey2.<br>DEPTNUM column in EMP table is associated to DEPTNO in DEPT table as follows:</p><pre>public static final int department_RELNO = 0;
 public static final String department_RELKEYS = "DEPTNUM:DEPTNO";
@@ -246,7 +246,7 @@ public static final String department_RELKEYS = "DEPTNUM:DEPTNO";
             <h5><a name=GetterSetterMethod>getter/setter methods</a></h5>
             <p>Implements getter/setter methods associated with table column properties. Method naming convention is as follows:</p>getter method
 
-            <p>- public <span class=italic>type</span> get<span 
+            <p>- public <span class=italic>type</span> get<span
             class=italic>Property name</span>()</p>setter method
             <p>- public void set<span class=italic>property name(argument)</span></p>For example, getter/setter methods for property private long empno is as follows:<pre>private long empno;
 
@@ -314,38 +314,38 @@ public class Employee implements Serializable {
             <h4><a name=Dao>Dao (Data Access Object)</a></h4>
             <p>Dao is created as an interface. By separating persistent data and logic, aim of Dao to have persistent bean is achieved. There is a one to one relationship between a JavaBean and Dao. So, there is one Dao for one JavaBean. By calling on Dao method, SQL command written in the associated SQL file is executed. To create a Dao, followings are required:</p>
             <ul>
-              <li>Constant declaration of JavaBeans association (<a 
-              href="#BeanAnnotation">BEAN annotation</a>) 
+              <li>Constant declaration of JavaBeans association (<a
+              href="#BeanAnnotation">BEAN annotation</a>)
 
-              <li><a 
-              href="#DefMethod">Definition of Methods</a> 
+              <li><a
+              href="#DefMethod">Definition of Methods</a>
             </li></ul>
             <p>Following annotations are used to reference method argument in SQL command and to specify property which uses insert/update SQL commands WHERE clause and/or ORDER clause.</p>
             <ul>
-              <li><a 
-              href="#ArgsAnnotation">ARGS Annotation</a> 
+              <li><a
+              href="#ArgsAnnotation">ARGS Annotation</a>
 
-              <li><a 
-              href="#QueryAnnotation">QUERY Annotation</a> 
+              <li><a
+              href="#QueryAnnotation">QUERY Annotation</a>
 
-              <li><a 
-              href="#NoPersistentPropsAnnotation">NO_PERSISTENT_PROPS Annotation</a> 
+              <li><a
+              href="#NoPersistentPropsAnnotation">NO_PERSISTENT_PROPS Annotation</a>
 
-              <li><a 
-              href="#PersistentPropsAnnotation">PERSISTENT_PROPS Annotation</a> 
+              <li><a
+              href="#PersistentPropsAnnotation">PERSISTENT_PROPS Annotation</a>
 
-              <li><a 
-              href="#SqlAnnotation">SQL Annotation</a> 
+              <li><a
+              href="#SqlAnnotation">SQL Annotation</a>
               </li></ul>
             <h5><a name=BeanAnnotation>BEAN Annotation</a></h5>
             <p>BEAN annotation is used to associate Dao with a JavaBean (entity).
 <br>BEAN annotation has the following syntax:</p>
-            <p>- public static final Class BEAN = <span 
+            <p>- public static final Class BEAN = <span
             class=italic>JavaBeans name</span>.class;</p>
             <p>Following is an example definition to associate EmployeeDao class with Employee entity:</p><pre>public static final Class BEAN = Employee.class;</pre>
             <h5><a name=ArgsAnnotation>ARGS Annotation</a></h5>
             <p>ARGS annotation is used to reference method argument in SQL commands. Method argument name can not be referenced using reflection.<br>ARGS annotation has the following syntax:</p>
-            <p>- public static final String <span class=italic>method name</span>_ARGS 
+            <p>- public static final String <span class=italic>method name</span>_ARGS
             = "<span class=italic> argument name</span>";</p>
             <p>Following is an example that defines argument name used in a public Employee getEmployee(int empno) method which is defined in Dao.</p><pre>public static final String getEmployee_ARGS = "empno";</pre>
             <p>When the method argument is associated with a table column name, <span class=italic>argument name</span> is set to the table column name. For example. if method argument name is "empno" and table column name is "employeeno" then employeeno is specified. When there are several arguments, they are separated by a comman. When there is only one argument, ARGS annotation may be omitted.</p>
@@ -364,7 +364,7 @@ public List getEmployeesBySal(Float minSal, Float maxSal);
             <h5><a name=DefMethod>Method definition</a></h5>
             <p>By calling Dao method, SQL command in associated SQL file is executed. There is a naming convention to these INSERT, UPDATE, and DELETE methods. S2Dao determines type of SQL commands by matching the called method name with the naming convention. Currently, method can not be overloaded.</p>
             <ul>
-              <li>INSERT 
+              <li>INSERT
               <p>Name of method to INSERT data is required to start with either insert, add, or create. Method return type must be either void or int. When return type is int, number of updated row is returned. Argument type must match with entity type.<br>Following is an example of using this method:</p><pre>public void insert(Department department);
 public int addDept(Department department);
 public void createDept(Department department);
@@ -374,11 +374,11 @@ public void createDept(Department department);
 public int modifyDept(Department department);
 public void storeDept(Department department);
 </pre>
-              <li>DELETE 
+              <li>DELETE
               <p>Name of method to DELET data is required to start with either delete or remove. Method return type must be either void or int. When return type is int, number of updated row is returned. Argument type must match with entity type.<br>Following is an example of using this method:</p><pre>public void delete(Department department);
 public int removeDept(Department department);
 </pre>
-              <li>Query (SELECT) 
+              <li>Query (SELECT)
               <p>To retrieve information from a query, type of return value must be specified. When return type is set to java.util.List, SELECT command returns a list of entities. When return type is set to an entity type array, array of entity type is returned. When return type is set to just an entity type, an entity is returned. Other return type returns only one column from one row as when SELECT count(*) FROM emp returns only one int value.</p></li></ul>
             <h5><a name=NoPersistentPropsAnnotation>NO_PERSISTENT_PROPS Annotation</a></h5>
             <p>When a property should not be included in a SQL command during update, NO_PERSISTENT_PROPS annotation is used.</p><pre>public static final String insert_NO_PERSISTENT_PROPS = "sal, comm";</pre>
@@ -392,12 +392,12 @@ public int removeDept(Department department);
             <ul>
               <li>Associating SQL file with a method defined in Dao
               <p>SQL annotation is associated with method defined in Dao as follows:</p>
-              <p>- <span 
+              <p>- <span
               class=italic>method name</span>_SQL</p>SQL annotation associated with examples.dao.EmployeeDao#getAllEmployees() method is as follows:
 <pre>public static final String getAllEmployees_SQL = "SELECT
 emp.*, dept.dname dname_0, dept.loc loc_0 FROM emp, dept
  WHERE emp.deptno = dept.deptno ORDER BY emp.empno;";</pre>
-              <li>Multiple DBMS support 
+              <li>Multiple DBMS support
               <p>It is possible to switch SQL annotation for differing DBMSs. Database that is currently being used is automatically determined by S2Dao using the java.sql.DatabaseMetadata#getDatabaseProductName() method. S2Dao determines which SQL annotation to use by comparing the currently used DBMS with SQL annotation suffix. For example, SQL annotation for oracle should have "oracle" as a suffix as in "getAllEmployees_oracle_SQL".</p>Following is a list of suffixes with their corresponding DBMS.
 
               <table class=main border=1>
@@ -429,7 +429,7 @@ emp.*, dept.dname dname_0, dept.loc loc_0 FROM emp, dept
             <h4><a name=diconfile>dicon file</a></h4>
             <p>dicon file registers Dao as a component to a container. To use Dao, it is necessary to apply AOP to the registered Dao. dicon file may be place any where but it is usually place in the directory as the Dao. Refer to <a href="http://www.seasar.org/DIContainer.html">DIContainer</a> for further information.</p>
             <h5>Applying S2DaoInterceptor</h5>
-            <p>To use Dao, it is necessary to apply AOP to Dao registered with org.seasar.dao.interceptors.S2DaoInterceptor.<br>Refer to <a href="http://www.seasar.org/aop.html">AOP</a> for further information on AOP.<br>Following is an example of registering Dao(example.dao.EmployeeDao) as a component:</p>EmployeeDao.dicon 
+            <p>To use Dao, it is necessary to apply AOP to Dao registered with org.seasar.dao.interceptors.S2DaoInterceptor.<br>Refer to <a href="http://www.seasar.org/aop.html">AOP</a> for further information on AOP.<br>Following is an example of registering Dao(example.dao.EmployeeDao) as a component:</p>EmployeeDao.dicon
 <pre>&lt;components&gt;
     &lt;include path="dao.dicon"/&gt;
     &lt;component class="example.dao.EmployeeDao"&gt;
@@ -452,7 +452,7 @@ emp.*, dept.dname dname_0, dept.loc loc_0 FROM emp, dept
             <ul>
               <li>Associating SQL file with method defined in Dao
               <p>To associate SQL file to a method defined in Dao, SQL file should be named as described below:</p>
-              <p>- <span class=italic>Dao class name</span>_<span 
+              <p>- <span class=italic>Dao class name</span>_<span
               class=italic>method name</span>.sql</p>SQL file associated with examples.dao.EmployeeDao#getAllEmployees() is as follows:
 <pre>examples/dao/EmployeeDao_getAllEmployees.sql	</pre>
               <li>Multiple DBMS support
@@ -492,10 +492,10 @@ It is possible to switch SQL file for differing DBMSs. Database that is currentl
             <p>To write actual comments in SQL file, insert a space after "/*" before the comment string. For example, /* hoge*/. S2Dao will recognize the space after the "/*" and treat the content as an actual comment string.</p>
             <h4>Bind variable comment</h4>
             <p>To use value of an argument in a method defined by Dao, bind variable comment is used. Literal to the right of bind variable comment is automatically replace with a value and executed. Bind variable comment is written as follows:</p>
-            <p>- /*<span class=italic>variable name</span>*/<span 
+            <p>- /*<span class=italic>variable name</span>*/<span
             class=italic>Literal</span></p>
             <p>Argument that is a JavaBeans is written as follows:</p>
-            <p>- /*<span class=itaic>argument name</span>.<span 
+            <p>- /*<span class=itaic>argument name</span>.<span
             class=italic>Property name</span>*/<span class=italic>Literal</span></p>
             <p>Argument name is required to be the same as the ARGS annotation value set in Dao. (However, when there is only one argument, there is not name restriction.)</p><pre>public String getEmployee_ARGS = "empno";
 
@@ -510,10 +510,10 @@ public Employee getEmployee(int empno);
             <p>To use a wild card character, include it in a method argument. To specify to include "COT", wild card character is embedded in the argument as follows:</p><pre>employeeDao.findEmployees("%COT%");</pre>
             <h4>Embedded variable comment</h4>
             <p>To embed argument value of a method defined in Dao directly into a SQL command as a string, variable comment is written in a SQL command. Literal to the right of the variable comment is replace with the argument value. Embedded variable comment has the following syntax:</p>
-            <p>- /*<span class=italic>$variable name</span>*/<span 
+            <p>- /*<span class=italic>$variable name</span>*/<span
             class=italic>literal</span></p>
             <p>When an argument is a JavaBean, embedded variable comment has the following syntax:</p>
-            <p>- /*<span class=italic>$variable name</span>.<span 
+            <p>- /*<span class=italic>$variable name</span>.<span
             class=italic>property name</span>*/<span class=italic>literal</span></p>
             <h4>IF comment</h4>
             <p>To change SQL command during execution based on a condition. IF comments are used. IF comment has the following syntax:</p>
@@ -526,7 +526,7 @@ public Employee getEmployee(int empno);
             <p>When the variable hoge is not null, expression "hoge is null" is evaluated.</p>
             <h4>BEGIN comment</h4>
             <p>BEGIN comment is used to not output WHERE clause when all IF comment in a WHERE clause, which does not include an ELSE, is false. BEGIN comment is used with IF comment.<br>Syntax of BEGIN comment is as follows:</p>
-            <p>- /*BEGIN*/<span 
+            <p>- /*BEGIN*/<span
             class=italic>WHERE clause</span>/*END*/</p>Following is an example:<pre>/*BEGIN*/WHERE
   /*IF job != null*/job = /*job*/'CLERK'/*END*/
   /*IF deptno != null*/AND deptno = /*deptno*/20/*END*/
@@ -540,33 +540,33 @@ public Employee getEmployee(int empno);
 
             <DL>
               <DT style="TEXT-INDENT: 1em">find() method
-              <DD>Returns as java.util.List. Arguments are as follows:<br>public List 
-              find(String query);<br>public List find(String query, Object 
-              arg1);<br>public List find(String query, Object arg1, Object 
-              arg2);<br>public List find(String query, Object arg1, Object arg2, 
-              Object arg3);<br>public List find(String query, Object[] 
+              <DD>Returns as java.util.List. Arguments are as follows:<br>public List
+              find(String query);<br>public List find(String query, Object
+              arg1);<br>public List find(String query, Object arg1, Object
+              arg2);<br>public List find(String query, Object arg1, Object arg2,
+              Object arg3);<br>public List find(String query, Object[]
               args);<br><br>
               <DT style="TEXT-INDENT: 1em">findArray() method
-              <DD>Returns an array. Arguments are as follows:<br>public Object[] findArray(String 
-              query);<br>public Object[] findArray(String query, Object 
-              arg1);<br>public Object[] findArray(String query, Object arg1, 
-              Object arg2);<br>public Object[] findArray(String query, Object 
-              arg1, Object arg2, Object arg3);<br>public Object[] 
+              <DD>Returns an array. Arguments are as follows:<br>public Object[] findArray(String
+              query);<br>public Object[] findArray(String query, Object
+              arg1);<br>public Object[] findArray(String query, Object arg1,
+              Object arg2);<br>public Object[] findArray(String query, Object
+              arg1, Object arg2, Object arg3);<br>public Object[]
               findArray(String query, Object[] args);<br><br>
               <DT style="TEXT-INDENT: 1em">findBean() method
-              <DD>Returns a JavaBeans. Arguments are as follows:<br>public Object 
-              findBean(String query);<br>public Object findBean(String query, 
-              Object arg1);<br>public Object findBean(String query, Object arg1, 
-              Object arg2);<br>public Object findBean(String query, Object arg1, 
-              Object arg2, Object arg3);<br>public Object findBean(String query, 
+              <DD>Returns a JavaBeans. Arguments are as follows:<br>public Object
+              findBean(String query);<br>public Object findBean(String query,
+              Object arg1);<br>public Object findBean(String query, Object arg1,
+              Object arg2);<br>public Object findBean(String query, Object arg1,
+              Object arg2, Object arg3);<br>public Object findBean(String query,
               Object[] args);<br><br>
               <DT style="TEXT-INDENT: 1em">findObject() method
-              <DD>Returns a single value such as of type int when count(*) is executed. Arguments are as follows:<br>public Object 
-              findObject(String query);<br>public Object findObject(String 
-              query, Object arg1);<br>public Object findObject(String query, 
-              Object arg1, Object arg2);<br>public Object findObject(String 
-              query, Object arg1, Object arg2, Object arg3);<br>public Object 
-              findObject(String query, Object[] args); 
+              <DD>Returns a single value such as of type int when count(*) is executed. Arguments are as follows:<br>public Object
+              findObject(String query);<br>public Object findObject(String
+              query, Object arg1);<br>public Object findObject(String query,
+              Object arg1, Object arg2);<br>public Object findObject(String
+              query, Object arg1, Object arg2, Object arg3);<br>public Object
+              findObject(String query, Object[] args);
             </dd></dl>Argument is similar to QUERY annotation. Where there are 4 or more arguments of type Object, use array of type Object.
 
             <h4>Basic way to implement class extending AbstractDao.</h4>
@@ -574,7 +574,7 @@ public Employee getEmployee(int empno);
               <li>Extend org.seasar.dao.impl.AbstractDao
               <li>Implement Dao
               <br>it is required to end interface name of Dao to implement with "Dao".
-              <li>Implement constructor 
+              <li>Implement constructor
               <br>Call super(org.seasar.dao.DaoMetaDataFactory) with org.seasar.dao.DaoMetaDataFactory as an argument.
               <li>Implement method defined in Dao
               <br>When using method supported by EntityManager, EntityManager may be retrieved by using getEntityManager() method. For example, getEntityManager().find(...);.
@@ -628,7 +628,7 @@ public class EmployeeSearchCondition {
     ...
 }
 </pre><pre>List getEmployeesBySearchCondition(EmployeeSearchCondition dto);</pre>
-          <p>In a similar format, Entity may be specified in an argument. Refer to <a href="#AutoSelectExample">Example of generating SQL Query command</a> for details on using DTO. 
+          <p>In a similar format, Entity may be specified in an argument. Refer to <a href="#AutoSelectExample">Example of generating SQL Query command</a> for details on using DTO.
 
 <h3><a name=HowToRun>Executing S2Dao</a></h3>
             <p>Basic Dao execution steps are as follows:</p>
@@ -661,7 +661,7 @@ public class EmployeeDaoClient {
 }
 </pre>
             <h2><a name=Example>Example</a></h2>
-            <p>This example uses the following table, JavaBeans, and dao.dicon file</p>Table: EMP 
+            <p>This example uses the following table, JavaBeans, and dao.dicon file</p>Table: EMP
             <table class=main border=1>
               <tbody>
               <tr align=middle bgColor=#d1f3f4>
@@ -724,7 +724,7 @@ public class EmployeeDaoClient {
                 <td>Timestamp</td>
                 <td>TIMESTAMP</td>
                 <td><br></td>
-                <td><br></td></tr></tbody></table><br>Table: DEPT 
+                <td><br></td></tr></tbody></table><br>Table: DEPT
             <table class=main border=1>
               <tbody>
               <tr align=middle bgColor=#d1f3f4>
@@ -976,7 +976,7 @@ public class Department implements Serializable {
     }
 }
 </pre>
-            <p>Examples use includes the following dao.dicon file:</p><pre>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+            <p>Examples use includes the following dao.dicon file:</p><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components.dtd"&gt;
 &lt;components namespace="dao"&gt;
@@ -990,11 +990,11 @@ public class Department implements Serializable {
             <h3><a name=SelectExample>Example using SQL command</a></h3>
             <p>This example creates a SQL file and executes SQL command in it from Dao.<br>Following files are created:</p>
             <ul>
-              <li type=circle>Dao(EmployeeDao.java) 
-              <li type=circle>SQL file(EmployeeDao_getAllEmployees.sql, 
-              EmployeeDao_getEmployee.sql, EmployeeDao_getCount.sql, 
-              EmployeeDao_getEmployeeByJobDeptno.sql, EmployeeDao_update.sql) 
-              <li type=circle>dicon file(EmployeeDao.dicon) 
+              <li type=circle>Dao(EmployeeDao.java)
+              <li type=circle>SQL file(EmployeeDao_getAllEmployees.sql,
+              EmployeeDao_getEmployee.sql, EmployeeDao_getCount.sql,
+              EmployeeDao_getEmployeeByJobDeptno.sql, EmployeeDao_update.sql)
+              <li type=circle>dicon file(EmployeeDao.dicon)
               <li type=circle>Executable class(EmployeeDaoClient.java) </li></ul>
             <h5>Creating Dao</h5>
             <ul>
@@ -1047,8 +1047,8 @@ WHERE empno = /*employee.empno*/7788
             <ul>
               <li type=circle>include dao.dicon
               <li type=circle>Define created Dao as a component
-              <li type=circle>Apply dao.interceptor(S2DaoInterceptor) to Dao 
-            </li></ul><pre>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+              <li type=circle>Apply dao.interceptor(S2DaoInterceptor) to Dao
+            </li></ul><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components.dtd"&gt;
 &lt;components&gt;
@@ -1192,8 +1192,8 @@ DEBUG 2004-10-12 11:07:03,023 [main] physical connection closed
             <h5>Creating Dao</h5>
             <ul>
               <li type=circle>Associate DEPT table with related JavaBeans
-              <li 
-              type=circle>Define update method.<br>Method to insert a department (insert(Department department) method)<br>Method to update a department (update(Department 
+              <li
+              type=circle>Define update method.<br>Method to insert a department (insert(Department department) method)<br>Method to update a department (update(Department
               department) method)<br>Method to delete a department (delete(Department department) method)
               </li></ul><pre>package examples.dao;
 
@@ -1213,7 +1213,7 @@ public interface DepartmentDao {
               <li type=circle>include dao.dicon
               <li type=circle>Define component based on created Dao
               <li type=circle>Apply dao.interceptor(S2DaoInterceptor) to Dao
-            </li></ul><pre>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+            </li></ul><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components.dtd"&gt;
 &lt;components&gt;
@@ -1282,9 +1282,9 @@ DEBUG 2004-09-09 19:22:11,681 [main] physical connect closed
             <p>This is a sample to automatically generate a SELECT command and <a href="#Timestamp">locking based on Timestamp</a>. SQL file is not necessary. A method that uses DTO as an argument is also shown.
             Following files are created:</p>
             <ul>
-              <li type=circle>Dao(EmployeeAutoDao.java) 
-              <li type=circle>DTO(EmployeeSearchCondition.java) 
-              <li type=circle>dicon file(EmployeeAutoDao.dicon) 
+              <li type=circle>Dao(EmployeeAutoDao.java)
+              <li type=circle>DTO(EmployeeSearchCondition.java)
+              <li type=circle>dicon file(EmployeeAutoDao.dicon)
               <li type=circle>Execution class (EmployeeAutoDaoClient.java) </li></ul>
             <h5>Creating Dao</h5>
             <ul>
@@ -1353,8 +1353,8 @@ public class EmployeeSearchCondition {
             <ul>
               <li type=circle>Include dao.dicon
               <li type=circle>Define created Dao as a component
-              <li type=circle>Apply Dao‚Édao.interceptor(S2DaoInterceptor)
-            </li></ul><pre>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+              <li type=circle>Apply Dao??dao.interceptor(S2DaoInterceptor)
+            </li></ul><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components.dtd"&gt;
 &lt;components&gt;
@@ -1366,8 +1366,8 @@ public class EmployeeSearchCondition {
 </pre>
             <h5>Create execution file</h5>
             <ul>
-              <li type=circle>Create a container by using org.seasar.framework.container.S2Container#create() method with the first argument set to the path of created dicon file (EmployeeAutoDao.dicon). 
-              <li type=circle>Retrieve the component by using org.seasar.framework.container.S2Container#getComponent() method with the first argument set to the class name (EmployeeAutoDao.class) registered with the component. 
+              <li type=circle>Create a container by using org.seasar.framework.container.S2Container#create() method with the first argument set to the path of created dicon file (EmployeeAutoDao.dicon).
+              <li type=circle>Retrieve the component by using org.seasar.framework.container.S2Container#getComponent() method with the first argument set to the class name (EmployeeAutoDao.class) registered with the component.
               <li type=circle>Execute method defined in Dao</li></ul><pre>package examples.dao;
 
 import java.util.List;
@@ -1519,15 +1519,15 @@ DEBUG 2004-10-12 11:35:24,054 [main] physical connection closed
             <h3><a name=EntityManagerExample>Example of using EntityManager</a></h3>
             <p>This example uses <a href="#EntityManager">EntityManager</a> to query employees whose name contain the specified string.<br>Following files are created:</p>
             <ul>
-              <li type=circle>Dao(Employee2Dao.java) 
+              <li type=circle>Dao(Employee2Dao.java)
               <li type=circle>Class (Employee2DaoImpl.java) extending AbstractDao
-              <li type=circle>dicon file(Employee2Dao.dicon) 
+              <li type=circle>dicon file(Employee2Dao.dicon)
               <li type=circle>Execution class (Employee2DaoClient.java) </li></ul>
             <h5>Creating Dao</h5>
             <ul>
               <li type=circle>Interface name must end with string "Dao".
               <li type=circle>Associate with JavaBeans relating to the EMP table
-              <li 
+              <li
               type=circle>Define method to query.<br>Method to query employee (getEmployees(String ename)) </li></ul><pre>package examples.dao;
 
 import java.util.List;
@@ -1565,10 +1565,10 @@ public class Employee2DaoImpl extends AbstractDao implements Employee2Dao {
             <h5>Creating dicon file</h5>
             <ul>
               <li type=circle>include dao.dicon
-              <li type=circle>Define as a component the class that extends AbstractDao 
-              <li 
+              <li type=circle>Define as a component the class that extends AbstractDao
+              <li
               type=circle>Apply dao.interceptor(S2DaoInterceptor) to registered component
-              </li></ul><pre>&lt;?xml version="1.0" encoding="Shift_JIS"?&gt;
+              </li></ul><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container//EN"
 "http://www.seasar.org/dtd/components.dtd"&gt;
 &lt;components&gt;
@@ -1636,7 +1636,7 @@ DEBUG 2004-10-01 10:14:41,442 [main] physical connection closed
 <td width="14"><img height="30" width="14" src="images/spacer.gif" alt=""></td>
 <td width="766"><img height="30" width="592" src="images/spacer.gif" alt=""></td></tr><tr>
 <td width="14"><img height="14" width="14" src="images/spacer.gif" alt=""></td>
-<td class=copyright><table cellSpacing=0 cellPadding=0 width=744><tr><td align="left">Trans. by H.Ozawa</td><td align="right">Copyright&copy; 2004-2006, The Seasar Foundation and 
+<td class=copyright><table cellSpacing=0 cellPadding=0 width=744><tr><td align="left">Trans. by H.Ozawa</td><td align="right">Copyright&copy; 2004-2006, The Seasar Foundation and
             the others. All rights reserved.</td></tr></table></td>
 </tr></table>
 <td class="backright" align="left" valign="top">&nbsp;</td></tr><tr>

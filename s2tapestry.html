@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- don't edit start -->
-<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="seasar_b.css" type="text/css" rel="stylesheet"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
 </head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" height="100%"><tr>
 <td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
@@ -23,28 +23,28 @@
 <!-- document start -->
 
 <p style="background-color:red;color:white;font-size:x-larger">
-d—v:–{ƒvƒƒ_ƒNƒg‚ÍAƒNƒ[ƒYÏ‚İƒvƒƒ_ƒNƒg‚Å‚·BƒvƒƒWƒFƒNƒg‚Æ‚µ‚Ä‚ÌŠˆ“®‚Í“Á‚És‚Á‚Ä‚¨‚è‚Ü‚¹‚ñBƒvƒƒ_ƒNƒg‚ÍAƒ_ƒEƒ“ƒ[ƒh‰Â”\‚È‚Ü‚Üc‚µ‚Ä‚¨‚è‚Ü‚·B
+é‡è¦:æœ¬ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆã¯ã€ã‚¯ãƒ­ãƒ¼ã‚ºæ¸ˆã¿ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆã§ã™ã€‚ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ã®æ´»å‹•ã¯ç‰¹ã«è¡Œã£ã¦ãŠã‚Šã¾ã›ã‚“ã€‚ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆã¯ã€ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å¯èƒ½ãªã¾ã¾æ®‹ã—ã¦ãŠã‚Šã¾ã™ã€‚
 </p>
-<p>S2Tapestry‚ğg‚¤‚ÆAS2‚Æ<a href="http://jakarta.apache.org/tapestry/">Tapestry</a>‚ªŠÈ’P‚É˜A“®‚·‚é‚æ‚¤‚É‚È‚è‚Ü‚·Bƒy[ƒWƒNƒ‰ƒX‚ÉƒT[ƒrƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚ª©“®“I‚Éİ’è‚³‚ê‚é‚Ì‚ÅAƒy[ƒWƒNƒ‰ƒX‚Ì–ğŠ„‚Í“KØ‚ÈƒT[ƒrƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚ğŒÄ‚Ño‚·‚¾‚¯‚É‚È‚èAƒvƒŒƒ[ƒ“ƒe[ƒVƒ‡ƒ“‘w‚ÆƒT[ƒrƒX‘w‚Ì–ğŠ„•ª’S‚à–¾Šm‚É‚È‚è‚Ü‚·B</p>
-<h2><a name="Setup">ƒZƒbƒgƒAƒbƒv</a></h2>
-<p>S2‚Æ“¯—l‚ÉJDK1.4ˆÈã‚ª•K—v‚Å‚·BƒTƒ“ƒvƒ‹‚ÍA<a href="http://jakarta.apache.org/tomcat/">Tomcat</a>A<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>A<a href="http://spindle.sourceforge.net/">Spindle</a>‚ğg‚¤‚±‚Æ‚ğ‘O’ñ‚É‚µ‚Ä‚¢‚Ü‚·B‚ ‚ç‚©‚¶‚ßƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä’u‚¢‚Ä‚­‚¾‚³‚¢BS2TapestryVx.x.x.jar‚ğ‰ğ“€‚µ‚Ä‚Å‚«‚½s2tapestryƒfƒBƒŒƒNƒgƒŠ‚ğEclipse‚ÌJavaƒvƒƒWƒFƒNƒg‚Æ‚µ‚ÄŠÛ‚²‚ÆƒCƒ“ƒ|[ƒg‚µ‚Ä‚­‚¾‚³‚¢B.classpath‚ğã‘‚«‚·‚é‚©•·‚©‚ê‚é‚Ì‚ÅA‚·‚×‚Ä‚Í‚¢‚Ìƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚µ‚ÄA‚·‚×‚Ä‚ğæ‚è‚İ‚Ü‚·B ‚±‚ê‚ÅA„‚Æ‘S‚­“¯‚¶ŠÂ‹«‚É‚È‚è‚Ü‚·BƒTƒ“ƒvƒ‹‚ÍS2TapestryExamleVx.x.x.jar‚Æ‚µ‚Ä•Ê“r—pˆÓ‚³‚ê‚Ä‚¢‚é‚Ì‚ÅAƒ_ƒEƒ“ƒ[ƒh‚µ‚Ä‰ğ“€‚µ‚Ä‚­‚¾‚³‚¢BEclipse‚Ås2tapestry-example‚Æ‚¢‚¤–¼‘O‚ÅJavaƒvƒƒWƒFƒNƒg‚ğì¬‚µ‚Ü‚·BTomcatƒvƒƒWƒFƒNƒg‚Å‚Í‚È‚¢‚Ì‚Å‹C‚ğ‚Â‚¯‚Ä‚­‚¾‚³‚¢B‰ğ“€‚µ‚Ä‚Å‚«‚½s2tapestry-exampleƒfƒBƒŒƒNƒgƒŠ‚ğŠÛ‚²‚ÆƒCƒ“ƒ|[ƒg‚µ‚Ä‚­‚¾‚³‚¢B.classpath‚ğã‘‚«‚·‚é‚©•·‚©‚ê‚é‚Ì‚ÅA‚·‚×‚Ä‚Í‚¢‚Ìƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚µ‚ÄA‚·‚×‚Ä‚ğæ‚è‚İ‚Ü‚·Bs2tapestry-exampleƒvƒƒWƒFƒNƒg‚ğ‰EƒNƒŠƒbƒN‚µ‚ÄƒvƒƒpƒeƒB-&gt;Tomcat‚ğ‘I‚Ñ‚Ü‚·BTomcatƒvƒƒWƒFƒNƒg‚Å‚ ‚é‚ğƒ`ƒFƒbƒN‚µAƒAƒvƒŠƒP[ƒVƒ‡ƒ“URI‚ğ/s2tapestry-example‚Æ‚µ‚Ü‚·B‚±‚ê‚ÅATomcat‚ğÄ‹N“®‚µ‚ÄAƒuƒ‰ƒEƒU‚©‚ç<a href="http://localhost:8080/s2struts-example/">http://localhost:8080/s2tapestry-example/app</a>‚ÉƒAƒNƒZƒX‚·‚é‚Æ‘«‚µZ‚ÌƒTƒ“ƒvƒ‹‚ğŒ©‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B</p>
-<h2><a name="Usage">g‚¢•û</a></h2>
-<p>S2Container‚ğ‹N“®‚·‚é‚½‚ß‚ÉS2ContainerServlet‚ğweb.xml‚É“o˜^‚µ‚Ü‚·BB</p>
+<p>S2Tapestryã‚’ä½¿ã†ã¨ã€S2ã¨<a href="http://jakarta.apache.org/tapestry/">Tapestry</a>ãŒç°¡å˜ã«é€£å‹•ã™ã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã™ã€‚ãƒšãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹ã«ã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒè‡ªå‹•çš„ã«è¨­å®šã•ã‚Œã‚‹ã®ã§ã€ãƒšãƒ¼ã‚¸ã‚¯ãƒ©ã‚¹ã®å½¹å‰²ã¯é©åˆ‡ãªã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‘¼ã³å‡ºã™ã ã‘ã«ãªã‚Šã€ãƒ—ãƒ¬ã‚¼ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³å±¤ã¨ã‚µãƒ¼ãƒ“ã‚¹å±¤ã®å½¹å‰²åˆ†æ‹…ã‚‚æ˜ç¢ºã«ãªã‚Šã¾ã™ã€‚</p>
+<h2><a name="Setup">ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—</a></h2>
+<p>S2ã¨åŒæ§˜ã«JDK1.4ä»¥ä¸ŠãŒå¿…è¦ã§ã™ã€‚ã‚µãƒ³ãƒ—ãƒ«ã¯ã€<a href="http://jakarta.apache.org/tomcat/">Tomcat</a>ã€<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>ã€<a href="http://spindle.sourceforge.net/">Spindle</a>ã‚’ä½¿ã†ã“ã¨ã‚’å‰æã«ã—ã¦ã„ã¾ã™ã€‚ã‚ã‚‰ã‹ã˜ã‚ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦ç½®ã„ã¦ãã ã•ã„ã€‚S2TapestryVx.x.x.jarã‚’è§£å‡ã—ã¦ã§ããŸs2tapestryãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’Eclipseã®Javaãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦ä¸¸ã”ã¨ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¦ãã ã•ã„ã€‚.classpathã‚’ä¸Šæ›¸ãã™ã‚‹ã‹èã‹ã‚Œã‚‹ã®ã§ã€ã™ã¹ã¦ã¯ã„ã®ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€ã™ã¹ã¦ã‚’å–ã‚Šè¾¼ã¿ã¾ã™ã€‚ ã“ã‚Œã§ã€ç§ã¨å…¨ãåŒã˜ç’°å¢ƒã«ãªã‚Šã¾ã™ã€‚ã‚µãƒ³ãƒ—ãƒ«ã¯S2TapestryExamleVx.x.x.jarã¨ã—ã¦åˆ¥é€”ç”¨æ„ã•ã‚Œã¦ã„ã‚‹ã®ã§ã€ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦è§£å‡ã—ã¦ãã ã•ã„ã€‚Eclipseã§s2tapestry-exampleã¨ã„ã†åå‰ã§Javaãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚Tomcatãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã¯ãªã„ã®ã§æ°—ã‚’ã¤ã‘ã¦ãã ã•ã„ã€‚è§£å‡ã—ã¦ã§ããŸs2tapestry-exampleãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ä¸¸ã”ã¨ã‚¤ãƒ³ãƒãƒ¼ãƒˆã—ã¦ãã ã•ã„ã€‚.classpathã‚’ä¸Šæ›¸ãã™ã‚‹ã‹èã‹ã‚Œã‚‹ã®ã§ã€ã™ã¹ã¦ã¯ã„ã®ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€ã™ã¹ã¦ã‚’å–ã‚Šè¾¼ã¿ã¾ã™ã€‚s2tapestry-exampleãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å³ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£-&gt;Tomcatã‚’é¸ã³ã¾ã™ã€‚Tomcatãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã‚ã‚‹ã‚’ãƒã‚§ãƒƒã‚¯ã—ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³URIã‚’/s2tapestry-exampleã¨ã—ã¾ã™ã€‚ã“ã‚Œã§ã€Tomcatã‚’å†èµ·å‹•ã—ã¦ã€ãƒ–ãƒ©ã‚¦ã‚¶ã‹ã‚‰<a href="http://localhost:8080/s2struts-example/">http://localhost:8080/s2tapestry-example/app</a>ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã¨è¶³ã—ç®—ã®ã‚µãƒ³ãƒ—ãƒ«ã‚’è¦‹ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚</p>
+<h2><a name="Usage">ä½¿ã„æ–¹</a></h2>
+<p>S2Containerã‚’èµ·å‹•ã™ã‚‹ãŸã‚ã«S2ContainerServletã‚’web.xmlã«ç™»éŒ²ã—ã¾ã™ã€‚ã€‚</p>
 <h3>web.xml</h3>
 <pre>&lt;web-app&gt;<br />    &lt;display-name&gt;s2tapestry-example&lt;/display-name&gt;<br />    &lt;servlet&gt;<br />          &lt;servlet-name&gt;s2container&lt;/servlet-name&gt;<br />          &lt;servlet-class&gt;org.seasar.framework.container.servlet.S2ContainerServlet&lt;/servlet-class&gt;<br />          &lt;load-on-startup/&gt;<br />    &lt;/servlet&gt;<br />    &lt;servlet&gt;<br />        &lt;servlet-name&gt;s2tapestry-example&lt;/servlet-name&gt;<br />        &lt;servlet-class&gt;org.apache.tapestry.ApplicationServlet&lt;/servlet-class&gt;<br />        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;<br />    &lt;/servlet&gt;<br />    &lt;servlet-mapping&gt;<br />        &lt;servlet-name&gt;s2container&lt;/servlet-name&gt;<br />        &lt;url-pattern&gt;/s2container&lt;/url-pattern&gt;<br />    &lt;/servlet-mapping&gt;<br />    &lt;servlet-mapping&gt;<br />        &lt;servlet-name&gt;s2tapestry-example&lt;/servlet-name&gt;<br />        &lt;url-pattern&gt;/app&lt;/url-pattern&gt;<br />    &lt;/servlet-mapping&gt;<br />&lt;/web-app&gt;
 </pre>
-<p>S2‚ÆTapestry‚ğ˜A“®‚³‚¹‚é‚½‚ß‚É‚ÍAS2—p‚ÌEngine‚ğƒAƒvƒŠƒP[ƒVƒ‡ƒ“d—l‘‚É“o˜^‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B</p>
+<p>S2ã¨Tapestryã‚’é€£å‹•ã•ã›ã‚‹ãŸã‚ã«ã¯ã€S2ç”¨ã®Engineã‚’ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ä»•æ§˜æ›¸ã«ç™»éŒ²ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚</p>
 <h3>s2tapestry-example.application</h3>
 <pre>&lt;application name=&quot;s2tapestry-example&quot; engine-class=&quot;org.seasar.tapestry.S2Engine&quot; &gt;
     &lt;page name=&quot;Home&quot; specification-path=&quot;Home.page&quot;/&gt;
 &lt;/application&gt;</pre>
-<p>•K—v‚ÈƒRƒ“ƒ|[ƒlƒ“ƒg‚ğƒRƒ“ƒ|[ƒlƒ“ƒg’è‹`‚É“o˜^‚µ‚Ü‚·Bƒy[ƒWƒRƒ“ƒ|[ƒlƒ“ƒg‚ÍTapestry‚ªŠÇ—‚·‚é‚Ì‚ÅA“o˜^‚·‚é•K—v‚Í‚ ‚è‚Ü‚¹‚ñB‚Ü‚½A‚±‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ÍAƒAƒvƒŠƒP[ƒVƒ‡ƒ“‘S‘Ì‚Ì’è‹`‚Å‚ ‚éapp.dicon‚É“o˜^‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B</p>
+<p>å¿…è¦ãªã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå®šç¾©ã«ç™»éŒ²ã—ã¾ã™ã€‚ãƒšãƒ¼ã‚¸ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¯TapestryãŒç®¡ç†ã™ã‚‹ã®ã§ã€ç™»éŒ²ã™ã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ã¾ãŸã€ã“ã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³å…¨ä½“ã®å®šç¾©ã§ã‚ã‚‹app.diconã«ç™»éŒ²ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚</p>
 <h3>Add.dicon</h3>
 <pre>&lt;components&gt;<br />    &lt;component name=&quot;addService&quot; class=&quot;examples.tapestry.AddServiceImpl&quot;/&gt;<br />&lt;/components&gt;
 </pre>
 <h3>app.dicon</h3>
 <pre>&lt;components&gt;<br />    &lt;include path=&quot;examples/tapestry/Add.dicon&quot;/&gt;<br />&lt;/components&gt;</pre>
-<p>ƒT[ƒrƒXƒRƒ“ƒ|[ƒlƒ“ƒg‚ğó‚¯æ‚é‚½‚ß‚Éƒy[ƒWd—l‚ÉƒvƒƒpƒeƒBd—l‚ğ’è‹`‚µ‚Ü‚·BTapestry‚©‚çS2‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ğQÆ‚·‚é‚É‚ÍAglobal.ƒRƒ“ƒ|[ƒlƒ“ƒg–¼A‚ ‚é‚¢‚Í<a href="http://homepage3.nifty.com/seasar/DIContainer.html#Namespace">–¼‘O‹óŠÔ</a>‚ªw’è‚³‚ê‚Ä‚¢‚éê‡‚É‚ÍAglobal.–¼‘O‹óŠÔ.ƒRƒ“ƒ|[ƒlƒ“ƒg–¼‚ÅQÆ‚µ‚Ü‚·B</p>
+<p>ã‚µãƒ¼ãƒ“ã‚¹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å—ã‘å–ã‚‹ãŸã‚ã«ãƒšãƒ¼ã‚¸ä»•æ§˜ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ä»•æ§˜ã‚’å®šç¾©ã—ã¾ã™ã€‚Tapestryã‹ã‚‰S2ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å‚ç…§ã™ã‚‹ã«ã¯ã€global.ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã€ã‚ã‚‹ã„ã¯<a href="http://homepage3.nifty.com/seasar/DIContainer.html#Namespace">åå‰ç©ºé–“</a>ãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã«ã¯ã€global.åå‰ç©ºé–“.ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã§å‚ç…§ã—ã¾ã™ã€‚</p>
 <h3>Home.page</h3>
 <pre>&lt;page-specification class=&quot;examples.tapestry.Home&quot;&gt;
     &lt;component id=&quot;arg1&quot; type=&quot;TextField&quot;&gt;
@@ -60,7 +60,7 @@
 <h3>Home.html</h3>
 <pre>&lt;form jwcid=&quot;@Form&quot; listener=&quot;ognl:listeners.calculate&quot;&gt;<br />&lt;input jwcid=&quot;arg1&quot; type=&quot;text&quot;/&gt; +<br />&lt;input jwcid=&quot;arg2&quot; type=&quot;text&quot;/&gt;<br />&lt;input type=&quot;submit&quot; value=&quot;calculate&quot;/&gt;<br />&lt;/form&gt;
 </pre>
-<p>PageƒNƒ‰ƒX‚ÍƒRƒ“ƒ|[ƒlƒ“ƒg‚ğó‚¯æ‚é‚½‚ß‚ÌƒvƒƒpƒeƒB‚ğ’è‹`‚µ‚Ä‚¨‚«‚Ü‚·BƒvƒŒƒ[ƒ“ƒe[ƒVƒ‡ƒ“‘w‚ÍAƒT[ƒrƒX‘w‚Éˆ—‚ğˆË—Š‚µAƒvƒŒƒ[ƒ“ƒe[ƒVƒ‡ƒ“‘w–{—ˆ‚Ì–ğŠ„‚É“O‚µ‚Ä‚¢‚é‚±‚Æ‚ª•ª‚©‚é‚Æv‚¢‚Ü‚·B</p>
+<p>Pageã‚¯ãƒ©ã‚¹ã¯ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å—ã‘å–ã‚‹ãŸã‚ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’å®šç¾©ã—ã¦ãŠãã¾ã™ã€‚ãƒ—ãƒ¬ã‚¼ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³å±¤ã¯ã€ã‚µãƒ¼ãƒ“ã‚¹å±¤ã«å‡¦ç†ã‚’ä¾é ¼ã—ã€ãƒ—ãƒ¬ã‚¼ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³å±¤æœ¬æ¥ã®å½¹å‰²ã«å¾¹ã—ã¦ã„ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚‹ã¨æ€ã„ã¾ã™ã€‚</p>
 <h3>Home.java</h3>
 <pre>
 package examples.tapestry;

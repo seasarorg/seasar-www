@@ -1,85 +1,85 @@
 slide1
 
-‚İ‚È‚³‚ñA‚±‚ñ‚É‚¿‚ÍB„‚Í Yasuo Higa ‚ÅASeasar Foundation‚Æ‚¢‚¤“ú–{‚ÌƒI[ƒvƒ“ƒ\[ƒXƒvƒƒWƒFƒNƒg‚Ìƒ`[ƒtƒRƒ~ƒbƒ^‚ğ‚µ‚Ä‚¢‚Ü‚·B
+ã¿ãªã•ã‚“ã€ã“ã‚“ã«ã¡ã¯ã€‚ç§ã¯ Yasuo Higa ã§ã€Seasar Foundationã¨ã„ã†æ—¥æœ¬ã®ã‚ªãƒ¼ãƒ—ãƒ³ã‚½ãƒ¼ã‚¹ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒ¼ãƒ•ã‚³ãƒŸãƒƒã‚¿ã‚’ã—ã¦ã„ã¾ã™ã€‚
 
 Good afternoon everybody. I'm Yasuo Higa, and I'm the chief committer of the Japan open source project, called the Seasar Foundation.
 
-Seasar Foundation‚É‚ÍAJava‚¾‚¯‚Å‚È‚­.NET‚âPHP‚Ìƒvƒƒ_ƒNƒg‚à‚ ‚è‚Ü‚·BSeasar Foundation‚ÌƒƒCƒ“‚Æ‚È‚éƒvƒƒ_ƒNƒg‚Í¤Seasar2‚ÆŒÄ‚Î‚ê‚éDIContainer‚Å‚·BSeasar‚Æ‚¢‚¤‚Ì‚ÍA‚±‚±‚ÌŠG‚É‚ ‚é‚æ‚¤‚Èƒ‰ƒCƒIƒ“‚É—‚½‘z‘œã‚Ì¶‚«•¨‚Å‚·B
+Seasar Foundationã«ã¯ã€Javaã ã‘ã§ãªã.NETã‚„PHPã®ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆã‚‚ã‚ã‚Šã¾ã™ã€‚Seasar Foundationã®ãƒ¡ã‚¤ãƒ³ã¨ãªã‚‹ãƒ—ãƒ­ãƒ€ã‚¯ãƒˆã¯ï½¤Seasar2ã¨å‘¼ã°ã‚Œã‚‹DIContainerã§ã™ã€‚Seasarã¨ã„ã†ã®ã¯ã€ã“ã“ã®çµµã«ã‚ã‚‹ã‚ˆã†ãªãƒ©ã‚¤ã‚ªãƒ³ã«ä¼¼ãŸæƒ³åƒä¸Šã®ç”Ÿãç‰©ã§ã™ã€‚
 
 The Seasar Foundation has not only Java products but also .NET, and PHP products. The main product of the Seasar Foundation is a DIContainer called Seasar2. A seasar is an imaginary creation like a lion in this picture.
 
-¡“ú‚Í¤uİ’èƒtƒ@ƒCƒ‹€‚·‚×‚µv‚Æ‚¢‚¤ƒe[ƒ}‚Å‚¨˜b‚µ‚½‚¢‚Æv‚¢‚Ü‚·B
+ä»Šæ—¥ã¯ï½¤ã€Œè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«æ­»ã™ã¹ã—ã€ã¨ã„ã†ãƒ†ãƒ¼ãƒã§ãŠè©±ã—ãŸã„ã¨æ€ã„ã¾ã™ã€‚
 
 The theme I would like to introduce to you today, is "Configuration files must DIe".
 
 slide2
 
-„‚Í¤‚¢‚Â‚à¢ŠE’†‚ÌŠJ”­Ò‚É‚±‚¤•·‚¢‚Ä‚İ‚½‚¢‚Æv‚Á‚Ä‚¢‚Ü‚µ‚½Au‚ ‚È‚½‚ÍAİ’èƒtƒ@ƒCƒ‹‚ğ‘‚­‚Ì‚ª–{“–‚ÉD‚«‚Å‚·‚©v‚ÆB
+ç§ã¯ï½¤ã„ã¤ã‚‚ä¸–ç•Œä¸­ã®é–‹ç™ºè€…ã«ã“ã†èã„ã¦ã¿ãŸã„ã¨æ€ã£ã¦ã„ã¾ã—ãŸã€ã€Œã‚ãªãŸã¯ã€è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãã®ãŒæœ¬å½“ã«å¥½ãã§ã™ã‹ã€ã¨ã€‚
 
 I have always wanted to ask every developer in the world this question:
 Do you really like writing configuration files?
 
-İ’èƒtƒ@ƒCƒ‹‚ğ‘‚­‚Ì‚ª–{“–‚ÉD‚«‚È•û‚Í¤‹“è‚µ‚Ä‚­‚¾‚³‚¢B‚à‚¿‚ë‚ñA‚»‚ñ‚È‚±‚Æ‚ªD‚«‚Èl‚ÍA‚Ù‚Æ‚ñ‚Ç‚¢‚Ü‚¹‚ñ‚æ‚ËB
+è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãã®ãŒæœ¬å½“ã«å¥½ããªæ–¹ã¯ï½¤æŒ™æ‰‹ã—ã¦ãã ã•ã„ã€‚ã‚‚ã¡ã‚ã‚“ã€ãã‚“ãªã“ã¨ãŒå¥½ããªäººã¯ã€ã»ã¨ã‚“ã©ã„ã¾ã›ã‚“ã‚ˆã­ã€‚
 
 Those of you who really like writing configuration files, please raise your hands. Of course, I hope such people are very few.
 
 slide3
 
-„‚àİ’èƒtƒ@ƒCƒ‹‚ğ‘‚­‚Ì‚ÍŒ™‚¢‚Å‚·B‚È‚º‚È‚çA‘‚­‚Ì‚ª–Ê“|‚¾‚©‚ç‚Å‚·B‹°‚ç‚­¤¢ŠE’†‚ÌŠJ”­Ò‚àA“¯‚¶v‚¢‚Å‚µ‚å‚¤B
+ç§ã‚‚è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãã®ã¯å«Œã„ã§ã™ã€‚ãªãœãªã‚‰ã€æ›¸ãã®ãŒé¢å€’ã ã‹ã‚‰ã§ã™ã€‚æã‚‰ãï½¤ä¸–ç•Œä¸­ã®é–‹ç™ºè€…ã‚‚ã€åŒã˜æ€ã„ã§ã—ã‚‡ã†ã€‚
 
 I hate it too! That's because writing them is a real headache! I hope every developer in the world feels the same.
 
 slide4
 
-‚µ‚©‚µ¤„‚½‚¿‚Ìv‚¢‚É‚©‚©‚í‚ç‚¸¤Java‚Ì¢ŠE‚Í¤İ’èƒtƒ@ƒCƒ‹‚Å‚ ‚Ó‚ê‚Ä‚¢‚Ü‚·B‚»‚Ì”ßS‚Èó‹µ‚Í¤XML’n–‚Æ‚¢‚í‚ê‚Ä‚¢‚Ü‚·B
+ã—ã‹ã—ï½¤ç§ãŸã¡ã®æ€ã„ã«ã‹ã‹ã‚ã‚‰ãšï½¤Javaã®ä¸–ç•Œã¯ï½¤è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã§ã‚ãµã‚Œã¦ã„ã¾ã™ã€‚ãã®æ‚²æƒ¨ãªçŠ¶æ³ã¯ï½¤XMLåœ°ç„ã¨ã„ã‚ã‚Œã¦ã„ã¾ã™ã€‚
 
 Still, despite our feelings, the Java world is full of configuration files. We can call this tragic situation "XML HELL".
 
 slide5
 
-Web‚âDI‚Ì‘ã•\“I‚ÈƒtƒŒ[ƒ€ƒ[ƒN‚ğv‚¢o‚µ‚Ä‚­‚¾‚³‚¢B‚»‚ê‚ç‚Íİ’èƒtƒ@ƒCƒ‹‚Å‚ ‚Ó‚ê‚Ä‚¢‚Ü‚·Bİ’èƒtƒ@ƒCƒ‹‚Ì”ì‘å‰»‚Í¤„‚½‚¿‚ğ”Y‚Ü‚¹‚Ä‚¢‚é[‚È–â‘è‚È‚Ì‚Å‚·B
+Webã‚„DIã®ä»£è¡¨çš„ãªãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã‚’æ€ã„å‡ºã—ã¦ãã ã•ã„ã€‚ãã‚Œã‚‰ã¯è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã§ã‚ãµã‚Œã¦ã„ã¾ã™ã€‚è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®è‚¥å¤§åŒ–ã¯ï½¤ç§ãŸã¡ã‚’æ‚©ã¾ã›ã¦ã„ã‚‹æ·±åˆ»ãªå•é¡Œãªã®ã§ã™ã€‚
 
 Please try to remember the frameworks which represent Web and DI. They are full of configuration files. The issue that causes us such serious problems is the enlargement of configuration files.
 
 slide6
 
-İ’èƒtƒ@ƒCƒ‹‚Ì”ì‘å‰»‚É‘Î‚·‚é‰ğŒˆô‚Ì1‚Â‚ª¤Java5‚©‚ç“oê‚µ‚½‹Zp‚ªƒAƒmƒe[ƒVƒ‡ƒ“‚Å‚·B
+è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®è‚¥å¤§åŒ–ã«å¯¾ã™ã‚‹è§£æ±ºç­–ã®1ã¤ãŒï½¤Java5ã‹ã‚‰ç™»å ´ã—ãŸæŠ€è¡“ãŒã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã§ã™ã€‚
 
 One of the solutions against the enlargement of configuration files is annotation which appeared in Java 5.
 
 slide7
 
-ƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚¤‚Æ¤İ’èƒtƒ@ƒCƒ‹‚ª‚Ù‚Æ‚ñ‚Ç•s—v‚É‚È‚è‚Ü‚·B‚È‚º‚È‚çAƒ\[ƒXƒR[ƒh‚Éİ’èî•ñ‚ğ–„‚ß‚Ş‚±‚Æ‚ª‚Å‚«‚é‚©‚ç‚Å‚·B
+ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã†ã¨ï½¤è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ãŒã»ã¨ã‚“ã©ä¸è¦ã«ãªã‚Šã¾ã™ã€‚ãªãœãªã‚‰ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã«è¨­å®šæƒ…å ±ã‚’åŸ‹ã‚è¾¼ã‚€ã“ã¨ãŒã§ãã‚‹ã‹ã‚‰ã§ã™ã€‚
 
 If we use annotation, we rarely need to write configuration files. That's because we can embed the configuration data into the source code.
 
 slide8
 
-‚»‚ê‚Å‚ÍAƒAƒmƒe[ƒVƒ‡ƒ“‚ª„‚½‚¿‚ğ–{“–‚É‹~‚Á‚Ä‚­‚ê‚é‚Ì‚Å‚µ‚å‚¤‚©Bˆá‚¢‚Í¤İ’èî•ñ‚ğ‹Lq‚·‚éêŠ‚ªAİ’èƒtƒ@ƒCƒ‹‚©‚çƒ\[ƒXƒR[ƒh‚ÉˆÚ‚Á‚½‚¾‚¯‚Å‚·B
+ãã‚Œã§ã¯ã€ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ãŒç§ãŸã¡ã‚’æœ¬å½“ã«æ•‘ã£ã¦ãã‚Œã‚‹ã®ã§ã—ã‚‡ã†ã‹ã€‚é•ã„ã¯ï½¤è¨­å®šæƒ…å ±ã‚’è¨˜è¿°ã™ã‚‹å ´æ‰€ãŒã€è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã«ç§»ã£ãŸã ã‘ã§ã™ã€‚
 
 Then, is this annotation really helping us? The only difference is that the place where we write the configuration data has moved from the configuration file to the source code.
 
 slide9
 
-İ’èî•ñ‚ğ‹Lq‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢‚Æ‚¢‚¤–À‚Í¤ˆË‘R‚Æ‚µ‚Ä•Ï‚í‚Á‚Ä‚¢‚Ü‚¹‚ñB
+è¨­å®šæƒ…å ±ã‚’è¨˜è¿°ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã¨ã„ã†äº‹å®Ÿã¯ï½¤ä¾ç„¶ã¨ã—ã¦å¤‰ã‚ã£ã¦ã„ã¾ã›ã‚“ã€‚
 
 The fact that we are to write the configuration data has not changed.
 
 slide10
 
-„‚½‚¿‚ªS‚©‚ç–]‚ñ‚Å‚¢‚é‚±‚Æ¤‚»‚µ‚ÄA–{“–‚ÉÀŒ»‚µ‚È‚¯‚ê‚Î‚¢‚¯‚È‚¢‚±‚Æ‚ÍAİ’èƒtƒ@ƒCƒ‹‚¾‚¯‚Å‚È‚­¤ƒ\[ƒXƒR[ƒh‚É‘Î‚µ‚Ä‚àİ’èî•ñ‚ğ‹Lq‚·‚é‚±‚Æ‚ğ•K—vÅ¬ŒÀ‚É‚·‚é‚±‚Æ‚Å‚·B
+ç§ãŸã¡ãŒå¿ƒã‹ã‚‰æœ›ã‚“ã§ã„ã‚‹ã“ã¨ï½¤ãã—ã¦ã€æœ¬å½“ã«å®Ÿç¾ã—ãªã‘ã‚Œã°ã„ã‘ãªã„ã“ã¨ã¯ã€è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã ã‘ã§ãªãï½¤ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã«å¯¾ã—ã¦ã‚‚è¨­å®šæƒ…å ±ã‚’è¨˜è¿°ã™ã‚‹ã“ã¨ã‚’å¿…è¦æœ€å°é™ã«ã™ã‚‹ã“ã¨ã§ã™ã€‚
 
 The thing we really hope for and must realize is to minimize the amount of the configuration data we have to write not only in the configuration file but also in the source code.
 
 slide11
 
-‚±‚ÌƒRƒ“ƒZƒvƒg‚ğ„‚Í¤uLess Configurationv‚ÆŒÄ‚ñ‚Å‚¢‚Ü‚·B‚±‚ê‚±‚»AƒtƒŒ[ƒ€ƒ[ƒN‚Ì‚ ‚é‚×‚«p‚Å‚Í‚È‚¢‚Å‚µ‚å‚¤‚©B
+ã“ã®ã‚³ãƒ³ã‚»ãƒ—ãƒˆã‚’ç§ã¯ï½¤ã€ŒLess Configurationã€ã¨å‘¼ã‚“ã§ã„ã¾ã™ã€‚ã“ã‚Œã“ãã€ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ã®ã‚ã‚‹ã¹ãå§¿ã§ã¯ãªã„ã§ã—ã‚‡ã†ã‹ã€‚
 
 I call this concept "Less Configuration". I think this is what the framework should be.
 
 slide12
 
-¡“ú‚ÌƒAƒWƒFƒ“ƒ_‚Å‚·‚ª¤Å‰‚É¤¡“ú‚ÌDI‚ª•ø‚¦‚Ä‚¢‚é–â‘è“_‚É‚Â‚¢‚Ä‚¨˜b‚µ‚Ü‚·BŸ‚É¤‚»‚Ì–â‘è“_‚ğ–{¿“I‚É‰ğŒˆ‚·‚éuLess Configurationv‚É‚Â‚¢‚Äà–¾‚µ‚Ü‚·BÅŒã‚ÉSeasar2‚ÌEJB3‘Î‰‚É‚Â‚¢‚Äà–¾‚µ‚Ü‚·B
+ä»Šæ—¥ã®ã‚¢ã‚¸ã‚§ãƒ³ãƒ€ã§ã™ãŒï½¤æœ€åˆã«ï½¤ä»Šæ—¥ã®DIãŒæŠ±ãˆã¦ã„ã‚‹å•é¡Œç‚¹ã«ã¤ã„ã¦ãŠè©±ã—ã¾ã™ã€‚æ¬¡ã«ï½¤ãã®å•é¡Œç‚¹ã‚’æœ¬è³ªçš„ã«è§£æ±ºã™ã‚‹ã€ŒLess Configurationã€ã«ã¤ã„ã¦èª¬æ˜ã—ã¾ã™ã€‚æœ€å¾Œã«Seasar2ã®EJB3å¯¾å¿œã«ã¤ã„ã¦èª¬æ˜ã—ã¾ã™ã€‚
 
 Today's agenda is as follows:
 First, I would like to talk about the problem of DI.
@@ -88,154 +88,154 @@ Last, I would like to explain response to EJB3 in Seasar2.
 
 slide13
 
-DI‚Ìd—v‚ÈŒ´‘¥‚Ì1‚Â‚ÉAuİ’è‚ğ—˜—p‚©‚ç•ª—£‚·‚év‚Æ‚¢‚¤‚à‚Ì‚ª‚ ‚è‚Ü‚·B
+DIã®é‡è¦ãªåŸå‰‡ã®1ã¤ã«ã€ã€Œè¨­å®šã‚’åˆ©ç”¨ã‹ã‚‰åˆ†é›¢ã™ã‚‹ã€ã¨ã„ã†ã‚‚ã®ãŒã‚ã‚Šã¾ã™ã€‚
 
 One of the important principles of DI is "separating configuration
-from use". 
+from use".
 
 slide14
 
-‚±‚ÌŒ´‘¥‚ğ“K—p‚µ‚½ê‡¤’N‚©‚ª‹@”\‚Ì—˜—pÒ‚É‘Î‚µ‚ÄÀ‘•ƒIƒuƒWƒFƒNƒg‚ğİ’è‚µ‚È‚¯‚ê‚Î‚¢‚¯‚Ü‚¹‚ñBDIContainer‚ª‚»‚Ì–ğŠ„‚ğ‰Ê‚½‚µ‚Ü‚·B
+ã“ã®åŸå‰‡ã‚’é©ç”¨ã—ãŸå ´åˆï½¤èª°ã‹ãŒæ©Ÿèƒ½ã®åˆ©ç”¨è€…ã«å¯¾ã—ã¦å®Ÿè£…ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã—ãªã‘ã‚Œã°ã„ã‘ã¾ã›ã‚“ã€‚DIContainerãŒãã®å½¹å‰²ã‚’æœãŸã—ã¾ã™ã€‚
 
 When this principle is applied, someone is to set the implementation object to the function user. A DIContainer plays this role.
 
 slide15
 
-À‘•ƒIƒuƒWƒFƒNƒg‚ğİ’è‚·‚é‚½‚ß‚É‚Í¤‚Ç‚Ì‚æ‚¤‚Éİ’è‚·‚é‚Ì‚©‚ğDIContainer‚É‘Î‚µ‚Äw¦‚µ‚È‚¯‚ê‚Î‚¢‚¯‚Ü‚¹‚ñB‚±‚Ìw¦‚Ì‚½‚ß‚ÉAÅ‚à—Ç‚­g‚í‚ê‚Ä‚¢‚é‚Ì‚ª¤İ’èƒtƒ@ƒCƒ‹‚Å‚·B
+å®Ÿè£…ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã™ã‚‹ãŸã‚ã«ã¯ï½¤ã©ã®ã‚ˆã†ã«è¨­å®šã™ã‚‹ã®ã‹ã‚’DIContainerã«å¯¾ã—ã¦æŒ‡ç¤ºã—ãªã‘ã‚Œã°ã„ã‘ã¾ã›ã‚“ã€‚ã“ã®æŒ‡ç¤ºã®ãŸã‚ã«ã€æœ€ã‚‚è‰¯ãä½¿ã‚ã‚Œã¦ã„ã‚‹ã®ãŒï½¤è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã§ã™ã€‚
 
 We need to give instructions to the DIContainer about the way to set the implementation object. According to these instructions, configuration files are the most popular.
 
 slide16
 
-‚»‚ê‚Å‚ÍADI‚ğ—‰ğ‚·‚é‚½‚ß‚ÌƒTƒ“ƒvƒ‹‚ğŒ©‚Ä‚İ‚Ü‚µ‚å‚¤BGreeting‚ÍA‚ ‚¢‚³‚Â‚ğ‚·‚é‹@”\‚ğ’ñ‹Ÿ‚·‚é‚½‚ß‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚É‚È‚è‚Ü‚·B
+ãã‚Œã§ã¯ã€DIã‚’ç†è§£ã™ã‚‹ãŸã‚ã®ã‚µãƒ³ãƒ—ãƒ«ã‚’è¦‹ã¦ã¿ã¾ã—ã‚‡ã†ã€‚Greetingã¯ã€ã‚ã„ã•ã¤ã‚’ã™ã‚‹æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ãŸã‚ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã«ãªã‚Šã¾ã™ã€‚
 
 Therefore, let's take a look at these samples to understand DI. "Greeting" is the interface which gives us the greeting function.
 
 slide17
 
-GreetingImpl‚ÍA‚ ‚¢‚³‚Â‚ğ‚·‚é‹@”\‚ğ’ñ‹Ÿ‚·‚é‚½‚ß‚ÌÀ‘•ƒNƒ‰ƒX‚Å‚·Bgreetƒƒ\ƒbƒh‚Í¤’Pƒ‚É"Hello World!"‚Ì•¶š—ñ‚ğ•Ô‚µ‚Ü‚·B
+GreetingImplã¯ã€ã‚ã„ã•ã¤ã‚’ã™ã‚‹æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ãŸã‚ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã™ã€‚greetãƒ¡ã‚½ãƒƒãƒ‰ã¯ï½¤å˜ç´”ã«"Hello World!"ã®æ–‡å­—åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 
 "GreetingImpl" is the implementation class which gives us the greeting function. The "greet" method replies with the words "Hello World!".
 
 slide18
 
-GreetingClient‚ÍA‚ ‚¢‚³‚Â‚ğ‚·‚é‹@”\‚ğ—˜—p‚·‚é‘¤‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚Å‚·B‹@”\‚ğ—˜—p‚·‚é‘¤‚Í¤•K‚¸‚µ‚àƒCƒ“ƒ^[ƒtƒF[ƒX‚ğg‚í‚È‚­‚Ä‚à—Ç‚¢‚Ì‚Å‚·‚ª¤ƒCƒ“ƒ^[ƒtƒF[ƒX‚ğg‚¤‚±‚Æ‚Í¤ƒIƒuƒWƒFƒNƒgwŒüŠJ”­‚Åd—v‚È‚±‚Æ‚È‚Ì‚Å¤‚Å‚«‚éŒÀ‚èƒCƒ“ƒ^[ƒtƒF[ƒX‚ğg‚Á‚½‚Ù‚¤‚ª—Ç‚¢‚Å‚µ‚å‚¤B
+GreetingClientã¯ã€ã‚ã„ã•ã¤ã‚’ã™ã‚‹æ©Ÿèƒ½ã‚’åˆ©ç”¨ã™ã‚‹å´ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§ã™ã€‚æ©Ÿèƒ½ã‚’åˆ©ç”¨ã™ã‚‹å´ã¯ï½¤å¿…ãšã—ã‚‚ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä½¿ã‚ãªãã¦ã‚‚è‰¯ã„ã®ã§ã™ãŒï½¤ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä½¿ã†ã“ã¨ã¯ï½¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å‘é–‹ç™ºã§é‡è¦ãªã“ã¨ãªã®ã§ï½¤ã§ãã‚‹é™ã‚Šã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä½¿ã£ãŸã»ã†ãŒè‰¯ã„ã§ã—ã‚‡ã†ã€‚
 
 The "GreetingClient" is the interface which uses the greeting function. The function user doesn't always use the interface, however I think it's better to use the interface whenever we can. That's because it's important to use it regarding OO development.
 
 slide19
 
-GreetingClientImpl‚ÍA‚ ‚¢‚³‚Â‚ğ‚·‚é‹@”\‚ğ—˜—p‚·‚é‘¤‚ÌÀ‘•ƒNƒ‰ƒX‚Å‚·B’–Ú‚µ‚Ä—~‚µ‚¢ƒ|ƒCƒ“ƒg‚Í2‚Â‚ ‚è‚Ü‚·B
+GreetingClientImplã¯ã€ã‚ã„ã•ã¤ã‚’ã™ã‚‹æ©Ÿèƒ½ã‚’åˆ©ç”¨ã™ã‚‹å´ã®å®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã™ã€‚æ³¨ç›®ã—ã¦æ¬²ã—ã„ãƒã‚¤ãƒ³ãƒˆã¯2ã¤ã‚ã‚Šã¾ã™ã€‚
 
 "GreetingClientImpl" is the implementation class which uses the greeting function. There are 2 points I would like to draw your attention to.
 
-1‚Â–Ú‚Í¤greetingƒvƒƒpƒeƒB‚Å‚·BŒ^‚ªÀ‘•ƒNƒ‰ƒX‚Å‚Í‚È‚­¤ƒCƒ“ƒ^[ƒtƒF[ƒX‚Å’è‹`‚³‚ê‚Ä‚¢‚Ü‚·B
+1ã¤ç›®ã¯ï½¤greetingãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã™ã€‚å‹ãŒå®Ÿè£…ã‚¯ãƒ©ã‚¹ã§ã¯ãªãï½¤ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
 The first one is the greeting property. Its type is defined not as the implementation class but as the interface .
 
-2‚Â–Ú‚Í¤setGreetingƒƒ\ƒbƒh‚Å‚·Bsetterƒƒ\ƒbƒh‚É‚æ‚Á‚ÄÀ‘•ƒIƒuƒWƒFƒNƒg‚ªŠO•”‚©‚çİ’è‚³‚ê‚Ä‚¢‚Ü‚·B‚±‚ê‚É‚æ‚èAuİ’è‚ğ—˜—p‚©‚ç•ª—£‚·‚év‚±‚Æ‚ªÀŒ»‚³‚ê‚Ä‚¢‚é‚Ì‚Å‚·B
+2ã¤ç›®ã¯ï½¤setGreetingãƒ¡ã‚½ãƒƒãƒ‰ã§ã™ã€‚setterãƒ¡ã‚½ãƒƒãƒ‰ã«ã‚ˆã£ã¦å®Ÿè£…ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤–éƒ¨ã‹ã‚‰è¨­å®šã•ã‚Œã¦ã„ã¾ã™ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€ã€Œè¨­å®šã‚’åˆ©ç”¨ã‹ã‚‰åˆ†é›¢ã™ã‚‹ã€ã“ã¨ãŒå®Ÿç¾ã•ã‚Œã¦ã„ã‚‹ã®ã§ã™ã€‚
 
 The second one is the setGreeting method. Using the setter method, an implementation object is set by the third party. As a result, the "separating configuration from use" principle is realized.
 
 slide20
 
-beans.xml‚ÍAƒIƒuƒWƒFƒNƒg‚Ìİ’è•û–@‚ğDIContainer‚Éw¦‚·‚é‚½‚ß‚Ìİ’èƒtƒ@ƒCƒ‹‚Å‚·B‚±‚ê‚ç‚ÌƒTƒ“ƒvƒ‹‚Í¤Spring‚Ì‚à‚Ì‚Å‚·Bbeanƒ^ƒO‚ÅƒIƒuƒWƒFƒNƒg‚ğ’è‹`‚µ¤refƒ^ƒO‚Å‚Ç‚ÌƒIƒuƒWƒFƒNƒg‚ğ—˜—p‚·‚é‚Ì‚©‚ğ’è‹`‚µ‚Ü‚·B
+beans.xmlã¯ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¨­å®šæ–¹æ³•ã‚’DIContainerã«æŒ‡ç¤ºã™ã‚‹ãŸã‚ã®è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã§ã™ã€‚ã“ã‚Œã‚‰ã®ã‚µãƒ³ãƒ—ãƒ«ã¯ï½¤Springã®ã‚‚ã®ã§ã™ã€‚beanã‚¿ã‚°ã§ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å®šç¾©ã—ï½¤refã‚¿ã‚°ã§ã©ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’åˆ©ç”¨ã™ã‚‹ã®ã‹ã‚’å®šç¾©ã—ã¾ã™ã€‚
 
 "beans.xml" is the configuration file by which we give instructions to the DIContainer about the way to set the implementation object. These samples are for Spring. We define an object by a bean tag, and define an object which we want to use by a ref tag.
 
 slide21
 
-GreetingMainƒNƒ‰ƒX‚ÍADIContainer‚©‚çGreetingClient‚ÌÀ‘•ƒIƒuƒWƒFƒNƒg‚ğæ‚èo‚µ‚ÄÀs‚µ‚Ü‚·B
+GreetingMainã‚¯ãƒ©ã‚¹ã¯ã€DIContainerã‹ã‚‰GreetingClientã®å®Ÿè£…ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–ã‚Šå‡ºã—ã¦å®Ÿè¡Œã—ã¾ã™ã€‚
 
 The "GreetingMain" class takes the greeting client implementation object from the DIContainer, and executes it.
 
 slide22
 
-ƒTƒ“ƒvƒ‹‚ğŒ©‚é‚Æ¤DIContainer‚Íuİ’è‚ğ—˜—p‚©‚ç•ª—£‚·‚év‚Æ‚¢‚¤Œ´‘¥‚ğ’‰À‚ÉÀŒ»‚µ‚Ä‚¢‚é‚±‚Æ‚ª•ª‚©‚é‚Å‚µ‚å‚¤B
+ã‚µãƒ³ãƒ—ãƒ«ã‚’è¦‹ã‚‹ã¨ï½¤DIContainerã¯ã€Œè¨­å®šã‚’åˆ©ç”¨ã‹ã‚‰åˆ†é›¢ã™ã‚‹ã€ã¨ã„ã†åŸå‰‡ã‚’å¿ å®Ÿã«å®Ÿç¾ã—ã¦ã„ã‚‹ã“ã¨ãŒåˆ†ã‹ã‚‹ã§ã—ã‚‡ã†ã€‚
 
 When we take a look at these samples, the DIContainer faithfully realizes the "separating configuration from use" principle.
 
 slide23
 
-‚±‚ÌƒTƒ“ƒvƒ‹‚ğŒ©‚éŒÀ‚è¤‚Ç‚±‚É‚à–â‘è‚ÍŒ©“–‚½‚è‚Ü‚¹‚ñBˆê‘Ì‚Ç‚±‚É–â‘è‚ª‚ ‚é‚Ì‚Å‚µ‚å‚¤‚©B
+ã“ã®ã‚µãƒ³ãƒ—ãƒ«ã‚’è¦‹ã‚‹é™ã‚Šï½¤ã©ã“ã«ã‚‚å•é¡Œã¯è¦‹å½“ãŸã‚Šã¾ã›ã‚“ã€‚ä¸€ä½“ã©ã“ã«å•é¡ŒãŒã‚ã‚‹ã®ã§ã—ã‚‡ã†ã‹ã€‚
 
 When we check these samples, we don't find any problem. Where is the probrem?
 
 slide24
 
-Œ»İ‚ÌDIContainer‚Ì–â‘è“_‚Í¤‹K–Í‚ª‘å‚«‚­‚È‚Á‚Ä‚­‚é‚Æ•\–Ê‰»‚µ‚Ü‚·B‹K–Í‚É‰‚¶‚Ä’¼‚®‚Éƒtƒ@ƒCƒ‹‚ª”ì‘å‰»‚µ‚Ä‚µ‚Ü‚¤‚Ì‚Å‚·B
+ç¾åœ¨ã®DIContainerã®å•é¡Œç‚¹ã¯ï½¤è¦æ¨¡ãŒå¤§ãããªã£ã¦ãã‚‹ã¨è¡¨é¢åŒ–ã—ã¾ã™ã€‚è¦æ¨¡ã«å¿œã˜ã¦ç›´ãã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒè‚¥å¤§åŒ–ã—ã¦ã—ã¾ã†ã®ã§ã™ã€‚
 
 When the developement scale is larger, the problem of the DIContainer as we know it today comes to the surface. The configuration file becomes enlarged proportionally to the development scale.
 
 slide25
 
-İ’èƒtƒ@ƒCƒ‹‚ª”ì‘å‰»‚·‚é‚Æ¤ƒtƒ@ƒCƒ‹‚Ì’†‚©‚çƒNƒ‰ƒX‚Ìİ’èî•ñ‚ğ’T‚·‚±‚Æ‚ª¢“ï‚É‚È‚è¤İ’èƒ~ƒX‚ª‚ ‚Á‚½‚Æ‚«‚É¤‚»‚ÌŒ´ˆö‚ğ“Á’è‚·‚é‚±‚Æ‚à“ï‚µ‚­‚È‚è‚Ü‚·B
+è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ãŒè‚¥å¤§åŒ–ã™ã‚‹ã¨ï½¤ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã‹ã‚‰ã‚¯ãƒ©ã‚¹ã®è¨­å®šæƒ…å ±ã‚’æ¢ã™ã“ã¨ãŒå›°é›£ã«ãªã‚Šï½¤è¨­å®šãƒŸã‚¹ãŒã‚ã£ãŸã¨ãã«ï½¤ãã®åŸå› ã‚’ç‰¹å®šã™ã‚‹ã“ã¨ã‚‚é›£ã—ããªã‚Šã¾ã™ã€‚
 
 As the configuration file becomes enlarged, it is difficult to find class configuration data in the file, and it is also difficult to locate the cause when we make a mistake in the configuration file.
 
 slide26
 
-İ’èƒtƒ@ƒCƒ‹‚É”ì‘å‰»‚É‘Î‚·‚é‰ğŒˆô‚Ì1‚Â‚ª¤XDoclet‚âƒAƒmƒe[ƒVƒ‡ƒ“‚ÅAƒ\[ƒXƒR[ƒh‚Éİ’èî•ñ‚ğ–„‚ß‚Ş•û–@‚Å‚·B
+è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã«è‚¥å¤§åŒ–ã«å¯¾ã™ã‚‹è§£æ±ºç­–ã®1ã¤ãŒï½¤XDocletã‚„ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã§ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã«è¨­å®šæƒ…å ±ã‚’åŸ‹ã‚è¾¼ã‚€æ–¹æ³•ã§ã™ã€‚
 
-One of the solutions against the enlargement of configuration files is a way to embed the configuration data into the source code using XDoclet or annotation. 
+One of the solutions against the enlargement of configuration files is a way to embed the configuration data into the source code using XDoclet or annotation.
 
 slide27
 
-‚»‚ê‚Å‚ÍAXDoclet‚ÌƒTƒ“ƒvƒ‹‚ğŒ©‚Ä‚İ‚Ü‚µ‚å‚¤Bã‚ªİ’èƒtƒ@ƒCƒ‹‚ÌƒTƒ“ƒvƒ‹A‰º‚ªXDoclet‚ÌƒTƒ“ƒvƒ‹‚Å‚·BŠî–{“I‚É‹Lq‚³‚ê‚Ä‚¢‚éî•ñ‚Í“¯‚¶‚Å‚·B‹Lq‚·‚éêŠ‚ªAƒtƒ@ƒCƒ‹‚©‚çƒ\[ƒXƒR[ƒh‚ÉˆÚ“®‚µ‚Ä‚¢‚é‚¾‚¯‚Å‚·B‚»‚ê‚Å‚ÍAXDoclet‚ÌƒƒŠƒbƒg‚Í‰½‚È‚Ì‚Å‚µ‚å‚¤‚©B
+ãã‚Œã§ã¯ã€XDocletã®ã‚µãƒ³ãƒ—ãƒ«ã‚’è¦‹ã¦ã¿ã¾ã—ã‚‡ã†ã€‚ä¸ŠãŒè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µãƒ³ãƒ—ãƒ«ã€ä¸‹ãŒXDocletã®ã‚µãƒ³ãƒ—ãƒ«ã§ã™ã€‚åŸºæœ¬çš„ã«è¨˜è¿°ã•ã‚Œã¦ã„ã‚‹æƒ…å ±ã¯åŒã˜ã§ã™ã€‚è¨˜è¿°ã™ã‚‹å ´æ‰€ãŒã€ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã«ç§»å‹•ã—ã¦ã„ã‚‹ã ã‘ã§ã™ã€‚ãã‚Œã§ã¯ã€XDocletã®ãƒ¡ãƒªãƒƒãƒˆã¯ä½•ãªã®ã§ã—ã‚‡ã†ã‹ã€‚
 
 Therefore let's take a look at this XDoclet sample. The above represents a sample of configuration files. Below is a sample of XDoclet. Basically the written information is the same. The only difference is that the place where we write configuration data has moved from the configuration file to the source code, so what's the advantage of XDoclet?
 
 slide28
 
-XDoclet‚ğg‚Á‚½ê‡¤ƒ\[ƒXƒR[ƒh‚Éİ’èî•ñ‚ª‘‚©‚ê‚Ä‚¢‚é‚Ì‚Å¤ƒ\[ƒXƒR[ƒh‚ğŒ©‚é‚¾‚¯‚Å•K—v‚Èî•ñ‚ªè‚É“ü‚è‚Ü‚·B‚±‚ê‚ÍA‘å‚«‚ÈƒƒŠƒbƒg‚Å‚·B‚½‚¾‚µAƒfƒƒŠƒbƒg‚à‚ ‚è‚Ü‚·B
+XDocletã‚’ä½¿ã£ãŸå ´åˆï½¤ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã«è¨­å®šæƒ…å ±ãŒæ›¸ã‹ã‚Œã¦ã„ã‚‹ã®ã§ï½¤ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’è¦‹ã‚‹ã ã‘ã§å¿…è¦ãªæƒ…å ±ãŒæ‰‹ã«å…¥ã‚Šã¾ã™ã€‚ã“ã‚Œã¯ã€å¤§ããªãƒ¡ãƒªãƒƒãƒˆã§ã™ã€‚ãŸã ã—ã€ãƒ‡ãƒ¡ãƒªãƒƒãƒˆã‚‚ã‚ã‚Šã¾ã™ã€‚
 
 When we use XDoclet, we can get the necessary information only looking at the source code, because the configuration data is written in the source code. This is a big advantage. Still there is one disadvantage as well.
 
 slide29
 
-XDoclet‚ÌƒfƒƒŠƒbƒg‚Í¤İ’èî•ñ‚ğ•ÏX‚·‚éê‡¤ƒ\[ƒXƒR[ƒh‚ğ‘‚«Š·‚¦‚È‚¯‚ê‚Î‚¢‚¯‚È‚¢‚±‚Æ‚Å‚·Bİ’èƒtƒ@ƒCƒ‹‚ğg‚Á‚Ä‚¢‚ê‚Î¤İ’èî•ñ‚ğ•ÏX‚·‚éê‡‚Å‚àAƒ\[ƒXƒR[ƒh‚Ì‘‚«Š·‚¦‚Í•K—v‚ ‚è‚Ü‚¹‚ñ‚Å‚µ‚½B‚±‚ê‚ÍA“ª‚Ì’É‚¢–â‘è‚Å‚·B
+XDocletã®ãƒ‡ãƒ¡ãƒªãƒƒãƒˆã¯ï½¤è¨­å®šæƒ…å ±ã‚’å¤‰æ›´ã™ã‚‹å ´åˆï½¤ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’æ›¸ãæ›ãˆãªã‘ã‚Œã°ã„ã‘ãªã„ã“ã¨ã§ã™ã€‚è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ã£ã¦ã„ã‚Œã°ï½¤è¨­å®šæƒ…å ±ã‚’å¤‰æ›´ã™ã‚‹å ´åˆã§ã‚‚ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®æ›¸ãæ›ãˆã¯å¿…è¦ã‚ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚ã“ã‚Œã¯ã€é ­ã®ç—›ã„å•é¡Œã§ã™ã€‚
 
 The disadvantage of XDoclet is that in case we change the configuration data we'll have to rewrite the source code.
 
 slide30
 
-İ’èƒtƒ@ƒCƒ‹‚ğg‚Á‚Ä‚¢‚ê‚Î¤İ’èî•ñ‚ğ•ÏX‚·‚éê‡‚Å‚àAƒ\[ƒXƒR[ƒh‚Ì‘‚«Š·‚¦‚Í•K—v‚ ‚è‚Ü‚¹‚ñ‚Å‚µ‚½B‚±‚ê‚ÍA“ª‚Ì’É‚¢–â‘è‚Å‚·B
+è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ã£ã¦ã„ã‚Œã°ï½¤è¨­å®šæƒ…å ±ã‚’å¤‰æ›´ã™ã‚‹å ´åˆã§ã‚‚ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®æ›¸ãæ›ãˆã¯å¿…è¦ã‚ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚ã“ã‚Œã¯ã€é ­ã®ç—›ã„å•é¡Œã§ã™ã€‚
 
 If we use the configuration files, even if we change the configuration data we don't need to rewrite the source code. This is a real headache.
 
 slide31
 
-XDoclet‚Í–œ”\–ò‚Å‚Í‚ ‚è‚Ü‚¹‚ñB
+XDocletã¯ä¸‡èƒ½è–¬ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 
 XDoclet is not an all-powerful solution.
 
 slide32
 
-‚Ù‚Æ‚ñ‚Çİ’èƒtƒ@ƒCƒ‹‚ğ‹Lq‚·‚é•K—v‚ª‚È‚¢‚Æ‚¢‚¤ƒƒŠƒbƒg‚Æ“¯‚É¤İ’èî•ñ‚ğ•ÏX‚·‚éê‡‚É¤ƒ\[ƒXƒR[ƒh‚ğC³‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢‚Æ‚¢‚¤ƒfƒƒŠƒbƒg‚à”­¶‚µ‚Ü‚·B
+ã»ã¨ã‚“ã©è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¨˜è¿°ã™ã‚‹å¿…è¦ãŒãªã„ã¨ã„ã†ãƒ¡ãƒªãƒƒãƒˆã¨åŒæ™‚ã«ï½¤è¨­å®šæƒ…å ±ã‚’å¤‰æ›´ã™ã‚‹å ´åˆã«ï½¤ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’ä¿®æ­£ã—ãªã‘ã‚Œã°ãªã‚‰ãªã„ã¨ã„ã†ãƒ‡ãƒ¡ãƒªãƒƒãƒˆã‚‚ç™ºç”Ÿã—ã¾ã™ã€‚
 
 On the one hand, we have the advantage that we rarely need to write configuration files. On the other hand, we have the disadvantage that if we change the configuration data we have to rewrite the source code.
 
 slide33
 
-ƒAƒmƒe[ƒVƒ‡ƒ“‚ÌƒƒŠƒbƒgEƒfƒƒŠƒbƒg‚àXDoclet‚Ìê‡‚Æ“¯‚¶‚Å‚·BŒˆ‚µ‚Ä–œ”\–ò‚Å‚Í‚ ‚è‚Ü‚¹‚ñB‚»‚ê‚Å‚Íˆê‘Ì‚Ç‚¤‚·‚ê‚Î‚æ‚¢‚Ì‚Å‚µ‚å‚¤‚©B
+ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ¡ãƒªãƒƒãƒˆãƒ»ãƒ‡ãƒ¡ãƒªãƒƒãƒˆã‚‚XDocletã®å ´åˆã¨åŒã˜ã§ã™ã€‚æ±ºã—ã¦ä¸‡èƒ½è–¬ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ãã‚Œã§ã¯ä¸€ä½“ã©ã†ã™ã‚Œã°ã‚ˆã„ã®ã§ã—ã‚‡ã†ã‹ã€‚
 
 The advantages and disadvantages of annotation are the same as those of XDoclet. Annotation is also not an all-powerful solution. So, what are we supposed to do?
 
 slide34
 
-İ’èƒtƒ@ƒCƒ‹‚ğg‚¤ê‡‚Å‚à¤XDoclet‚âƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚¤ê‡‚Å‚à¤–â‘è‚Í¤İ’èî•ñ‚ğ‘‚«‚Ş‚±‚Æ‚Å”­¶‚µ‚Ä‚¢‚Ü‚·B‚»‚ê‚È‚çAÅ‰‚©‚çİ’èî•ñ‚ğ‘‚«‚Ü‚È‚¢‚æ‚¤‚É‚·‚ê‚Î¤–â‘è‚Í”­¶‚µ‚È‚¢‚Å‚µ‚å‚¤B
+è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ã†å ´åˆã§ã‚‚ï½¤XDocletã‚„ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã†å ´åˆã§ã‚‚ï½¤å•é¡Œã¯ï½¤è¨­å®šæƒ…å ±ã‚’æ›¸ãè¾¼ã‚€ã“ã¨ã§ç™ºç”Ÿã—ã¦ã„ã¾ã™ã€‚ãã‚Œãªã‚‰ã€æœ€åˆã‹ã‚‰è¨­å®šæƒ…å ±ã‚’æ›¸ãè¾¼ã¾ãªã„ã‚ˆã†ã«ã™ã‚Œã°ï½¤å•é¡Œã¯ç™ºç”Ÿã—ãªã„ã§ã—ã‚‡ã†ã€‚
 
 If we use configuration files or if we use XDoclet or annotation, in both cases, the problem occurs when we write the configuration data. So if we decide from the beginning not to write the configuration data, the problem will not occur.
 
 slide35
 
-‚±‚Ìu‚Å‚«‚é‚¾‚¯İ’èî•ñ‚Ì‘‚«‚İ‚ğ‚È‚­‚·v‚Æ‚¢‚¤ƒRƒ“ƒZƒvƒg‚ğ„‚Í¤uLess Configurationv‚ÆŒÄ‚ñ‚Å‚¢‚Ü‚·B‚»‚ê‚Å‚ÍA‚±‚ÌƒRƒ“ƒZƒvƒg‚Í¤‚Ç‚¤‚â‚ê‚ÎÀŒ»‚Å‚«‚é‚Ì‚Å‚µ‚å‚¤‚©B
+ã“ã®ã€Œã§ãã‚‹ã ã‘è¨­å®šæƒ…å ±ã®æ›¸ãè¾¼ã¿ã‚’ãªãã™ã€ã¨ã„ã†ã‚³ãƒ³ã‚»ãƒ—ãƒˆã‚’ç§ã¯ï½¤ã€ŒLess Configurationã€ã¨å‘¼ã‚“ã§ã„ã¾ã™ã€‚ãã‚Œã§ã¯ã€ã“ã®ã‚³ãƒ³ã‚»ãƒ—ãƒˆã¯ï½¤ã©ã†ã‚„ã‚Œã°å®Ÿç¾ã§ãã‚‹ã®ã§ã—ã‚‡ã†ã‹ã€‚
 
 I call this concept of reducing the writing of configuration data as much as possible "Less Configuration". So how can we realize it?
 
 slide36
 
-uLess Configurationv‚ğÀŒ»‚·‚é‚½‚ß‚É‚Í¤Ÿ‚Ì2‚Â‚Ìl‚¦•û‚ªd—v‚Å‚·BÅ‰‚ÍuConvention over ConfigurationvAŸ‚ªuConfiguration by Exceptionv‚Å‚·B
+ã€ŒLess Configurationã€ã‚’å®Ÿç¾ã™ã‚‹ãŸã‚ã«ã¯ï½¤æ¬¡ã®2ã¤ã®è€ƒãˆæ–¹ãŒé‡è¦ã§ã™ã€‚æœ€åˆã¯ã€ŒConvention over Configurationã€ã€æ¬¡ãŒã€ŒConfiguration by Exceptionã€ã§ã™ã€‚
 
 To realize the "Less Configuration" concept, it's important to take into consideration the following 2 ideas:
 The first is "Convention over Configuration".
@@ -243,313 +243,313 @@ The second is "Configuration by Exception".
 
 slide37
 
-uConvention over Configurationv‚Í¤u“KØ‚È‹K–ñ‚ğç‚Á‚Ä‚¢‚ê‚ÎAİ’è‚ğ“Á‚É‚µ‚È‚­‚Ä‚àƒtƒŒ[ƒ€ƒ[ƒN‚ª“KØ‚Èİ’è‚ğ‚µ‚Ä‚­‚ê‚év‚Æ‚¢‚¤l‚¦‚Å‚·B
+ã€ŒConvention over Configurationã€ã¯ï½¤ã€Œé©åˆ‡ãªè¦ç´„ã‚’å®ˆã£ã¦ã„ã‚Œã°ã€è¨­å®šã‚’ç‰¹ã«ã—ãªãã¦ã‚‚ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ãŒé©åˆ‡ãªè¨­å®šã‚’ã—ã¦ãã‚Œã‚‹ã€ã¨ã„ã†è€ƒãˆã§ã™ã€‚
 
 "Convention over Configuration" is the idea that if we apply the proper convention, even if we don't do any special configuration, the framework will do the proper configuration for us.
 
 slide38
 
-‚»‚ê‚Å‚ÍASeasar2‚ÅÀŒ»‚³‚ê‚Ä‚¢‚éuConvention over Configurationv‚Ì—á‚ğ‚²Ğ‰î‚µ‚Ü‚µ‚å‚¤BÅ‰‚Ì‹K–ñ‚Í¤uƒvƒƒpƒeƒB‚ÌŒ^‚ğƒCƒ“ƒ^[ƒtƒF[ƒX‚Å’è‹`‚·‚év‚Æ‚¢‚¤‚à‚Ì‚Å‚·B‚»‚ê‚Å‚ÍA‚±‚Ì‹K–ñ‚ğç‚é‚Æ‰½‚ª“¾‚ç‚ê‚é‚Ì‚Å‚µ‚å‚¤‚©B
+ãã‚Œã§ã¯ã€Seasar2ã§å®Ÿç¾ã•ã‚Œã¦ã„ã‚‹ã€ŒConvention over Configurationã€ã®ä¾‹ã‚’ã”ç´¹ä»‹ã—ã¾ã—ã‚‡ã†ã€‚æœ€åˆã®è¦ç´„ã¯ï½¤ã€Œãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ã‚’ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§å®šç¾©ã™ã‚‹ã€ã¨ã„ã†ã‚‚ã®ã§ã™ã€‚ãã‚Œã§ã¯ã€ã“ã®è¦ç´„ã‚’å®ˆã‚‹ã¨ä½•ãŒå¾—ã‚‰ã‚Œã‚‹ã®ã§ã—ã‚‡ã†ã‹ã€‚
 
 Therefore , let's introduce the example of "Convention over Configuration" realized in Seasar2. The first convention is that the type of property is defined as the interface. So what do we get if we apply this convention?
 
 slide39
 
-ƒvƒƒpƒeƒB‚ÌŒ^‚ªƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìê‡¤Seasar2‚ÍA‚»‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğƒvƒƒpƒeƒB‚É©“®“I‚Éİ’è‚µ‚Ü‚·B‚±‚Ì‹@”\‚Í¤Spring‚Ìautowiring‚ÌbyType‚É‘Š“–‚µ‚Ü‚·B
+ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®å‹ãŒã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å ´åˆï½¤Seasar2ã¯ã€ãã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«è‡ªå‹•çš„ã«è¨­å®šã—ã¾ã™ã€‚ã“ã®æ©Ÿèƒ½ã¯ï½¤Springã®autowiringã®byTypeã«ç›¸å½“ã—ã¾ã™ã€‚
 
 If the type of property is interface, Seasar2 can automatically set the object implementing the interface to the property. This function corresponds to the autowiring byType in "Spring".
 
 slide40
 
-•¡”‚ÌƒIƒuƒWƒFƒNƒg‚ª“¯‚¶ƒCƒ“ƒ^[ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚ÄASeasar2‚ªÀ‘•ƒIƒuƒWƒFƒNƒg‚ğ1‚Â‚É“Á’è‚Å‚«‚È‚¢ê‡‚Ì–â‘è‚É‚Â‚¢‚Ä‚Í¤Œã‚Åà–¾‚µ‚Ü‚·B
+è¤‡æ•°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒåŒã˜ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã¦ã€Seasar2ãŒå®Ÿè£…ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’1ã¤ã«ç‰¹å®šã§ããªã„å ´åˆã®å•é¡Œã«ã¤ã„ã¦ã¯ï½¤å¾Œã§èª¬æ˜ã—ã¾ã™ã€‚
 
 I'll explain later about the situation when Seasar2 can't specify one object because several objects implement the same interface.
 
 slide41
 
-‚Ü‚½AƒvƒƒpƒeƒB–¼‚ÆƒIƒuƒWƒFƒNƒg–¼‚ªˆê’v‚µ¤‚»‚ÌƒIƒuƒWƒFƒNƒg‚ªƒvƒƒpƒeƒB‚É‘ã“ü‰Â”\‚Èê‡‚É¤Seasar2‚ÍA‚»‚ÌƒIƒuƒWƒFƒNƒg‚ğƒvƒƒpƒeƒB‚É©“®“I‚Éİ’è‚µ‚Ü‚·B‚±‚Ì‹@”\‚Í¤Spring‚Ìautowiring‚ÌbyName‚É‘Š“–‚µ‚Ü‚·B
+ã¾ãŸã€ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåãŒä¸€è‡´ã—ï½¤ãã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«ä»£å…¥å¯èƒ½ãªå ´åˆã«ï½¤Seasar2ã¯ã€ãã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«è‡ªå‹•çš„ã«è¨­å®šã—ã¾ã™ã€‚ã“ã®æ©Ÿèƒ½ã¯ï½¤Springã®autowiringã®byNameã«ç›¸å½“ã—ã¾ã™ã€‚
 
 Also if the property name and the object name are the same and the object is settable to the property, Seasar2 can automatically set the object to the property. That function corresponds to the autowiring byName in "Spring".
 
 slide42
 
-Seasar2‚ÍAƒfƒtƒHƒ‹ƒg‚ÅƒvƒƒpƒeƒB‚Ì©“®ƒoƒCƒ“ƒfƒBƒ“ƒO‚ğs‚¢‚Ü‚·B
+Seasar2ã¯ã€ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¡Œã„ã¾ã™ã€‚
 
 Seasar2 can perform the automatic binding of property in default.
 
 slide43
 
-©“®“I‚É“KØ‚ÈƒIƒuƒWƒFƒNƒg‚ğİ’è‚Å‚«‚È‚©‚Á‚½ê‡‚É¤—áŠO‚ğ”­¶‚³‚¹‚½‚è¤Œx‚µ‚½‚èA–³‹‚µ‚½‚è‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BƒfƒtƒHƒ‹ƒg‚ÍAŒx‚Å‚·B
+è‡ªå‹•çš„ã«é©åˆ‡ãªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨­å®šã§ããªã‹ã£ãŸå ´åˆã«ï½¤ä¾‹å¤–ã‚’ç™ºç”Ÿã•ã›ãŸã‚Šï½¤è­¦å‘Šã—ãŸã‚Šã€ç„¡è¦–ã—ãŸã‚Šã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã¯ã€è­¦å‘Šã§ã™ã€‚
 
 When Seasar2 can't automatically set a proper object, we have the following choices: give an exception, give a warning or ignore it. The default gives a warning.
 
 slide44
 
-Ÿ‚Ì‹K–ñ‚Í¤uÀ‘•ƒNƒ‰ƒX–¼‚É‹K‘¥«‚ğ‚½‚¹‚év‚Æ‚¢‚¤‚à‚Ì‚Å‚·B—á‚¦‚Î¤À‘•ƒNƒ‰ƒX–¼‚Í"Impl"‚ÅI‚í‚é‚Æ‚¢‚¤‚æ‚¤‚É‚Å‚·B‚»‚ê‚Å‚ÍA‚±‚Ì‹K–ñ‚ğç‚é‚Æ‰½‚ª“¾‚ç‚ê‚é‚Ì‚Å‚µ‚å‚¤‚©B
+æ¬¡ã®è¦ç´„ã¯ï½¤ã€Œå®Ÿè£…ã‚¯ãƒ©ã‚¹åã«è¦å‰‡æ€§ã‚’æŒãŸã›ã‚‹ã€ã¨ã„ã†ã‚‚ã®ã§ã™ã€‚ä¾‹ãˆã°ï½¤å®Ÿè£…ã‚¯ãƒ©ã‚¹åã¯"Impl"ã§çµ‚ã‚ã‚‹ã¨ã„ã†ã‚ˆã†ã«ã§ã™ã€‚ãã‚Œã§ã¯ã€ã“ã®è¦ç´„ã‚’å®ˆã‚‹ã¨ä½•ãŒå¾—ã‚‰ã‚Œã‚‹ã®ã§ã—ã‚‡ã†ã‹ã€‚
 
 The next convention is that we name the implemention class according to the rule. For example, it seems that the implementation class name ends in "Impl". So, what do we get if we apply this convention?
 
 slide45
 
-Seasar2‚ÍA–¼‘O‚ª“Á’è‚Ì‹K‘¥‚Éˆê’v‚µ‚Ä‚¢‚éƒNƒ‰ƒX‚ğ©“®“I‚ÉƒRƒ“ƒeƒi‚É“o˜^‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B‘ÎÛ‚Æ‚È‚éƒNƒ‰ƒX‚Í¤ƒNƒ‰ƒXƒpƒX‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚ê‚Î—Ç‚­¤jarƒtƒ@ƒCƒ‹‚É‚È‚Á‚Ä‚¢‚Ä‚à‚¢‚È‚­‚Ä‚à‚Ç‚¿‚ç‚Å‚à\‚¢‚Ü‚¹‚ñB
+Seasar2ã¯ã€åå‰ãŒç‰¹å®šã®è¦å‰‡ã«ä¸€è‡´ã—ã¦ã„ã‚‹ã‚¯ãƒ©ã‚¹ã‚’è‡ªå‹•çš„ã«ã‚³ãƒ³ãƒ†ãƒŠã«ç™»éŒ²ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚å¯¾è±¡ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹ã¯ï½¤ã‚¯ãƒ©ã‚¹ãƒ‘ã‚¹ã«å«ã¾ã‚Œã¦ã„ã‚Œã°è‰¯ãï½¤jarãƒ•ã‚¡ã‚¤ãƒ«ã«ãªã£ã¦ã„ã¦ã‚‚ã„ãªãã¦ã‚‚ã©ã¡ã‚‰ã§ã‚‚æ§‹ã„ã¾ã›ã‚“ã€‚
 
 Seasar2 can automatically register classes whose names obey specified rules into the container. If the target classes are included in the classpath, it doesn't matter if they are in the jar file or not.
 
 slide46
 
-Seasar2‚Ì©“®‰»‚Ì‚¨‚©‚°‚Å¤Seasar2‚Å‚ÍAŠJ”­‚Ì‹K–Í‚ª‘å‚«‚­‚È‚Á‚Ä‚à¤İ’èî•ñ‚ğ‚Ù‚Æ‚ñ‚Ç‘‚­•K—v‚ª‚ ‚è‚Ü‚¹‚ñB
+Seasar2ã®è‡ªå‹•åŒ–ã®ãŠã‹ã’ã§ï½¤Seasar2ã§ã¯ã€é–‹ç™ºã®è¦æ¨¡ãŒå¤§ãããªã£ã¦ã‚‚ï½¤è¨­å®šæƒ…å ±ã‚’ã»ã¨ã‚“ã©æ›¸ãå¿…è¦ãŒã‚ã‚Šã¾ã›ã‚“ã€‚
 
 Due to Seasar2 automation, we rarely need to write the configuration data, even if the development scale is larger.
 
 slide47
 
-‚»‚ê‚Å‚ÍA‘O‚Éo‚Ä‚«‚½beans.xml‚ğSeasar2—p‚É•ÏŠ·‚µ‚Ä‚İ‚Ü‚µ‚å‚¤Bcomponentƒ^ƒO‚ÍASpring‚Ìbeanƒ^ƒO‚É‘Š“–‚µ‚Ü‚·BFileSystemComponentAutoRegister‚ğİ’èƒtƒ@ƒCƒ‹‚É“o˜^‚µ‚Ä‚¨‚¯‚Î¤ƒNƒ‰ƒX‚ª©“®“I‚ÉƒRƒ“ƒeƒi‚É“o˜^‚³‚ê‚Ü‚·B
+ãã‚Œã§ã¯ã€å‰ã«å‡ºã¦ããŸbeans.xmlã‚’Seasar2ç”¨ã«å¤‰æ›ã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚componentã‚¿ã‚°ã¯ã€Springã®beanã‚¿ã‚°ã«ç›¸å½“ã—ã¾ã™ã€‚FileSystemComponentAutoRegisterã‚’è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã«ç™»éŒ²ã—ã¦ãŠã‘ã°ï½¤ã‚¯ãƒ©ã‚¹ãŒè‡ªå‹•çš„ã«ã‚³ãƒ³ãƒ†ãƒŠã«ç™»éŒ²ã•ã‚Œã¾ã™ã€‚
 
 Therefore, let's transform the previous "beans.xml" into Seasar2. The "component" tag corresponds to the "bean" tag in "Spring". If we register "FileSystemComponentAutoRegister" in the configuration file, classes will be automatically registered into the container.
 
-initMethodƒ^ƒO‚ÍAƒIƒuƒWƒFƒNƒg‚Ì‰Šú‰»‚ğs‚¤‚½‚ß‚Ì‚à‚Ì‚Å‚·Bname‘®«‚Å¤ƒƒ\ƒbƒh–¼‚ğw’è‚Å‚«‚Ü‚·Bargƒ^ƒO‚ğg‚¢¤ˆø”‚ğİ’è‚µ‚Ü‚·B”CˆÓ‚Ìƒƒ\ƒbƒh‚ğ”CˆÓ‚Ìˆø”‚ÅŒÄ‚Ño‚¹‚é‚Ì‚Å¤‰½‚Ì§ŒÀ‚à–³‚­ƒIƒuƒWƒFƒNƒg‚ğ‰Šú‰»‚Å‚«‚Ü‚·B
+initMethodã‚¿ã‚°ã¯ã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åˆæœŸåŒ–ã‚’è¡Œã†ãŸã‚ã®ã‚‚ã®ã§ã™ã€‚nameå±æ€§ã§ï½¤ãƒ¡ã‚½ãƒƒãƒ‰åã‚’æŒ‡å®šã§ãã¾ã™ã€‚argã‚¿ã‚°ã‚’ä½¿ã„ï½¤å¼•æ•°ã‚’è¨­å®šã—ã¾ã™ã€‚ä»»æ„ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä»»æ„ã®å¼•æ•°ã§å‘¼ã³å‡ºã›ã‚‹ã®ã§ï½¤ä½•ã®åˆ¶é™ã‚‚ç„¡ãã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’åˆæœŸåŒ–ã§ãã¾ã™ã€‚
 
 We can initialize an object using the initMethod tag. The method name is specifed by the name property. We can set an argugment using the arg tag. We can initialize an object without restriction, because we can invoke any method with any argument.
 
-addClassPetternƒƒ\ƒbƒh‚ğg‚Á‚ÄA©“®“o˜^‚·‚éƒNƒ‰ƒX‚ğw’è‚µ‚Ä‚¢‚Ü‚·B
+addClassPetternãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ã£ã¦ã€è‡ªå‹•ç™»éŒ²ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã—ã¦ã„ã¾ã™ã€‚
 
 We can specify classes to automatically register using the "addClassPattern" method.
 
-Å‰‚Ìˆø”‚ÍAƒpƒbƒP[ƒW–¼‚Å‚·Bq‹Ÿ‚ÌƒpƒbƒP[ƒW‚àÄ‹A“I‚ÉŒŸõ‚µ‚Ü‚·B2”Ô–Ú‚Ìˆø”‚Í¤ƒNƒ‰ƒX–¼‚Ìƒpƒ^[ƒ“‚Å‚·B³‹K•\Œ»‚ğg‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+æœ€åˆã®å¼•æ•°ã¯ã€ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã§ã™ã€‚å­ä¾›ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚‚å†å¸°çš„ã«æ¤œç´¢ã—ã¾ã™ã€‚2ç•ªç›®ã®å¼•æ•°ã¯ï½¤ã‚¯ãƒ©ã‚¹åã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ã™ã€‚æ­£è¦è¡¨ç¾ã‚’ä½¿ã†ã“ã¨ãŒã§ãã¾ã™ã€‚
 
 The first argument is a package name. Child packages are searched recursively too. The second argument is a pattern of class name. We can use a regular expression.
 
 slide48
 
-¡‰ñ‚ÌƒTƒ“ƒvƒ‹‚Å‚Í¤ƒNƒ‰ƒX‚ª2‚Â‚µ‚©‚ ‚è‚Ü‚¹‚ñ‚Å‚µ‚½‚ªAƒNƒ‰ƒX‚Ì”‚ª‘‚¦‚ê‚Î‘‚¦‚é‚Ù‚Ç¤Seasar2‚Ì©“®‰»‚ÍˆĞ—Í‚ğ”­Šö‚µ‚Ü‚·B
+ä»Šå›ã®ã‚µãƒ³ãƒ—ãƒ«ã§ã¯ï½¤ã‚¯ãƒ©ã‚¹ãŒ2ã¤ã—ã‹ã‚ã‚Šã¾ã›ã‚“ã§ã—ãŸãŒã€ã‚¯ãƒ©ã‚¹ã®æ•°ãŒå¢—ãˆã‚Œã°å¢—ãˆã‚‹ã»ã©ï½¤Seasar2ã®è‡ªå‹•åŒ–ã¯å¨åŠ›ã‚’ç™ºæ®ã—ã¾ã™ã€‚
 
 We only had two classes in this sample, but the more the number of classes increases, the more powerful Seasar2 automation becomes.
 
 slide49
 
-Å‰‚ÉƒNƒ‰ƒX–¼‚Ìƒpƒ^[ƒ“‚ğw’è‚µ‚Ä‚¨‚¯‚Î¤Œã‚ÅƒNƒ‰ƒX‚ª‘‚¦‚Ä‚àİ’èƒtƒ@ƒCƒ‹‚Éî•ñ‚ğ’Ç‰Á‚·‚é•K—v‚ª–³‚¢‚Ì‚Å‚·B
+æœ€åˆã«ã‚¯ãƒ©ã‚¹åã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’æŒ‡å®šã—ã¦ãŠã‘ã°ï½¤å¾Œã§ã‚¯ãƒ©ã‚¹ãŒå¢—ãˆã¦ã‚‚è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã«æƒ…å ±ã‚’è¿½åŠ ã™ã‚‹å¿…è¦ãŒç„¡ã„ã®ã§ã™ã€‚
 
 If we set the class name patterns from the beginning, it's not necessary to add any information to the configuration file, even if the number of classes increases.
 
 slide50
 
-XDoclet‚âƒAƒmƒe[ƒVƒ‡ƒ“‚Æˆá‚Á‚ÄAƒ\[ƒXƒR[ƒh‚Éİ’èî•ñ‚ğ–„‚ß‚Ş‚±‚Æ‚à–³‚¢‚Ì‚Å¤İ’èî•ñ‚Ì•ÏX‚É‚à©“®“I‚É‘Î‰‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+XDocletã‚„ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¨é•ã£ã¦ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã«è¨­å®šæƒ…å ±ã‚’åŸ‹ã‚è¾¼ã‚€ã“ã¨ã‚‚ç„¡ã„ã®ã§ï½¤è¨­å®šæƒ…å ±ã®å¤‰æ›´ã«ã‚‚è‡ªå‹•çš„ã«å¯¾å¿œã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 
 Unlike XDoclet and annotation, we can automatically adapt the configuration data changes, because the configuration data is not embedded in the source code.
 slide51
 
-‹K–ñ‚Æ‚¢‚¤Œ¾—t‚©‚ç‚Í¤ç‚ç‚È‚¯‚ê‚Î‚¢‚¯‚È‚¢–Ê“|‚È‚à‚Ì‚Æ‚¢‚¤ƒCƒ[ƒW‚ğó‚¯‚é‚©‚à‚µ‚ê‚Ü‚¹‚ñB
+è¦ç´„ã¨ã„ã†è¨€è‘‰ã‹ã‚‰ã¯ï½¤å®ˆã‚‰ãªã‘ã‚Œã°ã„ã‘ãªã„é¢å€’ãªã‚‚ã®ã¨ã„ã†ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ã‚‹ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ã€‚
 
 If you hear the word convention, you might get the troublesome impression that you have to obey it.
 
-‚µ‚©‚µASeasar2‚É‚¨‚¯‚é‹K–ñ‚Í¤‚Ç‚ê‚àç‚é‚±‚Æ‚ª–]‚Ü‚µ‚¢‚à‚Ì‚Î‚©‚è‚Å‚·B‚µ‚©‚àA‹K–ñ‚ğç‚ê‚Î¤Seasar2‚Ì©“®ˆ—‚É‚æ‚Á‚Ä¤„‚½‚¿‚ÍŠy‚ğ‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚Å‚·B
+ã—ã‹ã—ã€Seasar2ã«ãŠã‘ã‚‹è¦ç´„ã¯ï½¤ã©ã‚Œã‚‚å®ˆã‚‹ã“ã¨ãŒæœ›ã¾ã—ã„ã‚‚ã®ã°ã‹ã‚Šã§ã™ã€‚ã—ã‹ã‚‚ã€è¦ç´„ã‚’å®ˆã‚Œã°ï½¤Seasar2ã®è‡ªå‹•å‡¦ç†ã«ã‚ˆã£ã¦ï½¤ç§ãŸã¡ã¯æ¥½ã‚’ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã§ã™ã€‚
 
 But all conventions in Seasar2 are desirable. And if we obey the conventions, Seasar2 automation will make our work much easier.
 
 slide52
 
-Šy‚ğ‚·‚é‚½‚ß‚Ì‹K–ñ‚È‚ç¤’N‚Å‚à‹K–ñ‚ğç‚è‚½‚¢‚Æv‚¤‚Å‚µ‚å‚¤B‚±‚ê‚ªASeasar2‚É‚¨‚¯‚é‹K–ñ‚È‚Ì‚Å‚·B
+æ¥½ã‚’ã™ã‚‹ãŸã‚ã®è¦ç´„ãªã‚‰ï½¤èª°ã§ã‚‚è¦ç´„ã‚’å®ˆã‚ŠãŸã„ã¨æ€ã†ã§ã—ã‚‡ã†ã€‚ã“ã‚ŒãŒã€Seasar2ã«ãŠã‘ã‚‹è¦ç´„ãªã®ã§ã™ã€‚
 
 If the conventions make our work easier, I hope everybody would want to obey them. These are the conventions in Seasar2.
 
 slide53
 
-‚Ù‚Æ‚ñ‚Ç‚Ìê‡‚É¤Seasar2‚Ì©“®‰»‚ÍˆĞ—Í‚ğ”­Šö‚µ‚Ü‚·‚ª¤•¡”‚ÌƒIƒuƒWƒFƒNƒg‚ª1‚Â‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚éê‡‚É‚Í¤©“®“I‚Éˆ—‚Å‚«‚Ü‚¹‚ñB‚»‚±‚ÅA•K—v‚É‚È‚Á‚Ä‚­‚él‚¦‚ªAuConfiguration by Exceptionv‚Å‚·B
+ã»ã¨ã‚“ã©ã®å ´åˆã«ï½¤Seasar2ã®è‡ªå‹•åŒ–ã¯å¨åŠ›ã‚’ç™ºæ®ã—ã¾ã™ãŒï½¤è¤‡æ•°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒ1ã¤ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹å ´åˆã«ã¯ï½¤è‡ªå‹•çš„ã«å‡¦ç†ã§ãã¾ã›ã‚“ã€‚ãã“ã§ã€å¿…è¦ã«ãªã£ã¦ãã‚‹è€ƒãˆãŒã€ã€ŒConfiguration by Exceptionã€ã§ã™ã€‚
 
 In most cases, Seasar2 automation is more and more powerful, but if several objects implement one interface, Seasar2 automation doesn't work well. Then the necessary solution is "Configuration by Exception".
 
 slide54
 
-uConfiguration by Exceptionv‚Æ‚ÍAu—áŠO“I‚Èó‹µ‚Å‚Ì‚İ¤–¾¦“I‚Éİ’è‚ğs‚¤v‚Æ‚¢‚¤l‚¦•û‚Å‚·BuConvention over Configurationv‚ª‹@”\‚µ‚È‚¢ê‡‚ª—áŠO“I‚Èó‹µ‚Å‚·B
+ã€ŒConfiguration by Exceptionã€ã¨ã¯ã€ã€Œä¾‹å¤–çš„ãªçŠ¶æ³ã§ã®ã¿ï½¤æ˜ç¤ºçš„ã«è¨­å®šã‚’è¡Œã†ã€ã¨ã„ã†è€ƒãˆæ–¹ã§ã™ã€‚ã€ŒConvention over Configurationã€ãŒæ©Ÿèƒ½ã—ãªã„å ´åˆãŒä¾‹å¤–çš„ãªçŠ¶æ³ã§ã™ã€‚
 
 "Configuration by Exception" is the idea that we explicitly configure the objects only in exceptional situations. When the defaults of "Convention over Configuration" don't work well, we have an exceptional situation.
 
 slide55
 
-–¾¦“I‚Èİ’è‚É‚Í¤İ’èƒtƒ@ƒCƒ‹‚âƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚¢‚Ü‚·B‚Ç‚¿‚ç‚ğg‚¤‚Ì‚ª—Ç‚¢‚Ì‚©‚ÍAŒã‚ÅÚ‚µ‚­à–¾‚µ‚Ü‚·B
+æ˜ç¤ºçš„ãªè¨­å®šã«ã¯ï½¤è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚„ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã„ã¾ã™ã€‚ã©ã¡ã‚‰ã‚’ä½¿ã†ã®ãŒè‰¯ã„ã®ã‹ã¯ã€å¾Œã§è©³ã—ãèª¬æ˜ã—ã¾ã™ã€‚
 
 We can explicitly configure them using either the configuration file or annotation. I would like to explain later in detail about which one we should use.
 
 slide56
 
-‚»‚ê‚Å‚ÍASeasar2‚É‚¨‚¯‚éƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚Á‚½ƒTƒ“ƒvƒ‹‚ğ‚¨Œ©‚¹‚µ‚Ü‚µ‚å‚¤Bã‚ÌƒTƒ“ƒvƒ‹‚Å‚Í¤@BindingƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚Á‚Ä¤ƒIƒuƒWƒFƒNƒg‚ğ–¾¦“I‚Éw’è‚µ‚Ä‚¢‚Ü‚·B@BindingƒAƒmƒe[ƒVƒ‡ƒ“‚ÍASpring‚Ìrefƒ^ƒO‚É‘Š“–‚µ‚Ü‚·B
+ãã‚Œã§ã¯ã€Seasar2ã«ãŠã‘ã‚‹ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã£ãŸã‚µãƒ³ãƒ—ãƒ«ã‚’ãŠè¦‹ã›ã—ã¾ã—ã‚‡ã†ã€‚ä¸Šã®ã‚µãƒ³ãƒ—ãƒ«ã§ã¯ï½¤@Bindingã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã£ã¦ï½¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ˜ç¤ºçš„ã«æŒ‡å®šã—ã¦ã„ã¾ã™ã€‚@Bindingã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ã€Springã®refã‚¿ã‚°ã«ç›¸å½“ã—ã¾ã™ã€‚
 
 Therefore, let's take a look at a sample of annotation in Seasar2. In the above sample we can explicitly specify the object using the "Binding" annotation. The "Binding" annotation corresponds to the ref tag in "Spring".
 
-‰º‚ÌƒTƒ“ƒvƒ‹‚Å‚Í¤bindingType‘®«‚ğg‚Á‚ÄA©“®ƒoƒCƒ“ƒfƒBƒ“ƒO‚ğs‚í‚È‚¢‚±‚Æ‚ğw’è‚µ‚Ä‚¢‚Ü‚·B
+ä¸‹ã®ã‚µãƒ³ãƒ—ãƒ«ã§ã¯ï½¤bindingTypeå±æ€§ã‚’ä½¿ã£ã¦ã€è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã‚’è¡Œã‚ãªã„ã“ã¨ã‚’æŒ‡å®šã—ã¦ã„ã¾ã™ã€‚
 
 In the below sample we can specify the non automatic binding using the "bindingType" property.
 
 slide57
 
-‚Ù‚Æ‚ñ‚Ç‚Ìê‡¤ƒvƒƒpƒeƒB‚Ì©“®ƒoƒCƒ“ƒfƒBƒ“ƒO‚Å‚¤‚Ü‚­‚¢‚­‚Ì‚ÅA@BindingƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚¤•K—v‚Í‚ ‚è‚Ü‚¹‚ñB—áŠO“I‚Èê‡‚É‚Ì‚İ¤@BindingƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚¤‚æ‚¤‚É‚µ‚Ä‚­‚¾‚³‚¢B
+ã»ã¨ã‚“ã©ã®å ´åˆï½¤ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã®è‡ªå‹•ãƒã‚¤ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã§ã†ã¾ãã„ãã®ã§ã€@Bindingã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã†å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ä¾‹å¤–çš„ãªå ´åˆã«ã®ã¿ï½¤@Bindingã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã†ã‚ˆã†ã«ã—ã¦ãã ã•ã„ã€‚
 
 We rarely need to use the "Binding" annotation, because the automatic binding of property works in most cases. Please use the "Binding" annotation only in exceptional cases.
 
 slide58
 
-ƒAƒmƒe[ƒVƒ‡ƒ“‚Í¤Java5‚©‚ç“oê‚µ‚½‹Zp‚Å‚·B‚»‚ê‚Å‚ÍAJava1.4‚ğg‚í‚È‚¯‚ê‚Î‚¢‚¯‚È‚¢ê‡¤ƒAƒmƒe[ƒVƒ‡ƒ“‚ğ‚ ‚«‚ç‚ß‚é‚µ‚©‚È‚¢‚Æl‚¦‚é‚±‚Æ‚Å‚µ‚å‚¤B‚µ‚©‚µAƒAƒmƒe[ƒVƒ‡ƒ“‚ğ‚ ‚«‚ç‚ß‚é•K—v‚Í‚ ‚è‚Ü‚¹‚ñB
+ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¯ï½¤Java5ã‹ã‚‰ç™»å ´ã—ãŸæŠ€è¡“ã§ã™ã€‚ãã‚Œã§ã¯ã€Java1.4ã‚’ä½¿ã‚ãªã‘ã‚Œã°ã„ã‘ãªã„å ´åˆï½¤ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ã‚ãã‚‰ã‚ã‚‹ã—ã‹ãªã„ã¨è€ƒãˆã‚‹ã“ã¨ã§ã—ã‚‡ã†ã€‚ã—ã‹ã—ã€ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ã‚ãã‚‰ã‚ã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 
 Annotation is a technology which appeared in Java5. In case we have to use Java1.4, you would think we have to give up annotation. However we don't.
 
 slide59
 
-backport175‚Æ‚¢‚¤ƒvƒƒWƒFƒNƒg‚ª‚ ‚è‚Ü‚·Bbackport175‚ÍAJava5‚ÌƒAƒmƒe[ƒVƒ‡ƒ“‚Ìd—l‚ğÀ‘•‚µ‚Ä‚¢‚Ä¤ƒAƒmƒe[ƒVƒ‡ƒ“‚ğJava1.3 or 1.4‚Å‚à—˜—p‰Â”\‚É‚µ‚Ä‚¢‚Ü‚·B
+backport175ã¨ã„ã†ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãŒã‚ã‚Šã¾ã™ã€‚backport175ã¯ã€Java5ã®ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®ä»•æ§˜ã‚’å®Ÿè£…ã—ã¦ã„ã¦ï½¤ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’Java1.3 or 1.4ã§ã‚‚åˆ©ç”¨å¯èƒ½ã«ã—ã¦ã„ã¾ã™ã€‚
 
 There is a project called backport175. backport175 implements the Java 5 annotation specifications, and it makes annotation available for Java 1.3 or 1.4 platforms.
 
-Seasar2‚Å‚ÍA‚±‚Ìbackport175‚ğg‚Á‚ÄAJava1.3/1.4‚Å‚àAƒAƒmƒe[ƒVƒ‡ƒ“‚ªg‚¦‚é‚æ‚¤‚É‚µ‚Ä‚¢‚Ü‚·B
+Seasar2ã§ã¯ã€ã“ã®backport175ã‚’ä½¿ã£ã¦ã€Java1.3/1.4ã§ã‚‚ã€ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ãŒä½¿ãˆã‚‹ã‚ˆã†ã«ã—ã¦ã„ã¾ã™ã€‚
 
 Seasar2 makes annotation available for Java 1.4 platforms using this backport175.
 
 slide60
 
-backport175‚ÌEclipseƒvƒ‰ƒOƒCƒ“‚ğg‚Á‚Ä¤\•¶ƒ`ƒFƒbƒN‚ğ‚¨‚±‚È‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+backport175ã®Eclipseãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’ä½¿ã£ã¦ï½¤æ§‹æ–‡ãƒã‚§ãƒƒã‚¯ã‚’ãŠã“ãªã†ã“ã¨ãŒã§ãã¾ã™ã€‚
 
 If we use the eclipse backport175 plugin, we can check the syntax.
 
 slide61
 
-‚Ü‚½Aƒvƒ‰ƒOƒCƒ“‚ğg‚¦‚Î¤XDoclet“™‚ğg‚¤ê‡‚Æˆá‚¢AƒRƒ“ƒpƒCƒ‹Œã‚É‰½‚©ˆ—‚ğÀs‚·‚é•K—v‚à‚ ‚è‚Ü‚¹‚ñB‚È‚º‚È‚çAƒRƒ“ƒpƒCƒ‹Œã‚É©“®“I‚ÉƒNƒ‰ƒXƒtƒ@ƒCƒ‹‚Ì’†‚ÉƒAƒmƒe[ƒVƒ‡ƒ“‚Ìî•ñ‚ğ–„‚ß‚Ş‚±‚Æ‚ª‚Å‚«‚é‚©‚ç‚Å‚·B
+ã¾ãŸã€ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’ä½¿ãˆã°ï½¤XDocletç­‰ã‚’ä½¿ã†å ´åˆã¨é•ã„ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«å¾Œã«ä½•ã‹å‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹å¿…è¦ã‚‚ã‚ã‚Šã¾ã›ã‚“ã€‚ãªãœãªã‚‰ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«å¾Œã«è‡ªå‹•çš„ã«ã‚¯ãƒ©ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­ã«ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®æƒ…å ±ã‚’åŸ‹ã‚è¾¼ã‚€ã“ã¨ãŒã§ãã‚‹ã‹ã‚‰ã§ã™ã€‚
 
 Also if we use the plugin, unlike the XDoclet, we don't need to do anything after the compilation. That's because the annotation information is automatically embedded in the class file after the compilation.
 
 slide62
 
-æ’ö‚ÌJava5‚ÌƒAƒmƒe[ƒVƒ‡ƒ“‚ÌƒTƒ“ƒvƒ‹‚ğAbackport175ƒo[ƒWƒ‡ƒ“‚É‘‚«Š·‚¦‚Ä‚İ‚Ü‚µ‚å‚¤BJavadoc‚ÌƒRƒƒ“ƒg‚ğg‚Á‚Ä‚¢‚é‚±‚ÆˆÈŠO‚Í¤‚Ù‚Æ‚ñ‚ÇAJava5‚ÌƒAƒmƒe[ƒVƒ‡ƒ“‚Æ“¯‚¶‚Å‚·B
+å…ˆç¨‹ã®Java5ã®ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚µãƒ³ãƒ—ãƒ«ã‚’ã€backport175ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã«æ›¸ãæ›ãˆã¦ã¿ã¾ã—ã‚‡ã†ã€‚Javadocã®ã‚³ãƒ¡ãƒ³ãƒˆã‚’ä½¿ã£ã¦ã„ã‚‹ã“ã¨ä»¥å¤–ã¯ï½¤ã»ã¨ã‚“ã©ã€Java5ã®ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã¨åŒã˜ã§ã™ã€‚
 
 Therefore, let's transform the previous sample of Java5 into backport175. Except for using the Javadoc comment, it is similar to the annotation of Java5.
 
-Java1.4‚Ìƒ†[ƒU‚àƒAƒmƒe[ƒVƒ‡ƒ“‚ÌƒƒŠƒbƒg‚ğó‚¯‚é‚±‚Æ‚ª‚Å‚«‚é‚Ì‚Å‚·B
+Java1.4ã®ãƒ¦ãƒ¼ã‚¶ã‚‚ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ¡ãƒªãƒƒãƒˆã‚’å—ã‘ã‚‹ã“ã¨ãŒã§ãã‚‹ã®ã§ã™ã€‚
 
 In this way, users of Java1.4 can accept the advantage of annotation.
 
 slide63
 
-uConvention over Configurationv‚ğg‚¦‚Î¤‚Ù‚Æ‚ñ‚Çİ’èî•ñ‚ğ‹Lq‚µ‚È‚­‚Ä‚à‚æ‚­‚È‚è‚Ü‚·B‚±‚ê‚Í‚·‚Î‚ç‚µ‚¢‚±‚Æ‚Å‚·B‚µ‚©‚µA‚Ç‚Ì‚æ‚¤‚Èİ’è‚ª‚³‚ê‚Ä‚¢‚é‚Ì‚©‚ğ’m‚é‚±‚Æ‚ª‚Å‚«‚È‚¢‚±‚Æ‚ÉA•sˆÀ‚ğŠ´‚¶‚é‚©‚½‚à‚¢‚é‚±‚Æ‚Å‚µ‚å‚¤B
+ã€ŒConvention over Configurationã€ã‚’ä½¿ãˆã°ï½¤ã»ã¨ã‚“ã©è¨­å®šæƒ…å ±ã‚’è¨˜è¿°ã—ãªãã¦ã‚‚ã‚ˆããªã‚Šã¾ã™ã€‚ã“ã‚Œã¯ã™ã°ã‚‰ã—ã„ã“ã¨ã§ã™ã€‚ã—ã‹ã—ã€ã©ã®ã‚ˆã†ãªè¨­å®šãŒã•ã‚Œã¦ã„ã‚‹ã®ã‹ã‚’çŸ¥ã‚‹ã“ã¨ãŒã§ããªã„ã“ã¨ã«ã€ä¸å®‰ã‚’æ„Ÿã˜ã‚‹ã‹ãŸã‚‚ã„ã‚‹ã“ã¨ã§ã—ã‚‡ã†ã€‚
 
 When we use "Convention over Configuration", we rarely need to write configuration data. Isn't that wonderful? However you might feel a little worried, because you don't know how to configure it.
 
 slide64
 
-«—ˆ‚Ìƒo[ƒWƒ‡ƒ“‚Å‚Í¤©“®“I‚Éİ’è‚³‚ê‚½î•ñ‚ğƒtƒ@ƒCƒ‹‚É‘‚«o‚·‹@”\‚ªŒŸ“¢‚³‚ê‚Ä‚¢‚Ü‚·B
+å°†æ¥ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã¯ï½¤è‡ªå‹•çš„ã«è¨­å®šã•ã‚ŒãŸæƒ…å ±ã‚’ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãå‡ºã™æ©Ÿèƒ½ãŒæ¤œè¨ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
 In the future, the function which writes the information to be set automatically in the configuraton file is considered.
 
 slide65
 
-uConvention over Configurationv‚É‚æ‚é©“®İ’è‚ªg‚¦‚È‚¢ê‡‚É¤İ’èƒtƒ@ƒCƒ‹‚ÆƒAƒmƒe[ƒVƒ‡ƒ“‚Ì‚Ç‚¿‚ç‚ğg‚Á‚½‚ç‚æ‚¢‚Ì‚Å‚µ‚å‚¤‚©B
+ã€ŒConvention over Configurationã€ã«ã‚ˆã‚‹è‡ªå‹•è¨­å®šãŒä½¿ãˆãªã„å ´åˆã«ï½¤è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã¨ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®ã©ã¡ã‚‰ã‚’ä½¿ã£ãŸã‚‰ã‚ˆã„ã®ã§ã—ã‚‡ã†ã‹ã€‚
 
 When we can't use automatic binding by "Convention over Configuration", which do you think it's better to use - the configuration files or annotation?
 
 slide66
 
-İ’èî•ñ‚ğ‘‚«Š·‚¦‚é‰Â”\«‚ª‚‚¢‚Æl‚¦‚é‚È‚çAİ’èƒtƒ@ƒCƒ‹‚ğg‚¢¤‚»‚¤‚Å‚È‚¢‚à‚Ì‚ÍƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚¢‚Ü‚µ‚å‚¤B
+è¨­å®šæƒ…å ±ã‚’æ›¸ãæ›ãˆã‚‹å¯èƒ½æ€§ãŒé«˜ã„ã¨è€ƒãˆã‚‹ãªã‚‰ã€è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ã„ï½¤ãã†ã§ãªã„ã‚‚ã®ã¯ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã„ã¾ã—ã‚‡ã†ã€‚
 
 If you think that the possibility to change the configuration data is high, please use the configuration file! If this is not the case, please use annotation.
 
 slide67
 
-‚µ‚©‚µAİ’èî•ñ‚ğ‘‚«Š·‚¦‚é‰Â”\«‚ª‚‚¢‚©’á‚¢‚©‚ğ³‚µ‚­—\‘z‚·‚é‚±‚Æ‚Í‹É‚ß‚Ä¢“ï‚Å‚·B‚»‚±‚ÅAŠÂ‹«‚ÉˆË‘¶‚·‚éî•ñ‚Í¤İ’èƒtƒ@ƒCƒ‹‚ğg‚¢¤‚»‚êˆÈŠO‚Í¤ƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚¤‚Ì‚ª—Ç‚¢‚Å‚µ‚å‚¤B
+ã—ã‹ã—ã€è¨­å®šæƒ…å ±ã‚’æ›¸ãæ›ãˆã‚‹å¯èƒ½æ€§ãŒé«˜ã„ã‹ä½ã„ã‹ã‚’æ­£ã—ãäºˆæƒ³ã™ã‚‹ã“ã¨ã¯æ¥µã‚ã¦å›°é›£ã§ã™ã€‚ãã“ã§ã€ç’°å¢ƒã«ä¾å­˜ã™ã‚‹æƒ…å ±ã¯ï½¤è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ã„ï½¤ãã‚Œä»¥å¤–ã¯ï½¤ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã†ã®ãŒè‰¯ã„ã§ã—ã‚‡ã†ã€‚
 
 It's very difficult to predict the possibility of changes to the configration data. In case of information depending on the environment you should use the configuration file, and in other cases you should use annotation.
 
 slide68
 
-ŠÂ‹«‚ÉˆË‘¶‚·‚éî•ñ‚Ì—á‚ÉAƒf[ƒ^ƒx[ƒX‚Ö‚ÌÚ‘±î•ñ‚ª‚ ‚è‚Ü‚·B‚±‚ê‚ç‚Ìî•ñ‚Í¤Œã‚©‚ç‘‚«Š·‚¦‚éŠm—¦‚ª‚‚¢‚Ì‚Å¤İ’èƒtƒ@ƒCƒ‹‚É‘‚­‚Ì‚Í¤“KØ‚È‘I‘ğ‚Å‚µ‚å‚¤B
+ç’°å¢ƒã«ä¾å­˜ã™ã‚‹æƒ…å ±ã®ä¾‹ã«ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®æ¥ç¶šæƒ…å ±ãŒã‚ã‚Šã¾ã™ã€‚ã“ã‚Œã‚‰ã®æƒ…å ±ã¯ï½¤å¾Œã‹ã‚‰æ›¸ãæ›ãˆã‚‹ç¢ºç‡ãŒé«˜ã„ã®ã§ï½¤è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãã®ã¯ï½¤é©åˆ‡ãªé¸æŠã§ã—ã‚‡ã†ã€‚
 
 An example of information depending on the environment is information to connect to a database. Since the probability of changing this information later is rather high, it's a wise choice to write it in the configuration file.
 
 slide69
 
-‚»‚êˆÈŠO‚Ìî•ñ‚Í¤Œã‚©‚ç‘‚«Š·‚¦‚éŠm—§‚ª—\‘z‚Å‚«‚È‚¢‚Ì‚Å¤‘‚«Š·‚¦‚ç‚ê‚È‚¢‚Æ‰¼’è‚µ‚Ä¤ƒAƒmƒe[ƒVƒ‡ƒ“‚ğg‚¢‚Ü‚·B
+ãã‚Œä»¥å¤–ã®æƒ…å ±ã¯ï½¤å¾Œã‹ã‚‰æ›¸ãæ›ãˆã‚‹ç¢ºç«‹ãŒäºˆæƒ³ã§ããªã„ã®ã§ï½¤æ›¸ãæ›ãˆã‚‰ã‚Œãªã„ã¨ä»®å®šã—ã¦ï½¤ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ã„ã¾ã™ã€‚
 
 Since we cannot predict the probability of changing other information later, we assume it should not be changed, and we use annotation.
 
 slide70
 
-•p”É‚Éİ’èî•ñ‚ğ‘‚«Š·‚¦‚é•K—v‚ªo‚Ä‚«‚½‚ç¤ƒAƒmƒe[ƒVƒ‡ƒ“‚©‚çƒtƒ@ƒCƒ‹‚ÉØ‚è‘Ö‚¦‚é‚Æ‚¢‚¤‚±‚Æ‚Å\•ª‚Å‚µ‚å‚¤B
+é »ç¹ã«è¨­å®šæƒ…å ±ã‚’æ›¸ãæ›ãˆã‚‹å¿…è¦ãŒå‡ºã¦ããŸã‚‰ï½¤ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‹ã‚‰ãƒ•ã‚¡ã‚¤ãƒ«ã«åˆ‡ã‚Šæ›¿ãˆã‚‹ã¨ã„ã†ã“ã¨ã§ååˆ†ã§ã—ã‚‡ã†ã€‚
 
 If you need to change the configuration data frequently, it's reason enough to change from annotation to the configuration file.
 
 slide71
 
-DI‚Æˆê‚É—Ç‚­—p‚¢‚ç‚ê‚é‹Zp‚É¤AOP‚ª‚ ‚è‚Ü‚·BSeasar2‚Å‚ÍAAOP‚É‘Î‚µ‚Ä‚à¤uConvention over Configurationv‚ğ“K—p‚Å‚«‚Ü‚·B
+DIã¨ä¸€ç·’ã«è‰¯ãç”¨ã„ã‚‰ã‚Œã‚‹æŠ€è¡“ã«ï½¤AOPãŒã‚ã‚Šã¾ã™ã€‚Seasar2ã§ã¯ã€AOPã«å¯¾ã—ã¦ã‚‚ï½¤ã€ŒConvention over Configurationã€ã‚’é©ç”¨ã§ãã¾ã™ã€‚
 
 The technology often used together with DI is AOP. In Seasar2, we also can adapt the "Convention over Configuration" for AOP.
 
 slide72
 
-AOP‚É‚¨‚¯‚é‹K–ñ‚Í¤ƒrƒWƒlƒXƒCƒ“ƒ^[ƒtƒF[ƒX‚ğg‚¤‚Æ‚¢‚¤‚à‚Ì‚Å‚·B‚»‚ê‚Å‚ÍA‚±‚Ì‹K–ñ‚ğç‚é‚Æ‰½‚ª“¾‚ç‚ê‚é‚Ì‚Å‚µ‚å‚¤‚©B
+AOPã«ãŠã‘ã‚‹è¦ç´„ã¯ï½¤ãƒ“ã‚¸ãƒã‚¹ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä½¿ã†ã¨ã„ã†ã‚‚ã®ã§ã™ã€‚ãã‚Œã§ã¯ã€ã“ã®è¦ç´„ã‚’å®ˆã‚‹ã¨ä½•ãŒå¾—ã‚‰ã‚Œã‚‹ã®ã§ã—ã‚‡ã†ã‹ã€‚
 
 The convention in AOP is that we use the business interface. So, what do we get if we apply this convention?
 
 slide73
 
-AOP‚Å‚ÍAcrosscutting-concern‚ğÀŒ»‚·‚éƒ‚ƒWƒ…[ƒ‹‚ğ"Advice"‚ÆŒÄ‚Ñ‚Ü‚·B
+AOPã§ã¯ã€crosscutting-concernã‚’å®Ÿç¾ã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’"Advice"ã¨å‘¼ã³ã¾ã™ã€‚
 
 In AOP, we call a module which realizes the crosscutting-concern "Advice".
 
 slide74
 
-Seasar2‚Å‚Íƒƒ\ƒbƒh‚ªw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚É¤‚ ‚éƒNƒ‰ƒX‚ªÀ‘•‚µ‚Ä‚¢‚é‚·‚×‚Ä‚ÌƒCƒ“ƒ^[ƒtƒF[ƒX‚Ìƒƒ\ƒbƒh‚ª¤©“®“I‚ÉAdvice‚Ì‘ÎÛ‚É‚È‚è‚Ü‚·B
+Seasar2ã§ã¯ãƒ¡ã‚½ãƒƒãƒ‰ãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã«ï½¤ã‚ã‚‹ã‚¯ãƒ©ã‚¹ãŒå®Ÿè£…ã—ã¦ã„ã‚‹ã™ã¹ã¦ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒï½¤è‡ªå‹•çš„ã«Adviceã®å¯¾è±¡ã«ãªã‚Šã¾ã™ã€‚
 
 In Seasar2, if we don't specify any method, all the methods of the interfaces which a class implements automatically become the targets of "Advice".
 
 slide75
 
-‘½‚­‚Ìê‡‚É‚¨‚¢‚Ä¤‚±‚ê‚ÍA‚¤‚Ü‚­‹@”\‚µ‚Ü‚·B‚à‚¿‚ë‚ñAƒƒ\ƒbƒh–¼‚ğ³‹K•\Œ»‚Åw’è‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B
+å¤šãã®å ´åˆã«ãŠã„ã¦ï½¤ã“ã‚Œã¯ã€ã†ã¾ãæ©Ÿèƒ½ã—ã¾ã™ã€‚ã‚‚ã¡ã‚ã‚“ã€ãƒ¡ã‚½ãƒƒãƒ‰åã‚’æ­£è¦è¡¨ç¾ã§æŒ‡å®šã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚
 
 In most cases, this solution works well. Of cource we can also specify the method name in a regular expression.
 
 slide76
 
-‚»‚ê‚Å‚ÍAAOP‚ÌƒTƒ“ƒvƒ‹‚ğŒ©‚Ä‚İ‚Ü‚µ‚å‚¤BÅ‰‚É¤includeƒ^ƒO‚ğg‚Á‚Ä¤aop.dicon‚ğæ‚è‚ñ‚Å‚¢‚Ü‚·Baop.dicon‚É‚ÍA—Ç‚­g‚í‚ê‚éAdvice‚ª‚ ‚ç‚©‚¶‚ß’è‹`‚³‚ê‚Ä‚¢‚Ü‚·B—á‚¦‚Î¤aop.traceInterceptor‚ÍƒƒO‚ğ‘‚«o‚·Advice‚Å‚·B
+ãã‚Œã§ã¯ã€AOPã®ã‚µãƒ³ãƒ—ãƒ«ã‚’è¦‹ã¦ã¿ã¾ã—ã‚‡ã†ã€‚æœ€åˆã«ï½¤includeã‚¿ã‚°ã‚’ä½¿ã£ã¦ï½¤aop.diconã‚’å–ã‚Šè¾¼ã‚“ã§ã„ã¾ã™ã€‚aop.diconã«ã¯ã€è‰¯ãä½¿ã‚ã‚Œã‚‹AdviceãŒã‚ã‚‰ã‹ã˜ã‚å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚ä¾‹ãˆã°ï½¤aop.traceInterceptorã¯ãƒ­ã‚°ã‚’æ›¸ãå‡ºã™Adviceã§ã™ã€‚
 
 Therefore, let's take a look at an AOP sample. First, we can include "aop.dicon" using the "include" tag. In "aop.dicon", we define from the beginning the "Advice"s which we often use. For example, "aop.traceInterceptor" is the "Advice" which writes the trace log.
 
-‚±‚ÌƒTƒ“ƒvƒ‹‚Ì‚æ‚¤‚É¤Seasar2‚Å‚ÍA’è‹`‚ğ•¡”‚É•ªŠ„‚µA•ªŠ„‚³‚ê‚½’è‹`‚ğ1‚Â‚É‚Ü‚Æ‚ß‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·BƒAƒXƒyƒNƒg‚ğ©“®“o˜^‚·‚é‚½‚ß‚ÌƒNƒ‰ƒX‚Æ‚µ‚Ä¤AspectAutoRegisterƒNƒ‰ƒX‚ğ“o˜^‚µ‚Ä‚¢‚Ü‚·B
+ã“ã®ã‚µãƒ³ãƒ—ãƒ«ã®ã‚ˆã†ã«ï½¤Seasar2ã§ã¯ã€å®šç¾©ã‚’è¤‡æ•°ã«åˆ†å‰²ã—ã€åˆ†å‰²ã•ã‚ŒãŸå®šç¾©ã‚’1ã¤ã«ã¾ã¨ã‚ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚’è‡ªå‹•ç™»éŒ²ã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¹ã¨ã—ã¦ï½¤AspectAutoRegisterã‚¯ãƒ©ã‚¹ã‚’ç™»éŒ²ã—ã¦ã„ã¾ã™ã€‚
 
 In Seasar2 as you can see in this sample, we can split the definitions into several pieces and recombine those pieces. We register the "AspectAutoRegister" class in order to automatically register the "aspect".
 
-interceptorƒvƒƒpƒeƒB‚ÅAAdvice‚ğw’è‚µ‚Ü‚·BaddClassPatternƒƒ\ƒbƒh‚Ìg‚¢•û‚Í¤ˆÈ‘O‚Éo‚Ä‚«‚½ComponentAutoRegister‚Ìê‡‚Æ“¯‚¶‚Å‚·B‚½‚Á‚½‚±‚ê‚¾‚¯‚Ìİ’è‚Å¤ƒpƒ^[ƒ“‚Éˆê’v‚·‚é‚·‚×‚Ä‚ÌƒNƒ‰ƒX‚ÉAdvice‚ğ“K—p‚Å‚«‚Ü‚·B
+interceptorãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§ã€Adviceã‚’æŒ‡å®šã—ã¾ã™ã€‚addClassPatternãƒ¡ã‚½ãƒƒãƒ‰ã®ä½¿ã„æ–¹ã¯ï½¤ä»¥å‰ã«å‡ºã¦ããŸComponentAutoRegisterã®å ´åˆã¨åŒã˜ã§ã™ã€‚ãŸã£ãŸã“ã‚Œã ã‘ã®è¨­å®šã§ï½¤ãƒ‘ã‚¿ãƒ¼ãƒ³ã«ä¸€è‡´ã™ã‚‹ã™ã¹ã¦ã®ã‚¯ãƒ©ã‚¹ã«Adviceã‚’é©ç”¨ã§ãã¾ã™ã€‚
 
 We specify the "Advice" using the interceptor property.  We can use the addClassPattern method, the same way we use the previous "FileSystemComponentAutoRegister". With only this much configuration, we can adapt the "Advice" to all the classes that match this pattern.
 
 slide77
 
-Ÿ‚ÍAéŒ¾“Iƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğg‚¤ƒTƒ“ƒvƒ‹‚ğ‚İ‚Ä‚İ‚Ü‚µ‚å‚¤B
+æ¬¡ã¯ã€å®£è¨€çš„ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ä½¿ã†ã‚µãƒ³ãƒ—ãƒ«ã‚’ã¿ã¦ã¿ã¾ã—ã‚‡ã†ã€‚
 
 Next, let's take a look at a sample that uses declarative transactions.
 
-Å‰‚É¤includeƒ^ƒO‚ğg‚Á‚Ä¤j2ee.dicon‚ğæ‚è‚ñ‚Å‚¢‚Ü‚·Bj2ee.dicon‚É‚ÍAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“—p‚ÌƒAƒhƒoƒCƒX‚ª‚ ‚ç‚©‚¶‚ß’è‹`‚³‚ê‚Ä‚¢‚Ü‚·B—á‚¦‚Î¤j2ee.required‚ÍAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‘®«‚ğrequired‚Æ‚µ‚Äˆ—‚·‚éƒAƒhƒoƒCƒX‚Å‚·B
+æœ€åˆã«ï½¤includeã‚¿ã‚°ã‚’ä½¿ã£ã¦ï½¤j2ee.diconã‚’å–ã‚Šè¾¼ã‚“ã§ã„ã¾ã™ã€‚j2ee.diconã«ã¯ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ç”¨ã®ã‚¢ãƒ‰ãƒã‚¤ã‚¹ãŒã‚ã‚‰ã‹ã˜ã‚å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚ä¾‹ãˆã°ï½¤j2ee.requiredã¯ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å±æ€§ã‚’requiredã¨ã—ã¦å‡¦ç†ã™ã‚‹ã‚¢ãƒ‰ãƒã‚¤ã‚¹ã§ã™ã€‚
 
 First, we can include the "j2ee.dicon" using the "include" tag. In "j2ee.dicon", we define from the beginning the "Advice"s for transactions. For example, "j2ee.required" is the "Advice" which processes the transaction attribute as "required"
 
 slide78
 
-Ÿ‚Í¤•¡”‚ÌAdvice‚ğˆµ‚¤ƒTƒ“ƒvƒ‹‚Å‚·BInterceptorChain‚ğg‚Á‚Ä¤•¡”‚ÌAdvice‚ğ1‚Â‚É‚Ü‚Æ‚ß‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+æ¬¡ã¯ï½¤è¤‡æ•°ã®Adviceã‚’æ‰±ã†ã‚µãƒ³ãƒ—ãƒ«ã§ã™ã€‚InterceptorChainã‚’ä½¿ã£ã¦ï½¤è¤‡æ•°ã®Adviceã‚’1ã¤ã«ã¾ã¨ã‚ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
 
 The following is a sample that use several "Advice"s. If we use "InterceptorChain", we can gather together several "Advice"s into one.
 
-slide79 
+slide79
 
-Seasar2‚ÌAOP‚ÍAAOP alliance‚É€‹’‚µ‚Ä‚¢‚Ü‚·B
+Seasar2ã®AOPã¯ã€AOP allianceã«æº–æ‹ ã—ã¦ã„ã¾ã™ã€‚
 
 AOP in Seasar2 is based on the AOP alliance.
 
 slide80
 
-uLess Configurationv‚É‚æ‚Á‚ÄADI‚Í‚³‚ç‚Éi‰»‚µ‚Ü‚µ‚½B‚µ‚©‚µAEJB3‚àd—v‚Å‚·
+ã€ŒLess Configurationã€ã«ã‚ˆã£ã¦ã€DIã¯ã•ã‚‰ã«é€²åŒ–ã—ã¾ã—ãŸã€‚ã—ã‹ã—ã€EJB3ã‚‚é‡è¦ã§ã™
 
 According to "Less Configuration", DI has progressed even more. Still, EJB3 is important, too.
 
 slide81
 
-EJB3‚Ì‘å‚«‚È“Á’¥‚ÍŸ‚Ì3‚Â‚¾‚Æ„‚Íl‚¦‚Ä‚¢‚Ü‚·B
-EPOJO(plain old java object)
-EƒAƒmƒe[ƒVƒ‡ƒ“‚É‚æ‚éİ’èƒtƒ@ƒCƒ‹‚ÌíŒ¸
-E•W€‚Ìd—l
+EJB3ã®å¤§ããªç‰¹å¾´ã¯æ¬¡ã®3ã¤ã ã¨ç§ã¯è€ƒãˆã¦ã„ã¾ã™ã€‚
+ãƒ»POJO(plain old java object)
+ãƒ»ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã«ã‚ˆã‚‹è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šæ¸›
+ãƒ»æ¨™æº–ã®ä»•æ§˜
 
 In my opinion, the three important characteristics of EJB3 are as follows:
 First, POJO(plain old java object)
@@ -558,122 +558,122 @@ Last, Standard specification.
 
 slide82
 
-DI‚Ì—Ç‚³‚ğæ‚è‚ñ‚Å¤•W€‰»‚³‚ê‚½EJB3‚ğ–³‹‚µ‚Ä‚æ‚¢‚Í‚¸‚ª‚ ‚è‚Ü‚¹‚ñB
+DIã®è‰¯ã•ã‚’å–ã‚Šè¾¼ã‚“ã§ï½¤æ¨™æº–åŒ–ã•ã‚ŒãŸEJB3ã‚’ç„¡è¦–ã—ã¦ã‚ˆã„ã¯ãšãŒã‚ã‚Šã¾ã›ã‚“ã€‚
 
 You can't ignore the standardized EJB3 which includes the advantages of DI.
 
 slide83
 
-EoD‚Ì‹“_‚ÅEJB3‚ÆSeasar2‚ğ”äŠr‚·‚é‚ÆAŠm‚©‚ÉEJB3‚ÍŒ©—ò‚è‚µ‚Ü‚·B‚È‚º‚È‚çASeasar2‚ÍƒAƒmƒe[ƒVƒ‡ƒ“‚·‚ç‚Ù‚Æ‚ñ‚Ç•K—v‚Æ‚µ‚È‚¢‚©‚ç‚Å‚·B
+EoDã®è¦–ç‚¹ã§EJB3ã¨Seasar2ã‚’æ¯”è¼ƒã™ã‚‹ã¨ã€ç¢ºã‹ã«EJB3ã¯è¦‹åŠ£ã‚Šã—ã¾ã™ã€‚ãªãœãªã‚‰ã€Seasar2ã¯ã‚¢ãƒãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã™ã‚‰ã»ã¨ã‚“ã©å¿…è¦ã¨ã—ãªã„ã‹ã‚‰ã§ã™ã€‚
 
 If we compare EJB3 with Seasar2 from the viewpoint of EoD, Seasar2 certainly overshadows EJB3. That's because we rarely even need annotations in Seasar2.
 
 slide84
 
-‚µ‚©‚µAd—l‚ª•W€‰»‚³‚ê‚Ä‚¢‚é‚Æ‚¢‚¤‚Ì‚Í¤–£—Í“I‚Å‚·B
+ã—ã‹ã—ã€ä»•æ§˜ãŒæ¨™æº–åŒ–ã•ã‚Œã¦ã„ã‚‹ã¨ã„ã†ã®ã¯ï½¤é­…åŠ›çš„ã§ã™ã€‚
 
 Still, the charm of EJB3 is that it's a standard specification.
 
 slide85
 
-•W€‚Ìd—l‚É‚Í‚Å‚«‚éŒÀ‚è]‚Á‚½‚Ù‚¤‚ª—Ç‚¢‚Æ‚¢‚¤‚Ì‚ªA„‚Ì•ûj‚Å‚·B‚»‚ê‚ªAƒ†[ƒU‚Ì‘Y‚ğç‚é‚©‚ç‚Å‚·B‚»‚±‚Å„‚ÍŸ‚Ì‚æ‚¤‚Él‚¦‚Ü‚·B
+æ¨™æº–ã®ä»•æ§˜ã«ã¯ã§ãã‚‹é™ã‚Šå¾“ã£ãŸã»ã†ãŒè‰¯ã„ã¨ã„ã†ã®ãŒã€ç§ã®æ–¹é‡ã§ã™ã€‚ãã‚ŒãŒã€ãƒ¦ãƒ¼ã‚¶ã®è³‡ç”£ã‚’å®ˆã‚‹ã‹ã‚‰ã§ã™ã€‚ãã“ã§ç§ã¯æ¬¡ã®ã‚ˆã†ã«è€ƒãˆã¾ã™ã€‚
 
 It's my principle that it's better to obey the standard specifications as much as possible. That's because it protects the user's assets. Regarding this idea, I have the following thoughts.
 
 slide86
 
-EJB3‚Æ‚¢‚¤•W€d—l‚ª‚ ‚éJava5‚Å‚ÍAEJB3‚Ìd—l‚É]‚Á‚½‚Ù‚¤‚ª—Ç‚¢‚Å‚µ‚å‚¤B
+EJB3ã¨ã„ã†æ¨™æº–ä»•æ§˜ãŒã‚ã‚‹Java5ã§ã¯ã€EJB3ã®ä»•æ§˜ã«å¾“ã£ãŸã»ã†ãŒè‰¯ã„ã§ã—ã‚‡ã†ã€‚
 
 In Java5 which has a standard specification called EJB3, it's better to obey the EJB3 specification. Seasar2 also implements the EJB3 specification.
 
 slide87
 
-•W€d—l‚Ì–³‚¢Java1.4‚Å‚ÍAuLess Configurationv‚É‚æ‚éi‰»‚µ‚½DI‚ğg‚Á‚½‚Ù‚¤‚ª—Ç‚¢‚Å‚µ‚å‚¤B
+æ¨™æº–ä»•æ§˜ã®ç„¡ã„Java1.4ã§ã¯ã€ã€ŒLess Configurationã€ã«ã‚ˆã‚‹é€²åŒ–ã—ãŸDIã‚’ä½¿ã£ãŸã»ã†ãŒè‰¯ã„ã§ã—ã‚‡ã†ã€‚
 
 In Java1.4 which doesn't have the standard specification, it's better to use DI which has progressed due to "Less Configuration".
 
 slide88
 
-EJB3‚ÌAOP‚ÍAƒAƒXƒyƒNƒg‚Ì©“®“o˜^‹@”\‚ğ’ñ‹Ÿ‚µ‚Ä‚¢‚Ü‚¹‚ñB‚»‚ê‚ÅAEJB3‚ÆSeasar2‚ÌAOP‚ğ‘g‚İ‡‚í‚¹‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B
+EJB3ã®AOPã¯ã€ã‚¢ã‚¹ãƒšã‚¯ãƒˆã®è‡ªå‹•ç™»éŒ²æ©Ÿèƒ½ã‚’æä¾›ã—ã¦ã„ã¾ã›ã‚“ã€‚ãã‚Œã§ã€EJB3ã¨Seasar2ã®AOPã‚’çµ„ã¿åˆã‚ã›ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚
 
 AOP in EJB3 doesn't supply the automatic registration of aspect, so we can combine EJB3 and AOP in Seasar2.
 
 slide89
 
-•W€‚¾‚©‚ç‚Æ‚¢‚Á‚Ä—ò‚Á‚½‹@”\‚ğ–³—‚Ég‚¤•K—v‚Í‚ ‚è‚Ü‚¹‚ñBSeasar2‚ğg‚Á‚ÄŠJ”­‚µ‚½ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğASeasar2ˆÈŠO‚ÌŠÂ‹«‚Åg‚¤‚±‚Æ‚ÍA‚Ù‚Æ‚ñ‚Ç‚È‚¢‚Å‚µ‚å‚¤BÀÛ‚Ì—˜‰v‚ğd‹‚µ‚Ü‚µ‚å‚¤B
+æ¨™æº–ã ã‹ã‚‰ã¨ã„ã£ã¦åŠ£ã£ãŸæ©Ÿèƒ½ã‚’ç„¡ç†ã«ä½¿ã†å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚Seasar2ã‚’ä½¿ã£ã¦é–‹ç™ºã—ãŸã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ã€Seasar2ä»¥å¤–ã®ç’°å¢ƒã§ä½¿ã†ã“ã¨ã¯ã€ã»ã¨ã‚“ã©ãªã„ã§ã—ã‚‡ã†ã€‚å®Ÿéš›ã®åˆ©ç›Šã‚’é‡è¦–ã—ã¾ã—ã‚‡ã†ã€‚
 
 We don't need to use the weak functions just because they are standard. I don't think there are too many opportunities to use the application we developed using Seasar2 outside the Seasar2 environment. Let's focus on the real advantages.
 
 slide90
 
-Seasar2‚ÌEJB3‚ÍAƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo–³‚µ‚Å‚à“®ì‚µ‚Ü‚·BJTA‚âƒRƒlƒNƒVƒ‡ƒ“ƒv[ƒ‹‚ÌÀ‘•‚à’ñ‹Ÿ‚³‚ê‚Ä‚¢‚Ü‚·BƒXƒ^ƒ“ƒhƒAƒƒ“‚Å“®ì‚·‚é‚Æ‚¢‚¤‚±‚Æ‚Í‚³‚Ü‚´‚È‚ÈƒƒŠƒbƒg‚ª‚ ‚è‚Ü‚·B
+Seasar2ã®EJB3ã¯ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒç„¡ã—ã§ã‚‚å‹•ä½œã—ã¾ã™ã€‚JTAã‚„ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ—ãƒ¼ãƒ«ã®å®Ÿè£…ã‚‚æä¾›ã•ã‚Œã¦ã„ã¾ã™ã€‚ã‚¹ã‚¿ãƒ³ãƒ‰ã‚¢ãƒ­ãƒ³ã§å‹•ä½œã™ã‚‹ã¨ã„ã†ã“ã¨ã¯ã•ã¾ã–ãªãªãƒ¡ãƒªãƒƒãƒˆãŒã‚ã‚Šã¾ã™ã€‚
 
 EJB3 in Seasar2 can work even without the application server. JTA and connection pool implementation are supplied. There are some merits for the fact that EJB3 can stand alone.
 
 slide91
 
-Seasar2‚ÌEJB3‚ğg‚¦‚ÎATomcat‚È‚Ç‚ÌEJB3‚ÌÀ‘•‚ª’ñ‹Ÿ‚³‚ê‚Ä‚¢‚È‚¢ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo‚Å‚àAEJB3‚ª—˜—p‚Å‚«‚Ü‚·B
+Seasar2ã®EJB3ã‚’ä½¿ãˆã°ã€Tomcatãªã©ã®EJB3ã®å®Ÿè£…ãŒæä¾›ã•ã‚Œã¦ã„ãªã„ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒã§ã‚‚ã€EJB3ãŒåˆ©ç”¨ã§ãã¾ã™ã€‚
 
 If we use EJB3 in Seasar2, we can use EJB3 even in application servers that don't have EJB3 implementation, such as Tomcat.
 
 slide92
 
-Tomcatã‚ÅEJB3‚ğ“®‚©‚µ‚½‚¢‚Æv‚Á‚Ä‚¢‚éŠJ”­Ò‚Í¤‚½‚­‚³‚ñ‚¢‚é‚Ì‚Å‚Í‚È‚¢‚©‚Æv‚¢‚Ü‚·BSeasar2‚ÍA‚»‚ÌŠè‚¢‚ğ‚©‚È‚¦‚Ü‚·B
+Tomcatä¸Šã§EJB3ã‚’å‹•ã‹ã—ãŸã„ã¨æ€ã£ã¦ã„ã‚‹é–‹ç™ºè€…ã¯ï½¤ãŸãã•ã‚“ã„ã‚‹ã®ã§ã¯ãªã„ã‹ã¨æ€ã„ã¾ã™ã€‚Seasar2ã¯ã€ãã®é¡˜ã„ã‚’ã‹ãªãˆã¾ã™ã€‚
 
 I think there are a lot of developers who want to use EJB3 in Tomcat. Seasar2 fulfils that dream.
 
 slide93
 
-WebLogic‚È‚Ç‚ÌJTA‚âƒRƒlƒNƒVƒ‡ƒ“ƒv[ƒ‹‚ÌÀ‘•‚ª’ñ‹Ÿ‚³‚ê‚Ä‚¢‚éƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒoã‚Å“®ì‚³‚¹‚éê‡‚Í¤‚»‚Ì’ñ‹Ÿ‚³‚ê‚Ä‚¢‚éÀ‘•‚ğASeasar2‚ÅA—˜—p‚·‚é‚±‚Æ‚à‚Å‚«‚Ü‚·B
+WebLogicãªã©ã®JTAã‚„ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãƒ—ãƒ¼ãƒ«ã®å®Ÿè£…ãŒæä¾›ã•ã‚Œã¦ã„ã‚‹ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒä¸Šã§å‹•ä½œã•ã›ã‚‹å ´åˆã¯ï½¤ãã®æä¾›ã•ã‚Œã¦ã„ã‚‹å®Ÿè£…ã‚’ã€Seasar2ã§ã€åˆ©ç”¨ã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚
 
 In case we use application servers which supply JTA and connection pool implementation, such as Weblogic, we can use the supplied implementation in Seasar2.
 
 slide94
 
-M—Š«‚Ì‚‚¢ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğŠJ”­‚·‚é‚½‚ß‚É‚Í¤‚Å‚«‚éŒÀ‚è¤©“®ƒeƒXƒg‚Å‚«‚é”ÍˆÍ‚ğL‚°‚é‚±‚Æ‚ªd—v‚Å‚·BEJB3‚Å‚ÍAMockƒIƒuƒWƒFƒNƒg‚ğg‚Á‚ÄAŠÈ’P‚É©“®ƒeƒXƒg‚ª‚Å‚«‚é‚æ‚¤‚É‚È‚è‚Ü‚µ‚½B
+ä¿¡é ¼æ€§ã®é«˜ã„ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’é–‹ç™ºã™ã‚‹ãŸã‚ã«ã¯ï½¤ã§ãã‚‹é™ã‚Šï½¤è‡ªå‹•ãƒ†ã‚¹ãƒˆã§ãã‚‹ç¯„å›²ã‚’åºƒã’ã‚‹ã“ã¨ãŒé‡è¦ã§ã™ã€‚EJB3ã§ã¯ã€Mockã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ã£ã¦ã€ç°¡å˜ã«è‡ªå‹•ãƒ†ã‚¹ãƒˆãŒã§ãã‚‹ã‚ˆã†ã«ãªã‚Šã¾ã—ãŸã€‚
 
 In order to develop a very reliable application, it's important to enlarge the range in which we can perform the automatic tests as much as possible. In EJB3, the automatic tests have become much easier using mock objects.
 
 slide95
 
-‚Å‚«‚ê‚ÎA–{“–‚ÌƒIƒuƒWƒFƒNƒg‚ğg‚Á‚½ƒeƒXƒg‚à©“®‰»‚µ‚½‚¢‚Æ‚±‚ë‚Å‚·BEJB3‚Å‚±‚ê‚ğ‚â‚ë‚¤‚Æ‚·‚é‚ÆAƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒoã‚Å©“®ƒeƒXƒg‚ğs‚¤•K—v‚ª‚ ‚è‚Ü‚·B‚±‚ê‚ÍACactus‚Ì‚æ‚¤‚Èƒc[ƒ‹‚ğg‚Á‚½‚Æ‚µ‚Ä‚àA‚©‚È‚è–Ê“|‚Èì‹Æ‚É‚È‚è‚Ü‚·B
+ã§ãã‚Œã°ã€æœ¬å½“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ã£ãŸãƒ†ã‚¹ãƒˆã‚‚è‡ªå‹•åŒ–ã—ãŸã„ã¨ã“ã‚ã§ã™ã€‚EJB3ã§ã“ã‚Œã‚’ã‚„ã‚ã†ã¨ã™ã‚‹ã¨ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒä¸Šã§è‡ªå‹•ãƒ†ã‚¹ãƒˆã‚’è¡Œã†å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã“ã‚Œã¯ã€Cactusã®ã‚ˆã†ãªãƒ„ãƒ¼ãƒ«ã‚’ä½¿ã£ãŸã¨ã—ã¦ã‚‚ã€ã‹ãªã‚Šé¢å€’ãªä½œæ¥­ã«ãªã‚Šã¾ã™ã€‚
 
 If possible, we would like to perform the automatic tests using the real object. If we try to do this in EJB3, we need to perform the automatic tests in the application server. Even if we use the tools like "Cactus", it is quite troublesome work.
 
 slide96
 
-Seasar2‚ÌEJB3‚ÍƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo–³‚µ‚Åg‚¦‚é‚Ì‚Å¤–{“–‚ÌƒIƒuƒWƒFƒNƒg‚ğg‚Á‚½©“®ƒeƒXƒg‚ğŠÈ’P‚És‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+Seasar2ã®EJB3ã¯ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒç„¡ã—ã§ä½¿ãˆã‚‹ã®ã§ï½¤æœ¬å½“ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½¿ã£ãŸè‡ªå‹•ãƒ†ã‚¹ãƒˆã‚’ç°¡å˜ã«è¡Œã†ã“ã¨ãŒã§ãã¾ã™ã€‚
 
 EJB3 in Seasar2 can work even without the application server, so we can easily perform the automatic tests using the real object.
 
 slide97
 
-‚Ù‚Æ‚ñ‚Ç‚ÌEJB3‚ÌÀ‘•‚Å‚Í¤ŠJ”­‚µ‚½ƒ‚ƒWƒ…[ƒ‹‚ğƒpƒbƒP[ƒWƒ“ƒO‚µ‚Ä¤ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒT[ƒo‚ÉƒfƒvƒƒC‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B‚±‚ê‚à–Ê“|‚Èì‹Æ‚Å‚·B
+ã»ã¨ã‚“ã©ã®EJB3ã®å®Ÿè£…ã§ã¯ï½¤é–‹ç™ºã—ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒ³ã‚°ã—ã¦ï½¤ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒã«ãƒ‡ãƒ—ãƒ­ã‚¤ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã“ã‚Œã‚‚é¢å€’ãªä½œæ¥­ã§ã™ã€‚
 
-In most EJB3 implementations, we need to package the developed module and then deploy it in the application server. This too is troublesome work. 
+In most EJB3 implementations, we need to package the developed module and then deploy it in the application server. This too is troublesome work.
 
 slide98
 
-“Á‚É¤ŠJ”­’†‚Í¤‰½“x‚àƒfƒvƒƒC‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B‚±‚ê‚ÍA‚©‚È‚è–Ê“|‚Èì‹Æ‚É‚È‚è‚Ü‚·B
+ç‰¹ã«ï½¤é–‹ç™ºä¸­ã¯ï½¤ä½•åº¦ã‚‚ãƒ‡ãƒ—ãƒ­ã‚¤ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã“ã‚Œã¯ã€ã‹ãªã‚Šé¢å€’ãªä½œæ¥­ã«ãªã‚Šã¾ã™ã€‚
 
 Especially, while developing, we need to deploy many times. This is also quite troublesome work.
 
 slide99
 
-Seasar2‚ÌEJB3‚Å‚ÍAƒfƒvƒƒC‚ğ‚·‚é•K—v‚ª‚ ‚è‚Ü‚¹‚ñB‚»‚Ì‚½‚ßA¶Y«‚ªŒüã‚µ‚Ü‚·B
+Seasar2ã®EJB3ã§ã¯ã€ãƒ‡ãƒ—ãƒ­ã‚¤ã‚’ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã›ã‚“ã€‚ãã®ãŸã‚ã€ç”Ÿç”£æ€§ãŒå‘ä¸Šã—ã¾ã™ã€‚
 
 If we use EJB3 in Seasar2, we don't need to deploy, so the productivity is higher.
 
 
 slide100,101
 
-¡‰ñ‚ÌƒZƒbƒVƒ‡ƒ“‚Åˆê”Ô‚¢‚¢‚½‚©‚Á‚½‚Ì‚ÍŸ‚Ì‚±‚Æ‚Å‚·B
-‚±‚ê‚©‚ç‚ÍA"without EJB"‚Å‚Í‚È‚­A"with EJB3"‚¾B
+ä»Šå›ã®ã‚»ãƒƒã‚·ãƒ§ãƒ³ã§ä¸€ç•ªã„ã„ãŸã‹ã£ãŸã®ã¯æ¬¡ã®ã“ã¨ã§ã™ã€‚
+ã“ã‚Œã‹ã‚‰ã¯ã€"without EJB"ã§ã¯ãªãã€"with EJB3"ã ã€‚
 
 What I wanted to transmit most by this presentation is the following: From now, it's not "without EJB", it's "with EJB3".
 
 slide102
 
-Seasar Foundation‚ÌURL‚Æ„‚Ìƒ[ƒ‹ƒAƒhƒŒƒX‚ÍAŸ‚Ì‚Æ‚¨‚è‚Å‚·B‰½‚©¿–â‚ª‚ ‚ê‚Î¤‰“—¶–³‚µ‚É˜A—‚µ‚Ä‚­‚¾‚³‚¢B‚İ‚È‚³‚ñA¡“ú‚Í‚Ç‚¤‚à‚ ‚è‚ª‚Æ‚¤‚²‚´‚¢‚Ü‚µ‚½B
+Seasar Foundationã®URLã¨ç§ã®ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯ã€æ¬¡ã®ã¨ãŠã‚Šã§ã™ã€‚ä½•ã‹è³ªå•ãŒã‚ã‚Œã°ï½¤é æ…®ç„¡ã—ã«é€£çµ¡ã—ã¦ãã ã•ã„ã€‚ã¿ãªã•ã‚“ã€ä»Šæ—¥ã¯ã©ã†ã‚‚ã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã—ãŸã€‚
 
 You may find the Seasar Foundation URL and my e-mail address here. Please do not hesitate to contact me if you hava any questions. Thank you very much for attending this session!

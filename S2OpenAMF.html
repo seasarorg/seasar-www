@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- don't edit start -->
-<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<head><title>Seasar - DI Container with AOP - </title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="seasar_b.css" type="text/css" rel="stylesheet"><script src="seasar_b.js" type="text/JavaScript" language="JavaScript"></script>
 </head><body onload="preload('ja')"><table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" height="100%"><tr>
 <td align="left" valign="top" width="780"><table width="780" border="0" cellspacing="0" cellpadding="0" class="white">
@@ -22,35 +22,35 @@
 <!-- don't edit end -->
 
 <ul>
-<li><a href="#S2OpenAMF">S2OpenAMF�Ƃ�</a></li>
-<li><a href="#Setup">�Z�b�g�A�b�v</a></li>
-<li><a href="#Use">�g����</a></li>
-<li><a href="#JavaCode">Java�̃R�[�f�B���O</a></li>
-<li><a href="#FlashCode">Flash�̃R�[�f�B���O</a></li>
-<li><a href="#Mapping">JavaBeans��ActionScript�̃N���X�Ƃ̃}�b�s���O </a></li>
-<li><a href="#Sample">�T���v���̐���</a></li>
+<li><a href="#S2OpenAMF">S2OpenAMFとは</a></li>
+<li><a href="#Setup">セットアップ</a></li>
+<li><a href="#Use">使い方</a></li>
+<li><a href="#JavaCode">Javaのコーディング</a></li>
+<li><a href="#FlashCode">Flashのコーディング</a></li>
+<li><a href="#Mapping">JavaBeansとActionScriptのクラスとのマッピング </a></li>
+<li><a href="#Sample">サンプルの説明</a></li>
 </ul>
-<h2><a name="S2OpenAMF">S2OpenAMF�Ƃ�</a></h2>
+<h2><a name="S2OpenAMF">S2OpenAMFとは</a></h2>
 
-<p>S2OpenAMF���g���ƁASeasar2��<a href="http://www.openamf.org/">OpenAMF</a>���A������悤�ɂȂ�܂��B����ɂ��Macromedia Flash����Seasar2�̃R���|�[�l���g���ȒP�ɌĂяo�������ł���悤�ɂȂ�܂��B�R���|�[�l���g�̌Ăяo���́AFlash����C���^�[�t�F�[�X���܂��̓R���|�[�l���g�����w�肷�邾���ŌĂяo�������ł��܂��B
+<p>S2OpenAMFを使うと、Seasar2と<a href="http://www.openamf.org/">OpenAMF</a>が連動するようになります。これによりMacromedia FlashからSeasar2のコンポーネントを簡単に呼び出す事ができるようになります。コンポーネントの呼び出しは、Flashからインターフェース名またはコンポーネント名を指定するだけで呼び出す事ができます。
 </p>
 
-<h2><a name="Setup">�Z�b�g�A�b�v</a></h2>
-<p>S2�Ɠ��l��JDK1.4�ȏオ�K�v�ł��B�T���v���́A<a href="http://jakarta.apache.org/tomcat/">Tomcat</a>��<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>���g�����Ƃ�O��ɂ��Ă��܂��B���炩���߃C���X�g�[�����Ēu���Ă��������BS2OpenAMF-Vxxx.jar���𓀂��Ăł���s2openamf�f�B���N�g����Eclipse�Ɋۂ��ƃC���|�[�g���Ă��������BS2OpenAMF�̃R���p�C�����͈ȏ�ŃZ�b�g�A�b�v�����ł��B�T���v����S2OpenAMFExample-Vxxx.jar�Ƃ��ĕʓr�p�ӂ���Ă���̂ŁA�_�E�����[�h���ĉ𓀂��Ă��������B�𓀂��Ăł���s2openamf-example�f�B���N�g����Eclipse�Ɋۂ��ƃC���|�[�g���Ă��������Bs2openamf-example�v���W�F�N�g���E�N���b�N���ăv���p�e�B-&gt;Tomcat��I�т܂��BTomcat�v���W�F�N�g�ł�����`�F�b�N��(�`�F�b�N�����Ă���ꍇ�A�K�p�{�^�����N���b�N)�A�A�v���P�[�V����URI��/S2OpenAMF�Ƃ��܂��B�v���W�F�N�g���r���h���Tomcat���ċN�����āA�u���E�U����<a href="http://localhost:8080/S2OpenAMF/">http://localhost:8080/S2OpenAMF/</a>�ɃA�N�Z�X�����<a href="http://localhost:8080/S2OpenAMF/calculator.html">�����Z1</a>, <a href="http://localhost:8080/S2OpenAMF/calculator2.html">�����Z2</a>, <a href="http://localhost:8080/S2OpenAMF/exception.html">�G���[����</a>, <a href="http://localhost:8080/S2OpenAMF/rmtg_tester.html">�ėp�����[�e�B���O�e�X�^�[</a>�̃T���v���𓮍삳���邱�Ƃ��ł��܂��B</p>
+<h2><a name="Setup">セットアップ</a></h2>
+<p>S2と同様にJDK1.4以上が必要です。サンプルは、<a href="http://jakarta.apache.org/tomcat/">Tomcat</a>と<a href="http://www.sysdeo.com/eclipse/tomcatPlugin.html">Tomcat Plugin</a>を使うことを前提にしています。あらかじめインストールして置いてください。S2OpenAMF-Vxxx.jarを解凍してできたs2openamfディレクトリをEclipseに丸ごとインポートしてください。S2OpenAMFのコンパイル環境は以上でセットアップ完了です。サンプルはS2OpenAMFExample-Vxxx.jarとして別途用意されているので、ダウンロードして解凍してください。解凍してできたs2openamf-exampleディレクトリをEclipseに丸ごとインポートしてください。s2openamf-exampleプロジェクトを右クリックしてプロパティ-&gt;Tomcatを選びます。Tomcatプロジェクトであるをチェックし(チェックがついている場合、適用ボタンをクリック)、アプリケーションURIを/S2OpenAMFとします。プロジェクトをビルド後にTomcatを再起動して、ブラウザから<a href="http://localhost:8080/S2OpenAMF/">http://localhost:8080/S2OpenAMF/</a>にアクセスすると<a href="http://localhost:8080/S2OpenAMF/calculator.html">足し算1</a>, <a href="http://localhost:8080/S2OpenAMF/calculator2.html">足し算2</a>, <a href="http://localhost:8080/S2OpenAMF/exception.html">エラー発生</a>, <a href="http://localhost:8080/S2OpenAMF/rmtg_tester.html">汎用リモーティングテスター</a>のサンプルを動作させることができます。</p>
 
-<h2><a name="Use">�g����</a></h2>
-���L������S2OpenAMFExample�Ɋ܂܂��ݒ�t�@�C�����g�p���Ă����������ɂ��A�ȗ����\�ł��B
+<h2><a name="Use">使い方</a></h2>
+下記説明はS2OpenAMFExampleに含まれる設定ファイルを使用していただく事により、省略が可能です。
 <ul>
-<li>Seasar2���_�E�����[�h
-<li>OpenAMF���_�E�����[�h
-<li>S2OpenAMF���_�E�����[�h
-<li>�S�Ă�JAR�ƃv���p�e�B�t�@�C������Eclipse�̃v���W�F�N�g�ɒǉ�
-<li>OpenAMF�t����openamf-config.xml��S2OpenAMF��ServiceInvoker��ǋL
-<li>OpenAMF�t����web.xml��Seasar2��web.xml�̓��e��ǋL
+<li>Seasar2をダウンロード
+<li>OpenAMFをダウンロード
+<li>S2OpenAMFをダウンロード
+<li>全てのJARとプロパティファイル等をEclipseのプロジェクトに追加
+<li>OpenAMF付属のopenamf-config.xmlにS2OpenAMFのServiceInvokerを追記
+<li>OpenAMF付属のweb.xmlにSeasar2のweb.xmlの内容を追記
 </ul>
 
-<h3>openamf-config.xml(OpenAMF�t���̂��̂ɒǋL)</h3>
-<pre>�`���`
+<h3>openamf-config.xml(OpenAMF付属のものに追記)</h3>
+<pre>～略～
 &lt;!-- Uncomment this to enable EJB invoker
 &lt;invoker&gt;
     &lt;name&gt;EJB&lt;/name&gt;
@@ -65,11 +65,11 @@
     &lt;name&gt;Java&lt;/name&gt;
     &lt;class&gt;org.openamf.invoker.JavaServiceInvoker&lt;/class&gt;
 &lt;/invoker&gt;
-�`���`</pre>
+～略～</pre>
 
-<h3>web.xml(OpenAMF�t���̂��̂ɒǋL)</h3>
-S2Container���擾����T�[�u���b�gFlash����Ăяo���R���|�[�l���g����`���ꂽdicon�t�@�C�����w�肵�܂��B
-<pre>�`���`
+<h3>web.xml(OpenAMF付属のものに追記)</h3>
+S2Containerを取得するサーブレットFlashから呼び出すコンポーネントが定義されたdiconファイルを指定します。
+<pre>～略～
 &lt;servlet&gt;
     &lt;servlet-name&gt;s2servlet&lt;/servlet-name&gt;
     &lt;servlet-class&gt;org.seasar.framework.container.servlet.S2ContainerServlet&lt;/servlet-class&gt;
@@ -83,16 +83,16 @@ S2Container���擾����T�[�u���b�gFlash����Ăяo���R���|�[�l���g����`���ꂽdico
     &lt;servlet-name&gt;s2servlet&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/s2servlet&lt;/url-pattern&gt;
 &lt;/servlet-mapping&gt;
-�`���`</pre>
-<p>���Ƃ�Tomcat�̐ݒ蓙�ł��������ł͊������܂��BSeasar2�̃}�j���A�������킹�Ă������������B</p>
+～略～</pre>
+<p>あとはTomcatの設定等ですがここでは割愛します。Seasar2のマニュアルも合わせてご覧ください。</p>
 
-<h2><a name="JavaCode">Java�̃R�[�f�B���O</a></h2>
-<p>Seasar2�̃h�L�������g���Q�l��S2Container��Flash����Ăяo���R���|�[�l���g��o�^���Ă��������B</p>
+<h2><a name="JavaCode">Javaのコーディング</a></h2>
+<p>Seasar2のドキュメントを参考にS2ContainerにFlashから呼び出すコンポーネントを登録してください。</p>
 
-<h2><a name="FlashCode">Flash�̃R�[�f�B���O</a></h2>
-<p>�]���ǂ����Flash Remoting�̃R�[�f�B���O���@�ƂȂ��ς��܂���Bservice�̏����R���|�[�l���g���ł��Ăяo����Ƃ����������Ⴂ�܂��B��{�I�Ȏ菇�͈ȉ��̒ʂ�BRemoting Connector���g�p���邱�Ƃ��ł��܂��B</p>
+<h2><a name="FlashCode">Flashのコーディング</a></h2>
+<p>従来どおりのFlash Remotingのコーディング方法となんら変わりません。serviceの所がコンポーネント名でも呼び出せるという所だけ違います。基本的な手順は以下の通り。Remoting Connectorを使用することもできます。</p>
 <pre>
-NetServices�I�u�W�F�N�g���g������
+NetServicesオブジェクトを使った例
 
 NetServices.setDefaultGatewayUrl(gatewayUrl);
 var serviceConnection = NetServices.createGatewayConnection();
@@ -100,7 +100,7 @@ var serviceObject = serviceConnection.getService(service, callback);
 serviceObject.methodName(arguments1, arguments2, ...);
 </pre>
 <pre>
-Service�I�u�W�F�N�g���g������
+Serviceオブジェクトを使った例
 
 var service:Service = new Service(
                                 gatewayUrl,
@@ -112,8 +112,8 @@ var pc:PendingCall = service.methodName(arguments1, arguments2, ...);
 pc.responder = new RelayResponder(methodInPath, "resultMethodName", "faultMethodName");
 </pre>
 
-<h2><a name="Mapping">JavaBeans��ActionScript�̃N���X�Ƃ̃}�b�s���O </a></h2>
-<p>S2OpenAMF1.0.5����̐V�@�\�ŁAJavaBeans��ActionScript�̃N���X�𑊌݂Ƀ}�b�s���O����Java��Flash�Ńf�[�^�������ł��܂��B��Ƃ��Ď��̂悤�ȑ����Z�̃f�[�^������肷��悤��JavaBeans���`���܂��B</p>
+<h2><a name="Mapping">JavaBeansとActionScriptのクラスとのマッピング </a></h2>
+<p>S2OpenAMF1.0.5からの新機能で、JavaBeansとActionScriptのクラスを相互にマッピングしてJavaとFlashでデータをやり取りできます。例として次のような足し算のデータをやり取りするようなJavaBeansを定義します。</p>
 <pre>package test.org.seasar.extension.openamf;
 
 import java.io.Serializable;
@@ -147,7 +147,7 @@ public class PlusDto implements Serializable {
         this.result = result;
     }
 }</pre>
-<p>����ɑΉ�����ActionScript�̃N���X���쐬���܂��B</p>
+<p>これに対応するActionScriptのクラスを作成します。</p>
 <pre>class PlusDto {
     var _remoteClass:String;
     var arg1:Number;
@@ -159,7 +159,7 @@ public class PlusDto implements Serializable {
     }
 }</pre>
 
-<p>Flash Remoting�̈�����Flash��PlusDto�N���X���g�p���AJava��PlusDto�N���X�Ƃ��Ď󂯎��A�߂�l��Flash��PlusDto�N���X�Ƃ��Ď󂯎��T���v���ł��B</p>
+<p>Flash Remotingの引数にFlashのPlusDtoクラスを使用し、JavaのPlusDtoクラスとして受け取り、戻り値をFlashのPlusDtoクラスとして受け取るサンプルです。</p>
 
 <pre>import PlusDto;
 import mx.remoting.Service;
@@ -201,47 +201,47 @@ function plus_Fault(fa:FaultEvent):Void {
 }</pre>
 
 
-���܂ł�Flash Remoting�̈����Ɩ߂�l�ɁAActionScript�̃N���X���g�p�ł���悤�ɂȂ��������ł��B�|�C���g�͎��̒ʂ�B
+今までのFlash Remotingの引数と戻り値に、ActionScriptのクラスが使用できるようになっただけです。ポイントは次の通り。
 <ul>
-<li>_remoteClass�Ƃ����v���p�e�B���`���鎖�B</li>
-<li>�R���X�g���N�^��_remoteClass�Ƀ}�b�s���O����JavaBeans�̃N���X���������鎖�B</li>
+<li>_remoteClassというプロパティを定義する事。</li>
+<li>コンストラクタで_remoteClassにマッピングするJavaBeansのクラス名を代入する事。</li>
 </ul>
 
 
 <p>
 
-<h2><a name="Sample">�T���v���̐���</a></h2>
+<h2><a name="Sample">サンプルの説明</a></h2>
 
 <ul>
 <li>calculator.swf<br>
-�v�Z�@�̃T���v���ł��B��ӂ��̃e�L�X�g�{�b�N�X�ɐ�������͂��A�e�X�g�{�^�����N���b�N����Ɖ��̃e�L�X�g�{�b�N�X�ɓ������\������܂��B</li>
+計算機のサンプルです。上ふたつのテキストボックスに数字を入力し、テストボタンをクリックすると下のテキストボックスに答えが表示されます。</li>
 <li>calculator2.swf<br>
-ActionScript�̃N���X��JavaBeans���}�b�s���O���čs���v�Z�@�̃T���v���ł��B</li>
+ActionScriptのクラスとJavaBeansをマッピングして行う計算機のサンプルです。</li>
 <br>
 <li>exception.swf<br>
-�Ǝ���Exception���g�p�����ꍇ�́A�G���[���e��\������T���v���ł��B</li>
+独自のExceptionを使用した場合の、エラー内容を表示するサンプルです。</li>
 <li>rmtg_tester.swf<br>
-Flash Remoting�̃A�v���P�[�V������ėp�I�Ƀe�X�g����T���v���ł��BSeasar2�̏ꍇ�̐��������܂��B</li>
+Flash Remotingのアプリケーションを汎用的にテストするサンプルです。Seasar2の場合の説明をします。</li>
 <table border="1">
 	<tr>
 		<td>gatewayUrl</td>
-		<td>OpenAMF�̃Q�[�g�E�F�C�ւ�URL�B<br>�ʏ�http://domainName/contextName/gateway�ƂȂ�܂��B</td>
+		<td>OpenAMFのゲートウェイへのURL。<br>通常http://domainName/contextName/gatewayとなります。</td>
 	</tr>
 	<tr>
 		<td>method</td>
-		<td>���\�b�h��<br>�R���|�[�l���g�̃��\�b�h�����w�肵�܂��B</td>
+		<td>メソッド名<br>コンポーネントのメソッド名を指定します。</td>
 	</tr>
 	<tr>
 		<td>service</td>
-		<td>�R���|�[�l���g���A���̓C���^�[�t�F�[�X�̃t���p�b�P�[�W��<br>�R���|�[�l���g��`XML�t�@�C���Ŏw�肵��name���̓C���^�[�t�F�[�X�̃t���p�b�P�[�W������͂��܂��B</td>
+		<td>コンポーネント名、又はインターフェースのフルパッケージ名<br>コンポーネント定義XMLファイルで指定したname又はインターフェースのフルパッケージ名を入力します。</td>
 	</tr>
 	<tr>
 		<td>arguments</td>
-		<td>����<br>�R���|�[�l���g�֓n��������3�܂œ��͂ł��܂��B�c�O�Ȃ���v���~�e�B�u�^�����n���܂���B</td>
+		<td>引数<br>コンポーネントへ渡す引数を3つまで入力できます。残念ながらプリミティブ型しか渡せません。</td>
 	</tr>
 </table>
-<p>��service��POJO�ւ̃t���p�b�P�[�W������͂���ƒʏ��POJO���Ăяo���܂��B</p>
-<p>���ꂼ�����͂��I�������[Trigger !]�{�^�����N���b�N���邱�ƂŁA�e�L�X�g�G���A�Ɍ��ʂ��\������܂��B�߂�l���������͉̂����o�܂���B�G���[�̏ꍇ�����b�Z�[�W���\������܂��B�E�[�ɂ���[date test]�A[calculator test]�{�^���͂��ꂼ��̃R���|�[�l���g���Ăяo������ݒ肷��{�^���ł��B�N���b�N����ƕK�v�ȏ�񂪎����I�ɓ��͂���܂��̂�[Trigger !]�{�^�����������Ƃɂ����s�ł��܂��B(���͌v�Z�@�͂R�ڂ̐��������Ă����삵�܂�)</p>
+<p>※serviceにPOJOへのフルパッケージ名を入力すると通常のPOJOも呼び出せます。</p>
+<p>それぞれを入力し終わったら[Trigger !]ボタンをクリックすることで、テキストエリアに結果が表示されます。戻り値が無いものは何も出ません。エラーの場合もメッセージが表示されます。右端にある[date test]、[calculator test]ボタンはそれぞれのコンポーネントを呼び出す情報を設定するボタンです。クリックすると必要な情報が自動的に入力されますので[Trigger !]ボタンを押すことにより実行できます。(実は計算機は３つ目の数字を入れても動作します)</p>
 </ul>
 <!-- document end -->
 <!-- don't edit start -->

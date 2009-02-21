@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta http-equiv="Content-Language" content="ja" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
-<title>Solaris��Seasar2�𓮂����Ă݂�</title>
+<title>SolarisでSeasar2を動かしてみる</title>
 <link rel="stylesheet" type="text/css" href="../theme/main.css" media="screen,projection" />
 <link rel="stylesheet" type="text/css" href="../theme/print.css" media="print" />
 </head>
@@ -28,8 +29,8 @@
 <div>
 	<input id="search_phrase" type="text" name="phrase" size="20" />
 	<input type="hidden" name="perpage" value="30" />
-	<input type="hidden" name="enc" value="Shift-JIS" />
-	<input id="search_go" type="submit" value="����" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="検索" />
 </div>
 </form>
 
@@ -47,27 +48,34 @@
 
 <div id="contents_left">
 
-<h2>���j���[</h2>
+<h2>利用者向け情報</h2>
 
 <ul>
-	<li><a href="../wiki/">�j���[�X &amp; Wiki</a></li>
-	<li><a href="https://www.seasar.org/mailman/listinfo/">���[�����O���X�g</a></li>
-	<li><a href="https://www.seasar.org/issues/">�g���b�L���O</a></li>
-	<li><a href="https://www.seasar.org/svn/">SVN ���|�W�g��</a></li>
-	<li><a href="http://svn.seasar.org/browse/">SVN ���|�W�g���u���E�U</a></li>
-	<li><a href="../feed/">RSS�t�B�[�h</a></li>
-	<li><a href="../license/">���C�Z���X</a></li>
-	<li><a href="https://www.seasar.org/members/">�����o�[�p�y�[�W</a></li>
+	<li><a href="../wiki/">ニュース &amp; Wiki</a></li>
+	<li><a href="../index.html#products">プロダクト一覧</a></li>
+	<li><a href="http://ml.seasar.org/">メーリングリスト</a></li>
+	<li><a href="../updates.html">Eclipseプラグイン</a></li>
+	<li><a href="http://maven.seasar.org/">Mavenリポジトリ</a></li>
+	<li><a href="../license/">ライセンス</a></li>
+	<li><a href="../resources.html">各種リソース</a></li>
+	<li><a href="http://event.seasarfoundation.org/">イベントサイト</a></li>
+	<li><a href="http://www.seasarfoundation.org/">ファウンデーションサイト</a></li>
 </ul>
 
-<ul>
-	<li><a href="http://event.seasar.org/">�C�x���g</a></li>
-	<li><a href="http://foundation.seasar.org/">�t�@�E���f�[�V����</a></li>
-	<li><a href="http://server.seasar.org/">�T�[�o�`�[��</a></li>
-</ul>
+<h2>開発者向け情報</h2>
 
 <ul>
-	<li><a href="../">�v���W�F�N�g</a></li>
+	<li><a href="../wiki/">SeasarWiki</a></li>
+	<li><a href="https://www.seasar.org/svn/">ソースコードリポジトリ</a></li>
+	<li><a href="http://svn.seasar.org/browse/">ソースコードブラウザ</a></li>
+	<li><a href="https://www.seasar.org/issues/">課題追跡</a></li>
+	<li><a href="https://www.seasar.org/hudson/">継続的ビルド</a></li>
+	<li><a href="../feed/">RSSフィード</a></li>
+	<li><a href="https://www.seasar.org/members/">開発者ログイン</a></li>
+	<li><a href="http://server.seasar.org/">サーバチームサイト</a></li>
+<!--
+	<li><a href="http://media.seasar.org/staging/">Seasarメディア準備号</a></li>
+-->
 </ul>
 
 </div><!-- contents_left -->
@@ -77,23 +85,23 @@
 <div id="article">
 
 <div class="section">
-<h2 id="h02">Solaris��Seasar2�𓮂����Ă݂�</h2>
+<h2 id="h02">SolarisでSeasar2を動かしてみる</h2>
 
-	<p>Seasar2�̊J���E�^�p���ɂ́A�������g���ł��傤���H�u�J����Windows�ŉ^�p�ɂ�Linux�v�Ƃ��A�u�ǂ����Windows�v���A���낢�낾�Ǝv���܂��B������̑I��̏����͗l�X�ł����AJava�̖{�Ɩ{��Sun��OS�ASolaris�����͂ȑI�����̈�ł��BSolaris�ɓ���݂������l�����������m��܂��񂪁ASolaris�ɂ́ASparc�����łȂ�x86�ł�����܂��̂�Linux���l���ʂ�PC�œ��삵�܂��B</p>
+	<p>Seasar2の開発・運用環境には、何をお使いでしょうか？「開発にWindowsで運用にはLinux」とか、「どちらもWindows」等、いろいろだと思います。動作環境の選定の条件は様々ですが、Javaの本家本元SunのOS、Solarisも協力な選択肢の一つです。Solarisに馴染みが無い人も多いかも知れませんが、Solarisには、Sparcだけでなくx86版もありますのでLinux同様普通のPCで動作します。</p>
 
-	<p>�����AOS����ƂȂ�Ƒ����̕��͋C�y�Ɏ����Ă݂�Ƃ����킯�ɂ͍s���Ȃ��ł��傤�B���̃y�[�W�ł́A�o���邾���ȒP�Ɏ�����悤��VMWare���g����Solaris��Seasar2�𓮂����Ă݂܂��B</p>
+	<p>ただ、OSからとなると多くの方は気軽に試してみるというわけには行かないでしょう。このページでは、出来るだけ簡単に試せるようにVMWareを使ってSolarisでSeasar2を動かしてみます。</p>
 
 <ul>
-	<li>�R���e���c
-	<ul><li><a href="#download">�C���X�g�[���pDVD�C���[�W�̃_�E�����[�h�ƍ쐬</a></li>
-		<li><a href="#install">VMWare�̃Q�X�gOS���ւ̃C���X�g�[��</a></li>
-		<li><a href="#seasar2">Seasar2�𓮂����Ă݂�</a></li>
-		<li><a href="#end">������</a></li>
+	<li>コンテンツ
+	<ul><li><a href="#download">インストール用DVDイメージのダウンロードと作成</a></li>
+		<li><a href="#install">VMWareのゲストOS環境へのインストール</a></li>
+		<li><a href="#seasar2">Seasar2を動かしてみる</a></li>
+		<li><a href="#end">おわりに</a></li>
 	</ul>
 	</li>
 </ul>
 
-<h2 id="download">�C���X�g�[���pDVD�C���[�W�̃_�E�����[�h�ƍ쐬</h2>
+<h2 id="download">インストール用DVDイメージのダウンロードと作成</h2>
 
 <!-- Sun Affiliate start -->
 <div class="affiliate">
@@ -101,16 +109,16 @@
 <script type="text/javascript">
 write_sun_affiliate('../');
 </script>
-<noscript><a href="http://sdc.sun.co.jp/solaris/?utm_source=banner&amp;utm_medium=banner&amp;utm_term=Solaris&amp;utm_content=SeaSar&amp;utm_campaign=Solaris%2BSDC%2BCampaign" rel="nofollow"><img src="http://www.seasar.org/wiki/index.php?plugin=ref&amp;page=SeasarWiki&amp;src=300x300sunDeveloper.gif" alt="Solaris 10�������������ƁI" title="Solaris 10�������������ƁI" width="300" height="300" /></a>
+<noscript><a href="http://sdc.sun.co.jp/solaris/?utm_source=banner&amp;utm_medium=banner&amp;utm_term=Solaris&amp;utm_content=SeaSar&amp;utm_campaign=Solaris%2BSDC%2BCampaign" rel="nofollow"><img src="http://www.seasar.org/wiki/index.php?plugin=ref&amp;page=SeasarWiki&amp;src=300x300sunDeveloper.gif" alt="Solaris 10を今すぐもっと！" title="Solaris 10を今すぐもっと！" width="300" height="300" /></a>
 </noscript>
 </div>
 <!-- Sun Affiliate end -->
 
-<p>�܂��ASun�̃T�C�g����C���[�W���_�E�����[�h(SDC�ւ̓o�^���K�v)���܂��BSDC�ւ̓o�^�Ɖp��̃T�C�g�ł̓��͍��ڂ���������܂��̂ŁA����ĂȂ��ƃ_�E�����[�h�܂ł��ǂ蒅���Ȃ���������܂���B�ł�<a href="http://jp.sun.com/download/howto/">���{��̐���</a>������܂��̂ŁA���̒ʂ�i��ł����΁A���v�ł��B�����A�o�i�[�̃����N�����Ԃ�STEP1��STEP2�̃y�[�W�͂�����ƈႤ�̂Œ��ӂ��Ă��������BSTEP3����͂��̂܂܂�OK�ł��B</p>
+<p>まず、Sunのサイトからイメージをダウンロード(SDCへの登録が必要)します。SDCへの登録と英語のサイトでの入力項目が少しありますので、慣れてないとダウンロードまでたどり着けないかもしれません。でも<a href="http://jp.sun.com/download/howto/">日本語の説明</a>がありますので、その通り進んでいけば、大丈夫です。ただ、バナーのリンクから飛ぶとSTEP1とSTEP2のページはちょっと違うので注意してください。STEP3からはそのままでOKです。</p>
 
-<p>�܂��A<a href="http://jp.sun.com/download/faq.html">FAQ</a>������܂��̂ŁA�K�X�Q�Ƃ��Ă��������B</p>
+<p>また、<a href="http://jp.sun.com/download/faq.html">FAQ</a>もありますので、適宜参照してください。</p>
 
-<p>����_�E�����[�h�����̂́A�ȉ��̃t�@�C���ł��B</p>
+<p>今回ダウンロードしたのは、以下のファイルです。</p>
 
 <ul><li>sol-10-u2-ga-x86-dvd.exe</li>
 	<li>sol-10-u2-ga-x86-dvd_001.nos</li>
@@ -118,21 +126,21 @@ write_sun_affiliate('../');
 	<li>sol-10-u2-ga-x86-dvd_003.nos</li>
 </ul>
 
-<p><a href="http://www.sun.com/software/solaris/download_instruction.xml">�O�̓R�}���h���C���Ō������Ȃ���DVD�̃C���[�W�͍��Ȃ�����</a>�̂ɁAWindows���[�U�̗��֐����l�����Ă��Aexe�t�@�C���ɂȂ��Ă��܂��B�������k���������̂��₽�玞�Ԃ�������܂��B�u90 minutes on a P4-3GHz system�v�Ə����Ă���܂�... �l�b�g���[�N���������Ȃ�A���܂܂Œʂ�ZIP�t�@�C���𗎂Ƃ��ĉ𓀂������ƌ�����������͂₢�ł��B</p>
+<p><a href="http://www.sun.com/software/solaris/download_instruction.xml">前はコマンドラインで結合しないとDVDのイメージは作れなかった</a>のに、Windowsユーザの利便性を考慮してか、exeファイルになっています。ただ圧縮率が高いのかやたら時間がかかります。「90 minutes on a P4-3GHz system」と書いてあります... ネットワークが速い環境なら、いままで通りZIPファイルを落として解凍したあと結合する方がはやいです。</p>
 
-<p>�ł����t�@�C����MD5�Ń`�F�b�N���邱�Ƃ����E�߂��܂��B</p>
+<p>できたファイルはMD5でチェックすることをお薦めします。</p>
 
-<h2 id="install">VMWare�̃Q�X�gOS���ւ̃C���X�g�[��</h2>
+<h2 id="install">VMWareのゲストOS環境へのインストール</h2>
 
-<p>�C���X�g�[���菇�̎Q�l�ɁAdocs.sun.com����uSolaris 10 6/06 �C���X�g�[���K�C�h (��{��)�v��<a href="http://docs.sun.com/app/docs/prod/solaris.10">�_�E�����[�h</a>���Ă����܂��B�C���X�g�[���}�j���A���ȊO�ɂ����{��}�j���A�����[�����Ă܂��B</p>
+<p>インストール手順の参考に、docs.sun.comから「Solaris 10 6/06 インストールガイド (基本編)」を<a href="http://docs.sun.com/app/docs/prod/solaris.10">ダウンロード</a>しておきます。インストールマニュアル以外にも日本語マニュアルが充実してます。</p>
 
-<p>�O�q�����悤�ɁA�����VMWare�̃Q�X�gOS�Ƃ��ăC���X�g�[�����邱�Ƃɂ��܂����B������Ǝ��������Ƃ����ꍇ�ɂ͎�y�ł����ł��BISO�C���[�W�����̂܂܃}�E���g�ł��āA���f�B�A�ɏĂ��K�v���Ȃ��ł����B�ł��A���ꂶ��x�����A�f���A���u�[�g�������Ƃ�������<a href="http://jp.sun.com/communities/users/0606/feature01.html">����</a>���Q�Ƃ��Ă��������B�܂��A�����̃}�V���œ������S�z�Ȑl�́A<a href="http://www.sun.com/bigadmin/hcl/data/sol/">HCL for Solaris OS</a>���Q�Ƃ��Ă��������B��������Ƃ����񍐂������ς��̂��Ă܂��B</p>
+<p>前述したように、今回はVMWareのゲストOSとしてインストールすることにしました。ちょっと試したいという場合には手軽でいいです。ISOイメージをそのままマウントできて、メディアに焼く必要がないですし。でも、それじゃ遅いし、デュアルブートしたいという方は<a href="http://jp.sun.com/communities/users/0606/feature01.html">ここ</a>を参照してください。また、自分のマシンで動くか心配な人は、<a href="http://www.sun.com/bigadmin/hcl/data/sol/">HCL for Solaris OS</a>を参照してください。動いたよという報告がいっぱいのってます。</p>
 
-<p>�ł́A�Ƃ肠�����C���X�g�[��DVD�̃C���[�W���}�E���g���ău�[�g���܂��BGRUB�������オ��A�ȉ��̐}1�̃u�[�g���j���[���\������܂����B</p>
+<p>では、とりあえずインストールDVDのイメージをマウントしてブートします。GRUBが立ち上がり、以下の図1のブートメニューが表示されました。</p>
 
 <div class="figure">
-<img src="images/sol10-01.png" alt="�u�[�g���j���[" title="�u�[�g���j���[" />
-<p>�}1. �u�[�g���j���[</p>
+<img src="images/sol10-01.png" alt="ブートメニュー" title="ブートメニュー" />
+<p>図1. ブートメニュー</p>
 </div>
 
 <pre class="hide">
@@ -143,7 +151,7 @@ Solaris Serial Console ttyb (for lx50, v60x and v65x)
 --------------------------------------------------------------------------------
 </pre>
 
-<p>����̓R���\�[�����g���킯����Ȃ��̂ŁA�u<strong>Solaris</strong>�v��I���B�ŁA�C���X�g�[���̎�ނ��ȉ�����I���B</p>
+<p>今回はコンソールを使うわけじゃないので、「<strong>Solaris</strong>」を選択。で、インストールの種類を以下から選択。</p>
 
 <pre>
 1 Solaris Interactive
@@ -154,67 +162,67 @@ Solaris Serial Console ttyb (for lx50, v60x and v65x)
 6 Single user shell
 </pre>
 
-<p>�Θb���́u<strong>1</strong>�v��I���B���΂炭�����GUI�̉�ʂɂȂ��Č���̑I��(�}2)�B</p>
+<p>対話式の「<strong>1</strong>」を選択。しばらくするとGUIの画面になって言語の選択(図2)。</p>
 
 <div class="figure">
-<img src="images/sol10-02.png" alt="����̑I��" title="����̑I��" />
-<p>�}2. ����̑I��</p>
+<img src="images/sol10-02.png" alt="言語の選択" title="言語の選択" />
+<p>図2. 言語の選択</p>
 </div>
 
-<p>�u<strong>4</strong>�v��Japanese��I���B���Ƃ́A����ɓ����ăl�b�g���[�N�Ƃ����ԂƂ���ݒ肵�܂��B�C���X�g�[���`���̓f�t�H���g��I�����܂���(�}3)�B�����R�[�h��ς����ꍇ��C���X�g�[������p�b�P�[�W��I������ꍇ�͂����ŃJ�X�^���C���X�g�[����I�����Ă��������B�C���X�g�[������p�[�e�B�V�����������肽���ꍇ�������ŃJ�X�^���C���X�g�[���ł��B</p>
+<p>「<strong>4</strong>」のJapaneseを選択。あとは、質問に答えてネットワークとか時間とかを設定します。インストール形式はデフォルトを選択しました(図3)。文字コードを変えた場合やインストールするパッケージを選択する場合はここでカスタムインストールを選択してください。インストールするパーティションをいじりたい場合もここでカスタムインストールです。</p>
 
 <div class="figure">
-<img src="images/sol10-03.png" alt="�C���X�g�[���`���̑I��" title="�C���X�g�[���`���̑I��" />
-<p>�}3. �C���X�g�[���`���̑I��</p>
+<img src="images/sol10-03.png" alt="インストール形式の選択" title="インストール形式の選択" />
+<p>図3. インストール形式の選択</p>
 </div>
 
-<h3 id="h03-1">�C���X�g�[���J�n</h3>
+<h3 id="h03-1">インストール開始</h3>
 
-<p>�C���X�g�[�����鍀�ڂ̃T�}���[���\�������̂ŁA���e���m�F���āu<strong>�C���X�g�[���J�n</strong>�v�������܂�(�}4)�B</p>
+<p>インストールする項目のサマリーが表示されるので、内容を確認して「<strong>インストール開始</strong>」を押します(図4)。</p>
 
 <div class="figure">
-<img src="images/sol10-04.png" alt="�C���X�g�[�����ڂ̊m�F" title="�C���X�g�[�����ڂ̊m�F" />
-<p>�}4. �C���X�g�[�����ڂ̊m�F</p>
+<img src="images/sol10-04.png" alt="インストール項目の確認" title="インストール項目の確認" />
+<p>図4. インストール項目の確認</p>
 </div>
 
-<p>���΂炭���ăC���X�g�[�����I���ƍċN���B�����Solaris���N�����܂����B����N�����́ANFS�Ɋւ��鎿�₪����܂����A�܂��g��Ȃ������������Ȃ̂Ńf�t�H���g�̂܂܂�OK(�}5)�ł��B</p>
+<p>しばらくしてインストールが終わると再起動。やっとSolarisが起動しました。初回起動時は、NFSに関する質問がありますが、まぁ使わないし試すだけなのでデフォルトのままでOK(図5)です。</p>
 
 <div class="figure">
-<img src="images/sol10-05.png" alt="NFS�Ɋւ��鎿��" title="NFS�Ɋւ��鎿��" />
-<p>�}5. NFS�Ɋւ��鎿��</p>
+<img src="images/sol10-05.png" alt="NFSに関する質問" title="NFSに関する質問" />
+<p>図5. NFSに関する質問</p>
 </div>
 
-<p>�ȏ�̎菇�́AWeb��ɃX�N���[���V���b�g�t�ł���������J����Ă��܂�(*)�BVMWare�Ȃ�}�V�����ł������������T�C�g�𒲂ׂȂ����Ƃł���̂ŁA���̓_�ł����E�߂ł��B</p>
+<p>以上の手順は、Web上にスクリーンショット付でたくさん公開されています(*)。VMWareならマシン一台でもこういったサイトを調べながら作業できるので、その点でもお薦めです。</p>
 
 <ul>
-<li>* <a href="http://www15.big.or.jp/~yamamori/sun/sol10/">Solaris 10(x86)���C���X�g�[�����Ă݂悤</a> �Ȃ�</li>
+<li>* <a href="http://www15.big.or.jp/~yamamori/sun/sol10/">Solaris 10(x86)をインストールしてみよう</a> など</li>
 </ul>
 
-<p>�Ƃ������ƂłƂ肠�����C���X�g�[���͊����ł�(�}6)�B</p>
+<p>ということでとりあえずインストールは完了です(図6)。</p>
 
 <div class="figure">
-<img src="images/sol10-06.png" alt="�C���X�g�[����̂悤�����I���" title="�C���X�g�[����̂悤�����I���" />
-<p>�}6. �C���X�g�[����̂悤�����I���</p>
+<img src="images/sol10-06.png" alt="インストール後のようこそ！画面" title="インストール後のようこそ！画面" />
+<p>図6. インストール後のようこそ！画面</p>
 </div>
 
-<h2 id="seasar2">Seasar2�𓮂����Ă݂�</h2>
+<h2 id="seasar2">Seasar2を動かしてみる</h2>
 
-<p>���Seasar2�𓮂����Ă݂܂��B����́AWindows��Linux�Ƒ卷�Ȃ��̂ŁA�ȒP�ɁB</p>
+<p>後はSeasar2を動かしてみます。これは、WindowsやLinuxと大差ないので、簡単に。</p>
 
-<p>�܂��AJava�͂������Ɋ��ɃC���X�g�[���ς�(1.5.0_06)�Ȃ̂ŁA������ƌÂ��ł������̂܂܎g���܂��BSeasar2(�����2.3.12)���_�E�����[�h���ăT���v�������s���Ă݂܂��B</p>
+<p>まず、Javaはさすがに既にインストール済み(1.5.0_06)なので、ちょっと古いですがそのまま使います。Seasar2(今回は2.3.12)をダウンロードしてサンプルを実行してみます。</p>
 
 <pre>
 > unzip S2.3.12.zip
 Archive:  S2.3.12.zip
 
-�`�`�`�`�`�`�`�`�`�`
-�@�@�@����
-�`�`�`�`�`�`�`�`�`�`
+～～～～～～～～～～
+　　　中略
+～～～～～～～～～～
 
 > cd seasar2
 </pre>
 
-<p>�ʓ|�Ȃ̂ŃT���v�������s���邾���̃X�N���v�g�������܂����B</p>
+<p>面倒なのでサンプルを実行するだけのスクリプトを書きました。</p>
 
 <pre>
 > cat execute_example.csh
@@ -234,41 +242,41 @@ setenv CLASSPATH ${CLASSPATH}:lib/s2-framework-2.3.12.jar
 setenv CLASSPATH ${CLASSPATH}:build/classes
 
 echo "=================================================="
-echo "�T���v�� GreetingMain �����s�B"
+echo "サンプル GreetingMain を実行。"
 echo "--------------------------------------------------"
 java examples.di.main.GreetingMain
 echo "--------------------------------------------------"
 
-echo "�T���v�� GreetingMain2 �����s�B"
+echo "サンプル GreetingMain2 を実行。"
 echo "--------------------------------------------------"
 java examples.di.main.GreetingMain2
 echo "--------------------------------------------------"
 
-echo "�T���v�� GreetingMain3 �����s�B"
+echo "サンプル GreetingMain3 を実行。"
 echo "--------------------------------------------------"
 java examples.di.main.GreetingMain3
 echo "--------------------------------------------------"
 
-echo "�T���v�� GreetingMain4 �����s�B"
+echo "サンプル GreetingMain4 を実行。"
 echo "--------------------------------------------------"
 java examples.di.main.GreetingMain4
 echo "=================================================="
 </pre>
 
-<p>�ŁA���s�ł��B</p>
+<p>で、実行です。</p>
 
 <pre>
 > ./execute_example.csh
 ==================================================
-�T���v�� GreetingMain �����s�B
+サンプル GreetingMain を実行。
 --------------------------------------------------
 Hello World!
 --------------------------------------------------
-�T���v�� GreetingMain2 �����s�B
+サンプル GreetingMain2 を実行。
 --------------------------------------------------
 Hello World!
 --------------------------------------------------
-�T���v�� GreetingMain3 �����s�B
+サンプル GreetingMain3 を実行。
 --------------------------------------------------
 DEBUG 2006-10-12 21:28:22,291 [main] BEGIN examples.di.impl.GreetingClientImpl#execute()
 DEBUG 2006-10-12 21:28:22,307 [main] BEGIN examples.di.impl.GreetingImpl#greet()
@@ -276,7 +284,7 @@ DEBUG 2006-10-12 21:28:22,323 [main] END examples.di.impl.GreetingImpl#greet() :
 Hello World!
 DEBUG 2006-10-12 21:28:22,338 [main] END examples.di.impl.GreetingClientImpl#execute() : null
 --------------------------------------------------
-�T���v�� GreetingMain4 �����s�B
+サンプル GreetingMain4 を実行。
 --------------------------------------------------
 DEBUG 2006-10-12 21:28:25,304 [main] BEGIN examples.di.impl.GreetingClientImpl#execute()
 DEBUG 2006-10-12 21:28:25,320 [main] BEGIN examples.di.impl.GreetingImpl#greet()
@@ -286,20 +294,20 @@ DEBUG 2006-10-12 21:28:25,349 [main] END examples.di.impl.GreetingClientImpl#exe
 ==================================================
 </pre>
 
-<p>���ʂɂ����܂����B</p>
+<p>普通にいけました。</p>
 
-<h3 id="h03-2">[���܂�]Seasar2�𓮂����Ă݂� (CDE��)</h3>
+<h3 id="h03-2">[おまけ]Seasar2を動かしてみる (CDE版)</h3>
 
-<p>Solaris�炵��CDE�ł�Seasar2���s��ʂ�(�}7)�B</p>
+<p>SolarisらしくCDEでのSeasar2実行画面も(図7)。</p>
 
 <div class="figure">
-<img src="images/sol10-07.png" alt="CDE�ł�Seasar2���s���" title="CDE�ł�Seasar2���s���" />
-<p>�}7. CDE�ł�Seasar2���s���</p>
+<img src="images/sol10-07.png" alt="CDEでのSeasar2実行画面" title="CDEでのSeasar2実行画面" />
+<p>図7. CDEでのSeasar2実行画面</p>
 </div>
 
-<h2 id="end">������</h2>
+<h2 id="end">おわりに</h2>
 
-<p>�����Solaris���C���X�g�[�����āASeasar2�𓮂����Ă݂܂����BWindows��Linux���l�ɉ��̖����������삵�܂����BSolaris�́ALinux�ɔ�ׂĕ~�������������邩���m��܂��񂪁A�C���X�g�[���͎g���₷���ł����A���{��̃h�L�������g���[�����Ă���̂ŁA�C�y�Ɏ������Ƃ��ł���Ǝv���܂��B������I��̑I�����Ƃ��Ă��Ў����Ă݂Ă��������B</p>
+<p>今回はSolarisをインストールして、Seasar2を動かしてみました。WindowsやLinux同様に何の問題も無く動作しました。Solarisは、Linuxに比べて敷居が高く感じるかも知れませんが、インストーラは使いやすいですし、日本語のドキュメントも充実しているので、気軽に試すことができると思います。動作環境選定の選択肢としてぜひ試してみてください。</p>
 
 </div>
 
